@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Setting View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="Setting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="SettingViewController" customModule="DailyToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nick" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPB-Eq-NyU">
+                                <rect key="frame" x="120" y="244" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NO2-3G-T8X">
+                                <rect key="frame" x="120" y="437.5" width="73" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Backup"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7PC-Kg-AbU">
+                                <rect key="frame" x="238" y="437.5" width="56" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Load"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ip-Oy-GLp">
+                                <rect key="frame" x="120" y="531" width="70" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Logout"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibN-DS-Vey">
+                                <rect key="frame" x="228" y="531" width="66" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Delete"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZn-ar-GxV">
+                                <rect key="frame" x="225" y="239" width="69" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Modify"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="backupDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyi-LU-gpQ">
+                                <rect key="frame" x="160.5" y="407.5" width="93" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ibN-DS-Vey" firstAttribute="centerY" secondItem="8ip-Oy-GLp" secondAttribute="centerY" id="99H-Jm-VaR"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pZn-ar-GxV" secondAttribute="trailing" constant="120" id="B3G-w2-6LU"/>
+                            <constraint firstItem="pZn-ar-GxV" firstAttribute="centerY" secondItem="MPB-Eq-NyU" secondAttribute="centerY" id="Bm1-ht-Abe"/>
+                            <constraint firstItem="NO2-3G-T8X" firstAttribute="top" secondItem="Yyi-LU-gpQ" secondAttribute="bottom" constant="9" id="GfR-8J-WQR"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7PC-Kg-AbU" secondAttribute="trailing" constant="120" id="Jd3-Fe-bAW"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ibN-DS-Vey" secondAttribute="trailing" constant="120" id="NcT-5h-dvo"/>
+                            <constraint firstItem="NO2-3G-T8X" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="120" id="QkX-kW-O5j"/>
+                            <constraint firstItem="ibN-DS-Vey" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8ip-Oy-GLp" secondAttribute="trailing" constant="18" id="RFi-Ue-OLd"/>
+                            <constraint firstItem="MPB-Eq-NyU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="120" id="Rz7-4S-In0"/>
+                            <constraint firstItem="MPB-Eq-NyU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="200" id="bNB-y9-wsw"/>
+                            <constraint firstItem="NO2-3G-T8X" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="cxc-6b-mgd"/>
+                            <constraint firstItem="7PC-Kg-AbU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NO2-3G-T8X" secondAttribute="trailing" constant="18" id="d7b-GY-zKS"/>
+                            <constraint firstItem="Yyi-LU-gpQ" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="ioZ-P8-Hfd"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8ip-Oy-GLp" secondAttribute="bottom" constant="300" id="j7b-7V-GtD"/>
+                            <constraint firstItem="7PC-Kg-AbU" firstAttribute="centerY" secondItem="NO2-3G-T8X" secondAttribute="centerY" id="jv1-FN-D1s"/>
+                            <constraint firstItem="pZn-ar-GxV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MPB-Eq-NyU" secondAttribute="trailing" constant="18" id="uEY-8B-zhg"/>
+                            <constraint firstItem="8ip-Oy-GLp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="120" id="wJF-sW-jL8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="labelBackupDate" destination="Yyi-LU-gpQ" id="gaf-63-5sS"/>
+                        <outlet property="labelNickName" destination="MPB-Eq-NyU" id="NzS-sb-sPz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133" y="117"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

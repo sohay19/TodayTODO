@@ -22,4 +22,7 @@ target 'DailyToDoList' do
     # Pods for testing
   end
 
+  target 'DailyToDoListWidgetExtension' do
+  end
+
 end

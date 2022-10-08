@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AddTaskViewController.swift
 //  DailyToDoList
 //
 //  Created by 소하 on 2022/10/08.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AddTaskViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,4 +16,3 @@ class ViewController: UIViewController {
 
 
 }
-
