@@ -37,14 +37,14 @@ struct TaskListEntryView: View {
     
     func getTaskList(_ list:[EachTask]) -> [EachTask] {
         var result:[EachTask] = []
-        let curTime = Utils.timeToString(Date())
+        let curTime = Utils.dateToTimeString(Date())
         for task in list {
-            if task.startTime < curTime && curTime < task.endTime {
-                result.append(task)
-                if result.count == maxCount {
-                    break
-                }
-            }
+//            if task.startTime < curTime && curTime < task.endTime {
+//                result.append(task)
+//                if result.count == maxCount {
+//                    break
+//                }
+//            }
         }
         return result
     }
@@ -76,13 +76,7 @@ struct TaskListView: View {
                         .frame(width: geometry.size.width, alignment: .leading)
                     
                     HStack {
-                        Text(task.startTime)
-                            .font(.system(size: 14, weight: .regular))
-                            .foregroundColor(Color.init(uiColor: UIColor.secondaryLabel))
-                        Text("|")
-                            .font(.system(size: 14, weight: .regular))
-                            .foregroundColor(Color.init(uiColor: UIColor.secondaryLabel))
-                        Text(task.endTime)
+                        Text(task.taskTime)
                             .font(.system(size: 14, weight: .regular))
                             .foregroundColor(Color.init(uiColor: UIColor.secondaryLabel))
                     }

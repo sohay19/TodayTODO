@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>948842125375-35gj2iv3gs7bg3s0b9mdgkrn07c8ncte.apps.googleusercontent.com</string>
+	<string>1006848749228-8jprgdssac6ad6qa336nnp9vt1pkfeq6.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.948842125375-35gj2iv3gs7bg3s0b9mdgkrn07c8ncte</string>
+	<string>com.googleusercontent.apps.1006848749228-8jprgdssac6ad6qa336nnp9vt1pkfeq6</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA0in5ZB3jZ6vrwTet6PC8gAMaAqWnFcyU</string>
+	<string>AIzaSyCi_cJIo5mRxuToFuwa_QmsUvL4VvZAjAU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>948842125375</string>
+	<string>1006848749228</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.bailey.dailytimetable</string>
+	<string>com.bailey.DailyToDoList</string>
 	<key>PROJECT_ID</key>
-	<string>dailytimetable-1c13f</string>
+	<string>dailytodolist-57076</string>
 	<key>STORAGE_BUCKET</key>
-	<string>dailytimetable-1c13f.appspot.com</string>
+	<string>dailytodolist-57076.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:948842125375:ios:7d8c4cf0601df3e216408a</string>
-	<key>DATABASE_URL</key>
-	<string>https://dailytimetable-1c13f-default-rtdb.firebaseio.com</string>
+	<string>1:1006848749228:ios:22115a94435406f92bf909</string>
 </dict>
 </plist>

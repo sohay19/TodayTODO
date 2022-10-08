@@ -59,22 +59,22 @@ class TaskView : UIView {
     func constraintView(_ data:EachTask, _ parentsWidth:CGFloat) {
         taskData = data
         
-        let interval = Calendar.current.dateComponents([.minute], from: Utils.stringTimeToDate(taskData.startTime)!, to: Utils.stringTimeToDate(taskData.endTime)!).minute
-
-        self.frame = CGRect(x: 0, y: 0, width: Int(parentsWidth), height: interval!)
-        self.layer.cornerRadius = 50
-        
-        timeVeiw.frame = CGRect(x: 30, y: 0, width: 30, height: 30)
-        taskView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -10).isActive = true
-        taskView.heightAnchor.constraint(equalToConstant: CGFloat(interval!)).isActive = true
-        
-        labelTime.frame = CGRect(x: 0, y: 0, width: 27, height: 27)
-        labelTime.text = taskData.startTime.components(separatedBy: ["-","_",":"])[3]
-        
-        labelTitle.frame = CGRect(x: 3, y: 3, width: taskView.frame.width, height: 12)
-        labelTitle.text = taskData.title
-        labelMemo.frame = CGRect(x: 3, y: labelTitle.frame.maxY+3, width: taskView.frame.width, height: 12)
-        labelMemo.text = taskData.memo
+//        let interval = Calendar.current.dateComponents([.minute], from: Utils.stringTimeToDate(taskData.taskTime)!, to: Utils.stringTimeToDate(taskData.endTime)!).minute
+//
+//        self.frame = CGRect(x: 0, y: 0, width: Int(parentsWidth), height: interval!)
+//        self.layer.cornerRadius = 50
+//
+//        timeVeiw.frame = CGRect(x: 30, y: 0, width: 30, height: 30)
+//        taskView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -10).isActive = true
+//        taskView.heightAnchor.constraint(equalToConstant: CGFloat(interval!)).isActive = true
+//
+//        labelTime.frame = CGRect(x: 0, y: 0, width: 27, height: 27)
+//        labelTime.text = taskData.taskTime.components(separatedBy: ["-","_",":"])[3]
+//
+//        labelTitle.frame = CGRect(x: 3, y: 3, width: taskView.frame.width, height: 12)
+//        labelTitle.text = taskData.title
+//        labelMemo.frame = CGRect(x: 3, y: labelTitle.frame.maxY+3, width: taskView.frame.width, height: 12)
+//        labelMemo.text = taskData.memo
         
     }
 }

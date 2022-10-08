@@ -177,7 +177,7 @@ extension PushManager {
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         //시작 시간 세팅
-        var time = data.startTime.split(separator: ":")
+        var time = data.taskTime.split(separator: ":")
         var h = Int(time[0])
         var m = Int(time[1])
         dateComponents.hour = h
@@ -189,7 +189,7 @@ extension PushManager {
             return DateComponents()
         }
         //알람 시간 설정
-        time = Utils.timeToString(alarmDate).split(separator: ":")
+        time = Utils.dateToTimeString(alarmDate).split(separator: ":")
         h = Int(time[0])
         m = Int(time[1])
         dateComponents.hour = h

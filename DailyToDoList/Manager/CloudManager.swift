@@ -90,7 +90,7 @@ extension CloudManager {
     //로컬 Realm -> iCloud Realm Backup Dir
     private func copyToRealmDir(_ vc:UIViewController, sUrl:URL, dUrl:URL) {
         let today = Date()
-        let backupUrl = dUrl.appendingPathComponent("\(Utils.longDateToString(today))")
+        let backupUrl = dUrl.appendingPathComponent("\(Utils.dateToString(today))")
         copyDir(sUrl, backupUrl, { error in
             print("copyToRealmDir Fail = \(error)")
             PopupManager.shared.openOkAlert(vc, title: "백업 실패", msg: "다시 시도해주세요")

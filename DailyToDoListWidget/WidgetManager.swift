@@ -15,7 +15,7 @@ class WidgetManager {
     private init() {
         openRealm()
     }
-    
+
     private let realmManager = RealmManager()
 }
 
@@ -24,11 +24,11 @@ extension WidgetManager {
     func openRealm() {
         realmManager.openRealm()
     }
-    
+
     func getTaskDataForDay(date:Date) -> LazyFilterSequence<Results<EachTask>>? {
         return realmManager.getTaskDataForDay(date: date)
     }
-    
+
     func getTaskDataForMonth(date:Date) -> LazyFilterSequence<Results<EachTask>>? {
         return realmManager.getTaskDataForMonth(date: date)
     }
