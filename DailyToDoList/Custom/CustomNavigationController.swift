@@ -13,6 +13,10 @@ class CustomNavigationController : UINavigationController {
     override func popViewController(animated: Bool) -> UIViewController? {
         return super.popViewController(animated: false)
     }
+    
+    func popViewController() {
+        let _ = popViewController(animated: true)
+    }
 }
 
 extension CustomNavigationController {

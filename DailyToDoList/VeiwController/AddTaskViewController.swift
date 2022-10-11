@@ -19,7 +19,7 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var pickTaskTime:UIDatePicker!
     @IBOutlet weak var pickEndDate:UIDatePicker!
     //pullDown
-    @IBOutlet weak var pullDownCategory:UIButton!
+    @IBOutlet weak var pullBtnCategory: UIButton!
     //Button
     @IBOutlet weak var btnFirst: UIButton!
     @IBOutlet weak var btnSecond: UIButton!
@@ -36,10 +36,6 @@ class AddTaskViewController: UIViewController {
     
     //
     private var repeatResult:RepeatResult?
-    //Container
-    private let pickerView = addTaskBoard+"PickerView"
-    private let categoryView = addTaskBoard+"CategoryView"
-    private let repeatView = addTaskBoard+"RepeatView"
     //키보드 관련
     private var keyboardHeight:CGFloat?
     private var isShow = false
@@ -112,8 +108,8 @@ extension AddTaskViewController {
     func loadCategory() {
         var categoryList:[UIAction] = []
         let defaltCategory = UIAction(title: "Default", handler: { _ in
-            self.pullDownCategory.setTitle("Default", for: .normal)
-            self.pullDownCategory.setImage(UIImage(), for: .normal)
+            self.pullBtnCategory.setTitle("Default", for: .normal)
+            self.pullBtnCategory.setImage(UIImage(), for: .normal)
         })
         categoryList.append(defaltCategory)
         
@@ -123,14 +119,15 @@ extension AddTaskViewController {
             for category in categories {
                 let image =  category.loadImage()
                 categoryList.append(UIAction(title: category.title, image: image, handler: { _ in
-                    self.pullDownCategory.setTitle("     \(category.title)", for: .normal)
-                    self.pullDownCategory.setImage(image, for: .normal)
+                    self.pullBtnCategory.setTitle("     \(category.title)", for: .normal)
+                    self.pullBtnCategory.setImage(image, for: .normal)
                 }))
             }
         }
         //카테고리 추가 버튼
         let addCategory = UIAction(title: "카테고리 추가", attributes: .destructive, handler: { _ in
-            guard let colorVC = self.storyboard?.instantiateViewController(withIdentifier: self.categoryView) as? CategoryViewController else { return }
+            let board = UIStoryboard(name: categoryBoard, bundle: nil)
+            guard let colorVC = board.instantiateViewController(withIdentifier: categoryBoard) as? CategoryViewController else { return }
             
             colorVC.modalTransitionStyle = .coverVertical
             colorVC.modalPresentationStyle = .pageSheet
@@ -140,7 +137,7 @@ extension AddTaskViewController {
         })
         categoryList.append(addCategory)
         
-        pullDownCategory.menu = UIMenu(title: "카테고리", children: categoryList)
+        pullBtnCategory.menu = UIMenu(title: "카테고리", children: categoryList)
     }
     //result setting
     func setResult(_ thrid:String) {
@@ -191,7 +188,7 @@ extension AddTaskViewController {
             return
         }
         //카테고리 검토
-        guard let category = pullDownCategory.currentTitle else {
+        guard let category = pullBtnCategory.currentTitle else {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "카테고리를 선택해주세요")
             return
         }
@@ -222,12 +219,14 @@ extension AddTaskViewController {
         DataManager.shared.addTaskData(data)
         
         DispatchQueue.main.async {
-            self.navigationController?.popViewController(animated: true)
+            let navigation = self.navigationController as! CustomNavigationController
+            navigation.popViewController()
         }
     }
     //알람 버튼
     @IBAction func clickAlert(_ sender: Any) {
-        guard let pickVC = self.storyboard?.instantiateViewController(withIdentifier: pickerView) as? PickerViewController else {
+        let board = UIStoryboard(name: pickerBoard, bundle: nil)
+        guard let pickVC = board.instantiateViewController(withIdentifier: pickerBoard) as? PickerViewController else {
             return
         }
         
@@ -243,8 +242,9 @@ extension AddTaskViewController {
     //반복토글
     @IBAction func toggleRepeat(_ sender: UISwitch) {
         if sender.isOn {
-            //RepeatView팝업열기
-            guard let repeatVC = self.storyboard?.instantiateViewController(withIdentifier: repeatView) as? RepeatViewController else {
+            //RepeatView열기
+            let board = UIStoryboard(name: repeatBoard, bundle: nil)
+            guard let repeatVC = board.instantiateViewController(withIdentifier: repeatBoard) as? RepeatViewController else {
                 return
             }
             repeatVC.taskDay = Utils.dateToString(pickDate.date)
