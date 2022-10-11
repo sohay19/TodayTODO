@@ -67,6 +67,9 @@
                                             <constraint firstAttribute="height" constant="33" id="iNn-qa-C2L"/>
                                         </constraints>
                                         <locale key="locale" localeIdentifier="ko_KR"/>
+                                        <connections>
+                                            <action selector="changeValueEndDate" destination="Y6W-OH-hqX" eventType="valueChanged" id="Q5V-yW-7h5"/>
+                                        </connections>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주 선택" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kt7-lZ-8rc" userLabel="RepeatWeek">
                                         <rect key="frame" x="43" y="144" width="43" height="30"/>

@@ -8,7 +8,7 @@
 import Foundation
 
 //MARK: - UserDefaultkey
-let appGroupId = "group.com.bailey.dailytimetable.dailytimetableWidget"
+let appGroupId = "group.com.bailey.DailyToDoList.DailyToDoListWidget"
 let AutoLoginKey = "AutoLogin"
 let LoginTypeKey = "LoginType"
 let UserUidKey = "UserUid"

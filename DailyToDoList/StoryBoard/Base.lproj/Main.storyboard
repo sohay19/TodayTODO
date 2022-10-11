@@ -25,28 +25,34 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DGW-6H-Yhe">
-                                        <rect key="frame" x="346" y="29.5" width="50" height="31"/>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="qhK-e7-NYl" firstAttribute="leading" secondItem="nL7-nt-PhE" secondAttribute="leading" constant="18" id="HY5-uG-rT3"/>
+                                    <constraint firstItem="qhK-e7-NYl" firstAttribute="centerY" secondItem="nL7-nt-PhE" secondAttribute="centerY" id="cuW-Ng-bkR"/>
+                                    <constraint firstAttribute="height" constant="90" id="so0-P1-9Lu"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="18" id="tug-GH-Fez"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-ST-NiN" userLabel="ToDoView">
+                                <rect key="frame" x="0.0" y="134" width="414" height="672"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFb-mh-b0M">
+                                        <rect key="frame" x="178.5" y="544" width="57" height="43"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24"/>
+                                        </buttonConfiguration>
                                         <connections>
-                                            <action selector="clickTaskAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L6Z-Xz-TNn"/>
+                                            <action selector="clickTaskAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZI9-Ka-KrF"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="qhK-e7-NYl" firstAttribute="leading" secondItem="nL7-nt-PhE" secondAttribute="leading" constant="18" id="HY5-uG-rT3"/>
-                                    <constraint firstItem="DGW-6H-Yhe" firstAttribute="centerY" secondItem="nL7-nt-PhE" secondAttribute="centerY" id="Hln-9n-tyf"/>
-                                    <constraint firstItem="qhK-e7-NYl" firstAttribute="centerY" secondItem="nL7-nt-PhE" secondAttribute="centerY" id="cuW-Ng-bkR"/>
-                                    <constraint firstAttribute="trailing" secondItem="DGW-6H-Yhe" secondAttribute="trailing" constant="18" id="fYN-t3-DO6"/>
-                                    <constraint firstAttribute="height" constant="90" id="so0-P1-9Lu"/>
-                                    <constraint firstItem="DGW-6H-Yhe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="18" id="v9O-Xb-3vi"/>
+                                    <constraint firstItem="zFb-mh-b0M" firstAttribute="centerX" secondItem="fcp-ST-NiN" secondAttribute="centerX" id="haA-4F-Cvq"/>
+                                    <constraint firstAttribute="bottom" secondItem="zFb-mh-b0M" secondAttribute="bottom" constant="85" id="yml-co-RW2"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-ST-NiN" userLabel="ToDoView">
-                                <rect key="frame" x="0.0" y="134" width="414" height="672"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtt-4H-95U" userLabel="BottomView">
                                 <rect key="frame" x="0.0" y="806" width="414" height="90"/>
@@ -115,6 +121,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

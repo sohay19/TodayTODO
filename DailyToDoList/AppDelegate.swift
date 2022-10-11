@@ -21,10 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Firabase 설정
         FirebaseApp.configure()
-        //노티 권한 및 옵션 설정
-        SystemManager.shared.requestPushPermission()
         //로컬 푸시 설정
         UNUserNotificationCenter.current().delegate = self
+        //노티 권한 및 옵션 설정
+        SystemManager.shared.requestPushPermission()
         //APNS 등록
         application.registerForRemoteNotifications()
         //원격 푸시 설정
@@ -67,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //데이터가 있는 원격 푸시
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Silent Push Notification")
+        SystemManager.shared.rotatePushData()
     }
 }
 

@@ -11,6 +11,7 @@ import FirebaseAuth
 import GoogleSignIn
 import RealmSwift
 import AuthenticationServices
+import FirebaseMessaging
 
 
 class LoginViewController: UIViewController {
@@ -202,11 +203,8 @@ extension LoginViewController {
                 DataManager.shared.loadFirebaseUserData { data in
                     DataManager.shared.setUserData(data.uid, data.email, data.name, LoginType(rawValue: data.loginType) ?? self.loginType)
                     DataManager.shared.setUserNickName(data.nickName)
-                    
-                    //main thread
-                    DispatchQueue.main.async {
-                        self.moveMain()
-                    }
+                    //
+                    self.loginClear()
                 }
             } else {
                 uid = auth.uid
@@ -225,15 +223,23 @@ extension LoginViewController {
                 DataManager.shared.setUserData(uid, userEmail, userName, self.loginType)
                 //firebase에 저장
                 let user = DataManager.shared.loadUserData()
-                DataManager.shared.addUserDataInFirebase(user)
-                
                 //
-                SystemManager.shared.closeLoading()
-                //main thread
-                DispatchQueue.main.async {
-                    self.moveMain()
-                }
+                DataManager.shared.addUserDataInFirebase(user)
+                //
+                self.loginClear()
             }
+        }
+    }
+    func loginClear() {
+        //
+        SystemManager.shared.closeLoading()
+        //FCM Topic 구독
+        Messaging.messaging().subscribe(toTopic: "ALL_USER") { error in
+          print("Subscribed to ALL_USER topic")
+        }
+        //main thread
+        DispatchQueue.main.async {
+            self.moveMain()
         }
     }
     //

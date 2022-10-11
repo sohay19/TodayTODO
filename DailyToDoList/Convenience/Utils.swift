@@ -32,6 +32,13 @@ class Utils {
         
         return dateformatter.string(from: date)
     }
+    //
+    static func dateStringToDate(_ date:String) -> Date? {
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "yyyy-MM-dd"
+        
+        return dateformatter.date(from: date)
+    }
     //시간만 구하기
     static func dateToTimeString(_ date:Date) -> String {
         let dateformatter = DateFormatter()

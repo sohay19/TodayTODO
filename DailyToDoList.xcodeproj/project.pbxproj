@@ -32,6 +32,7 @@
 		CFD0B12E28F1BD260029D936 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
 		CFD0B12F28F1BD3A0029D936 /* StringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3D28F14CCA008850DC /* StringKeys.swift */; };
 		CFD0B13228F1BE500029D936 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13128F1BE500029D936 /* ClassExtension.swift */; };
+		CFD0B13328F2C44F0029D936 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13128F1BE500029D936 /* ClassExtension.swift */; };
 		CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DA28F13287008850DC /* AppDelegate.swift */; };
 		CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DC28F13287008850DC /* SceneDelegate.swift */; };
 		CFEB49DF28F13287008850DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DE28F13287008850DC /* MainViewController.swift */; };
@@ -737,6 +738,7 @@
 			files = (
 				CFB6EE0628F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
 				CFD0B12F28F1BD3A0029D936 /* StringKeys.swift in Sources */,
+				CFD0B13328F2C44F0029D936 /* ClassExtension.swift in Sources */,
 				CFD0B12E28F1BD260029D936 /* CategoryData.swift in Sources */,
 				CFD0B12C28F1BCB00029D936 /* RealmManager.swift in Sources */,
 				CFD0B12B28F1BC930029D936 /* WidgetManager.swift in Sources */,

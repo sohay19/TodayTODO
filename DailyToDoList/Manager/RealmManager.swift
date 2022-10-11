@@ -26,12 +26,12 @@ class RealmManager {
 
 extension RealmManager {
     func openRealm() {
+        let path = fileManager.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("DailyToDoList.realm")
         do {
-            let path = fileManager.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("DailyToDoList.realm")
             let config = Realm.Configuration(fileURL: path)
             realm = try Realm(configuration: config)
-        } catch {
-            print("errer")
+        } catch let error {
+            print("Realm Open Error = \(error)")
         }
     }
     

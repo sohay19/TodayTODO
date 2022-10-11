@@ -45,9 +45,9 @@ class EachTask : Object
     //알람 여부
     @Persisted var isAlarm:Bool
     //알람 시간
-    @Persisted var alarmTime:Int
+    @Persisted var alarmTime:String
             
-    convenience init(taskDay:Date, taskTime:Date, endTime:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int) {
+    convenience init(taskDay:Date, taskTime:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int) {
         self.init()
         self.id = Utils.dateToId(Date())
         let date = Utils.dateToDateString(taskDay)
@@ -64,9 +64,9 @@ class EachTask : Object
         self.isAlarm = false
     }
     
-    func setAlarm(_ min:Int) {
+    func setAlarm(_ time:String) {
         self.isAlarm = true
-        self.alarmTime = min
+        self.alarmTime = time
     }
     
     func setEndDate(_ endDate:Date) {

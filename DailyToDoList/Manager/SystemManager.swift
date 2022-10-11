@@ -57,4 +57,8 @@ extension SystemManager {
     func requestPushPermission() {
         pushManager.requestPermission()
     }
+    
+    func rotatePushData() {
+        pushManager.checkEndDate()
+    }
 }

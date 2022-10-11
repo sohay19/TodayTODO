@@ -199,4 +199,16 @@ extension RepeatViewController {
             sender.tintColor = selectedColor
         }
     }
+    //pickEndDate Change Value
+    @IBAction func changeValueEndDate(_ sender:UIDatePicker) {
+        //종료일 검토
+        if taskDay == Utils.dateToString(sender.date) {
+            PopupManager.shared.openOkAlert(self, title: "알림", msg: "시작일과 종료일이 같을 수 없습니다.")
+            guard let taskDate = Utils.dateStringToDate(taskDay) else {
+                return
+            }
+            pickEndDate.date = Calendar.current.date(byAdding: .day, value: 1, to: taskDate)!
+            return
+        }
+    }
 }
