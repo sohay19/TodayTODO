@@ -158,13 +158,12 @@ extension RepeatViewController {
 extension RepeatViewController {
     //Ok
     @IBAction func clickBtnOk(_ sender: Any) {
-        switch repeatType {
-        case .Eachweek:
+        if repeatType == .Eachweek {
             if getWeekDay().filter({ $0 == true }).count == 0 {
                 PopupManager.shared.openOkAlert(self, title: "알림", msg: "요일을 하나 이상 선택해주세요.")
                 return
             }
-        case .EachMonthOfWeek:
+        } else if repeatType == .EachMonthOfWeek {
             if monthOfweek == MonthOfWeek.None {
                 PopupManager.shared.openOkAlert(self, title: "알림", msg: "주를 선택해주세요.")
                 return
@@ -173,15 +172,10 @@ extension RepeatViewController {
                 PopupManager.shared.openOkAlert(self, title: "알림", msg: "요일을 하나 이상 선택해주세요.")
                 return
             }
-        default:
-            print("ok")
-        }
-        if switchEndDate.isOn && Utils.dateToString(pickEndDate.date) == taskDay {
-            PopupManager.shared.openOkAlert(self, title: "알림", msg: "시작일과 종료일이 같을 수 없습니다.")
-            return
         }
         let result = RepeatResult(repeatType: repeatType, weekDay: getWeekDay(), monthOfWeek: monthOfweek, isEnd: switchEndDate.isOn, endDate: pickEndDate.date)
         clickOk?(result)
+        
         self.dismiss(animated: true)
     }
     //Cancel

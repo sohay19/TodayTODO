@@ -192,6 +192,12 @@ extension AddTaskViewController {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "카테고리를 선택해주세요")
             return
         }
+        //종료일 검토
+        let taskDay = Utils.dateToDateString(pickDate.date)
+        if !pickEndDate.isHidden && taskDay == Utils.dateToString(pickEndDate.date) {
+            PopupManager.shared.openOkAlert(self, title: "알림", msg: "시작일과 종료일이 같을 수 없습니다.")
+            return
+        }
         //반복 내용 가져오기
         var repeatType = RepeatType.None
         var weekDay = [Bool](repeating: false, count: 7)
@@ -214,10 +220,9 @@ extension AddTaskViewController {
         if alarmsSwitch.isOn {
             data.setAlarm(Utils.dateToTimeString(pickTaskTime.date))
         }
-        
         //realm에 추가
         DataManager.shared.addTaskData(data)
-        
+        //
         DispatchQueue.main.async {
             let navigation = self.navigationController as! CustomNavigationController
             navigation.popViewController()
@@ -290,25 +295,29 @@ extension AddTaskViewController {
     }
     //resultView 결과
     func showResult(_ result:RepeatResult) {
+        repeatResult = result
         //종료일
-        pickEndDate.isHidden = !result.isEnd
+        guard let repeatResult = repeatResult else {
+            return
+        }
+        pickEndDate.isHidden = !repeatResult.isEnd
         if result.isEnd {
-            guard let date = result.taskEndDate else {
+            guard let date = repeatResult.taskEndDate else {
                 return
             }
             pickEndDate.date = date
         }
         controllEndDateView(true)
         //반복 주기
-        switch result.repeatType {
+        switch repeatResult.repeatType {
         case .EveryDay:
             setResult("매일")
         case .Eachweek:
-            setResult("매 주", result.getWeekDay(), "요일")
+            setResult("매 주", repeatResult.getWeekDay(), "요일")
         case .EachMonthOfOnce:
             setResult("매 월", String(Utils.dateToDateString(pickDate.date).split(separator: "-")[2]), "일")
         case .EachMonthOfWeek:
-            setResult("매 월", String(result.monthOfWeek.rawValue), "주, ", result.getWeekDay(), "요일")
+            setResult("매 월", String(repeatResult.monthOfWeek.rawValue), "주, ", repeatResult.getWeekDay(), "요일")
         case .EachYear:
             setResult("매 년", String(Utils.dateToDateString(pickDate.date).split(separator: "-")[2]), "일")
         default:
