@@ -12,11 +12,12 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var labelFirst: UILabel!
     @IBOutlet weak var labelSecond:UILabel!
     @IBOutlet weak var labelThird: UILabel!
+    @IBOutlet weak var labelNil: UILabel!
     //Input
     @IBOutlet weak var inputTitle:UITextField!
     //DataPicker
     @IBOutlet weak var pickDate:UIDatePicker!
-    @IBOutlet weak var pickTaskTime:UIDatePicker!
+    @IBOutlet weak var pickAlarmTime:UIDatePicker!
     @IBOutlet weak var pickEndDate:UIDatePicker!
     //pullDown
     @IBOutlet weak var pullBtnCategory: UIButton!
@@ -70,21 +71,28 @@ class AddTaskViewController: UIViewController {
 extension AddTaskViewController {
     //처음 로드 시 UI default값 세팅
     func loadUI() {
-        //view 초기세팅
-        setView()
-        //
-        setResult("없음")
-        //switch 꺼두기
-        repeatSwitch.isOn = false
-        pickEndDate.isEnabled = false
-        controllEndDateView(false)
-        alarmsSwitch.isOn = false
+        //초기세팅
+        setDefaultView()
+        setDateView()
+        setAlarmView()
         //default 시간 세팅
-        pickTaskTime.date = Calendar.current.date(byAdding: .minute, value: 5, to: Date())!
+        pickAlarmTime.date = Calendar.current.date(byAdding: .minute, value: 5, to: Date())!
         //카테고리 로딩
         loadCategory()
         //서치바 세팅
 //        setSearchBar()
+    }
+    func setDateView() {
+        //
+        setResult("없음")
+        repeatSwitch.isOn = false
+        pickEndDate.isEnabled = false
+        controllEndDateView(false)
+    }
+    func setAlarmView() {
+        //
+        alarmsSwitch.isOn = false
+        pickAlarmTime.isEnabled = false
     }
     //searchBar 세팅
 //    func setSearchBar() {
@@ -98,7 +106,7 @@ extension AddTaskViewController {
 //        searchPeople.searchTextField.borderStyle = .none
 //    }
     //View 세팅
-    func setView() {
+    func setDefaultView() {
         resultView.translatesAutoresizingMaskIntoConstraints = false
         resultViewConstraint = resultView.constraints.first { item in
             return item.identifier == "resultViewHeight"
@@ -212,13 +220,13 @@ extension AddTaskViewController {
             monthOfWeek = repeatResult.monthOfWeek
         }
         //태스크 생성
-        let data = EachTask(taskDay: pickDate.date, taskTime: pickTaskTime.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, monthOfWeek: monthOfWeek.rawValue)
+        let data = EachTask(taskDay: pickDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, monthOfWeek: monthOfWeek.rawValue)
         if !pickEndDate.isHidden {
             data.setEndDate(pickEndDate.date)
         }
         //알람 확인
         if alarmsSwitch.isOn {
-            data.setAlarm(Utils.dateToTimeString(pickTaskTime.date))
+            data.setAlarm(pickAlarmTime.date)
         }
         //realm에 추가
         DataManager.shared.addTaskData(data)
@@ -228,17 +236,14 @@ extension AddTaskViewController {
             navigation.popViewController()
         }
     }
-    //알람 버튼
-    @IBAction func clickAlert(_ sender: Any) {
-        let board = UIStoryboard(name: pickerBoard, bundle: nil)
-        guard let pickVC = board.instantiateViewController(withIdentifier: pickerBoard) as? PickerViewController else {
-            return
-        }
-        
-        pickVC.modalPresentationStyle = .pageSheet
-        pickVC.modalTransitionStyle = .coverVertical
-        
-        present(pickVC, animated: true)
+    //
+    @IBAction func clickCancel(_ sender: Any) {
+        let navigation = self.navigationController as! CustomNavigationController
+        navigation.popViewController()
+    }
+    //
+    @IBAction func changeTime(_ sender: UIDatePicker) {
+        print(Utils.dateToTimeString(sender.date))
     }
 }
 
@@ -268,7 +273,7 @@ extension AddTaskViewController {
     //알람토글
     @IBAction func toggleAlarms(_ sender: UISwitch) {
         //알람 활성화, 비활성화
-        pickTaskTime.isEnabled = sender.isOn
+        pickAlarmTime.isEnabled = sender.isOn
     }
 }
 
@@ -289,9 +294,10 @@ extension AddTaskViewController {
             anim.startAnimation()
         }
     }
-    //scrollView 사이즈 조절
-    func moveScroll(_ height:CGFloat) {
-        scrollView.setContentOffset(CGPoint(x: 0, y: height), animated: false)
+    //스크롤 이동
+    func moveScroll(_ isUp:Bool) {
+        let point = CGPoint(x: 0, y: isUp ? 0 : scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom)
+        scrollView.setContentOffset(point, animated: true)
     }
     //resultView 결과
     func showResult(_ result:RepeatResult) {
@@ -301,6 +307,7 @@ extension AddTaskViewController {
             return
         }
         pickEndDate.isHidden = !repeatResult.isEnd
+        labelNil.isHidden = repeatResult.isEnd
         if result.isEnd {
             guard let date = repeatResult.taskEndDate else {
                 return
@@ -351,12 +358,13 @@ extension AddTaskViewController {
         let keyboardFrame:NSValue = userInfo.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue
         let keyboardRectabgle = keyboardFrame.cgRectValue
         keyboardHeight = keyboardRectabgle.height
+        //
         scrollView.contentInset.bottom = keyboardHeight!
+        moveScroll(false)
     }
     @objc func hideKeyboard(_ sender: Notification) {
         let inset = UIEdgeInsets.zero
-        scrollView.contentInset = inset
-        scrollView.scrollIndicatorInsets = inset
+        moveScroll(true)
         isShow = false
     }
     //키보드 내리기
@@ -369,7 +377,7 @@ extension AddTaskViewController {
         guard let height = keyboardHeight else {
             return
         }
-        moveScroll(height)
+        scrollView.contentInset.bottom = height
     }
     //scrollView SingleTouch
     @objc func basicViewSingleTap(_ sender: UITapGestureRecognizer) {

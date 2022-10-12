@@ -14,6 +14,7 @@ import WidgetKit
 
 class RealmManager {
     private let fileManager = FileManager.default
+    private let realmDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("Realm_DailyToDoList", isDirectory: true)
     private var realm:Realm?
     
     var realmUrl:URL? {
@@ -26,10 +27,20 @@ class RealmManager {
 
 extension RealmManager {
     func openRealm() {
-        let path = fileManager.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("DailyToDoList.realm")
+        guard let realmDir = realmDir else {
+            print("realmDir 없음")
+            return
+        }
+        if !fileManager.fileExists(atPath: realmDir.path) {
+            fileManager.createDir(realmDir) { error in
+                print("create error = \(error)")
+            }
+        }
         do {
+            let path = fileManager.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("Realm_DailyToDoList", isDirectory: true).appendingPathComponent("DailyToDoList.realm")
             let config = Realm.Configuration(fileURL: path)
             realm = try Realm(configuration: config)
+            print("realUrl = \(realmUrl!)")
         } catch let error {
             print("Realm Open Error = \(error)")
         }

@@ -33,6 +33,18 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSUbiquitousContainers</key>
+	<dict>
+		<key>iCloud.DailyToDoListCloudKit</key>
+		<dict>
+			<key>NSUbiquitousContainerName</key>
+			<string>DailyToDoListCloudKit</string>
+			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
+			<true/>
+			<key>NSUbiquitousContainerSupportedFolderLevels</key>
+			<string>ANY</string>
+		</dict>
+	</dict>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

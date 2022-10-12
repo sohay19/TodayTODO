@@ -75,12 +75,6 @@ struct TaskListView: View {
                         .foregroundColor(Color.init(uiColor: UIColor.label))
                         .frame(width: geometry.size.width, alignment: .leading)
                     
-                    HStack {
-                        Text(task.taskTime)
-                            .font(.system(size: 14, weight: .regular))
-                            .foregroundColor(Color.init(uiColor: UIColor.secondaryLabel))
-                    }
-                    
                     Text(task.memo)
                         .font(.system(size: 14, weight: .regular))
                         .foregroundColor(Color.init(uiColor: UIColor.label))

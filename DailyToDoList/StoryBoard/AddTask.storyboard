@@ -29,6 +29,9 @@
                                 <rect key="frame" x="18" y="44" width="69" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                <connections>
+                                    <action selector="clickCancel:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="uJt-tf-iuk"/>
+                                </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNV-pa-nxg">
                                 <rect key="frame" x="0.0" y="93" width="414" height="769"/>
@@ -170,6 +173,15 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="없음" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wB-wM-MDA" userLabel="nil">
+                                                        <rect key="frame" x="240" y="54" width="26" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="BAW-JC-uYY"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <datePicker autoresizesSubviews="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="5Q7-q6-Ati" userLabel="endDate">
                                                         <rect key="frame" x="150.5" y="54" width="115.5" height="33"/>
                                                         <constraints>
@@ -185,7 +197,9 @@
                                                     <constraint firstItem="5Q7-q6-Ati" firstAttribute="top" secondItem="Lza-5R-LnN" secondAttribute="bottom" constant="18" id="4dR-Tn-jiH"/>
                                                     <constraint firstItem="t1m-lz-zbH" firstAttribute="leading" secondItem="8GG-8u-THE" secondAttribute="trailing" constant="9" id="8ce-lx-EDj"/>
                                                     <constraint firstItem="8GG-8u-THE" firstAttribute="centerY" secondItem="Lza-5R-LnN" secondAttribute="centerY" id="SrQ-us-cbz"/>
+                                                    <constraint firstItem="5wB-wM-MDA" firstAttribute="top" secondItem="Lza-5R-LnN" secondAttribute="bottom" constant="18" id="aNu-sr-OWE"/>
                                                     <constraint firstItem="Lza-5R-LnN" firstAttribute="top" secondItem="4n1-Ut-BiP" secondAttribute="top" constant="18" id="bAP-N5-1Mg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="5wB-wM-MDA" secondAttribute="trailing" id="bH5-1D-3OF"/>
                                                     <constraint firstItem="h0t-fm-W8O" firstAttribute="leading" secondItem="t1m-lz-zbH" secondAttribute="trailing" constant="9" id="bRM-kG-YJb"/>
                                                     <constraint firstItem="5Q7-q6-Ati" firstAttribute="leading" secondItem="quK-gw-LaP" secondAttribute="trailing" id="dfS-I3-fBs"/>
                                                     <constraint firstAttribute="height" constant="90" identifier="repeatHeight" id="g2c-rC-yYS"/>
@@ -211,12 +225,15 @@
                                                 </connections>
                                             </switch>
                                             <datePicker autoresizesSubviews="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="CAa-9m-ckw" userLabel="pickTime">
-                                                <rect key="frame" x="301.5" y="229.5" width="82.5" height="33"/>
+                                                <rect key="frame" x="285" y="229.5" width="99" height="33"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="CAa-9m-ckw" secondAttribute="height" multiplier="2.5:1" id="dWR-r5-Y7O"/>
+                                                    <constraint firstAttribute="width" secondItem="CAa-9m-ckw" secondAttribute="height" multiplier="3:1" id="dWR-r5-Y7O"/>
                                                     <constraint firstAttribute="height" constant="33" id="vfD-k3-Key"/>
                                                 </constraints>
                                                 <locale key="locale" localeIdentifier="ko_KR"/>
+                                                <connections>
+                                                    <action selector="changeTime:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Mkf-Hz-i3Y"/>
+                                                </connections>
                                             </datePicker>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kxX-4f-MIk" userLabel="memo">
                                                 <rect key="frame" x="109" y="279" width="275" height="291"/>
@@ -300,11 +317,12 @@
                         <outlet property="btnSecond" destination="XTw-t3-f6J" id="2TO-11-kZ6"/>
                         <outlet property="inputTitle" destination="7VJ-o5-xw6" id="hs6-iu-COl"/>
                         <outlet property="labelFirst" destination="8GG-8u-THE" id="IRZ-J9-asw"/>
+                        <outlet property="labelNil" destination="5wB-wM-MDA" id="em4-mI-IDe"/>
                         <outlet property="labelSecond" destination="h0t-fm-W8O" id="abE-bQ-yi5"/>
                         <outlet property="labelThird" destination="Lza-5R-LnN" id="Dab-PN-s2l"/>
+                        <outlet property="pickAlarmTime" destination="CAa-9m-ckw" id="t7w-Zi-bcd"/>
                         <outlet property="pickDate" destination="RxU-jX-ZHw" id="TlF-82-jKp"/>
                         <outlet property="pickEndDate" destination="5Q7-q6-Ati" id="TIh-Ef-23c"/>
-                        <outlet property="pickTaskTime" destination="CAa-9m-ckw" id="2qw-cw-dn4"/>
                         <outlet property="pullBtnCategory" destination="67Y-In-D5D" id="xTy-4C-wLL"/>
                         <outlet property="repeatSwitch" destination="1bQ-NI-GHG" id="OJA-cd-TMt"/>
                         <outlet property="resultView" destination="4n1-Ut-BiP" id="SoY-t5-W3c"/>

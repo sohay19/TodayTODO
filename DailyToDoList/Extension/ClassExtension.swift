@@ -17,7 +17,7 @@ extension UserDefaults {
 }
 
 extension FileManager {
-    func copyDir(_ sUrl:URL, _ dUrl:URL, _ handler:((Error)->Void)?) {
+    func copyFile(_ sUrl:URL, _ dUrl:URL, _ handler:((Error)->Void)?) {
         do {
             try copyItem(at: sUrl, to: dUrl)
         } catch {
@@ -25,8 +25,11 @@ extension FileManager {
         }
     }
     
-    func copyFile(_ sUrl:URL, _ dUrl:URL, _ handler:((Error)->Void)?) {
+    func copyDir(_ sUrl:URL, _ dUrl:URL, _ handler:((Error)->Void)?) {
         do {
+            print("s = \(sUrl.path+"/")")
+            print("d = \(dUrl.path+"/")")
+            
             try copyItem(atPath: sUrl.path+"/", toPath: dUrl.path+"/")
         } catch {
             handler?(error)

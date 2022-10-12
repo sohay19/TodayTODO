@@ -52,8 +52,8 @@ extension SettingViewController {
                 }
             }
         }
-        
-        self.navigationController?.dismiss(animated: true)
+        let navigation = self.navigationController as! CustomNavigationController
+        navigation.popToRootViewController()
     }
 }
 
@@ -85,5 +85,13 @@ extension SettingViewController {
             //로그아웃
             self.userLogout()
         })
+    }
+    //refresh
+    @IBAction func clickRefresh(_ sender: Any) {
+        DataManager.shared.updateCloud(label: labelBackupDate)
+    }
+    
+    @IBAction func removeBackupFile(_ sender: Any) {
+        DataManager.shared.deleteiCloudBackupFile()
     }
 }

@@ -13,7 +13,13 @@ import SwiftUI
 class CloudManager {
     let realmManager = RealmManager()
     private let fileManager = FileManager.default
-    private let backupDir:URL? = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Realm", isDirectory: true)
+    private let defaultDir:URL? = FileManager.default.url(forUbiquityContainerIdentifier: nil)
+    private var backupDir:URL? {
+        guard let defaultDir = defaultDir else {
+            return nil
+        }
+        return defaultDir.appendingPathComponent("Realm", isDirectory: true)
+    }
     
     var labelDate:UILabel?
 }
@@ -26,17 +32,18 @@ extension CloudManager {
     }
     //최신 백업날짜
     private func fileDate() -> String {
-        guard let backupDir = backupDir else {
+        guard let defaultDir = defaultDir else {
             //기본 백업폴더 없으면 만들기
-            guard let url = FileManager.default.url(forUbiquityContainerIdentifier: nil) else {
-                return "iCloud 설정을 확인해주세요"
-            }
-            fileManager.createDir(url.appendingPathComponent("Realm", isDirectory: true), { _ in
-                return
-            })
-            return "백업된 데이터가 없습니다"
+            return "iCloud Drive를 사용해주세요"
         }
-        
+        guard let backupDir = backupDir else {
+            return "다시 시도 해주세요"
+        }
+        if !fileManager.fileExists(atPath: backupDir.path) {
+            fileManager.createDir(defaultDir.appendingPathComponent("Realm", isDirectory: true), { error in
+                print("Create Error = \(error)")
+            })
+        }
         var list = fileManager.loadFile(backupDir)
         list.sort(by: {$0 > $1})
         guard let recentlyDir = list.first else {
@@ -75,13 +82,24 @@ extension CloudManager {
         })
     }
     
-    func deleteRealmFileAll() {
-        guard let originRealm = realmManager.realmUrl, let backupDir = backupDir else {
+    func deleteOriginFile() {
+        guard let originRealm = realmManager.realmUrl else {
             return
         }
         
         fileManager.deleteDir(originRealm, nil)
+    }
+    
+    func deleteBackupFile() {
+        guard let backupDir = backupDir else {
+            return
+        }
         fileManager.deleteDir(backupDir, nil)
+    }
+    
+    func deleteFileAll() {
+        deleteOriginFile()
+        deleteBackupFile()
     }
 }
 

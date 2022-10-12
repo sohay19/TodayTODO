@@ -29,6 +29,10 @@ extension DataManager {
         cloudManager.realmManager.openRealm()
     }
     
+    func deleteRealmFile() {
+        cloudManager.deleteOriginFile()
+    }
+    
     func addTaskData(_ data:EachTask) {
         cloudManager.realmManager.addTaskData(data)
         if data.isAlarm {
@@ -108,6 +112,10 @@ extension DataManager {
     func iCloudLoadFile(_ vc:UIViewController) {
         cloudManager.loadBackupFile(vc)
     }
+    
+    func deleteiCloudBackupFile() {
+        cloudManager.deleteBackupFile()
+    }
 }
 
 //MARK: - UserData 관련 기능
@@ -122,7 +130,7 @@ extension DataManager {
     
     func deleteAccount(_ vc: UIViewController) {
         firebaseManager.deleteAccount(vc)
-        cloudManager.deleteRealmFileAll()
+        cloudManager.deleteFileAll()
     }
     
     func logout() {

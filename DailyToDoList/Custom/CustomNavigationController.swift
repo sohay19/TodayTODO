@@ -10,12 +10,12 @@ import UIKit
 
 class CustomNavigationController : UINavigationController {
     //pop
-    override func popViewController(animated: Bool) -> UIViewController? {
-        return super.popViewController(animated: false)
+    func popViewController() {
+        let _ = popViewController(animated: false)
     }
     
-    func popViewController() {
-        let _ = popViewController(animated: true)
+    func popToRootViewController() {
+        let _ = popToRootViewController(animated: false)
     }
 }
 

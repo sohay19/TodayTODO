@@ -61,4 +61,8 @@ extension SystemManager {
     func rotatePushData() {
         pushManager.checkEndDate()
     }
+    
+    func deleteAllPush() {
+        pushManager.deleteAll()
+    }
 }

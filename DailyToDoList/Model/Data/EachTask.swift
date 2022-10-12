@@ -15,8 +15,6 @@ class EachTask : Object
     @Persisted(primaryKey: true) var id:String
     //Task 날짜 (yyyy-MM-dd)
     @Persisted var taskDate:String
-    //시작 시간 (HH:mm)
-    @Persisted var taskTime:String
     //카테고리
     @Persisted var category:String
     //제목
@@ -47,12 +45,11 @@ class EachTask : Object
     //알람 시간
     @Persisted var alarmTime:String
             
-    convenience init(taskDay:Date, taskTime:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int) {
+    convenience init(taskDay:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int) {
         self.init()
         self.id = Utils.dateToId(Date())
         let date = Utils.dateToDateString(taskDay)
         self.taskDate = date
-        self.taskTime = "\(date)_\(Utils.dateToTimeString(taskTime))"
         self.category = category
         self.title = title
         self.memo = memo
@@ -64,9 +61,9 @@ class EachTask : Object
         self.isAlarm = false
     }
     
-    func setAlarm(_ time:String) {
+    func setAlarm(_ time:Date) {
         self.isAlarm = true
-        self.alarmTime = time
+        self.alarmTime = Utils.dateToTimeString(time)
     }
     
     func setEndDate(_ endDate:Date) {
@@ -85,5 +82,26 @@ class EachTask : Object
     
     func monthWeekOff() {
         monthOfWeek = 0
+    }
+    
+    func printTask() {
+        print("========== \(self.id) ==========")
+        print("title = \(self.title)")
+        print("category = \(self.category)")
+        print("date = \(self.taskDate)")
+        print("isEnd = \(self.isEnd)")
+        if self.isEnd {
+            print("endDate = \(self.taskEndDate)")
+        }
+        print("repeatType = \(self.repeatType)")
+        if self.repeatType != RepeatType.None.rawValue {
+            print("weekDayList = \(self.weekDayList)")
+            print("weekOfMonth = \(self.monthOfWeek)")
+        }
+        print("isAlarm = \(self.isAlarm)")
+        if self.isAlarm {
+            print("alarmTime = \(self.alarmTime)")
+        }
+        print("memo = \(self.memo)")
     }
 }

@@ -46,26 +46,6 @@ extension MainViewController {
             print("data is zero")
             return
         }
-        for data in dataList {
-            print("========== \(data.id) ==========")
-            print("title = \(data.title)")
-            print("category = \(data.category)")
-            print("date = \(data.taskDate)")
-            print("isEnd = \(data.isEnd)")
-            if data.isEnd {
-                print("endDate = \(data.taskEndDate)")
-            }
-            print("repeatType = \(data.repeatType)")
-            if data.repeatType != RepeatType.None.rawValue {
-                print("weekDayList = \(data.weekDayList)")
-                print("weekOfMonth = \(data.monthOfWeek)")
-            }
-            print("isAlarm = \(data.isAlarm)")
-            if data.isAlarm {
-                print("alarmTime = \(data.alarmTime)")
-            }
-            print("memo = \(data.memo)")
-        }
     }
 }
 
@@ -111,6 +91,10 @@ extension MainViewController {
             return
         }
         navigation.pushViewController(nextVC)
+    }
+    
+    @IBAction func deleteAllNoti(_ sender:Any) {
+        SystemManager.shared.deleteAllPush()
     }
 }
 
