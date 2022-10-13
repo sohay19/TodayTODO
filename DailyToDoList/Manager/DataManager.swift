@@ -48,12 +48,12 @@ extension DataManager {
         return cloudManager.realmManager.getTaskDataForMonth(date: date)
     }
     
-    func updateTaskData() {
-        
+    func updateTaskData(_ task:EachTask) {
+        cloudManager.realmManager.updateTaskData(task)
     }
     
-    func deleteTaskData() {
-        
+    func deleteTaskData(_ task:EachTask) {
+        cloudManager.realmManager.deleteTaskData(task)
     }
     
     func addCategory(_ data:CategoryData) {

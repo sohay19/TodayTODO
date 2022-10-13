@@ -231,15 +231,14 @@ extension LoginViewController {
         }
     }
     func loginClear() {
-        //
-        SystemManager.shared.closeLoading()
-        //FCM Topic 구독
-        Messaging.messaging().subscribe(toTopic: "ALL_USER") { error in
-          print("Subscribed to ALL_USER topic")
-        }
-        //main thread
         DispatchQueue.main.async {
+            //FCM Topic 구독
+            Messaging.messaging().subscribe(toTopic: "ALL_USER") { error in
+              print("Subscribed to ALL_USER topic")
+            }
             self.moveMain()
+            //
+            SystemManager.shared.closeLoading()
         }
     }
     //

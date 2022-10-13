@@ -25,68 +25,120 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fy-sS-K6C">
+                                        <rect key="frame" x="310" y="30" width="86" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="알람 전체 삭제"/>
+                                        <connections>
+                                            <action selector="deleteAllNoti:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jsq-AP-ezu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S02-VU-gCk">
+                                        <rect key="frame" x="231" y="30" width="61" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="S02-VU-gCk" secondAttribute="height" multiplier="2:1" constant="1" id="ec2-q0-7Xf"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Edit"/>
+                                        <connections>
+                                            <action selector="changeEditMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G0r-WI-RLD"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="centerY" secondItem="qhK-e7-NYl" secondAttribute="centerY" id="AUX-y8-Y5g"/>
+                                    <constraint firstItem="S02-VU-gCk" firstAttribute="centerY" secondItem="9fy-sS-K6C" secondAttribute="centerY" id="Bzb-a5-BjG"/>
+                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="leading" secondItem="S02-VU-gCk" secondAttribute="trailing" constant="18" id="E2t-cY-lt9"/>
                                     <constraint firstItem="qhK-e7-NYl" firstAttribute="leading" secondItem="nL7-nt-PhE" secondAttribute="leading" constant="18" id="HY5-uG-rT3"/>
+                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="18" id="VWI-lZ-gkz"/>
+                                    <constraint firstAttribute="trailing" secondItem="9fy-sS-K6C" secondAttribute="trailing" constant="18" id="cmc-nF-5a7"/>
                                     <constraint firstItem="qhK-e7-NYl" firstAttribute="centerY" secondItem="nL7-nt-PhE" secondAttribute="centerY" id="cuW-Ng-bkR"/>
                                     <constraint firstAttribute="height" constant="90" id="so0-P1-9Lu"/>
+                                    <constraint firstItem="S02-VU-gCk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="18" id="tQg-R4-GPj"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="18" id="tug-GH-Fez"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-ST-NiN" userLabel="ToDoView">
                                 <rect key="frame" x="0.0" y="134" width="414" height="672"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFb-mh-b0M">
-                                        <rect key="frame" x="178.5" y="544" width="57" height="43"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="24"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="clickTaskAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZI9-Ka-KrF"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fy-sS-K6C">
-                                        <rect key="frame" x="154.5" y="439" width="105" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="알람 전체 삭제"/>
-                                        <connections>
-                                            <action selector="deleteAllNoti:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jsq-AP-ezu"/>
-                                        </connections>
-                                    </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T45-og-L7Z">
+                                        <rect key="frame" x="0.0" y="18" width="414" height="636"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="zFb-mh-b0M" userLabel="BtnAdd">
+                                            <rect key="frame" x="0.0" y="110.5" width="414" height="80"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" image="plus" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="clickTaskAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZI9-Ka-KrF"/>
+                                            </connections>
+                                        </button>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="TaskCell" id="0Fo-Hl-oys" customClass="TaskCell" customModule="DailyToDoList" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Fo-Hl-oys" id="9fX-e1-206">
+                                                    <rect key="frame" x="0.0" y="0.0" width="373.5" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEV-T2-fc5">
+                                                            <rect key="frame" x="30" y="11.5" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="lEV-T2-fc5" firstAttribute="centerY" secondItem="9fX-e1-206" secondAttribute="centerY" id="VkD-Ni-5LZ"/>
+                                                        <constraint firstItem="lEV-T2-fc5" firstAttribute="leading" secondItem="9fX-e1-206" secondAttribute="leading" constant="30" id="oRB-Ef-CfN"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lEV-T2-fc5" secondAttribute="trailing" constant="18" id="RQl-nY-U2u"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="labelTitle" destination="lEV-T2-fc5" id="XcM-mA-yJ0"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="centerX" secondItem="zFb-mh-b0M" secondAttribute="centerX" id="2VS-ZU-3wL"/>
-                                    <constraint firstItem="zFb-mh-b0M" firstAttribute="centerX" secondItem="fcp-ST-NiN" secondAttribute="centerX" id="haA-4F-Cvq"/>
-                                    <constraint firstItem="zFb-mh-b0M" firstAttribute="top" secondItem="9fy-sS-K6C" secondAttribute="bottom" constant="74" id="xCf-yX-45P"/>
-                                    <constraint firstAttribute="bottom" secondItem="zFb-mh-b0M" secondAttribute="bottom" constant="85" id="yml-co-RW2"/>
+                                    <constraint firstAttribute="bottom" secondItem="T45-og-L7Z" secondAttribute="bottom" constant="18" id="Pe2-Mp-IBM"/>
+                                    <constraint firstAttribute="trailing" secondItem="T45-og-L7Z" secondAttribute="trailing" id="p4n-uv-S1i"/>
+                                    <constraint firstItem="T45-og-L7Z" firstAttribute="leading" secondItem="fcp-ST-NiN" secondAttribute="leading" id="rkp-TE-SD6"/>
+                                    <constraint firstItem="T45-og-L7Z" firstAttribute="top" secondItem="fcp-ST-NiN" secondAttribute="top" constant="18" id="tOh-hb-W2l"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtt-4H-95U" userLabel="BottomView">
                                 <rect key="frame" x="0.0" y="806" width="414" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a32-n8-In9">
-                                        <rect key="frame" x="174" y="20" width="66" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Month"/>
+                                        <rect key="frame" x="185" y="21" width="44" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Month"/>
                                         <connections>
                                             <action selector="clickMonthToDo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N6T-wj-gJo"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5A-qv-gae">
-                                        <rect key="frame" x="304" y="20" width="71" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Setting"/>
+                                        <rect key="frame" x="326" y="21" width="49" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Setting"/>
                                         <connections>
                                             <action selector="clickMyPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gYY-0j-WWF"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eL7-eU-0MZ">
-                                        <rect key="frame" x="39" y="20" width="63" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Today"/>
+                                        <rect key="frame" x="39" y="21" width="42" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Today"/>
                                         <connections>
                                             <action selector="clickTodayToDo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ftT-v9-eC9"/>
                                         </connections>
@@ -123,6 +175,7 @@
                     </view>
                     <connections>
                         <outlet property="labelDate" destination="qhK-e7-NYl" id="SXq-oI-tcD"/>
+                        <outlet property="taskTableView" destination="T45-og-L7Z" id="kmv-fj-Cfz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -132,6 +185,9 @@
     </scenes>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

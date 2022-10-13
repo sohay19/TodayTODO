@@ -33,8 +33,9 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var alarmsSwitch:UISwitch!
     //SearchBar
 //    @IBOutlet weak var searchPlace:UISearchBar!
-//    @IBOutlet weak var searchPeople:UISearchBar!
     
+    //
+    var refreshTask:(()->Void)?
     //
     private var repeatResult:RepeatResult?
     //키보드 관련
@@ -84,7 +85,8 @@ extension AddTaskViewController {
     }
     func setDateView() {
         //
-        setResult("없음")
+        setResult()
+        labelNil.isHidden = true
         repeatSwitch.isOn = false
         pickEndDate.isEnabled = false
         controllEndDateView(false)
@@ -148,6 +150,14 @@ extension AddTaskViewController {
         pullBtnCategory.menu = UIMenu(title: "카테고리", children: categoryList)
     }
     //result setting
+    func setResult() {
+        labelFirst.isHidden = true
+        labelSecond.isHidden = true
+        labelThird.isHidden = true
+        //
+        btnFirst.isHidden = true
+        btnSecond.isHidden = true
+    }
     func setResult(_ thrid:String) {
         labelFirst.isHidden = true
         labelSecond.isHidden = true
@@ -232,6 +242,7 @@ extension AddTaskViewController {
         DataManager.shared.addTaskData(data)
         //
         DispatchQueue.main.async {
+            self.refreshTask?()
             let navigation = self.navigationController as! CustomNavigationController
             navigation.popViewController()
         }
@@ -363,7 +374,6 @@ extension AddTaskViewController {
         moveScroll(false)
     }
     @objc func hideKeyboard(_ sender: Notification) {
-        let inset = UIEdgeInsets.zero
         moveScroll(true)
         isShow = false
     }

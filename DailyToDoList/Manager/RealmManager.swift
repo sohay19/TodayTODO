@@ -47,7 +47,7 @@ extension RealmManager {
     }
     
     func addTaskData(_ data:EachTask) {
-        guard let realm = self.realm else {
+        guard let realm = realm else {
             print("realm is nil")
             return
         }
@@ -58,14 +58,14 @@ extension RealmManager {
     }
     
     func getTaskDataForDay(date:Date) -> LazyFilterSequence<Results<EachTask>>? {
-        guard let realm = self.realm else {
+        guard let realm = realm else {
             print("realm is nil")
             return nil
         }
         //해당 요일
-        let weekdayIndex = Utils.stringToWeekDay(Utils.dateToString(date))
+        let weekdayIndex = Utils.stringToWeekDay(Utils.dateToDateString(date))
         //해당 주
-        let monthOfWeek = Utils.stringToWeekOfMonth(Utils.dateToString(date))
+        let weekOfMonth = Utils.stringToWeekOfMonth(Utils.dateToDateString(date))
         //마지막 주
         let lastWeek = Utils.getLastWeek(date)
         //전체 DB
@@ -75,21 +75,21 @@ extension RealmManager {
             switch $0.repeatType {
                 //매일 반복
             case RepeatType.EveryDay.rawValue:
-                return $0.isEnd ? $0.taskEndDate >= Utils.dateToString(date) : true
+                return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
                 //매주 해당 요일 반복
             case RepeatType.Eachweek.rawValue:
                 if $0.weekDayList[weekdayIndex] {
-                    return $0.isEnd ? $0.taskEndDate >= Utils.dateToString(date) : true
+                    return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
                 } else {
                     return false
                 }
                 //매월 해당 일 반복
             case RepeatType.EachMonthOfOnce.rawValue:
-                let today = Utils.dateToString(date)
+                let today = Utils.dateToDateString(date)
                 let days = today.split(separator: "-")
-                let loadDays = $0.taskDate.split(separator: "-")
+                let loadDays = $0.taskDay.split(separator: "-")
                 if days[2] == loadDays[2] {
-                    return $0.isEnd ? $0.taskEndDate >= Utils.dateToString(date) : true
+                    return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
                 } else {
                     return false
                 }
@@ -98,9 +98,9 @@ extension RealmManager {
                 if $0.weekDayList[weekdayIndex] {
                     let week = $0.monthOfWeek
                     if week == 5 {
-                        return monthOfWeek == lastWeek
-                    } else if week == monthOfWeek {
-                        return $0.isEnd ? $0.taskEndDate >= Utils.dateToString(date) : true
+                        return weekOfMonth == lastWeek
+                    } else if week == weekOfMonth {
+                        return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
                     } else {
                         return false
                     }
@@ -109,17 +109,17 @@ extension RealmManager {
                 }
                 //매년 반복
             case RepeatType.EachYear.rawValue:
-                let today = Utils.dateToString(date)
+                let today = Utils.dateToDateString(date)
                 let days = today.split(separator: "-")
-                let loadDays = $0.taskDate.split(separator: "-")
+                let loadDays = $0.taskDay.split(separator: "-")
                 if days[1] == loadDays[1] && days[2] == loadDays[2] {
-                    return $0.isEnd ? $0.taskEndDate >= Utils.dateToString(date) : true
+                    return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
                 } else {
                     return false
                 }
                 //반복 없음
             default:
-                return $0.taskDate == Utils.dateToString(date)
+                return $0.taskDay == Utils.dateToDateString(date)
             }
         }
         
@@ -137,7 +137,7 @@ extension RealmManager {
         let foundData = taskDataBase.filter {
             let today = Utils.dateToString(date)
             let days = today.split(separator: "-")
-            let loadDays = $0.taskDate.split(separator: "-")
+            let loadDays = $0.taskDay.split(separator: "-")
             
             if days[1] == loadDays[1] {
                 switch $0.repeatType {
@@ -156,12 +156,30 @@ extension RealmManager {
         return foundData
     }
     
-    func updateTaskData() {
-        
+    func updateTaskData(_ afterTask:EachTask) {
+        guard let realm = realm else {
+            return
+        }
+        do {
+            try realm.write {
+                realm.add(afterTask, update: .modified)
+            }
+        } catch {
+            print("Realm update Error")
+        }
     }
     
-    func deleteTaskData() {
-        
+    func deleteTaskData(_ task:EachTask) {
+        guard let realm = realm else {
+            return
+        }
+        do {
+            try realm.write {
+                realm.delete(task)
+            }
+        } catch {
+            print("Realm delete Error")
+        }
     }
 }
 
@@ -172,8 +190,12 @@ extension RealmManager {
             print("realm is nil")
             return
         }
-        try! realm.write {
-            realm.add(data)
+        do {
+            try realm.write {
+                realm.add(data)
+            }
+        } catch {
+            print("Realm add Error")
         }
     }
     

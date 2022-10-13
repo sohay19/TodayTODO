@@ -55,7 +55,7 @@ extension PushManager {
         let notiContent = setNotiContent(data, id)
         //push 날짜 설정
         var dateComponents = getDateComponents(data)
-        let dateArr = data.taskDate.split(separator: "-")
+        let dateArr = data.taskDay.split(separator: "-")
         dateComponents.year = Int(dateArr[0])
         dateComponents.month = Int(dateArr[1])
         dateComponents.day = Int(dateArr[2])
@@ -111,7 +111,7 @@ extension PushManager {
         let notiContent = setNotiContent(data, id)
         //push 날짜 설정
         var dateComponents = getDateComponents(data)
-        let dateArr = data.taskDate.split(separator: "-")
+        let dateArr = data.taskDay.split(separator: "-")
         dateComponents.day = Int(dateArr[2])
         //trigger 세팅
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
@@ -149,7 +149,7 @@ extension PushManager {
         let notiContent = setNotiContent(data, id)
         //push 날짜 설정
         var dateComponents = getDateComponents(data)
-        let dateArr = data.taskDate.split(separator: "-")
+        let dateArr = data.taskDay.split(separator: "-")
         dateComponents.month = Int(dateArr[1])
         dateComponents.day = Int(dateArr[2])
         //trigger 세팅

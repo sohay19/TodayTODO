@@ -202,7 +202,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="5wB-wM-MDA" secondAttribute="trailing" id="bH5-1D-3OF"/>
                                                     <constraint firstItem="h0t-fm-W8O" firstAttribute="leading" secondItem="t1m-lz-zbH" secondAttribute="trailing" constant="9" id="bRM-kG-YJb"/>
                                                     <constraint firstItem="5Q7-q6-Ati" firstAttribute="leading" secondItem="quK-gw-LaP" secondAttribute="trailing" id="dfS-I3-fBs"/>
-                                                    <constraint firstAttribute="height" constant="90" identifier="repeatHeight" id="g2c-rC-yYS"/>
+                                                    <constraint firstAttribute="height" constant="90" identifier="resultViewHeight" id="g2c-rC-yYS"/>
                                                     <constraint firstAttribute="trailing" secondItem="5Q7-q6-Ati" secondAttribute="trailing" id="gcW-27-vPY"/>
                                                     <constraint firstItem="XTw-t3-f6J" firstAttribute="centerY" secondItem="Lza-5R-LnN" secondAttribute="centerY" id="hAL-x3-yLa"/>
                                                     <constraint firstItem="XTw-t3-f6J" firstAttribute="leading" secondItem="h0t-fm-W8O" secondAttribute="trailing" constant="9" id="pcg-br-auS"/>

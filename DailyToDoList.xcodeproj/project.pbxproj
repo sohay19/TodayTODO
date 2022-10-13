@@ -42,12 +42,10 @@
 		CFEB49FC28F13289008850DC /* DailyToDoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49FB28F13289008850DC /* DailyToDoListUITests.swift */; };
 		CFEB49FE28F13289008850DC /* DailyToDoListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49FD28F13289008850DC /* DailyToDoListUITestsLaunchTests.swift */; };
 		CFEB4A2A28F14B4C008850DC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4A2928F14B4C008850DC /* Login.storyboard */; };
-		CFEB4A2C28F14B62008850DC /* Month.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4A2B28F14B62008850DC /* Month.storyboard */; };
 		CFEB4A2E28F14B68008850DC /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4A2D28F14B68008850DC /* Setting.storyboard */; };
 		CFEB4A3028F14B95008850DC /* AddTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4A2F28F14B95008850DC /* AddTask.storyboard */; };
 		CFEB4A3228F14BC7008850DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3128F14BC7008850DC /* LoginViewController.swift */; };
 		CFEB4A3428F14BD3008850DC /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3328F14BD3008850DC /* AddTaskViewController.swift */; };
-		CFEB4A3628F14BE1008850DC /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3528F14BE1008850DC /* MonthViewController.swift */; };
 		CFEB4A3828F14BEF008850DC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3728F14BEF008850DC /* SettingViewController.swift */; };
 		CFEB4A3A28F14CA0008850DC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3928F14CA0008850DC /* Utils.swift */; };
 		CFEB4A3C28F14CB4008850DC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3B28F14CB4008850DC /* Enums.swift */; };
@@ -57,7 +55,6 @@
 		CFEB4A4528F14D1C008850DC /* EachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4128F14D1C008850DC /* EachTask.swift */; };
 		CFEB4A4628F14D1C008850DC /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4228F14D1C008850DC /* UserData.swift */; };
 		CFEB4A4928F14D25008850DC /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4728F14D25008850DC /* TaskCell.swift */; };
-		CFEB4A4A28F14D25008850DC /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4828F14D25008850DC /* TaskView.swift */; };
 		CFEB4A4D28F150BD008850DC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A4C28F150BD008850DC /* CloudKit.framework */; };
 		CFEB4A5528F1559D008850DC /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5228F1559D008850DC /* FirebaseManager.swift */; };
 		CFEB4A5628F1559D008850DC /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5328F1559D008850DC /* SystemManager.swift */; };
@@ -153,12 +150,10 @@
 		CFEB4A0F28F133B3008850DC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		CFEB4A1128F133B3008850DC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		CFEB4A2928F14B4C008850DC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		CFEB4A2B28F14B62008850DC /* Month.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Month.storyboard; sourceTree = "<group>"; };
 		CFEB4A2D28F14B68008850DC /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		CFEB4A2F28F14B95008850DC /* AddTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTask.storyboard; sourceTree = "<group>"; };
 		CFEB4A3128F14BC7008850DC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CFEB4A3328F14BD3008850DC /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
-		CFEB4A3528F14BE1008850DC /* MonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		CFEB4A3728F14BEF008850DC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CFEB4A3928F14CA0008850DC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		CFEB4A3B28F14CB4008850DC /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -168,7 +163,6 @@
 		CFEB4A4128F14D1C008850DC /* EachTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EachTask.swift; sourceTree = "<group>"; };
 		CFEB4A4228F14D1C008850DC /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		CFEB4A4728F14D25008850DC /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
-		CFEB4A4828F14D25008850DC /* TaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		CFEB4A4B28F15087008850DC /* DailyToDoList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyToDoList.entitlements; sourceTree = "<group>"; };
 		CFEB4A4C28F150BD008850DC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		CFEB4A5228F1559D008850DC /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -348,7 +342,6 @@
 				CFEB49DE28F13287008850DC /* MainViewController.swift */,
 				CFEB4A3128F14BC7008850DC /* LoginViewController.swift */,
 				CFEB4A3328F14BD3008850DC /* AddTaskViewController.swift */,
-				CFEB4A3528F14BE1008850DC /* MonthViewController.swift */,
 				CFEB4A3728F14BEF008850DC /* SettingViewController.swift */,
 				CFEB4A6328F16243008850DC /* RepeatViewController.swift */,
 				CFEB4A6D28F16B27008850DC /* PickerViewController.swift */,
@@ -382,7 +375,6 @@
 			isa = PBXGroup;
 			children = (
 				CFEB4A4728F14D25008850DC /* TaskCell.swift */,
-				CFEB4A4828F14D25008850DC /* TaskView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -403,7 +395,6 @@
 				CFEB49E528F13288008850DC /* LaunchScreen.storyboard */,
 				CFEB4A2928F14B4C008850DC /* Login.storyboard */,
 				CFEB49E028F13287008850DC /* Main.storyboard */,
-				CFEB4A2B28F14B62008850DC /* Month.storyboard */,
 				CFEB4A2D28F14B68008850DC /* Setting.storyboard */,
 				CFEB4A2F28F14B95008850DC /* AddTask.storyboard */,
 				CFEB4A6128F16234008850DC /* Repeat.storyboard */,
@@ -579,7 +570,6 @@
 				CFEB4A6C28F16B15008850DC /* Picker.storyboard in Resources */,
 				CFEB4A3028F14B95008850DC /* AddTask.storyboard in Resources */,
 				CFEB4A2A28F14B4C008850DC /* Login.storyboard in Resources */,
-				CFEB4A2C28F14B62008850DC /* Month.storyboard in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
 				CFEB49E728F13288008850DC /* LaunchScreen.storyboard in Resources */,
 				CFEB4A6628F165C2008850DC /* Category.storyboard in Resources */,
@@ -755,7 +745,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFEB4A3628F14BE1008850DC /* MonthViewController.swift in Sources */,
 				CFEB4A4328F14D1C008850DC /* CategoryData.swift in Sources */,
 				CFD0B13228F1BE500029D936 /* ClassExtension.swift in Sources */,
 				CFEB4A3E28F14CCA008850DC /* StringKeys.swift in Sources */,
@@ -776,7 +765,6 @@
 				CFEB4A6028F15621008850DC /* CustomNavigationController.swift in Sources */,
 				CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */,
 				CFEB4A3428F14BD3008850DC /* AddTaskViewController.swift in Sources */,
-				CFEB4A4A28F14D25008850DC /* TaskView.swift in Sources */,
 				CFB6EE0728F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
 				CFEB4A3828F14BEF008850DC /* SettingViewController.swift in Sources */,
 				CFEB4A5528F1559D008850DC /* FirebaseManager.swift in Sources */,

@@ -14,7 +14,7 @@ class EachTask : Object
     //아이디
     @Persisted(primaryKey: true) var id:String
     //Task 날짜 (yyyy-MM-dd)
-    @Persisted var taskDate:String
+    @Persisted var taskDay:String
     //카테고리
     @Persisted var category:String
     //제목
@@ -44,21 +44,41 @@ class EachTask : Object
     @Persisted var isAlarm:Bool
     //알람 시간
     @Persisted var alarmTime:String
+    //Done or Not
+    @Persisted var isDone:Bool
             
     convenience init(taskDay:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int) {
         self.init()
         self.id = Utils.dateToId(Date())
         let date = Utils.dateToDateString(taskDay)
-        self.taskDate = date
+        self.taskDay = date
         self.category = category
         self.title = title
         self.memo = memo
         self.repeatType = repeatType
         self.weekDay = weekDay
         self.monthOfWeek = monthOfWeek
-        
+        //
         self.isEnd = false
         self.isAlarm = false
+        self.isDone = false
+    }
+    
+    convenience init(id:String, taskDay:String, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int, isEnd:Bool, taskEndDate:String, isAlarm:Bool, alarmTime:String, isDone:Bool) {
+        self.init()
+        self.id = id
+        self.taskDay = taskDay
+        self.category = category
+        self.title = title
+        self.memo = memo
+        self.repeatType = repeatType
+        self.weekDay = weekDay
+        self.monthOfWeek = monthOfWeek
+        self.isEnd = isEnd
+        self.taskEndDate = taskEndDate
+        self.isAlarm = isAlarm
+        self.alarmTime = alarmTime
+        self.isDone = isDone
     }
     
     func setAlarm(_ time:Date) {
@@ -84,11 +104,15 @@ class EachTask : Object
         monthOfWeek = 0
     }
     
+    func clone() -> EachTask {
+        return EachTask(id: self.id, taskDay: self.taskDay, category: self.category, title: self.title, memo: self.memo, repeatType: self.repeatType, weekDay: self.weekDay, monthOfWeek: self.monthOfWeek, isEnd: self.isEnd, taskEndDate: self.taskEndDate, isAlarm: self.isAlarm, alarmTime: self.alarmTime, isDone: self.isDone)
+    }
+    
     func printTask() {
         print("========== \(self.id) ==========")
         print("title = \(self.title)")
         print("category = \(self.category)")
-        print("date = \(self.taskDate)")
+        print("date = \(self.taskDay)")
         print("isEnd = \(self.isEnd)")
         if self.isEnd {
             print("endDate = \(self.taskEndDate)")
