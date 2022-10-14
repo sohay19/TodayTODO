@@ -12,19 +12,26 @@ import RealmSwift
 class EachTask : Object
 {
     //아이디
-    @Persisted(primaryKey: true) var id:String
+    @Persisted(primaryKey: true)
+    var id:String
     //Task 날짜 (yyyy-MM-dd)
-    @Persisted var taskDay:String
+    @Persisted
+    var taskDay:String
     //카테고리
-    @Persisted var category:String
+    @Persisted
+    var category:String
     //제목
-    @Persisted var title:String
+    @Persisted
+    var title:String
     //내용
-    @Persisted var memo:String
+    @Persisted
+    var memo:String
     //반복 타입
-    @Persisted var repeatType:String
+    @Persisted
+    var repeatType:String
     //반복요일 체크(일요일 = 0) -> DateComponents (일요일 = 1)
-    @Persisted var weekDayList:List<Bool>
+    @Persisted
+    var weekDayList:List<Bool>
     private var weekDay:[Bool] {
         get {
             return weekDayList.map{$0}
@@ -35,17 +42,23 @@ class EachTask : Object
         }
     }
     //반복 주 체크
-    @Persisted var monthOfWeek:Int
+    @Persisted
+    var monthOfWeek:Int
     //종료일 여부
-    @Persisted var isEnd:Bool
+    @Persisted
+    var isEnd:Bool
     //종료일
-    @Persisted var taskEndDate:String
+    @Persisted
+    var taskEndDate:String
     //알람 여부
-    @Persisted var isAlarm:Bool
+    @Persisted
+    var isAlarm:Bool
     //알람 시간
-    @Persisted var alarmTime:String
+    @Persisted
+    var alarmTime:String
     //Done or Not
-    @Persisted var isDone:Bool
+    @Persisted
+    var isDone:Bool
             
     convenience init(taskDay:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int) {
         self.init()
@@ -94,6 +107,47 @@ class EachTask : Object
     func unRepeat() {
         weekDayOff()
         monthWeekOff()
+    }
+    
+    func findWeekDay(_ index:Int) -> String {
+        var weekDay = ""
+        
+        switch index {
+        case 0:
+            weekDay = "일"
+        case 1:
+            weekDay = "월"
+        case 2:
+            weekDay = "화"
+        case 3:
+            weekDay = "수"
+        case 4:
+            weekDay = "목"
+        case 5:
+            weekDay = "금"
+        case 6:
+            weekDay = "토"
+        default:
+            break
+        }
+        
+        return weekDay
+    }
+    
+    func getWeekDay() -> String {
+        var result = ""
+        for i in 0..<weekDay.count {
+            if weekDay[i] {
+                result += "\(findWeekDay(i)), "
+            }
+        }
+        
+        if !result.isEmpty {
+            result.removeLast()
+            result.removeLast()
+        }
+        
+        return result
     }
     
     func weekDayOff() {

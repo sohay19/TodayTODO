@@ -14,7 +14,6 @@ class DataManager {
     static let shared = DataManager()
     private init() { }
     
-    private let pushManager = PushManager()
     private let cloudManager = CloudManager()
     private let firebaseManager = FirebaseManager()
     
@@ -35,9 +34,6 @@ extension DataManager {
     
     func addTaskData(_ data:EachTask) {
         cloudManager.realmManager.addTaskData(data)
-        if data.isAlarm {
-            pushManager.setNotification(data)            
-        }
     }
     
     func getTaskDataForDay(date:Date) -> LazyFilterSequence<Results<EachTask>>? {
@@ -62,6 +58,17 @@ extension DataManager {
     
     func loadCategory() -> Results<CategoryData>? {
         return cloudManager.realmManager.loadCategory()
+    }
+    
+    func findAlarmIdList(_ taskId:String) -> [String] {
+        guard let idList = cloudManager.realmManager.getAlarmIdList(taskId) else {
+            return []
+        }
+        return idList
+    }
+    
+    func getCategoryColor(_ categoryName:String) -> UIColor {
+        return cloudManager.realmManager.getCategoryColor(categoryName)
     }
 }
 

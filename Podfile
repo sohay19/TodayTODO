@@ -29,6 +29,8 @@ target 'DailyToDoListWidgetExtension' do
   use_frameworks!
 
   # Pods for DailyToDoListWidgetExtension
+  pod 'FirebaseAuth' , '> 9.0.0'
+  pod 'FirebaseDatabase' , '> 9.0.0'
   pod 'RealmSwift' , '> 10.0.0'
 
 end

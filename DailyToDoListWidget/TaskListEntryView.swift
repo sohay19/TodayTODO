@@ -27,26 +27,12 @@ struct TaskListEntryView: View {
     @ViewBuilder
     var body: some View {
         VStack(alignment: .leading) {
-            let taskList = getTaskList(entry.taskList)
+            let taskList = entry.taskList
             ForEach(0..<taskList.count, id: \.self) { index in
                 TaskListView(task: taskList[index])
             }
         }
         .padding(.all)
-    }
-    
-    func getTaskList(_ list:[EachTask]) -> [EachTask] {
-        var result:[EachTask] = []
-        let curTime = Utils.dateToTimeString(Date())
-        for task in list {
-//            if task.startTime < curTime && curTime < task.endTime {
-//                result.append(task)
-//                if result.count == maxCount {
-//                    break
-//                }
-//            }
-        }
-        return result
     }
 }
 

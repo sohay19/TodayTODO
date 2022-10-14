@@ -17,24 +17,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nL7-nt-PhE" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="90"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="45"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhK-e7-NYl">
-                                        <rect key="frame" x="18" y="34" width="40.5" height="22"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bLR-Sq-nbO">
+                                        <rect key="frame" x="148.5" y="0.0" width="117" height="32"/>
+                                        <segments>
+                                            <segment title="Today"/>
+                                            <segment title="Month"/>
+                                        </segments>
+                                    </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fy-sS-K6C">
-                                        <rect key="frame" x="310" y="30" width="86" height="30"/>
+                                        <rect key="frame" x="310" y="0.5" width="86" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="알람 전체 삭제"/>
                                         <connections>
                                             <action selector="deleteAllNoti:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jsq-AP-ezu"/>
                                         </connections>
                                     </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="bLR-Sq-nbO" firstAttribute="centerX" secondItem="nL7-nt-PhE" secondAttribute="centerX" id="U48-2M-xJX"/>
+                                    <constraint firstAttribute="trailing" secondItem="9fy-sS-K6C" secondAttribute="trailing" constant="18" id="cmc-nF-5a7"/>
+                                    <constraint firstItem="bLR-Sq-nbO" firstAttribute="top" secondItem="nL7-nt-PhE" secondAttribute="top" id="ezV-9Y-cIT"/>
+                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="centerY" secondItem="bLR-Sq-nbO" secondAttribute="centerY" id="lFg-7H-3dA"/>
+                                    <constraint firstAttribute="height" constant="45" id="so0-P1-9Lu"/>
+                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bLR-Sq-nbO" secondAttribute="trailing" constant="8" symbolic="YES" id="xNn-DG-GBh"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-ST-NiN" userLabel="TodayView">
+                                <rect key="frame" x="0.0" y="89" width="414" height="717"/>
+                                <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S02-VU-gCk">
-                                        <rect key="frame" x="231" y="30" width="61" height="30"/>
+                                        <rect key="frame" x="335" y="14" width="61" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="S02-VU-gCk" secondAttribute="height" multiplier="2:1" constant="1" id="ec2-q0-7Xf"/>
                                         </constraints>
@@ -44,32 +59,15 @@
                                             <action selector="changeEditMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G0r-WI-RLD"/>
                                         </connections>
                                     </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="centerY" secondItem="qhK-e7-NYl" secondAttribute="centerY" id="AUX-y8-Y5g"/>
-                                    <constraint firstItem="S02-VU-gCk" firstAttribute="centerY" secondItem="9fy-sS-K6C" secondAttribute="centerY" id="Bzb-a5-BjG"/>
-                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="leading" secondItem="S02-VU-gCk" secondAttribute="trailing" constant="18" id="E2t-cY-lt9"/>
-                                    <constraint firstItem="qhK-e7-NYl" firstAttribute="leading" secondItem="nL7-nt-PhE" secondAttribute="leading" constant="18" id="HY5-uG-rT3"/>
-                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="18" id="VWI-lZ-gkz"/>
-                                    <constraint firstAttribute="trailing" secondItem="9fy-sS-K6C" secondAttribute="trailing" constant="18" id="cmc-nF-5a7"/>
-                                    <constraint firstItem="qhK-e7-NYl" firstAttribute="centerY" secondItem="nL7-nt-PhE" secondAttribute="centerY" id="cuW-Ng-bkR"/>
-                                    <constraint firstAttribute="height" constant="90" id="so0-P1-9Lu"/>
-                                    <constraint firstItem="S02-VU-gCk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="18" id="tQg-R4-GPj"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="18" id="tug-GH-Fez"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-ST-NiN" userLabel="ToDoView">
-                                <rect key="frame" x="0.0" y="134" width="414" height="672"/>
-                                <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T45-og-L7Z">
-                                        <rect key="frame" x="0.0" y="18" width="414" height="636"/>
+                                        <rect key="frame" x="0.0" y="58" width="414" height="641"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="zFb-mh-b0M" userLabel="BtnAdd">
-                                            <rect key="frame" x="0.0" y="110.5" width="414" height="80"/>
+                                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" id="zFb-mh-b0M" userLabel="BtnAdd">
+                                            <rect key="frame" x="0.0" y="110.5" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <color key="tintColor" systemColor="labelColor"/>
+                                            <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="18"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" image="plus" catalog="system">
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
@@ -79,7 +77,7 @@
                                             </connections>
                                         </button>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="TaskCell" id="0Fo-Hl-oys" customClass="TaskCell" customModule="DailyToDoList" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="TaskCell" id="0Fo-Hl-oys" customClass="TaskCell" customModule="DailyToDoList" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Fo-Hl-oys" id="9fX-e1-206">
@@ -107,13 +105,34 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhK-e7-NYl">
+                                        <rect key="frame" x="187" y="18" width="40.5" height="22"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 등록된 TODO가 없어요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gt6-zW-da3" userLabel="Message">
+                                        <rect key="frame" x="110.5" y="64" width="193" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="Gt6-zW-da3" firstAttribute="centerX" secondItem="qhK-e7-NYl" secondAttribute="centerX" id="0H7-aQ-j3M"/>
+                                    <constraint firstItem="T45-og-L7Z" firstAttribute="top" secondItem="qhK-e7-NYl" secondAttribute="bottom" constant="18" id="JwV-bO-jBy"/>
+                                    <constraint firstItem="S02-VU-gCk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="18" id="Ns0-IB-2mr"/>
                                     <constraint firstAttribute="bottom" secondItem="T45-og-L7Z" secondAttribute="bottom" constant="18" id="Pe2-Mp-IBM"/>
+                                    <constraint firstAttribute="trailing" secondItem="S02-VU-gCk" secondAttribute="trailing" constant="18" id="T8T-Ms-AvF"/>
+                                    <constraint firstItem="qhK-e7-NYl" firstAttribute="top" secondItem="fcp-ST-NiN" secondAttribute="top" constant="18" id="aSq-NM-qle"/>
+                                    <constraint firstItem="Gt6-zW-da3" firstAttribute="top" secondItem="qhK-e7-NYl" secondAttribute="bottom" constant="24" id="ciB-c5-JSf"/>
+                                    <constraint firstItem="qhK-e7-NYl" firstAttribute="centerX" secondItem="fcp-ST-NiN" secondAttribute="centerX" id="eVk-KY-wse"/>
+                                    <constraint firstItem="Gt6-zW-da3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fcp-ST-NiN" secondAttribute="leading" constant="30" id="o5Q-iZ-LZq"/>
                                     <constraint firstAttribute="trailing" secondItem="T45-og-L7Z" secondAttribute="trailing" id="p4n-uv-S1i"/>
+                                    <constraint firstItem="S02-VU-gCk" firstAttribute="centerY" secondItem="qhK-e7-NYl" secondAttribute="centerY" id="pmE-t9-4hR"/>
                                     <constraint firstItem="T45-og-L7Z" firstAttribute="leading" secondItem="fcp-ST-NiN" secondAttribute="leading" id="rkp-TE-SD6"/>
-                                    <constraint firstItem="T45-og-L7Z" firstAttribute="top" secondItem="fcp-ST-NiN" secondAttribute="top" constant="18" id="tOh-hb-W2l"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Gt6-zW-da3" secondAttribute="trailing" constant="30" id="rnp-1p-pNj"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtt-4H-95U" userLabel="BottomView">
@@ -175,6 +194,7 @@
                     </view>
                     <connections>
                         <outlet property="labelDate" destination="qhK-e7-NYl" id="SXq-oI-tcD"/>
+                        <outlet property="labelMsg" destination="Gt6-zW-da3" id="dCV-E0-5Yu"/>
                         <outlet property="taskTableView" destination="T45-og-L7Z" id="kmv-fj-Cfz"/>
                     </connections>
                 </viewController>

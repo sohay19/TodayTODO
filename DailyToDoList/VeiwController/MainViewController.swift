@@ -10,6 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var taskTableView: UITableView!
+    @IBOutlet weak var labelMsg: UILabel!
     
     //
     private var isRefresh = false
@@ -20,6 +21,8 @@ class MainViewController: UIViewController {
         
         taskTableView.dataSource = self
         taskTableView.delegate = self
+        
+        initRefreshController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,7 +86,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[notDone, done])
     }
-    //Row별 EditMode
+    //Row별 EditMode-
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         if taskList[indexPath.row].isDone {
             taskTableView.cellForRow(at: indexPath)?.editingAccessoryType = .checkmark
@@ -107,6 +110,18 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         taskList.remove(at: sourceIndexPath.row)
         taskList.insert(task, at: destinationIndexPath.row)
     }
+    //cell 클릭 Event
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
+        guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController,
+              let navigation = self.navigationController as? CustomNavigationController else { return }
+        
+        taskInfoVC.taskData = taskList[indexPath.row]
+        taskInfoVC.modalTransitionStyle = .crossDissolve
+        taskInfoVC.modalPresentationStyle = .overCurrentContext
+        
+        navigation.pushViewController(taskInfoVC)
+    }
 }
 
 
@@ -124,7 +139,6 @@ extension MainViewController {
             print("data is zero")
             return
         }
-        print("task count = \(dataList.count)")
         taskList = dataList.sorted(by: { task1, task2 in
             if task1.isDone {
                 return task2.isDone ? true : false
@@ -134,20 +148,33 @@ extension MainViewController {
         })
         //
         if taskList.count == 0 {
-            
+            labelMsg.isHidden = false
         } else {
-            
+            labelMsg.isHidden = true
         }
         //
         taskTableView.reloadData()
+        taskTableView.flashScrollIndicators()
         //
         SystemManager.shared.closeLoading()
+    }
+    func initRefreshController() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshTaskView), for: .valueChanged)
+        //초기화
+        refreshControl.endRefreshing()
+        taskTableView.refreshControl = refreshControl
     }
     //
     func refreshPage() {
         isRefresh = true
         SystemManager.shared.openLoading(self)
         viewWillAppear(true)
+    }
+    //
+    @objc func refreshTaskView() {
+        taskTableView.refreshControl?.endRefreshing()
+        taskTableView.reloadData()
     }
     //
     func taskIsDone(_ isDone:Bool, _ indexPath:IndexPath) {

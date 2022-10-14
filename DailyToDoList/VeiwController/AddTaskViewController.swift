@@ -89,7 +89,7 @@ extension AddTaskViewController {
         labelNil.isHidden = true
         repeatSwitch.isOn = false
         pickEndDate.isEnabled = false
-        controllEndDateView(false)
+        controllReusltView(false)
     }
     func setAlarmView() {
         //
@@ -271,14 +271,14 @@ extension AddTaskViewController {
             repeatVC.taskDay = Utils.dateToString(pickDate.date)
             repeatVC.clickOk = showResult(_:)
             repeatVC.clickCancel = { self.repeatSwitch.isOn = false }
-            repeatVC.modalPresentationStyle = .overFullScreen
+            repeatVC.modalPresentationStyle = .overCurrentContext
             repeatVC.modalTransitionStyle = .crossDissolve
             
             present(repeatVC, animated: true)
         } else {
-            setResult("없음")
+            setResult()
             repeatResult = nil
-            controllEndDateView(false)
+            controllReusltView(false)
         }
     }
     //알람토글
@@ -290,8 +290,8 @@ extension AddTaskViewController {
 
 //MARK: - View Controll
 extension AddTaskViewController {
-    //repeatView 컨트롤
-    func controllEndDateView(_ isOpen:Bool) {
+    //resultView 컨트롤
+    func controllReusltView(_ isOpen:Bool) {
         if isOpen {
             let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
                 resultViewConstraint?.constant = resultViewSize!.height
@@ -325,7 +325,7 @@ extension AddTaskViewController {
             }
             pickEndDate.date = date
         }
-        controllEndDateView(true)
+        controllReusltView(true)
         //반복 주기
         switch repeatResult.repeatType {
         case .EveryDay:
@@ -339,7 +339,7 @@ extension AddTaskViewController {
         case .EachYear:
             setResult("매 년", String(Utils.dateToDateString(pickDate.date).split(separator: "-")[2]), "일")
         default:
-            break
+            setResult()
         }
     }
 }

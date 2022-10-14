@@ -13,11 +13,12 @@ class SystemManager {
     private init() { }
     
     private let pushManager = PushManager()
-    //
+    
     private var backgroundView:UIView?
     private var indicator:UIActivityIndicatorView?
 }
 
+//MARK: - Loading
 extension SystemManager {
     func openLoading(_ topVC:UIViewController) {
         backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -32,7 +33,7 @@ extension SystemManager {
         
         backgroundView.frame = CGRect(x: 0, y: 0, width: topVC.view.frame.maxX, height: topVC.view.frame.maxY)
         backgroundView.backgroundColor = .white
-        backgroundView.alpha = 0.25
+        backgroundView.alpha = 0.15
         
         indicator.style = .large
         indicator.center = topVC.view.center
@@ -48,21 +49,37 @@ extension SystemManager {
     }
 }
 
-
+//MARK: - ETC
 extension SystemManager {
+    @available(iOSApplicationExtension, unavailable)
     func openSettingMenu() {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
     }
-    
+}
+
+//MARK: - push
+extension SystemManager {
     func requestPushPermission() {
         pushManager.requestPermission()
     }
-    
-    func rotatePushData() {
-        pushManager.checkEndDate()
+    //
+    func addNotification(_ data:EachTask) -> [String] {
+        pushManager.addNotification(data)
+    }
+    //
+    func deleteAllPush() {
+        pushManager.deleteAllPush()
     }
     
-    func deleteAllPush() {
-        pushManager.deleteAll()
+    func checkExpiredPush() {
+        pushManager.checkExpiredPush()
+    }
+    //
+    func updatePush(_ idList:[String], _ task:EachTask) -> [String] {
+        return pushManager.updatePush(idList, task)
+    }
+    //
+    func deletePush(_ idList:[String]) {
+        pushManager.deletePush(idList)
     }
 }

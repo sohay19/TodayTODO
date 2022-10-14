@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //데이터가 있는 원격 푸시
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Silent Push Notification")
-        SystemManager.shared.rotatePushData()
+        SystemManager.shared.checkExpiredPush()
     }
 }
 

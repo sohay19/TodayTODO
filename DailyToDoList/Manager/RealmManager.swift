@@ -23,9 +23,7 @@ class RealmManager {
         }
         return realm.configuration.fileURL!
     }
-}
-
-extension RealmManager {
+    
     func openRealm() {
         guard let realmDir = realmDir else {
             print("realmDir 없음")
@@ -45,18 +43,92 @@ extension RealmManager {
             print("Realm Open Error = \(error)")
         }
     }
-    
+}
+
+//MARK: - add/update/delete
+extension RealmManager {
     func addTaskData(_ data:EachTask) {
         guard let realm = realm else {
             print("realm is nil")
             return
         }
-        try! realm.write {
-            realm.add(data)
-            WidgetCenter.shared.reloadAllTimelines()
+        do {
+            try realm.write {
+                realm.add(data)
+                if data.isAlarm {
+                    let idList = SystemManager.shared.addNotification(data)
+                    let alarmInfo = AlarmInfo(data.id, idList)
+                    realm.add(alarmInfo)
+                }
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+        } catch {
+            print("Realm add Error")
         }
     }
     
+    func updateTaskData(_ task:EachTask) {
+        guard let realm = realm else {
+            return
+        }
+        do {
+            try realm.write {
+                realm.add(task, update: .modified)
+                if task.isAlarm {
+                    var newIdList:[String] = []
+                    if let idList = getAlarmIdList(task.id) {
+                        newIdList = SystemManager.shared.updatePush(idList, task)
+                    } else {
+                        newIdList = SystemManager.shared.addNotification(task)
+                    }
+                    let alarmInfo = AlarmInfo(task.id, newIdList)
+                    realm.add(alarmInfo)
+                }
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+        } catch {
+            print("Realm update Error")
+        }
+    }
+    
+    func deleteTaskData(_ task:EachTask) {
+        guard let realm = realm else {
+            return
+        }
+        do {
+            try realm.write {
+                realm.delete(task)
+                if task.isAlarm {
+                    guard let idList = getAlarmIdList(task.id) else {
+                       return
+                    }
+                    SystemManager.shared.deletePush(idList)
+                }
+            }
+        } catch {
+            print("Realm delete Error")
+        }
+    }
+}
+
+//MARK: - Alarm Search
+extension RealmManager {
+    func getAlarmIdList(_ taskId:String) -> [String]? {
+        guard let realm = realm else {
+            print("realm is nil")
+            return nil
+        }
+        //전체 DB
+        let alarmDataBase = realm.objects(AlarmInfo.self)
+        guard let result = alarmDataBase.first(where: {$0.taskId == taskId}) else {
+            return nil
+        }
+        return result.alarmIdList.map{$0}
+    }
+}
+
+//MARK: - Task Search
+extension RealmManager {
     func getTaskDataForDay(date:Date) -> LazyFilterSequence<Results<EachTask>>? {
         guard let realm = realm else {
             print("realm is nil")
@@ -155,38 +227,12 @@ extension RealmManager {
         
         return foundData
     }
-    
-    func updateTaskData(_ afterTask:EachTask) {
-        guard let realm = realm else {
-            return
-        }
-        do {
-            try realm.write {
-                realm.add(afterTask, update: .modified)
-            }
-        } catch {
-            print("Realm update Error")
-        }
-    }
-    
-    func deleteTaskData(_ task:EachTask) {
-        guard let realm = realm else {
-            return
-        }
-        do {
-            try realm.write {
-                realm.delete(task)
-            }
-        } catch {
-            print("Realm delete Error")
-        }
-    }
 }
 
 //MARK: - Category
 extension RealmManager {
     func addCategory(_ data:CategoryData) {
-        guard let realm = self.realm else {
+        guard let realm = realm else {
             print("realm is nil")
             return
         }
@@ -200,10 +246,20 @@ extension RealmManager {
     }
     
     func loadCategory() -> Results<CategoryData>? {
-        guard let realm = self.realm else {
+        guard let realm = realm else {
             print("realm is nil")
             return nil
         }
         return realm.objects(CategoryData.self)
+    }
+    
+    func getCategoryColor(_ category:String) -> UIColor {
+        guard let categoryList = loadCategory() else {
+            return .clear
+        }
+        guard let target = categoryList.first(where: {$0.title == category}) else {
+            return .clear
+        }
+        return Utils.getColor(target.colorList)
     }
 }

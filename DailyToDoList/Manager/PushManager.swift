@@ -12,156 +12,8 @@ class PushManager {
     private let notiCenter = UNUserNotificationCenter.current()
 }
 
-//MARK: - Noti Basic
+//MARK: - Basic
 extension PushManager {
-    //Noti 생성
-    func setNotification(_ data:EachTask) {
-        //반복 여부 체크
-        switch RepeatType.init(rawValue: data.repeatType) {
-        case .EveryDay:
-            setRepeatDayNoti(data)
-        case .Eachweek:
-            //선택 일자 기본 설정
-            setNotRepeatNoti(data, 0)
-            //
-            for i in 1..<data.weekDayList.count {
-                if data.weekDayList[i] {
-                    //index + 1
-                    setRepeatWeekNoti(data, i+1)
-                }
-            }
-        case .EachMonthOfOnce:
-            setRepeatMonthOfOnceNoti(data)
-        case .EachMonthOfWeek:
-            //선택 일자 기본 설정
-            setNotRepeatNoti(data, 0)
-            //
-            for i in 0..<data.weekDayList.count {
-                if data.weekDayList[i] {
-                    //index + 1
-                    setRepeatMonthOfWeekNoti(data, i+1)
-                }
-            }
-        case .EachYear:
-            setRepeatYearNoti(data)
-        default:
-            setNotRepeatNoti(data, 0)
-        }
-    }
-    //반복없음
-    private func setNotRepeatNoti(_ data:EachTask, _ idIndex:Int) {
-        //콘텐츠 설정
-        let id = "\(data.id)_\(idIndex)"
-        let notiContent = setNotiContent(data, id)
-        //push 날짜 설정
-        var dateComponents = getDateComponents(data)
-        let dateArr = data.taskDay.split(separator: "-")
-        dateComponents.year = Int(dateArr[0])
-        dateComponents.month = Int(dateArr[1])
-        dateComponents.day = Int(dateArr[2])
-        //trigger 세팅
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
-        //
-        notiCenter.add(request) { error in
-            if let error = error {
-                print("Noti Add Error = \(error)")
-            }
-        }
-    }
-    //매일 반복
-    private func setRepeatDayNoti(_ data:EachTask) {
-        //콘텐츠 설정
-        let id = data.id
-        let notiContent = setNotiContent(data, id)
-        //push 날짜 설정
-        let dateComponents = getDateComponents(data)
-        //trigger 세팅
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
-        //
-        notiCenter.add(request) { error in
-            if let error = error {
-                print("Noti Add Error = \(error)")
-            }
-        }
-    }
-    //주 n회 반복
-    private func setRepeatWeekNoti(_ data:EachTask, _ weekDay:Int) {
-        //콘텐츠 설정
-        let id = "\(data.id)_\(weekDay)"
-        let notiContent = setNotiContent(data, id)
-        //push 날짜 설정
-        var dateComponents = getDateComponents(data)
-        dateComponents.weekday = weekDay
-        //trigger 세팅
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
-        //
-        notiCenter.add(request) { error in
-            if let error = error {
-                print("Noti Add Error = \(error)")
-            }
-        }
-    }
-    //월 1회 반복
-    private func setRepeatMonthOfOnceNoti(_ data:EachTask) {
-        //콘텐츠 설정
-        let id = data.id
-        let notiContent = setNotiContent(data, id)
-        //push 날짜 설정
-        var dateComponents = getDateComponents(data)
-        let dateArr = data.taskDay.split(separator: "-")
-        dateComponents.day = Int(dateArr[2])
-        //trigger 세팅
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
-        //
-        notiCenter.add(request) { error in
-            if let error = error {
-                print("Noti Add Error = \(error)")
-            }
-        }
-    }
-    //월 n회 반복
-    private func setRepeatMonthOfWeekNoti(_ data:EachTask, _ weekDay:Int) {
-        //콘텐츠 설정
-        let id = "\(data.id)_\(weekDay)"
-        let notiContent = setNotiContent(data, id)
-        //push 날짜 설정
-        var dateComponents = getDateComponents(data)
-        dateComponents.weekday = weekDay
-        dateComponents.weekdayOrdinal = data.monthOfWeek
-        //trigger 세팅
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
-        //
-        notiCenter.add(request) { error in
-            if let error = error {
-                print("Noti Add Error = \(error)")
-            }
-        }
-    }
-    //연 1회 반복
-    private func setRepeatYearNoti(_ data:EachTask) {
-        //콘텐츠 설정
-        let id = data.id
-        let notiContent = setNotiContent(data, id)
-        //push 날짜 설정
-        var dateComponents = getDateComponents(data)
-        let dateArr = data.taskDay.split(separator: "-")
-        dateComponents.month = Int(dateArr[1])
-        dateComponents.day = Int(dateArr[2])
-        //trigger 세팅
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
-        //
-        notiCenter.add(request) { error in
-            if let error = error {
-                print("Noti Add Error = \(error)")
-            }
-        }
-    }
     //푸쉬콘텐츠 내용 설정
     private func setNotiContent(_ data:EachTask, _ id:String) -> UNMutableNotificationContent {
         let notiContent = UNMutableNotificationContent()
@@ -176,9 +28,9 @@ extension PushManager {
         notiContent.badge = (DataManager.shared.addBadgeCnt()) as NSNumber
         //썸네일
         do {
-//            let imageUrl = Bundle.main.url(forResource: "Tulips", withExtension: "jpg")
-//            let attach = try UNNotificationAttachment(identifier: "", url: imageUrl!, options: nil)
-//            notiPush.attachments.append(attach)
+            //            let imageUrl = Bundle.main.url(forResource: "Tulips", withExtension: "jpg")
+            //            let attach = try UNNotificationAttachment(identifier: "", url: imageUrl!, options: nil)
+            //            notiPush.attachments.append(attach)
         } catch {
             print(error)
         }
@@ -198,6 +50,188 @@ extension PushManager {
         dateComponents.minute = m
         return dateComponents
     }
+    //Noti 생성
+    func addNotification(_ data:EachTask) -> [String] {
+        //
+        var idList:[String] = []
+        //반복 여부 체크
+        switch RepeatType.init(rawValue: data.repeatType) {
+        case .EveryDay:
+            idList.append(setRepeatDayNoti(data))
+        case .Eachweek:
+            //선택 일자 기본 설정
+            idList.append(setNotRepeatNoti(data, 0))
+            //
+            for i in 1..<data.weekDayList.count {
+                if data.weekDayList[i] {
+                    //index + 1
+                    idList.append(setRepeatWeekNoti(data, i+1))
+                }
+            }
+        case .EachMonthOfOnce:
+            idList.append(setRepeatMonthOfOnceNoti(data))
+        case .EachMonthOfWeek:
+            //선택 일자 기본 설정
+            idList.append(setNotRepeatNoti(data, 0))
+            //
+            for i in 0..<data.weekDayList.count {
+                if data.weekDayList[i] {
+                    //index + 1
+                    idList.append(setRepeatMonthOfWeekNoti(data, i+1))
+                }
+            }
+        case .EachYear:
+            idList.append(setRepeatYearNoti(data))
+        default:
+            idList.append(setNotRepeatNoti(data, 0))
+        }
+        return idList
+    }
+}
+
+//MARK: - Add
+extension PushManager {
+    //반복없음
+    private func setNotRepeatNoti(_ data:EachTask, _ idIndex:Int) -> String {
+        //콘텐츠 설정
+        let id = "\(data.id)_\(idIndex)"
+        let notiContent = setNotiContent(data, id)
+        //push 날짜 설정
+        var dateComponents = getDateComponents(data)
+        let dateArr = data.taskDay.split(separator: "-")
+        dateComponents.year = Int(dateArr[0])
+        dateComponents.month = Int(dateArr[1])
+        dateComponents.day = Int(dateArr[2])
+        //trigger 세팅
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
+        //
+        notiCenter.add(request) { error in
+            if let error = error {
+                print("Noti Add Error = \(error)")
+            }
+        }
+        return id
+    }
+    //매일 반복
+    private func setRepeatDayNoti(_ data:EachTask) -> String {
+        //콘텐츠 설정
+        let id = data.id
+        let notiContent = setNotiContent(data, id)
+        //push 날짜 설정
+        let dateComponents = getDateComponents(data)
+        //trigger 세팅
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
+        //
+        notiCenter.add(request) { error in
+            if let error = error {
+                print("Noti Add Error = \(error)")
+            }
+        }
+        return id
+    }
+    //주 n회 반복
+    private func setRepeatWeekNoti(_ data:EachTask, _ weekDay:Int) -> String {
+        //콘텐츠 설정
+        let id = "\(data.id)_\(weekDay)"
+        let notiContent = setNotiContent(data, id)
+        //push 날짜 설정
+        var dateComponents = getDateComponents(data)
+        dateComponents.weekday = weekDay
+        //trigger 세팅
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
+        //
+        notiCenter.add(request) { error in
+            if let error = error {
+                print("Noti Add Error = \(error)")
+            }
+        }
+        return id
+    }
+    //월 1회 반복
+    private func setRepeatMonthOfOnceNoti(_ data:EachTask) -> String {
+        //콘텐츠 설정
+        let id = data.id
+        let notiContent = setNotiContent(data, id)
+        //push 날짜 설정
+        var dateComponents = getDateComponents(data)
+        let dateArr = data.taskDay.split(separator: "-")
+        dateComponents.day = Int(dateArr[2])
+        //trigger 세팅
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
+        //
+        notiCenter.add(request) { error in
+            if let error = error {
+                print("Noti Add Error = \(error)")
+            }
+        }
+        return id
+    }
+    //월 n회 반복
+    private func setRepeatMonthOfWeekNoti(_ data:EachTask, _ weekDay:Int) -> String {
+        //콘텐츠 설정
+        let id = "\(data.id)_\(weekDay)"
+        let notiContent = setNotiContent(data, id)
+        //push 날짜 설정
+        var dateComponents = getDateComponents(data)
+        dateComponents.weekday = weekDay
+        dateComponents.weekdayOrdinal = data.monthOfWeek
+        //trigger 세팅
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
+        //
+        notiCenter.add(request) { error in
+            if let error = error {
+                print("Noti Add Error = \(error)")
+            }
+        }
+        return id
+    }
+    //연 1회 반복
+    private func setRepeatYearNoti(_ data:EachTask) -> String {
+        //콘텐츠 설정
+        let id = data.id
+        let notiContent = setNotiContent(data, id)
+        //push 날짜 설정
+        var dateComponents = getDateComponents(data)
+        let dateArr = data.taskDay.split(separator: "-")
+        dateComponents.month = Int(dateArr[1])
+        dateComponents.day = Int(dateArr[2])
+        //trigger 세팅
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
+        //
+        notiCenter.add(request) { error in
+            if let error = error {
+                print("Noti Add Error = \(error)")
+            }
+        }
+        return id
+    }
+}
+
+//MARK: - update/delete
+extension PushManager {
+    //모든 푸쉬 삭제
+    func deleteAllPush() {
+        notiCenter.removeAllPendingNotificationRequests()
+        print("Delete All Noti")
+    }
+    //
+    func updatePush(_ idList:[String], _ task:EachTask) -> [String] {
+        deletePush(idList)
+        return addNotification(task)
+    }
+    //
+    func deletePush(_ idList:[String]) {
+        notiCenter.removePendingNotificationRequests(withIdentifiers: idList)
+        for id in idList {
+            print("삭제된 알람 = \(id)")
+        }
+    }
 }
 
 //MARK: - Etc Event
@@ -214,7 +248,7 @@ extension PushManager {
         }
     }
     //종료일 체크
-    func checkEndDate() {
+    func checkExpiredPush() {
         notiCenter.getPendingNotificationRequests { requestList in
             print("requestCnt = \(requestList.count)")
             for request in requestList {
@@ -222,15 +256,10 @@ extension PushManager {
                 let today = Utils.dateToDateString(Date())
                 print("종료일 = \(endDate)")
                 if endDate == today {
-                    self.notiCenter.removePendingNotificationRequests(withIdentifiers: [request.identifier])
-                    print("삭제 = \(request.identifier)")
+                    let idList = DataManager.shared.findAlarmIdList(request.identifier)
+                    self.deletePush(idList)
                 }
             }
         }
-    }
-    //모든 푸쉬 삭제
-    func deleteAll() {
-        notiCenter.removeAllPendingNotificationRequests()
-        print("Delete All Noti")
     }
 }

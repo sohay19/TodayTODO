@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import RealmSwift
 
 class Utils {
     static func dateToId(_ date:Date) -> String {
@@ -81,5 +83,13 @@ class Utils {
         let endOfMonth = Utils.dateToString(nextDate)
         
         return stringToWeekOfMonth(endOfMonth)
+    }
+}
+
+//MARK: - Color
+extension Utils {
+    static func getColor(_ colorList:List<Float>) -> UIColor {
+        let list = colorList.map{CGFloat($0)}
+        return UIColor(red: list[0], green: list[1], blue: list[2], alpha: list[3])
     }
 }
