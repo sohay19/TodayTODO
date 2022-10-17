@@ -9,172 +9,140 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var labelDate: UILabel!
-    @IBOutlet weak var taskTableView: UITableView!
-    @IBOutlet weak var labelMsg: UILabel!
+    @IBOutlet weak var labelTodayNilMsg: UILabel!
+    @IBOutlet weak var labelMonthNilMsg: UILabel!
+    //
+    @IBOutlet weak var dailyTaskTable: UITableView!
+    @IBOutlet weak var monthlyTaskTable: UITableView!
+    //
+    @IBOutlet weak var segmentedController: UISegmentedControl!
+    //
+    @IBOutlet weak var calendarView: CustomCalendarView!
+    @IBOutlet weak var todayView: UIView!
+    @IBOutlet weak var monthView: UIView!
+    
     
     //
-    private var isRefresh = false
-    private var taskList:[EachTask] = []
+    var currntDate:Date = Date()
+    var taskList:[EachTask] = []
+    var monthlyTaskList:[Int:[EachTask]] = [:]
+    var haveTaskList:[Date] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        taskTableView.dataSource = self
-        taskTableView.delegate = self
-        
+        //
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        //
+        dailyTaskTable.dataSource = self
+        dailyTaskTable.delegate = self
+        //
+        monthlyTaskTable.dataSource = self
+        monthlyTaskTable.delegate = self
+        //
+        calendarView.dataSource = self
+        calendarView.delegate = self
+        //
         initRefreshController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        //refresh해야할것
-        if isRefresh {
-            isRefresh = false
-        }
-        //
-        loadTodayDate()
+        initDate()
+        initUI()
         //
         DispatchQueue.main.async {
             self.loadTask()
+            SystemManager.shared.closeLoading()
         }
     }
 }
-
-//MARK: - TableView
-extension MainViewController : UITableViewDelegate, UITableViewDataSource {
-    //
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskList.count
-    }
-    //
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let taskCell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as? TaskCell else {
-            return UITableViewCell()
-        }
-        taskCell.labelTitle.text = taskList[indexPath.row].title
-        let isDone = taskList[indexPath.row].isDone
-        taskCell.accessoryType = isDone ? .checkmark : .none
-        
-        return taskCell
-    }
-    //왼쪽 스와이프
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .destructive, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.deleteTask(indexPath)
-            success(true)
-        }
-        delete.backgroundColor = .systemRed
-        //index = 0, 왼쪽
-        return UISwipeActionsConfiguration(actions:[delete])
-    }
-    //오른쪽 스와이프
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        //Done Or Not
-        let done = UIContextualAction(style: .normal, title: "Done") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.taskIsDone(true, indexPath)
-            success(true)
-        }
-        done.backgroundColor = .systemIndigo
-        
-        let notDone = UIContextualAction(style: .normal, title: "Not") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.taskIsDone(false, indexPath)
-            success(true)
-        }
-        notDone.backgroundColor = .systemGray
-        //index = 0, 오른쪽
-        return UISwipeActionsConfiguration(actions:[notDone, done])
-    }
-    //Row별 EditMode-
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if taskList[indexPath.row].isDone {
-            taskTableView.cellForRow(at: indexPath)?.editingAccessoryType = .checkmark
-        }
-        
-        return .delete
-    }
-    //EditMode별 Event
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            self.deleteTask(indexPath)
-        }
-    }
-    //cell별 이동 가능 여부
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return taskList[indexPath.row].isDone ? false : true
-    }
-    //Row Move
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let task = taskList[sourceIndexPath.row]
-        taskList.remove(at: sourceIndexPath.row)
-        taskList.insert(task, at: destinationIndexPath.row)
-    }
-    //cell 클릭 Event
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
-        guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController,
-              let navigation = self.navigationController as? CustomNavigationController else { return }
-        
-        taskInfoVC.taskData = taskList[indexPath.row]
-        taskInfoVC.modalTransitionStyle = .crossDissolve
-        taskInfoVC.modalPresentationStyle = .overCurrentContext
-        
-        navigation.pushViewController(taskInfoVC)
-    }
-}
-
 
 //MARK: - UI
 extension MainViewController {
-    func loadTodayDate() {
-        labelDate.text = Utils.dateToDateString(Date())
+    func initDate() {
+        let date = Utils.dateToDateString(Date())
+        labelDate.text = date
+    }
+    
+    func initUI() {
+        monthView.isHidden = true
     }
 }
 
-//MARK: - Func
+//MARK: - Task
 extension MainViewController {
+    
+    //Task 세팅
     func loadTask() {
-        guard let dataList = DataManager.shared.getTaskDataForDay(date: Date()) else {
-            print("data is zero")
-            return
-        }
-        taskList = dataList.sorted(by: { task1, task2 in
-            if task1.isDone {
-                return task2.isDone ? true : false
-            } else {
-                return true
+        switch segmentedController.selectedSegmentIndex {
+        case 1:
+            // data reset
+            monthlyTaskList = [:]
+            guard let dataList = DataManager.shared.getTaskDataForMonth(date: currntDate) else {
+                print("data is zero")
+                return
             }
-        })
-        //
-        if taskList.count == 0 {
-            labelMsg.isHidden = false
-        } else {
-            labelMsg.isHidden = true
+            //
+            let tmpList = dataList.sorted { $0.taskDay < $1.taskDay }
+            for task in tmpList {
+                // 달력 표기를 위해 기록
+                if let date = Utils.dateStringToDate(task.taskDay) {
+                    haveTaskList.append(date)
+                }
+                // task 정리
+                let day = Int(task.taskDay.split(separator: "-")[2])!
+                if monthlyTaskList[day] == nil {
+                    monthlyTaskList[day] = [task]
+                } else {
+                    monthlyTaskList[day]?.append(task)
+                }
+            }
+            //
+            guard let day = Calendar.current.dateComponents([.day], from: currntDate).day else {
+                return
+            }
+            //
+            if let monthlyTaskList = monthlyTaskList[day] {
+                labelMonthNilMsg.isHidden = true
+                taskList = monthlyTaskList.sorted(by: { task1, task2 in
+                    if task1.isDone {
+                        return task2.isDone ? true : false
+                    } else {
+                        return true
+                    }
+                })
+            } else {
+                labelMonthNilMsg.isHidden = false
+                taskList = []
+            }
+            //
+            calendarView.reloadData()
+            //
+            monthlyTaskTable.reloadData()
+            monthlyTaskTable.flashScrollIndicators()
+        default:
+            guard let dataList = DataManager.shared.getTaskDataForDay(date: currntDate) else {
+                print("data is zero")
+                return
+            }
+            taskList = dataList.sorted(by: { task1, task2 in
+                if task1.isDone {
+                    return task2.isDone ? true : false
+                } else {
+                    return true
+                }
+            })
+            //
+            if taskList.count == 0 {
+                labelTodayNilMsg.isHidden = false
+            } else {
+                labelTodayNilMsg.isHidden = true
+            }
+            //
+            dailyTaskTable.reloadData()
+            dailyTaskTable.flashScrollIndicators()
         }
-        //
-        taskTableView.reloadData()
-        taskTableView.flashScrollIndicators()
-        //
-        SystemManager.shared.closeLoading()
-    }
-    func initRefreshController() {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshTaskView), for: .valueChanged)
-        //초기화
-        refreshControl.endRefreshing()
-        taskTableView.refreshControl = refreshControl
-    }
-    //
-    func refreshPage() {
-        isRefresh = true
-        SystemManager.shared.openLoading(self)
-        viewWillAppear(true)
-    }
-    //
-    @objc func refreshTaskView() {
-        taskTableView.refreshControl?.endRefreshing()
-        taskTableView.reloadData()
     }
     //
     func taskIsDone(_ isDone:Bool, _ indexPath:IndexPath) {
@@ -182,14 +150,28 @@ extension MainViewController {
         modifyTask.isDone = isDone
         DataManager.shared.updateTaskData(modifyTask)
         //
-        taskTableView.reloadRows(at: [indexPath], with: .none)
+        switch segmentedController.selectedSegmentIndex {
+        case 1:
+            //Month
+            break
+        default:
+            //Today
+            dailyTaskTable.reloadRows(at: [indexPath], with: .none)
+        }
     }
     //
     func modifyTask(_ task:EachTask, _ indexPath:IndexPath) {
         DataManager.shared.updateTaskData(task)
         taskList[indexPath.row] = task
         //
-        taskTableView.reloadRows(at: [indexPath], with: .none)
+        switch segmentedController.selectedSegmentIndex {
+        case 1:
+            //Month
+            break
+        default:
+            //Today
+            dailyTaskTable.reloadRows(at: [indexPath], with: .none)
+        }
     }
     //
     func deleteTask(_ indexPath:IndexPath) {
@@ -197,7 +179,46 @@ extension MainViewController {
         DataManager.shared.deleteTaskData(task)
         taskList.remove(at: indexPath.row)
         //
-        taskTableView.deleteRows(at: [indexPath], with: .none)
+        switch segmentedController.selectedSegmentIndex {
+        case 1:
+            //Month
+            break
+        default:
+            //Today
+            dailyTaskTable.deleteRows(at: [indexPath], with: .none)
+        }
+    }
+}
+
+//MARK: - initialize, refresh
+extension MainViewController {
+    //refresh controller 초기세팅
+    func initRefreshController() {
+        //Today
+        let todayRefreshControl = UIRefreshControl()
+        todayRefreshControl.addTarget(self, action: #selector(refreshTaskView), for: .valueChanged)
+        //초기화
+        todayRefreshControl.endRefreshing()
+        dailyTaskTable.refreshControl = todayRefreshControl
+        //Month
+        let monthRefreshControl = UIRefreshControl()
+        monthRefreshControl.addTarget(self, action: #selector(refreshTaskView), for: .valueChanged)
+        //초기화
+        monthRefreshControl.endRefreshing()
+        monthlyTaskTable.refreshControl = monthRefreshControl
+    }
+    //
+    @objc func refreshTaskView() {
+        switch segmentedController.selectedSegmentIndex {
+        case 1:
+            //Month
+            monthlyTaskTable.refreshControl?.endRefreshing()
+            monthlyTaskTable.reloadData()
+        default:
+            //Today
+            dailyTaskTable.refreshControl?.endRefreshing()
+            dailyTaskTable.reloadData()
+        }
     }
 }
 
@@ -213,27 +234,21 @@ extension MainViewController {
             return
         }
         nextVC.refreshTask = loadTask
+        nextVC.currntDate = currntDate
+        
         navigation.pushViewController(nextVC)
     }
-    
-    @IBAction func changeEditMode(_ sender:UIButton) {
-        if taskTableView.isEditing {
+    //
+    @IBAction func changeDailyTaskEditMode(_ sender:UIButton) {
+        if dailyTaskTable.isEditing {
             sender.setTitle("Edit", for: .normal)
-            taskTableView.setEditing(false, animated: false)
+            dailyTaskTable.setEditing(false, animated: false)
         } else {
             sender.setTitle("Done", for: .normal)
-            taskTableView.setEditing(true, animated: false)
+            dailyTaskTable.setEditing(true, animated: false)
         }
     }
-    
-    @IBAction func clickTodayToDo(_ sender:Any) {
-        refreshPage()
-    }
-    
-    @IBAction func clickMonthToDo(_ sender:Any) {
-        
-    }
-    
+    //
     @IBAction func clickMyPage(_ sender:Any) {
         //Loading
         SystemManager.shared.openLoading(self)
@@ -245,9 +260,25 @@ extension MainViewController {
         }
         navigation.pushViewController(nextVC)
     }
-    
+    //
     @IBAction func deleteAllNoti(_ sender:Any) {
         SystemManager.shared.deleteAllPush()
+    }
+    //SegmentedControl
+    @IBAction func changeSegment(_ sender:UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 1:
+            //Month
+            monthView.isHidden = false
+            todayView.isHidden = true
+        default:
+            //Today
+            monthView.isHidden = true
+            todayView.isHidden = false
+        }
+        DispatchQueue.main.async {
+            self.loadTask()
+        }
     }
 }
 

@@ -1,16 +1,18 @@
 //
-//  TaskCell.swift
-//  dailytimetable
+//  MonthlyTaskCell.swift
+//  DailyToDoList
 //
-//  Created by 소하 on 2022/10/07.
+//  Created by 소하 on 2022/10/17.
 //
+
 
 import Foundation
 import UIKit
 
-class TaskCell: UITableViewCell {
-    @IBOutlet weak var labelTitle: UILabel!
-        
+class MonthlyTaskCell: UITableViewCell {
+    @IBOutlet weak var labelMonthlyTitle: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

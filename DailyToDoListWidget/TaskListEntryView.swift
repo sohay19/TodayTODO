@@ -28,8 +28,12 @@ struct TaskListEntryView: View {
     var body: some View {
         VStack(alignment: .leading) {
             let taskList = entry.taskList
-            ForEach(0..<taskList.count, id: \.self) { index in
-                TaskListView(task: taskList[index])
+            if taskList.count == 0 {
+                TaskListView(task: EachTask())
+            } else {
+                ForEach(0..<taskList.count, id: \.self) { index in
+                    TaskListView(task: taskList[index])
+                }
             }
         }
         .padding(.all)

@@ -210,4 +210,7 @@ extension TaskInfoViewController {
             sender.isSelected = true
         }
     }
+    @IBAction func changeDate(_ sender:UIDatePicker) {
+        presentedViewController?.dismiss(animated: false)
+    }
 }

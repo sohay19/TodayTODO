@@ -86,6 +86,9 @@
                                             <constraint firstAttribute="width" secondItem="Mf9-VB-kPO" secondAttribute="height" multiplier="3.5:1" id="lOZ-Sv-WQL"/>
                                         </constraints>
                                         <locale key="locale" localeIdentifier="ko_KR"/>
+                                        <connections>
+                                            <action selector="changeDate:" destination="Y6W-OH-hqX" eventType="valueChanged" id="qdi-Ix-Xa9"/>
+                                        </connections>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="반복" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99z-bK-ix5">
                                         <rect key="frame" x="94" y="133" width="26" height="18"/>

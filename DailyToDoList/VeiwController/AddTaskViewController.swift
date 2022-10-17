@@ -36,6 +36,7 @@ class AddTaskViewController: UIViewController {
     
     //
     var refreshTask:(()->Void)?
+    var currntDate:Date = Date()
     //
     private var repeatResult:RepeatResult?
     //키보드 관련
@@ -49,12 +50,14 @@ class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //
-        self.navigationItem.setHidesBackButton(true, animated: false)
+        //날짜 지정
+        pickDate.setDate(currntDate, animated: false)
         //기존 사이즈 저장
         resultViewSize = resultView.frame.size
         //기본세팅
@@ -255,6 +258,9 @@ extension AddTaskViewController {
     //
     @IBAction func changeTime(_ sender: UIDatePicker) {
         print(Utils.dateToTimeString(sender.date))
+    }
+    @IBAction func changeDate(_ sender:UIDatePicker) {
+        presentedViewController?.dismiss(animated: false)
     }
 }
 

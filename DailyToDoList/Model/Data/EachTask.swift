@@ -59,6 +59,7 @@ class EachTask : Object
     //Done or Not
     @Persisted
     var isDone:Bool
+    
             
     convenience init(taskDay:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int) {
         self.init()

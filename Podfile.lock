@@ -51,6 +51,7 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - FSCalendar (2.8.4)
   - GoogleAppMeasurement (10.0.0):
     - GoogleAppMeasurement/AdIdSupport (= 10.0.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
@@ -120,6 +121,7 @@ DEPENDENCIES:
   - FirebaseAuth (> 9.0.0)
   - FirebaseDatabase (> 9.0.0)
   - FirebaseMessaging (> 9.0.0)
+  - FSCalendar
   - GoogleSignIn (> 6.0.0)
   - RealmSwift (> 10.0.0)
 
@@ -133,6 +135,7 @@ SPEC REPOS:
     - FirebaseDatabase
     - FirebaseInstallations
     - FirebaseMessaging
+    - FSCalendar
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleSignIn
@@ -154,6 +157,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: b210f8a811d6eb80dc565d9570e8486af06e331b
   FirebaseInstallations: 7f1c9ae6bd9df6abe9c74124b38fa8740aba5df4
   FirebaseMessaging: 8916bf5edb1dbfac74665a181e4d1ab3a78a08a2
+  FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   GoogleAppMeasurement: 7e48a3249792ac35d6f18f107f63f199a7e9d0ce
   GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
   GoogleSignIn: 5651ce3a61e56ca864160e79b484cd9ed3f49b7a
@@ -166,6 +170,6 @@ SPEC CHECKSUMS:
   Realm: a00e93347b8d26d372c7a82f6c0b08d6536a21c8
   RealmSwift: fe09c29ca409f8f905fe4086f2a52936193f2e3d
 
-PODFILE CHECKSUM: 35fc00996e8c6169f1769d80066c405a897af7cd
+PODFILE CHECKSUM: 3508edc76f6973151255f7a536335cca5bd8f980
 
 COCOAPODS: 1.11.3
