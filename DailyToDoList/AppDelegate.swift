@@ -59,10 +59,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("APNS에 앱 등록 성공")
         Messaging.messaging().apnsToken = deviceToken
+        FirebaseManager.shared.sendToken("tmpToken")
     }
     //APNS 등록 실패 시
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("APNS에 앱 등록 실패")
+        FirebaseManager.shared.sendToken("tmpToken")
     }
     //데이터가 있는 원격 푸시
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -91,7 +93,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     }
 }
 
-//MARK: - 원격 푸시
+//MARK: - FCM
 extension AppDelegate : MessagingDelegate {
     //
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {

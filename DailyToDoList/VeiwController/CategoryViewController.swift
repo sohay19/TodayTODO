@@ -17,7 +17,6 @@ class CategoryViewController: UIViewController {
     //
     var btnColor:UIColorWell?
     //
-    var colorViewId = addTaskBoard+"ColorView"
     var colorController:ColorPickerViewController?
     
     override func viewDidLoad() {

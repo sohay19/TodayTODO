@@ -58,9 +58,7 @@
 		CFEB49FE28F13289008850DC /* DailyToDoListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49FD28F13289008850DC /* DailyToDoListUITestsLaunchTests.swift */; };
 		CFEB4A2A28F14B4C008850DC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4A2928F14B4C008850DC /* Login.storyboard */; };
 		CFEB4A2E28F14B68008850DC /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4A2D28F14B68008850DC /* Setting.storyboard */; };
-		CFEB4A3028F14B95008850DC /* AddTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4A2F28F14B95008850DC /* AddTask.storyboard */; };
 		CFEB4A3228F14BC7008850DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3128F14BC7008850DC /* LoginViewController.swift */; };
-		CFEB4A3428F14BD3008850DC /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3328F14BD3008850DC /* AddTaskViewController.swift */; };
 		CFEB4A3828F14BEF008850DC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3728F14BEF008850DC /* SettingViewController.swift */; };
 		CFEB4A3A28F14CA0008850DC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3928F14CA0008850DC /* Utils.swift */; };
 		CFEB4A3C28F14CB4008850DC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3B28F14CB4008850DC /* Enums.swift */; };
@@ -170,9 +168,7 @@
 		CFEB4A1128F133B3008850DC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		CFEB4A2928F14B4C008850DC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		CFEB4A2D28F14B68008850DC /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
-		CFEB4A2F28F14B95008850DC /* AddTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTask.storyboard; sourceTree = "<group>"; };
 		CFEB4A3128F14BC7008850DC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		CFEB4A3328F14BD3008850DC /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		CFEB4A3728F14BEF008850DC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CFEB4A3928F14CA0008850DC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		CFEB4A3B28F14CB4008850DC /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -361,7 +357,6 @@
 			children = (
 				CFEB49DE28F13287008850DC /* MainViewController.swift */,
 				CFEB4A3128F14BC7008850DC /* LoginViewController.swift */,
-				CFEB4A3328F14BD3008850DC /* AddTaskViewController.swift */,
 				CFEB4A3728F14BEF008850DC /* SettingViewController.swift */,
 				CFEB4A6328F16243008850DC /* RepeatViewController.swift */,
 				CFEB4A6D28F16B27008850DC /* PickerViewController.swift */,
@@ -421,7 +416,6 @@
 				CFEB4A2928F14B4C008850DC /* Login.storyboard */,
 				CFEB49E028F13287008850DC /* Main.storyboard */,
 				CFEB4A2D28F14B68008850DC /* Setting.storyboard */,
-				CFEB4A2F28F14B95008850DC /* AddTask.storyboard */,
 				CFEB4A6128F16234008850DC /* Repeat.storyboard */,
 				CFEB4A6528F165C2008850DC /* Category.storyboard */,
 				CFEB4A6B28F16B15008850DC /* Picker.storyboard */,
@@ -594,7 +588,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFEB4A6C28F16B15008850DC /* Picker.storyboard in Resources */,
-				CFEB4A3028F14B95008850DC /* AddTask.storyboard in Resources */,
 				CFEB4A2A28F14B4C008850DC /* Login.storyboard in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
 				CFEB49E728F13288008850DC /* LaunchScreen.storyboard in Resources */,
@@ -803,7 +796,6 @@
 				CF487EA928F1B71900498451 /* TaskListEntryView.swift in Sources */,
 				CFEB4A6028F15621008850DC /* CustomNavigationController.swift in Sources */,
 				CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */,
-				CFEB4A3428F14BD3008850DC /* AddTaskViewController.swift in Sources */,
 				CF75960228FD1F1B0046FDC1 /* MainExtension.swift in Sources */,
 				CFB6EE0728F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
 				CFEB4A3828F14BEF008850DC /* SettingViewController.swift in Sources */,

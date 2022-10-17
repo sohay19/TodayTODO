@@ -11,10 +11,18 @@ import FirebaseCore
 import FirebaseAuth
 import CryptoKit
 
+struct Response : Codable {
+    let success:Bool
+    let result:String
+    let message:String
+}
 
 class FirebaseManager {
-    private var database = Database.database().reference()
+    static let shared = FirebaseManager()
+    init() { }
     
+    private var database = Database.database().reference()
+
     private var currentNonce = ""
     var authUser:User? {
         get {
@@ -23,6 +31,78 @@ class FirebaseManager {
             }
             return auth
         }
+    }
+}
+
+//MARK: - REST API
+extension FirebaseManager {
+    //
+    func sendToken(_ token:String) {
+        requestGet(url: "http://localhost:8080/token/send") { isSuccess, data in
+            print("data = \(data)")
+        }
+    }
+    //GET
+    private func requestGet(url: String, completion: @escaping (Bool, String) -> Void) {
+        guard let url = URL(string: url) else {
+            print("URL Error")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                print("GET Error")
+                return
+            }
+            guard let data = data else {
+                print("data is nil")
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode else {
+                print("request is failed")
+                return
+            }
+            guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
+                print("JSON Parsing Error")
+                return
+            }
+            completion(true, output.result)
+        }.resume()
+    }
+    //POST
+    private func requestPost(url: String, method:String, param:[String: String], completion: @escaping (Bool, String) -> Void) {
+        let sendMsg = try! JSONSerialization.data(withJSONObject: param, options: [])
+        
+        guard let url = URL(string: url) else {
+            print("URL Error")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = method
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = sendMsg
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                print("\(method) Error")
+                return
+            }
+            guard let data = data else {
+                print("data is nil")
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode else {
+                print("request is failed")
+                return
+            }
+            guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
+                print("JSON Parsing Error")
+                return
+            }
+            completion(true, output.result)
+        }.resume()
     }
 }
 

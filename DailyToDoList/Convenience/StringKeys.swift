@@ -20,7 +20,6 @@ let BadgeCountKey = "BadgeCount"
 //MARK: - Board
 let mainBoard = "Main"
 let loginBoard = "Login"
-let addTaskBoard = "AddTask"
 let repeatBoard = "Repeat"
 let pickerBoard = "Picker"
 let categoryBoard = "Category"
