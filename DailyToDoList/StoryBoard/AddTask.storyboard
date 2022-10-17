@@ -121,7 +121,7 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1bQ-NI-GHG" userLabel="RepeatSwitch">
                                                 <rect key="frame" x="144" y="89.5" width="51" height="31"/>
                                                 <connections>
-                                                    <action selector="toggleRepeat:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Hwg-KJ-VrX"/>
+                                                    <action selector="toggleRepeat:" destination="Y6W-OH-hqX" eventType="valueChanged" id="l5k-T3-7RV"/>
                                                 </connections>
                                             </switch>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4n1-Ut-BiP" userLabel="ResultView">
@@ -224,7 +224,7 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HOV-kg-03r" userLabel="AlarmSwitch">
                                                 <rect key="frame" x="144" y="215.5" width="51" height="31"/>
                                                 <connections>
-                                                    <action selector="toggleAlarms:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Ihu-cD-5fV"/>
+                                                    <action selector="toggleAlarms:" destination="Y6W-OH-hqX" eventType="valueChanged" id="hu6-Gn-kx3"/>
                                                 </connections>
                                             </switch>
                                             <datePicker autoresizesSubviews="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="CAa-9m-ckw" userLabel="pickTime">

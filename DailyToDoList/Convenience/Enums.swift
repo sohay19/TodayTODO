@@ -47,3 +47,9 @@ enum DataErrorType:Error {
     case DeletingError
     case NoRecords
 }
+
+enum TaskMode:Int {
+    case LOOK = 0
+    case ADD = 1
+    case MODIFY = 2
+}

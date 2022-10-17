@@ -63,7 +63,7 @@ extension RepeatViewController {
     func setDefaultUI() {
         //기본세팅
         switchEndDate.isOn = false
-        pickEndDate.isHidden = true
+        pickEndDate.isEnabled = true
         btnPullMonthOfWeek.isEnabled = false
         contorllWeekDay(false)
     }
@@ -119,7 +119,7 @@ extension RepeatViewController {
 //MARK: - Switch Event
 extension RepeatViewController {
     @IBAction func toggleEndDate(_ sender:UISwitch) {
-        pickEndDate.isHidden = !sender.isOn
+        pickEndDate.isEnabled = !sender.isOn
     }
 }
 
@@ -207,6 +207,7 @@ extension RepeatViewController {
     }
     //
     @IBAction func clickBackground(_ sender:Any) {
+        clickCancel?()
         self.dismiss(animated: true)
     }
 }

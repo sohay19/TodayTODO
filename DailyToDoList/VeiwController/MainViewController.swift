@@ -85,7 +85,6 @@ extension MainViewController {
 
 //MARK: - Task
 extension MainViewController {
-    
     //Task 세팅
     func loadTask() {
         switch segmentedController.selectedSegmentIndex {
@@ -242,15 +241,16 @@ extension MainViewController {
         //Loading
         SystemManager.shared.openLoading(self)
         //
-        let board = UIStoryboard(name: addTaskBoard, bundle: nil)
-        guard let nextVC = board.instantiateViewController(withIdentifier: addTaskBoard) as? AddTaskViewController else { return }
-        guard let navigation = self.navigationController as? CustomNavigationController else {
-            return
-        }
+        let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
+        guard let nextVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
+        
+        nextVC.currentMode = .ADD
         nextVC.refreshTask = loadTask
         nextVC.currntDate = currntDate
+        nextVC.modalTransitionStyle = .crossDissolve
+        nextVC.modalPresentationStyle = .overCurrentContext
         
-        navigation.pushViewController(nextVC)
+        present(nextVC, animated: true)
     }
     //
     @IBAction func changeDailyTaskEditMode(_ sender:UIButton) {
