@@ -33,7 +33,7 @@ extension SystemManager {
         
         backgroundView.frame = CGRect(x: 0, y: 0, width: topVC.view.frame.maxX, height: topVC.view.frame.maxY)
         backgroundView.backgroundColor = .white
-        backgroundView.alpha = 0.15
+        backgroundView.alpha = 0.3
         
         indicator.style = .large
         indicator.center = topVC.view.center

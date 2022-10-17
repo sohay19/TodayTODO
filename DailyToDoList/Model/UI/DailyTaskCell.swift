@@ -14,9 +14,10 @@ class DailyTaskCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        initCell()
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    func initCell() {
+        self.selectionStyle = .default
     }
 }

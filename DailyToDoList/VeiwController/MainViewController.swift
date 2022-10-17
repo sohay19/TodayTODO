@@ -68,6 +68,19 @@ extension MainViewController {
     func initUI() {
         monthView.isHidden = true
     }
+    
+    func changeSegment() {
+        switch segmentedController.selectedSegmentIndex {
+        case 1:
+            //Month
+            monthView.isHidden = false
+            todayView.isHidden = true
+        default:
+            //Today
+            monthView.isHidden = true
+            todayView.isHidden = false
+        }
+    }
 }
 
 //MARK: - Task
@@ -143,6 +156,7 @@ extension MainViewController {
             dailyTaskTable.reloadData()
             dailyTaskTable.flashScrollIndicators()
         }
+        changeSegment()
     }
     //
     func taskIsDone(_ isDone:Bool, _ indexPath:IndexPath) {
@@ -266,16 +280,7 @@ extension MainViewController {
     }
     //SegmentedControl
     @IBAction func changeSegment(_ sender:UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 1:
-            //Month
-            monthView.isHidden = false
-            todayView.isHidden = true
-        default:
-            //Today
-            monthView.isHidden = true
-            todayView.isHidden = false
-        }
+        changeSegment()
         DispatchQueue.main.async {
             self.loadTask()
         }

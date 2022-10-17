@@ -205,4 +205,8 @@ extension RepeatViewController {
             return
         }
     }
+    //
+    @IBAction func clickBackground(_ sender:Any) {
+        self.dismiss(animated: true)
+    }
 }

@@ -69,17 +69,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T45-og-L7Z">
-                                        <rect key="frame" x="18" y="70" width="378" height="629"/>
+                                        <rect key="frame" x="0.0" y="70" width="414" height="629"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 등록된 TODO가 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gt6-zW-da3" userLabel="Message">
-                                            <rect key="frame" x="0.0" y="0.0" width="378" height="18"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" id="zFb-mh-b0M" userLabel="BtnAdd">
-                                            <rect key="frame" x="0.0" y="128.5" width="378" height="90"/>
+                                            <rect key="frame" x="0.0" y="128.5" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <color key="tintColor" systemColor="labelColor"/>
@@ -94,10 +94,10 @@
                                         </button>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="DailyTaskCell" id="0Fo-Hl-oys" customClass="DailyTaskCell" customModule="DailyToDoList" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="62.5" width="378" height="43.5"/>
+                                                <rect key="frame" x="0.0" y="62.5" width="414" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Fo-Hl-oys" id="9fX-e1-206">
-                                                    <rect key="frame" x="0.0" y="0.0" width="337.5" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="373.5" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEV-T2-fc5">
@@ -124,15 +124,15 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="qhK-e7-NYl" firstAttribute="leading" secondItem="T45-og-L7Z" secondAttribute="leading" id="EST-oL-kbD"/>
+                                    <constraint firstItem="qhK-e7-NYl" firstAttribute="leading" secondItem="T45-og-L7Z" secondAttribute="leading" constant="18" id="EST-oL-kbD"/>
                                     <constraint firstItem="T45-og-L7Z" firstAttribute="top" secondItem="qhK-e7-NYl" secondAttribute="bottom" constant="30" id="JwV-bO-jBy"/>
                                     <constraint firstItem="S02-VU-gCk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="18" id="Ns0-IB-2mr"/>
                                     <constraint firstAttribute="bottom" secondItem="T45-og-L7Z" secondAttribute="bottom" constant="18" id="Pe2-Mp-IBM"/>
                                     <constraint firstAttribute="trailing" secondItem="S02-VU-gCk" secondAttribute="trailing" constant="18" id="T8T-Ms-AvF"/>
                                     <constraint firstItem="qhK-e7-NYl" firstAttribute="top" secondItem="fcp-ST-NiN" secondAttribute="top" constant="18" id="aSq-NM-qle"/>
-                                    <constraint firstAttribute="trailing" secondItem="T45-og-L7Z" secondAttribute="trailing" constant="18" id="p4n-uv-S1i"/>
+                                    <constraint firstAttribute="trailing" secondItem="T45-og-L7Z" secondAttribute="trailing" id="p4n-uv-S1i"/>
                                     <constraint firstItem="S02-VU-gCk" firstAttribute="centerY" secondItem="qhK-e7-NYl" secondAttribute="centerY" id="pmE-t9-4hR"/>
-                                    <constraint firstItem="T45-og-L7Z" firstAttribute="leading" secondItem="fcp-ST-NiN" secondAttribute="leading" constant="18" id="rkp-TE-SD6"/>
+                                    <constraint firstItem="T45-og-L7Z" firstAttribute="leading" secondItem="fcp-ST-NiN" secondAttribute="leading" id="rkp-TE-SD6"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KER-2I-O4L" userLabel="MonthView">

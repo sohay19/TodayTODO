@@ -245,15 +245,22 @@ extension AddTaskViewController {
         DataManager.shared.addTaskData(data)
         //
         DispatchQueue.main.async {
-            self.refreshTask?()
+            guard let refeshTask = self.refreshTask else {
+                return
+            }
             let navigation = self.navigationController as! CustomNavigationController
-            navigation.popViewController()
+            navigation.popViewController(complete: refeshTask)
         }
     }
     //
     @IBAction func clickCancel(_ sender: Any) {
-        let navigation = self.navigationController as! CustomNavigationController
-        navigation.popViewController()
+        DispatchQueue.main.async {
+            guard let refeshTask = self.refreshTask else {
+                return
+            }
+            let navigation = self.navigationController as! CustomNavigationController
+            navigation.popViewController(complete: refeshTask)
+        }
     }
     //
     @IBAction func changeTime(_ sender: UIDatePicker) {

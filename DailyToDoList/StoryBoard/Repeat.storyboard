@@ -16,9 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.14999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CfC-sz-25t" userLabel="Background">
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CfC-sz-25t" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O07-pc-pDX">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="clickBackground:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nNx-om-Eiu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="O07-pc-pDX" firstAttribute="top" secondItem="CfC-sz-25t" secondAttribute="top" id="0ML-KM-CUf"/>
+                                    <constraint firstItem="O07-pc-pDX" firstAttribute="leading" secondItem="CfC-sz-25t" secondAttribute="leading" id="3aq-Yy-EYm"/>
+                                    <constraint firstAttribute="trailing" secondItem="O07-pc-pDX" secondAttribute="trailing" id="Tn1-za-Wd0"/>
+                                    <constraint firstAttribute="bottom" secondItem="O07-pc-pDX" secondAttribute="bottom" id="qgi-Y4-rgD"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7J-km-Fae" userLabel="PopView">
                                 <rect key="frame" x="34.5" y="273" width="345" height="360"/>
@@ -69,6 +85,7 @@
                                         <locale key="locale" localeIdentifier="ko_KR"/>
                                         <connections>
                                             <action selector="changeValueEndDate" destination="Y6W-OH-hqX" eventType="valueChanged" id="Q5V-yW-7h5"/>
+                                            <action selector="changeValueEndDate:" destination="Y6W-OH-hqX" eventType="valueChanged" id="w7B-R9-pR3"/>
                                         </connections>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주 선택" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kt7-lZ-8rc" userLabel="RepeatWeek">
@@ -335,7 +352,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CfC-sz-25t" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="5Fj-AU-LpW"/>
                             <constraint firstAttribute="trailing" secondItem="CfC-sz-25t" secondAttribute="trailing" id="7Cc-pA-6zg"/>

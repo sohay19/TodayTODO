@@ -92,14 +92,14 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     //cell 클릭 Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
-        guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController,
-              let navigation = self.navigationController as? CustomNavigationController else { return }
+        guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
+        tableView.deselectRow(at: indexPath, animated: true)
         
         taskInfoVC.taskData = taskList[indexPath.row]
         taskInfoVC.modalTransitionStyle = .crossDissolve
         taskInfoVC.modalPresentationStyle = .overCurrentContext
         
-        navigation.pushViewController(taskInfoVC)
+        present(taskInfoVC, animated: true)
     }
 }
 

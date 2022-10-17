@@ -213,4 +213,8 @@ extension TaskInfoViewController {
     @IBAction func changeDate(_ sender:UIDatePicker) {
         presentedViewController?.dismiss(animated: false)
     }
+    //
+    @IBAction func clickBackground(_ sender:Any) {
+        self.dismiss(animated: true)
+    }
 }
