@@ -38,7 +38,7 @@ class FirebaseManager {
 extension FirebaseManager {
     //
     func sendToken(_ token:String) {
-        requestGet(url: "http://localhost:8080/token/send") { isSuccess, data in
+        requestGet(url: "http://ec2-15-164-95-142.ap-northeast-2.compute.amazonaws.com:8080/token/send") { isSuccess, data in
             print("data = \(data)")
         }
     }
