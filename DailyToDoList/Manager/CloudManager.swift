@@ -11,7 +11,6 @@ import UIKit
 import SwiftUI
 
 class CloudManager {
-    let realmManager = RealmManager()
     private let fileManager = FileManager.default
     private let defaultDir:URL? = FileManager.default.url(forUbiquityContainerIdentifier: nil)
     private var backupDir:URL? {
@@ -20,12 +19,13 @@ class CloudManager {
         }
         return defaultDir.appendingPathComponent("Realm", isDirectory: true)
     }
-    
+    var realmUrl:URL?
     var labelDate:UILabel?
 }
 
-//MARK: - Func
+//MARK: - Display
 extension CloudManager {
+    //
     func updateDate(_ label:UILabel) {
         labelDate = label
         label.text = fileDate()
@@ -51,9 +51,13 @@ extension CloudManager {
         }
         return "마지막 백업날짜: " + recentlyDir
     }
+}
+
+//MARK: - Backup, Load
+extension CloudManager {
     //백업
     func backUpFile(_ vc:UIViewController) {
-        guard let originRealm = realmManager.realmUrl else {
+        guard let originRealm = realmUrl else {
             print("림 url 없음")
             return
         }
@@ -71,7 +75,7 @@ extension CloudManager {
     }
     //최신파일 로드
     func loadBackupFile(_ vc:UIViewController) {
-        guard let originRealm = realmManager.realmUrl, let backupDir = backupDir else {
+        guard let originRealm = realmUrl, let backupDir = backupDir else {
             return
         }
         PopupManager.shared.openYesOrNo(vc, title: "백업파일 로드", msg: "가장 최신 파일로 로드하시겠습니까?\n(기존에 파일이 있던 경우 덮어쓰기 됩니다.)", completeYes: { _ in
@@ -81,25 +85,12 @@ extension CloudManager {
             self.copyToOriginDir(vc, sUrl: backupDir.appendingPathComponent(list.first!), dUrl: originRealm.deletingLastPathComponent())
         })
     }
-    
-    func deleteOriginFile() {
-        guard let originRealm = realmManager.realmUrl else {
-            return
-        }
-        
-        fileManager.deleteDir(originRealm, nil)
-    }
-    
+    //백업 파일 삭제
     func deleteBackupFile() {
         guard let backupDir = backupDir else {
             return
         }
         fileManager.deleteDir(backupDir, nil)
-    }
-    
-    func deleteFileAll() {
-        deleteOriginFile()
-        deleteBackupFile()
     }
 }
 

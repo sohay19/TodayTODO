@@ -24,8 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
-        let rootBoard = UIStoryboard(name: loginBoard, bundle: nil)
-        guard let loginVC = rootBoard.instantiateViewController(withIdentifier: loginBoard) as? LoginViewController else { return }
+        let rootBoard = UIStoryboard(name: mainBoard, bundle: nil)
+        guard let loginVC = rootBoard.instantiateViewController(withIdentifier: mainBoard) as? MainViewController else { return }
         let navigationController = CustomNavigationController(rootViewController: loginVC)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

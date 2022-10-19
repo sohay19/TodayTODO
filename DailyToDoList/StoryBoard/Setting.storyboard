@@ -16,52 +16,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nick" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPB-Eq-NyU">
-                                <rect key="frame" x="30" y="139" width="34" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7PC-Kg-AbU">
-                                <rect key="frame" x="328" y="248" width="56" height="31"/>
+                                <rect key="frame" x="328" y="255.5" width="56" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Load"/>
                                 <connections>
                                     <action selector="loadData:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Yjq-Vd-IwW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ip-Oy-GLp">
-                                <rect key="frame" x="326" y="752" width="70" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Logout"/>
-                                <connections>
-                                    <action selector="clickLogout:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="udc-1Q-Sxd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibN-DS-Vey">
-                                <rect key="frame" x="330" y="801" width="66" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Delete"/>
-                                <connections>
-                                    <action selector="deleteAccount:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="DRa-BX-DZO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZn-ar-GxV">
-                                <rect key="frame" x="315" y="134" width="69" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Modify"/>
-                                <connections>
-                                    <action selector="ModifyNickName:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PIl-dI-RZZ"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="backupDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyi-LU-gpQ">
-                                <rect key="frame" x="291.5" y="178" width="92.5" height="21"/>
+                                <rect key="frame" x="240" y="175" width="92.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qC-5j-Qbx">
+                                <rect key="frame" x="228" y="295.5" width="156" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="backup 파일 모두 삭제"/>
+                                <connections>
+                                    <action selector="removeBackupFile:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="anv-tK-P1w"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NO2-3G-T8X">
+                                <rect key="frame" x="311" y="215.5" width="73" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Backup"/>
+                                <connections>
+                                    <action selector="backData:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3Z3-Pu-MHO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdC-94-zXN">
+                                <rect key="frame" x="200" y="356.5" width="184" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Delete origin/backup File"/>
+                                <connections>
+                                    <action selector="removeAllFile:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ThM-Yd-Hja"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGZ-qB-EjY">
-                                <rect key="frame" x="250.5" y="202.5" width="42.5" height="42.5"/>
+                                <rect key="frame" x="341.5" y="164" width="42.5" height="42.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="JGZ-qB-EjY" secondAttribute="height" multiplier="1:1" id="LZz-Vi-M8B"/>
                                 </constraints>
@@ -71,49 +65,26 @@
                                     <action selector="clickRefresh:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4Q8-sH-aOl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qC-5j-Qbx">
-                                <rect key="frame" x="52" y="478" width="156" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="backup 파일 모두 삭제"/>
-                                <connections>
-                                    <action selector="removeBackupFile:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="anv-tK-P1w"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NO2-3G-T8X">
-                                <rect key="frame" x="311" y="208" width="73" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Backup"/>
-                                <connections>
-                                    <action selector="backData:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3Z3-Pu-MHO"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5qC-5j-Qbx" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="0oh-BW-gKW"/>
-                            <constraint firstItem="8ip-Oy-GLp" firstAttribute="trailing" secondItem="ibN-DS-Vey" secondAttribute="trailing" id="3IN-4h-QAh"/>
-                            <constraint firstItem="NO2-3G-T8X" firstAttribute="leading" secondItem="JGZ-qB-EjY" secondAttribute="trailing" constant="18" id="3YL-s9-zPa"/>
-                            <constraint firstItem="7PC-Kg-AbU" firstAttribute="trailing" secondItem="pZn-ar-GxV" secondAttribute="trailing" id="4Jy-0n-3yU"/>
-                            <constraint firstItem="pZn-ar-GxV" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="90" id="57M-y1-Yw2"/>
-                            <constraint firstItem="Yyi-LU-gpQ" firstAttribute="trailing" secondItem="pZn-ar-GxV" secondAttribute="trailing" id="BGZ-lC-Erx"/>
-                            <constraint firstItem="NO2-3G-T8X" firstAttribute="top" secondItem="Yyi-LU-gpQ" secondAttribute="bottom" constant="9" id="DOQ-Td-hH2"/>
-                            <constraint firstItem="5qC-5j-Qbx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="96" id="Fp2-42-e7N"/>
-                            <constraint firstItem="JGZ-qB-EjY" firstAttribute="centerY" secondItem="NO2-3G-T8X" secondAttribute="centerY" id="IuN-PM-i7c"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ibN-DS-Vey" secondAttribute="trailing" constant="18" id="NcT-5h-dvo"/>
-                            <constraint firstItem="ibN-DS-Vey" firstAttribute="top" secondItem="8ip-Oy-GLp" secondAttribute="bottom" constant="18" id="OF9-aI-dKb"/>
-                            <constraint firstItem="NO2-3G-T8X" firstAttribute="trailing" secondItem="Yyi-LU-gpQ" secondAttribute="trailing" id="PtD-kC-3UE"/>
-                            <constraint firstItem="Yyi-LU-gpQ" firstAttribute="top" secondItem="MPB-Eq-NyU" secondAttribute="bottom" constant="18" id="QWk-4R-lD1"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pZn-ar-GxV" secondAttribute="trailing" constant="30" id="d6S-ja-AcO"/>
+                            <constraint firstItem="NO2-3G-T8X" firstAttribute="trailing" secondItem="JGZ-qB-EjY" secondAttribute="trailing" id="34A-5u-wRG"/>
+                            <constraint firstItem="NO2-3G-T8X" firstAttribute="top" secondItem="JGZ-qB-EjY" secondAttribute="bottom" constant="9" id="4aF-Pn-GRI"/>
+                            <constraint firstItem="7PC-Kg-AbU" firstAttribute="trailing" secondItem="NO2-3G-T8X" secondAttribute="trailing" id="8iI-Ca-qph"/>
+                            <constraint firstItem="AdC-94-zXN" firstAttribute="top" secondItem="5qC-5j-Qbx" secondAttribute="bottom" constant="30" id="ChF-JN-njN"/>
+                            <constraint firstItem="5qC-5j-Qbx" firstAttribute="top" secondItem="7PC-Kg-AbU" secondAttribute="bottom" constant="9" id="FLo-Zt-Pvp"/>
+                            <constraint firstItem="JGZ-qB-EjY" firstAttribute="leading" secondItem="Yyi-LU-gpQ" secondAttribute="trailing" constant="9" id="Yeg-co-ZMN"/>
+                            <constraint firstItem="AdC-94-zXN" firstAttribute="trailing" secondItem="5qC-5j-Qbx" secondAttribute="trailing" id="b0D-oR-lvR"/>
+                            <constraint firstItem="Yyi-LU-gpQ" firstAttribute="centerY" secondItem="JGZ-qB-EjY" secondAttribute="centerY" id="h47-ri-ND8"/>
                             <constraint firstItem="7PC-Kg-AbU" firstAttribute="top" secondItem="NO2-3G-T8X" secondAttribute="bottom" constant="9" id="hwK-x8-P72"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ibN-DS-Vey" secondAttribute="bottom" constant="30" id="iZC-Ql-SMn"/>
-                            <constraint firstItem="MPB-Eq-NyU" firstAttribute="centerY" secondItem="pZn-ar-GxV" secondAttribute="centerY" id="kNt-ga-Hpx"/>
-                            <constraint firstItem="MPB-Eq-NyU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="mPf-HL-ASK"/>
+                            <constraint firstItem="JGZ-qB-EjY" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="120" id="k7g-JN-eYa"/>
+                            <constraint firstItem="5qC-5j-Qbx" firstAttribute="trailing" secondItem="7PC-Kg-AbU" secondAttribute="trailing" id="rN5-Sy-blM"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JGZ-qB-EjY" secondAttribute="trailing" constant="30" id="vQS-cY-fQ8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="labelBackupDate" destination="Yyi-LU-gpQ" id="gaf-63-5sS"/>
-                        <outlet property="labelNickName" destination="MPB-Eq-NyU" id="NzS-sb-sPz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -13,6 +13,7 @@ target 'DailyToDoList' do
   pod 'GoogleSignIn' , '> 6.0.0'
   pod 'RealmSwift' , '> 10.0.0'
   pod 'FSCalendar' , '> 2.0.0'
+  pod  'SideMenu'
 
   target 'DailyToDoListTests' do
     inherit! :search_paths

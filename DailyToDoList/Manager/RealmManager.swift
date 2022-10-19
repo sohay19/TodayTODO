@@ -15,19 +15,17 @@ import WidgetKit
 class RealmManager {
     private let fileManager = FileManager.default
     private let realmDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("Realm_DailyToDoList", isDirectory: true)
+    
     private var realm:Realm?
-    
-    var realmUrl:URL? {
-        guard let realm = realm else {
-            return nil
-        }
-        return realm.configuration.fileURL!
-    }
-    
-    func openRealm() {
+}
+
+//MARK: - Main
+extension RealmManager {
+    func openRealm() -> URL? {
+        //
         guard let realmDir = realmDir else {
             print("realmDir 없음")
-            return
+            return nil
         }
         if !fileManager.fileExists(atPath: realmDir.path) {
             fileManager.createDir(realmDir) { error in
@@ -38,14 +36,25 @@ class RealmManager {
             let path = fileManager.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("Realm_DailyToDoList", isDirectory: true).appendingPathComponent("DailyToDoList.realm")
             let config = Realm.Configuration(fileURL: path)
             realm = try Realm(configuration: config)
-            print("realUrl = \(realmUrl!)")
         } catch let error {
             print("Realm Open Error = \(error)")
         }
+        //
+        guard let realm = realm else {
+            return nil
+        }
+        return realm.configuration.fileURL!
+    }
+    //
+    func deleteOriginFile() {
+        guard let realmDir = realmDir else {
+            return
+        }
+        fileManager.deleteDir(realmDir, nil)
     }
 }
 
-//MARK: - add/update/delete
+//MARK: - Task add/update/delete
 extension RealmManager {
     func addTaskData(_ data:EachTask) {
         guard let realm = realm else {
@@ -199,7 +208,7 @@ extension RealmManager {
     }
     
     func getTaskDataForMonth(date:Date) -> LazyFilterSequence<Results<EachTask>>? {
-        guard let realm = self.realm else {
+        guard let realm = realm else {
             print("realm is nil")
             return nil
         }

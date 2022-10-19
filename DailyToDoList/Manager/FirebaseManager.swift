@@ -19,10 +19,9 @@ struct Response : Codable {
 
 class FirebaseManager {
     static let shared = FirebaseManager()
-    init() { }
+    private init() { }
     
     private var database = Database.database().reference()
-
     private var currentNonce = ""
     var authUser:User? {
         get {
@@ -37,10 +36,13 @@ class FirebaseManager {
 //MARK: - REST API
 extension FirebaseManager {
     //
-    func sendToken(_ token:String) {
-        requestGet(url: "http://ec2-15-164-95-142.ap-northeast-2.compute.amazonaws.com:8080/token/send") { isSuccess, data in
-            print("data = \(data)")
+    func sendToken(_ data:[String:String]) {
+        guard let uuid = data["uuid"], let token = data["token"] else {
+            return
         }
+        requestPost(url: "http://3.34.15.54:8080/token/send", param: [uuid:token], completion: { isSuccess, data in
+            print("isSuccess is \(isSuccess)")
+        })
     }
     //GET
     private func requestGet(url: String, completion: @escaping (Bool, String) -> Void) {
@@ -72,7 +74,7 @@ extension FirebaseManager {
         }.resume()
     }
     //POST
-    private func requestPost(url: String, method:String, param:[String: String], completion: @escaping (Bool, String) -> Void) {
+    private func requestPost(url: String, param:[String: String], completion: @escaping (Bool, String) -> Void) {
         let sendMsg = try! JSONSerialization.data(withJSONObject: param, options: [])
         
         guard let url = URL(string: url) else {
@@ -80,13 +82,13 @@ extension FirebaseManager {
             return
         }
         var request = URLRequest(url: url)
-        request.httpMethod = method
+        request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = sendMsg
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
-                print("\(method) Error")
+                print("POST Error")
                 return
             }
             guard let data = data else {
@@ -105,117 +107,6 @@ extension FirebaseManager {
         }.resume()
     }
 }
-
-//MARK: - 데이터 관리 함수
-extension FirebaseManager {
-    func addData(_ data:UserData) {
-        let value = [UserDataType.Email.rawValue:data.email, UserDataType.Name.rawValue:data.name, UserDataType.NickName.rawValue:data.nickName, UserDataType.LoginType.rawValue:data.loginType]
-        database.child(UserDataType.None.rawValue).child(data.uid).setValue(value)
-        //uuid 중복확인을 위해
-        database.child(UserDataType.Uid.rawValue).child(data.uid).setValue(data.loginType)
-        //닉네임 중복확인을 위해
-        database.child(UserDataType.NickName.rawValue).child(data.nickName).setValue(data.uid)
-    }
-    
-    func updateData(uid: String, type:UserDataType, data:String) {
-        switch type {
-        case .NickName:
-            //userdata 변경
-            database.child(UserDataType.None.rawValue).child(uid).child(type.rawValue).setValue(data)
-            //기존 닉네임 삭제 후, 추가
-            let userData = DataManager.shared.loadUserData()
-            let oldNick = userData.nickName
-            database.child(UserDataType.NickName.rawValue).child(oldNick).removeValue()
-            database.child(UserDataType.NickName.rawValue).child(data).setValue(uid)
-        default:
-            return
-        }
-        
-    }
-    
-    func removeData() {
-        let userData = DataManager.shared.loadUserData()
-        
-        database.child(UserDataType.None.rawValue).child(userData.uid).removeValue()
-        database.child(UserDataType.Uid.rawValue).child(userData.uid).removeValue()
-        database.child(UserDataType.NickName.rawValue).child(userData.nickName).removeValue()
-    }
-    
-    func findData(_ complete: @escaping (UserData) -> Void) {
-        guard let auth = Auth.auth().currentUser else {
-            return
-        }
-        
-        database.child(UserDataType.None.rawValue).child(auth.uid).observeSingleEvent(of: .value) { snapshot in
-            let uid = auth.uid
-            var email = ""
-            var name = ""
-            var nickName = ""
-            var loginType = ""
-            
-            for child in snapshot.children {
-                let dataSnapshot = child as? DataSnapshot
-                let key = dataSnapshot?.key as? String ?? ""
-                let value = dataSnapshot?.value as? String ?? ""
-                
-                switch key {
-                case UserDataType.Email.rawValue:
-                    email = value
-                case UserDataType.Name.rawValue:
-                    name = value
-                case UserDataType.NickName.rawValue:
-                    nickName = value
-                case UserDataType.LoginType.rawValue:
-                    loginType = value
-                default:
-                    break
-                }
-            }
-            let userData = UserData(uid: uid, email: email, name: name, nick: nickName, type: loginType)
-            complete(userData)
-        }
-    }
-}
-
-//MARK: - 기타 기능
-extension FirebaseManager {    
-    func checkNick(_ nick:String, compelete: @escaping (Bool) -> Void) {
-        database.child(UserDataType.NickName.rawValue).child(nick).observeSingleEvent(of: .value) { snapshot in
-            let value = snapshot.value as? String ?? ""
-            var isExist = false
-            
-            if !value.isEmpty {
-                isExist = true
-            }
-            compelete(isExist)
-        }
-    }
-    
-    func checkUID(_ uid:String, compelete: @escaping (Bool) -> Void) {
-        database.child(UserDataType.Uid.rawValue).child(uid).observeSingleEvent(of: .value) { snapshot in
-            let value = snapshot.value as? String ?? ""
-            var isExist = false
-            
-            if let _ = LoginType(rawValue: value) {
-                isExist = true
-            }
-            compelete(isExist)
-        }
-    }
-    
-    func deleteAccount(_ vc:UIViewController) {
-        //데이터 지우기
-        self.removeData()
-        //탈퇴
-        let user = Auth.auth().currentUser
-        user?.delete { error in
-            if let _ = error {
-                PopupManager.shared.openOkAlert(vc, title: "알림", msg: "탈퇴 중 문제가 발생했습니다.\n다시 시도해주세요")
-            }
-        }
-    }
-}
-
 //MARK: - Apple Login을 위한 추가 함수
 extension FirebaseManager {
     func shaNonce() -> String {

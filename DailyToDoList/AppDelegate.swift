@@ -13,9 +13,6 @@ import FirebaseMessaging
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -29,17 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         //원격 푸시 설정
         Messaging.messaging().delegate = self
-        Messaging.messaging().token { token, error in
-            if error != nil {
-                print("messaging token 등록 Error :: \(String(describing: error))")
-            }
-        }
-        
         return true
     }
 
     // MARK: UISceneSession Lifecycle
-
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
@@ -59,12 +49,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("APNS에 앱 등록 성공")
         Messaging.messaging().apnsToken = deviceToken
-        FirebaseManager.shared.sendToken("tmpToken")
+        Messaging.messaging().token { token, error in
+            if error != nil {
+                print("messaging token 등록 Error :: \(String(describing: error))")
+                return
+            }
+        }
     }
     //APNS 등록 실패 시
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("APNS에 앱 등록 실패")
-        FirebaseManager.shared.sendToken("tmpToken")
+        #if !targetEnvironment(simulator)
+        DispatchQueue.main.async {
+            PopupManager.shared.openOkAlert(application.topViewController()!, title: "알림", msg: "앱을 다시 실행해주세요.") { _ in
+                UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    exit(0)
+                }
+            }
+        }
+        #endif
     }
     //데이터가 있는 원격 푸시
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -97,13 +101,18 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 extension AppDelegate : MessagingDelegate {
     //
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        guard let fcmToken = fcmToken else {
+            print("FCM token is nil")
+            return
+        }
         // FCM test 가능 토큰
-        let dataDict: [String: String] = ["token": fcmToken ?? ""]
+        let dataDict: [String: String] = ["token": fcmToken]
         NotificationCenter.default.post(
             name: Notification.Name("FCMToken"),
             object: nil,
             userInfo: dataDict
         )
-        print("Device token: \(dataDict)")
+        print("FCM token = \(fcmToken)")
+        FirebaseManager.shared.sendToken(["uuid": DataManager.shared.getUUID(), "token": fcmToken])
     }
 }

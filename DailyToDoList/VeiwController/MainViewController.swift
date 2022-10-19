@@ -43,13 +43,42 @@ class MainViewController: UIViewController {
         calendarView.delegate = self
         //
         initRefreshController()
+        //
+        let sideMenuView:SideMenuView = {
+            let view = SideMenuView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+        }()
+        
+        self.view.addSubview(sideMenuView)
+        NSLayoutConstraint.activate([
+            sideMenuView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            sideMenuView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            sideMenuView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            sideMenuView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+        ])
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //
+        SystemManager.shared.openLoading(self)
+        //버전체크
+        guard #available(iOS 15, *) else {
+            PopupManager.shared.openOkAlert(self, title: "알림", msg: "iOS 15이상에서만 사용가능합니다.\n[설정->일반->소프트웨어 업데이트]\n에서 업데이트해주세요.", complete: { _ in
+                SystemManager.shared.openSettingMenu()
+            })
+        }
+        DispatchQueue.main.async {
+            DataManager.shared.openRealm()
+        }
+        //
         initDate()
         initUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         //
         DispatchQueue.main.async {
             self.loadTask()
