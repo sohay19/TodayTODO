@@ -137,6 +137,7 @@ extension TaskInfoViewController {
         pickEndDate.isHidden = !taskData.isEnd
         labelNoEndDate.isHidden = taskData.isEnd
         if taskData.isEnd {
+            print("endDate = \(taskData.taskEndDate)")
             pickEndDate.date = Utils.dateStringToDate(taskData.taskEndDate)!
         }
         switchAlarm.isOn = taskData.isAlarm
@@ -253,7 +254,7 @@ extension TaskInfoViewController {
             guard let taskData = taskData else {
                 return
             }
-            weekDay = taskData.getWeekDay()
+            weekDay = taskData.printWeekDay()
             day = String(taskData.taskDay.split(separator: "-")[2])
             monthOfWeek = String(taskData.monthOfWeek)
         }
@@ -263,26 +264,39 @@ extension TaskInfoViewController {
             showResult("매일")
             switchRepeat.isOn = true
             labelNoRepeat.text = ""
+            //
+            controllReusltView(true)
         case .Eachweek:
             showResult("매 주", weekDay, "요일")
             switchRepeat.isOn = true
             labelNoRepeat.text = ""
+            //
+            controllReusltView(true)
         case .EachMonthOfOnce:
             showResult("매 월", day, "일")
             switchRepeat.isOn = true
             labelNoRepeat.text = ""
+            //
+            controllReusltView(true)
         case .EachMonthOfWeek:
             showResult("매 월", monthOfWeek, "주, ", weekDay, "요일")
             switchRepeat.isOn = true
             labelNoRepeat.text = ""
+            //
+            controllReusltView(true)
         case .EachYear:
             showResult("매 년", day, "일")
             switchRepeat.isOn = true
             labelNoRepeat.text = ""
+            //
+            controllReusltView(true)
         default:
+            //
             showResult()
             switchRepeat.isOn = false
             labelNoRepeat.text = "없음"
+            //
+            controllReusltView(false)
         }
     }
     //result setting
@@ -346,7 +360,7 @@ extension TaskInfoViewController {
         }
         //종료일 검토
         let taskDay = Utils.dateToDateString(pickTaskDate.date)
-        if !pickEndDate.isHidden && taskDay == Utils.dateToString(pickEndDate.date) {
+        if !pickEndDate.isHidden && taskDay == Utils.dateToDateString(pickEndDate.date) {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "시작일과 종료일이 같을 수 없습니다.")
             return nil
         }
@@ -419,7 +433,7 @@ extension TaskInfoViewController {
             guard let repeatVC = board.instantiateViewController(withIdentifier: repeatBoard) as? RepeatViewController else {
                 return
             }
-            repeatVC.taskDay = Utils.dateToString(pickTaskDate.date)
+            repeatVC.taskDay = Utils.dateToDateString(pickTaskDate.date)
             repeatVC.clickOk = showResult(_:)
             repeatVC.clickCancel = { self.switchRepeat.isOn = false }
             repeatVC.modalPresentationStyle = .overCurrentContext

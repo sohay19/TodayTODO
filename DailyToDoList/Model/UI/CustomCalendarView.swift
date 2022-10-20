@@ -22,6 +22,8 @@ class CustomCalendarView : FSCalendar {
         // 양옆 년도, 월 지우기
         self.appearance.headerMinimumDissolvedAlpha = 0.0
         //
+        self.placeholderType = .none
+        //
         self.scrollEnabled = true
         self.scrollDirection = .vertical
         //

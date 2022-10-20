@@ -13,6 +13,8 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,5 +46,8 @@ extension SettingViewController {
     
     @IBAction func removeAllFile(_ sender: Any) {
         DataManager.shared.deleteAllFile()
+    }
+    @IBAction func clickSideMenu(_ sender: Any) {
+        SystemManager.shared.openSideMenu(self)
     }
 }

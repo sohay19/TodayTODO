@@ -102,7 +102,7 @@ class EachTask : Object
     
     func setEndDate(_ endDate:Date) {
         self.isEnd = true
-        self.taskEndDate = Utils.dateToString(endDate)
+        self.taskEndDate = Utils.dateToDateString(endDate)
     }
     
     func unRepeat() {
@@ -110,7 +110,7 @@ class EachTask : Object
         monthWeekOff()
     }
     
-    func findWeekDay(_ index:Int) -> String {
+    private func findWeekDay(_ index:Int) -> String {
         var weekDay = ""
         
         switch index {
@@ -135,7 +135,17 @@ class EachTask : Object
         return weekDay
     }
     
-    func getWeekDay() -> String {
+    func getWeekDays() -> [Int] {
+        var result:[Int] = []
+        for i in 0..<weekDay.count {
+            if weekDay[i] {
+                result.append(i)
+            }
+        }
+        return result
+    }
+    
+    func printWeekDay() -> String {
         var result = ""
         for i in 0..<weekDay.count {
             if weekDay[i] {

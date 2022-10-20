@@ -144,38 +144,43 @@ extension RealmManager {
             return nil
         }
         //해당 요일
-        let weekdayIndex = Utils.stringToWeekDay(Utils.dateToDateString(date))
+        let weekdayIndex = Utils.getWeekDay(date)
         //해당 주
-        let weekOfMonth = Utils.stringToWeekOfMonth(Utils.dateToDateString(date))
+        let weekOfMonth = Utils.getWeekOfMonth(date)
         //마지막 주
         let lastWeek = Utils.getLastWeek(date)
         //전체 DB
         let taskDataBase = realm.objects(EachTask.self)
         
         let foundData = taskDataBase.filter {
-            switch $0.repeatType {
+            let today = Utils.dateToDateString(date)
+            let days = today.split(separator: "-")
+            let loadDays = $0.taskDay.split(separator: "-")
+            
+            if today < $0.taskDay {
+                return false
+            }
+            
+            switch RepeatType(rawValue:$0.repeatType) {
                 //매일 반복
-            case RepeatType.EveryDay.rawValue:
+            case .EveryDay:
                 return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
                 //매주 해당 요일 반복
-            case RepeatType.Eachweek.rawValue:
+            case .Eachweek:
                 if $0.weekDayList[weekdayIndex] {
                     return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
                 } else {
                     return false
                 }
                 //매월 해당 일 반복
-            case RepeatType.EachMonthOfOnce.rawValue:
-                let today = Utils.dateToDateString(date)
-                let days = today.split(separator: "-")
-                let loadDays = $0.taskDay.split(separator: "-")
+            case .EachMonthOfOnce:
                 if days[2] == loadDays[2] {
                     return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
                 } else {
                     return false
                 }
                 //매월 해당 주, 해당 요일 반복
-            case RepeatType.EachMonthOfWeek.rawValue:
+            case .EachMonthOfWeek:
                 if $0.weekDayList[weekdayIndex] {
                     let week = $0.monthOfWeek
                     if week == 5 {
@@ -189,10 +194,7 @@ extension RealmManager {
                     return false
                 }
                 //매년 반복
-            case RepeatType.EachYear.rawValue:
-                let today = Utils.dateToDateString(date)
-                let days = today.split(separator: "-")
-                let loadDays = $0.taskDay.split(separator: "-")
+            case .EachYear:
                 if days[1] == loadDays[1] && days[2] == loadDays[2] {
                     return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
                 } else {
@@ -212,28 +214,44 @@ extension RealmManager {
             print("realm is nil")
             return nil
         }
+        //시작 날짜
+        guard let firstDate = Utils.transFirstDate(date) else {
+            return nil
+        }
+        //마지막 날짜
+        guard let lastDate = Utils.transLastDate(date) else {
+            return nil
+        }
         //전체 DB
         let taskDataBase = realm.objects(EachTask.self)
         
         let foundData = taskDataBase.filter {
-            let today = Utils.dateToString(date)
+            if Utils.dateToDateString(lastDate) < $0.taskDay {
+                return false
+            }
+            
+            let today = Utils.dateToDateString(date)
             let days = today.split(separator: "-")
             let loadDays = $0.taskDay.split(separator: "-")
             
-            if days[1] == loadDays[1] {
-                switch $0.repeatType {
-                    //반복 없음
-                case RepeatType.None.rawValue:
-                    return days[0] == loadDays[0] ? true : false
-                    //이외 모든 반복
-                default:
-                    return $0.isEnd ? $0.taskEndDate >= Utils.dateToString(date) : true
+            switch RepeatType(rawValue:$0.repeatType) {
+                //반복 없음
+            case .None:
+                return days[0] == loadDays[0] && days[1] == loadDays[1] ? true : false
+                //매년 반복
+            case .EachYear:
+                if days[1] == loadDays[1] {
+                    return $0.isEnd ? $0.taskEndDate >=  Utils.dateToDateString(firstDate) : true
+                } else {
+                    return false
                 }
-            } else {
-                return false
+            default:
+                //그 외 모든 반복
+                print("end = \($0.taskEndDate), first = \(firstDate)")
+                return $0.isEnd ? $0.taskEndDate >=  Utils.dateToDateString(firstDate): true
             }
         }
-        
+        print(foundData.count)
         return foundData
     }
 }

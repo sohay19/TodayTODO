@@ -15,14 +15,14 @@ class WidgetManager {
     private init() {
         openRealm()
     }
-
+    
     private let realmManager = RealmManager()
 }
 
 //MARK: - Realm
 extension WidgetManager {
     func openRealm() {
-        realmManager.openRealm()
+        let _ = realmManager.openRealm()
     }
 
     func getTaskDataForDay(date:Date) -> LazyFilterSequence<Results<EachTask>>? {

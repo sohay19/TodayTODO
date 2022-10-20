@@ -30,26 +30,42 @@
                                         </connections>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fy-sS-K6C">
-                                        <rect key="frame" x="310" y="0.5" width="86" height="30"/>
+                                        <rect key="frame" x="310" y="9" width="86" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="알람 전체 삭제"/>
                                         <connections>
                                             <action selector="deleteAllNoti:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jsq-AP-ezu"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgv-do-JnB">
+                                        <rect key="frame" x="6" y="-9" width="53" height="53"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="dgv-do-JnB" secondAttribute="height" multiplier="1:1" id="4Nw-wN-Hv6"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="18"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="clickSideMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rek-Kx-o9S"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="dgv-do-JnB" firstAttribute="leading" secondItem="nL7-nt-PhE" secondAttribute="leading" constant="6" id="AB5-Ux-ycO"/>
                                     <constraint firstItem="bLR-Sq-nbO" firstAttribute="centerX" secondItem="nL7-nt-PhE" secondAttribute="centerX" id="U48-2M-xJX"/>
                                     <constraint firstAttribute="trailing" secondItem="9fy-sS-K6C" secondAttribute="trailing" constant="18" id="cmc-nF-5a7"/>
+                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="top" secondItem="nL7-nt-PhE" secondAttribute="top" constant="9" id="dxg-HB-dWv"/>
                                     <constraint firstItem="bLR-Sq-nbO" firstAttribute="top" secondItem="nL7-nt-PhE" secondAttribute="top" id="ezV-9Y-cIT"/>
-                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="centerY" secondItem="bLR-Sq-nbO" secondAttribute="centerY" id="lFg-7H-3dA"/>
+                                    <constraint firstItem="dgv-do-JnB" firstAttribute="top" secondItem="nL7-nt-PhE" secondAttribute="top" constant="-9" id="j5F-CI-bAL"/>
+                                    <constraint firstItem="bLR-Sq-nbO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dgv-do-JnB" secondAttribute="trailing" constant="18" id="joq-lh-ho4"/>
                                     <constraint firstAttribute="height" constant="45" id="so0-P1-9Lu"/>
                                     <constraint firstItem="9fy-sS-K6C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bLR-Sq-nbO" secondAttribute="trailing" constant="8" symbolic="YES" id="xNn-DG-GBh"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-ST-NiN" userLabel="TodayView">
-                                <rect key="frame" x="0.0" y="89" width="414" height="717"/>
+                                <rect key="frame" x="0.0" y="89" width="414" height="755"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S02-VU-gCk">
                                         <rect key="frame" x="335" y="14" width="61" height="30"/>
@@ -59,6 +75,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Edit"/>
                                         <connections>
+                                            <action selector="changeDailyTaskEditMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MfH-5j-QIn"/>
                                             <action selector="changeEditMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G0r-WI-RLD"/>
                                         </connections>
                                     </button>
@@ -69,7 +86,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T45-og-L7Z">
-                                        <rect key="frame" x="0.0" y="70" width="414" height="629"/>
+                                        <rect key="frame" x="0.0" y="70" width="414" height="667"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 등록된 TODO가 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gt6-zW-da3" userLabel="Message">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="18"/>
@@ -136,7 +153,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KER-2I-O4L" userLabel="MonthView">
-                                <rect key="frame" x="0.0" y="89" width="414" height="717"/>
+                                <rect key="frame" x="0.0" y="89" width="414" height="755"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MtS-eB-6uU" customClass="CustomCalendarView" customModule="DailyToDoList" customModuleProvider="target">
                                         <rect key="frame" x="18" y="9" width="378" height="378"/>
@@ -146,7 +163,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dEB-Nb-JJl">
-                                        <rect key="frame" x="0.0" y="405" width="414" height="294"/>
+                                        <rect key="frame" x="0.0" y="405" width="414" height="332"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 등록된 TODO가 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C8B-xB-LYB" userLabel="Message">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="18"/>
@@ -210,26 +227,6 @@
                                     <constraint firstItem="MtS-eB-6uU" firstAttribute="top" secondItem="KER-2I-O4L" secondAttribute="top" constant="9" id="lyT-7T-NxZ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtt-4H-95U" userLabel="BottomView">
-                                <rect key="frame" x="0.0" y="806" width="414" height="90"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5A-qv-gae">
-                                        <rect key="frame" x="326" y="21" width="49" height="30"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Setting"/>
-                                        <connections>
-                                            <action selector="clickMyPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gYY-0j-WWF"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="PQX-Rs-lPz"/>
-                                    <constraint firstItem="B5A-qv-gae" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vtt-4H-95U" secondAttribute="leading" constant="18" id="c8y-Q8-NPE"/>
-                                    <constraint firstAttribute="bottom" secondItem="B5A-qv-gae" secondAttribute="bottom" constant="39" id="pUF-UV-ETA"/>
-                                    <constraint firstAttribute="trailing" secondItem="B5A-qv-gae" secondAttribute="trailing" constant="39" id="sfA-AF-C42"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -237,16 +234,13 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nL7-nt-PhE" secondAttribute="trailing" id="0rB-Lg-a7P"/>
                             <constraint firstItem="KER-2I-O4L" firstAttribute="top" secondItem="nL7-nt-PhE" secondAttribute="bottom" id="5rF-9W-XHd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KER-2I-O4L" secondAttribute="trailing" id="784-KU-DMM"/>
-                            <constraint firstItem="vtt-4H-95U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="939-jE-IPv"/>
-                            <constraint firstItem="vtt-4H-95U" firstAttribute="top" secondItem="fcp-ST-NiN" secondAttribute="bottom" id="IVB-DA-c7C"/>
-                            <constraint firstItem="vtt-4H-95U" firstAttribute="top" secondItem="KER-2I-O4L" secondAttribute="bottom" id="OzR-iz-6Lp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KER-2I-O4L" secondAttribute="bottom" constant="18" id="FNK-Mv-19T"/>
                             <constraint firstItem="fcp-ST-NiN" firstAttribute="top" secondItem="nL7-nt-PhE" secondAttribute="bottom" id="QoO-8D-9Bb"/>
                             <constraint firstItem="fcp-ST-NiN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V75-55-LqF"/>
                             <constraint firstItem="nL7-nt-PhE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VR3-4Y-Vzy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fcp-ST-NiN" secondAttribute="bottom" constant="18" id="Zai-Cg-Dt0"/>
                             <constraint firstItem="nL7-nt-PhE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gVf-Kc-KXA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vtt-4H-95U" secondAttribute="trailing" id="klZ-zD-6yy"/>
                             <constraint firstItem="KER-2I-O4L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rqd-yK-18o"/>
-                            <constraint firstItem="vtt-4H-95U" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="vld-1Q-D0M"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fcp-ST-NiN" secondAttribute="trailing" id="xJ3-h2-HD0"/>
                         </constraints>
                     </view>
@@ -268,6 +262,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

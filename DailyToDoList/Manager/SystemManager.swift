@@ -16,6 +16,8 @@ class SystemManager {
     
     private var backgroundView:UIView?
     private var indicator:UIActivityIndicatorView?
+    
+    private var sideMenuNavigation:CustomSideMenuNavigation?
 }
 
 //MARK: - Loading
@@ -49,11 +51,65 @@ extension SystemManager {
     }
 }
 
-//MARK: - ETC
+//MARK: - Menu
 extension SystemManager {
-    @available(iOSApplicationExtension, unavailable)
+    @available (iOSApplicationExtension, unavailable)
     func openSettingMenu() {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+    }
+    //
+    func openSideMenu(_ vc:UIViewController) {
+        let board = UIStoryboard(name: sideMenuBoard, bundle: nil)
+        sideMenuNavigation = board.instantiateViewController(withIdentifier: sideMenuBoard) as? CustomSideMenuNavigation
+        guard let sideMenuNavigation = sideMenuNavigation else {
+            return
+        }
+        sideMenuNavigation.beforeVC = vc
+        vc.present(sideMenuNavigation, animated: true)
+    }
+    //Main Page
+    func moveMain() {
+        guard let sideMenuNavigation = sideMenuNavigation else {
+            return
+        }
+        guard let beforeVC = sideMenuNavigation.beforeVC else {
+            return
+        }
+        guard let navigation = beforeVC.navigationController as? CustomNavigationController else {
+            return
+        }
+        //
+        sideMenuNavigation.dismiss(animated: true)
+        navigation.popToRootViewController()
+    }
+    //Push Page
+    func movePush() {
+        guard let sideMenuNavigation = sideMenuNavigation else {
+            return
+        }
+        guard let beforeVC = sideMenuNavigation.beforeVC else {
+            return
+        }
+        guard let navigation = beforeVC.navigationController as? CustomNavigationController else {
+            return
+        }
+        
+    }
+    //BackUp Page
+    func moveBackup() {
+        guard let sideMenuNavigation = sideMenuNavigation else {
+            return
+        }
+        guard let beforeVC = sideMenuNavigation.beforeVC else {
+            return
+        }
+        guard let navigation = beforeVC.navigationController as? CustomNavigationController else {
+            return
+        }
+        let board = UIStoryboard(name: settingBoard, bundle: nil)
+        guard let nextVC = board.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }
+        
+        navigation.pushViewControllerWithLoading(nextVC, complete: { sideMenuNavigation.dismiss(animated: true) })
     }
 }
 
@@ -70,7 +126,7 @@ extension SystemManager {
     func deleteAllPush() {
         pushManager.deleteAllPush()
     }
-    
+    //
     func checkExpiredPush() {
         pushManager.checkExpiredPush()
     }

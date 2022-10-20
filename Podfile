@@ -13,7 +13,12 @@ target 'DailyToDoList' do
   pod 'GoogleSignIn' , '> 6.0.0'
   pod 'RealmSwift' , '> 10.0.0'
   pod 'FSCalendar' , '> 2.0.0'
-  pod  'SideMenu'
+  pod 'SideMenu'
+  
+  target 'DailyToDoListWidgetExtension' do
+    inherit! :search_paths
+    # Pods for DailyToDoListWidgetExtension
+  end
 
   target 'DailyToDoListTests' do
     inherit! :search_paths
@@ -26,13 +31,4 @@ target 'DailyToDoList' do
 
 end
 
-target 'DailyToDoListWidgetExtension' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
 
-  # Pods for DailyToDoListWidgetExtension
-  pod 'FirebaseAuth' , '> 9.0.0'
-  pod 'FirebaseDatabase' , '> 9.0.0'
-  pod 'RealmSwift' , '> 10.0.0'
-
-end

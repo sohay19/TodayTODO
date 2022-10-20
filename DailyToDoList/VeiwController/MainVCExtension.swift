@@ -107,12 +107,15 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
 extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     // 특정 날짜 선택 시
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        currntDate = date
+        currentDate = date
         loadTask()
     }
     //Dot 개수
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if haveTaskList.contains(where: { $0 == date }) {
+        guard let monthlyTaskList = monthlyTaskList[Utils.getDay(date)] else {
+            return 0
+        }
+        if monthlyTaskList.count > 0 {
             return 1
         } else {
             return 0
@@ -120,13 +123,19 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
     }
     // 월 넘기기
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        calendar.select(calendar.currentPage)
-        currntDate = calendar.currentPage
+        let curDate = Utils.dateToDateString(calendar.currentPage)
+        guard let firstDate = Utils.dateStringToDate(curDate) else {
+            return
+        }
+        currentDate = firstDate
         loadTask()
     }
     // Dot default 색상 변경
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
-        if haveTaskList.contains(where: { $0 == date }) {
+        guard let monthlyTaskList = monthlyTaskList[Utils.getDay(date)] else {
+            return nil
+        }
+        if monthlyTaskList.count > 0 {
             return [UIColor.darkGray]
         } else {
             return nil
@@ -134,7 +143,10 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
     }
     // Dot click 색상 변경
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
-        if haveTaskList.contains(where: { $0 == date }) {
+        guard let monthlyTaskList = monthlyTaskList[Utils.getDay(date)] else {
+            return nil
+        }
+        if monthlyTaskList.count > 0 {
             return [UIColor.red]
         } else {
             return nil

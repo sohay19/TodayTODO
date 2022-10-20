@@ -54,6 +54,19 @@
                                     <action selector="removeAllFile:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ThM-Yd-Hja"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFU-MO-WzT">
+                                <rect key="frame" x="6" y="35" width="53" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="EFU-MO-WzT" secondAttribute="height" multiplier="1:1" id="Evx-Ub-zPN"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="18"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="clickSideMenu:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fxP-YN-6sH"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGZ-qB-EjY">
                                 <rect key="frame" x="341.5" y="164" width="42.5" height="42.5"/>
                                 <constraints>
@@ -71,11 +84,14 @@
                         <constraints>
                             <constraint firstItem="NO2-3G-T8X" firstAttribute="trailing" secondItem="JGZ-qB-EjY" secondAttribute="trailing" id="34A-5u-wRG"/>
                             <constraint firstItem="NO2-3G-T8X" firstAttribute="top" secondItem="JGZ-qB-EjY" secondAttribute="bottom" constant="9" id="4aF-Pn-GRI"/>
+                            <constraint firstItem="EFU-MO-WzT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="6" id="77x-av-hdg"/>
                             <constraint firstItem="7PC-Kg-AbU" firstAttribute="trailing" secondItem="NO2-3G-T8X" secondAttribute="trailing" id="8iI-Ca-qph"/>
                             <constraint firstItem="AdC-94-zXN" firstAttribute="top" secondItem="5qC-5j-Qbx" secondAttribute="bottom" constant="30" id="ChF-JN-njN"/>
                             <constraint firstItem="5qC-5j-Qbx" firstAttribute="top" secondItem="7PC-Kg-AbU" secondAttribute="bottom" constant="9" id="FLo-Zt-Pvp"/>
+                            <constraint firstItem="EFU-MO-WzT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-9" id="Xg5-te-aMj"/>
                             <constraint firstItem="JGZ-qB-EjY" firstAttribute="leading" secondItem="Yyi-LU-gpQ" secondAttribute="trailing" constant="9" id="Yeg-co-ZMN"/>
                             <constraint firstItem="AdC-94-zXN" firstAttribute="trailing" secondItem="5qC-5j-Qbx" secondAttribute="trailing" id="b0D-oR-lvR"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EFU-MO-WzT" secondAttribute="trailing" constant="18" id="dbA-3J-5Dc"/>
                             <constraint firstItem="Yyi-LU-gpQ" firstAttribute="centerY" secondItem="JGZ-qB-EjY" secondAttribute="centerY" id="h47-ri-ND8"/>
                             <constraint firstItem="7PC-Kg-AbU" firstAttribute="top" secondItem="NO2-3G-T8X" secondAttribute="bottom" constant="9" id="hwK-x8-P72"/>
                             <constraint firstItem="JGZ-qB-EjY" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="120" id="k7g-JN-eYa"/>
@@ -94,6 +110,7 @@
     </scenes>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

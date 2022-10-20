@@ -16,6 +16,12 @@ class CustomNavigationController : UINavigationController {
     
     func popToRootViewController() {
         let _ = popToRootViewController(animated: false)
+        guard let rootVC = self.topViewController else {
+            return
+        }
+        completeMotion(false) {
+            rootVC.viewWillAppear(true)
+        }
     }
 }
 

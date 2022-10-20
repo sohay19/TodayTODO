@@ -23,10 +23,10 @@ class MainViewController: UIViewController {
     
     
     //
-    var currntDate:Date = Date()
+    var currentDate:Date = Date()
     var taskList:[EachTask] = []
     var monthlyTaskList:[Int:[EachTask]] = [:]
-    var haveTaskList:[Date] = []
+    var taskDateKeyList:[Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,20 +43,6 @@ class MainViewController: UIViewController {
         calendarView.delegate = self
         //
         initRefreshController()
-        //
-        let sideMenuView:SideMenuView = {
-            let view = SideMenuView()
-            view.translatesAutoresizingMaskIntoConstraints = false
-            return view
-        }()
-        
-        self.view.addSubview(sideMenuView)
-        NSLayoutConstraint.activate([
-            sideMenuView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            sideMenuView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-            sideMenuView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-            sideMenuView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-        ])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,14 +61,9 @@ class MainViewController: UIViewController {
         //
         initDate()
         initUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         //
         DispatchQueue.main.async {
             self.loadTask()
-            SystemManager.shared.closeLoading()
         }
     }
 }
@@ -116,31 +97,89 @@ extension MainViewController {
 extension MainViewController {
     //Task 세팅
     func loadTask() {
+        //
+        changeSegment()
+        //
         switch segmentedController.selectedSegmentIndex {
         case 1:
             // data reset
             monthlyTaskList = [:]
-            guard let dataList = DataManager.shared.getTaskDataForMonth(date: currntDate) else {
+            guard let dataList = DataManager.shared.getTaskDataForMonth(date: currentDate) else {
                 print("data is zero")
                 return
             }
+            print("\(dataList.count)")
+            //한달
+            taskDateKeyList = [Int](1...Utils.getLastDay(currentDate))
+            //딕셔너리 초기화
+            for i in taskDateKeyList {
+                monthlyTaskList[i] = []
+            }
             //
-            let tmpList = dataList.sorted { $0.taskDay < $1.taskDay }
+            let tmpList = dataList.map{$0}
+            let weekDayList = Utils.getWeekDayList(currentDate)
+            //
+            let curMonthDays = Utils.dateToDateString(currentDate).split(separator: "-").map{String($0)}
+            //반복 타입 별 체크
             for task in tmpList {
-                // 달력 표기를 위해 기록
-                if let date = Utils.dateStringToDate(task.taskDay) {
-                    haveTaskList.append(date)
-                }
-                // task 정리
-                let day = Int(task.taskDay.split(separator: "-")[2])!
-                if monthlyTaskList[day] == nil {
-                    monthlyTaskList[day] = [task]
-                } else {
+                switch RepeatType(rawValue: task.repeatType) {
+                case .None:
+                    let day = Utils.getDay(task.taskDay)
                     monthlyTaskList[day]?.append(task)
+                case .EveryDay:
+                    for day in taskDateKeyList {
+                        var compareDay = curMonthDays
+                        compareDay[2] = String(format: "%02d", day)
+                        if task.taskDay < compareDay.joined(separator: "-") {
+                            monthlyTaskList[day]?.append(task)
+                        }
+                    }
+                case .Eachweek:
+                    for weekDay in task.getWeekDays() {
+                        guard let weekDayList = weekDayList[weekDay] else {
+                            return
+                        }
+                        for day in weekDayList {
+                            var compareDay = curMonthDays
+                            compareDay[2] = String(format: "%02d", day)
+                            if task.taskDay < compareDay.joined(separator: "-") {
+                                monthlyTaskList[day]?.append(task)
+                            }
+                        }
+                    }
+                case .EachMonthOfWeek:
+                    let daysList = Utils.findDay(currentDate, task.monthOfWeek, task.getWeekDays())
+                    for day in daysList {
+                        var compareDay = curMonthDays
+                        compareDay[2] = String(format: "%02d", day)
+                        if task.taskDay < compareDay.joined(separator: "-") {
+                            monthlyTaskList[day]?.append(task)
+                        }
+                    }
+                default:
+                    //EachMonthOfOnce
+                    //EachYear
+                    for day in taskDateKeyList {
+                        var compareDay = curMonthDays
+                        compareDay[2] = String(format: "%02d", day)
+                        if task.taskDay < compareDay.joined(separator: "-") && day == Utils.getDay(task.taskDay) {
+                            monthlyTaskList[day]?.append(task)
+                        }
+                    }
+                }
+                //당일, 중복 여부 확인 후 추가
+                for day in taskDateKeyList {
+                    var compareDay = curMonthDays
+                    compareDay[2] = String(format: "%02d", day)
+                    if task.taskDay == compareDay.joined(separator: "-") {
+                        if !(monthlyTaskList[day]?.contains(where: { $0 == task }))! {
+                            monthlyTaskList[day]?.append(task)
+                        }
+                    }
                 }
             }
             //
-            guard let day = Calendar.current.dateComponents([.day], from: currntDate).day else {
+            guard let day = Calendar.current.dateComponents([.day], from: currentDate).day else {
                 return
             }
             //
@@ -163,7 +202,7 @@ extension MainViewController {
             monthlyTaskTable.reloadData()
             monthlyTaskTable.flashScrollIndicators()
         default:
-            guard let dataList = DataManager.shared.getTaskDataForDay(date: currntDate) else {
+            guard let dataList = DataManager.shared.getTaskDataForDay(date: currentDate) else {
                 print("data is zero")
                 return
             }
@@ -184,7 +223,11 @@ extension MainViewController {
             dailyTaskTable.reloadData()
             dailyTaskTable.flashScrollIndicators()
         }
-        changeSegment()
+        DispatchQueue.main.async {
+            self.calendarView.reloadData()
+        }
+        //
+        SystemManager.shared.closeLoading()
     }
     //
     func taskIsDone(_ isDone:Bool, _ indexPath:IndexPath) {
@@ -275,7 +318,7 @@ extension MainViewController {
         
         nextVC.currentMode = .ADD
         nextVC.refreshTask = loadTask
-        nextVC.currntDate = currntDate
+        nextVC.currntDate = currentDate
         nextVC.modalTransitionStyle = .crossDissolve
         nextVC.modalPresentationStyle = .overCurrentContext
         
@@ -292,18 +335,6 @@ extension MainViewController {
         }
     }
     //
-    @IBAction func clickMyPage(_ sender:Any) {
-        //Loading
-        SystemManager.shared.openLoading(self)
-        //
-        let board = UIStoryboard(name: settingBoard, bundle: nil)
-        guard let nextVC = board.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }
-        guard let navigation = self.navigationController as? CustomNavigationController else {
-            return
-        }
-        navigation.pushViewController(nextVC)
-    }
-    //
     @IBAction func deleteAllNoti(_ sender:Any) {
         SystemManager.shared.deleteAllPush()
     }
@@ -313,6 +344,10 @@ extension MainViewController {
         DispatchQueue.main.async {
             self.loadTask()
         }
+    }
+    //SideMenu
+    @IBAction func clickSideMenu(_ sender:Any) {
+        SystemManager.shared.openSideMenu(self)
     }
 }
 
