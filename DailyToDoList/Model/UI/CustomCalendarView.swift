@@ -35,20 +35,20 @@ class CustomCalendarView : FSCalendar {
         self.calendarWeekdayView.weekdayLabels[5].text = "금"
         self.calendarWeekdayView.weekdayLabels[6].text = "토"
         //
-        self.appearance.weekdayTextColor = .black
+        self.appearance.weekdayTextColor = .secondaryLabel
         self.appearance.weekdayFont = UIFont.boldSystemFont(ofSize: 15.0)
         //
         self.headerHeight = 45
         self.appearance.headerTitleOffset = CGPoint(x: 0, y: -6)
         self.appearance.headerDateFormat = "YYYY년 MM월"
-        self.appearance.headerTitleColor = .black
+        self.appearance.headerTitleColor = .label
         self.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 18.0)
         self.appearance.headerTitleAlignment = .left
         //
         self.today = nil
         //
         self.appearance.titleWeekendColor = .red
-        self.appearance.titleDefaultColor = .black
+        self.appearance.titleDefaultColor = .label
         //
         self.select(Date())
     }

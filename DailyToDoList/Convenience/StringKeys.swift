@@ -20,3 +20,12 @@ let categoryBoard = "Category"
 let settingBoard = "Setting"
 let taskInfoBoard = "TaskInfo"
 let sideMenuBoard = "SideMenu"
+let pushListBoard = "PushList"
+
+//MARK: - key
+let endDateKey = "endDate"
+let idKey = "id"
+let repeatTypeKey = "repeatType"
+let alarmTimeKey = "alarmTime"
+
+

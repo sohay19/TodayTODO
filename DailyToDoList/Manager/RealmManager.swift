@@ -106,13 +106,13 @@ extension RealmManager {
         }
         do {
             try realm.write {
-                realm.delete(task)
                 if task.isAlarm {
                     guard let idList = getAlarmIdList(task.id) else {
-                       return
+                        return
                     }
                     SystemManager.shared.deletePush(idList)
                 }
+                realm.delete(task)
             }
         } catch {
             print("Realm delete Error")
@@ -160,6 +160,10 @@ extension RealmManager {
             if today < $0.taskDay {
                 return false
             }
+            //당일 추가
+            if $0.taskDay == today {
+                return true
+            }
             
             switch RepeatType(rawValue:$0.repeatType) {
                 //매일 반복
@@ -205,7 +209,6 @@ extension RealmManager {
                 return $0.taskDay == Utils.dateToDateString(date)
             }
         }
-        
         return foundData
     }
     
@@ -247,11 +250,9 @@ extension RealmManager {
                 }
             default:
                 //그 외 모든 반복
-                print("end = \($0.taskEndDate), first = \(firstDate)")
                 return $0.isEnd ? $0.taskEndDate >=  Utils.dateToDateString(firstDate): true
             }
         }
-        print(foundData.count)
         return foundData
     }
 }

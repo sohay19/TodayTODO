@@ -52,7 +52,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="modify"/>
                                         <connections>
-                                            <action selector="clickModify:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1cF-fI-IcW"/>
+                                            <action selector="clickModify:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4mD-b2-iIt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEG-G2-lbN">

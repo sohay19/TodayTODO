@@ -19,8 +19,22 @@ class CustomNavigationController : UINavigationController {
         guard let rootVC = self.topViewController else {
             return
         }
-        completeMotion(false) {
-            rootVC.viewWillAppear(true)
+        DispatchQueue.main.async {
+            self.completeMotion(false) {
+                rootVC.viewWillAppear(true)
+            }
+        }
+    }
+    func popToRootViewController(complete: @escaping ()->Void) {
+        let _ = popToRootViewController(animated: false)
+        guard let rootVC = self.topViewController else {
+            return
+        }
+        DispatchQueue.main.async {
+            self.completeMotion(false) {
+                rootVC.viewWillAppear(true)
+                complete()
+            }
         }
     }
 }

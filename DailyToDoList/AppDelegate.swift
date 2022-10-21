@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         //원격 푸시 설정
         Messaging.messaging().delegate = self
+        
         return true
     }
 

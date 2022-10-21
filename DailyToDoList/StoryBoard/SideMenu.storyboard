@@ -64,7 +64,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HRC-gB-25W"/>
-                        <color key="backgroundColor" systemColor="separatorColor"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
                             <constraint firstItem="76C-6R-19l" firstAttribute="centerX" secondItem="HRC-gB-25W" secondAttribute="centerX" id="1I4-mQ-w2g"/>
                             <constraint firstItem="HXi-6p-xiS" firstAttribute="centerX" secondItem="HRC-gB-25W" secondAttribute="centerX" id="72M-fl-5ho"/>
@@ -82,8 +82,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="separatorColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -133,11 +133,13 @@ extension TaskInfoViewController {
         btnPullCategory.backgroundColor = DataManager.shared.getCategoryColor(taskData.category)
         pickTaskDate.date = Utils.dateStringToDate(taskData.taskDay)!
         //
-        setResultView(RepeatType(rawValue: taskData.repeatType)!, isResult: false)
+        let repeatType = RepeatType(rawValue: taskData.repeatType)!
+        repeatResult = RepeatResult(repeatType: repeatType, weekDay: taskData.getWeekDayList(), monthOfWeek: MonthOfWeek(rawValue: taskData.monthOfWeek)!, isEnd: taskData.isEnd, endDate: Utils.dateStringToDate(taskData.taskEndDate))
+        //
+        setResultView(repeatType, isResult: false)
         pickEndDate.isHidden = !taskData.isEnd
         labelNoEndDate.isHidden = taskData.isEnd
         if taskData.isEnd {
-            print("endDate = \(taskData.taskEndDate)")
             pickEndDate.date = Utils.dateStringToDate(taskData.taskEndDate)!
         }
         switchAlarm.isOn = taskData.isAlarm
@@ -378,7 +380,18 @@ extension TaskInfoViewController {
             monthOfWeek = repeatResult.monthOfWeek
         }
         //태스크 생성
-        let data = EachTask(taskDay: pickTaskDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, monthOfWeek: monthOfWeek.rawValue)
+        var data = EachTask()
+        switch currentMode {
+        case .ADD:
+            data = EachTask(taskDay: pickTaskDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, monthOfWeek: monthOfWeek.rawValue)
+        case .MODIFY:
+            guard let taskData = taskData else {
+                return nil
+            }
+            data = EachTask(id:taskData.id, taskDay: pickTaskDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, monthOfWeek: monthOfWeek.rawValue)
+        default:
+            break
+        }
         if !pickEndDate.isHidden {
             data.setEndDate(pickEndDate.date)
         }
@@ -410,10 +423,12 @@ extension TaskInfoViewController {
             currentMode = .MODIFY
         } else {
             guard let data = makeTask() else {
+                print("task is Nil")
                 return
             }
             DataManager.shared.updateTaskData(data)
             currentMode = .LOOK
+            data.printTask()
         }
         changeMode()
     }

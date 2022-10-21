@@ -49,21 +49,26 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         //
         SystemManager.shared.openLoading(self)
+        //
+        DataManager.shared.openRealm()
         //버전체크
         guard #available(iOS 15, *) else {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "iOS 15이상에서만 사용가능합니다.\n[설정->일반->소프트웨어 업데이트]\n에서 업데이트해주세요.", complete: { _ in
                 SystemManager.shared.openSettingMenu()
             })
         }
-        DispatchQueue.main.async {
-            DataManager.shared.openRealm()
-        }
         //
-        initDate()
-        initUI()
-        //
-        DispatchQueue.main.async {
+        DispatchQueue.main.async{
+            self.segmentedController.selectedSegmentIndex = 0
+            //
+            self.changeSegment()
+            //
             self.loadTask()
+            //
+            self.initDate()
+            self.initUI()
+            //
+            SystemManager.shared.closeLoading()
         }
     }
 }
@@ -98,17 +103,19 @@ extension MainViewController {
     //Task 세팅
     func loadTask() {
         //
-        changeSegment()
-        //
         switch segmentedController.selectedSegmentIndex {
         case 1:
+            currentDate = Date()
+            calendarView.select(currentDate)
             // data reset
+            taskList = []
             monthlyTaskList = [:]
+            taskDateKeyList = []
+            //
             guard let dataList = DataManager.shared.getTaskDataForMonth(date: currentDate) else {
                 print("data is zero")
                 return
             }
-            print("\(dataList.count)")
             //한달
             taskDateKeyList = [Int](1...Utils.getLastDay(currentDate))
             //딕셔너리 초기화
@@ -202,6 +209,12 @@ extension MainViewController {
             monthlyTaskTable.reloadData()
             monthlyTaskTable.flashScrollIndicators()
         default:
+            //
+            currentDate = Date()
+            // data reset
+            taskList = []
+            monthlyTaskList = [:]
+            taskDateKeyList = []
             guard let dataList = DataManager.shared.getTaskDataForDay(date: currentDate) else {
                 print("data is zero")
                 return
@@ -223,11 +236,6 @@ extension MainViewController {
             dailyTaskTable.reloadData()
             dailyTaskTable.flashScrollIndicators()
         }
-        DispatchQueue.main.async {
-            self.calendarView.reloadData()
-        }
-        //
-        SystemManager.shared.closeLoading()
     }
     //
     func taskIsDone(_ isDone:Bool, _ indexPath:IndexPath) {
@@ -266,8 +274,7 @@ extension MainViewController {
         //
         switch segmentedController.selectedSegmentIndex {
         case 1:
-            //Month
-            break
+            monthlyTaskTable.deleteRows(at: [indexPath], with: .none)
         default:
             //Today
             dailyTaskTable.deleteRows(at: [indexPath], with: .none)
@@ -341,9 +348,7 @@ extension MainViewController {
     //SegmentedControl
     @IBAction func changeSegment(_ sender:UISegmentedControl) {
         changeSegment()
-        DispatchQueue.main.async {
-            self.loadTask()
-        }
+        loadTask()
     }
     //SideMenu
     @IBAction func clickSideMenu(_ sender:Any) {

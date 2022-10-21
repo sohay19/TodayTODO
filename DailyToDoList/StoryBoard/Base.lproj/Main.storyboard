@@ -30,7 +30,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fy-sS-K6C">
-                                        <rect key="frame" x="310" y="9" width="86" height="30"/>
+                                        <rect key="frame" x="310" y="2.5" width="86" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="알람 전체 삭제"/>
                                         <connections>
@@ -54,9 +54,9 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="dgv-do-JnB" firstAttribute="leading" secondItem="nL7-nt-PhE" secondAttribute="leading" constant="6" id="AB5-Ux-ycO"/>
+                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="centerY" secondItem="dgv-do-JnB" secondAttribute="centerY" id="DSX-XP-HjV"/>
                                     <constraint firstItem="bLR-Sq-nbO" firstAttribute="centerX" secondItem="nL7-nt-PhE" secondAttribute="centerX" id="U48-2M-xJX"/>
                                     <constraint firstAttribute="trailing" secondItem="9fy-sS-K6C" secondAttribute="trailing" constant="18" id="cmc-nF-5a7"/>
-                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="top" secondItem="nL7-nt-PhE" secondAttribute="top" constant="9" id="dxg-HB-dWv"/>
                                     <constraint firstItem="bLR-Sq-nbO" firstAttribute="top" secondItem="nL7-nt-PhE" secondAttribute="top" id="ezV-9Y-cIT"/>
                                     <constraint firstItem="dgv-do-JnB" firstAttribute="top" secondItem="nL7-nt-PhE" secondAttribute="top" constant="-9" id="j5F-CI-bAL"/>
                                     <constraint firstItem="bLR-Sq-nbO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dgv-do-JnB" secondAttribute="trailing" constant="18" id="joq-lh-ho4"/>

@@ -79,8 +79,9 @@ extension SystemManager {
             return
         }
         //
-        sideMenuNavigation.dismiss(animated: true)
-        navigation.popToRootViewController()
+        navigation.popToRootViewController(complete: {
+            sideMenuNavigation.dismiss(animated: true)
+        })
     }
     //Push Page
     func movePush() {
@@ -93,7 +94,14 @@ extension SystemManager {
         guard let navigation = beforeVC.navigationController as? CustomNavigationController else {
             return
         }
-        
+        //
+        let board = UIStoryboard(name: pushListBoard, bundle: nil)
+        guard let nextVC = board.instantiateViewController(withIdentifier: pushListBoard) as? PushListViewController else { return }
+        //
+        navigation.popToRootViewController(complete: {
+            navigation.pushViewController(nextVC)
+            sideMenuNavigation.dismiss(animated: true)
+        })
     }
     //BackUp Page
     func moveBackup() {
@@ -106,10 +114,13 @@ extension SystemManager {
         guard let navigation = beforeVC.navigationController as? CustomNavigationController else {
             return
         }
+        //
         let board = UIStoryboard(name: settingBoard, bundle: nil)
         guard let nextVC = board.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }
-        
-        navigation.pushViewControllerWithLoading(nextVC, complete: { sideMenuNavigation.dismiss(animated: true) })
+        //
+        navigation.pushViewControllerWithLoading(nextVC, complete: {
+            sideMenuNavigation.dismiss(animated: true)
+        })
     }
 }
 
@@ -137,5 +148,8 @@ extension SystemManager {
     //
     func deletePush(_ idList:[String]) {
         pushManager.deletePush(idList)
+    }
+    func getAllPushRequest(_ complete: @escaping ([UNNotificationRequest]) -> Void) {
+        return pushManager.getAllRequest(complete)
     }
 }

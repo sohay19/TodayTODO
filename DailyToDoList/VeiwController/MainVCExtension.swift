@@ -136,7 +136,7 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
             return nil
         }
         if monthlyTaskList.count > 0 {
-            return [UIColor.darkGray]
+            return [UIColor.secondaryLabel]
         } else {
             return nil
         }

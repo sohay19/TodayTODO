@@ -36,6 +36,13 @@
 		CF75962E290119D50046FDC1 /* DailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4728F14D25008850DC /* DailyTaskCell.swift */; };
 		CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
 		CF759630290119D50046FDC1 /* MonthlyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FD28FD19870046FDC1 /* MonthlyTaskCell.swift */; };
+		CF75963329024C340046FDC1 /* PushList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF75963229024C340046FDC1 /* PushList.storyboard */; };
+		CF75963529024C6A0046FDC1 /* PushListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963429024C6A0046FDC1 /* PushListViewController.swift */; };
+		CF75963729024F680046FDC1 /* PushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963629024F680046FDC1 /* PushCell.swift */; };
+		CF75963929025A4F0046FDC1 /* PushData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963829025A4F0046FDC1 /* PushData.swift */; };
+		CF75963A290262560046FDC1 /* PushListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963429024C6A0046FDC1 /* PushListViewController.swift */; };
+		CF75963B2902626E0046FDC1 /* PushData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963829025A4F0046FDC1 /* PushData.swift */; };
+		CF75963C2902627E0046FDC1 /* PushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963629024F680046FDC1 /* PushCell.swift */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
 		CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */; };
@@ -161,6 +168,10 @@
 		CF7596092900F35B0046FDC1 /* SideMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenu.storyboard; sourceTree = "<group>"; };
 		CF75960B2900F39A0046FDC1 /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
 		CF75960F2900F48A0046FDC1 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		CF75963229024C340046FDC1 /* PushList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PushList.storyboard; sourceTree = "<group>"; };
+		CF75963429024C6A0046FDC1 /* PushListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushListViewController.swift; sourceTree = "<group>"; };
+		CF75963629024F680046FDC1 /* PushCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushCell.swift; sourceTree = "<group>"; };
+		CF75963829025A4F0046FDC1 /* PushData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushData.swift; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* DailyToDoListWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyToDoListWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToDoListWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0228F1793B00E93585 /* DailyToDoListWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = DailyToDoListWidget.intentdefinition; sourceTree = "<group>"; };
@@ -383,6 +394,7 @@
 				CF75960B2900F39A0046FDC1 /* CustomSideMenuNavigation.swift */,
 				CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */,
 				CF75960F2900F48A0046FDC1 /* SideMenuViewController.swift */,
+				CF75963429024C6A0046FDC1 /* PushListViewController.swift */,
 			);
 			path = VeiwController;
 			sourceTree = "<group>";
@@ -404,6 +416,7 @@
 				CFEB4A4128F14D1C008850DC /* EachTask.swift */,
 				CFEB4A4028F14D1C008850DC /* RepeatResult.swift */,
 				CFD0B13A28F905380029D936 /* AlarmInfo.swift */,
+				CF75963829025A4F0046FDC1 /* PushData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -414,6 +427,7 @@
 				CFEB4A4728F14D25008850DC /* DailyTaskCell.swift */,
 				CF7595FD28FD19870046FDC1 /* MonthlyTaskCell.swift */,
 				CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */,
+				CF75963629024F680046FDC1 /* PushCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -439,6 +453,7 @@
 				CFEB4A6B28F16B15008850DC /* Picker.storyboard */,
 				CFD0B14528F91CDB0029D936 /* TaskInfo.storyboard */,
 				CF7596092900F35B0046FDC1 /* SideMenu.storyboard */,
+				CF75963229024C340046FDC1 /* PushList.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -606,6 +621,7 @@
 				CFEB49E428F13288008850DC /* Assets.xcassets in Resources */,
 				CF75960A2900F35B0046FDC1 /* SideMenu.storyboard in Resources */,
 				CFEB49E228F13287008850DC /* Main.storyboard in Resources */,
+				CF75963329024C340046FDC1 /* PushList.storyboard in Resources */,
 				CFEB4A6228F16234008850DC /* Repeat.storyboard in Resources */,
 				CFEB4A2E28F14B68008850DC /* Setting.storyboard in Resources */,
 			);
@@ -757,6 +773,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF75963A290262560046FDC1 /* PushListViewController.swift in Sources */,
 				CF75962D290119B80046FDC1 /* CustomNavigationController.swift in Sources */,
 				CFB6EE0628F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
 				CF759630290119D50046FDC1 /* MonthlyTaskCell.swift in Sources */,
@@ -765,6 +782,7 @@
 				CF759627290119B80046FDC1 /* PickerViewController.swift in Sources */,
 				CFD0B13328F2C44F0029D936 /* ClassExtension.swift in Sources */,
 				CF759619290119A50046FDC1 /* CustomCalendarView.swift in Sources */,
+				CF75963B2902626E0046FDC1 /* PushData.swift in Sources */,
 				CF75962E290119D50046FDC1 /* DailyTaskCell.swift in Sources */,
 				CFD0B12E28F1BD260029D936 /* CategoryData.swift in Sources */,
 				CFD0B12C28F1BCB00029D936 /* RealmManager.swift in Sources */,
@@ -788,6 +806,7 @@
 				CF487EAA28F1B72900498451 /* Utils.swift in Sources */,
 				CF759622290119B80046FDC1 /* CategoryViewController.swift in Sources */,
 				CFD0B13F28F90D210029D936 /* CloudManager.swift in Sources */,
+				CF75963C2902627E0046FDC1 /* PushCell.swift in Sources */,
 				CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */,
 				CF75962C290119B80046FDC1 /* CustomSideMenuNavigation.swift in Sources */,
 			);
@@ -801,6 +820,7 @@
 				CFD0B13228F1BE500029D936 /* ClassExtension.swift in Sources */,
 				CFEB4A3E28F14CCA008850DC /* StringKeys.swift in Sources */,
 				CFD0B13B28F905380029D936 /* AlarmInfo.swift in Sources */,
+				CF75963529024C6A0046FDC1 /* PushListViewController.swift in Sources */,
 				CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */,
 				CFEB4A4628F14D1C008850DC /* UserData.swift in Sources */,
 				CFEB4A4528F14D1C008850DC /* EachTask.swift in Sources */,
@@ -815,6 +835,7 @@
 				CFEB4A5B28F155E5008850DC /* DataManager.swift in Sources */,
 				CF487EAD28F1B76500498451 /* WidgetManager.swift in Sources */,
 				CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */,
+				CF75963929025A4F0046FDC1 /* PushData.swift in Sources */,
 				CFD0B14828F91CEA0029D936 /* TaskInfoViewController.swift in Sources */,
 				CFEB4A5C28F155E5008850DC /* PushManager.swift in Sources */,
 				CF487EA928F1B71900498451 /* TaskListEntryView.swift in Sources */,
@@ -823,6 +844,7 @@
 				CF75960C2900F39A0046FDC1 /* CustomSideMenuNavigation.swift in Sources */,
 				CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */,
 				CFB6EE0728F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
+				CF75963729024F680046FDC1 /* PushCell.swift in Sources */,
 				CFEB4A3828F14BEF008850DC /* SettingViewController.swift in Sources */,
 				CFEB4A5528F1559D008850DC /* FirebaseManager.swift in Sources */,
 				CF7596102900F48A0046FDC1 /* SideMenuViewController.swift in Sources */,

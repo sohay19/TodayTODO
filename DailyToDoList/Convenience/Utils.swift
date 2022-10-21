@@ -56,6 +56,31 @@ class Utils {
         
         return dateformatter.string(from: date)
     }
+    //
+    static func getWeekDay(_ weekDay:Int) -> String {
+        var strWeekDay = ""
+        
+        switch weekDay {
+        case 0:
+            strWeekDay = "일"
+        case 1:
+            strWeekDay = "월"
+        case 2:
+            strWeekDay = "화"
+        case 3:
+            strWeekDay = "수"
+        case 4:
+            strWeekDay = "목"
+        case 5:
+            strWeekDay = "금"
+        case 6:
+            strWeekDay = "토"
+        default:
+            break
+        }
+        
+        return strWeekDay
+    }
 }
 
 //MARK: - 일/주/etc 구하기
@@ -263,7 +288,7 @@ extension Utils {
         
         var result:[Int] = []
         for weekday in weekDay {
-            dateComponent.weekday = weekday
+            dateComponent.weekday = weekday+1
             let matchDate = Calendar.current.date(from: dateComponent)!
             result.append(getDay(matchDate))
         }
@@ -278,7 +303,7 @@ extension Utils {
         
         var result:[Int] = []
         for weekday in weekDay {
-            dateComponent.weekday = weekday
+            dateComponent.weekday = weekday+1
             let matchDate = Calendar.current.date(from: dateComponent)!
             result.append(getDay(matchDate))
         }

@@ -78,6 +78,23 @@ class EachTask : Object
         self.isDone = false
     }
     
+    convenience init(id:String, taskDay:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int) {
+        self.init()
+        self.id = id
+        let date = Utils.dateToDateString(taskDay)
+        self.taskDay = date
+        self.category = category
+        self.title = title
+        self.memo = memo
+        self.repeatType = repeatType
+        self.weekDay = weekDay
+        self.monthOfWeek = monthOfWeek
+        //
+        self.isEnd = false
+        self.isAlarm = false
+        self.isDone = false
+    }
+    
     convenience init(id:String, taskDay:String, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int, isEnd:Bool, taskEndDate:String, isAlarm:Bool, alarmTime:String, isDone:Bool) {
         self.init()
         self.id = id
@@ -143,6 +160,10 @@ class EachTask : Object
             }
         }
         return result
+    }
+   
+    func getWeekDayList() -> [Bool] {
+        return weekDay
     }
     
     func printWeekDay() -> String {

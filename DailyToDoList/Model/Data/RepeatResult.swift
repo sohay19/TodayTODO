@@ -28,7 +28,7 @@ class RepeatResult {
         self.taskEndDate = nil
     }
     
-    convenience init(repeatType:RepeatType, weekDay:[Bool], monthOfWeek:MonthOfWeek, isEnd:Bool, endDate:Date) {
+    convenience init(repeatType:RepeatType, weekDay:[Bool], monthOfWeek:MonthOfWeek, isEnd:Bool, endDate:Date?) {
         self.init()
         self.repeatType = repeatType
         self.weekDay = weekDay

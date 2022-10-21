@@ -21,7 +21,7 @@ extension SideMenuViewController {
     }
     //
     @IBAction func clickBtnPushList(_ sender:Any) {
-        
+        SystemManager.shared.movePush()
     }
     //
     @IBAction func clickBtnBackup(_ sender:Any) {
