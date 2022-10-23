@@ -40,7 +40,7 @@ extension FirebaseManager {
         guard let uuid = data["uuid"], let token = data["token"] else {
             return
         }
-        requestPost(url: "http://3.34.15.54:8080/token/send", param: [uuid:token], completion: { isSuccess, data in
+        requestPost(url: "https://codesoha.com/token/send", param: [uuid:token], completion: { isSuccess, data in
             print("isSuccess is \(isSuccess)")
         })
     }
