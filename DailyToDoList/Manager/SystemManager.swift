@@ -12,8 +12,6 @@ class SystemManager {
     static let shared = SystemManager()
     private init() { }
     
-    private let pushManager = PushManager()
-    
     private var backgroundView:UIView?
     private var indicator:UIActivityIndicatorView?
     
@@ -35,9 +33,9 @@ extension SystemManager {
         
         backgroundView.frame = CGRect(x: 0, y: 0, width: topVC.view.frame.maxX, height: topVC.view.frame.maxY)
         backgroundView.backgroundColor = .white
-        backgroundView.alpha = 0.3
+        backgroundView.alpha = 0.1
         
-        indicator.style = .large
+        indicator.style = .medium
         indicator.center = topVC.view.center
         indicator.startAnimating()
     }
@@ -124,32 +122,9 @@ extension SystemManager {
     }
 }
 
-//MARK: - push
 extension SystemManager {
-    func requestPushPermission() {
-        pushManager.requestPermission()
-    }
     //
-    func addNotification(_ data:EachTask) -> [String] {
-        pushManager.addNotification(data)
-    }
-    //
-    func deleteAllPush() {
-        pushManager.deleteAllPush()
-    }
-    //
-    func checkExpiredPush() {
-        pushManager.checkExpiredPush()
-    }
-    //
-    func updatePush(_ idList:[String], _ task:EachTask) -> [String] {
-        return pushManager.updatePush(idList, task)
-    }
-    //
-    func deletePush(_ idList:[String]) {
-        pushManager.deletePush(idList)
-    }
-    func getAllPushRequest(_ complete: @escaping ([UNNotificationRequest]) -> Void) {
-        return pushManager.getAllRequest(complete)
+    func getUUID() -> String {
+        return UIDevice.current.identifierForVendor!.uuidString
     }
 }

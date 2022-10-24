@@ -9,6 +9,9 @@ import Foundation
 import UserNotifications
 
 class PushManager {
+    static let shared = PushManager()
+    private init() { }
+        
     private let notiCenter = UNUserNotificationCenter.current()
 }
 
@@ -25,7 +28,7 @@ extension PushManager {
         //알림음 설정
         notiContent.sound = UNNotificationSound.default
         //뱃지 표시
-        notiContent.badge = (DataManager.shared.addBadgeCnt()) as NSNumber
+        notiContent.badge = (PushManager.shared.addBadgeCnt()) as NSNumber
         //썸네일
         do {
             //            let imageUrl = Bundle.main.url(forResource: "Tulips", withExtension: "jpg")
@@ -230,10 +233,29 @@ extension PushManager {
     }
 }
 
+//MARK: - Badge
+extension PushManager {
+    private func getBadgeCnt() -> Int {
+        return UserDefaults.shared.integer(forKey: BadgeCountKey)
+    }
+    
+    func addBadgeCnt() -> Int {
+        let badgeCnt = getBadgeCnt() + 1
+        UserDefaults.shared.set(badgeCnt, forKey: BadgeCountKey)
+        
+        return badgeCnt
+    }
+    
+    func removeBadgeCnt() {
+        UserDefaults.shared.set(0, forKey: BadgeCountKey)
+    }
+}
+
+
 //MARK: - Etc Event
 extension PushManager {
     //권한요청
-    func requestPermission() {
+    func requestPushPermission() {
         let notiAuthOptions = UNAuthorizationOptions(arrayLiteral: [.alert, .badge, .sound])
         notiCenter.requestAuthorization(options: notiAuthOptions) { success, error in
             if let error = error {
@@ -249,9 +271,10 @@ extension PushManager {
             for request in requestList {
                 let endDate = request.content.userInfo[endDateKey] as! String
                 let today = Utils.dateToDateString(Date())
-                print("종료일 = \(endDate)")
                 if endDate == today {
-                    let idList = DataManager.shared.findAlarmIdList(request.identifier)
+                    guard let idList = RealmManager.shared.getAlarmIdList(request.content.userInfo[idKey] as! String) else {
+                        return
+                    }
                     self.deletePush(idList)
                 }
             }

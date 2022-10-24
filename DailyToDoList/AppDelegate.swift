@@ -11,6 +11,7 @@ import RealmSwift
 import FirebaseCore
 import FirebaseMessaging
 
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -21,11 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //로컬 푸시 설정
         UNUserNotificationCenter.current().delegate = self
         //노티 권한 및 옵션 설정
-        SystemManager.shared.requestPushPermission()
+        PushManager.shared.requestPushPermission()
         //APNS 등록
         application.registerForRemoteNotifications()
         //원격 푸시 설정
         Messaging.messaging().delegate = self
+        //
+        let sessonResult = WatchConnectManager.shared.initSession()
+        print("Session is \(sessonResult)")
         
         return true
     }
@@ -74,9 +78,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //데이터가 있는 원격 푸시
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Silent Push Notification")
-        SystemManager.shared.checkExpiredPush()
+        PushManager.shared.checkExpiredPush()
     }
 }
+
 
 //MARK: - 로컬 푸시
 extension AppDelegate : UNUserNotificationCenterDelegate {
@@ -114,6 +119,6 @@ extension AppDelegate : MessagingDelegate {
             userInfo: dataDict
         )
         print("FCM token = \(fcmToken)")
-        FirebaseManager.shared.sendToken(["uuid": DataManager.shared.getUUID(), "token": fcmToken])
+        FirebaseManager.shared.sendToken(["uuid": SystemManager.shared.getUUID(), "token": fcmToken])
     }
 }

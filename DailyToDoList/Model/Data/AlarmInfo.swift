@@ -22,11 +22,14 @@ class AlarmInfo : Object {
             alarmIdList.append(objectsIn: newValue)
         }
     }
+    @Persisted
+    var alarmTime:String
     
     
-    convenience init(_ taskId:String, _ alarmIdList:[String]) {
+    convenience init(_ taskId:String, _ alarmIdList:[String], _ alarmTime:String) {
         self.init()
         self.taskId = taskId
         self.alarmId = alarmIdList
+        self.alarmTime = alarmTime
     }
 }

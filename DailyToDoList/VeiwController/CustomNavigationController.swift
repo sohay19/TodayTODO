@@ -27,12 +27,8 @@ class CustomNavigationController : UINavigationController {
     }
     func popToRootViewController(complete: @escaping ()->Void) {
         let _ = popToRootViewController(animated: false)
-        guard let rootVC = self.topViewController else {
-            return
-        }
         DispatchQueue.main.async {
             self.completeMotion(false) {
-                rootVC.viewWillAppear(true)
                 complete()
             }
         }

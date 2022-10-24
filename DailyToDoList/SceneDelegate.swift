@@ -44,7 +44,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //앱 접속 시 푸시 알림 뱃지 카운트 초기화
         UIApplication.shared.applicationIconBadgeNumber = 0
-        DataManager.shared.removeBadgeCnt()
+        PushManager.shared.removeBadgeCnt()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

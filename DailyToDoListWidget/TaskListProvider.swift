@@ -29,17 +29,10 @@ struct TaskListProvider: TimelineProvider {
         guard let refreshTimer = refreshTimer else {
             return
         }
+        let _ = RealmManager.shared.openRealm()
         //데이터 가져오기
-        let taskList = WidgetManager.shared.getTaskDataForDay(date: Date())
-        if let taskList = taskList {
-            //데이터 정리
-            let entry = Entry(date: refreshTimer, taskList: taskList.map({$0}))
-            let entries:[Entry] = [entry]
-            let timeline = Timeline(entries: entries, policy: .after(refreshTimer))
-            completion(timeline)
-        } else {
-            //데이터 정리
-            let entry = Entry(date: refreshTimer, taskList: [EachTask()])
+        RealmManager.shared.getTaskDataForDay(date: Date()) { taskList in
+            let entry = Entry(date: refreshTimer, taskList: taskList)
             let entries:[Entry] = [entry]
             let timeline = Timeline(entries: entries, policy: .after(refreshTimer))
             completion(timeline)

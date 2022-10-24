@@ -82,7 +82,7 @@ extension TaskInfoViewController {
             controllEditMode(false)
             btnModify.setTitle("Modify", for: .normal)
             btnModify.isSelected = false
-            
+            //
             loadData()
         case .MODIFY:
             btnModify.isHidden = false
@@ -91,7 +91,9 @@ extension TaskInfoViewController {
             controllEditMode(true)
             btnModify.setTitle("Done", for: .normal)
             btnModify.isSelected = true
-            
+            //
+            loadCategory()
+            //
             loadData()
         default:
             //ADD
@@ -130,7 +132,8 @@ extension TaskInfoViewController {
         }
         inputTitle.text = taskData.title
         btnPullCategory.setTitle(taskData.category, for: .normal)
-        btnPullCategory.backgroundColor = DataManager.shared.getCategoryColor(taskData.category)
+        btnPullCategory.tintColor = RealmManager.shared.getCategoryColor(taskData.category)
+        btnPullCategory.backgroundColor = RealmManager.shared.getCategoryColor(taskData.category)
         pickTaskDate.date = Utils.dateStringToDate(taskData.taskDay)!
         //
         let repeatType = RepeatType(rawValue: taskData.repeatType)!
@@ -168,23 +171,15 @@ extension TaskInfoViewController {
     //카테고리 로드
     func loadCategory() {
         //
-        btnPullCategory.backgroundColor = .lightGray
-        //
         var categoryList:[UIAction] = []
-        let defaltCategory = UIAction(title: "Default", handler: { _ in
-            self.btnPullCategory.setTitle("Default", for: .normal)
-            self.btnPullCategory.setImage(UIImage(), for: .normal)
-        })
-        categoryList.append(defaltCategory)
-        
-        //사용자 카테고리
-        let categories = DataManager.shared.loadCategory()
+        let categories = RealmManager.shared.loadCategory()
         if let categories = categories {
             for category in categories {
                 let image =  category.loadImage()
                 categoryList.append(UIAction(title: category.title, image: image, handler: { _ in
-                    self.btnPullCategory.setTitle("     \(category.title)", for: .normal)
-                    self.btnPullCategory.setImage(image, for: .normal)
+                    self.btnPullCategory.setTitle(category.title, for: .normal)
+                    self.btnPullCategory.tintColor = category.loadColor()
+                    self.btnPullCategory.backgroundColor = category.loadColor()
                 }))
             }
         }
@@ -408,13 +403,13 @@ extension TaskInfoViewController {
             return
         }
         //realm에 추가
-        DataManager.shared.addTaskData(data)
+        RealmManager.shared.addTaskData(data)
         //
-        DispatchQueue.main.async {
-            guard let refreshTask = self.refreshTask else {
+        DispatchQueue.main.async { [self] in
+            guard let refreshTask = refreshTask else {
                 return
             }
-            self.dismiss(animated: true, completion: refreshTask)
+            dismiss(animated: true, completion: refreshTask)
         }
     }
     //수정 Or 완료 버튼
@@ -426,7 +421,7 @@ extension TaskInfoViewController {
                 print("task is Nil")
                 return
             }
-            DataManager.shared.updateTaskData(data)
+            RealmManager.shared.updateTaskData(data)
             currentMode = .LOOK
             data.printTask()
         }

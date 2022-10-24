@@ -37,4 +37,8 @@ class CategoryData : Object {
         }
         return image.withTintColor(Utils.getColor(colorList), renderingMode: .alwaysOriginal)
     }
+    
+    func loadColor() -> UIColor {
+        return Utils.getColor(colorList)
+    }
 }

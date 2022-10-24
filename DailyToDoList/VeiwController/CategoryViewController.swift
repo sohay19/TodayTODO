@@ -60,7 +60,7 @@ extension CategoryViewController {
         } else {
             let newList = list.map{Float($0)}
             let newCategory = CategoryData(title, newList)
-            DataManager.shared.addCategory(newCategory)
+            RealmManager.shared.addCategory(newCategory)
             DispatchQueue.main.async { [self] in
                 guard let reload = self.reloadCategory else {
                     return

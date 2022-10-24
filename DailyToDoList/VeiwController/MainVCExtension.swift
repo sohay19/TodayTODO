@@ -40,30 +40,36 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     }
     //왼쪽 스와이프
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .destructive, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.deleteTask(indexPath)
-            success(true)
-        }
-        delete.backgroundColor = .systemRed
-        //index = 0, 왼쪽
-        return UISwipeActionsConfiguration(actions:[delete])
-    }
-    //오른쪽 스와이프
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         //Done Or Not
         let done = UIContextualAction(style: .normal, title: "Done") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.taskIsDone(true, indexPath)
             success(true)
         }
-        done.backgroundColor = .systemIndigo
+        done.backgroundColor = .darkGray
         
         let notDone = UIContextualAction(style: .normal, title: "Not") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.taskIsDone(false, indexPath)
             success(true)
         }
         notDone.backgroundColor = .systemGray
+        //index = 0, 왼쪽
+        return UISwipeActionsConfiguration(actions:[done, notDone])
+    }
+    //오른쪽 스와이프
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.deleteTask(indexPath)
+            success(true)
+        }
+        delete.backgroundColor = .systemRed
+        
+        let modify = UIContextualAction(style: .destructive, title: "수정") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+//            self.deleteTask(indexPath)
+            success(true)
+        }
+        modify.backgroundColor = .systemIndigo
         //index = 0, 오른쪽
-        return UISwipeActionsConfiguration(actions:[notDone, done])
+        return UISwipeActionsConfiguration(actions:[delete, modify])
     }
     //Row별 EditMode-
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -108,7 +114,10 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
     // 특정 날짜 선택 시
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         currentDate = date
-        loadTask()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            SystemManager.shared.openLoading(self)
+            self.changeDay()
+        }
     }
     //Dot 개수
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
@@ -128,7 +137,12 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
             return
         }
         currentDate = firstDate
-        loadTask()
+        calendarView.select(currentDate)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            SystemManager.shared.openLoading(self)
+            self.loadTask()
+        }
+        
     }
     // Dot default 색상 변경
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {

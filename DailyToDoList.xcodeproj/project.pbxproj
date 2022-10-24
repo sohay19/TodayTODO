@@ -7,42 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		039EBF1C84CF0741F318BC0B /* Pods_DailyToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B424714D6DA22D6AC0DEDBF4 /* Pods_DailyToDoList.framework */; };
-		8FE067354A8C310CB276DF1F /* Pods_DailyToDoList_DailyToDoListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF14B2D32E19ED93024DA425 /* Pods_DailyToDoList_DailyToDoListUITests.framework */; };
-		B0FF32B014443FCB4CB82F57 /* Pods_DailyToDoListWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA0361B340816FBD1DE99C05 /* Pods_DailyToDoListWidgetExtension.framework */; };
+		400D8B2EAAD1D12D7542731F /* Pods_DailyToDoListWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8033FBF14AB333027223E55C /* Pods_DailyToDoListWidgetExtension.framework */; };
+		AB0494D9303258AC747D7259 /* Pods_DailyToDoListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063C4A5E1CE7F4931647A131 /* Pods_DailyToDoListTests.framework */; };
+		B9967607F860F087E446E7EF /* Pods_DailyToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C12BA33F1B3E3C5B12A1F6 /* Pods_DailyToDoList.framework */; };
+		C8905F2F4AFCDB126CAFB727 /* Pods_DailyToDoListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDBD8A08AAA3B0743BB9594 /* Pods_DailyToDoListUITests.framework */; };
+		C8D4663202202A17357EE111 /* Pods_DailyToDoListWatchWatchKitExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FA45D3AEC8B47DFC470BBC /* Pods_DailyToDoListWatchWatchKitExtension.framework */; };
 		CF487EA528F1B6D200498451 /* TaskListEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA428F1B6D200498451 /* TaskListEntryView.swift */; };
 		CF487EA728F1B6F100498451 /* TaskListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA628F1B6F100498451 /* TaskListProvider.swift */; };
 		CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA628F1B6F100498451 /* TaskListProvider.swift */; };
 		CF487EA928F1B71900498451 /* TaskListEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA428F1B6D200498451 /* TaskListEntryView.swift */; };
 		CF487EAA28F1B72900498451 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3928F14CA0008850DC /* Utils.swift */; };
-		CF487EAD28F1B76500498451 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA128F1B69500498451 /* WidgetManager.swift */; };
 		CF7595FE28FD19870046FDC1 /* MonthlyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FD28FD19870046FDC1 /* MonthlyTaskCell.swift */; };
 		CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */; };
 		CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */; };
 		CF75960A2900F35B0046FDC1 /* SideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7596092900F35B0046FDC1 /* SideMenu.storyboard */; };
 		CF75960C2900F39A0046FDC1 /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960B2900F39A0046FDC1 /* CustomSideMenuNavigation.swift */; };
 		CF7596102900F48A0046FDC1 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960F2900F48A0046FDC1 /* SideMenuViewController.swift */; };
-		CF7596142901188B0046FDC1 /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5328F1559D008850DC /* SystemManager.swift */; };
-		CF759619290119A50046FDC1 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */; };
-		CF759622290119B80046FDC1 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A6728F165D1008850DC /* CategoryViewController.swift */; };
-		CF759623290119B80046FDC1 /* TaskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */; };
-		CF759624290119B80046FDC1 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A6928F1672F008850DC /* ColorPickerViewController.swift */; };
-		CF759625290119B80046FDC1 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960F2900F48A0046FDC1 /* SideMenuViewController.swift */; };
-		CF759626290119B80046FDC1 /* RepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A6328F16243008850DC /* RepeatViewController.swift */; };
-		CF759627290119B80046FDC1 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A6D28F16B27008850DC /* PickerViewController.swift */; };
-		CF75962B290119B80046FDC1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3728F14BEF008850DC /* SettingViewController.swift */; };
-		CF75962C290119B80046FDC1 /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960B2900F39A0046FDC1 /* CustomSideMenuNavigation.swift */; };
-		CF75962D290119B80046FDC1 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */; };
 		CF75962E290119D50046FDC1 /* DailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4728F14D25008850DC /* DailyTaskCell.swift */; };
 		CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
 		CF759630290119D50046FDC1 /* MonthlyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FD28FD19870046FDC1 /* MonthlyTaskCell.swift */; };
 		CF75963329024C340046FDC1 /* PushList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF75963229024C340046FDC1 /* PushList.storyboard */; };
 		CF75963529024C6A0046FDC1 /* PushListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963429024C6A0046FDC1 /* PushListViewController.swift */; };
 		CF75963729024F680046FDC1 /* PushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963629024F680046FDC1 /* PushCell.swift */; };
-		CF75963929025A4F0046FDC1 /* PushData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963829025A4F0046FDC1 /* PushData.swift */; };
-		CF75963A290262560046FDC1 /* PushListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963429024C6A0046FDC1 /* PushListViewController.swift */; };
-		CF75963B2902626E0046FDC1 /* PushData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963829025A4F0046FDC1 /* PushData.swift */; };
 		CF75963C2902627E0046FDC1 /* PushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963629024F680046FDC1 /* PushCell.swift */; };
+		CF75963E290662900046FDC1 /* PushListVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963D290662900046FDC1 /* PushListVCExtension.swift */; };
+		CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
+		CF8148CC29067B5000FD0974 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
+		CF8148F029068DD600FD0974 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5928F155E5008850DC /* PushManager.swift */; };
+		CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8148F229068E0700FD0974 /* ClassExtension.swift */; };
+		CF8149272906B75100FD0974 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8149252906B75100FD0974 /* Interface.storyboard */; };
+		CF8149292906B75300FD0974 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8149282906B75300FD0974 /* Assets.xcassets */; };
+		CF81492F2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CF81492E2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CF8149342906B75300FD0974 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8149332906B75300FD0974 /* InterfaceController.swift */; };
+		CF8149362906B75300FD0974 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8149352906B75300FD0974 /* ExtensionDelegate.swift */; };
+		CF8149382906B75300FD0974 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8149372906B75300FD0974 /* NotificationController.swift */; };
+		CF81493A2906B75300FD0974 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8149392906B75300FD0974 /* ComplicationController.swift */; };
+		CF81493C2906B75400FD0974 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF81493B2906B75400FD0974 /* Assets.xcassets */; };
+		CF8149412906B75400FD0974 /* DailyToDoListWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CF8149232906B75100FD0974 /* DailyToDoListWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CF8149492906B76B00FD0974 /* SharedClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13128F1BE500029D936 /* SharedClassExtension.swift */; };
+		CF81494A2906B77100FD0974 /* StringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3D28F14CCA008850DC /* StringKeys.swift */; };
+		CF81494B2906B77100FD0974 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3928F14CA0008850DC /* Utils.swift */; };
+		CF81494C2906B77100FD0974 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3B28F14CB4008850DC /* Enums.swift */; };
+		CF81494D2906B77500FD0974 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4228F14D1C008850DC /* UserData.swift */; };
+		CF81494E2906B77500FD0974 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
+		CF81494F2906B77500FD0974 /* EachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4128F14D1C008850DC /* EachTask.swift */; };
+		CF8149502906B77500FD0974 /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
+		CF8149512906B77500FD0974 /* AlarmInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13A28F905380029D936 /* AlarmInfo.swift */; };
+		CF8149522906B77D00FD0974 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5928F155E5008850DC /* PushManager.swift */; };
+		CF8149532906B77D00FD0974 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
+		CF8149562906BBDF00FD0974 /* TaskTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8149542906BBDF00FD0974 /* TaskTableRowController.swift */; };
+		CF81495C2906CC0000FD0974 /* WatchConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */; };
+		CF81495D2906CC8C00FD0974 /* WatchConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */; };
+		CF81495F2906D28E00FD0974 /* NSEachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495E2906D28E00FD0974 /* NSEachTask.swift */; };
+		CF8149602906D28E00FD0974 /* NSEachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495E2906D28E00FD0974 /* NSEachTask.swift */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
 		CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */; };
@@ -52,18 +69,12 @@
 		CFB6EE0A28F1793C00E93585 /* DailyToDoListWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CFB6EDFC28F1793B00E93585 /* DailyToDoListWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFCEA0C228F1A78600A49D82 /* GoogleService-Info.plist */; };
 		CFD0B12A28F1BC2D0029D936 /* EachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4128F14D1C008850DC /* EachTask.swift */; };
-		CFD0B12B28F1BC930029D936 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA128F1B69500498451 /* WidgetManager.swift */; };
-		CFD0B12C28F1BCB00029D936 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
 		CFD0B12D28F1BD150029D936 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3B28F14CB4008850DC /* Enums.swift */; };
-		CFD0B12E28F1BD260029D936 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
 		CFD0B12F28F1BD3A0029D936 /* StringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3D28F14CCA008850DC /* StringKeys.swift */; };
-		CFD0B13228F1BE500029D936 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13128F1BE500029D936 /* ClassExtension.swift */; };
-		CFD0B13328F2C44F0029D936 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13128F1BE500029D936 /* ClassExtension.swift */; };
+		CFD0B13228F1BE500029D936 /* SharedClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13128F1BE500029D936 /* SharedClassExtension.swift */; };
+		CFD0B13328F2C44F0029D936 /* SharedClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13128F1BE500029D936 /* SharedClassExtension.swift */; };
 		CFD0B13B28F905380029D936 /* AlarmInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13A28F905380029D936 /* AlarmInfo.swift */; };
 		CFD0B13C28F90C2B0029D936 /* AlarmInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13A28F905380029D936 /* AlarmInfo.swift */; };
-		CFD0B13D28F90C2F0029D936 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5928F155E5008850DC /* PushManager.swift */; };
-		CFD0B13E28F90C440029D936 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5828F155E5008850DC /* DataManager.swift */; };
-		CFD0B13F28F90D210029D936 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5428F1559D008850DC /* CloudManager.swift */; };
 		CFD0B14028F90D210029D936 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4228F14D1C008850DC /* UserData.swift */; };
 		CFD0B14128F90D210029D936 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5228F1559D008850DC /* FirebaseManager.swift */; };
 		CFD0B14228F90DA80029D936 /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5A28F155E5008850DC /* PopupManager.swift */; };
@@ -105,10 +116,23 @@
 		CFEB4A6C28F16B15008850DC /* Picker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4A6B28F16B15008850DC /* Picker.storyboard */; };
 		CFEB4A6E28F16B27008850DC /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A6D28F16B27008850DC /* PickerViewController.swift */; };
 		CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
-		D6F604C6072C7D0443D92723 /* Pods_DailyToDoListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C6325AF26B7FDBC7D3F318 /* Pods_DailyToDoListTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CF8149302906B75300FD0974 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFEB49CF28F13287008850DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF81492D2906B75300FD0974;
+			remoteInfo = "DailyToDoListWatch WatchKit Extension";
+		};
+		CF81493F2906B75400FD0974 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFEB49CF28F13287008850DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF8149222906B75100FD0974;
+			remoteInfo = DailyToDoListWatch;
+		};
 		CFB6EE0828F1793C00E93585 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CFEB49CF28F13287008850DC /* Project object */;
@@ -133,6 +157,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CF8148A82906716000FD0974 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				CF8149412906B75400FD0974 /* DailyToDoListWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF8149452906B75400FD0974 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CF81492F2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CFEB4A1F28F133B4008850DC /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -147,18 +193,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		467F5B050E3A02C833B2F451 /* Pods-DailyToDoListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListTests.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoListTests/Pods-DailyToDoListTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5289FFF5F4DD1039BC6F07E7 /* Pods-DailyToDoListWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoListWidgetExtension/Pods-DailyToDoListWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		5ACCCB995945E25A9809652E /* Pods-DailyToDoList-DailyToDoListUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoList-DailyToDoListUITests.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoList-DailyToDoListUITests/Pods-DailyToDoList-DailyToDoListUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		7FD8240AF20153F625539B37 /* Pods-DailyToDoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoList.release.xcconfig"; path = "Target Support Files/Pods-DailyToDoList/Pods-DailyToDoList.release.xcconfig"; sourceTree = "<group>"; };
-		84C6325AF26B7FDBC7D3F318 /* Pods_DailyToDoListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyToDoListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A35E5E7F35062A3BD1D46091 /* Pods-DailyToDoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoList.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoList/Pods-DailyToDoList.debug.xcconfig"; sourceTree = "<group>"; };
-		A966525D1237CBB5C4F5A754 /* Pods-DailyToDoListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListTests.release.xcconfig"; path = "Target Support Files/Pods-DailyToDoListTests/Pods-DailyToDoListTests.release.xcconfig"; sourceTree = "<group>"; };
-		B424714D6DA22D6AC0DEDBF4 /* Pods_DailyToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B96FC2FFD7DB8D5BE2D47F53 /* Pods-DailyToDoListWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-DailyToDoListWidgetExtension/Pods-DailyToDoListWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
-		CBD3B0CCC378FBF85307DC03 /* Pods-DailyToDoList-DailyToDoListUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoList-DailyToDoListUITests.release.xcconfig"; path = "Target Support Files/Pods-DailyToDoList-DailyToDoListUITests/Pods-DailyToDoList-DailyToDoListUITests.release.xcconfig"; sourceTree = "<group>"; };
-		CF14B2D32E19ED93024DA425 /* Pods_DailyToDoList_DailyToDoListUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyToDoList_DailyToDoListUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF487EA128F1B69500498451 /* WidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetManager.swift; sourceTree = "<group>"; };
+		063C4A5E1CE7F4931647A131 /* Pods_DailyToDoListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyToDoListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		109BA517BC66F6920604F650 /* Pods-DailyToDoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoList.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoList/Pods-DailyToDoList.debug.xcconfig"; sourceTree = "<group>"; };
+		1B59078BFDC0348445EE0013 /* Pods-DailyToDoListUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListUITests.release.xcconfig"; path = "Target Support Files/Pods-DailyToDoListUITests/Pods-DailyToDoListUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2CD7D5198E0087ECD03386CB /* Pods-DailyToDoListWatchWatchKitExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListWatchWatchKitExtension.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoListWatchWatchKitExtension/Pods-DailyToDoListWatchWatchKitExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		33C12BA33F1B3E3C5B12A1F6 /* Pods_DailyToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4926433551039551E81E63F2 /* Pods-DailyToDoListWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-DailyToDoListWidgetExtension/Pods-DailyToDoListWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
+		56FA45D3AEC8B47DFC470BBC /* Pods_DailyToDoListWatchWatchKitExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyToDoListWatchWatchKitExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C28C6D65D352FDA88B1241C /* Pods-DailyToDoListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListTests.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoListTests/Pods-DailyToDoListTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6523EBFD78550046A68FBB10 /* Pods-DailyToDoListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListTests.release.xcconfig"; path = "Target Support Files/Pods-DailyToDoListTests/Pods-DailyToDoListTests.release.xcconfig"; sourceTree = "<group>"; };
+		8033FBF14AB333027223E55C /* Pods_DailyToDoListWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyToDoListWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BDBD8A08AAA3B0743BB9594 /* Pods_DailyToDoListUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyToDoListUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7F72011CC0BCA202BCB048B /* Pods-DailyToDoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoList.release.xcconfig"; path = "Target Support Files/Pods-DailyToDoList/Pods-DailyToDoList.release.xcconfig"; sourceTree = "<group>"; };
 		CF487EA328F1B6C900498451 /* DailyToDoListWidget.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = DailyToDoListWidget.entitlements; sourceTree = "<group>"; };
 		CF487EA428F1B6D200498451 /* TaskListEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListEntryView.swift; sourceTree = "<group>"; };
 		CF487EA628F1B6F100498451 /* TaskListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListProvider.swift; sourceTree = "<group>"; };
@@ -171,14 +217,30 @@
 		CF75963229024C340046FDC1 /* PushList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PushList.storyboard; sourceTree = "<group>"; };
 		CF75963429024C6A0046FDC1 /* PushListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushListViewController.swift; sourceTree = "<group>"; };
 		CF75963629024F680046FDC1 /* PushCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushCell.swift; sourceTree = "<group>"; };
-		CF75963829025A4F0046FDC1 /* PushData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushData.swift; sourceTree = "<group>"; };
+		CF75963D290662900046FDC1 /* PushListVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushListVCExtension.swift; sourceTree = "<group>"; };
+		CF8148F229068E0700FD0974 /* ClassExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassExtension.swift; sourceTree = "<group>"; };
+		CF8149232906B75100FD0974 /* DailyToDoListWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyToDoListWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF8149262906B75100FD0974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		CF8149282906B75300FD0974 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF81492E2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyToDoListWatchWatchKitExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF8149332906B75300FD0974 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		CF8149352906B75300FD0974 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		CF8149372906B75300FD0974 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		CF8149392906B75300FD0974 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		CF81493B2906B75400FD0974 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF81493D2906B75400FD0974 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF81493E2906B75400FD0974 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		CF8149542906BBDF00FD0974 /* TaskTableRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableRowController.swift; sourceTree = "<group>"; };
+		CF8149572906BFD800FD0974 /* DailyToDoListWatchWatchKitExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyToDoListWatchWatchKitExtension.entitlements; sourceTree = "<group>"; };
+		CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectManager.swift; sourceTree = "<group>"; };
+		CF81495E2906D28E00FD0974 /* NSEachTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEachTask.swift; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* DailyToDoListWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyToDoListWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToDoListWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0228F1793B00E93585 /* DailyToDoListWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = DailyToDoListWidget.intentdefinition; sourceTree = "<group>"; };
 		CFB6EE0328F1793C00E93585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFB6EE0528F1793C00E93585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFCEA0C228F1A78600A49D82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		CFD0B13128F1BE500029D936 /* ClassExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassExtension.swift; sourceTree = "<group>"; };
+		CFD0B13128F1BE500029D936 /* SharedClassExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedClassExtension.swift; sourceTree = "<group>"; };
 		CFD0B13A28F905380029D936 /* AlarmInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmInfo.swift; sourceTree = "<group>"; };
 		CFD0B14528F91CDB0029D936 /* TaskInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskInfo.storyboard; sourceTree = "<group>"; };
 		CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoViewController.swift; sourceTree = "<group>"; };
@@ -225,17 +287,27 @@
 		CFEB4A6B28F16B15008850DC /* Picker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Picker.storyboard; sourceTree = "<group>"; };
 		CFEB4A6D28F16B27008850DC /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		CFEB4A7528F16BF3008850DC /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
-		DA0361B340816FBD1DE99C05 /* Pods_DailyToDoListWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyToDoListWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBF80313A4FB8B4BD312F2D1 /* Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig"; path = "Target Support Files/Pods-DailyToDoListWatchWatchKitExtension/Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig"; sourceTree = "<group>"; };
+		F34FEDE351436183A07EBDD2 /* Pods-DailyToDoListWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoListWidgetExtension/Pods-DailyToDoListWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		FC66D6BA43C5821A19F5A230 /* Pods-DailyToDoListUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListUITests.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoListUITests/Pods-DailyToDoListUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CF81492B2906B75300FD0974 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8D4663202202A17357EE111 /* Pods_DailyToDoListWatchWatchKitExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CFB6EDF928F1793B00E93585 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */,
 				CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */,
-				B0FF32B014443FCB4CB82F57 /* Pods_DailyToDoListWidgetExtension.framework in Frameworks */,
+				400D8B2EAAD1D12D7542731F /* Pods_DailyToDoListWidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFEB4A4D28F150BD008850DC /* CloudKit.framework in Frameworks */,
-				039EBF1C84CF0741F318BC0B /* Pods_DailyToDoList.framework in Frameworks */,
+				B9967607F860F087E446E7EF /* Pods_DailyToDoList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +324,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6F604C6072C7D0443D92723 /* Pods_DailyToDoListTests.framework in Frameworks */,
+				AB0494D9303258AC747D7259 /* Pods_DailyToDoListTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +332,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FE067354A8C310CB276DF1F /* Pods_DailyToDoList_DailyToDoListUITests.framework in Frameworks */,
+				C8905F2F4AFCDB126CAFB727 /* Pods_DailyToDoListUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,14 +342,16 @@
 		3471AE7C12A772111E1F0366 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A35E5E7F35062A3BD1D46091 /* Pods-DailyToDoList.debug.xcconfig */,
-				7FD8240AF20153F625539B37 /* Pods-DailyToDoList.release.xcconfig */,
-				5ACCCB995945E25A9809652E /* Pods-DailyToDoList-DailyToDoListUITests.debug.xcconfig */,
-				CBD3B0CCC378FBF85307DC03 /* Pods-DailyToDoList-DailyToDoListUITests.release.xcconfig */,
-				467F5B050E3A02C833B2F451 /* Pods-DailyToDoListTests.debug.xcconfig */,
-				A966525D1237CBB5C4F5A754 /* Pods-DailyToDoListTests.release.xcconfig */,
-				5289FFF5F4DD1039BC6F07E7 /* Pods-DailyToDoListWidgetExtension.debug.xcconfig */,
-				B96FC2FFD7DB8D5BE2D47F53 /* Pods-DailyToDoListWidgetExtension.release.xcconfig */,
+				109BA517BC66F6920604F650 /* Pods-DailyToDoList.debug.xcconfig */,
+				A7F72011CC0BCA202BCB048B /* Pods-DailyToDoList.release.xcconfig */,
+				5C28C6D65D352FDA88B1241C /* Pods-DailyToDoListTests.debug.xcconfig */,
+				6523EBFD78550046A68FBB10 /* Pods-DailyToDoListTests.release.xcconfig */,
+				FC66D6BA43C5821A19F5A230 /* Pods-DailyToDoListUITests.debug.xcconfig */,
+				1B59078BFDC0348445EE0013 /* Pods-DailyToDoListUITests.release.xcconfig */,
+				F34FEDE351436183A07EBDD2 /* Pods-DailyToDoListWidgetExtension.debug.xcconfig */,
+				4926433551039551E81E63F2 /* Pods-DailyToDoListWidgetExtension.release.xcconfig */,
+				2CD7D5198E0087ECD03386CB /* Pods-DailyToDoListWatchWatchKitExtension.debug.xcconfig */,
+				DBF80313A4FB8B4BD312F2D1 /* Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -288,12 +362,38 @@
 				CFEB4A4C28F150BD008850DC /* CloudKit.framework */,
 				CFEB4A0F28F133B3008850DC /* WidgetKit.framework */,
 				CFEB4A1128F133B3008850DC /* SwiftUI.framework */,
-				B424714D6DA22D6AC0DEDBF4 /* Pods_DailyToDoList.framework */,
-				CF14B2D32E19ED93024DA425 /* Pods_DailyToDoList_DailyToDoListUITests.framework */,
-				84C6325AF26B7FDBC7D3F318 /* Pods_DailyToDoListTests.framework */,
-				DA0361B340816FBD1DE99C05 /* Pods_DailyToDoListWidgetExtension.framework */,
+				33C12BA33F1B3E3C5B12A1F6 /* Pods_DailyToDoList.framework */,
+				063C4A5E1CE7F4931647A131 /* Pods_DailyToDoListTests.framework */,
+				9BDBD8A08AAA3B0743BB9594 /* Pods_DailyToDoListUITests.framework */,
+				8033FBF14AB333027223E55C /* Pods_DailyToDoListWidgetExtension.framework */,
+				56FA45D3AEC8B47DFC470BBC /* Pods_DailyToDoListWatchWatchKitExtension.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF8149242906B75100FD0974 /* DailyToDoListWatch */ = {
+			isa = PBXGroup;
+			children = (
+				CF8149252906B75100FD0974 /* Interface.storyboard */,
+				CF8149282906B75300FD0974 /* Assets.xcassets */,
+			);
+			path = DailyToDoListWatch;
+			sourceTree = "<group>";
+		};
+		CF8149322906B75300FD0974 /* DailyToDoListWatchWatchKitExtension */ = {
+			isa = PBXGroup;
+			children = (
+				CF8149572906BFD800FD0974 /* DailyToDoListWatchWatchKitExtension.entitlements */,
+				CF8149332906B75300FD0974 /* InterfaceController.swift */,
+				CF8149542906BBDF00FD0974 /* TaskTableRowController.swift */,
+				CF8149352906B75300FD0974 /* ExtensionDelegate.swift */,
+				CF8149372906B75300FD0974 /* NotificationController.swift */,
+				CF8149392906B75300FD0974 /* ComplicationController.swift */,
+				CF81493B2906B75400FD0974 /* Assets.xcassets */,
+				CF81493D2906B75400FD0974 /* Info.plist */,
+				CF81493E2906B75400FD0974 /* PushNotificationPayload.apns */,
+			);
+			path = DailyToDoListWatchWatchKitExtension;
 			sourceTree = "<group>";
 		};
 		CFB6EDFF28F1793B00E93585 /* DailyToDoListWidget */ = {
@@ -302,7 +402,6 @@
 				CF487EA328F1B6C900498451 /* DailyToDoListWidget.entitlements */,
 				CF487EA428F1B6D200498451 /* TaskListEntryView.swift */,
 				CF487EA628F1B6F100498451 /* TaskListProvider.swift */,
-				CF487EA128F1B69500498451 /* WidgetManager.swift */,
 				CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */,
 				CFB6EE0228F1793B00E93585 /* DailyToDoListWidget.intentdefinition */,
 				CFB6EE0328F1793C00E93585 /* Assets.xcassets */,
@@ -314,7 +413,8 @@
 		CFD0B13028F1BE1E0029D936 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				CFD0B13128F1BE500029D936 /* ClassExtension.swift */,
+				CFD0B13128F1BE500029D936 /* SharedClassExtension.swift */,
+				CF8148F229068E0700FD0974 /* ClassExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -326,6 +426,8 @@
 				CFEB49F028F13289008850DC /* DailyToDoListTests */,
 				CFEB49FA28F13289008850DC /* DailyToDoListUITests */,
 				CFB6EDFF28F1793B00E93585 /* DailyToDoListWidget */,
+				CF8149242906B75100FD0974 /* DailyToDoListWatch */,
+				CF8149322906B75300FD0974 /* DailyToDoListWatchWatchKitExtension */,
 				CFEB49D828F13287008850DC /* Products */,
 				3471AE7C12A772111E1F0366 /* Pods */,
 				A948DE0F7AAA31F92523314C /* Frameworks */,
@@ -339,6 +441,8 @@
 				CFEB49ED28F13289008850DC /* DailyToDoListTests.xctest */,
 				CFEB49F728F13289008850DC /* DailyToDoListUITests.xctest */,
 				CFB6EDFC28F1793B00E93585 /* DailyToDoListWidgetExtension.appex */,
+				CF8149232906B75100FD0974 /* DailyToDoListWatch.app */,
+				CF81492E2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -395,6 +499,7 @@
 				CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */,
 				CF75960F2900F48A0046FDC1 /* SideMenuViewController.swift */,
 				CF75963429024C6A0046FDC1 /* PushListViewController.swift */,
+				CF75963D290662900046FDC1 /* PushListVCExtension.swift */,
 			);
 			path = VeiwController;
 			sourceTree = "<group>";
@@ -416,7 +521,7 @@
 				CFEB4A4128F14D1C008850DC /* EachTask.swift */,
 				CFEB4A4028F14D1C008850DC /* RepeatResult.swift */,
 				CFD0B13A28F905380029D936 /* AlarmInfo.swift */,
-				CF75963829025A4F0046FDC1 /* PushData.swift */,
+				CF81495E2906D28E00FD0974 /* NSEachTask.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -468,6 +573,7 @@
 				CFEB4A5828F155E5008850DC /* DataManager.swift */,
 				CFEB4A5A28F155E5008850DC /* PopupManager.swift */,
 				CFEB4A5928F155E5008850DC /* PushManager.swift */,
+				CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -475,11 +581,47 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CF8149222906B75100FD0974 /* DailyToDoListWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF8149462906B75400FD0974 /* Build configuration list for PBXNativeTarget "DailyToDoListWatch" */;
+			buildPhases = (
+				CF8149212906B75100FD0974 /* Resources */,
+				CF8149452906B75400FD0974 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF8149312906B75300FD0974 /* PBXTargetDependency */,
+			);
+			name = DailyToDoListWatch;
+			productName = DailyToDoListWatch;
+			productReference = CF8149232906B75100FD0974 /* DailyToDoListWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		CF81492D2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF8149422906B75400FD0974 /* Build configuration list for PBXNativeTarget "DailyToDoListWatchWatchKitExtension" */;
+			buildPhases = (
+				A2201800849FBC7E08A14257 /* [CP] Check Pods Manifest.lock */,
+				CF81492A2906B75300FD0974 /* Sources */,
+				CF81492B2906B75300FD0974 /* Frameworks */,
+				CF81492C2906B75300FD0974 /* Resources */,
+				3FFC0DE67DAB71BAA0A704FD /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DailyToDoListWatchWatchKitExtension;
+			productName = "DailyToDoListWatch WatchKit Extension";
+			productReference = CF81492E2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		CFB6EDFB28F1793B00E93585 /* DailyToDoListWidgetExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFB6EE0B28F1793C00E93585 /* Build configuration list for PBXNativeTarget "DailyToDoListWidgetExtension" */;
 			buildPhases = (
-				67E2A6AFB89226562EBBB82A /* [CP] Check Pods Manifest.lock */,
+				79C7E063472AEF30BA16421E /* [CP] Check Pods Manifest.lock */,
 				CFB6EDF828F1793B00E93585 /* Sources */,
 				CFB6EDF928F1793B00E93585 /* Frameworks */,
 				CFB6EDFA28F1793B00E93585 /* Resources */,
@@ -497,17 +639,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFEB4A0128F13289008850DC /* Build configuration list for PBXNativeTarget "DailyToDoList" */;
 			buildPhases = (
-				ADA0E58115072D16095F4B88 /* [CP] Check Pods Manifest.lock */,
+				BC4A06D2BEBF05401CC540D4 /* [CP] Check Pods Manifest.lock */,
 				CFEB49D328F13287008850DC /* Sources */,
 				CFEB49D428F13287008850DC /* Frameworks */,
 				CFEB49D528F13287008850DC /* Resources */,
 				CFEB4A1F28F133B4008850DC /* Embed App Extensions */,
-				BB445C21CDBBA0496CBE582C /* [CP] Embed Pods Frameworks */,
+				CF8148A82906716000FD0974 /* Embed Watch Content */,
+				6E68459568B79A03DD189575 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				CFB6EE0928F1793C00E93585 /* PBXTargetDependency */,
+				CF8149402906B75400FD0974 /* PBXTargetDependency */,
 			);
 			name = DailyToDoList;
 			productName = DailyToDoList;
@@ -518,10 +662,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFEB4A0428F13289008850DC /* Build configuration list for PBXNativeTarget "DailyToDoListTests" */;
 			buildPhases = (
-				CCF4A29288164FDDD163EC13 /* [CP] Check Pods Manifest.lock */,
+				575CDF476506D438281B09E5 /* [CP] Check Pods Manifest.lock */,
 				CFEB49E928F13289008850DC /* Sources */,
 				CFEB49EA28F13289008850DC /* Frameworks */,
 				CFEB49EB28F13289008850DC /* Resources */,
+				645F2BE0BE3DB68E8A496E3D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -537,11 +682,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFEB4A0728F13289008850DC /* Build configuration list for PBXNativeTarget "DailyToDoListUITests" */;
 			buildPhases = (
-				A56E7E4439604798ACCDBEAC /* [CP] Check Pods Manifest.lock */,
+				C3E6F9C8F76A28EBCE8EA93E /* [CP] Check Pods Manifest.lock */,
 				CFEB49F328F13289008850DC /* Sources */,
 				CFEB49F428F13289008850DC /* Frameworks */,
 				CFEB49F528F13289008850DC /* Resources */,
-				282DBB151D2F01718BBC7A34 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -563,6 +707,13 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					CF8149222906B75100FD0974 = {
+						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
+					};
+					CF81492D2906B75300FD0974 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					CFB6EDFB28F1793B00E93585 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -596,11 +747,30 @@
 				CFEB49EC28F13289008850DC /* DailyToDoListTests */,
 				CFEB49F628F13289008850DC /* DailyToDoListUITests */,
 				CFB6EDFB28F1793B00E93585 /* DailyToDoListWidgetExtension */,
+				CF8149222906B75100FD0974 /* DailyToDoListWatch */,
+				CF81492D2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CF8149212906B75100FD0974 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF8149292906B75300FD0974 /* Assets.xcassets in Resources */,
+				CF8149272906B75100FD0974 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF81492C2906B75300FD0974 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF81493C2906B75400FD0974 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CFB6EDFA28F1793B00E93585 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -644,107 +814,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		282DBB151D2F01718BBC7A34 /* [CP] Embed Pods Frameworks */ = {
+		3FFC0DE67DAB71BAA0A704FD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DailyToDoList-DailyToDoListUITests/Pods-DailyToDoList-DailyToDoListUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DailyToDoListWatchWatchKitExtension/Pods-DailyToDoListWatchWatchKitExtension-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DailyToDoList-DailyToDoListUITests/Pods-DailyToDoList-DailyToDoListUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DailyToDoListWatchWatchKitExtension/Pods-DailyToDoListWatchWatchKitExtension-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DailyToDoList-DailyToDoListUITests/Pods-DailyToDoList-DailyToDoListUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DailyToDoListWatchWatchKitExtension/Pods-DailyToDoListWatchWatchKitExtension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		67E2A6AFB89226562EBBB82A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DailyToDoListWidgetExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A56E7E4439604798ACCDBEAC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DailyToDoList-DailyToDoListUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ADA0E58115072D16095F4B88 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DailyToDoList-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BB445C21CDBBA0496CBE582C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DailyToDoList/Pods-DailyToDoList-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DailyToDoList/Pods-DailyToDoList-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DailyToDoList/Pods-DailyToDoList-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CCF4A29288164FDDD163EC13 /* [CP] Check Pods Manifest.lock */ = {
+		575CDF476506D438281B09E5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -766,49 +853,180 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		645F2BE0BE3DB68E8A496E3D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyToDoListTests/Pods-DailyToDoListTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyToDoListTests/Pods-DailyToDoListTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DailyToDoListTests/Pods-DailyToDoListTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E68459568B79A03DD189575 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyToDoList/Pods-DailyToDoList-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyToDoList/Pods-DailyToDoList-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DailyToDoList/Pods-DailyToDoList-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79C7E063472AEF30BA16421E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DailyToDoListWidgetExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A2201800849FBC7E08A14257 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DailyToDoListWatchWatchKitExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC4A06D2BEBF05401CC540D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DailyToDoList-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3E6F9C8F76A28EBCE8EA93E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DailyToDoListUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CF81492A2906B75300FD0974 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF8149382906B75300FD0974 /* NotificationController.swift in Sources */,
+				CF81494E2906B77500FD0974 /* CategoryData.swift in Sources */,
+				CF8149532906B77D00FD0974 /* RealmManager.swift in Sources */,
+				CF81493A2906B75300FD0974 /* ComplicationController.swift in Sources */,
+				CF8149362906B75300FD0974 /* ExtensionDelegate.swift in Sources */,
+				CF81494D2906B77500FD0974 /* UserData.swift in Sources */,
+				CF81494B2906B77100FD0974 /* Utils.swift in Sources */,
+				CF8149342906B75300FD0974 /* InterfaceController.swift in Sources */,
+				CF8149522906B77D00FD0974 /* PushManager.swift in Sources */,
+				CF81494A2906B77100FD0974 /* StringKeys.swift in Sources */,
+				CF81494F2906B77500FD0974 /* EachTask.swift in Sources */,
+				CF81495D2906CC8C00FD0974 /* WatchConnectManager.swift in Sources */,
+				CF8149512906B77500FD0974 /* AlarmInfo.swift in Sources */,
+				CF8149502906B77500FD0974 /* RepeatResult.swift in Sources */,
+				CF81494C2906B77100FD0974 /* Enums.swift in Sources */,
+				CF8149562906BBDF00FD0974 /* TaskTableRowController.swift in Sources */,
+				CF8149602906D28E00FD0974 /* NSEachTask.swift in Sources */,
+				CF8149492906B76B00FD0974 /* SharedClassExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CFB6EDF828F1793B00E93585 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF75963A290262560046FDC1 /* PushListViewController.swift in Sources */,
-				CF75962D290119B80046FDC1 /* CustomNavigationController.swift in Sources */,
+				CF8148F029068DD600FD0974 /* PushManager.swift in Sources */,
+				CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */,
 				CFB6EE0628F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
 				CF759630290119D50046FDC1 /* MonthlyTaskCell.swift in Sources */,
-				CFD0B13E28F90C440029D936 /* DataManager.swift in Sources */,
+				CF8148CC29067B5000FD0974 /* RealmManager.swift in Sources */,
 				CFD0B12F28F1BD3A0029D936 /* StringKeys.swift in Sources */,
-				CF759627290119B80046FDC1 /* PickerViewController.swift in Sources */,
-				CFD0B13328F2C44F0029D936 /* ClassExtension.swift in Sources */,
-				CF759619290119A50046FDC1 /* CustomCalendarView.swift in Sources */,
-				CF75963B2902626E0046FDC1 /* PushData.swift in Sources */,
+				CFD0B13328F2C44F0029D936 /* SharedClassExtension.swift in Sources */,
 				CF75962E290119D50046FDC1 /* DailyTaskCell.swift in Sources */,
-				CFD0B12E28F1BD260029D936 /* CategoryData.swift in Sources */,
-				CFD0B12C28F1BCB00029D936 /* RealmManager.swift in Sources */,
-				CFD0B12B28F1BC930029D936 /* WidgetManager.swift in Sources */,
 				CFD0B12A28F1BC2D0029D936 /* EachTask.swift in Sources */,
-				CFD0B13D28F90C2F0029D936 /* PushManager.swift in Sources */,
 				CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */,
 				CF487EA528F1B6D200498451 /* TaskListEntryView.swift in Sources */,
 				CFD0B13C28F90C2B0029D936 /* AlarmInfo.swift in Sources */,
-				CF759625290119B80046FDC1 /* SideMenuViewController.swift in Sources */,
-				CF759623290119B80046FDC1 /* TaskInfoViewController.swift in Sources */,
-				CF759624290119B80046FDC1 /* ColorPickerViewController.swift in Sources */,
 				CFD0B14128F90D210029D936 /* FirebaseManager.swift in Sources */,
-				CF759626290119B80046FDC1 /* RepeatViewController.swift in Sources */,
 				CFD0B14228F90DA80029D936 /* PopupManager.swift in Sources */,
-				CF7596142901188B0046FDC1 /* SystemManager.swift in Sources */,
 				CF487EA728F1B6F100498451 /* TaskListProvider.swift in Sources */,
 				CFD0B14028F90D210029D936 /* UserData.swift in Sources */,
 				CFD0B12D28F1BD150029D936 /* Enums.swift in Sources */,
-				CF75962B290119B80046FDC1 /* SettingViewController.swift in Sources */,
 				CF487EAA28F1B72900498451 /* Utils.swift in Sources */,
-				CF759622290119B80046FDC1 /* CategoryViewController.swift in Sources */,
-				CFD0B13F28F90D210029D936 /* CloudManager.swift in Sources */,
 				CF75963C2902627E0046FDC1 /* PushCell.swift in Sources */,
 				CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */,
-				CF75962C290119B80046FDC1 /* CustomSideMenuNavigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,9 +1035,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFEB4A4328F14D1C008850DC /* CategoryData.swift in Sources */,
-				CFD0B13228F1BE500029D936 /* ClassExtension.swift in Sources */,
+				CFD0B13228F1BE500029D936 /* SharedClassExtension.swift in Sources */,
 				CFEB4A3E28F14CCA008850DC /* StringKeys.swift in Sources */,
 				CFD0B13B28F905380029D936 /* AlarmInfo.swift in Sources */,
+				CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */,
 				CF75963529024C6A0046FDC1 /* PushListViewController.swift in Sources */,
 				CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */,
 				CFEB4A4628F14D1C008850DC /* UserData.swift in Sources */,
@@ -833,9 +1052,7 @@
 				CFEB4A6828F165D1008850DC /* CategoryViewController.swift in Sources */,
 				CFEB4A5628F1559D008850DC /* SystemManager.swift in Sources */,
 				CFEB4A5B28F155E5008850DC /* DataManager.swift in Sources */,
-				CF487EAD28F1B76500498451 /* WidgetManager.swift in Sources */,
 				CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */,
-				CF75963929025A4F0046FDC1 /* PushData.swift in Sources */,
 				CFD0B14828F91CEA0029D936 /* TaskInfoViewController.swift in Sources */,
 				CFEB4A5C28F155E5008850DC /* PushManager.swift in Sources */,
 				CF487EA928F1B71900498451 /* TaskListEntryView.swift in Sources */,
@@ -845,9 +1062,11 @@
 				CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */,
 				CFB6EE0728F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
 				CF75963729024F680046FDC1 /* PushCell.swift in Sources */,
+				CF81495C2906CC0000FD0974 /* WatchConnectManager.swift in Sources */,
 				CFEB4A3828F14BEF008850DC /* SettingViewController.swift in Sources */,
 				CFEB4A5528F1559D008850DC /* FirebaseManager.swift in Sources */,
 				CF7596102900F48A0046FDC1 /* SideMenuViewController.swift in Sources */,
+				CF75963E290662900046FDC1 /* PushListVCExtension.swift in Sources */,
 				CFEB49DF28F13287008850DC /* MainViewController.swift in Sources */,
 				CFEB4A5728F1559D008850DC /* CloudManager.swift in Sources */,
 				CFEB4A4928F14D25008850DC /* DailyTaskCell.swift in Sources */,
@@ -855,6 +1074,7 @@
 				CFEB4A3228F14BC7008850DC /* LoginViewController.swift in Sources */,
 				CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */,
 				CFEB4A6E28F16B27008850DC /* PickerViewController.swift in Sources */,
+				CF81495F2906D28E00FD0974 /* NSEachTask.swift in Sources */,
 				CFEB4A5D28F155E5008850DC /* PopupManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -879,6 +1099,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CF8149312906B75300FD0974 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF81492D2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension */;
+			targetProxy = CF8149302906B75300FD0974 /* PBXContainerItemProxy */;
+		};
+		CF8149402906B75400FD0974 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF8149222906B75100FD0974 /* DailyToDoListWatch */;
+			targetProxy = CF81493F2906B75400FD0974 /* PBXContainerItemProxy */;
+		};
 		CFB6EE0928F1793C00E93585 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CFB6EDFB28F1793B00E93585 /* DailyToDoListWidgetExtension */;
@@ -897,6 +1127,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CF8149252906B75100FD0974 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF8149262906B75100FD0974 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		CFEB49E028F13287008850DC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -916,9 +1154,142 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CF8149432906B75400FD0974 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CD7D5198E0087ECD03386CB /* Pods-DailyToDoListWatchWatchKitExtension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = DailyToDoListWatchWatchKitExtension/DailyToDoListWatchWatchKitExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M7QY569K4A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyToDoListWatchWatchKitExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DailyToDoListWatchWatchKitExtension;
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = DailyToDoListWatchWatchKitExtension.ComplicationController;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKExtensionDelegateClassName = DailyToDoListWatchWatchKitExtension.ExtensionDelegate;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.DailyToDoList.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		CF8149442906B75400FD0974 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBF80313A4FB8B4BD312F2D1 /* Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = DailyToDoListWatchWatchKitExtension/DailyToDoListWatchWatchKitExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M7QY569K4A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyToDoListWatchWatchKitExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DailyToDoListWatchWatchKitExtension;
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = DailyToDoListWatchWatchKitExtension.ComplicationController;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKExtensionDelegateClassName = DailyToDoListWatchWatchKitExtension.ExtensionDelegate;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.DailyToDoList.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		CF8149472906B75400FD0974 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M7QY569K4A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = DailyToDoListWatchWatchKitExtension;
+				INFOPLIST_KEY_CFBundleDisplayName = DailyToDoListWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.bailey.DailyToDoList;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.DailyToDoList.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "DailyToDoList/Manager/DailyToDoListWatch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		CF8149482906B75400FD0974 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M7QY569K4A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = DailyToDoListWatchWatchKitExtension;
+				INFOPLIST_KEY_CFBundleDisplayName = DailyToDoListWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.bailey.DailyToDoList;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.DailyToDoList.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "DailyToDoList/Manager/DailyToDoListWatch-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
 		CFB6EE0C28F1793C00E93585 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5289FFF5F4DD1039BC6F07E7 /* Pods-DailyToDoListWidgetExtension.debug.xcconfig */;
+			baseConfigurationReference = F34FEDE351436183A07EBDD2 /* Pods-DailyToDoListWidgetExtension.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -952,7 +1323,7 @@
 		};
 		CFB6EE0D28F1793C00E93585 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B96FC2FFD7DB8D5BE2D47F53 /* Pods-DailyToDoListWidgetExtension.release.xcconfig */;
+			baseConfigurationReference = 4926433551039551E81E63F2 /* Pods-DailyToDoListWidgetExtension.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1100,7 +1471,7 @@
 		};
 		CFEB4A0228F13289008850DC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A35E5E7F35062A3BD1D46091 /* Pods-DailyToDoList.debug.xcconfig */;
+			baseConfigurationReference = 109BA517BC66F6920604F650 /* Pods-DailyToDoList.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1134,7 +1505,7 @@
 		};
 		CFEB4A0328F13289008850DC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7FD8240AF20153F625539B37 /* Pods-DailyToDoList.release.xcconfig */;
+			baseConfigurationReference = A7F72011CC0BCA202BCB048B /* Pods-DailyToDoList.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1168,7 +1539,7 @@
 		};
 		CFEB4A0528F13289008850DC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 467F5B050E3A02C833B2F451 /* Pods-DailyToDoListTests.debug.xcconfig */;
+			baseConfigurationReference = 5C28C6D65D352FDA88B1241C /* Pods-DailyToDoListTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1189,7 +1560,7 @@
 		};
 		CFEB4A0628F13289008850DC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A966525D1237CBB5C4F5A754 /* Pods-DailyToDoListTests.release.xcconfig */;
+			baseConfigurationReference = 6523EBFD78550046A68FBB10 /* Pods-DailyToDoListTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1210,7 +1581,7 @@
 		};
 		CFEB4A0828F13289008850DC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5ACCCB995945E25A9809652E /* Pods-DailyToDoList-DailyToDoListUITests.debug.xcconfig */;
+			baseConfigurationReference = FC66D6BA43C5821A19F5A230 /* Pods-DailyToDoListUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1229,7 +1600,7 @@
 		};
 		CFEB4A0928F13289008850DC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBD3B0CCC378FBF85307DC03 /* Pods-DailyToDoList-DailyToDoListUITests.release.xcconfig */;
+			baseConfigurationReference = 1B59078BFDC0348445EE0013 /* Pods-DailyToDoListUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1249,6 +1620,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CF8149422906B75400FD0974 /* Build configuration list for PBXNativeTarget "DailyToDoListWatchWatchKitExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF8149432906B75400FD0974 /* Debug */,
+				CF8149442906B75400FD0974 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF8149462906B75400FD0974 /* Build configuration list for PBXNativeTarget "DailyToDoListWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF8149472906B75400FD0974 /* Debug */,
+				CF8149482906B75400FD0974 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CFB6EE0B28F1793C00E93585 /* Build configuration list for PBXNativeTarget "DailyToDoListWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

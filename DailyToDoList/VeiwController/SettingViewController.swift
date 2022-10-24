@@ -46,6 +46,10 @@ extension SettingViewController {
     
     @IBAction func removeAllFile(_ sender: Any) {
         DataManager.shared.deleteAllFile()
+        guard let navigation = self.navigationController as? CustomNavigationController else {
+            return
+        }
+        navigation.popToRootViewController()
     }
     @IBAction func clickSideMenu(_ sender: Any) {
         SystemManager.shared.openSideMenu(self)

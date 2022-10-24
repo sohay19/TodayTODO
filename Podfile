@@ -1,34 +1,40 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
+use_frameworks!
+
+def shared_pods
+    # Pods for DailyToDoList
+    pod 'FirebaseAuth' , '> 9.0.0'
+    pod 'FirebaseDatabase' , '> 9.0.0'
+    pod 'FirebaseMessaging' , '> 9.0.0'
+    pod 'RealmSwift' , '> 10.0.0'
+end
 
 target 'DailyToDoList' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for DailyToDoList
-  pod 'FirebaseAuth' , '> 9.0.0'
+  shared_pods
   pod 'FirebaseAnalytics' , '> 9.0.0'
-  pod 'FirebaseDatabase' , '> 9.0.0'
-  pod 'FirebaseMessaging' , '> 9.0.0' 
   pod 'GoogleSignIn' , '> 6.0.0'
-  pod 'RealmSwift' , '> 10.0.0'
   pod 'FSCalendar' , '> 2.0.0'
   pod 'SideMenu'
-  
-  target 'DailyToDoListWidgetExtension' do
-    inherit! :search_paths
-    # Pods for DailyToDoListWidgetExtension
-  end
-
-  target 'DailyToDoListTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'DailyToDoListUITests' do
-    # Pods for testing
-  end
-
 end
 
+target 'DailyToDoListWidgetExtension' do
+  shared_pods
+  # Pods for DailyToDoListWidgetExtension
+end
+
+target 'DailyToDoListWatchWatchKitExtension' do
+  shared_pods
+  # Pods for DailyToDoListWidgetExtension
+end
+
+target 'DailyToDoListTests' do
+  shared_pods
+  # Pods for testing
+end
+
+target 'DailyToDoListUITests' do
+  # Pods for testing
+end
 
