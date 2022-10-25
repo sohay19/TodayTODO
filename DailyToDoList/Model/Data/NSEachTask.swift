@@ -7,11 +7,11 @@
 
 import Foundation
 
-class NSEachTaskList: NSObject, Codable {
+struct NSEachTaskList: Codable {
     var taskList:[NSEachTask]
 }
 
-class NSEachTask: NSObject, Codable {
+struct NSEachTask: Codable {
     //아이디
     var id:String = ""
     //Task 날짜 (yyyy-MM-dd)
@@ -75,7 +75,7 @@ class NSEachTask: NSObject, Codable {
         try container.encode(isDone, forKey: .isDone)
     }
     
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         taskDay = try container.decode(String.self, forKey: .taskDay)

@@ -13,6 +13,8 @@ import WatchConnectivity
 class InterfaceController: WKInterfaceController {
     @IBOutlet weak var taskTable: WKInterfaceTable!
     
+    var index = 0
+    
     
     override func awake(withContext context: Any?) {
         // Configure interface objects here.
@@ -32,19 +34,26 @@ class InterfaceController: WKInterfaceController {
 extension InterfaceController {
     //
     func loadTask() {
-        WatchConnectManager.shared.requestTask()
+        WatchConnectManager.shared.requestTask(index)
     }
     //
     func initTable(_ taskList:[EachTask]) {
-        print("taskList.count = \(taskList.count)")
-        taskTable.setNumberOfRows(taskList.count, withRowType: "EachTaskType")
-        //
-        for (i, item) in taskList.enumerated() {
-            guard let row = taskTable.rowController(at: i) as? TaskTableRowController else {
-                return
+        DispatchQueue.main.async { [self] in
+            print("taskList.count = \(taskList.count)")
+            taskTable.setNumberOfRows(taskList.count, withRowType: "EachTaskType")
+            //
+            for (i, item) in taskList.enumerated() {
+                guard let row = taskTable.rowController(at: i) as? TaskTableRowController else {
+                    return
+                }
+                row.labelTitle.setText(item.title)
+                row.labelTime.setText(item.alarmTime)
             }
-            row.labelTitle.setText(item.title)
-            row.labelTime.setText(item.alarmTime)
         }
+    }
+    //
+    @IBAction func sendUpdate() {
+        index += 1
+        WatchConnectManager.shared.requestTask(index)
     }
 }

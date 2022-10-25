@@ -78,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Silent Push Notification")
         PushManager.shared.checkExpiredPush()
+        WatchConnectManager.shared.sendToWatchTask()
     }
 }
 

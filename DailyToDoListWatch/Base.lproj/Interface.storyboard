@@ -27,6 +27,11 @@
                                 </tableRow>
                             </items>
                         </table>
+                        <button width="1" alignment="left" title="Button" id="nmz-N7-V4c">
+                            <connections>
+                                <action selector="sendUpdate" destination="AgC-eL-Hgc" id="cu7-Xl-02F"/>
+                            </connections>
+                        </button>
                     </items>
                     <connections>
                         <outlet property="taskTable" destination="EdJ-X5-BMb" id="BnB-D4-s5Y"/>
