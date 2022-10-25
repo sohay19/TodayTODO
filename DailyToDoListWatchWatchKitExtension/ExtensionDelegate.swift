@@ -11,10 +11,8 @@ import WatchConnectivity
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
-        
         //
-        let sessonResult = WatchConnectManager.shared.initSession()
-        print("Session is \(sessonResult)")
+        WatchConnectManager.shared.initSession()
     }
 
     func applicationDidBecomeActive() {

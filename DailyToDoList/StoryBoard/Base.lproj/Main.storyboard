@@ -37,7 +37,7 @@
                                             <action selector="deleteAllNoti:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jsq-AP-ezu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgv-do-JnB">
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgv-do-JnB" userLabel="BtnSidMenu">
                                         <rect key="frame" x="6" y="-9" width="53" height="53"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="dgv-do-JnB" secondAttribute="height" multiplier="1:1" id="4Nw-wN-Hv6"/>

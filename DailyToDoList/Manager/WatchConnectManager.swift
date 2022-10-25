@@ -14,78 +14,125 @@ class WatchConnectManager : NSObject {
         session = WCSession.default
     }
     //
+    var initWatchTable:(([EachTask])->Void)?
     private var session:WCSession
-    var lastWatchMsg:CFAbsoluteTime = 0
     
-    func initSession() -> Bool {
+    func initSession() {
+        #if os(iOS)
+        print("iOS")
         if WCSession.isSupported() {
-            session = WCSession.default
             session.delegate = self
             session.activate()
-            
-            return true
-        } else {
-            return false
         }
+        #else
+        print("watchOS")
+        session.delegate = self
+        session.activate()
+        #endif
     }
 }
 
+//MARK: - send
 extension WatchConnectManager {
-    func sendToWatchTask(_ complete: @escaping () -> Void) {
-        if !session.isReachable {
-            print("isReachable = \(session.isReachable)")
+    //
+    func requestTask() {
+        guard session.activationState == .activated && session.isReachable else {
+            print("state = \(session.activationState == .activated ? "activated" : "not activated"), isReachable = \(session.isReachable)")
             return
         }
-        RealmManager.shared.getTaskDataForDay(date: Date()) { founData in
-            var taskList:[NSEachTask] = []
-            for data in founData {
-                taskList.append(NSEachTask.init(task: data))
-            }
-            sendWatch(taskList, complete)
-        }
+        //
+        print("requestTask")
+        session.transferUserInfo(["state":"request"])
     }
-    
-    func sendWatch(_ sendData:[NSEachTask], _ compelete: @escaping () -> Void) {
-        let curruntTime = CFAbsoluteTimeGetCurrent()
-        //너무 빨리 재전송 막기
-        if lastWatchMsg + 0.5 > curruntTime {
+    //
+    func sendToWatchTask() {
+        guard session.activationState == .activated && session.isReachable else {
+            print("state = \(session.activationState == .activated ? "activated" : "not activated"), isReachable = \(session.isReachable)")
             return
         }
-        do {
-            let sendData = try NSKeyedArchiver.archivedData(withRootObject: sendData, requiringSecureCoding: false)
-            session.sendMessageData(sendData) { data in
-                do {
-                    guard let receiveData:[NSEachTask] = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [NSEachTask] else { return }
-                    print("receiveData = \(receiveData.count)")
-                    //
-                    compelete()
-                } catch {
-                    print("Decoding Error")
+        //
+        print("sendToWatchTask")
+        //
+        DispatchQueue.main.async {
+            RealmManager.shared.getTaskDataForDay(date: Date()) { founData in
+                var taskList:[NSEachTask] = []
+                for data in founData {
+                    taskList.append(NSEachTask.init(task: data))
                 }
-            } errorHandler: { error in
-                print("send Error")
+                do {
+                    let dataForWatch = try JSONEncoder().encode(taskList)
+//                    let dataForWatch = try NSKeyedArchiver.archivedData(withRootObject: taskList as Array, requiringSecureCoding: false)
+                    self.session.sendMessageData(dataForWatch, replyHandler: nil)
+                } catch {
+                    print("Encoding Error")
+                }
             }
-        } catch {
-            print("Encoding Error")
         }
-        
-        //도착함
-        lastWatchMsg = CFAbsoluteTimeGetCurrent()
     }
 }
 
-extension WatchConnectManager: WCSessionDelegate {
+//MARK: - replyHandler
+extension WatchConnectManager {
+    func errorHandler(_ error:Error) {
+        print("send Error")
+    }
+}
+
+extension WatchConnectManager : WCSessionDelegate {
     #if os(iOS)
     func sessionDidBecomeInactive(_ session: WCSession) {
-        print("Session DidBecomeInactive")
+        
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
-        print("Session DidDeactivate")
+        session.activate()
     }
     #endif
-    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        print("Session Complete")
+        switch activationState {
+        case .notActivated:
+            print("Session = notActivated")
+        case .inactive: //수신 가능, 송신 불가능
+            print("Session = inactive")
+        case .activated:
+            print("Session = activated")
+        default:
+            break
+        }
+    }
+    //
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        print("didReceiveUserInfo")
+        WatchConnectManager.shared.sendToWatchTask()
+    }
+    //
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        print("didReceiveMessage = \(message)")
+    }
+    //
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
+        DispatchQueue.main.async { [self] in
+            print("didReceiveMessageData")
+            do {
+                let receiveMsgData = try JSONDecoder().decode(NSEachTaskList.self, from: messageData)                
+//                guard let receiveMsgData = try NSKeyedUnarchiver.unarchivedArrayOfObjects(ofClasses: [NSArray.self, NSEachTask.self], from: messageData) as? [NSEachTask] else { return }
+                var newTaskList:[EachTask] = []
+                for data in receiveMsgData.taskList {
+                    newTaskList.append(EachTask(task:data))
+                }
+                print("taskList.count = \(newTaskList.count)")
+                guard let initWatchTable = initWatchTable else {
+                    print("initWatchTable is nil")
+                    return
+                }
+                initWatchTable(newTaskList)
+            } catch {
+                print("Deconding Error")
+            }
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
+        replyHandler(messageData)
     }
 }

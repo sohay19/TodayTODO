@@ -28,8 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //원격 푸시 설정
         Messaging.messaging().delegate = self
         //
-        let sessonResult = WatchConnectManager.shared.initSession()
-        print("Session is \(sessonResult)")
+        WatchConnectManager.shared.initSession()
         
         return true
     }

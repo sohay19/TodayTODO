@@ -13,12 +13,15 @@ import Realm
 
 class RealmManager {
     static let shared = RealmManager()
-    private init() { }
+    private init() {
+        realmUrl = openRealm()
+    }
     
     private let fileManager = FileManager.default
     private let realmDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("Realm_DailyToDoList", isDirectory: true)
     
     private var realm:Realm?
+    var realmUrl:URL?
 }
 
 //MARK: - Main
@@ -257,80 +260,6 @@ extension RealmManager {
         complete(foundData.map{$0})
     }
     //
-//    func getTaskDataForDay(date:Date) -> [EachTask] {
-//        guard let realm = realm else {
-//            print("realm is nil")
-//            return []
-//        }
-//        //해당 요일
-//        let weekdayIndex = Utils.getWeekDay(date)
-//        //해당 주
-//        let weekOfMonth = Utils.getWeekOfMonth(date)
-//        //마지막 주
-//        let lastWeek = Utils.getLastWeek(date)
-//        //전체 DB
-//        let taskDataBase = realm.objects(EachTask.self)
-//        
-//        let foundData = taskDataBase.filter {
-//            let today = Utils.dateToDateString(date)
-//            let days = today.split(separator: "-")
-//            let loadDays = $0.taskDay.split(separator: "-")
-//            
-//            if today < $0.taskDay {
-//                return false
-//            }
-//            //당일 추가
-//            if $0.taskDay == today {
-//                return true
-//            }
-//            
-//            switch RepeatType(rawValue:$0.repeatType) {
-//                //매일 반복
-//            case .EveryDay:
-//                return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
-//                //매주 해당 요일 반복
-//            case .Eachweek:
-//                if $0.weekDayList[weekdayIndex] {
-//                    return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
-//                } else {
-//                    return false
-//                }
-//                //매월 해당 일 반복
-//            case .EachMonthOfOnce:
-//                if days[2] == loadDays[2] {
-//                    return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
-//                } else {
-//                    return false
-//                }
-//                //매월 해당 주, 해당 요일 반복
-//            case .EachMonthOfWeek:
-//                if $0.weekDayList[weekdayIndex] {
-//                    let week = $0.monthOfWeek
-//                    if week == 5 {
-//                        return weekOfMonth == lastWeek
-//                    } else if week == weekOfMonth {
-//                        return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
-//                    } else {
-//                        return false
-//                    }
-//                } else {
-//                    return false
-//                }
-//                //매년 반복
-//            case .EachYear:
-//                if days[1] == loadDays[1] && days[2] == loadDays[2] {
-//                    return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
-//                } else {
-//                    return false
-//                }
-//                //반복 없음
-//            default:
-//                return $0.taskDay == Utils.dateToDateString(date)
-//            }
-//        }
-//        return foundData.map{$0}
-//    }
-    //
     func getTaskDataForMonth(date:Date, _ complete:([EachTask]) -> Void) {
         guard let realm = realm else {
             print("realm is nil")
@@ -374,50 +303,6 @@ extension RealmManager {
         }
         complete(foundData.map{$0})
     }
-    
-//    func getTaskDataForMonth(date:Date) -> [EachTask] {
-//        guard let realm = realm else {
-//            print("realm is nil")
-//            return []
-//        }
-//        //시작 날짜
-//        guard let firstDate = Utils.transFirstDate(date) else {
-//            return []
-//        }
-//        //마지막 날짜
-//        guard let lastDate = Utils.transLastDate(date) else {
-//            return []
-//        }
-//        //전체 DB
-//        let taskDataBase = realm.objects(EachTask.self)
-//
-//        let foundData = taskDataBase.filter {
-//            if Utils.dateToDateString(lastDate) < $0.taskDay {
-//                return false
-//            }
-//
-//            let today = Utils.dateToDateString(date)
-//            let days = today.split(separator: "-")
-//            let loadDays = $0.taskDay.split(separator: "-")
-//
-//            switch RepeatType(rawValue:$0.repeatType) {
-//                //반복 없음
-//            case .None:
-//                return days[0] == loadDays[0] && days[1] == loadDays[1] ? true : false
-//                //매년 반복
-//            case .EachYear:
-//                if days[1] == loadDays[1] {
-//                    return $0.isEnd ? $0.taskEndDate >=  Utils.dateToDateString(firstDate) : true
-//                } else {
-//                    return false
-//                }
-//            default:
-//                //그 외 모든 반복
-//                return $0.isEnd ? $0.taskEndDate >=  Utils.dateToDateString(firstDate): true
-//            }
-//        }
-//        return foundData.map{$0}
-//    }
 }
 
 //MARK: - Category

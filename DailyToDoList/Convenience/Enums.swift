@@ -53,3 +53,19 @@ enum TaskMode:Int {
     case ADD = 1
     case MODIFY = 2
 }
+
+enum CodingKeys:String, CodingKey {
+    case id
+    case taskDay
+    case category
+    case title
+    case memo
+    case repeatType
+    case weekDay
+    case monthOfWeek
+    case isEnd
+    case taskEndDate
+    case isAlarm
+    case alarmTime
+    case isDone
+}

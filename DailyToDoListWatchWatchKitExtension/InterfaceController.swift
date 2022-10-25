@@ -7,21 +7,21 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
 
 class InterfaceController: WKInterfaceController {
     @IBOutlet weak var taskTable: WKInterfaceTable!
     
-    var taskList:[EachTask] = []
-    
     
     override func awake(withContext context: Any?) {
         // Configure interface objects here.
-        loadTask()
+        WatchConnectManager.shared.initWatchTable = initTable(_:)
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
+        loadTask()
     }
     
     override func didDeactivate() {
@@ -30,14 +30,15 @@ class InterfaceController: WKInterfaceController {
 }
 
 extension InterfaceController {
+    //
     func loadTask() {
-        WatchConnectManager.shared.sendToWatchTask(initTable)
+        WatchConnectManager.shared.requestTask()
     }
-    
-    func initTable() {
+    //
+    func initTable(_ taskList:[EachTask]) {
         print("taskList.count = \(taskList.count)")
         taskTable.setNumberOfRows(taskList.count, withRowType: "EachTaskType")
-        
+        //
         for (i, item) in taskList.enumerated() {
             guard let row = taskTable.rowController(at: i) as? TaskTableRowController else {
                 return

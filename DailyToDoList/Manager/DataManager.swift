@@ -35,7 +35,7 @@ extension DataManager {
 extension DataManager {
     //
     func openRealm() {
-        guard let url = RealmManager.shared.openRealm() else {
+        guard let url = RealmManager.shared.realmUrl else {
             return
         }
         cloudManager.realmUrl = url

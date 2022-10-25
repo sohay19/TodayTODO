@@ -60,6 +60,25 @@ class EachTask : Object
     @Persisted
     var isDone:Bool
     
+    
+    convenience init(task:NSEachTask)
+    {
+        self.init()
+        self.id = task.id
+        self.taskDay = task.taskDay
+        self.category = task.category
+        self.title = task.title
+        self.memo = task.memo
+        self.repeatType = task.repeatType
+        self.weekDay = task.weekDay
+        self.monthOfWeek = task.monthOfWeek
+        self.isEnd = task.isEnd
+        self.taskEndDate = task.taskEndDate
+        self.isAlarm = task.isAlarm
+        self.alarmTime = task.alarmTime
+        self.isDone = task.isDone
+    }
+    
             
     convenience init(taskDay:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int) {
         self.init()
