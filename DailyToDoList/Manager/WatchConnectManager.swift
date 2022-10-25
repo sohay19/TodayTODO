@@ -31,28 +31,48 @@ class WatchConnectManager : NSObject {
 }
 
 extension WatchConnectManager {
-    func sendWatch() {
+    func sendToWatchTask(_ complete: @escaping () -> Void) {
+        if !session.isReachable {
+            print("isReachable = \(session.isReachable)")
+            return
+        }
+        RealmManager.shared.getTaskDataForDay(date: Date()) { founData in
+            var taskList:[NSEachTask] = []
+            for data in founData {
+                taskList.append(NSEachTask.init(task: data))
+            }
+            sendWatch(taskList, complete)
+        }
+    }
+    
+    func sendWatch(_ sendData:[NSEachTask], _ compelete: @escaping () -> Void) {
         let curruntTime = CFAbsoluteTimeGetCurrent()
         //너무 빨리 재전송 막기
         if lastWatchMsg + 0.5 > curruntTime {
             return
         }
         do {
-            let sendData = try NSKeyedArchiver.archivedData(withRootObject: NSEachTask(task: EachTask()), requiringSecureCoding: false)
+            let sendData = try NSKeyedArchiver.archivedData(withRootObject: sendData, requiringSecureCoding: false)
             session.sendMessageData(sendData) { data in
-                print("받은 데이터 = \(data)")
+                do {
+                    guard let receiveData:[NSEachTask] = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [NSEachTask] else { return }
+                    print("receiveData = \(receiveData.count)")
+                    //
+                    compelete()
+                } catch {
+                    print("Decoding Error")
+                }
             } errorHandler: { error in
-                print("send Error = \(error)")
+                print("send Error")
             }
         } catch {
-            print("coding Error")
+            print("Encoding Error")
         }
-
+        
         //도착함
         lastWatchMsg = CFAbsoluteTimeGetCurrent()
     }
 }
-
 
 extension WatchConnectManager: WCSessionDelegate {
     #if os(iOS)

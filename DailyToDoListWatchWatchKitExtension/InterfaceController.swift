@@ -31,10 +31,7 @@ class InterfaceController: WKInterfaceController {
 
 extension InterfaceController {
     func loadTask() {
-//        RealmManager.shared.getTaskDataForDay(date: Date()) { founData in
-//            taskList = founData
-//            initTable()
-//        }
+        WatchConnectManager.shared.sendToWatchTask(initTable)
     }
     
     func initTable() {
