@@ -14,24 +14,38 @@
                         <table alignment="left" id="EdJ-X5-BMb">
                             <items>
                                 <tableRow identifier="EachTaskType" id="JNU-rh-YR7" customClass="TaskTableRowController" customModule="DailyToDoListWatch" customModuleProvider="target">
-                                    <group key="rootItem" width="1" alignment="left" id="n55-R3-JZi">
+                                    <group key="rootItem" width="1" height="60" alignment="left" radius="10" id="n55-R3-JZi">
                                         <items>
-                                            <label alignment="left" verticalAlignment="center" text="Label" id="thw-dZ-pkr"/>
-                                            <label alignment="right" verticalAlignment="center" text="Label" id="Le3-L0-y2B"/>
+                                            <group width="0.5" height="1" alignment="left" verticalAlignment="center" layout="vertical" id="boj-gb-s0h">
+                                                <items>
+                                                    <label alignment="left" text="Label" id="thw-dZ-pkr">
+                                                        <fontDescription key="font" type="boldSystem" pointSize="18"/>
+                                                    </label>
+                                                    <label alignment="left" verticalAlignment="bottom" text="Label" id="Le3-L0-y2B">
+                                                        <fontDescription key="font" type="system" pointSize="15"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <group width="0.5" height="1" alignment="right" verticalAlignment="center" id="Csy-qi-Gaz">
+                                                <items>
+                                                    <button width="30" height="27" alignment="right" verticalAlignment="center" backgroundImage="checkmark" catalog="system" id="G2v-ja-NOk">
+                                                        <fontDescription key="font" type="system" pointSize="12"/>
+                                                        <connections>
+                                                            <action selector="clickDone" destination="JNU-rh-YR7" id="4oz-eb-kbv"/>
+                                                        </connections>
+                                                    </button>
+                                                </items>
+                                            </group>
                                         </items>
                                     </group>
                                     <connections>
+                                        <outlet property="btnDone" destination="G2v-ja-NOk" id="oMX-I2-tTF"/>
                                         <outlet property="labelTime" destination="Le3-L0-y2B" id="QEE-MF-162"/>
                                         <outlet property="labelTitle" destination="thw-dZ-pkr" id="24H-Bt-GOI"/>
                                     </connections>
                                 </tableRow>
                             </items>
                         </table>
-                        <button width="1" alignment="left" title="Button" id="nmz-N7-V4c">
-                            <connections>
-                                <action selector="sendUpdate" destination="AgC-eL-Hgc" id="cu7-Xl-02F"/>
-                            </connections>
-                        </button>
                     </items>
                     <connections>
                         <outlet property="taskTable" destination="EdJ-X5-BMb" id="BnB-D4-s5Y"/>
@@ -64,4 +78,7 @@
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkmark" catalog="system" width="128" height="110"/>
+    </resources>
 </document>

@@ -24,7 +24,30 @@ extension PushManager {
         notiContent.title = data.title
         notiContent.body = data.memo
         //push 메세지에 담긴 데이터
-        notiContent.userInfo = [endDateKey:data.taskEndDate, idKey:data.id, repeatTypeKey:data.repeatType, alarmTimeKey:data.alarmTime]
+        notiContent.userInfo = [pushTypeKey:PushType.Alert.rawValue, endDateKey:data.taskEndDate, idKey:data.id, repeatTypeKey:data.repeatType, alarmTimeKey:data.alarmTime]
+        //알림음 설정
+        notiContent.sound = UNNotificationSound.default
+        //뱃지 표시
+        notiContent.badge = (PushManager.shared.addBadgeCnt()) as NSNumber
+        //썸네일
+        do {
+            //            let imageUrl = Bundle.main.url(forResource: "Tulips", withExtension: "jpg")
+            //            let attach = try UNNotificationAttachment(identifier: "", url: imageUrl!, options: nil)
+            //            notiPush.attachments.append(attach)
+        } catch {
+            print(error)
+        }
+        
+        return notiContent
+    }
+    //종료푸쉬콘텐츠 내용 설정
+    private func setEndNotiContent(_ data:EachTask, _ id:String) -> UNMutableNotificationContent {
+        let notiContent = UNMutableNotificationContent()
+        //제목내용
+        notiContent.title = "오늘 알람이 마지막이에요!"
+        notiContent.body = "알림이 확실하게 삭제될 수 있도록 확인해주세요"
+        //push 메세지에 담긴 데이터
+        notiContent.userInfo = [pushTypeKey:PushType.End.rawValue, endDateKey:data.taskEndDate, idKey:data.id, repeatTypeKey:data.repeatType, alarmTimeKey:data.alarmTime]
         //알림음 설정
         notiContent.sound = UNNotificationSound.default
         //뱃지 표시
@@ -56,36 +79,41 @@ extension PushManager {
     func addNotification(_ data:EachTask) -> [String] {
         //
         var idList:[String] = []
+        var index = 0
         //반복 여부 체크
         switch RepeatType.init(rawValue: data.repeatType) {
         case .EveryDay:
-            idList.append(setRepeatDayNoti(data))
+            idList.append(setRepeatDayNoti(data, index))
         case .Eachweek:
             //선택 일자 기본 설정
-            idList.append(setNotRepeatNoti(data, 0))
-            //
-            for i in 1..<data.weekDayList.count {
-                if data.weekDayList[i] {
-                    //index + 1
-                    idList.append(setRepeatWeekNoti(data, i))
-                }
-            }
-        case .EachMonthOfOnce:
-            idList.append(setRepeatMonthOfOnceNoti(data))
-        case .EachMonthOfWeek:
-            //선택 일자 기본 설정
-            idList.append(setNotRepeatNoti(data, 0))
+            idList.append(setNotRepeatNoti(data, index))
             //
             for i in 0..<data.weekDayList.count {
                 if data.weekDayList[i] {
-                    //index + 1
-                    idList.append(setRepeatMonthOfWeekNoti(data, i))
+                    index += 1
+                    idList.append(setRepeatWeekNoti(data, index))
+                }
+            }
+        case .EachMonthOfOnce:
+            idList.append(setRepeatMonthOfOnceNoti(data, index))
+        case .EachMonthOfWeek:
+            //선택 일자 기본 설정
+            idList.append(setNotRepeatNoti(data, index))
+            //
+            for i in 0..<data.weekDayList.count {
+                if data.weekDayList[i] {
+                    index += 1
+                    idList.append(setRepeatMonthOfWeekNoti(data, index))
                 }
             }
         case .EachYear:
-            idList.append(setRepeatYearNoti(data))
+            idList.append(setRepeatYearNoti(data, index))
         default:
-            idList.append(setNotRepeatNoti(data, 0))
+            idList.append(setNotRepeatNoti(data, index))
+        }
+        if data.isEnd {
+            index += 1
+            idList.append(setEndNoti(data, index))
         }
         return idList
     }
@@ -93,6 +121,28 @@ extension PushManager {
 
 //MARK: - Add
 extension PushManager {
+    //종료알림
+    private func setEndNoti(_ data:EachTask, _ idIndex:Int) -> String {
+        //콘텐츠 설정
+        let id = "\(data.id)_\(idIndex)"
+        let notiContent = setNotiContent(data, id)
+        //push 날짜 설정
+        var dateComponents = getDateComponents(data)
+        let dateArr = data.taskEndDate.split(separator: "-")
+        dateComponents.year = Int(dateArr[0])
+        dateComponents.month = Int(dateArr[1])
+        dateComponents.day = Int(dateArr[2])
+        //trigger 세팅
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
+        //
+        notiCenter.add(request) { error in
+            if let error = error {
+                print("Noti Add Error = \(error)")
+            }
+        }
+        return id
+    }
     //반복없음
     private func setNotRepeatNoti(_ data:EachTask, _ idIndex:Int) -> String {
         //콘텐츠 설정
@@ -116,9 +166,9 @@ extension PushManager {
         return id
     }
     //매일 반복
-    private func setRepeatDayNoti(_ data:EachTask) -> String {
+    private func setRepeatDayNoti(_ data:EachTask, _ idIndex:Int) -> String {
         //콘텐츠 설정
-        let id = data.id
+        let id = "\(data.id)_\(idIndex)"
         let notiContent = setNotiContent(data, id)
         //push 날짜 설정
         let dateComponents = getDateComponents(data)
@@ -153,9 +203,9 @@ extension PushManager {
         return id
     }
     //월 1회 반복
-    private func setRepeatMonthOfOnceNoti(_ data:EachTask) -> String {
+    private func setRepeatMonthOfOnceNoti(_ data:EachTask, _ idIndex:Int) -> String {
         //콘텐츠 설정
-        let id = data.id
+        let id = "\(data.id)_\(idIndex)"
         let notiContent = setNotiContent(data, id)
         //push 날짜 설정
         var dateComponents = getDateComponents(data)
@@ -193,9 +243,9 @@ extension PushManager {
         return id
     }
     //연 1회 반복
-    private func setRepeatYearNoti(_ data:EachTask) -> String {
+    private func setRepeatYearNoti(_ data:EachTask, _ idIndex:Int) -> String {
         //콘텐츠 설정
-        let id = data.id
+        let id = "\(data.id)_\(idIndex)"
         let notiContent = setNotiContent(data, id)
         //push 날짜 설정
         var dateComponents = getDateComponents(data)
@@ -267,16 +317,19 @@ extension PushManager {
     }
     //종료일 체크
     func checkExpiredPush() {
-        notiCenter.getPendingNotificationRequests { requestList in
-            for request in requestList {
-                let endDate = request.content.userInfo[endDateKey] as! String
-                let today = Utils.dateToDateString(Date())
-                if endDate == today {
-                    guard let idList = RealmManager.shared.getAlarmIdList(request.content.userInfo[idKey] as! String) else {
-                        return
-                    }
-                    self.deletePush(idList)
-                }
+        notiCenter.getPendingNotificationRequests(completionHandler: removeExpriedPush(_:))
+    }
+    //
+    func removeExpriedPush(_ requestList:[UNNotificationRequest]) {
+        for request in requestList {
+            guard let endDate = request.content.userInfo[endDateKey] as? String, let alarmTime = request.content.userInfo[alarmTimeKey] as? String else {
+                return
+            }
+            let today = Utils.dateToDateString(Date())
+            let currentTime = Utils.dateToTimeString(Date())
+            if endDate == today && alarmTime < currentTime {
+                let idList = RealmManager.shared.getAlarmIdList(request.content.userInfo[idKey] as! String)
+                self.deletePush(idList)
             }
         }
     }

@@ -61,14 +61,12 @@ extension CategoryViewController {
             let newList = list.map{Float($0)}
             let newCategory = CategoryData(title, newList)
             RealmManager.shared.addCategory(newCategory)
-            DispatchQueue.main.async { [self] in
-                guard let reload = self.reloadCategory else {
-                    return
-                }
-                reload()
-                DispatchQueue.main.async {
-                    self.dismiss(animated: true)
-                }
+            guard let reload = self.reloadCategory else {
+                return
+            }
+            reload()
+            DispatchQueue.main.async {
+                self.dismiss(animated: true)
             }
         }
     }

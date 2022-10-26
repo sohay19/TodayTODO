@@ -78,6 +78,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Silent Push Notification")
         PushManager.shared.checkExpiredPush()
+    }
+    //포그라운드 진입 예정 시
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        print("applicationWillEnterForeground")
+        WatchConnectManager.shared.sendToWatchTask()
+    }
+    //앱 종료 직전
+    func applicationWillTerminate(_ application: UIApplication) {
+        print("applicationWillTerminate")
         WatchConnectManager.shared.sendToWatchTask()
     }
 }
@@ -89,17 +98,39 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        let data = notification.request.content.userInfo
-        print("[foreground :: \(data)]")
-        completionHandler([.banner, .list, .badge, .sound])
+        let userInfo = notification.request.content.userInfo
+        guard let pushType = userInfo[pushTypeKey] as? String else {
+            return
+        }
+        print("[pushType :: \(pushType)]")
+        //
+        switch PushType(rawValue: pushType) {
+        case .End:
+            let idList = RealmManager.shared.getAlarmIdList(userInfo[idKey] as! String)
+            PushManager.shared.deletePush(idList)
+            completionHandler([.banner, .list, .badge, .sound])
+        default:
+            completionHandler([.banner, .list, .badge, .sound])
+        }
     }
-    //background 상태
+    //background 상태에서 받은 후 실행
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
-        let data = response.notification.request.content.userInfo
-        print("[background :: \(data)]")
-        completionHandler()
+        let userInfo = response.notification.request.content.userInfo
+        guard let pushType = userInfo[pushTypeKey] as? String else {
+            return
+        }
+        print("[pushType :: \(pushType)]")
+        //
+        switch PushType(rawValue: pushType) {
+        case .End:
+            let idList = RealmManager.shared.getAlarmIdList(userInfo[idKey] as! String)
+                PushManager.shared.deletePush(idList)
+                completionHandler()
+        default:
+            completionHandler()
+        }
     }
 }
 

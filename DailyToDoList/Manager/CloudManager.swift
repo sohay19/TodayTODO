@@ -19,7 +19,9 @@ class CloudManager {
         }
         return defaultDir.appendingPathComponent("Realm", isDirectory: true)
     }
-    var realmUrl:URL?
+    var realmUrl:URL? {
+        return RealmManager.shared.realmUrl
+    }
     var labelDate:UILabel?
 }
 

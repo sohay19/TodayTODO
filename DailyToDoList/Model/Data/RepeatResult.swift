@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RepeatResult {
+struct RepeatResult {
     //반복 타입
     var repeatType:RepeatType
     //반복요일 체크(일요일 = 0) -> DateComponents (일요일 = 1)
@@ -28,7 +28,7 @@ class RepeatResult {
         self.taskEndDate = nil
     }
     
-    convenience init(repeatType:RepeatType, weekDay:[Bool], monthOfWeek:MonthOfWeek, isEnd:Bool, endDate:Date?) {
+    init(repeatType:RepeatType, weekDay:[Bool], monthOfWeek:MonthOfWeek, isEnd:Bool, endDate:Date?) {
         self.init()
         self.repeatType = repeatType
         self.weekDay = weekDay

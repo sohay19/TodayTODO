@@ -46,9 +46,8 @@ class PushListViewController : UIViewController {
 //MARK: - Func
 extension PushListViewController {
     func loadPushData() {
-        pushList = RealmManager.shared.getAllAlarmInfo()
-        pushList.sort { $0.alarmTime < $1.alarmTime }
-        
+        let pushlist = RealmManager.shared.getAllAlarmInfo()
+        pushList = pushlist.sorted { $0.alarmTime < $1.alarmTime }
         pushTable.reloadData()
     }
     //refresh controller 초기세팅

@@ -14,7 +14,7 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet weak var taskTable: WKInterfaceTable!
     
     var index = 0
-    
+    private var taskList:[EachTask] = []
     
     override func awake(withContext context: Any?) {
         // Configure interface objects here.
@@ -23,7 +23,6 @@ class InterfaceController: WKInterfaceController {
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
-        loadTask()
     }
     
     override func didDeactivate() {
@@ -33,27 +32,32 @@ class InterfaceController: WKInterfaceController {
 
 extension InterfaceController {
     //
-    func loadTask() {
-        WatchConnectManager.shared.requestTask(index)
-    }
-    //
     func initTable(_ taskList:[EachTask]) {
-        DispatchQueue.main.async { [self] in
-            print("taskList.count = \(taskList.count)")
-            taskTable.setNumberOfRows(taskList.count, withRowType: "EachTaskType")
-            //
-            for (i, item) in taskList.enumerated() {
-                guard let row = taskTable.rowController(at: i) as? TaskTableRowController else {
-                    return
-                }
-                row.labelTitle.setText(item.title)
-                row.labelTime.setText(item.alarmTime)
+        self.taskList = taskList.sorted(by: { task1, task2 in
+            if task1.isDone {
+                return task2.isDone ? true : false
+            } else {
+                return true
             }
+        })
+        taskTable.setNumberOfRows(taskList.count, withRowType: "EachTaskType")
+        //
+        for (i, task) in taskList.enumerated() {
+            guard let row = taskTable.rowController(at: i) as? TaskTableRowController else {
+                return
+            }
+            row.updateDone = updateTask(_:_:)
+            row.task = task
+            //
+            row.labelTitle.setText(task.title)
+            row.labelTime.setText(task.alarmTime)
+            row.btnDone.setBackgroundImage(UIImage(systemName: "checkmark"))
+            row.btnDone.setBackgroundColor(task.isDone ? UIColor.red : UIColor.gray)
         }
     }
     //
-    @IBAction func sendUpdate() {
-        index += 1
-        WatchConnectManager.shared.requestTask(index)
+    func updateTask(_ newTask:EachTask, _ complete:()->Void) {
+        WatchConnectManager.shared.sendAppToTask(newTask)
+        complete()
     }
 }

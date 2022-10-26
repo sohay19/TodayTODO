@@ -22,10 +22,12 @@ let taskInfoBoard = "TaskInfo"
 let sideMenuBoard = "SideMenu"
 let pushListBoard = "PushList"
 
-//MARK: - key
+//MARK: - Push UserInfo key
 let endDateKey = "endDate"
 let idKey = "id"
 let repeatTypeKey = "repeatType"
 let alarmTimeKey = "alarmTime"
-
-
+let pushTypeKey = "pushType"
+let dataTypeKey = "dataType"
+let taskDataKey = "taskData"
+let sendTypeKey = "sendType"

@@ -19,7 +19,6 @@ class DataManager {
     private init() { }
     
     private let cloudManager = CloudManager()
-    
     private var notificationToken:RLMNotificationToken = RLMNotificationToken.init()
 }
 
@@ -28,18 +27,6 @@ extension DataManager {
     func deleteAllFile() {
         deleteiCloudBackupFile()
         RealmManager.shared.deleteOriginFile()
-    }
-}
-
-//MARK: - Realm
-extension DataManager {
-    //
-    func openRealm() {
-        guard let url = RealmManager.shared.realmUrl else {
-            return
-        }
-        cloudManager.realmUrl = url
-        print("realmUrl = \(url)")
     }
 }
 

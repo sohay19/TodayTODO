@@ -141,9 +141,8 @@ class EachTask : Object
         self.taskEndDate = Utils.dateToDateString(endDate)
     }
     
-    func unRepeat() {
-        weekDayOff()
-        monthWeekOff()
+    func changeIsDone() {
+        self.isDone = !self.isDone
     }
     
     private func findWeekDay(_ index:Int) -> String {
@@ -199,14 +198,6 @@ class EachTask : Object
         }
         
         return result
-    }
-    
-    func weekDayOff() {
-        weekDay[0..<weekDay.count] = [false]
-    }
-    
-    func monthWeekOff() {
-        monthOfWeek = 0
     }
     
     func clone() -> EachTask {

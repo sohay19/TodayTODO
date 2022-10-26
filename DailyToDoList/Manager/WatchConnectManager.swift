@@ -18,30 +18,22 @@ class WatchConnectManager : NSObject {
     var session:WCSession
     
     func initSession() {
-        #if os(iOS)
+#if os(iOS)
         print("iOS")
         if WCSession.isSupported() {
             session.delegate = self
             session.activate()
         }
-        #else
+#else
         print("watchOS")
         session.delegate = self
         session.activate()
-        #endif
+#endif
     }
 }
 
 //MARK: - send
 extension WatchConnectManager {
-    //
-    func requestTask(_ index:Int) {
-        guard session.activationState == .activated || session.activationState == .inactive else {
-            print("activationState is notActivated")
-            return
-        }
-        session.transferUserInfo(["state":"request"])
-    }
     //
     func sendToWatchTask() {
         guard session.activationState == .activated || session.activationState == .inactive else {
@@ -49,17 +41,33 @@ extension WatchConnectManager {
             return
         }
         //
-        RealmManager.shared.getTaskDataForDay(date: Date()) { founData in
-            var taskList:[NSEachTask] = []
-            for data in founData {
-                taskList.append(NSEachTask.init(task: data))
-            }
+        DispatchQueue.main.sync { [self] in
             do {
+                print("여긴워치")
+                let founData = RealmManager.shared.getTaskDataForDay(date: Date())
+                var taskList:[NSEachTask] = []
+                for data in founData {
+                    taskList.append(NSEachTask.init(task: data))
+                }
                 let dataForWatch = try JSONEncoder().encode(NSEachTaskList(taskList: taskList))
-                session.transferUserInfo(["task":dataForWatch])
+                session.transferUserInfo([ sendTypeKey:SendType.Send.rawValue, dataTypeKey:DataType.NSEachTaskList.rawValue, taskDataKey:dataForWatch])
             } catch {
-                print("Encoding Error")
+                print("getTaskDataForDay Error")
             }
+        }
+    }
+    //
+    func sendAppToTask(_ task:EachTask) {
+        guard session.activationState == .activated || session.activationState == .inactive else {
+            print("activationState is notActivated")
+            return
+        }
+        //
+        do {
+            let dataForApp = try JSONEncoder().encode(NSEachTask(task: task))
+            session.transferUserInfo([sendTypeKey:SendType.Update.rawValue, dataTypeKey:DataType.NSEachTask.rawValue, taskDataKey:dataForApp])
+        } catch {
+            print("Encoding Error")
         }
     }
 }
@@ -73,7 +81,7 @@ extension WatchConnectManager {
 }
 
 extension WatchConnectManager : WCSessionDelegate {
-    #if os(iOS)
+#if os(iOS)
     func sessionDidBecomeInactive(_ session: WCSession) {
         
     }
@@ -81,7 +89,7 @@ extension WatchConnectManager : WCSessionDelegate {
     func sessionDidDeactivate(_ session: WCSession) {
         session.activate()
     }
-    #endif
+#endif
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         switch activationState {
@@ -97,17 +105,45 @@ extension WatchConnectManager : WCSessionDelegate {
     }
     //
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
-        #if os(iOS)
+#if os(iOS)
         print("didReceiveUserInfo_iOS")
-        WatchConnectManager.shared.sendToWatchTask()
-        #else
-        print("didReceiveUserInfo_watchOS")
-        DispatchQueue.main.async { [self] in
+        switch SendType(rawValue: userInfo[sendTypeKey] as! String) {
+        case .Send:
+            break
+        default:
             do {
-                let receiveMsgData = try JSONDecoder().decode(NSEachTaskList.self, from: userInfo["task"] as! Data)
+                let dataType = userInfo[dataTypeKey] as! String
+                switch DataType(rawValue: dataType) {
+                case .NSEachTask:
+                    let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[taskDataKey] as! Data)
+                    RealmManager.shared.updateTaskData(EachTask(task:receiveMsgData))
+                case .NSEachTaskList:
+                    break
+                default:
+                    break
+                }
+            } catch {
+                print("Deconding Error")
+            }
+        }
+#else
+        print("didReceiveUserInfo_watchOS")
+        switch SendType(rawValue: userInfo[sendTypeKey] as! String) {
+        case .Send:
+            do {
+                let dataType = userInfo[dataTypeKey] as! String
                 var newTaskList:[EachTask] = []
-                for data in receiveMsgData.taskList {
-                    newTaskList.append(EachTask(task:data))
+                switch DataType(rawValue: dataType) {
+                case .NSEachTask:
+                    let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[taskDataKey] as! Data)
+                    newTaskList.append(EachTask(task:receiveMsgData))
+                case .NSEachTaskList:
+                    let receiveMsgData = try JSONDecoder().decode(NSEachTaskList.self, from: userInfo[taskDataKey] as! Data)
+                    for data in receiveMsgData.taskList {
+                        newTaskList.append(EachTask(task:data))
+                    }
+                default:
+                    break
                 }
                 guard let initWatchTable = initWatchTable else {
                     return
@@ -116,7 +152,9 @@ extension WatchConnectManager : WCSessionDelegate {
             } catch {
                 print("Deconding Error")
             }
+        default:
+            break
         }
-        #endif
+#endif
     }
 }

@@ -132,8 +132,9 @@ extension TaskInfoViewController {
         }
         inputTitle.text = taskData.title
         btnPullCategory.setTitle(taskData.category, for: .normal)
-        btnPullCategory.tintColor = RealmManager.shared.getCategoryColor(taskData.category)
-        btnPullCategory.backgroundColor = RealmManager.shared.getCategoryColor(taskData.category)
+        let color = RealmManager.shared.getCategoryColor(taskData.category)
+        btnPullCategory.tintColor = color
+        btnPullCategory.backgroundColor = color
         pickTaskDate.date = Utils.dateStringToDate(taskData.taskDay)!
         //
         let repeatType = RepeatType(rawValue: taskData.repeatType)!
@@ -171,17 +172,17 @@ extension TaskInfoViewController {
     //카테고리 로드
     func loadCategory() {
         //
+        let funcLoadCategory:()->Void = self.loadCategory
         var categoryList:[UIAction] = []
         let categories = RealmManager.shared.loadCategory()
-        if let categories = categories {
-            for category in categories {
-                let image =  category.loadImage()
-                categoryList.append(UIAction(title: category.title, image: image, handler: { _ in
-                    self.btnPullCategory.setTitle(category.title, for: .normal)
-                    self.btnPullCategory.tintColor = category.loadColor()
-                    self.btnPullCategory.backgroundColor = category.loadColor()
-                }))
-            }
+        print("categories.count = \(categories.count)")
+        for category in categories {
+            let image =  category.loadImage()
+            categoryList.append(UIAction(title: category.title, image: image, handler: { _ in
+                self.btnPullCategory.setTitle(category.title, for: .normal)
+                self.btnPullCategory.tintColor = category.loadColor()
+                self.btnPullCategory.backgroundColor = category.loadColor()
+            }))
         }
         //카테고리 추가 버튼
         let addCategory = UIAction(title: "카테고리 추가", attributes: .destructive, handler: { _ in
@@ -190,12 +191,11 @@ extension TaskInfoViewController {
             
             colorVC.modalTransitionStyle = .coverVertical
             colorVC.modalPresentationStyle = .pageSheet
-            colorVC.reloadCategory = self.loadCategory
+            colorVC.reloadCategory = funcLoadCategory
             
             self.present(colorVC, animated: true)
         })
         categoryList.append(addCategory)
-        
         btnPullCategory.menu = UIMenu(title: "카테고리", children: categoryList)
     }
 }
@@ -404,13 +404,10 @@ extension TaskInfoViewController {
         }
         //realm에 추가
         RealmManager.shared.addTaskData(data)
-        //
-        DispatchQueue.main.async { [self] in
-            guard let refreshTask = refreshTask else {
-                return
-            }
-            dismiss(animated: true, completion: refreshTask)
+        guard let refreshTask = refreshTask else {
+            return
         }
+        dismiss(animated: true, completion: refreshTask)
     }
     //수정 Or 완료 버튼
     @IBAction func clickModify(_ sender:UIButton) {

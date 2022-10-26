@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum UserDataType:String {
     case None = "user"
@@ -68,4 +69,20 @@ enum CodingKeys:String, CodingKey {
     case isAlarm
     case alarmTime
     case isDone
+}
+
+enum PushType:String {
+    case Alert = "Alert"
+    case End = "End"
+}
+
+enum DataType:String {
+    case EachTask = "EachTask"
+    case NSEachTask = "NSEachTask"
+    case NSEachTaskList = "NSEachTaskList"
+}
+
+enum SendType:String {
+    case Send = "send"
+    case Update = "update"
 }

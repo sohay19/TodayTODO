@@ -19,10 +19,10 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         guard let pushCell = tableView.dequeueReusableCell(withIdentifier: "PushCell", for: indexPath) as? PushCell else {
             return UITableViewCell()
         }
-        guard let pushData = RealmManager.shared.getTaskData(pushList[indexPath.row].taskId) else {
+        let pushData = RealmManager.shared.getTaskData(pushList[indexPath.row].taskId)
+        guard let pushData = pushData else {
             return UITableViewCell()
         }
-        
         pushCell.labelTitle.text = pushData.title
         pushCell.labelAlarmTime.text = pushData.alarmTime
         //
@@ -71,7 +71,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             
         }
         pushCell.labelRepeat.text = repeatMsg
-        
+        //
         return pushCell
     }
     
@@ -111,7 +111,8 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
         tableView.deselectRow(at: indexPath, animated: true)
         
-        taskInfoVC.taskData = RealmManager.shared.getTaskData(pushList[indexPath.row].taskId)
+        let data = RealmManager.shared.getTaskData(pushList[indexPath.row].taskId)
+        taskInfoVC.taskData = data
         taskInfoVC.modalTransitionStyle = .crossDissolve
         taskInfoVC.modalPresentationStyle = .overCurrentContext
         

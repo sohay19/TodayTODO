@@ -117,6 +117,7 @@
 		CFEB4A6E28F16B27008850DC /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A6D28F16B27008850DC /* PickerViewController.swift */; };
 		CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
 		CFFC323A2907E97000B2B1F2 /* NSEachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495E2906D28E00FD0974 /* NSEachTask.swift */; };
+		CFFC323C2909216000B2B1F2 /* WatchConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1026,6 +1027,7 @@
 				CFD0B14028F90D210029D936 /* UserData.swift in Sources */,
 				CFD0B12D28F1BD150029D936 /* Enums.swift in Sources */,
 				CF487EAA28F1B72900498451 /* Utils.swift in Sources */,
+				CFFC323C2909216000B2B1F2 /* WatchConnectManager.swift in Sources */,
 				CF75963C2902627E0046FDC1 /* PushCell.swift in Sources */,
 				CFFC323A2907E97000B2B1F2 /* NSEachTask.swift in Sources */,
 				CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */,
