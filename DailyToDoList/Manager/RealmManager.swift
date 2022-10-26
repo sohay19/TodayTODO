@@ -322,6 +322,7 @@ extension RealmManager {
             }
             //
         }
+        print("foundData = \(foundData.count)")
         return foundData.map{$0}
     }
     //

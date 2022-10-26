@@ -67,7 +67,10 @@ class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //
-        loadTask()
+        print("viewDidAppear")
+        DispatchQueue.main.async { [self] in
+            loadTask()
+        }
     }
 }
 
@@ -195,6 +198,7 @@ extension MainViewController {
                     return true
                 }
             })
+            print("taskList = \(taskList.count)")
             //
             if taskList.count == 0 {
                 labelTodayNilMsg.isHidden = false

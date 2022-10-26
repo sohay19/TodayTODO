@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Firabase 설정
         FirebaseApp.configure()
+        //
+        RealmManager.shared.openRealm()
         //로컬 푸시 설정
         UNUserNotificationCenter.current().delegate = self
         //노티 권한 및 옵션 설정
@@ -29,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         //
         WatchConnectManager.shared.initSession()
+        
         
         return true
     }
@@ -78,16 +81,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Silent Push Notification")
         PushManager.shared.checkExpiredPush()
-    }
-    //포그라운드 진입 예정 시
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        print("applicationWillEnterForeground")
-        WatchConnectManager.shared.sendToWatchTask()
-    }
-    //앱 종료 직전
-    func applicationWillTerminate(_ application: UIApplication) {
-        print("applicationWillTerminate")
-        WatchConnectManager.shared.sendToWatchTask()
     }
 }
 
