@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,28 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CfC-sz-25t" userLabel="Background">
+                            <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O07-pc-pDX" userLabel="btnBack">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O07-pc-pDX">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
-                                        <connections>
-                                            <action selector="clickBackground:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nNx-om-Eiu"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="O07-pc-pDX" firstAttribute="top" secondItem="CfC-sz-25t" secondAttribute="top" id="0ML-KM-CUf"/>
-                                    <constraint firstItem="O07-pc-pDX" firstAttribute="leading" secondItem="CfC-sz-25t" secondAttribute="leading" id="3aq-Yy-EYm"/>
-                                    <constraint firstAttribute="trailing" secondItem="O07-pc-pDX" secondAttribute="trailing" id="Tn1-za-Wd0"/>
-                                    <constraint firstAttribute="bottom" secondItem="O07-pc-pDX" secondAttribute="bottom" id="qgi-Y4-rgD"/>
-                                </constraints>
-                            </view>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="clickBackground:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nNx-om-Eiu"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7J-km-Fae" userLabel="PopView">
-                                <rect key="frame" x="42" y="309" width="330" height="288"/>
+                                <rect key="frame" x="42" y="311" width="330" height="288"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="반복 주기" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gH-DD-dIV" userLabel="RepeaType">
                                         <rect key="frame" x="30" y="27" width="56" height="30"/>
@@ -353,12 +343,12 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="CfC-sz-25t" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="5Fj-AU-LpW"/>
-                            <constraint firstAttribute="trailing" secondItem="CfC-sz-25t" secondAttribute="trailing" id="7Cc-pA-6zg"/>
-                            <constraint firstAttribute="bottom" secondItem="CfC-sz-25t" secondAttribute="bottom" id="Zdx-lj-0A2"/>
+                            <constraint firstItem="O07-pc-pDX" firstAttribute="bottom" secondItem="5EZ-qb-Rvc" secondAttribute="bottom" id="C61-y5-T1K"/>
+                            <constraint firstAttribute="trailing" secondItem="O07-pc-pDX" secondAttribute="trailing" id="JsU-7Q-p9e"/>
+                            <constraint firstAttribute="top" secondItem="O07-pc-pDX" secondAttribute="top" id="Okv-7z-IgZ"/>
                             <constraint firstItem="F7J-km-Fae" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="am2-eT-230"/>
                             <constraint firstItem="F7J-km-Fae" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="kgT-ea-ccu"/>
-                            <constraint firstItem="CfC-sz-25t" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="mV3-zz-egQ"/>
+                            <constraint firstItem="O07-pc-pDX" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="xJA-5x-fls"/>
                         </constraints>
                     </view>
                     <connections>
@@ -383,7 +373,7 @@
     </scenes>
     <resources>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

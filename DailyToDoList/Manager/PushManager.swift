@@ -7,6 +7,7 @@
 
 import Foundation
 import UserNotifications
+import UIKit
 
 class PushManager {
     static let shared = PushManager()
@@ -304,17 +305,6 @@ extension PushManager {
 
 //MARK: - Etc Event
 extension PushManager {
-    //권한요청
-    func requestPushPermission() {
-        let notiAuthOptions = UNAuthorizationOptions(arrayLiteral: [.alert, .badge, .sound])
-        notiCenter.requestAuthorization(options: notiAuthOptions) { success, error in
-            if let error = error {
-                print("Noti Permission Error = \(error)")
-            } else {
-                print("Noti Permission Get!")
-            }
-        }
-    }
     //종료일 체크
     func checkExpiredPush() {
         notiCenter.getPendingNotificationRequests(completionHandler: removeExpriedPush(_:))

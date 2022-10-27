@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nL7-nt-PhE" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="45"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="45"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bLR-Sq-nbO">
                                         <rect key="frame" x="148.5" y="0.0" width="117" height="32"/>
@@ -65,7 +66,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-ST-NiN" userLabel="TodayView">
-                                <rect key="frame" x="0.0" y="89" width="414" height="755"/>
+                                <rect key="frame" x="0.0" y="93" width="414" height="751"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S02-VU-gCk">
                                         <rect key="frame" x="335" y="14" width="61" height="30"/>
@@ -86,7 +87,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T45-og-L7Z">
-                                        <rect key="frame" x="0.0" y="70" width="414" height="667"/>
+                                        <rect key="frame" x="0.0" y="70" width="414" height="663"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 등록된 TODO가 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gt6-zW-da3" userLabel="Message">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="18"/>
@@ -96,7 +97,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" id="zFb-mh-b0M" userLabel="BtnAdd">
-                                            <rect key="frame" x="0.0" y="128.5" width="414" height="90"/>
+                                            <rect key="frame" x="0.0" y="139.5" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <color key="tintColor" systemColor="labelColor"/>
@@ -111,10 +112,10 @@
                                         </button>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="DailyTaskCell" id="0Fo-Hl-oys" customClass="DailyTaskCell" customModule="DailyToDoList" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="62.5" width="414" height="43.5"/>
+                                                <rect key="frame" x="0.0" y="68" width="414" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Fo-Hl-oys" id="9fX-e1-206">
-                                                    <rect key="frame" x="0.0" y="0.0" width="373.5" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEV-T2-fc5">
@@ -153,7 +154,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KER-2I-O4L" userLabel="MonthView">
-                                <rect key="frame" x="0.0" y="89" width="414" height="755"/>
+                                <rect key="frame" x="0.0" y="93" width="414" height="751"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MtS-eB-6uU" customClass="CustomCalendarView" customModule="DailyToDoList" customModuleProvider="target">
                                         <rect key="frame" x="18" y="9" width="378" height="378"/>
@@ -163,7 +164,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dEB-Nb-JJl">
-                                        <rect key="frame" x="0.0" y="405" width="414" height="332"/>
+                                        <rect key="frame" x="0.0" y="405" width="414" height="328"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 등록된 TODO가 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C8B-xB-LYB" userLabel="Message">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="18"/>
@@ -173,7 +174,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="tailTruncation" id="Y22-KD-uG2" userLabel="BtnAdd">
-                                            <rect key="frame" x="0.0" y="128.5" width="414" height="90"/>
+                                            <rect key="frame" x="0.0" y="139.5" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <color key="tintColor" systemColor="labelColor"/>
@@ -188,10 +189,10 @@
                                         </button>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="MonthlyTaskCell" id="nOC-lC-0c4" customClass="MonthlyTaskCell" customModule="DailyToDoList" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="62.5" width="414" height="43.5"/>
+                                                <rect key="frame" x="0.0" y="68" width="414" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nOC-lC-0c4" id="PDx-by-aVQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="373.5" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="370" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHI-Bv-kWn">
@@ -209,6 +210,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bHI-Bv-kWn" secondAttribute="trailing" constant="18" id="b59-ME-fjj"/>
                                                 </constraints>
+                                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <connections>
                                                     <outlet property="labelMonthlyTitle" destination="bHI-Bv-kWn" id="Tg8-zm-I1C"/>
                                                 </connections>
@@ -262,10 +264,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
+        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

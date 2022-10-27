@@ -7,12 +7,24 @@
 
 import WatchKit
 import WatchConnectivity
+import UserNotifications
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
         //
         WatchConnectManager.shared.initSession()
+        //
+        UNUserNotificationCenter.current().delegate = self
+        //
+        UNUserNotificationCenter.current().requestAuthorization { isGet, error in
+            if let error = error {
+                print("Permission Denied = \(error)")
+                return
+            }
+            print("Permission Get")
+            WKExtension.shared().registerForRemoteNotifications()
+        }
     }
 
     func applicationDidBecomeActive() {
@@ -23,7 +35,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, etc.
     }
-
+    
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
         // Sent when the system needs to launch the application in the background to process tasks. Tasks arrive in a set, so loop through and process each one.
         for task in backgroundTasks {
@@ -53,5 +65,28 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             }
         }
     }
+    
+    func didRegisterForRemoteNotifications(withDeviceToken deviceToken: Data) {
+        print("Watch Push Success : deviceToken - \(deviceToken)")
+    }
+    
+    func didFailToRegisterForRemoteNotificationsWithError(_ error: Error) {
+        print("Watch Push Fail : error - \(error)")
+    }
+}
 
+
+extension ExtensionDelegate : UNUserNotificationCenterDelegate {
+    //
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
+        print("userNotificationCenter : willPresent")
+        completionHandler([.banner, .list, .badge, .sound])
+    }
+    //
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        print("userNotificationCenter : didReceive]")
+        completionHandler()
+    }
 }

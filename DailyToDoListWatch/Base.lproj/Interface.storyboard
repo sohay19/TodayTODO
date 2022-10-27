@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="20037" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="21507" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="20006"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="21501"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -25,6 +25,7 @@
                                                         <fontDescription key="font" type="system" pointSize="15"/>
                                                     </label>
                                                 </items>
+                                                <edgeInsets key="margins" left="0.0" right="0.0" top="5" bottom="5"/>
                                             </group>
                                             <group width="0.5" height="1" alignment="right" verticalAlignment="center" id="Csy-qi-Gaz">
                                                 <items>
@@ -42,6 +43,7 @@
                                         <outlet property="btnDone" destination="G2v-ja-NOk" id="oMX-I2-tTF"/>
                                         <outlet property="labelTime" destination="Le3-L0-y2B" id="QEE-MF-162"/>
                                         <outlet property="labelTitle" destination="thw-dZ-pkr" id="24H-Bt-GOI"/>
+                                        <segue destination="dDH-4m-eHF" kind="push" id="gzS-dH-WVY"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -54,12 +56,19 @@
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
+        <!--Interface Controller-->
+        <scene sceneID="14M-wT-WOa">
+            <objects>
+                <controller id="dDH-4m-eHF"/>
+            </objects>
+            <point key="canvasLocation" x="538" y="345"/>
+        </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
             <objects>
                 <notificationController id="YCC-NB-fut">
                     <items>
-                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                        <label alignment="left" verticalAlignment="center" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
                     <connections>
@@ -68,14 +77,23 @@
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="220" y="693"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="DailyToDoListWatch" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="DailyToDoListWatch" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" verticalAlignment="center" text="Label" id="nTO-Ag-6xn">
+                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="labelTitle" destination="nTO-Ag-6xn" id="Foh-TF-FQ2"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="468" y="643"/>
+            <point key="canvasLocation" x="531" y="693"/>
         </scene>
     </scenes>
     <resources>

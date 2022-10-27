@@ -12,6 +12,7 @@ class TaskInfoViewController : UIViewController {
     @IBOutlet weak var popView:UIView!
     @IBOutlet weak var resultView:UIView!
     @IBOutlet weak var textView:UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
     //
     @IBOutlet weak var inputTitle:UITextField!
     //
@@ -56,6 +57,8 @@ class TaskInfoViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //
+        scrollView.isScrollEnabled = false
         //날짜 지정
         pickTaskDate.setDate(currntDate, animated: false)
         //
@@ -175,7 +178,6 @@ extension TaskInfoViewController {
         let funcLoadCategory:()->Void = self.loadCategory
         var categoryList:[UIAction] = []
         let categories = RealmManager.shared.loadCategory()
-        print("categories.count = \(categories.count)")
         for category in categories {
             let image =  category.loadImage()
             categoryList.append(UIAction(title: category.title, image: image, handler: { _ in
@@ -530,11 +532,16 @@ extension TaskInfoViewController {
         let keyboardRectabgle = keyboardFrame.cgRectValue
         keyboardHeight = keyboardRectabgle.height
         //
-//        popView.frame.origin.y  = -keyboardHeight!
+        guard let keyboardHeight = keyboardHeight else {
+            return
+        }
+        scrollView.contentInset.bottom = keyboardHeight
+        scrollView.isScrollEnabled = true
     }
     @objc func hideKeyboard(_ sender: Notification) {
         //
-//        popView.frame.origin.y  = 0
+        scrollView.contentInset.bottom = 0
+        scrollView.isScrollEnabled = false
         isShow = false
     }
     //키보드 내리기

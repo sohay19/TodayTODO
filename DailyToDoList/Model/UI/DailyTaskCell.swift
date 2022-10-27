@@ -14,6 +14,9 @@ class DailyTaskCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        //
+        self.separatorInset.left = 0
+        //
         initCell()
     }
     
