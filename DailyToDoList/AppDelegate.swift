@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Firabase 설정
         FirebaseApp.configure()
         //
+        print("AppDelegate")
         RealmManager.shared.openRealm()
         //로컬 푸시 설정
         UNUserNotificationCenter.current().delegate = self

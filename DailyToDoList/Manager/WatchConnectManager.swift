@@ -40,20 +40,16 @@ extension WatchConnectManager {
             print("activationState is notActivated")
             return
         }
-        //
-        DispatchQueue.main.async { [self] in
-            do {
-                print("여긴워치")
-                let founData = RealmManager.shared.getTaskDataForDay(date: Date())
-                var taskList:[NSEachTask] = []
-                for data in founData {
-                    taskList.append(NSEachTask.init(task: data))
-                }
-                let dataForWatch = try JSONEncoder().encode(NSEachTaskList(taskList: taskList))
-                session.transferUserInfo([ sendTypeKey:SendType.Send.rawValue, dataTypeKey:DataType.NSEachTaskList.rawValue, taskDataKey:dataForWatch])
-            } catch {
-                print("getTaskDataForDay Error")
+        do {
+            let founData = RealmManager.shared.getTaskDataForDay(date: Date())
+            var taskList:[NSEachTask] = []
+            for data in founData {
+                taskList.append(NSEachTask.init(task: data))
             }
+            let dataForWatch = try JSONEncoder().encode(NSEachTaskList(taskList: taskList))
+            session.transferUserInfo([ sendTypeKey:SendType.Send.rawValue, dataTypeKey:DataType.NSEachTaskList.rawValue, taskDataKey:dataForWatch])
+        } catch {
+            print("getTaskDataForDay Error")
         }
     }
     //
@@ -111,50 +107,46 @@ extension WatchConnectManager : WCSessionDelegate {
         case .Send:
             break
         default:
-            DispatchQueue.main.async {
-                do {
-                    let dataType = userInfo[dataTypeKey] as! String
-                    switch DataType(rawValue: dataType) {
-                    case .NSEachTask:
-                        let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[taskDataKey] as! Data)
-                        RealmManager.shared.updateTaskData(EachTask(task:receiveMsgData))
-                    case .NSEachTaskList:
-                        break
-                    default:
-                        break
-                    }
-                } catch {
-                    print("Deconding Error")
+            do {
+                let dataType = userInfo[dataTypeKey] as! String
+                switch DataType(rawValue: dataType) {
+                case .NSEachTask:
+                    let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[taskDataKey] as! Data)
+                    RealmManager.shared.updateTaskData(EachTask(task:receiveMsgData))
+                case .NSEachTaskList:
+                    break
+                default:
+                    break
                 }
+            } catch {
+                print("Deconding Error")
             }
         }
 #else
         print("didReceiveUserInfo_watchOS")
         switch SendType(rawValue: userInfo[sendTypeKey] as! String) {
         case .Send:
-            DispatchQueue.main.async { [self] in
-                do {
-                    let dataType = userInfo[dataTypeKey] as! String
-                    var newTaskList:[EachTask] = []
-                    switch DataType(rawValue: dataType) {
-                    case .NSEachTask:
-                        let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[taskDataKey] as! Data)
-                        newTaskList.append(EachTask(task:receiveMsgData))
-                    case .NSEachTaskList:
-                        let receiveMsgData = try JSONDecoder().decode(NSEachTaskList.self, from: userInfo[taskDataKey] as! Data)
-                        for data in receiveMsgData.taskList {
-                            newTaskList.append(EachTask(task:data))
-                        }
-                    default:
-                        break
+            do {
+                let dataType = userInfo[dataTypeKey] as! String
+                var newTaskList:[EachTask] = []
+                switch DataType(rawValue: dataType) {
+                case .NSEachTask:
+                    let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[taskDataKey] as! Data)
+                    newTaskList.append(EachTask(task:receiveMsgData))
+                case .NSEachTaskList:
+                    let receiveMsgData = try JSONDecoder().decode(NSEachTaskList.self, from: userInfo[taskDataKey] as! Data)
+                    for data in receiveMsgData.taskList {
+                        newTaskList.append(EachTask(task:data))
                     }
-                    guard let initWatchTable = initWatchTable else {
-                        return
-                    }
-                    initWatchTable(newTaskList)
-                } catch {
-                    print("Deconding Error")
+                default:
+                    break
                 }
+                guard let initWatchTable = initWatchTable else {
+                    return
+                }
+                initWatchTable(newTaskList)
+            } catch {
+                print("Deconding Error")
             }
         default:
             break

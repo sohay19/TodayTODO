@@ -25,6 +25,7 @@ class RealmManager {
 //MARK: - Main
 extension RealmManager {
     func openRealm() {
+        print("openRealm")
         guard let realmDir = realmDir else {
             print("realmDir 없음")
             return
@@ -34,30 +35,29 @@ extension RealmManager {
                 print("create error = \(error)")
             }
         }
-        Task {
-            do {
-                let path = fileManager.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("Realm_DailyToDoList", isDirectory: true).appendingPathComponent("DailyToDoList.realm")
-                let config = Realm.Configuration(fileURL: path)
-                realm = try await Realm(configuration: config)
-            } catch let error {
-                print("Realm Open Error = \(error)")
-            }
-            //
-            guard let realm = realm else {
-                return
-            }
-            realmUrl = realm.configuration.fileURL
-            print("realmUrl = \(realmUrl!)")
-            //
-            if !haveDefault() {
-                let newList:[Float] = Utils.FloatFromRGB(rgbValue: 0xBDBDBD, alpha: 1)
-                let newCategory = CategoryData("Default", newList)
-                addCategory(newCategory)
-            }
+        do {
+            let path = fileManager.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("Realm_DailyToDoList", isDirectory: true).appendingPathComponent("DailyToDoList.realm")
+            let config = Realm.Configuration(fileURL: path)
+            realm = try Realm(configuration: config)
+        } catch let error {
+            print("Realm Open Error = \(error)")
+        }
+        //
+        guard let realm = realm else {
+            return
+        }
+        realmUrl = realm.configuration.fileURL
+        print("realmUrl = \(realmUrl!)")
+        //
+        if !haveDefault() {
+            let newList:[Float] = Utils.FloatFromRGB(rgbValue: 0xBDBDBD, alpha: 1)
+            let newCategory = CategoryData("Default", newList)
+            addCategory(newCategory)
         }
     }
     //
     func deleteOriginFile() {
+        openRealm()
         guard let realmDir = realmDir else {
             return
         }
@@ -68,9 +68,7 @@ extension RealmManager {
 //MARK: - Task add/update/delete
 extension RealmManager {
     func addTaskData(_ task:EachTask) {
-        if realm == nil {
-            RealmManager.shared.openRealm()
-        }
+        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return
@@ -96,9 +94,7 @@ extension RealmManager {
     }
     
     func updateTaskData(_ task:EachTask) {
-        if realm == nil {
-            RealmManager.shared.openRealm()
-        }
+        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return
@@ -132,9 +128,7 @@ extension RealmManager {
     }
     
     func deleteTaskData(_ task:EachTask) {
-        if realm == nil {
-            RealmManager.shared.openRealm()
-        }
+        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return
@@ -173,9 +167,7 @@ extension RealmManager {
 extension RealmManager {
     //
     func getAlarmIdList(_ taskId:String) -> [String] {
-        if realm == nil {
-            RealmManager.shared.openRealm()
-        }
+        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return []
@@ -189,9 +181,7 @@ extension RealmManager {
     }
     //
     func getAlarmInfo(_ id:String) -> AlarmInfo? {
-        if realm == nil {
-            RealmManager.shared.openRealm()
-        }
+        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return nil
@@ -205,9 +195,7 @@ extension RealmManager {
     }
     //
     func getAllAlarmInfo() -> [AlarmInfo] {
-        if realm == nil {
-            RealmManager.shared.openRealm()
-        }
+        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return []
@@ -215,9 +203,7 @@ extension RealmManager {
         return realm.objects(AlarmInfo.self).map{$0}
     }
     func deleteAllAlarm() {
-        if realm == nil {
-            RealmManager.shared.openRealm()
-        }
+        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return
@@ -235,9 +221,7 @@ extension RealmManager {
 //MARK: - Task Search
 extension RealmManager {
     func getTaskData(_ taskId:String) -> EachTask? {
-        if realm == nil {
-            RealmManager.shared.openRealm()
-        }
+        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return nil
@@ -248,9 +232,8 @@ extension RealmManager {
     }
     //
     func getTaskDataForDay(date:Date) -> [EachTask] {
-        if realm == nil {
-            RealmManager.shared.openRealm()
-        }
+        print("getTaskDataForDay")
+        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return []
@@ -322,14 +305,11 @@ extension RealmManager {
             }
             //
         }
-        print("foundData = \(foundData.count)")
         return foundData.map{$0}
     }
     //
     func getTaskDataForMonth(date:Date) -> [EachTask] {
-        if realm == nil {
-            RealmManager.shared.openRealm()
-        }
+        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return []
@@ -377,9 +357,7 @@ extension RealmManager {
 //MARK: - Category
 extension RealmManager {
     func addCategory(_ data:CategoryData) {
-        if realm == nil {
-            RealmManager.shared.openRealm()
-        }
+        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return
@@ -395,9 +373,7 @@ extension RealmManager {
     }
     
     func loadCategory() -> [CategoryData] {
-        if realm == nil {
-            RealmManager.shared.openRealm()
-        }
+        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return []
@@ -417,9 +393,6 @@ extension RealmManager {
     }
     
     func haveDefault() -> Bool {
-        if realm == nil {
-            RealmManager.shared.openRealm()
-        }
         guard let realm = realm else {
             print("realm is nil")
             return false
