@@ -403,7 +403,7 @@ extension TaskInfoViewController {
             return
         }
         //realm에 추가
-        RealmManager.shared.addTaskData(data)
+        RealmManager.shared.addTaskDataIniOS(data)
         guard let refreshTask = refreshTask else {
             return
         }
@@ -418,7 +418,7 @@ extension TaskInfoViewController {
                 print("task is Nil")
                 return
             }
-            RealmManager.shared.updateTaskData(data)
+            RealmManager.shared.updateTaskDataIniOS(data)
             currentMode = .LOOK
             data.printTask()
         }

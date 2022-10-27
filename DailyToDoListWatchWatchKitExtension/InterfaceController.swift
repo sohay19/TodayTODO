@@ -23,7 +23,7 @@ class InterfaceController: WKInterfaceController {
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
-        print("willActivate")
+        
     }
     
     override func didDeactivate() {
@@ -34,6 +34,7 @@ class InterfaceController: WKInterfaceController {
 extension InterfaceController {
     //
     func initTable(_ receiveTaskList:[EachTask]) {
+        print("initTable")
         taskList = receiveTaskList.sorted(by: { task1, task2 in
             if task1.isDone {
                 return task2.isDone ? true : false
@@ -55,7 +56,6 @@ extension InterfaceController {
             row.btnDone.setBackgroundImage(UIImage(systemName: "checkmark"))
             row.btnDone.setBackgroundColor(task.isDone ? UIColor.red : UIColor.gray)
         }
-        self.willActivate()
     }
     //
     func updateTask(_ newTask:EachTask, _ complete:()->Void) {

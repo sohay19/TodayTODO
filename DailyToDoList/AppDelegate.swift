@@ -19,8 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Firabase 설정
         FirebaseApp.configure()
-        //
-        print("AppDelegate")
+        //메인 로딩을 위해 Realm 열기
         RealmManager.shared.openRealm()
         //로컬 푸시 설정
         UNUserNotificationCenter.current().delegate = self
@@ -30,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         //원격 푸시 설정
         Messaging.messaging().delegate = self
-        //
+        //워치 커넥팅을 위한 세선 열기
         WatchConnectManager.shared.initSession()
         
         
@@ -81,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //데이터가 있는 원격 푸시
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Silent Push Notification")
+        //무음 푸시를 받으면 종료일이 지난 노티 삭제
         PushManager.shared.checkExpiredPush()
     }
 }
@@ -97,7 +97,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             return
         }
         print("[pushType :: \(pushType)]")
-        //
+        //종료일 푸시 일 경우 푸시삭제
         switch PushType(rawValue: pushType) {
         case .End:
             let idList = RealmManager.shared.getAlarmIdList(userInfo[idKey] as! String)
@@ -116,7 +116,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             return
         }
         print("[pushType :: \(pushType)]")
-        //
+        //종료일 푸시 일 경우 푸시삭제
         switch PushType(rawValue: pushType) {
         case .End:
             let idList = RealmManager.shared.getAlarmIdList(userInfo[idKey] as! String)
@@ -136,7 +136,7 @@ extension AppDelegate : MessagingDelegate {
             print("FCM token is nil")
             return
         }
-        // FCM test 가능 토큰
+        // FCM 토큰
         let dataDict: [String: String] = ["token": fcmToken]
         NotificationCenter.default.post(
             name: Notification.Name("FCMToken"),
@@ -144,6 +144,7 @@ extension AppDelegate : MessagingDelegate {
             userInfo: dataDict
         )
         print("FCM token = \(fcmToken)")
+        //Firebase에 토큰 저장 (서버전달로 수정 필요)
         FirebaseManager.shared.sendToken(["uuid": SystemManager.shared.getUUID(), "token": fcmToken])
     }
 }

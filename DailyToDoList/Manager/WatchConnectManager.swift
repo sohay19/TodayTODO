@@ -112,7 +112,8 @@ extension WatchConnectManager : WCSessionDelegate {
                 switch DataType(rawValue: dataType) {
                 case .NSEachTask:
                     let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[taskDataKey] as! Data)
-                    RealmManager.shared.updateTaskData(EachTask(task:receiveMsgData))
+                    let task = EachTask(task:receiveMsgData)
+                    RealmManager.shared.updateTaskDataInWatch(task)
                 case .NSEachTaskList:
                     break
                 default:

@@ -44,6 +44,8 @@ class MainViewController: UIViewController {
         calendarView.delegate = self
         //
         initRefreshController()
+        //
+        RealmManager.shared.reloadMainView = viewWillAppear(_:)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,12 +64,7 @@ class MainViewController: UIViewController {
         //
         initDate()
         initUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         //
-        print("viewDidAppear")
         DispatchQueue.main.async { [self] in
             loadTask()
         }
@@ -198,7 +195,6 @@ extension MainViewController {
                     return true
                 }
             })
-            print("taskList = \(taskList.count)")
             //
             if taskList.count == 0 {
                 labelTodayNilMsg.isHidden = false
@@ -244,19 +240,33 @@ extension MainViewController {
     func taskIsDone(_ isDone:Bool, _ indexPath:IndexPath) {
         let modifyTask = taskList[indexPath.row].clone()
         modifyTask.isDone = isDone
-        RealmManager.shared.updateTaskData(modifyTask)
+        RealmManager.shared.updateTaskDataIniOS(modifyTask)
         switch segmentedController.selectedSegmentIndex {
         case 1:
             //Month
             monthlyTaskTable.reloadRows(at: [indexPath], with: .none)
+            let task = taskList.remove(at: indexPath.row)
+            if isDone {
+                taskList.append(task)
+            } else {
+                taskList = [task] + taskList
+            }
+            monthlyTaskTable.reloadData()
         default:
             //Today
             dailyTaskTable.reloadRows(at: [indexPath], with: .none)
+            let task = taskList.remove(at: indexPath.row)
+            if isDone {
+                taskList.append(task)
+            } else {
+                taskList = [task] + taskList
+            }
+            dailyTaskTable.reloadData()
         }
     }
     //
     func modifyTask(_ task:EachTask, _ indexPath:IndexPath) {
-        RealmManager.shared.updateTaskData(task)
+        RealmManager.shared.updateTaskDataIniOS(task)
         taskList[indexPath.row] = task
         //
         switch segmentedController.selectedSegmentIndex {
@@ -271,7 +281,7 @@ extension MainViewController {
     //
     func deleteTask(_ indexPath:IndexPath) {
         let task = taskList[indexPath.row]
-        RealmManager.shared.deleteTaskData(task)
+        RealmManager.shared.deleteTaskDataIniOS(task)
         taskList.remove(at: indexPath.row)
         //
         switch segmentedController.selectedSegmentIndex {
