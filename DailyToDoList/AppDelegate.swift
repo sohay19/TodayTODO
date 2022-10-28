@@ -27,12 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let notiAuthOptions = UNAuthorizationOptions(arrayLiteral: [.alert, .badge, .sound])
         UNUserNotificationCenter.current().requestAuthorization(options: notiAuthOptions) { success, error in
             if let error = error {
-                print("Noti Permission Error = \(error)")
+                print("Permission Error = \(error)")
                 return
             }
-            print("Noti Permission Get!")
-            //APNS 등록
-            application.registerForRemoteNotifications()
+            print("Permission Get!")
+            DispatchQueue.main.async {
+                //APNS 등록
+                application.registerForRemoteNotifications()
+            }
         }
         //원격 푸시 설정
         Messaging.messaging().delegate = self

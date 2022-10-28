@@ -403,7 +403,6 @@ extension RealmManager {
 //MARK: - Category
 extension RealmManager {
     func addCategory(_ data:CategoryData) {
-        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return
@@ -419,7 +418,6 @@ extension RealmManager {
     }
     
     func loadCategory() -> [CategoryData] {
-        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return []

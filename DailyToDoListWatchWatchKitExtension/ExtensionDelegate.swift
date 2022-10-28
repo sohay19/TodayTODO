@@ -23,7 +23,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
                 return
             }
             print("Permission Get")
-            WKExtension.shared().registerForRemoteNotifications()
+            DispatchQueue.main.async {
+                WKExtension.shared().registerForRemoteNotifications()
+            }
         }
     }
 
