@@ -393,6 +393,7 @@
                         <outlet property="btnModify" destination="kq5-CG-mry" id="ZVD-Gs-IcN"/>
                         <outlet property="btnPullCategory" destination="glH-XQ-WBy" id="NXe-Zs-FTk"/>
                         <outlet property="btnSecond" destination="yBe-TD-IXK" id="Rre-wH-m7i"/>
+                        <outlet property="buttonView" destination="nws-H7-IgM" id="xHt-C5-HGQ"/>
                         <outlet property="inputTitle" destination="UsW-rm-eIp" id="28s-lP-5rg"/>
                         <outlet property="labelFirst" destination="f5p-CI-Wd1" id="9DP-tE-5kG"/>
                         <outlet property="labelNoAlarm" destination="DrT-wL-IAJ" id="RLz-zA-IBw"/>

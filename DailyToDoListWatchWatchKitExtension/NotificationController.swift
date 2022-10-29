@@ -10,12 +10,13 @@ import Foundation
 import UserNotifications
 
 class NotificationController: WKUserNotificationInterfaceController {
-    @IBOutlet weak var labelTitle: WKInterfaceLabel!
+    @IBOutlet weak var labelTitle:WKInterfaceLabel!
+    @IBOutlet weak var labelCategory:WKInterfaceLabel!
+    @IBOutlet weak var labelMemo: WKInterfaceLabel!
     
     override init() {
         // Initialize variables here.
         super.init()
-        
         // Configure interface objects here.
     }
 
@@ -31,13 +32,14 @@ class NotificationController: WKUserNotificationInterfaceController {
         // This method is called when a notification needs to be presented.
         // Implement it if you use a dynamic notification interface.
         // Populate your dynamic notification interface as quickly as possible.
-        initUI(notification)
-        
+        printNoti(notification.request.content)
     }
 }
 
 extension NotificationController {
-    func initUI(_ notification: UNNotification) {
-        labelTitle.setText(notification.request.content.title)
+    func printNoti(_ content: UNNotificationContent) {
+        labelCategory.setText(content.categoryIdentifier)
+        labelTitle.setText(content.title)
+        labelMemo.setText(content.body)
     }
 }

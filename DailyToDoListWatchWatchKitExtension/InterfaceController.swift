@@ -12,18 +12,20 @@ import WatchConnectivity
 
 class InterfaceController: WKInterfaceController {
     @IBOutlet weak var taskTable: WKInterfaceTable!
+    @IBOutlet weak var labelEmpty: WKInterfaceLabel!
     
     var index = 0
     private var taskList:[EachTask] = []
     
     override func awake(withContext context: Any?) {
         // Configure interface objects here.
-        WatchConnectManager.shared.initWatchTable = initTable(_:)
+        //
+        WatchConnectManager.shared.initWatchTable = setTaskList(_:)
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
-        
+        initTable()
     }
     
     override func didDeactivate() {
@@ -32,9 +34,15 @@ class InterfaceController: WKInterfaceController {
 }
 
 extension InterfaceController {
+    override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
+        return taskList[rowIndex]
+    }
+}
+
+extension InterfaceController {
     //
-    func initTable(_ receiveTaskList:[EachTask]) {
-        print("initTable")
+    func setTaskList(_ receiveTaskList:[EachTask]) {
+        //
         taskList = receiveTaskList.sorted(by: { task1, task2 in
             if task1.isDone {
                 return task2.isDone ? true : false
@@ -42,6 +50,13 @@ extension InterfaceController {
                 return true
             }
         })
+        //
+        initTable()
+    }
+    //
+    func initTable() {
+        //
+        labelEmpty.setHidden(taskList.count == 0 ? false : true)
         taskTable.setNumberOfRows(taskList.count, withRowType: "EachTaskType")
         //
         for (i, task) in taskList.enumerated() {

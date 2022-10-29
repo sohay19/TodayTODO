@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CF8149222906B75100FD0974"
-               BuildableName = "DailyToDoListWatch.app"
+               BuildableName = "DailyTODO.app"
                BlueprintName = "DailyToDoListWatch"
                ReferencedContainer = "container:DailyToDoList.xcodeproj">
             </BuildableReference>
@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CFEB49D628F13287008850DC"
-               BuildableName = "DailyToDoList.app"
+               BuildableName = "DailyTODO.app"
                BlueprintName = "DailyToDoList"
                ReferencedContainer = "container:DailyToDoList.xcodeproj">
             </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CF8149222906B75100FD0974"
-            BuildableName = "DailyToDoListWatch.app"
+            BuildableName = "DailyTODO.app"
             BlueprintName = "DailyToDoListWatch"
             ReferencedContainer = "container:DailyToDoList.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CF8149222906B75100FD0974"
-            BuildableName = "DailyToDoListWatch.app"
+            BuildableName = "DailyTODO.app"
             BlueprintName = "DailyToDoListWatch"
             ReferencedContainer = "container:DailyToDoList.xcodeproj">
          </BuildableReference>

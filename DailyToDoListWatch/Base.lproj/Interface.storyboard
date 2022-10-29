@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="21507" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch38"/>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="21507" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc" pageOrientation="vertical">
+    <device id="watch40"/>
     <dependencies>
         <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="21501"/>
@@ -9,7 +9,7 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="DailyToDoListWatch" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="DailyToDoListWatchWatchKitExtension">
                     <items>
                         <table alignment="left" id="EdJ-X5-BMb">
                             <items>
@@ -18,10 +18,12 @@
                                         <items>
                                             <group width="0.5" height="1" alignment="left" verticalAlignment="center" layout="vertical" id="boj-gb-s0h">
                                                 <items>
-                                                    <label alignment="left" text="Label" id="thw-dZ-pkr">
+                                                    <label alignment="left" text="Title" id="thw-dZ-pkr">
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="font" type="boldSystem" pointSize="18"/>
                                                     </label>
-                                                    <label alignment="left" verticalAlignment="bottom" text="Label" id="Le3-L0-y2B">
+                                                    <label alignment="left" verticalAlignment="bottom" text="Time" id="Le3-L0-y2B">
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="font" type="system" pointSize="15"/>
                                                     </label>
                                                 </items>
@@ -30,6 +32,7 @@
                                             <group width="0.5" height="1" alignment="right" verticalAlignment="center" id="Csy-qi-Gaz">
                                                 <items>
                                                     <button width="30" height="27" alignment="right" verticalAlignment="center" backgroundImage="checkmark" catalog="system" id="G2v-ja-NOk">
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="font" type="system" pointSize="12"/>
                                                         <connections>
                                                             <action selector="clickDone" destination="JNU-rh-YR7" id="4oz-eb-kbv"/>
@@ -38,6 +41,7 @@
                                                 </items>
                                             </group>
                                         </items>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </group>
                                     <connections>
                                         <outlet property="btnDone" destination="G2v-ja-NOk" id="oMX-I2-tTF"/>
@@ -48,18 +52,55 @@
                                 </tableRow>
                             </items>
                         </table>
+                        <label alignment="center" text="오늘의 TODO를 등록해주세요" id="7w8-IL-sfa">
+                            <fontDescription key="font" type="system" pointSize="15"/>
+                        </label>
                     </items>
+                    <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
                     <connections>
+                        <outlet property="labelEmpty" destination="7w8-IL-sfa" id="n70-kP-vQI"/>
                         <outlet property="taskTable" destination="EdJ-X5-BMb" id="BnB-D4-s5Y"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Task Interface Controller-->
         <scene sceneID="14M-wT-WOa">
             <objects>
-                <controller id="dDH-4m-eHF"/>
+                <controller id="dDH-4m-eHF" customClass="TaskInterfaceController" customModule="DailyToDoListWatch" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" id="o0b-yL-nCr">
+                            <items>
+                                <label alignment="left" text="Title" id="cDu-ib-LiB">
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                                </label>
+                                <label alignment="left" text="Category" id="Xlm-Dc-tuL">
+                                    <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="16"/>
+                                </label>
+                                <label alignment="left" text="Time" id="glk-2x-ges">
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="font" type="system" pointSize="16"/>
+                                </label>
+                                <label alignment="left" text="Memo" id="HLY-1u-NN3">
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="font" type="system" pointSize="16"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
+                        </group>
+                    </items>
+                    <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
+                    <connections>
+                        <outlet property="labelCategory" destination="Xlm-Dc-tuL" id="xOk-4J-G4j"/>
+                        <outlet property="labelMemo" destination="HLY-1u-NN3" id="nRU-ny-nND"/>
+                        <outlet property="labelTime" destination="glk-2x-ges" id="Jwb-L5-6TS"/>
+                        <outlet property="labelTitle" destination="cDu-ib-LiB" id="82O-O1-0GP"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="538" y="345"/>
         </scene>
@@ -70,30 +111,39 @@
                     <items>
                         <label alignment="left" verticalAlignment="center" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <notificationCategory key="notificationCategory" identifier="DailyTODO" id="JfB-70-Muf"/>
                     <connections>
-                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
-                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="Ha9-5s-0Gf"/>
+                        <segue destination="8WJ-KP-rGP" kind="relationship" relationship="dynamicNotificationInterface" id="yd7-Ld-pYa"/>
                     </connections>
                 </notificationController>
             </objects>
             <point key="canvasLocation" x="220" y="693"/>
         </scene>
         <!--Notification Controller-->
-        <scene sceneID="ZPc-GJ-vnh">
+        <scene sceneID="m99-3R-Bfc">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="DailyToDoListWatch" customModuleProvider="target">
+                <controller id="8WJ-KP-rGP" customClass="NotificationController" customModule="DailyToDoListWatch" customModuleProvider="target">
                     <items>
-                        <label alignment="left" verticalAlignment="center" text="Label" id="nTO-Ag-6xn">
+                        <label alignment="left" text="Label" id="yyu-x7-OyW">
                             <fontDescription key="font" type="boldSystem" pointSize="15"/>
                         </label>
+                        <label width="136" alignment="left" text="Label" id="Dj1-cY-fuc">
+                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                        </label>
+                        <label alignment="left" text="Label" id="X1w-ac-fEM">
+                            <fontDescription key="font" type="system" pointSize="16"/>
+                        </label>
                     </items>
+                    <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
                     <connections>
-                        <outlet property="labelTitle" destination="nTO-Ag-6xn" id="Foh-TF-FQ2"/>
+                        <outlet property="labelCategory" destination="yyu-x7-OyW" id="nFk-Wu-qah"/>
+                        <outlet property="labelMemo" destination="X1w-ac-fEM" id="QdC-jL-H4i"/>
+                        <outlet property="labelTitle" destination="Dj1-cY-fuc" id="xf2-uj-Xhd"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="531" y="693"/>
+            <point key="canvasLocation" x="536.44444444444446" y="692.51269035532994"/>
         </scene>
     </scenes>
     <resources>

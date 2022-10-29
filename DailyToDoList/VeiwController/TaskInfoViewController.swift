@@ -10,6 +10,7 @@ import UIKit
 
 class TaskInfoViewController : UIViewController {
     @IBOutlet weak var popView:UIView!
+    @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var resultView:UIView!
     @IBOutlet weak var textView:UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -163,10 +164,14 @@ extension TaskInfoViewController {
         resultViewSize = resultView.frame.size
         //모서리 둥글게
         popView.layer.cornerRadius = 10
+        buttonView.layer.cornerRadius = 10
         //그림자
         popView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         popView.layer.shadowRadius = 10
         popView.layer.shadowOpacity = 1
+        buttonView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        buttonView.layer.shadowRadius = 10
+        buttonView.layer.shadowOpacity = 1
         //
         pickEndDate.isEnabled = false
         controllEditMode(false)

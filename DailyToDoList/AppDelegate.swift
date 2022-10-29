@@ -31,6 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return
             }
             print("Permission Get!")
+            //
+            let action = UNNotificationAction(identifier: "modal", title: "오늘의 TODO")
+            let category = UNNotificationCategory(identifier: "DailyTODO", actions: [action], intentIdentifiers: [])
+            UNUserNotificationCenter.current().setNotificationCategories([category])
+            //
             DispatchQueue.main.async {
                 //APNS 등록
                 application.registerForRemoteNotifications()

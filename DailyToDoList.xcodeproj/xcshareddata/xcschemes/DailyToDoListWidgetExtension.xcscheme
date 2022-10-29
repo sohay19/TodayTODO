@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CFB6EDFB28F1793B00E93585"
-               BuildableName = "DailyToDoListWidgetExtension.appex"
+               BuildableName = "DailyTODO.appex"
                BlueprintName = "DailyToDoListWidgetExtension"
                ReferencedContainer = "container:DailyToDoList.xcodeproj">
             </BuildableReference>
@@ -30,7 +30,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CFEB49D628F13287008850DC"
-               BuildableName = "DailyToDoList.app"
+               BuildableName = "DailyTODO.app"
                BlueprintName = "DailyToDoList"
                ReferencedContainer = "container:DailyToDoList.xcodeproj">
             </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CFEB49D628F13287008850DC"
-            BuildableName = "DailyToDoList.app"
+            BuildableName = "DailyTODO.app"
             BlueprintName = "DailyToDoList"
             ReferencedContainer = "container:DailyToDoList.xcodeproj">
          </BuildableReference>
@@ -97,7 +97,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CFEB49D628F13287008850DC"
-            BuildableName = "DailyToDoList.app"
+            BuildableName = "DailyTODO.app"
             BlueprintName = "DailyToDoList"
             ReferencedContainer = "container:DailyToDoList.xcodeproj">
          </BuildableReference>

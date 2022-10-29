@@ -21,6 +21,8 @@ extension PushManager {
     //푸쉬콘텐츠 내용 설정
     private func setNotiContent(_ data:EachTask, _ id:String) -> UNMutableNotificationContent {
         let notiContent = UNMutableNotificationContent()
+        //카테고리
+        notiContent.categoryIdentifier = "DailyTODO"
         //제목내용
         notiContent.title = data.title
         notiContent.body = data.memo
@@ -44,6 +46,8 @@ extension PushManager {
     //종료푸쉬콘텐츠 내용 설정
     private func setEndNotiContent(_ data:EachTask, _ id:String) -> UNMutableNotificationContent {
         let notiContent = UNMutableNotificationContent()
+        //카테고리
+        notiContent.categoryIdentifier = "DailyTODO"
         //제목내용
         notiContent.title = "오늘 알람이 마지막이에요!"
         notiContent.body = "알림이 확실하게 삭제될 수 있도록 확인해주세요"

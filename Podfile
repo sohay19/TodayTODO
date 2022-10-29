@@ -4,15 +4,15 @@ use_frameworks!
 
 def shared_pods
     # Pods for DailyToDoList
-    pod 'FirebaseAuth' , '> 9.0.0'
-    pod 'FirebaseDatabase' , '> 9.0.0'
-    pod 'FirebaseMessaging' , '> 9.0.0'
     pod 'RealmSwift' , '> 10.0.0'
 end
 
 target 'DailyToDoList' do
   # Comment the next line if you don't want to use dynamic frameworks
   shared_pods
+  pod 'FirebaseAuth' , '> 9.0.0'
+  pod 'FirebaseDatabase' , '> 9.0.0'
+  pod 'FirebaseMessaging' , '> 9.0.0'
   pod 'FirebaseAnalytics' , '> 9.0.0'
   pod 'GoogleSignIn' , '> 6.0.0'
   pod 'FSCalendar' , '> 2.0.0'

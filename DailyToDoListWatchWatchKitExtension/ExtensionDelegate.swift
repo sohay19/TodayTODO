@@ -14,19 +14,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         // Perform any final initialization of your application.
         //
         WatchConnectManager.shared.initSession()
-        //
-        UNUserNotificationCenter.current().delegate = self
-        //
-        UNUserNotificationCenter.current().requestAuthorization { isGet, error in
-            if let error = error {
-                print("Permission Denied = \(error)")
-                return
-            }
-            print("Permission Get")
-            DispatchQueue.main.async {
-                WKExtension.shared().registerForRemoteNotifications()
-            }
-        }
     }
 
     func applicationDidBecomeActive() {
@@ -66,29 +53,5 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
                 task.setTaskCompletedWithSnapshot(false)
             }
         }
-    }
-    
-    func didRegisterForRemoteNotifications(withDeviceToken deviceToken: Data) {
-        print("Watch Push Success : deviceToken - \(deviceToken)")
-    }
-    
-    func didFailToRegisterForRemoteNotificationsWithError(_ error: Error) {
-        print("Watch Push Fail : error - \(error)")
-    }
-}
-
-
-extension ExtensionDelegate : UNUserNotificationCenterDelegate {
-    //
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        let userInfo = notification.request.content.userInfo
-        print("userNotificationCenter : willPresent")
-        completionHandler([.banner, .list, .badge, .sound])
-    }
-    //
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        let userInfo = response.notification.request.content.userInfo
-        print("userNotificationCenter : didReceive]")
-        completionHandler()
     }
 }

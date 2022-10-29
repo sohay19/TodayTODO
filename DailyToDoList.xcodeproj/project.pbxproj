@@ -23,27 +23,23 @@
 		CF75960A2900F35B0046FDC1 /* SideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7596092900F35B0046FDC1 /* SideMenu.storyboard */; };
 		CF75960C2900F39A0046FDC1 /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960B2900F39A0046FDC1 /* CustomSideMenuNavigation.swift */; };
 		CF7596102900F48A0046FDC1 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960F2900F48A0046FDC1 /* SideMenuViewController.swift */; };
-		CF75962E290119D50046FDC1 /* DailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4728F14D25008850DC /* DailyTaskCell.swift */; };
 		CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
-		CF759630290119D50046FDC1 /* MonthlyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FD28FD19870046FDC1 /* MonthlyTaskCell.swift */; };
 		CF75963329024C340046FDC1 /* PushList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF75963229024C340046FDC1 /* PushList.storyboard */; };
 		CF75963529024C6A0046FDC1 /* PushListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963429024C6A0046FDC1 /* PushListViewController.swift */; };
 		CF75963729024F680046FDC1 /* PushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963629024F680046FDC1 /* PushCell.swift */; };
-		CF75963C2902627E0046FDC1 /* PushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963629024F680046FDC1 /* PushCell.swift */; };
 		CF75963E290662900046FDC1 /* PushListVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963D290662900046FDC1 /* PushListVCExtension.swift */; };
 		CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
 		CF8148CC29067B5000FD0974 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
-		CF8148F029068DD600FD0974 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5928F155E5008850DC /* PushManager.swift */; };
 		CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8148F229068E0700FD0974 /* ClassExtension.swift */; };
 		CF8149272906B75100FD0974 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8149252906B75100FD0974 /* Interface.storyboard */; };
 		CF8149292906B75300FD0974 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8149282906B75300FD0974 /* Assets.xcassets */; };
-		CF81492F2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CF81492E2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CF81492F2906B75300FD0974 /* DailyTODO.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CF81492E2906B75300FD0974 /* DailyTODO.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CF8149342906B75300FD0974 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8149332906B75300FD0974 /* InterfaceController.swift */; };
 		CF8149362906B75300FD0974 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8149352906B75300FD0974 /* ExtensionDelegate.swift */; };
 		CF8149382906B75300FD0974 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8149372906B75300FD0974 /* NotificationController.swift */; };
 		CF81493A2906B75300FD0974 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8149392906B75300FD0974 /* ComplicationController.swift */; };
 		CF81493C2906B75400FD0974 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF81493B2906B75400FD0974 /* Assets.xcassets */; };
-		CF8149412906B75400FD0974 /* DailyToDoListWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CF8149232906B75100FD0974 /* DailyToDoListWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CF8149412906B75400FD0974 /* DailyTODO.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CF8149232906B75100FD0974 /* DailyTODO.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CF8149492906B76B00FD0974 /* SharedClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13128F1BE500029D936 /* SharedClassExtension.swift */; };
 		CF81494A2906B77100FD0974 /* StringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3D28F14CCA008850DC /* StringKeys.swift */; };
 		CF81494B2906B77100FD0974 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3928F14CA0008850DC /* Utils.swift */; };
@@ -53,7 +49,6 @@
 		CF81494F2906B77500FD0974 /* EachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4128F14D1C008850DC /* EachTask.swift */; };
 		CF8149502906B77500FD0974 /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
 		CF8149512906B77500FD0974 /* AlarmInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13A28F905380029D936 /* AlarmInfo.swift */; };
-		CF8149522906B77D00FD0974 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5928F155E5008850DC /* PushManager.swift */; };
 		CF8149532906B77D00FD0974 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
 		CF8149562906BBDF00FD0974 /* TaskTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8149542906BBDF00FD0974 /* TaskTableRowController.swift */; };
 		CF81495C2906CC0000FD0974 /* WatchConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */; };
@@ -66,7 +61,7 @@
 		CFB6EE0428F1793C00E93585 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFB6EE0328F1793C00E93585 /* Assets.xcassets */; };
 		CFB6EE0628F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0228F1793B00E93585 /* DailyToDoListWidget.intentdefinition */; };
 		CFB6EE0728F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0228F1793B00E93585 /* DailyToDoListWidget.intentdefinition */; };
-		CFB6EE0A28F1793C00E93585 /* DailyToDoListWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CFB6EDFC28F1793B00E93585 /* DailyToDoListWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CFB6EE0A28F1793C00E93585 /* DailyTODO.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CFB6EDFC28F1793B00E93585 /* DailyTODO.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFCEA0C228F1A78600A49D82 /* GoogleService-Info.plist */; };
 		CFD0B12A28F1BC2D0029D936 /* EachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4128F14D1C008850DC /* EachTask.swift */; };
 		CFD0B12D28F1BD150029D936 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3B28F14CB4008850DC /* Enums.swift */; };
@@ -76,8 +71,6 @@
 		CFD0B13B28F905380029D936 /* AlarmInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13A28F905380029D936 /* AlarmInfo.swift */; };
 		CFD0B13C28F90C2B0029D936 /* AlarmInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13A28F905380029D936 /* AlarmInfo.swift */; };
 		CFD0B14028F90D210029D936 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4228F14D1C008850DC /* UserData.swift */; };
-		CFD0B14128F90D210029D936 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5228F1559D008850DC /* FirebaseManager.swift */; };
-		CFD0B14228F90DA80029D936 /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5A28F155E5008850DC /* PopupManager.swift */; };
 		CFD0B14628F91CDB0029D936 /* TaskInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFD0B14528F91CDB0029D936 /* TaskInfo.storyboard */; };
 		CFD0B14828F91CEA0029D936 /* TaskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */; };
 		CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DA28F13287008850DC /* AppDelegate.swift */; };
@@ -116,6 +109,9 @@
 		CFEB4A6C28F16B15008850DC /* Picker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4A6B28F16B15008850DC /* Picker.storyboard */; };
 		CFEB4A6E28F16B27008850DC /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A6D28F16B27008850DC /* PickerViewController.swift */; };
 		CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
+		CFEC1D34290D2144009A9588 /* TaskInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC1D33290D2144009A9588 /* TaskInterfaceController.swift */; };
+		CFEC1D35290D2AB3009A9588 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5928F155E5008850DC /* PushManager.swift */; };
+		CFEC1D36290D2AC4009A9588 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5928F155E5008850DC /* PushManager.swift */; };
 		CFFC323A2907E97000B2B1F2 /* NSEachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495E2906D28E00FD0974 /* NSEachTask.swift */; };
 		CFFC323C2909216000B2B1F2 /* WatchConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */; };
 /* End PBXBuildFile section */
@@ -165,7 +161,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				CF8149412906B75400FD0974 /* DailyToDoListWatch.app in Embed Watch Content */,
+				CF8149412906B75400FD0974 /* DailyTODO.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,7 +172,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				CF81492F2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension.appex in Embed App Extensions */,
+				CF81492F2906B75300FD0974 /* DailyTODO.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,7 +183,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				CFB6EE0A28F1793C00E93585 /* DailyToDoListWidgetExtension.appex in Embed App Extensions */,
+				CFB6EE0A28F1793C00E93585 /* DailyTODO.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,10 +217,10 @@
 		CF75963629024F680046FDC1 /* PushCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushCell.swift; sourceTree = "<group>"; };
 		CF75963D290662900046FDC1 /* PushListVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushListVCExtension.swift; sourceTree = "<group>"; };
 		CF8148F229068E0700FD0974 /* ClassExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassExtension.swift; sourceTree = "<group>"; };
-		CF8149232906B75100FD0974 /* DailyToDoListWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyToDoListWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF8149232906B75100FD0974 /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8149262906B75100FD0974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		CF8149282906B75300FD0974 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CF81492E2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyToDoListWatchWatchKitExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF81492E2906B75300FD0974 /* DailyTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8149332906B75300FD0974 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		CF8149352906B75300FD0974 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		CF8149372906B75300FD0974 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -236,7 +232,7 @@
 		CF8149572906BFD800FD0974 /* DailyToDoListWatchWatchKitExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyToDoListWatchWatchKitExtension.entitlements; sourceTree = "<group>"; };
 		CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectManager.swift; sourceTree = "<group>"; };
 		CF81495E2906D28E00FD0974 /* NSEachTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEachTask.swift; sourceTree = "<group>"; };
-		CFB6EDFC28F1793B00E93585 /* DailyToDoListWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyToDoListWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFB6EDFC28F1793B00E93585 /* DailyTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToDoListWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0228F1793B00E93585 /* DailyToDoListWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = DailyToDoListWidget.intentdefinition; sourceTree = "<group>"; };
 		CFB6EE0328F1793C00E93585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -246,7 +242,7 @@
 		CFD0B13A28F905380029D936 /* AlarmInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmInfo.swift; sourceTree = "<group>"; };
 		CFD0B14528F91CDB0029D936 /* TaskInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskInfo.storyboard; sourceTree = "<group>"; };
 		CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoViewController.swift; sourceTree = "<group>"; };
-		CFEB49D728F13287008850DC /* DailyToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFEB49D728F13287008850DC /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEB49DA28F13287008850DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFEB49DC28F13287008850DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CFEB49DE28F13287008850DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +285,7 @@
 		CFEB4A6B28F16B15008850DC /* Picker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Picker.storyboard; sourceTree = "<group>"; };
 		CFEB4A6D28F16B27008850DC /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		CFEB4A7528F16BF3008850DC /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		CFEC1D33290D2144009A9588 /* TaskInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInterfaceController.swift; sourceTree = "<group>"; };
 		DBF80313A4FB8B4BD312F2D1 /* Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig"; path = "Target Support Files/Pods-DailyToDoListWatchWatchKitExtension/Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig"; sourceTree = "<group>"; };
 		F34FEDE351436183A07EBDD2 /* Pods-DailyToDoListWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoListWidgetExtension/Pods-DailyToDoListWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		FC66D6BA43C5821A19F5A230 /* Pods-DailyToDoListUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListUITests.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoListUITests/Pods-DailyToDoListUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -388,6 +385,7 @@
 				CF8149572906BFD800FD0974 /* DailyToDoListWatchWatchKitExtension.entitlements */,
 				CF8149332906B75300FD0974 /* InterfaceController.swift */,
 				CF8149542906BBDF00FD0974 /* TaskTableRowController.swift */,
+				CFEC1D33290D2144009A9588 /* TaskInterfaceController.swift */,
 				CF8149352906B75300FD0974 /* ExtensionDelegate.swift */,
 				CF8149372906B75300FD0974 /* NotificationController.swift */,
 				CF8149392906B75300FD0974 /* ComplicationController.swift */,
@@ -439,12 +437,12 @@
 		CFEB49D828F13287008850DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CFEB49D728F13287008850DC /* DailyToDoList.app */,
+				CFEB49D728F13287008850DC /* DailyTODO.app */,
 				CFEB49ED28F13289008850DC /* DailyToDoListTests.xctest */,
 				CFEB49F728F13289008850DC /* DailyToDoListUITests.xctest */,
-				CFB6EDFC28F1793B00E93585 /* DailyToDoListWidgetExtension.appex */,
-				CF8149232906B75100FD0974 /* DailyToDoListWatch.app */,
-				CF81492E2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension.appex */,
+				CFB6EDFC28F1793B00E93585 /* DailyTODO.appex */,
+				CF8149232906B75100FD0974 /* DailyTODO.app */,
+				CF81492E2906B75300FD0974 /* DailyTODO.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -597,7 +595,7 @@
 			);
 			name = DailyToDoListWatch;
 			productName = DailyToDoListWatch;
-			productReference = CF8149232906B75100FD0974 /* DailyToDoListWatch.app */;
+			productReference = CF8149232906B75100FD0974 /* DailyTODO.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		CF81492D2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension */ = {
@@ -616,7 +614,7 @@
 			);
 			name = DailyToDoListWatchWatchKitExtension;
 			productName = "DailyToDoListWatch WatchKit Extension";
-			productReference = CF81492E2906B75300FD0974 /* DailyToDoListWatchWatchKitExtension.appex */;
+			productReference = CF81492E2906B75300FD0974 /* DailyTODO.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		CFB6EDFB28F1793B00E93585 /* DailyToDoListWidgetExtension */ = {
@@ -634,7 +632,7 @@
 			);
 			name = DailyToDoListWidgetExtension;
 			productName = DailyToDoListWidgetExtension;
-			productReference = CFB6EDFC28F1793B00E93585 /* DailyToDoListWidgetExtension.appex */;
+			productReference = CFB6EDFC28F1793B00E93585 /* DailyTODO.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		CFEB49D628F13287008850DC /* DailyToDoList */ = {
@@ -657,7 +655,7 @@
 			);
 			name = DailyToDoList;
 			productName = DailyToDoList;
-			productReference = CFEB49D728F13287008850DC /* DailyToDoList.app */;
+			productReference = CFEB49D728F13287008850DC /* DailyTODO.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CFEB49EC28F13289008850DC /* DailyToDoListTests */ = {
@@ -986,13 +984,13 @@
 			files = (
 				CF8149382906B75300FD0974 /* NotificationController.swift in Sources */,
 				CF81494E2906B77500FD0974 /* CategoryData.swift in Sources */,
+				CFEC1D34290D2144009A9588 /* TaskInterfaceController.swift in Sources */,
 				CF8149532906B77D00FD0974 /* RealmManager.swift in Sources */,
 				CF81493A2906B75300FD0974 /* ComplicationController.swift in Sources */,
 				CF8149362906B75300FD0974 /* ExtensionDelegate.swift in Sources */,
 				CF81494D2906B77500FD0974 /* UserData.swift in Sources */,
 				CF81494B2906B77100FD0974 /* Utils.swift in Sources */,
 				CF8149342906B75300FD0974 /* InterfaceController.swift in Sources */,
-				CF8149522906B77D00FD0974 /* PushManager.swift in Sources */,
 				CF81494A2906B77100FD0974 /* StringKeys.swift in Sources */,
 				CF81494F2906B77500FD0974 /* EachTask.swift in Sources */,
 				CF81495D2906CC8C00FD0974 /* WatchConnectManager.swift in Sources */,
@@ -1002,6 +1000,7 @@
 				CF8149562906BBDF00FD0974 /* TaskTableRowController.swift in Sources */,
 				CF8149602906D28E00FD0974 /* NSEachTask.swift in Sources */,
 				CF8149492906B76B00FD0974 /* SharedClassExtension.swift in Sources */,
+				CFEC1D35290D2AB3009A9588 /* PushManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,26 +1008,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF8148F029068DD600FD0974 /* PushManager.swift in Sources */,
 				CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */,
 				CFB6EE0628F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
-				CF759630290119D50046FDC1 /* MonthlyTaskCell.swift in Sources */,
+				CFEC1D36290D2AC4009A9588 /* PushManager.swift in Sources */,
 				CF8148CC29067B5000FD0974 /* RealmManager.swift in Sources */,
 				CFD0B12F28F1BD3A0029D936 /* StringKeys.swift in Sources */,
 				CFD0B13328F2C44F0029D936 /* SharedClassExtension.swift in Sources */,
-				CF75962E290119D50046FDC1 /* DailyTaskCell.swift in Sources */,
 				CFD0B12A28F1BC2D0029D936 /* EachTask.swift in Sources */,
 				CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */,
 				CF487EA528F1B6D200498451 /* TaskListEntryView.swift in Sources */,
 				CFD0B13C28F90C2B0029D936 /* AlarmInfo.swift in Sources */,
-				CFD0B14128F90D210029D936 /* FirebaseManager.swift in Sources */,
-				CFD0B14228F90DA80029D936 /* PopupManager.swift in Sources */,
 				CF487EA728F1B6F100498451 /* TaskListProvider.swift in Sources */,
 				CFD0B14028F90D210029D936 /* UserData.swift in Sources */,
 				CFD0B12D28F1BD150029D936 /* Enums.swift in Sources */,
 				CF487EAA28F1B72900498451 /* Utils.swift in Sources */,
 				CFFC323C2909216000B2B1F2 /* WatchConnectManager.swift in Sources */,
-				CF75963C2902627E0046FDC1 /* PushCell.swift in Sources */,
 				CFFC323A2907E97000B2B1F2 /* NSEachTask.swift in Sources */,
 				CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */,
 			);
@@ -1169,8 +1163,9 @@
 				DEVELOPMENT_TEAM = M7QY569K4A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyToDoListWatchWatchKitExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DailyToDoListWatchWatchKitExtension;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = DailyToDoListWatchWatchKitExtension.ComplicationController;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKExtensionDelegateClassName = DailyToDoListWatchWatchKitExtension.ExtensionDelegate;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1180,7 +1175,8 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.DailyToDoList.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "${PRODUCT_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1201,8 +1197,9 @@
 				DEVELOPMENT_TEAM = M7QY569K4A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyToDoListWatchWatchKitExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DailyToDoListWatchWatchKitExtension;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = DailyToDoListWatchWatchKitExtension.ComplicationController;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKExtensionDelegateClassName = DailyToDoListWatchWatchKitExtension.ExtensionDelegate;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1212,7 +1209,8 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.DailyToDoList.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "${PRODUCT_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1227,7 +1225,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "$(PRODUCT_NAME)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "$(PRODUCT_NAME)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1235,9 +1235,11 @@
 				DEVELOPMENT_TEAM = M7QY569K4A;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = DailyToDoListWatchWatchKitExtension;
-				INFOPLIST_KEY_CFBundleDisplayName = DailyToDoListWatch;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.bailey.DailyToDoList;
+				INFOPLIST_KEY_WKExtensionDelegateClassName = DailyToDoListWatchWatchKitExtension.ExtensionDelegate;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1245,7 +1247,8 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.DailyToDoList.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PRODUCT_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1262,7 +1265,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "$(PRODUCT_NAME)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "$(PRODUCT_NAME)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1270,9 +1275,11 @@
 				DEVELOPMENT_TEAM = M7QY569K4A;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = DailyToDoListWatchWatchKitExtension;
-				INFOPLIST_KEY_CFBundleDisplayName = DailyToDoListWatch;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.bailey.DailyToDoList;
+				INFOPLIST_KEY_WKExtensionDelegateClassName = DailyToDoListWatchWatchKitExtension.ExtensionDelegate;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1280,7 +1287,8 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.DailyToDoList.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PRODUCT_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1306,7 +1314,7 @@
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyToDoListWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DailyToDoListWidget;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1316,7 +1324,8 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.DailyToDoList.DailyToDoListWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DailyTODO;
 				PROVISIONING_PROFILE_SPECIFIER = DailyToDoList_Profile_Widget;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1340,7 +1349,7 @@
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyToDoListWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DailyToDoListWidget;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1350,7 +1359,8 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.DailyToDoList.DailyToDoListWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DailyTODO;
 				PROVISIONING_PROFILE_SPECIFIER = DailyToDoList_Profile_Widget;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1413,6 +1423,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = DailyTODO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1466,6 +1477,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = DailyTODO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1489,23 +1501,29 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyToDoList/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.DailyToDoList;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DailyTODO;
 				PROVISIONING_PROFILE_SPECIFIER = DailyToDoList_Profile_Develop;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1525,12 +1543,14 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DailyToDoList/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1538,11 +1558,15 @@
 				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.DailyToDoList;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DailyTODO;
 				PROVISIONING_PROFILE_SPECIFIER = DailyToDoList_Profile_Develop;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
