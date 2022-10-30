@@ -90,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         #endif
     }
-    //데이터가 있는 원격 푸시
+    //Silent Push
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Silent Push Notification")
         //무음 푸시를 받으면 종료일이 지난 노티 삭제
