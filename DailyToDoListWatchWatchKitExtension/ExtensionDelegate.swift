@@ -12,6 +12,9 @@ import UserNotifications
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        
+        //
+        RealmManager.shared.openRealm()
         //
         WatchConnectManager.shared.initSession()
     }

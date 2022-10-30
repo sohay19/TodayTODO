@@ -20,11 +20,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var calendarView: CustomCalendarView!
     @IBOutlet weak var todayView: UIView!
     @IBOutlet weak var monthView: UIView!
-    
+    //
+    @IBOutlet weak var btnEdit: UIButton!
     
     //
     var currentDate:Date = Date()
     var beforeDate:Date = Date()
+    //
     var taskList:[EachTask] = []
     var monthlyTaskList:[Int:[EachTask]] = [:]
     var taskDateKeyList:[Int] = []
@@ -240,7 +242,7 @@ extension MainViewController {
     func taskIsDone(_ isDone:Bool, _ indexPath:IndexPath) {
         let modifyTask = taskList[indexPath.row].clone()
         modifyTask.isDone = isDone
-        RealmManager.shared.updateTaskDataIniOS(modifyTask)
+        RealmManager.shared.updateTaskDataForiOS(modifyTask)
         switch segmentedController.selectedSegmentIndex {
         case 1:
             //Month
@@ -266,7 +268,7 @@ extension MainViewController {
     }
     //
     func modifyTask(_ task:EachTask, _ indexPath:IndexPath) {
-        RealmManager.shared.updateTaskDataIniOS(task)
+        RealmManager.shared.updateTaskDataForiOS(task)
         taskList[indexPath.row] = task
         //
         switch segmentedController.selectedSegmentIndex {
@@ -281,7 +283,7 @@ extension MainViewController {
     //
     func deleteTask(_ indexPath:IndexPath) {
         let task = taskList[indexPath.row]
-        RealmManager.shared.deleteTaskDataIniOS(task)
+        RealmManager.shared.deleteTaskDataForiOS(task)
         taskList.remove(at: indexPath.row)
         //
         switch segmentedController.selectedSegmentIndex {
@@ -328,43 +330,62 @@ extension MainViewController {
 
 //MARK: - Button Event
 extension MainViewController {
-    @IBAction func clickTaskAdd(_ sender:Any) {
-        //Loading
-        SystemManager.shared.openLoading(self)
+    @IBAction func clickTaskAdd(_ sender:Any) {//
+        if dailyTaskTable.isEditing {
+            changeEditMode()
+            return
+        }
         //
         let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
         guard let nextVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
-        
+        //
         nextVC.currentMode = .ADD
         nextVC.refreshTask = loadTask
+        //
         nextVC.currntDate = currentDate
         nextVC.modalTransitionStyle = .crossDissolve
         nextVC.modalPresentationStyle = .overCurrentContext
         
-        present(nextVC, animated: true)
+        presentWithLoading(nextVC, animated: true)
     }
     //
     @IBAction func changeDailyTaskEditMode(_ sender:UIButton) {
+        changeEditMode()
+    }
+    private func changeEditMode() {
         if dailyTaskTable.isEditing {
-            sender.setTitle("Edit", for: .normal)
+            btnEdit.setTitle("Edit", for: .normal)
             dailyTaskTable.setEditing(false, animated: false)
         } else {
-            sender.setTitle("Done", for: .normal)
+            btnEdit.setTitle("Done", for: .normal)
             dailyTaskTable.setEditing(true, animated: false)
         }
     }
     //
     @IBAction func deleteAllNoti(_ sender:Any) {
+        //
+        if dailyTaskTable.isEditing {
+            changeEditMode()
+            return
+        }
         PushManager.shared.deleteAllPush()
         RealmManager.shared.deleteAllAlarm()
     }
     //SegmentedControl
-    @IBAction func changeSegment(_ sender:UISegmentedControl) {
+    @IBAction func changeSegment(_ sender:UISegmentedControl) {//
+        if dailyTaskTable.isEditing {
+            changeEditMode()
+            return
+        }
         changeSegment()
         loadTask()
     }
     //SideMenu
-    @IBAction func clickSideMenu(_ sender:Any) {
+    @IBAction func clickSideMenu(_ sender:Any) {//
+        if dailyTaskTable.isEditing {
+            changeEditMode()
+            return
+        }
         SystemManager.shared.openSideMenu(self)
     }
 }

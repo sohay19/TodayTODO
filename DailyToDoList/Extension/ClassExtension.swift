@@ -42,3 +42,11 @@ extension UIApplication {
     }
 }
 
+//MARK: - UIViewController
+
+extension UIViewController {
+    func presentWithLoading(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        SystemManager.shared.openLoading(viewControllerToPresent)
+        present(viewControllerToPresent, animated: flag, completion: completion)
+    }
+}

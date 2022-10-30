@@ -41,15 +41,24 @@ extension WatchConnectManager {
             return
         }
         do {
+            //Category 보내기
+            let loadCategoryList = RealmManager.shared.loadCategory()
+            var categoryList:[NSCategoryData] = []
+            for data in loadCategoryList {
+                categoryList.append(NSCategoryData.init(category:data))
+            }
+            let categoryDataForWatch = try JSONEncoder().encode(NSCategoryDataList(categoryList: categoryList))
+            session.transferUserInfo([ sendTypeKey:SendType.Send.rawValue, dataTypeKey:DataType.NSCategoryDataList.rawValue, dataKey:categoryDataForWatch])
+            //Task 보내기
             let founData = RealmManager.shared.getTaskDataForDay(date: Date())
             var taskList:[NSEachTask] = []
             for data in founData {
                 taskList.append(NSEachTask.init(task: data))
             }
-            let dataForWatch = try JSONEncoder().encode(NSEachTaskList(taskList: taskList))
-            session.transferUserInfo([ sendTypeKey:SendType.Send.rawValue, dataTypeKey:DataType.NSEachTaskList.rawValue, taskDataKey:dataForWatch])
+            let taskDataForWatch = try JSONEncoder().encode(NSEachTaskList(taskList: taskList))
+            session.transferUserInfo([ sendTypeKey:SendType.Send.rawValue, dataTypeKey:DataType.NSEachTaskList.rawValue, dataKey:taskDataForWatch])
         } catch {
-            print("getTaskDataForDay Error")
+            print("sendToWatchTask Error")
         }
     }
     //
@@ -61,7 +70,7 @@ extension WatchConnectManager {
         //
         do {
             let dataForApp = try JSONEncoder().encode(NSEachTask(task: task))
-            session.transferUserInfo([sendTypeKey:SendType.Update.rawValue, dataTypeKey:DataType.NSEachTask.rawValue, taskDataKey:dataForApp])
+            session.transferUserInfo([sendTypeKey:SendType.Update.rawValue, dataTypeKey:DataType.NSEachTask.rawValue, dataKey:dataForApp])
         } catch {
             print("Encoding Error")
         }
@@ -107,14 +116,19 @@ extension WatchConnectManager : WCSessionDelegate {
         case .Send:
             break
         default:
+            //update
             do {
                 let dataType = userInfo[dataTypeKey] as! String
                 switch DataType(rawValue: dataType) {
                 case .NSEachTask:
-                    let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[taskDataKey] as! Data)
+                    let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[dataKey] as! Data)
                     let task = EachTask(task:receiveMsgData)
-                    RealmManager.shared.updateTaskDataInWatch(task)
+                    RealmManager.shared.updateTaskDataForWatch(task)
                 case .NSEachTaskList:
+                    break
+                case .NSCategoryData:
+                    break
+                case .NSCategoryDataList:
                     break
                 default:
                     break
@@ -129,23 +143,39 @@ extension WatchConnectManager : WCSessionDelegate {
         case .Send:
             do {
                 let dataType = userInfo[dataTypeKey] as! String
-                var newTaskList:[EachTask] = []
                 switch DataType(rawValue: dataType) {
                 case .NSEachTask:
-                    let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[taskDataKey] as! Data)
+                    var newTaskList:[EachTask] = []
+                    let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[dataKey] as! Data)
                     newTaskList.append(EachTask(task:receiveMsgData))
+                    guard let initWatchTable = initWatchTable else {
+                        return
+                    }
+                    initWatchTable(newTaskList)
                 case .NSEachTaskList:
-                    let receiveMsgData = try JSONDecoder().decode(NSEachTaskList.self, from: userInfo[taskDataKey] as! Data)
+                    var newTaskList:[EachTask] = []
+                    let receiveMsgData = try JSONDecoder().decode(NSEachTaskList.self, from: userInfo[dataKey] as! Data)
                     for data in receiveMsgData.taskList {
                         newTaskList.append(EachTask(task:data))
+                    }
+                    guard let initWatchTable = initWatchTable else {
+                        return
+                    }
+                    initWatchTable(newTaskList)
+                case .NSCategoryData:
+                    break
+                case .NSCategoryDataList:
+                    let receiveMsgData = try JSONDecoder().decode(NSCategoryDataList.self, from: userInfo[dataKey] as! Data)
+                    let loadList = RealmManager.shared.loadCategory()
+                    for data in receiveMsgData.categoryList {
+                        let found = loadList.first(where: {$0.title == data.title})
+                        if found == nil {
+                            RealmManager.shared.addCategory(CategoryData(data.title, data.colorList))
+                        }
                     }
                 default:
                     break
                 }
-                guard let initWatchTable = initWatchTable else {
-                    return
-                }
-                initWatchTable(newTaskList)
             } catch {
                 print("Deconding Error")
             }

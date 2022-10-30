@@ -99,13 +99,17 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
         guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
-        tableView.deselectRow(at: indexPath, animated: true)
         
+        tableView.deselectRow(at: indexPath, animated: true)
+        //
+        taskInfoVC.currentMode = .LOOK
+        taskInfoVC.refreshTask = loadTask
+        //
         taskInfoVC.taskData = taskList[indexPath.row]
         taskInfoVC.modalTransitionStyle = .crossDissolve
         taskInfoVC.modalPresentationStyle = .overCurrentContext
         
-        present(taskInfoVC, animated: true)
+        presentWithLoading(taskInfoVC, animated: true)
     }
 }
 
@@ -138,7 +142,7 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
         }
         currentDate = firstDate
         calendarView.select(currentDate)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             SystemManager.shared.openLoading(self)
             self.loadTask()
         }

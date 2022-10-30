@@ -9,6 +9,7 @@ import UIKit
 
 
 class TaskInfoViewController : UIViewController {
+    @IBOutlet weak var popbackView: PopBackView!
     @IBOutlet weak var popView:UIView!
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var resultView:UIView!
@@ -32,7 +33,6 @@ class TaskInfoViewController : UIViewController {
     @IBOutlet weak var btnFirst:UIButton!
     @IBOutlet weak var btnSecond:UIButton!
     @IBOutlet weak var btnModify: UIButton!
-    @IBOutlet weak var btnAdd: UIButton!
     //
     @IBOutlet weak var switchRepeat:UISwitch!
     @IBOutlet weak var switchAlarm:UISwitch!
@@ -48,9 +48,12 @@ class TaskInfoViewController : UIViewController {
     //키보드 관련
     private var keyboardHeight:CGFloat?
     private var isShow = false
-    //resultView 관련
+    //View 관련
+    private var popbackViewSize:CGSize?
     private var resultViewSize:CGSize?
+    private var buttonViewSize:CGSize?
     private var resultViewConstraint:NSLayoutConstraint?
+    private var popbackViewConstraint:NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,46 +83,36 @@ extension TaskInfoViewController {
     func changeMode() {
         switch currentMode {
         case .LOOK:
-            btnModify.isHidden = false
-            btnAdd.isHidden = true
             //
+            controllBtnView(false)
             controllEditMode(false)
-            btnModify.setTitle("Modify", for: .normal)
-            btnModify.isSelected = false
             //
             loadData()
         case .MODIFY:
-            btnModify.isHidden = false
-            btnAdd.isHidden = true
             //
+            controllBtnView(true)
             controllEditMode(true)
-            btnModify.setTitle("Done", for: .normal)
-            btnModify.isSelected = true
             //
             loadCategory()
-            //
             loadData()
         default:
-            //ADD
-            btnModify.isHidden = true
-            btnAdd.isHidden = false
             //
             inputTitle.placeholder = "TODO를 입력해주세요"
-            loadCategory()
-            //
-            showResult()
             switchRepeat.isOn = false
             labelNoRepeat.isHidden = true
             pickEndDate.isEnabled = false
             labelNoEndDate.isHidden = true
-            //
             switchAlarm.isOn = false
             pickAlarmTime.isEnabled = false
             pickAlarmTime.isHidden = true
             labelNoAlarm.isHidden = false
             pickAlarmTime.date = Calendar.current.date(byAdding: .minute, value: 5, to: Date())!
             //
+            showResult()
             controllReusltView(false)
+            controllBtnView(true)
+            //
+            loadCategory()
         }
     }
     //
@@ -127,6 +120,10 @@ extension TaskInfoViewController {
         resultView.translatesAutoresizingMaskIntoConstraints = false
         resultViewConstraint = resultView.constraints.first { item in
             return item.identifier == "resultViewHeight"
+        }
+        popbackView.translatesAutoresizingMaskIntoConstraints = false
+        popbackViewConstraint = popbackView.constraints.first { item in
+            return item.identifier == "popbackViewHeight"
         }
     }
     //
@@ -158,20 +155,15 @@ extension TaskInfoViewController {
         }
         textView.text = taskData.memo
     }
-    
+    //
     func loadUI() {
         //기존 사이즈 저장
+        popbackViewSize = popbackView.frame.size
         resultViewSize = resultView.frame.size
-        //모서리 둥글게
+        buttonViewSize = buttonView.frame.size
+        //
         popView.layer.cornerRadius = 10
         buttonView.layer.cornerRadius = 10
-        //그림자
-        popView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        popView.layer.shadowRadius = 10
-        popView.layer.shadowOpacity = 1
-        buttonView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        buttonView.layer.shadowRadius = 10
-        buttonView.layer.shadowOpacity = 1
         //
         pickEndDate.isEnabled = false
         controllEditMode(false)
@@ -209,6 +201,55 @@ extension TaskInfoViewController {
 
 //MARK: - controll
 extension TaskInfoViewController {
+    //resultView 컨트롤
+    func controllReusltView(_ isOpen:Bool) {
+        if isOpen {
+            let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
+                resultViewConstraint?.constant = resultViewSize!.height
+            }
+            anim.startAnimation()
+        } else {
+            let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
+                resultViewConstraint?.constant = 0
+                pickEndDate.isHidden = true
+            }
+            anim.startAnimation()
+        }
+    }
+    //resultView 결과
+    func showResult(_ result:RepeatResult) {
+        repeatResult = result
+        //종료일
+        guard let repeatResult = repeatResult else {
+            return
+        }
+        pickEndDate.isHidden = !repeatResult.isEnd
+        labelNoEndDate.isHidden = repeatResult.isEnd
+        if result.isEnd {
+            guard let date = repeatResult.taskEndDate else {
+                return
+            }
+            pickEndDate.date = date
+        }
+        controllReusltView(true)
+        //반복 주기
+        setResultView(repeatResult.repeatType, isResult: true)
+    }
+    //buttonView 컨트롤
+    func controllBtnView(_ isOpen:Bool) {
+        buttonView.isHidden = !isOpen
+        if isOpen {
+            let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
+                popbackViewConstraint?.constant = popbackViewSize!.height
+            }
+            anim.startAnimation()
+        } else {
+            let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
+                popbackViewConstraint?.constant = popbackViewSize!.height - buttonViewSize!.height
+            }
+            anim.startAnimation()
+        }
+    }
     //
     func controllEditMode(_ isOn:Bool) {
         guard let taskData = taskData else {
@@ -406,30 +447,34 @@ extension TaskInfoViewController {
     }
     //등록버튼
     @IBAction func clickSubmit(_ sender: Any) {
-        guard let data = makeTask() else {
-            return
+        switch currentMode {
+        case .ADD:
+            guard let data = makeTask() else {
+                return
+            }
+            //realm에 추가
+            RealmManager.shared.addTaskDataForiOS(data)
+        case .MODIFY:
+            guard let data = makeTask() else {
+                print("task is Nil")
+                return
+            }
+            RealmManager.shared.updateTaskDataForiOS(data)
+        default:
+            //Look
+            break
         }
-        //realm에 추가
-        RealmManager.shared.addTaskDataIniOS(data)
         guard let refreshTask = refreshTask else {
             return
         }
         dismiss(animated: true, completion: refreshTask)
     }
-    //수정 Or 완료 버튼
-    @IBAction func clickModify(_ sender:UIButton) {
-        if currentMode == .LOOK {
-            currentMode = .MODIFY
+    @IBAction func clickCancel(_ sender: Any) {
+        if isShow {
+            keyboardDown()
         } else {
-            guard let data = makeTask() else {
-                print("task is Nil")
-                return
-            }
-            RealmManager.shared.updateTaskDataIniOS(data)
-            currentMode = .LOOK
-            data.printTask()
+            self.dismiss(animated: true)
         }
-        changeMode()
     }
     // 날짜 선택 시 팝업 닫음
     @IBAction func changeDate(_ sender:UIDatePicker) {
@@ -469,62 +514,18 @@ extension TaskInfoViewController {
     }
 }
 
-//MARK: - View Controll
-extension TaskInfoViewController {
-    //resultView 컨트롤
-    func controllReusltView(_ isOpen:Bool) {
-        if isOpen {
-            let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
-                resultViewConstraint?.constant = resultViewSize!.height
-            }
-            anim.startAnimation()
-        } else {
-            let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
-                resultViewConstraint?.constant = 0
-                pickEndDate.isHidden = true
-            }
-            anim.startAnimation()
-        }
-    }
-    //resultView 결과
-    func showResult(_ result:RepeatResult) {
-        repeatResult = result
-        //종료일
-        guard let repeatResult = repeatResult else {
-            return
-        }
-        pickEndDate.isHidden = !repeatResult.isEnd
-        labelNoEndDate.isHidden = repeatResult.isEnd
-        if result.isEnd {
-            guard let date = repeatResult.taskEndDate else {
-                return
-            }
-            pickEndDate.date = date
-        }
-        controllReusltView(true)
-        //반복 주기
-        setResultView(repeatResult.repeatType, isResult: true)
-    }
-}
-
 //MARK: - 키보드
 extension TaskInfoViewController {
-    //키보드 옵저버
-    func observeKeyboard() {
-        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    @IBAction func clickBackground(_ sender:Any) {
-        if isShow {
-            keyboardDown()
-        } else {
-            self.dismiss(animated: true)
-        }
-    }
+    //
     @IBAction func clickPopView(_ sender:Any) {
         if isShow {
             keyboardDown()
         }
+    }
+    //키보드 옵저버
+    func observeKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     //키보드 show/hide시 view 조정
     @objc func showKeyboard(_ sender: Notification) {

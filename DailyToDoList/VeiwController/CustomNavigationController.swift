@@ -11,9 +11,13 @@ import UIKit
 class CustomNavigationController : UINavigationController {
     //pop
     func popViewController() {
-        let _ = popViewController(animated: false)
+        let _ = super.popViewController(animated: false)
     }
-    
+    func popViewController(complete: @escaping () -> Void) {
+        super.popViewController(animated: false)
+        completeMotion(false, complete: complete)
+    }
+    //popRoot
     func popToRootViewController() {
         let _ = popToRootViewController(animated: false)
         guard let rootVC = self.topViewController else {
@@ -36,7 +40,7 @@ class CustomNavigationController : UINavigationController {
 }
 
 extension CustomNavigationController {
-    //Custom push
+    //push
     func pushViewControllerWithLoading(_ viewController: UIViewController) {
         SystemManager.shared.openLoading(viewController)
         super.pushViewController(viewController, animated: false)
@@ -51,11 +55,6 @@ extension CustomNavigationController {
     }
     func pushViewController(_ viewController: UIViewController, complete: @escaping ()->Void) {
         super.pushViewController(viewController, animated: false)
-        completeMotion(false, complete: complete)
-    }
-    //Custom pop
-    func popViewController(complete: @escaping () -> Void) {
-        super.popViewController(animated: false)
         completeMotion(false, complete: complete)
     }
     //

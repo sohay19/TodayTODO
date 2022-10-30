@@ -112,8 +112,12 @@
 		CFEC1D34290D2144009A9588 /* TaskInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC1D33290D2144009A9588 /* TaskInterfaceController.swift */; };
 		CFEC1D35290D2AB3009A9588 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5928F155E5008850DC /* PushManager.swift */; };
 		CFEC1D36290D2AC4009A9588 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5928F155E5008850DC /* PushManager.swift */; };
-		CFFC323A2907E97000B2B1F2 /* NSEachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495E2906D28E00FD0974 /* NSEachTask.swift */; };
-		CFFC323C2909216000B2B1F2 /* WatchConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */; };
+		CFEC1D38290E53F7009A9588 /* NSCategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */; };
+		CFEC1D39290E6092009A9588 /* NSCategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */; };
+		CFEC1D3A290E60BB009A9588 /* NSEachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495E2906D28E00FD0974 /* NSEachTask.swift */; };
+		CFEC1D3B290E60C9009A9588 /* WatchConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */; };
+		CFEC1D3C290E60D5009A9588 /* NSCategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */; };
+		CFEC1D3E290E63D7009A9588 /* PopBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC1D3D290E63D7009A9588 /* PopBackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -286,6 +290,8 @@
 		CFEB4A6D28F16B27008850DC /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		CFEB4A7528F16BF3008850DC /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		CFEC1D33290D2144009A9588 /* TaskInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInterfaceController.swift; sourceTree = "<group>"; };
+		CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCategoryData.swift; sourceTree = "<group>"; };
+		CFEC1D3D290E63D7009A9588 /* PopBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopBackView.swift; sourceTree = "<group>"; };
 		DBF80313A4FB8B4BD312F2D1 /* Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig"; path = "Target Support Files/Pods-DailyToDoListWatchWatchKitExtension/Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig"; sourceTree = "<group>"; };
 		F34FEDE351436183A07EBDD2 /* Pods-DailyToDoListWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoListWidgetExtension/Pods-DailyToDoListWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		FC66D6BA43C5821A19F5A230 /* Pods-DailyToDoListUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListUITests.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoListUITests/Pods-DailyToDoListUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -522,6 +528,7 @@
 				CFEB4A4028F14D1C008850DC /* RepeatResult.swift */,
 				CFD0B13A28F905380029D936 /* AlarmInfo.swift */,
 				CF81495E2906D28E00FD0974 /* NSEachTask.swift */,
+				CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -533,6 +540,7 @@
 				CF7595FD28FD19870046FDC1 /* MonthlyTaskCell.swift */,
 				CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */,
 				CF75963629024F680046FDC1 /* PushCell.swift */,
+				CFEC1D3D290E63D7009A9588 /* PopBackView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -982,6 +990,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFEC1D39290E6092009A9588 /* NSCategoryData.swift in Sources */,
 				CF8149382906B75300FD0974 /* NotificationController.swift in Sources */,
 				CF81494E2906B77500FD0974 /* CategoryData.swift in Sources */,
 				CFEC1D34290D2144009A9588 /* TaskInterfaceController.swift in Sources */,
@@ -1008,6 +1017,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFEC1D3A290E60BB009A9588 /* NSEachTask.swift in Sources */,
 				CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */,
 				CFB6EE0628F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
 				CFEC1D36290D2AC4009A9588 /* PushManager.swift in Sources */,
@@ -1015,15 +1025,15 @@
 				CFD0B12F28F1BD3A0029D936 /* StringKeys.swift in Sources */,
 				CFD0B13328F2C44F0029D936 /* SharedClassExtension.swift in Sources */,
 				CFD0B12A28F1BC2D0029D936 /* EachTask.swift in Sources */,
+				CFEC1D3C290E60D5009A9588 /* NSCategoryData.swift in Sources */,
 				CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */,
 				CF487EA528F1B6D200498451 /* TaskListEntryView.swift in Sources */,
 				CFD0B13C28F90C2B0029D936 /* AlarmInfo.swift in Sources */,
+				CFEC1D3B290E60C9009A9588 /* WatchConnectManager.swift in Sources */,
 				CF487EA728F1B6F100498451 /* TaskListProvider.swift in Sources */,
 				CFD0B14028F90D210029D936 /* UserData.swift in Sources */,
 				CFD0B12D28F1BD150029D936 /* Enums.swift in Sources */,
 				CF487EAA28F1B72900498451 /* Utils.swift in Sources */,
-				CFFC323C2909216000B2B1F2 /* WatchConnectManager.swift in Sources */,
-				CFFC323A2907E97000B2B1F2 /* NSEachTask.swift in Sources */,
 				CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1037,6 +1047,7 @@
 				CFEB4A3E28F14CCA008850DC /* StringKeys.swift in Sources */,
 				CFD0B13B28F905380029D936 /* AlarmInfo.swift in Sources */,
 				CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */,
+				CFEC1D38290E53F7009A9588 /* NSCategoryData.swift in Sources */,
 				CF75963529024C6A0046FDC1 /* PushListViewController.swift in Sources */,
 				CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */,
 				CFEB4A4628F14D1C008850DC /* UserData.swift in Sources */,
@@ -1070,6 +1081,7 @@
 				CFEB4A4928F14D25008850DC /* DailyTaskCell.swift in Sources */,
 				CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */,
 				CFEB4A3228F14BC7008850DC /* LoginViewController.swift in Sources */,
+				CFEC1D3E290E63D7009A9588 /* PopBackView.swift in Sources */,
 				CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */,
 				CFEB4A6E28F16B27008850DC /* PickerViewController.swift in Sources */,
 				CF81495F2906D28E00FD0974 /* NSEachTask.swift in Sources */,

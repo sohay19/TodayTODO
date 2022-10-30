@@ -16,10 +16,14 @@ class RealmManager {
     private init() { }
     
     private let fileManager = FileManager.default
-    private let realmDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("Realm_DailyToDoList", isDirectory: true)
-    
-    private var realm:Realm?
+    //
     var realmUrl:URL?
+    private var realm:Realm?
+    private let realmDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("Realm_DailyToDoList", isDirectory: true)
+    //
+    var watchUrl:URL?
+    private var watchRealm:Realm?
+    private let watchDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Realm_DailyToDoList", conformingTo: .directory)
     //
     var reloadMainView:((Bool)->Void)?
 }
@@ -27,8 +31,9 @@ class RealmManager {
 //MARK: - Main
 extension RealmManager {
     func openRealm() {
+#if os(iOS)
         guard let realmDir = realmDir else {
-            print("realmDir 없음")
+            print("Path 없음")
             return
         }
         if !fileManager.fileExists(atPath: realmDir.path) {
@@ -37,23 +42,44 @@ extension RealmManager {
             }
         }
         do {
-            let path = fileManager.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("Realm_DailyToDoList", isDirectory: true).appendingPathComponent("DailyToDoList.realm")
+            let path = realmDir.appendingPathComponent("DailyToDoList.realm")
             let config = Realm.Configuration(fileURL: path)
             realm = try Realm(configuration: config)
+            guard let realm = realm else {
+                return
+            }
+            realmUrl = realm.configuration.fileURL
+            if !haveDefault() {
+                let newList:[Float] = Utils.FloatFromRGB(rgbValue: 0xBDBDBD, alpha: 1)
+                let newCategory = CategoryData("Default", newList)
+                addCategory(newCategory)
+            }
         } catch let error {
             print("Realm Open Error = \(error)")
         }
-        //
-        guard let realm = realm else {
-            return
+#else
+        if !fileManager.fileExists(atPath: watchDir.path) {
+            fileManager.createDir(watchDir) { error in
+                print("create error = \(error)")
+            }
         }
-        realmUrl = realm.configuration.fileURL
-        //
-        if !haveDefault() {
-            let newList:[Float] = Utils.FloatFromRGB(rgbValue: 0xBDBDBD, alpha: 1)
-            let newCategory = CategoryData("Default", newList)
-            addCategory(newCategory)
+        do {
+            let path = watchDir.appendingPathComponent("DailyToDoList.realm")
+            let config = Realm.Configuration(fileURL: path)
+            watchRealm = try Realm(configuration: config)
+            guard let realm = watchRealm else {
+                return
+            }
+            watchUrl = realm.configuration.fileURL
+            if !haveDefault() {
+                let newList:[Float] = Utils.FloatFromRGB(rgbValue: 0xBDBDBD, alpha: 1)
+                let newCategory = CategoryData("Default", newList)
+                addCategory(newCategory)
+            }
+        } catch let error {
+            print("Watch Open Error = \(error)")
         }
+#endif
     }
     //
     func deleteOriginFile() {
@@ -154,21 +180,21 @@ extension RealmManager {
 
 //MARK: - Task add/update/delete (iOS)
 extension RealmManager {
-    func addTaskDataIniOS(_ task:EachTask) {
+    func addTaskDataForiOS(_ task:EachTask) {
         addTaskData(task)
         DispatchQueue.main.async {
             WatchConnectManager.shared.sendToWatchTask()
         }
     }
     
-    func updateTaskDataIniOS(_ task:EachTask) {
+    func updateTaskDataForiOS(_ task:EachTask) {
         updateTaskData(task)
         DispatchQueue.main.async {
             WatchConnectManager.shared.sendToWatchTask()
         }
     }
     
-    func deleteTaskDataIniOS(_ task:EachTask) {
+    func deleteTaskDataForiOS(_ task:EachTask) {
         deleteTaskData(task)
         DispatchQueue.main.async {
             WatchConnectManager.shared.sendToWatchTask()
@@ -178,7 +204,7 @@ extension RealmManager {
 
 //MARK: - Task add/update/delete (Watch)
 extension RealmManager {
-    func addTaskDataInWatch(_ task:EachTask) {
+    func addTaskDataForWatch(_ task:EachTask) {
         addTaskData(task)
         guard let reloadMainView = reloadMainView else {
             return
@@ -188,7 +214,7 @@ extension RealmManager {
         }
     }
     
-    func updateTaskDataInWatch(_ task:EachTask) {
+    func updateTaskDataForWatch(_ task:EachTask) {
         updateTaskData(task)
         guard let reloadMainView = reloadMainView else {
             return
@@ -198,7 +224,7 @@ extension RealmManager {
         }
     }
     
-    func deleteTaskDataInWatch(_ task:EachTask) {
+    func deleteTaskDataForWatch(_ task:EachTask) {
         deleteTaskData(task)
         guard let reloadMainView = reloadMainView else {
             return
@@ -403,6 +429,7 @@ extension RealmManager {
 //MARK: - Category
 extension RealmManager {
     func addCategory(_ data:CategoryData) {
+#if os(iOS)
         guard let realm = realm else {
             print("realm is nil")
             return
@@ -415,15 +442,39 @@ extension RealmManager {
         } catch {
             print("Realm add Error")
         }
+#else
+        guard let realm = watchRealm else {
+            print("watchRealm is nil")
+            return
+        }
+        do {
+            try realm.write {
+                realm.add(data)
+            }
+        } catch {
+            print("watch add Error")
+        }
+#endif
     }
     
     func loadCategory() -> [CategoryData] {
+#if os(iOS)
+        openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return []
         }
         let categoryList = realm.objects(CategoryData.self)
         return Array(categoryList)
+#else
+        openRealm()
+        guard let realm = watchRealm else {
+            print("watchRealm is nil")
+            return []
+        }
+        let categoryList = realm.objects(CategoryData.self)
+        return Array(categoryList)
+#endif
     }
     
     func getCategoryColor(_ category:String) -> UIColor {
@@ -437,6 +488,7 @@ extension RealmManager {
     }
     
     private func haveDefault() -> Bool {
+#if os(iOS)
         guard let realm = realm else {
             print("realm is nil")
             return false
@@ -446,5 +498,16 @@ extension RealmManager {
             return false
         }
         return true
+#else
+        guard let realm = watchRealm else {
+            print("watchRealm is nil")
+            return false
+        }
+        let categoryList = realm.objects(CategoryData.self)
+        guard let _ = categoryList.first(where: { $0.title == "Default" }) else {
+            return false
+        }
+        return true
+#endif
     }
 }

@@ -55,7 +55,29 @@ enum TaskMode:Int {
     case MODIFY = 2
 }
 
-enum CodingKeys:String, CodingKey {
+
+enum PushType:String {
+    case Alert = "Alert"
+    case End = "End"
+}
+
+enum DataType:String {
+    case EachTask = "EachTask"
+    case NSEachTask = "NSEachTask"
+    case NSEachTaskList = "NSEachTaskList"
+    case NSCategoryData = "NSCategoryData"
+    case NSCategoryDataList = "NSCategoryDataList"
+}
+
+enum SendType:String {
+    case Send = "send"
+    case Update = "update"
+}
+
+//MARK: - CodingKey
+
+
+enum TaskCodingKeys:String, CodingKey {
     case id
     case taskDay
     case category
@@ -71,18 +93,8 @@ enum CodingKeys:String, CodingKey {
     case isDone
 }
 
-enum PushType:String {
-    case Alert = "Alert"
-    case End = "End"
-}
 
-enum DataType:String {
-    case EachTask = "EachTask"
-    case NSEachTask = "NSEachTask"
-    case NSEachTaskList = "NSEachTaskList"
-}
-
-enum SendType:String {
-    case Send = "send"
-    case Update = "update"
+enum CategoryCodingKeys:String, CodingKey {
+    case title
+    case colorList
 }

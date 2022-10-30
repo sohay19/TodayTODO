@@ -41,4 +41,8 @@ class CategoryData : Object {
     func loadColor() -> UIColor {
         return Utils.getColor(colorList)
     }
+    
+    func getColorList() -> [Float] {
+        return color
+    }
 }

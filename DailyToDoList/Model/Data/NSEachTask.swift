@@ -59,7 +59,7 @@ struct NSEachTask: Codable {
     }
     
     func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
+        var container = encoder.container(keyedBy: TaskCodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(taskDay, forKey: .taskDay)
         try container.encode(category, forKey: .category)
@@ -76,7 +76,7 @@ struct NSEachTask: Codable {
     }
     
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: TaskCodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         taskDay = try container.decode(String.self, forKey: .taskDay)
         category = try container.decode(String.self, forKey: .category)

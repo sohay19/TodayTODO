@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -77,7 +77,6 @@
                                         <state key="normal" title="Edit"/>
                                         <connections>
                                             <action selector="changeDailyTaskEditMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MfH-5j-QIn"/>
-                                            <action selector="changeEditMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G0r-WI-RLD"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhK-e7-NYl">
@@ -247,6 +246,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnEdit" destination="S02-VU-gCk" id="NPE-pH-vHJ"/>
                         <outlet property="calendarView" destination="MtS-eB-6uU" id="zX9-Zg-iE0"/>
                         <outlet property="dailyTaskTable" destination="T45-og-L7Z" id="fNM-Ey-6T3"/>
                         <outlet property="labelDate" destination="qhK-e7-NYl" id="SXq-oI-tcD"/>

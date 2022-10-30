@@ -77,7 +77,7 @@
                                     <fontDescription key="font" type="boldSystem" pointSize="16"/>
                                 </label>
                                 <label alignment="left" text="Category" id="Xlm-Dc-tuL">
-                                    <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="1" green="0.42604236642071447" blue="0.36495029858327921" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <fontDescription key="font" type="system" pointSize="16"/>
                                 </label>
                                 <label alignment="left" text="Time" id="glk-2x-ges">
