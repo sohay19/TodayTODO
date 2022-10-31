@@ -53,7 +53,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //
-        SystemManager.shared.openLoading(self)
+        SystemManager.shared.openLoading()
         //버전체크
         guard #available(iOS 15, *) else {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "iOS 15이상에서만 사용가능합니다.\n[설정->일반->소프트웨어 업데이트]\n에서 업데이트해주세요.", complete: { _ in
@@ -61,14 +61,13 @@ class MainViewController: UIViewController {
             })
         }
         //
-        segmentedController.selectedSegmentIndex = 0
-        changeSegment()
-        //
-        initDate()
-        initUI()
-        //
         DispatchQueue.main.async { [self] in
             loadTask()
+            //
+            initDate()
+            initUI()
+            //
+            changeSegment()
         }
     }
 }
@@ -86,17 +85,19 @@ extension MainViewController {
     
     func changeSegment() {
         switch segmentedController.selectedSegmentIndex {
+        case 0:
+            beforeDate = currentDate
+            currentDate = Date()
+            //Today
+            monthView.isHidden = true
+            todayView.isHidden = false
         case 1:
             currentDate = beforeDate
             //Month
             monthView.isHidden = false
             todayView.isHidden = true
         default:
-            beforeDate = currentDate
-            currentDate = Date()
-            //Today
-            monthView.isHidden = true
-            todayView.isHidden = false
+            break
         }
     }
 }
@@ -106,6 +107,30 @@ extension MainViewController {
     //Task 세팅
     func loadTask() {
         switch segmentedController.selectedSegmentIndex {
+        case 0:
+            // data reset
+            taskList = []
+            monthlyTaskList = [:]
+            taskDateKeyList = []
+            let dataList = RealmManager.shared.getTaskDataForDay(date: currentDate)
+            taskList = dataList.sorted(by: { task1, task2 in
+                if task1.isDone {
+                    return task2.isDone ? true : false
+                } else {
+                    return true
+                }
+            })
+            //
+            if taskList.count == 0 {
+                labelTodayNilMsg.isHidden = false
+            } else {
+                labelTodayNilMsg.isHidden = true
+            }
+            //
+            dailyTaskTable.reloadData()
+            dailyTaskTable.flashScrollIndicators()
+            //
+            SystemManager.shared.closeLoading()
         case 1:
             // data reset
             taskList = []
@@ -185,29 +210,7 @@ extension MainViewController {
             //
             changeDay()
         default:
-            // data reset
-            taskList = []
-            monthlyTaskList = [:]
-            taskDateKeyList = []
-            let dataList = RealmManager.shared.getTaskDataForDay(date: currentDate)
-            taskList = dataList.sorted(by: { task1, task2 in
-                if task1.isDone {
-                    return task2.isDone ? true : false
-                } else {
-                    return true
-                }
-            })
-            //
-            if taskList.count == 0 {
-                labelTodayNilMsg.isHidden = false
-            } else {
-                labelTodayNilMsg.isHidden = true
-            }
-            //
-            dailyTaskTable.reloadData()
-            dailyTaskTable.flashScrollIndicators()
-            //
-            SystemManager.shared.closeLoading()
+            break
         }
     }
     //
@@ -244,6 +247,16 @@ extension MainViewController {
         modifyTask.isDone = isDone
         RealmManager.shared.updateTaskDataForiOS(modifyTask)
         switch segmentedController.selectedSegmentIndex {
+        case 0:
+            //Today
+            dailyTaskTable.reloadRows(at: [indexPath], with: .none)
+            let task = taskList.remove(at: indexPath.row)
+            if isDone {
+                taskList.append(task)
+            } else {
+                taskList = [task] + taskList
+            }
+            dailyTaskTable.reloadData()
         case 1:
             //Month
             monthlyTaskTable.reloadRows(at: [indexPath], with: .none)
@@ -255,15 +268,7 @@ extension MainViewController {
             }
             monthlyTaskTable.reloadData()
         default:
-            //Today
-            dailyTaskTable.reloadRows(at: [indexPath], with: .none)
-            let task = taskList.remove(at: indexPath.row)
-            if isDone {
-                taskList.append(task)
-            } else {
-                taskList = [task] + taskList
-            }
-            dailyTaskTable.reloadData()
+            break
         }
     }
     //
@@ -272,12 +277,14 @@ extension MainViewController {
         taskList[indexPath.row] = task
         //
         switch segmentedController.selectedSegmentIndex {
-        case 1:
-            //Month
-            break
-        default:
+        case 0:
             //Today
             dailyTaskTable.reloadRows(at: [indexPath], with: .none)
+        case 1:
+            //Month
+            monthlyTaskTable.reloadRows(at: [indexPath], with: .none)
+        default:
+            break
         }
     }
     //
@@ -287,11 +294,12 @@ extension MainViewController {
         taskList.remove(at: indexPath.row)
         //
         switch segmentedController.selectedSegmentIndex {
+        case 0:
+            dailyTaskTable.deleteRows(at: [indexPath], with: .none)
         case 1:
             monthlyTaskTable.deleteRows(at: [indexPath], with: .none)
         default:
-            //Today
-            dailyTaskTable.deleteRows(at: [indexPath], with: .none)
+            break
         }
     }
 }
@@ -316,14 +324,14 @@ extension MainViewController {
     //
     @objc func refreshTaskView() {
         switch segmentedController.selectedSegmentIndex {
+        case 0:
+            dailyTaskTable.refreshControl?.endRefreshing()
+            dailyTaskTable.reloadData()
         case 1:
-            //Month
             monthlyTaskTable.refreshControl?.endRefreshing()
             monthlyTaskTable.reloadData()
         default:
-            //Today
-            dailyTaskTable.refreshControl?.endRefreshing()
-            dailyTaskTable.reloadData()
+            break
         }
     }
 }
@@ -335,7 +343,6 @@ extension MainViewController {
             changeEditMode()
             return
         }
-        //
         let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
         guard let nextVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
         //
@@ -346,7 +353,7 @@ extension MainViewController {
         nextVC.modalTransitionStyle = .crossDissolve
         nextVC.modalPresentationStyle = .overCurrentContext
         
-        presentWithLoading(nextVC, animated: true)
+        present(nextVC, animated: true)
     }
     //
     @IBAction func changeDailyTaskEditMode(_ sender:UIButton) {
@@ -377,8 +384,7 @@ extension MainViewController {
             changeEditMode()
             return
         }
-        changeSegment()
-        loadTask()
+        viewWillAppear(true)
     }
     //SideMenu
     @IBAction func clickSideMenu(_ sender:Any) {//

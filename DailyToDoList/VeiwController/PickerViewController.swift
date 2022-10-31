@@ -16,12 +16,12 @@ class PickerViewController : UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if let sheetPresentation = sheetPresentationController {
             sheetPresentation.detents = [.medium()]
             sheetPresentation.prefersScrollingExpandsWhenScrolledToEdge = false
             sheetPresentation.preferredCornerRadius = 0
         }
-        
         pickerView.selectRow(pickerView.selectedRow(inComponent: 0), inComponent: 0, animated: true)
     }
 }

@@ -150,25 +150,19 @@ extension RealmManager {
         }
         do {
             if task.isAlarm {
-                print("task.isAlarm = \(task.isAlarm)")
                 var alarmInfoData:AlarmInfo?
                 let data =  getAlarmInfo(task.id)
                 alarmInfoData = data
-                print("data IN!")
                 guard let alarmInfoData = alarmInfoData else {
                     return
                 }
-                print("alarmInfoData = \(alarmInfoData)")
                 try realm.write {
                     realm.delete(alarmInfoData)
-                    print("alarmInfoData is delete")
                 }
                 let idList = getAlarmIdList(task.id)
                 PushManager.shared.deletePush(idList)
-                print("deletePrush")
             }
             try realm.write {
-                print("complete")
                 realm.delete(task)
             }
             WatchConnectManager.shared.sendToWatchTask()
@@ -275,6 +269,17 @@ extension RealmManager {
         }
         return realm.objects(AlarmInfo.self).map{$0}
     }
+    //
+    func getTodayAlarmInfo() -> [AlarmInfo] {
+        var result:[AlarmInfo] = []
+        let taskList = getTaskDataForDay(date: Date())
+        for task in taskList {
+            if let item = getAlarmInfo(task.id) {
+                result.append(item)
+            }
+        }
+        return result
+    }
     func deleteAllAlarm() {
         openRealm()
         guard let realm = realm else {
@@ -354,7 +359,7 @@ extension RealmManager {
             case .EachMonthOfWeek:
                 if $0.weekDayList[weekdayIndex] {
                     let week = $0.monthOfWeek
-                    if week == 5 {
+                    if week == 6 {
                         return weekOfMonth == lastWeek
                     } else if week == weekOfMonth {
                         return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true

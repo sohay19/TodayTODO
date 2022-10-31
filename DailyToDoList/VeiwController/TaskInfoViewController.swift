@@ -32,7 +32,6 @@ class TaskInfoViewController : UIViewController {
     @IBOutlet weak var btnPullCategory:UIButton!
     @IBOutlet weak var btnFirst:UIButton!
     @IBOutlet weak var btnSecond:UIButton!
-    @IBOutlet weak var btnModify: UIButton!
     //
     @IBOutlet weak var switchRepeat:UISwitch!
     @IBOutlet weak var switchAlarm:UISwitch!
@@ -41,6 +40,7 @@ class TaskInfoViewController : UIViewController {
     var taskData:EachTask?
     var repeatResult:RepeatResult?
     var currentMode:TaskMode = .LOOK
+    //
     var currntDate:Date = Date()
     //
     var refreshTask:(()->Void)?
@@ -62,6 +62,8 @@ class TaskInfoViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //
+        SystemManager.shared.openLoading()
+        //
         scrollView.isScrollEnabled = false
         //날짜 지정
         pickTaskDate.setDate(currntDate, animated: false)
@@ -80,7 +82,7 @@ class TaskInfoViewController : UIViewController {
 //MARK: - initialize
 extension TaskInfoViewController {
     //
-    func changeMode() {
+    private func changeMode() {
         switch currentMode {
         case .LOOK:
             //
@@ -108,7 +110,7 @@ extension TaskInfoViewController {
             labelNoAlarm.isHidden = false
             pickAlarmTime.date = Calendar.current.date(byAdding: .minute, value: 5, to: Date())!
             //
-            showResult()
+            printResultView()
             controllReusltView(false)
             controllBtnView(true)
             //
@@ -116,7 +118,7 @@ extension TaskInfoViewController {
         }
     }
     //
-    func setDefaultView() {
+    private func setDefaultView() {
         resultView.translatesAutoresizingMaskIntoConstraints = false
         resultViewConstraint = resultView.constraints.first { item in
             return item.identifier == "resultViewHeight"
@@ -127,7 +129,7 @@ extension TaskInfoViewController {
         }
     }
     //
-    func loadData() {
+    private func loadData() {
         guard let taskData = taskData else {
             return
         }
@@ -139,7 +141,7 @@ extension TaskInfoViewController {
         pickTaskDate.date = Utils.dateStringToDate(taskData.taskDay)!
         //
         let repeatType = RepeatType(rawValue: taskData.repeatType)!
-        repeatResult = RepeatResult(repeatType: repeatType, weekDay: taskData.getWeekDayList(), monthOfWeek: MonthOfWeek(rawValue: taskData.monthOfWeek)!, isEnd: taskData.isEnd, endDate: Utils.dateStringToDate(taskData.taskEndDate))
+        repeatResult = RepeatResult(repeatType: repeatType, weekDay: taskData.getWeekDayList(), monthOfWeek: taskData.monthOfWeek, isEnd: taskData.isEnd, endDate: Utils.dateStringToDate(taskData.taskEndDate))
         //
         setResultView(repeatType, isResult: false)
         pickEndDate.isHidden = !taskData.isEnd
@@ -170,7 +172,7 @@ extension TaskInfoViewController {
         controllResultView(false)
     }
     //카테고리 로드
-    func loadCategory() {
+    private func loadCategory() {
         //
         let funcLoadCategory:()->Void = self.loadCategory
         var categoryList:[UIAction] = []
@@ -202,7 +204,7 @@ extension TaskInfoViewController {
 //MARK: - controll
 extension TaskInfoViewController {
     //resultView 컨트롤
-    func controllReusltView(_ isOpen:Bool) {
+    private func controllReusltView(_ isOpen:Bool) {
         if isOpen {
             let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
                 resultViewConstraint?.constant = resultViewSize!.height
@@ -217,7 +219,7 @@ extension TaskInfoViewController {
         }
     }
     //resultView 결과
-    func showResult(_ result:RepeatResult) {
+    private func showResult(_ result:RepeatResult) {
         repeatResult = result
         //종료일
         guard let repeatResult = repeatResult else {
@@ -236,7 +238,7 @@ extension TaskInfoViewController {
         setResultView(repeatResult.repeatType, isResult: true)
     }
     //buttonView 컨트롤
-    func controllBtnView(_ isOpen:Bool) {
+    private func controllBtnView(_ isOpen:Bool) {
         buttonView.isHidden = !isOpen
         if isOpen {
             let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
@@ -251,7 +253,7 @@ extension TaskInfoViewController {
         }
     }
     //
-    func controllEditMode(_ isOn:Bool) {
+    private func controllEditMode(_ isOn:Bool) {
         guard let taskData = taskData else {
             return
         }
@@ -269,7 +271,7 @@ extension TaskInfoViewController {
         textView.isEditable = isOn
     }
     //
-    func controllResultView(_ isOpen:Bool) {
+    private func controllResultView(_ isOpen:Bool) {
         if isOpen {
             let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
                 resultViewConstraint?.constant = resultViewSize!.height
@@ -284,7 +286,7 @@ extension TaskInfoViewController {
         }
     }
     //
-    func setResultView(_ repeatType:RepeatType, isResult:Bool) {
+    private func setResultView(_ repeatType:RepeatType, isResult:Bool) {
         //
         var weekDay:String
         var day:String
@@ -293,7 +295,7 @@ extension TaskInfoViewController {
         if let repeatResult = repeatResult {
             weekDay = repeatResult.getWeekDay()
             day = String(Utils.dateToDateString(pickTaskDate.date).split(separator: "-")[2])
-            monthOfWeek = String(repeatResult.monthOfWeek.rawValue)
+            monthOfWeek = String(repeatResult.monthOfWeek)
             
         } else {
             guard let taskData = taskData else {
@@ -306,38 +308,38 @@ extension TaskInfoViewController {
         //
         switch repeatType  {
         case .EveryDay:
-            showResult("매일")
+            printResultView("매일")
             switchRepeat.isOn = true
             labelNoRepeat.text = ""
             //
             controllReusltView(true)
         case .Eachweek:
-            showResult("매 주", weekDay, "요일")
+            printResultView("매 주", weekDay, "요일")
             switchRepeat.isOn = true
             labelNoRepeat.text = ""
             //
             controllReusltView(true)
         case .EachMonthOfOnce:
-            showResult("매 월", day, "일")
+            printResultView("매 월", day, "일")
             switchRepeat.isOn = true
             labelNoRepeat.text = ""
             //
             controllReusltView(true)
         case .EachMonthOfWeek:
-            showResult("매 월", monthOfWeek, "주, ", weekDay, "요일")
+            printResultView("매 월", monthOfWeek, "주, ", weekDay, "요일")
             switchRepeat.isOn = true
             labelNoRepeat.text = ""
             //
             controllReusltView(true)
         case .EachYear:
-            showResult("매 년", day, "일")
+            printResultView("매 년", day, "일")
             switchRepeat.isOn = true
             labelNoRepeat.text = ""
             //
             controllReusltView(true)
         default:
             //
-            showResult()
+            printResultView()
             switchRepeat.isOn = false
             labelNoRepeat.text = "없음"
             //
@@ -345,14 +347,14 @@ extension TaskInfoViewController {
         }
     }
     //result setting
-    func showResult() {
+    private func printResultView() {
         labelFirst.isHidden = true
         labelSecond.isHidden = true
         labelThird.isHidden = true
         btnFirst.isHidden = true
         btnSecond.isHidden = true
     }
-    func showResult(_ thrid:String) {
+    private func printResultView(_ thrid:String) {
         labelFirst.isHidden = true
         labelSecond.isHidden = true
         labelThird.isHidden = false
@@ -361,7 +363,7 @@ extension TaskInfoViewController {
         btnFirst.isHidden = true
         btnSecond.isHidden = true
     }
-    func showResult(_ second:String, _ btnsecond:String, _ thrid:String) {
+    private func printResultView(_ second:String, _ btnsecond:String, _ thrid:String) {
         labelFirst.isHidden = true
         labelSecond.isHidden = false
         labelSecond.text = second
@@ -372,7 +374,7 @@ extension TaskInfoViewController {
         btnSecond.isHidden = false
         btnSecond.setTitle(btnsecond, for: .normal)
     }
-    func showResult(_ first:String, _ btnfirst:String, _ second:String, _ btnsecond:String, _ thrid:String) {
+    private func printResultView(_ first:String, _ btnfirst:String, _ second:String, _ btnsecond:String, _ thrid:String) {
         labelFirst.isHidden = false
         labelFirst.text = first
         labelSecond.isHidden = false
@@ -409,10 +411,12 @@ extension TaskInfoViewController {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "시작일과 종료일이 같을 수 없습니다.")
             return nil
         }
+        //
+        SystemManager.shared.openLoading()
         //반복 내용 가져오기
         var repeatType = RepeatType.None
         var weekDay = [Bool](repeating: false, count: 7)
-        var monthOfWeek = MonthOfWeek.None
+        var monthOfWeek = 0
         if switchRepeat.isOn {
             //RepeatResult 내용 가져오기
             guard let repeatResult = repeatResult else {
@@ -426,12 +430,12 @@ extension TaskInfoViewController {
         var data = EachTask()
         switch currentMode {
         case .ADD:
-            data = EachTask(taskDay: pickTaskDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, monthOfWeek: monthOfWeek.rawValue)
+            data = EachTask(taskDay: pickTaskDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, monthOfWeek: monthOfWeek)
         case .MODIFY:
             guard let taskData = taskData else {
                 return nil
             }
-            data = EachTask(id:taskData.id, taskDay: pickTaskDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, monthOfWeek: monthOfWeek.rawValue)
+            data = EachTask(id:taskData.id, taskDay: pickTaskDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, monthOfWeek: monthOfWeek)
         default:
             break
         }
@@ -442,7 +446,6 @@ extension TaskInfoViewController {
         if switchAlarm.isOn {
             data.setAlarm(pickAlarmTime.date)
         }
-        
         return data
     }
     //등록버튼
@@ -450,6 +453,8 @@ extension TaskInfoViewController {
         switch currentMode {
         case .ADD:
             guard let data = makeTask() else {
+                print("task is Nil")
+                SystemManager.shared.closeLoading()
                 return
             }
             //realm에 추가
@@ -457,8 +462,10 @@ extension TaskInfoViewController {
         case .MODIFY:
             guard let data = makeTask() else {
                 print("task is Nil")
+                SystemManager.shared.closeLoading()
                 return
             }
+            //업데이트
             RealmManager.shared.updateTaskDataForiOS(data)
         default:
             //Look
@@ -479,6 +486,9 @@ extension TaskInfoViewController {
     // 날짜 선택 시 팝업 닫음
     @IBAction func changeDate(_ sender:UIDatePicker) {
         presentedViewController?.dismiss(animated: false)
+        //
+        switchRepeat.isOn = false
+        offRepeat()
     }
 }
 
@@ -492,7 +502,8 @@ extension TaskInfoViewController {
             guard let repeatVC = board.instantiateViewController(withIdentifier: repeatBoard) as? RepeatViewController else {
                 return
             }
-            repeatVC.taskDay = Utils.dateToDateString(pickTaskDate.date)
+            //
+            repeatVC.pickDate = pickTaskDate.date
             repeatVC.clickOk = showResult(_:)
             repeatVC.clickCancel = { self.switchRepeat.isOn = false }
             repeatVC.modalPresentationStyle = .overCurrentContext
@@ -500,10 +511,13 @@ extension TaskInfoViewController {
             
             present(repeatVC, animated: true)
         } else {
-            showResult()
-            repeatResult = nil
-            controllReusltView(false)
+            offRepeat()
         }
+    }
+    private func offRepeat() {
+        printResultView()
+        repeatResult = nil
+        controllReusltView(false)
     }
     //알람토글
     @IBAction func toggleAlarm(_ sender: UISwitch) {
@@ -523,7 +537,7 @@ extension TaskInfoViewController {
         }
     }
     //키보드 옵저버
-    func observeKeyboard() {
+    private func observeKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -551,7 +565,7 @@ extension TaskInfoViewController {
         isShow = false
     }
     //키보드 내리기
-    func keyboardDown() {
+    private func keyboardDown() {
         self.view.endEditing(true)
         isShow = false
     }

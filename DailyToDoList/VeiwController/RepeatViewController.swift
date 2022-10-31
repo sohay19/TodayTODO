@@ -11,12 +11,12 @@ class RepeatViewController: UIViewController {
     @IBOutlet weak var popView: UIView!
     //
     @IBOutlet weak var btnPullRepeatType: UIButton!
-    @IBOutlet weak var btnPullMonthOfWeek: UIButton!
     //
     @IBOutlet weak var pickEndDate: UIDatePicker!
     //
     @IBOutlet weak var switchEndDate: UISwitch!
     //
+    @IBOutlet weak var btnMonthOfWeek: UIButton!
     @IBOutlet weak var btnSunday: UIButton!
     @IBOutlet weak var btnMonday: UIButton!
     @IBOutlet weak var btnTuseday: UIButton!
@@ -26,7 +26,9 @@ class RepeatViewController: UIViewController {
     @IBOutlet weak var btnSaturday: UIButton!
     
     //
-    var taskDay = ""
+    var pickDate:Date = Date()
+    var pickWeekOfMonth = 0
+    var pickWeekDay = -1
     //Event
     var clickOk:((RepeatResult) -> Void)?
     var clickCancel:(() -> Void)?
@@ -35,7 +37,6 @@ class RepeatViewController: UIViewController {
     let nonSelectedColor = UIColor.systemFill
     //data
     var repeatType = RepeatType.None
-    var monthOfweek = MonthOfWeek.None
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,69 +44,111 @@ class RepeatViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //
+        SystemManager.shared.openLoading()
         //모서리 둥글게
         popView.layer.cornerRadius = 10
         //그림자
         popView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         popView.layer.shadowRadius = 10
         popView.layer.shadowOpacity = 1
-        //메뉴 로드
+        //
+        setDefaultUI()
+        //
         loadRepeatType()
         loadMonthofWeek()
-        setDefaultUI()
+        //
+        SystemManager.shared.openLoading()
     }
 }
 
 
 //MARK: - UI
 extension RepeatViewController {
+    //
+    private func calcDate() {
+        //지정된 날짜의 weekOfMonth 및 weekDay확인
+        pickWeekOfMonth = Utils.getWeekOfMonth(pickDate)
+        pickWeekDay = Utils.getWeekDay(pickDate)
+    }
     //Default UI Setting
-    func setDefaultUI() {
+    private func setDefaultUI() {
         //기본세팅
         switchEndDate.isOn = false
         pickEndDate.isEnabled = false
-        btnPullMonthOfWeek.isEnabled = false
+        btnMonthOfWeek.isEnabled = false
         contorllWeekDay(false)
     }
     //반복 타입 메뉴 로드
-    func loadRepeatType() {
+    private func loadRepeatType() {
+        //
+        calcDate()
+        //
         var repeatTypeList:[UIAction] = []
         for type in RepeatType.allCases {
-            let title = type.rawValue
-            repeatTypeList.append(UIAction(title: title, handler: { _ in
-                self.btnPullRepeatType.setTitle(title, for: .normal)
-                //
-                self.repeatType = type
-                //
-                switch type {
-                case .Eachweek:
+            var title = type.rawValue
+            switch type {
+            case .EveryDay:
+                repeatTypeList.append(UIAction(title: title, handler: { _ in
+                    self.btnPullRepeatType.setTitle(title, for: .normal)
+                    self.repeatType = type
+                    //
+                    self.setDefaultUI()
+                }))
+            case .Eachweek:
+                repeatTypeList.append(UIAction(title: title, handler: { _ in
+                    self.btnPullRepeatType.setTitle(title, for: .normal)
+                    self.repeatType = type
+                    //
                     self.setDefaultUI()
                     self.contorllWeekDay(true)
-                case .EachMonthOfWeek:
+                    //
+                    self.setWeekDay()
+                }))
+            case .EachMonthOfOnce:
+                title = "매 월 \(Utils.getDay(pickDate))일"
+                repeatTypeList.append(UIAction(title: title, handler: { _ in
+                    self.btnPullRepeatType.setTitle(title, for: .normal)
+                    self.repeatType = type
+                    //
                     self.setDefaultUI()
-                    self.btnPullMonthOfWeek.isEnabled = true
+                }))
+            case .EachMonthOfWeek:
+                title = "매 월 \(Utils.getWeekOfMonthIntKOR(pickWeekOfMonth)) 주, 선택한 요일"
+                repeatTypeList.append(UIAction(title: title, handler: { _ in
+                    self.btnPullRepeatType.setTitle(title, for: .normal)
+                    self.repeatType = type
+                    //
+                    self.setDefaultUI()
                     self.contorllWeekDay(true)
-                default:
+                    //
+                    self.setWeekDay()
+                }))
+            case .EachYear:
+                title = "매 년 \(Utils.getDay(pickDate))일"
+                repeatTypeList.append(UIAction(title: title, handler: { _ in
+                    self.btnPullRepeatType.setTitle(title, for: .normal)
+                    self.repeatType = type
+                    //
                     self.setDefaultUI()
-                }
-            }))
+                }))
+            default:
+                repeatTypeList.append(UIAction(title: title, handler: { _ in
+                    self.btnPullRepeatType.setTitle(title, for: .normal)
+                    self.repeatType = type
+                    //
+                    self.setDefaultUI()
+                    self.contorllWeekDay(true)
+                }))
+            }
         }
         btnPullRepeatType.menu = UIMenu(title: "반복 주기", image: UIImage(systemName: "plus"), children: repeatTypeList)
     }
     //반복 주기 메뉴 로드
-    func loadMonthofWeek() {
-        var monthOfWeekList:[UIAction] = []
-        for type in MonthOfWeek.allCases {
-            let title = String(type.rawValue)
-            monthOfWeekList.append(UIAction(title: title, handler: { _ in
-                self.btnPullMonthOfWeek.setTitle(title, for: .normal)
-                self.monthOfweek = type
-                print("\(type.rawValue)")
-            }))
-        }
-        btnPullMonthOfWeek.menu = UIMenu(title: "주 선택", image: UIImage(systemName: "plus"), children: monthOfWeekList)
+    private func loadMonthofWeek() {
+        btnMonthOfWeek.setTitle(Utils.getWeekOfMonthIntKOR(pickWeekOfMonth), for: .normal)
     }
-    func contorllWeekDay(_ isOn:Bool) {
+    private func contorllWeekDay(_ isOn:Bool) {
         btnMonday.isEnabled = isOn
         btnTuseday.isEnabled = isOn
         btnWensday.isEnabled = isOn
@@ -126,7 +169,7 @@ extension RepeatViewController {
 //MARK: - Func
 extension RepeatViewController {
     //weekDay 알아보기
-    func getWeekDay() -> [Bool] {
+    private func getWeekDay() -> [Bool] {
         var tmpArr = [Bool](repeating: false, count: 7)
         if btnSunday.isSelected {
             tmpArr[0] = true
@@ -152,6 +195,34 @@ extension RepeatViewController {
         
         return tmpArr
     }
+    //지정된 요일 버튼 선택
+    private func setWeekDay() {
+        switch pickWeekDay {
+        case 0:
+            btnSunday.isSelected = true
+            btnSunday.tintColor = selectedColor
+        case 1:
+            btnMonday.isSelected = true
+            btnMonday.tintColor = selectedColor
+        case 2:
+            btnTuseday.isSelected = true
+            btnTuseday.tintColor = selectedColor
+        case 3:
+            btnWensday.isSelected = true
+            btnWensday.tintColor = selectedColor
+        case 4:
+            btnThursday.isSelected = true
+            btnThursday.tintColor = selectedColor
+        case 5:
+            btnFriday.isSelected = true
+            btnFriday.tintColor = selectedColor
+        case 6:
+            btnSaturday.isSelected = true
+            btnSaturday.tintColor = selectedColor
+        default:
+            break
+        }
+    }
 }
 
 //MARK: - Button Event
@@ -164,16 +235,12 @@ extension RepeatViewController {
                 return
             }
         } else if repeatType == .EachMonthOfWeek {
-            if monthOfweek == MonthOfWeek.None {
-                PopupManager.shared.openOkAlert(self, title: "알림", msg: "주를 선택해주세요.")
-                return
-            }
             if getWeekDay().filter({ $0 == true }).count == 0 {
                 PopupManager.shared.openOkAlert(self, title: "알림", msg: "요일을 하나 이상 선택해주세요.")
                 return
             }
         }
-        let result = RepeatResult(repeatType: repeatType, weekDay: getWeekDay(), monthOfWeek: monthOfweek, isEnd: switchEndDate.isOn, endDate: pickEndDate.date)
+        let result = RepeatResult(repeatType: repeatType, weekDay: getWeekDay(), monthOfWeek: pickWeekOfMonth, isEnd: switchEndDate.isOn, endDate: pickEndDate.date)
         clickOk?(result)
         
         self.dismiss(animated: true)
@@ -196,12 +263,9 @@ extension RepeatViewController {
     //pickEndDate Change Value
     @IBAction func changeValueEndDate(_ sender:UIDatePicker) {
         //종료일 검토
-        if taskDay == Utils.dateToDateString(sender.date) {
+        if Utils.dateToDateString(pickDate) == Utils.dateToDateString(sender.date) {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "시작일과 종료일이 같을 수 없습니다.")
-            guard let taskDate = Utils.dateStringToDate(taskDay) else {
-                return
-            }
-            pickEndDate.date = Calendar.current.date(byAdding: .day, value: 1, to: taskDate)!
+            pickEndDate.date = Calendar.current.date(byAdding: .day, value: 1, to: pickDate)!
             return
         }
     }

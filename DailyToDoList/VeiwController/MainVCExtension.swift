@@ -99,7 +99,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
         guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
-        
+        //
         tableView.deselectRow(at: indexPath, animated: true)
         //
         taskInfoVC.currentMode = .LOOK
@@ -109,7 +109,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         taskInfoVC.modalTransitionStyle = .crossDissolve
         taskInfoVC.modalPresentationStyle = .overCurrentContext
         
-        presentWithLoading(taskInfoVC, animated: true)
+        present(taskInfoVC, animated: true)
     }
 }
 
@@ -119,7 +119,7 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         currentDate = date
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            SystemManager.shared.openLoading(self)
+            SystemManager.shared.openLoading()
             self.changeDay()
         }
     }
@@ -143,7 +143,7 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
         currentDate = firstDate
         calendarView.select(currentDate)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            SystemManager.shared.openLoading(self)
+            SystemManager.shared.openLoading()
             self.loadTask()
         }
         

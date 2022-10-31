@@ -11,10 +11,10 @@ import UIKit
 
 class PushListViewController : UIViewController {
     @IBOutlet weak var pushTable: UITableView!
-    
+    @IBOutlet weak var segmentedController: UISegmentedControl!
+    @IBOutlet weak var labelDate: UILabel!
     
     var pushList:[AlarmInfo] = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +29,12 @@ class PushListViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //
-        loadPushData()
+        SystemManager.shared.openLoading()
         //
         DispatchQueue.main.async {
-            SystemManager.shared.closeLoading()
+            self.loadPushData()
+            //
+            initUI()
         }
     }
 }
@@ -46,9 +43,30 @@ class PushListViewController : UIViewController {
 //MARK: - Func
 extension PushListViewController {
     func loadPushData() {
-        let pushlist = RealmManager.shared.getAllAlarmInfo()
-        pushList = pushlist.sorted { $0.alarmTime < $1.alarmTime }
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            let pushlist = RealmManager.shared.getTodayAlarmInfo()
+            pushList = pushlist.sorted { $0.alarmTime < $1.alarmTime }
+        case 1:
+            let pushlist = RealmManager.shared.getAllAlarmInfo()
+            pushList = pushlist.sorted { $0.alarmTime < $1.alarmTime }
+        default:
+            break
+        }
+        //
         pushTable.reloadData()
+        SystemManager.shared.closeLoading()
+    }
+    //
+    func initUI() {
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            labelDate.text = "오늘 예정된 알람"
+        case 1:
+            labelDate.text = "모든 예정된 알람"
+        default:
+            break
+        }
     }
     //refresh controller 초기세팅
     func initRefreshController() {
@@ -65,7 +83,11 @@ extension PushListViewController {
     }
     //
     func deletePush(_ indexPath:IndexPath) {
-        
+        // 알람만 삭제
+        PushManager.shared.deletePush(pushList[indexPath.row].alarmIdList.map{$0})
+        // 리스트 삭제
+        pushList.remove(at: indexPath.row)
+        pushTable.reloadData()
     }
 }
 
@@ -73,5 +95,9 @@ extension PushListViewController {
 extension PushListViewController {
     @IBAction func clickSideMenu(_ sender:Any) {
         SystemManager.shared.openSideMenu(self)
+    }
+    //SegmentedControl
+    @IBAction func changeSegment(_ sender:UISegmentedControl) {//
+        viewWillAppear(true)
     }
 }

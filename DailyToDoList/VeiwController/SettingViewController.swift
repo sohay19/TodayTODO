@@ -17,9 +17,12 @@ class SettingViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        SystemManager.shared.openLoading()
         //백업파일 날짜로드
         DataManager.shared.updateCloud(label: labelBackupDate)
+        //
         SystemManager.shared.closeLoading()
     }
 }

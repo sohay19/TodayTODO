@@ -24,7 +24,9 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         pushCell.labelTitle.text = pushData.title
-        pushCell.labelAlarmTime.text = pushData.alarmTime
+        var time = pushData.alarmTime.split(separator: ":")
+        time.removeLast()
+        pushCell.labelAlarmTime.text = time.joined(separator: ":")
         //
         var repeatMsg = ""
         switch RepeatType(rawValue: pushData.repeatType) {
@@ -78,30 +80,14 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Swipe
     //오른쪽 스와이프
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        //Done Or Not
-        let modify = UIContextualAction(style: .normal, title: "수정") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            success(true)
-        }
-        modify.backgroundColor = .systemIndigo
-        
+        //
         let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.deletePush(indexPath)
             success(true)
         }
         delete.backgroundColor = .systemRed
         //index = 0, 오른쪽
-        return UISwipeActionsConfiguration(actions:[delete, modify])
-    }
-    
-    //MARK: - EditMode
-    //Row별 EditMode-
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-    //EditMode별 Event
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            deletePush(indexPath)
-        }
+        return UISwipeActionsConfiguration(actions:[delete])
     }
     
     //MARK: - Event
@@ -109,9 +95,11 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
         guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
+        //
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        let data = RealmManager.shared.getTaskData(pushList[indexPath.row].taskId)
+        guard let data = RealmManager.shared.getTaskData(pushList[indexPath.row].taskId) else {
+            return
+        }
         taskInfoVC.taskData = data
         taskInfoVC.modalTransitionStyle = .crossDissolve
         taskInfoVC.modalPresentationStyle = .overCurrentContext

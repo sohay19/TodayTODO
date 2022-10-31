@@ -81,24 +81,47 @@ class Utils {
         
         return strWeekDay
     }
+    //주 한국말로
+    static func getWeekOfMonthIntKOR(_ weekOfMonth:Int) -> String {
+        var strWeekOfMonth = ""
+        
+        switch weekOfMonth {
+        case 0:
+            strWeekOfMonth = "없음"
+        case 1:
+            strWeekOfMonth = "첫째"
+        case 2:
+            strWeekOfMonth = "둘째"
+        case 3:
+            strWeekOfMonth = "셋째"
+        case 4:
+            strWeekOfMonth = "넷째"
+        case 5:
+            strWeekOfMonth = "다섯째"
+        case 6:
+            strWeekOfMonth = "마지막"
+        default:
+            break
+        }
+        return strWeekOfMonth
+    }
 }
 
 //MARK: - 일/주/etc 구하기
 extension Utils {
-    //요일 구하기(1 = 일요일)
+    //요일 구하기(0 = 일요일)
     static func getWeekDay(_ date:String) -> Int {
         guard let today = Utils.stringToDate(date) else {
-            return 0
+            return -1
         }
-        
         guard let weekday = Calendar.current.dateComponents([.weekday], from: today).weekday else {
-            return 0
+            return -1
         }
         return weekday-1
     }
     static func getWeekDay(_ date:Date) -> Int {
         guard let weekday = Calendar.current.dateComponents([.weekday], from: date).weekday else {
-            return 0
+            return -1
         }
         return weekday-1
     }
@@ -107,17 +130,18 @@ extension Utils {
         guard let today = Utils.stringToDate(date) else {
             return 0
         }
-        
         guard let weekOfMonth = Calendar.current.dateComponents([.weekOfMonth], from: today).weekOfMonth else {
             return 0
         }
-        return weekOfMonth
+        let lastWeek = getLastWeek(date)
+        return weekOfMonth == lastWeek ? 6 : weekOfMonth
     }
     static func getWeekOfMonth(_ date:Date) -> Int {
         guard let weekOfMonth = Calendar.current.dateComponents([.weekOfMonth], from: date).weekOfMonth else {
             return 0
         }
-        return weekOfMonth
+        let lastWeek = getLastWeek(date)
+        return weekOfMonth == lastWeek ? 6 : weekOfMonth
     }
     //마지막 주 구하기
     static func getLastWeek(_ date:Date) -> Int {

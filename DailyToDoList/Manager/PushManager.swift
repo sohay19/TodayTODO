@@ -90,8 +90,6 @@ extension PushManager {
         case .EveryDay:
             idList.append(setRepeatDayNoti(data, index))
         case .Eachweek:
-            //선택 일자 기본 설정
-            idList.append(setNotRepeatNoti(data, index))
             //
             for i in 0..<data.weekDayList.count {
                 if data.weekDayList[i] {
@@ -102,8 +100,6 @@ extension PushManager {
         case .EachMonthOfOnce:
             idList.append(setRepeatMonthOfOnceNoti(data, index))
         case .EachMonthOfWeek:
-            //선택 일자 기본 설정
-            idList.append(setNotRepeatNoti(data, index))
             //
             for i in 0..<data.weekDayList.count {
                 if data.weekDayList[i] {
@@ -130,7 +126,7 @@ extension PushManager {
     private func setEndNoti(_ data:EachTask, _ idIndex:Int) -> String {
         //콘텐츠 설정
         let id = "\(data.id)_\(idIndex)"
-        let notiContent = setNotiContent(data, id)
+        let notiContent = setEndNotiContent(data, id)
         //push 날짜 설정
         var dateComponents = getDateComponents(data)
         let dateArr = data.taskEndDate.split(separator: "-")

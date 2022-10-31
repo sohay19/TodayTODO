@@ -41,15 +41,6 @@ class CustomNavigationController : UINavigationController {
 
 extension CustomNavigationController {
     //push
-    func pushViewControllerWithLoading(_ viewController: UIViewController) {
-        SystemManager.shared.openLoading(viewController)
-        super.pushViewController(viewController, animated: false)
-    }
-    func pushViewControllerWithLoading(_ viewController: UIViewController, complete: @escaping ()->Void) {
-        SystemManager.shared.openLoading(viewController)
-        super.pushViewController(viewController, animated: false)
-        completeMotion(false, complete: complete)
-    }
     func pushViewController(_ viewController: UIViewController) {
         super.pushViewController(viewController, animated: false)
     }

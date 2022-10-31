@@ -27,6 +27,9 @@ extension DataManager {
     func deleteAllFile() {
         deleteiCloudBackupFile()
         RealmManager.shared.deleteOriginFile()
+        //
+        PushManager.shared.deleteAllPush()
+        RealmManager.shared.deleteAllAlarm()
     }
 }
 

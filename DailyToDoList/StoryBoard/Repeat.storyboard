@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -90,7 +90,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleAspectFit" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkc-yC-M6U">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkc-yC-M6U">
                                         <rect key="frame" x="245" y="104.5" width="33" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="0">
@@ -354,7 +354,7 @@
                     <connections>
                         <outlet property="btnFriday" destination="2eu-L0-rbX" id="8Vd-fm-voL"/>
                         <outlet property="btnMonday" destination="2fj-fR-hdr" id="xzo-9c-pMA"/>
-                        <outlet property="btnPullMonthOfWeek" destination="dkc-yC-M6U" id="AC8-AT-Ibo"/>
+                        <outlet property="btnMonthOfWeek" destination="dkc-yC-M6U" id="QtF-Cv-K4b"/>
                         <outlet property="btnPullRepeatType" destination="qpT-dY-dw1" id="LRz-5H-Aep"/>
                         <outlet property="btnSaturday" destination="PgK-9W-HDR" id="QzZ-0V-7Ck"/>
                         <outlet property="btnSunday" destination="w7T-8r-1y6" id="1gz-vm-zQr"/>

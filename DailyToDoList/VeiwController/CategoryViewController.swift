@@ -27,12 +27,20 @@ class CategoryViewController: UIViewController {
             sheetPresentationController.preferredCornerRadius = 30
             sheetPresentationController.prefersGrabberVisible = false
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //
+        SystemManager.shared.openLoading()
         //
         guard let colorWell = self.btnColorView as? UIColorWell else {
             return
         }
         colorWell.isEnabled = false
         btnColor = colorWell
+        //
+        SystemManager.shared.closeLoading()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
