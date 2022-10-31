@@ -133,15 +133,13 @@ extension Utils {
         guard let weekOfMonth = Calendar.current.dateComponents([.weekOfMonth], from: today).weekOfMonth else {
             return 0
         }
-        let lastWeek = getLastWeek(date)
-        return weekOfMonth == lastWeek ? 6 : weekOfMonth
+        return weekOfMonth
     }
     static func getWeekOfMonth(_ date:Date) -> Int {
         guard let weekOfMonth = Calendar.current.dateComponents([.weekOfMonth], from: date).weekOfMonth else {
             return 0
         }
-        let lastWeek = getLastWeek(date)
-        return weekOfMonth == lastWeek ? 6 : weekOfMonth
+        return weekOfMonth
     }
     //마지막 주 구하기
     static func getLastWeek(_ date:Date) -> Int {
@@ -153,9 +151,10 @@ extension Utils {
         guard let beforeDate = Calendar.current.date(byAdding: .day, value: -1, to: nextMonth) else {
             return 0
         }
-        let endOfMonth = Utils.dateToDateString(beforeDate)
-        
-        return getWeekOfMonth(endOfMonth)
+        guard let weekOfMonth = Calendar.current.dateComponents([.weekOfMonth], from: beforeDate).weekOfMonth else {
+            return 0
+        }
+        return weekOfMonth
     }
     static func getLastWeek(_ date:String) -> Int {
         guard let curDate = dateStringToDate(date) else {
@@ -169,9 +168,10 @@ extension Utils {
         guard let beforeDate = Calendar.current.date(byAdding: .day, value: -1, to: nextMonth) else {
             return 0
         }
-        let endOfMonth = Utils.dateToDateString(beforeDate)
-        
-        return getWeekOfMonth(endOfMonth)
+        guard let weekOfMonth = Calendar.current.dateComponents([.weekOfMonth], from: beforeDate).weekOfMonth else {
+            return 0
+        }
+        return weekOfMonth
     }
     //마지막 일 구하기
     static func getLastDay(_ date:Date) -> Int {
@@ -308,7 +308,8 @@ extension Utils {
         var dateComponent = DateComponents()
         dateComponent.year = curDate.year
         dateComponent.month = curDate.month
-        dateComponent.weekdayOrdinal = monthOfWeek
+        let lastWeek = getLastWeek(date)
+        dateComponent.weekOfMonth = monthOfWeek == 6 || monthOfWeek > lastWeek ? 6 : monthOfWeek
         
         var result:[Int] = []
         for weekday in weekDay {
@@ -323,12 +324,16 @@ extension Utils {
         var dateComponent = DateComponents()
         dateComponent.year = curDate.year
         dateComponent.month = curDate.month
-        dateComponent.weekdayOrdinal = monthOfWeek
+        let lastWeek = getLastWeek(date)
+        dateComponent.weekOfMonth = monthOfWeek == 6 || monthOfWeek > lastWeek ? lastWeek : monthOfWeek
+        
+        print("monthofweek = \(monthOfWeek == 6 || monthOfWeek > lastWeek ? lastWeek : monthOfWeek)")
         
         var result:[Int] = []
         for weekday in weekDay {
             dateComponent.weekday = weekday+1
             let matchDate = Calendar.current.date(from: dateComponent)!
+            print("matchDate = \(matchDate)")
             result.append(getDay(matchDate))
         }
         return result

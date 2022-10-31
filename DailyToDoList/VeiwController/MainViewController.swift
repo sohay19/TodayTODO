@@ -196,16 +196,6 @@ extension MainViewController {
                         }
                     }
                 }
-                //당일, 중복 여부 확인 후 추가
-                for day in taskDateKeyList {
-                    var compareDay = curMonthDays
-                    compareDay[2] = String(format: "%02d", day)
-                    if task.taskDay == compareDay.joined(separator: "-") {
-                        if !(monthlyTaskList[day]?.contains(where: { $0 == task }))! {
-                            monthlyTaskList[day]?.append(task)
-                        }
-                    }
-                }
             }
             //
             changeDay()

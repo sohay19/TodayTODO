@@ -138,13 +138,13 @@
                                                                 <rect key="frame" x="84" y="154.5" width="246" height="75"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5p-CI-Wd1" userLabel="first">
-                                                                        <rect key="frame" x="86" y="9" width="26" height="18"/>
+                                                                        <rect key="frame" x="98" y="9" width="26" height="18"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhG-PM-jE8" userLabel="btnfirst">
-                                                                        <rect key="frame" x="121" y="3" width="31.5" height="30"/>
+                                                                        <rect key="frame" x="133" y="3" width="31.5" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="30" id="rg4-VW-sgb"/>
                                                                         </constraints>
@@ -155,13 +155,13 @@
                                                                         </buttonConfiguration>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주, " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2An-4j-CAU" userLabel="second">
-                                                                        <rect key="frame" x="161.5" y="9" width="22" height="18"/>
+                                                                        <rect key="frame" x="167.5" y="9" width="22" height="18"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yBe-TD-IXK" userLabel="btnsecond">
-                                                                        <rect key="frame" x="192.5" y="3" width="31.5" height="30"/>
+                                                                        <rect key="frame" x="198.5" y="3" width="31.5" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="30" id="tdh-G3-cuv"/>
                                                                         </constraints>
@@ -211,13 +211,13 @@
                                                                     <constraint firstItem="f5p-CI-Wd1" firstAttribute="centerY" secondItem="vz5-FZ-bqE" secondAttribute="centerY" id="H1N-Oh-8Qv"/>
                                                                     <constraint firstItem="Awu-9N-Ik2" firstAttribute="centerY" secondItem="VIg-iS-f8i" secondAttribute="centerY" id="MJi-jz-Uhk"/>
                                                                     <constraint firstItem="VIg-iS-f8i" firstAttribute="top" secondItem="vz5-FZ-bqE" secondAttribute="bottom" constant="18" id="PAQ-h7-A5K"/>
-                                                                    <constraint firstItem="vz5-FZ-bqE" firstAttribute="leading" secondItem="yBe-TD-IXK" secondAttribute="trailing" constant="9" id="Skb-pA-YLZ"/>
+                                                                    <constraint firstItem="vz5-FZ-bqE" firstAttribute="leading" secondItem="yBe-TD-IXK" secondAttribute="trailing" constant="3" id="Skb-pA-YLZ"/>
                                                                     <constraint firstItem="VIg-iS-f8i" firstAttribute="leading" secondItem="Awu-9N-Ik2" secondAttribute="trailing" id="SrZ-Nr-UhP"/>
                                                                     <constraint firstItem="yBe-TD-IXK" firstAttribute="leading" secondItem="2An-4j-CAU" secondAttribute="trailing" constant="9" id="VKs-tt-3Bv"/>
                                                                     <constraint firstAttribute="trailing" secondItem="VIg-iS-f8i" secondAttribute="trailing" id="WA5-Hj-ThJ"/>
                                                                     <constraint firstItem="yBe-TD-IXK" firstAttribute="centerY" secondItem="vz5-FZ-bqE" secondAttribute="centerY" id="Wii-hz-aMg"/>
                                                                     <constraint firstAttribute="trailing" secondItem="Era-iy-ML1" secondAttribute="trailing" id="Xc4-MO-ITm"/>
-                                                                    <constraint firstItem="2An-4j-CAU" firstAttribute="leading" secondItem="BhG-PM-jE8" secondAttribute="trailing" constant="9" id="cV5-mg-5YW"/>
+                                                                    <constraint firstItem="2An-4j-CAU" firstAttribute="leading" secondItem="BhG-PM-jE8" secondAttribute="trailing" constant="3" id="cV5-mg-5YW"/>
                                                                     <constraint firstItem="vz5-FZ-bqE" firstAttribute="top" secondItem="CDP-45-toC" secondAttribute="top" constant="9" id="fOG-EN-Oig"/>
                                                                     <constraint firstAttribute="height" constant="75" identifier="resultViewHeight" id="k2z-Vh-hzc"/>
                                                                     <constraint firstItem="Era-iy-ML1" firstAttribute="top" secondItem="vz5-FZ-bqE" secondAttribute="bottom" constant="18" id="pNS-FC-sWI"/>

@@ -332,10 +332,6 @@ extension RealmManager {
             if today < $0.taskDay {
                 return false
             }
-            //당일 추가
-            if $0.taskDay == today {
-                return true
-            }
             
             switch RepeatType(rawValue:$0.repeatType) {
                 //매일 반복
