@@ -34,7 +34,7 @@ class PushListViewController : UIViewController {
         DispatchQueue.main.async {
             self.loadPushData()
             //
-            initUI()
+            self.initUI()
         }
     }
 }

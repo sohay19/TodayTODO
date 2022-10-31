@@ -58,7 +58,7 @@ class RepeatViewController: UIViewController {
         loadRepeatType()
         loadMonthofWeek()
         //
-        SystemManager.shared.openLoading()
+        SystemManager.shared.closeLoading()
     }
 }
 
