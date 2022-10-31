@@ -57,7 +57,7 @@ class Utils {
         return dateformatter.string(from: date)
     }
     //
-    static func getWeekDay(_ weekDay:Int) -> String {
+    static func getWeekDayInKOR(_ weekDay:Int) -> String {
         var strWeekDay = ""
         
         switch weekDay {
@@ -82,7 +82,7 @@ class Utils {
         return strWeekDay
     }
     //주 한국말로
-    static func getWeekOfMonthIntKOR(_ weekOfMonth:Int) -> String {
+    static func getWeekOfMonthInKOR(_ weekOfMonth:Int) -> String {
         var strWeekOfMonth = ""
         
         switch weekOfMonth {
@@ -229,7 +229,7 @@ extension Utils {
 
 //MARK: - 변환
 extension Utils {
-    //
+    //첫번째 날로 변환
     static func transFirstDate(_ date:Date) -> Date? {
         var curDate = Utils.dateToDateString(date)
         curDate.removeLast()
@@ -244,7 +244,7 @@ extension Utils {
         curDate += "01"
         return dateStringToDate(curDate)
     }
-    //
+    //마지막 날로 변환
     static func transLastDate(_ date:Date) -> Date? {
         guard let firstDate = transFirstDate(date) else {
             return nil
@@ -273,6 +273,7 @@ extension Utils {
         }
         return beforeDate
     }
+    //다음달의 첫번째 날
     static func transNextMonth(_ date:Date) -> Date? {
         let nextMonth = Calendar.current.date(byAdding: .month, value: +1, to: date)!
         guard let firstDate = transFirstDate(nextMonth) else {
@@ -299,7 +300,6 @@ extension Utils {
             resultList[getWeekDay(curDate)]?.append(getDay(curDate))
             curDate = Calendar.current.date(byAdding: .day, value: +1, to: curDate)!
         }
-        
         return resultList
     }
     //
@@ -327,13 +327,10 @@ extension Utils {
         let lastWeek = getLastWeek(date)
         dateComponent.weekOfMonth = monthOfWeek == 6 || monthOfWeek > lastWeek ? lastWeek : monthOfWeek
         
-        print("monthofweek = \(monthOfWeek == 6 || monthOfWeek > lastWeek ? lastWeek : monthOfWeek)")
-        
         var result:[Int] = []
         for weekday in weekDay {
             dateComponent.weekday = weekday+1
             let matchDate = Calendar.current.date(from: dateComponent)!
-            print("matchDate = \(matchDate)")
             result.append(getDay(matchDate))
         }
         return result

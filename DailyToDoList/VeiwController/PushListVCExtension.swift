@@ -37,7 +37,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             let weekDayList = pushData.getWeekDayList()
             for weekday in 0..<weekDayList.count {
                 if weekDayList[weekday] {
-                    repeatMsg += Utils.getWeekDay(weekday)
+                    repeatMsg += Utils.getWeekDayInKOR(weekday)
                 }
             }
             repeatMsg.removeLast()
@@ -53,7 +53,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             let weekDayList = pushData.getWeekDayList()
             for weekday in 0..<weekDayList.count {
                 if weekDayList[weekday] {
-                    repeatMsg += Utils.getWeekDay(weekday)
+                    repeatMsg += Utils.getWeekDayInKOR(weekday)
                 }
             }
             if !weekDay.isEmpty {

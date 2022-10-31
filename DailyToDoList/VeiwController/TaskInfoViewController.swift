@@ -295,7 +295,7 @@ extension TaskInfoViewController {
         if let repeatResult = repeatResult {
             weekDay = repeatResult.getWeekDay()
             day = String(Utils.dateToDateString(pickTaskDate.date).split(separator: "-")[2])
-            monthOfWeek = Utils.getWeekOfMonthIntKOR(repeatResult.monthOfWeek)
+            monthOfWeek = Utils.getWeekOfMonthInKOR(repeatResult.monthOfWeek)
             
         } else {
             guard let taskData = taskData else {
@@ -303,7 +303,7 @@ extension TaskInfoViewController {
             }
             weekDay = taskData.printWeekDay()
             day = String(taskData.taskDay.split(separator: "-")[2])
-            monthOfWeek = Utils.getWeekOfMonthIntKOR(taskData.monthOfWeek)
+            monthOfWeek = Utils.getWeekOfMonthInKOR(taskData.monthOfWeek)
         }
         //
         switch repeatType  {

@@ -114,7 +114,7 @@ extension RepeatViewController {
                     self.setDefaultUI()
                 }))
             case .EachMonthOfWeek:
-                title = "매 월 \(Utils.getWeekOfMonthIntKOR(pickWeekOfMonth)) 주, 선택한 요일"
+                title = "매 월 \(Utils.getWeekOfMonthInKOR(pickWeekOfMonth)) 주, 선택한 요일"
                 repeatTypeList.append(UIAction(title: title, handler: { _ in
                     self.btnPullRepeatType.setTitle(title, for: .normal)
                     self.repeatType = type
@@ -146,7 +146,7 @@ extension RepeatViewController {
     }
     //반복 주기 메뉴 로드
     private func loadMonthofWeek() {
-        btnMonthOfWeek.setTitle(Utils.getWeekOfMonthIntKOR(pickWeekOfMonth), for: .normal)
+        btnMonthOfWeek.setTitle(Utils.getWeekOfMonthInKOR(pickWeekOfMonth), for: .normal)
     }
     private func contorllWeekDay(_ isOn:Bool) {
         btnMonday.isEnabled = isOn
