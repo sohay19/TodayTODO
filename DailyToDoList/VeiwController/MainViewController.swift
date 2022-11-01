@@ -373,6 +373,8 @@ extension MainViewController {
             changeEditMode()
             return
         }
+        currentDate = Date()
+        calendarView.select(currentDate)
         //
         SystemManager.shared.openLoading()
         //
