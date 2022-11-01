@@ -46,7 +46,7 @@ extension WatchConnectManager {
                 categoryList.append(NSCategoryData.init(category:data))
             }
             let categoryDataForWatch = try JSONEncoder().encode(NSCategoryDataList(categoryList: categoryList))
-            session.transferUserInfo([ sendTypeKey:SendType.Send.rawValue, dataTypeKey:DataType.NSCategoryDataList.rawValue, dataKey:categoryDataForWatch])
+            session.transferUserInfo([ sendTypeKey:SendType.Update.rawValue, dataTypeKey:DataType.NSCategoryDataList.rawValue, dataKey:categoryDataForWatch])
             //Task 보내기
             let founData = RealmManager.shared.getTaskDataForDay(date: Date())
             var taskList:[NSEachTask] = []
@@ -54,7 +54,7 @@ extension WatchConnectManager {
                 taskList.append(NSEachTask.init(task: data))
             }
             let taskDataForWatch = try JSONEncoder().encode(NSEachTaskList(taskList: taskList))
-            session.transferUserInfo([ sendTypeKey:SendType.Send.rawValue, dataTypeKey:DataType.NSEachTaskList.rawValue, dataKey:taskDataForWatch])
+            session.transferUserInfo([ sendTypeKey:SendType.Update.rawValue, dataTypeKey:DataType.NSEachTaskList.rawValue, dataKey:taskDataForWatch])
         } catch {
             print("sendToWatchTask Error")
         }
@@ -109,12 +109,8 @@ extension WatchConnectManager : WCSessionDelegate {
     //
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
 #if os(iOS)
-        print("didReceiveUserInfo_iOS")
         switch SendType(rawValue: userInfo[sendTypeKey] as! String) {
-        case .Send:
-            break
-        default:
-            //update
+        case .Update:
             do {
                 let dataType = userInfo[dataTypeKey] as! String
                 switch DataType(rawValue: dataType) {
@@ -134,11 +130,12 @@ extension WatchConnectManager : WCSessionDelegate {
             } catch {
                 print("Deconding Error")
             }
+        default:
+            break
         }
 #else
-        print("didReceiveUserInfo_watchOS")
         switch SendType(rawValue: userInfo[sendTypeKey] as! String) {
-        case .Send:
+        case .Update:
             do {
                 let dataType = userInfo[dataTypeKey] as! String
                 switch DataType(rawValue: dataType) {
@@ -177,6 +174,7 @@ extension WatchConnectManager : WCSessionDelegate {
             } catch {
                 print("Deconding Error")
             }
+            break
         default:
             break
         }

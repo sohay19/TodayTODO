@@ -60,7 +60,6 @@ enum DataType:String {
 }
 
 enum SendType:String {
-    case Send = "send"
     case Update = "update"
 }
 
