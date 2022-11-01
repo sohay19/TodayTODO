@@ -16,11 +16,17 @@ class SystemManager {
     private var indicator:UIActivityIndicatorView?
     
     private var sideMenuNavigation:CustomSideMenuNavigation?
+    private var isLoading = false
 }
 
 //MARK: - Loading
 extension SystemManager {
     func openLoading() {
+        //
+        if isLoading {
+            return
+        }
+        isLoading = true
         //
         backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -69,11 +75,16 @@ extension SystemManager {
     }
     //
     func closeLoading() {
+        if !isLoading {
+            return
+        }
         guard let backgroundView = backgroundView, let indicator = indicator else {
             return
         }
         backgroundView.removeFromSuperview()
         indicator.removeFromSuperview()
+        //
+        isLoading = false
     }
 }
 

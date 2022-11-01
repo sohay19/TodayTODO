@@ -31,11 +31,9 @@ class PushListViewController : UIViewController {
         super.viewWillAppear(animated)
         SystemManager.shared.openLoading()
         //
-        DispatchQueue.main.async {
-            self.loadPushData()
-            //
-            self.initUI()
-        }
+        loadPushData()
+        //
+        initUI()
     }
 }
 
@@ -55,7 +53,10 @@ extension PushListViewController {
         }
         //
         pushTable.reloadData()
-        SystemManager.shared.closeLoading()
+        //
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            SystemManager.shared.closeLoading()
+        }
     }
     //
     func initUI() {

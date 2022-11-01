@@ -61,14 +61,12 @@ class MainViewController: UIViewController {
             })
         }
         //
-        DispatchQueue.main.async { [self] in
-            loadTask()
-            //
-            initDate()
-            initUI()
-            //
-            changeSegment()
-        }
+        loadTask()
+        //
+        initDate()
+        initUI()
+        //
+        changeSegment()
     }
 }
 
@@ -129,8 +127,6 @@ extension MainViewController {
             //
             dailyTaskTable.reloadData()
             dailyTaskTable.flashScrollIndicators()
-            //
-            SystemManager.shared.closeLoading()
         case 1:
             // data reset
             taskList = []
@@ -159,7 +155,7 @@ extension MainViewController {
                     for day in taskDateKeyList {
                         var compareDay = curMonthDays
                         compareDay[2] = String(format: "%02d", day)
-                        if task.taskDay < compareDay.joined(separator: "-") {
+                        if task.taskDay <= compareDay.joined(separator: "-") {
                             monthlyTaskList[day]?.append(task)
                         }
                     }
@@ -171,17 +167,17 @@ extension MainViewController {
                         for day in weekDayList {
                             var compareDay = curMonthDays
                             compareDay[2] = String(format: "%02d", day)
-                            if task.taskDay < compareDay.joined(separator: "-") {
+                            if task.taskDay <= compareDay.joined(separator: "-") {
                                 monthlyTaskList[day]?.append(task)
                             }
                         }
                     }
-                case .EachMonthOfWeek:
-                    let daysList = Utils.findDay(currentDate, task.monthOfWeek, task.getWeekDays())
+                case .EachWeekOfMonth:
+                    let daysList = Utils.findDay(currentDate, task.weekOfMonth, task.getWeekDays())
                     for day in daysList {
                         var compareDay = curMonthDays
                         compareDay[2] = String(format: "%02d", day)
-                        if task.taskDay < compareDay.joined(separator: "-") {
+                        if task.taskDay <= compareDay.joined(separator: "-") {
                             monthlyTaskList[day]?.append(task)
                         }
                     }
@@ -191,19 +187,24 @@ extension MainViewController {
                     for day in taskDateKeyList {
                         var compareDay = curMonthDays
                         compareDay[2] = String(format: "%02d", day)
-                        if task.taskDay < compareDay.joined(separator: "-") && day == Utils.getDay(task.taskDay) {
+                        if task.taskDay <= compareDay.joined(separator: "-") && day == Utils.getDay(task.taskDay) {
                             monthlyTaskList[day]?.append(task)
                         }
                     }
                 }
             }
+            //month가 바뀌었으므로 캘린더 리로드
+            calendarView.reloadData()
             //
             changeDay()
         default:
             break
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            SystemManager.shared.closeLoading()
+        }
     }
-    //
+    // 선택된 날짜에 맞는 테이블 로드
     func changeDay() {
         //
         guard let day = Calendar.current.dateComponents([.day], from: currentDate).day else {
@@ -224,12 +225,8 @@ extension MainViewController {
             taskList = []
         }
         //
-        calendarView.reloadData()
-        //
         monthlyTaskTable.reloadData()
         monthlyTaskTable.flashScrollIndicators()
-        //
-        SystemManager.shared.closeLoading()
     }
     //
     func taskIsDone(_ isDone:Bool, _ indexPath:IndexPath) {
@@ -374,6 +371,9 @@ extension MainViewController {
             changeEditMode()
             return
         }
+        //
+        SystemManager.shared.openLoading()
+        //
         viewWillAppear(true)
     }
     //SideMenu

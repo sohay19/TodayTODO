@@ -27,8 +27,8 @@ enum RepeatType:String, CaseIterable {
     case None = "반복 없음"
     case EveryDay = "매일"
     case Eachweek = "매 주"
-    case EachMonthOfOnce = "매 월"
-    case EachMonthOfWeek = "매 월, 매 주"
+    case EachOnceOfMonth = "매 월"
+    case EachWeekOfMonth = "매 월, 매 주"
     case EachYear = "매 년"
 }
 
@@ -75,7 +75,7 @@ enum TaskCodingKeys:String, CodingKey {
     case memo
     case repeatType
     case weekDay
-    case monthOfWeek
+    case weekOfMonth
     case isEnd
     case taskEndDate
     case isAlarm

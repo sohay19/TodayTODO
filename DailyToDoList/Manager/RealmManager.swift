@@ -345,16 +345,16 @@ extension RealmManager {
                     return false
                 }
                 //매월 해당 일 반복
-            case .EachMonthOfOnce:
+            case .EachOnceOfMonth:
                 if days[2] == loadDays[2] {
                     return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
                 } else {
                     return false
                 }
                 //매월 해당 주, 해당 요일 반복
-            case .EachMonthOfWeek:
+            case .EachWeekOfMonth:
                 if $0.weekDayList[weekdayIndex] {
-                    let week = $0.monthOfWeek
+                    let week = $0.weekOfMonth
                     if week == 6 {
                         return weekOfMonth == lastWeek
                     } else if week == weekOfMonth {

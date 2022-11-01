@@ -23,7 +23,9 @@ class SettingViewController: UIViewController {
         //백업파일 날짜로드
         DataManager.shared.updateCloud(label: labelBackupDate)
         //
-        SystemManager.shared.closeLoading()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            SystemManager.shared.closeLoading()
+        }
     }
 }
 

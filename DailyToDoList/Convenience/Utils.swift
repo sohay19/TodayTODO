@@ -86,6 +86,8 @@ class Utils {
         var strWeekOfMonth = ""
         
         switch weekOfMonth {
+        case -1:
+            strWeekOfMonth = "마지막"
         case 0:
             strWeekOfMonth = "없음"
         case 1:
@@ -96,10 +98,6 @@ class Utils {
             strWeekOfMonth = "셋째"
         case 4:
             strWeekOfMonth = "넷째"
-        case 5:
-            strWeekOfMonth = "다섯째"
-        case 6:
-            strWeekOfMonth = "마지막"
         default:
             break
         }
@@ -143,18 +141,10 @@ extension Utils {
     }
     //마지막 주 구하기
     static func getLastWeek(_ date:Date) -> Int {
-        let curMonth = Calendar.current.dateComponents([.year, .month], from: date)
-        guard let curDate = Calendar.current.date(from: curMonth) else {
+        guard let lastWeek = Calendar.current.range(of: .weekOfMonth, in: .month, for: date) else {
             return 0
         }
-        let nextMonth = Calendar.current.date(byAdding: .month, value: +1, to: curDate)!
-        guard let beforeDate = Calendar.current.date(byAdding: .day, value: -1, to: nextMonth) else {
-            return 0
-        }
-        guard let weekOfMonth = Calendar.current.dateComponents([.weekOfMonth], from: beforeDate).weekOfMonth else {
-            return 0
-        }
-        return weekOfMonth
+        return lastWeek.count
     }
     static func getLastWeek(_ date:String) -> Int {
         guard let curDate = dateStringToDate(date) else {
@@ -175,34 +165,19 @@ extension Utils {
     }
     //마지막 일 구하기
     static func getLastDay(_ date:Date) -> Int {
-        guard let firstDate = transFirstDate(date) else {
+        guard let days = Calendar.current.range(of: .day, in: .month, for: date) else {
             return 0
         }
-        let curMonth = Calendar.current.dateComponents([.year, .month, .day], from: firstDate)
-        guard let curDate = Calendar.current.date(from: curMonth) else {
-            return 0
-        }
-        let nextMonth = Calendar.current.date(byAdding: .month, value: +1, to: curDate)!
-        guard let beforeDate = Calendar.current.date(byAdding: .day, value: -1, to: nextMonth) else {
-            return 0
-        }
-        
-        return Calendar.current.dateComponents([.day], from: beforeDate).day!
+        return days.count
     }
     static func getLastDay(_ date:String) -> Int {
-        guard let firstDate = transFirstDate(date) else {
+        guard let curDate = dateStringToDate(date) else {
             return 0
         }
-        let curMonth = Calendar.current.dateComponents([.year, .month, .day], from: firstDate)
-        guard let curDate = Calendar.current.date(from: curMonth) else {
+        guard let days = Calendar.current.range(of: .day, in: .month, for: curDate) else {
             return 0
         }
-        let nextMonth = Calendar.current.date(byAdding: .month, value: +1, to: curDate)!
-        guard let beforeDate = Calendar.current.date(byAdding: .day, value: -1, to: nextMonth) else {
-            return 0
-        }
-        
-        return Calendar.current.dateComponents([.day], from: beforeDate).day!
+        return days.count
     }
     //일 구하기
     static func getDay(_ date:String) -> Int {
@@ -231,46 +206,29 @@ extension Utils {
 extension Utils {
     //첫번째 날로 변환
     static func transFirstDate(_ date:Date) -> Date? {
-        var curDate = Utils.dateToDateString(date)
-        curDate.removeLast()
-        curDate.removeLast()
-        curDate += "01"
-        return dateStringToDate(curDate)
+        return Calendar.current.startOfDay(for: date)
     }
     static func transFirstDate(_ date:String) -> Date? {
-        var curDate = date
-        curDate.removeLast()
-        curDate.removeLast()
-        curDate += "01"
-        return dateStringToDate(curDate)
+        guard let curDate = dateStringToDate(date) else {
+            return nil
+        }
+        return Calendar.current.startOfDay(for: curDate)
     }
     //마지막 날로 변환
     static func transLastDate(_ date:Date) -> Date? {
         guard let firstDate = transFirstDate(date) else {
             return nil
         }
-        let curMonth = Calendar.current.dateComponents([.year, .month, .day], from: firstDate)
-        guard let curDate = Calendar.current.date(from: curMonth) else {
-            return nil
-        }
-        let nextMonth = Calendar.current.date(byAdding: .month, value: +1, to: curDate)!
-        guard let beforeDate = Calendar.current.date(byAdding: .day, value: -1, to: nextMonth) else {
-            return nil
-        }
+        let nextMonth = Calendar.current.date(byAdding: .month, value: +1, to: firstDate)!
+        let beforeDate = Calendar.current.date(byAdding: .day, value: -1, to: nextMonth)!
         return beforeDate
     }
     static func transLastDate(_ date:String) -> Date? {
         guard let firstDate = transFirstDate(date) else {
             return nil
         }
-        let curMonth = Calendar.current.dateComponents([.year, .month, .day], from: firstDate)
-        guard let curDate = Calendar.current.date(from: curMonth) else {
-            return nil
-        }
-        let nextMonth = Calendar.current.date(byAdding: .month, value: +1, to: curDate)!
-        guard let beforeDate = Calendar.current.date(byAdding: .day, value: -1, to: nextMonth) else {
-            return nil
-        }
+        let nextMonth = Calendar.current.date(byAdding: .month, value: +1, to: firstDate)!
+        let beforeDate = Calendar.current.date(byAdding: .day, value: -1, to: nextMonth)!
         return beforeDate
     }
     //다음달의 첫번째 날
@@ -303,13 +261,16 @@ extension Utils {
         return resultList
     }
     //
-    static func findDay(_ date:String, _ monthOfWeek:Int, _ weekDay:[Int]) -> [Int] {
+    static func findDay(_ date:String, _ weekOfMonth:Int, _ weekDay:[Int]) -> [Int] {
         let curDate = Calendar.current.dateComponents([.year, .month], from: dateStringToDate(date)!)
         var dateComponent = DateComponents()
         dateComponent.year = curDate.year
         dateComponent.month = curDate.month
-        let lastWeek = getLastWeek(date)
-        dateComponent.weekOfMonth = monthOfWeek == 6 || monthOfWeek > lastWeek ? 6 : monthOfWeek
+        if weekOfMonth == -1 {
+            dateComponent.weekdayOrdinal = weekOfMonth
+        } else {
+            dateComponent.weekOfMonth = weekOfMonth
+        }
         
         var result:[Int] = []
         for weekday in weekDay {
@@ -319,13 +280,16 @@ extension Utils {
         }
         return result
     }
-    static func findDay(_ date:Date, _ monthOfWeek:Int, _ weekDay:[Int]) -> [Int] {
+    static func findDay(_ date:Date, _ weekOfMonth:Int, _ weekDay:[Int]) -> [Int] {
         let curDate = Calendar.current.dateComponents([.year, .month], from: date)
         var dateComponent = DateComponents()
         dateComponent.year = curDate.year
         dateComponent.month = curDate.month
-        let lastWeek = getLastWeek(date)
-        dateComponent.weekOfMonth = monthOfWeek == 6 || monthOfWeek > lastWeek ? lastWeek : monthOfWeek
+        if weekOfMonth == -1 {
+            dateComponent.weekdayOrdinal = weekOfMonth
+        } else {
+            dateComponent.weekOfMonth = weekOfMonth
+        }
         
         var result:[Int] = []
         for weekday in weekDay {

@@ -118,10 +118,9 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
     // 특정 날짜 선택 시
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         currentDate = date
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            SystemManager.shared.openLoading()
-            self.changeDay()
-        }
+        changeDay()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//        }
     }
     //Dot 개수
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
@@ -142,11 +141,8 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
         }
         currentDate = firstDate
         calendarView.select(currentDate)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            SystemManager.shared.openLoading()
-            self.loadTask()
-        }
-        
+        SystemManager.shared.openLoading()
+        loadTask()
     }
     // Dot default 색상 변경
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {

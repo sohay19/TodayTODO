@@ -27,7 +27,7 @@ struct NSEachTask: Codable {
     //반복요일 체크(일요일 = 0) -> DateComponents (일요일 = 1)
     var weekDay:[Bool] = []
     //반복 주 체크
-    var monthOfWeek:Int = 0
+    var weekOfMonth:Int = 0
     //종료일 여부
     var isEnd:Bool = false
     //종료일
@@ -50,7 +50,7 @@ struct NSEachTask: Codable {
         self.memo = task.memo
         self.repeatType = task.repeatType
         self.weekDay = task.getWeekDayList()
-        self.monthOfWeek = task.monthOfWeek
+        self.weekOfMonth = task.weekOfMonth
         self.isEnd = task.isEnd
         self.taskEndDate = task.taskEndDate
         self.isAlarm = task.isAlarm
@@ -67,7 +67,7 @@ struct NSEachTask: Codable {
         try container.encode(memo, forKey: .memo)
         try container.encode(repeatType, forKey: .repeatType)
         try container.encode(weekDay, forKey: .weekDay)
-        try container.encode(monthOfWeek, forKey: .monthOfWeek)
+        try container.encode(weekOfMonth, forKey: .weekOfMonth)
         try container.encode(isEnd, forKey: .isEnd)
         try container.encode(taskEndDate, forKey: .taskEndDate)
         try container.encode(isAlarm, forKey: .isAlarm)
@@ -84,7 +84,7 @@ struct NSEachTask: Codable {
         memo = try container.decode(String.self, forKey: .memo)
         repeatType = try container.decode(String.self, forKey: .repeatType)
         weekDay = try container.decode([Bool].self, forKey: .weekDay)
-        monthOfWeek = try container.decode(Int.self, forKey: .monthOfWeek)
+        weekOfMonth = try container.decode(Int.self, forKey: .weekOfMonth)
         isEnd = try container.decode(Bool.self, forKey: .isEnd)
         taskEndDate = try container.decode(String.self, forKey: .taskEndDate)
         isAlarm = try container.decode(Bool.self, forKey: .isAlarm)

@@ -13,7 +13,7 @@ struct RepeatResult {
     //반복요일 체크(일요일 = 0) -> DateComponents (일요일 = 1)
     var weekDay:[Bool]
     //반복 주 체크
-    var monthOfWeek:Int
+    var weekOfMonth:Int
     //종료일 여부
     var isEnd:Bool
     //종료일
@@ -23,16 +23,16 @@ struct RepeatResult {
     init() {
         self.repeatType = RepeatType.None
         self.weekDay = [Bool](repeating: false, count: 7)
-        self.monthOfWeek = 0
+        self.weekOfMonth = 0
         self.isEnd = false
         self.taskEndDate = nil
     }
     
-    init(repeatType:RepeatType, weekDay:[Bool], monthOfWeek:Int, isEnd:Bool, endDate:Date?) {
+    init(repeatType:RepeatType, weekDay:[Bool], weekOfMonth:Int, isEnd:Bool, endDate:Date?) {
         self.init()
         self.repeatType = repeatType
         self.weekDay = weekDay
-        self.monthOfWeek = monthOfWeek
+        self.weekOfMonth = weekOfMonth
         self.isEnd = isEnd
         self.taskEndDate = endDate
     }

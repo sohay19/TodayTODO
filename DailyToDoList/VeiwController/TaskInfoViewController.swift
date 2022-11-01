@@ -74,8 +74,6 @@ class TaskInfoViewController : UIViewController {
         observeKeyboard()
         //모드에 맞게 세팅
         changeMode()
-        //Loading
-        SystemManager.shared.closeLoading()
     }
 }
 
@@ -116,6 +114,10 @@ extension TaskInfoViewController {
             //
             loadCategory()
         }
+        //
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            SystemManager.shared.closeLoading()
+        }
     }
     //
     private func setDefaultView() {
@@ -141,7 +143,7 @@ extension TaskInfoViewController {
         pickTaskDate.date = Utils.dateStringToDate(taskData.taskDay)!
         //
         let repeatType = RepeatType(rawValue: taskData.repeatType)!
-        repeatResult = RepeatResult(repeatType: repeatType, weekDay: taskData.getWeekDayList(), monthOfWeek: taskData.monthOfWeek, isEnd: taskData.isEnd, endDate: Utils.dateStringToDate(taskData.taskEndDate))
+        repeatResult = RepeatResult(repeatType: repeatType, weekDay: taskData.getWeekDayList(), weekOfMonth: taskData.weekOfMonth, isEnd: taskData.isEnd, endDate: Utils.dateStringToDate(taskData.taskEndDate))
         //
         setResultView(repeatType, isResult: false)
         pickEndDate.isHidden = !taskData.isEnd
@@ -290,12 +292,12 @@ extension TaskInfoViewController {
         //
         var weekDay:String
         var day:String
-        var monthOfWeek:String
+        var weekOfMonth:String
         //
         if let repeatResult = repeatResult {
             weekDay = repeatResult.getWeekDay()
             day = String(Utils.dateToDateString(pickTaskDate.date).split(separator: "-")[2])
-            monthOfWeek = Utils.getWeekOfMonthInKOR(repeatResult.monthOfWeek)
+            weekOfMonth = Utils.getWeekOfMonthInKOR(repeatResult.weekOfMonth)
             
         } else {
             guard let taskData = taskData else {
@@ -303,7 +305,7 @@ extension TaskInfoViewController {
             }
             weekDay = taskData.printWeekDay()
             day = String(taskData.taskDay.split(separator: "-")[2])
-            monthOfWeek = Utils.getWeekOfMonthInKOR(taskData.monthOfWeek)
+            weekOfMonth = Utils.getWeekOfMonthInKOR(taskData.weekOfMonth)
         }
         //
         switch repeatType  {
@@ -319,14 +321,14 @@ extension TaskInfoViewController {
             labelNoRepeat.text = ""
             //
             controllReusltView(true)
-        case .EachMonthOfOnce:
+        case .EachOnceOfMonth:
             printResultView("매 월", day, "일")
             switchRepeat.isOn = true
             labelNoRepeat.text = ""
             //
             controllReusltView(true)
-        case .EachMonthOfWeek:
-            printResultView("매 월", monthOfWeek, "주, ", weekDay, "요일")
+        case .EachWeekOfMonth:
+            printResultView("매 월", weekOfMonth, "주, ", weekDay, "요일")
             switchRepeat.isOn = true
             labelNoRepeat.text = ""
             //
@@ -416,7 +418,7 @@ extension TaskInfoViewController {
         //반복 내용 가져오기
         var repeatType = RepeatType.None
         var weekDay = [Bool](repeating: false, count: 7)
-        var monthOfWeek = 0
+        var weekOfMonth = 0
         if switchRepeat.isOn {
             //RepeatResult 내용 가져오기
             guard let repeatResult = repeatResult else {
@@ -424,18 +426,18 @@ extension TaskInfoViewController {
             }
             repeatType = repeatResult.repeatType
             weekDay = repeatResult.weekDay
-            monthOfWeek = repeatResult.monthOfWeek
+            weekOfMonth = repeatResult.weekOfMonth
         }
         //태스크 생성
         var data = EachTask()
         switch currentMode {
         case .ADD:
-            data = EachTask(taskDay: pickTaskDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, monthOfWeek: monthOfWeek)
+            data = EachTask(taskDay: pickTaskDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, weekOfMonth: weekOfMonth)
         case .MODIFY:
             guard let taskData = taskData else {
                 return nil
             }
-            data = EachTask(id:taskData.id, taskDay: pickTaskDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, monthOfWeek: monthOfWeek)
+            data = EachTask(id:taskData.id, taskDay: pickTaskDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, weekOfMonth: weekOfMonth)
         default:
             break
         }

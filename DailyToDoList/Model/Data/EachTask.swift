@@ -43,7 +43,7 @@ class EachTask : Object
     }
     //반복 주 체크
     @Persisted
-    var monthOfWeek:Int
+    var weekOfMonth:Int
     //종료일 여부
     @Persisted
     var isEnd:Bool
@@ -71,7 +71,7 @@ class EachTask : Object
         self.memo = task.memo
         self.repeatType = task.repeatType
         self.weekDay = task.weekDay
-        self.monthOfWeek = task.monthOfWeek
+        self.weekOfMonth = task.weekOfMonth
         self.isEnd = task.isEnd
         self.taskEndDate = task.taskEndDate
         self.isAlarm = task.isAlarm
@@ -80,7 +80,7 @@ class EachTask : Object
     }
     
             
-    convenience init(taskDay:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int) {
+    convenience init(taskDay:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], weekOfMonth:Int) {
         self.init()
         self.id = Utils.dateToId(Date())
         let date = Utils.dateToDateString(taskDay)
@@ -90,14 +90,14 @@ class EachTask : Object
         self.memo = memo
         self.repeatType = repeatType
         self.weekDay = weekDay
-        self.monthOfWeek = monthOfWeek
+        self.weekOfMonth = weekOfMonth
         //
         self.isEnd = false
         self.isAlarm = false
         self.isDone = false
     }
     
-    convenience init(id:String, taskDay:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int) {
+    convenience init(id:String, taskDay:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], weekOfMonth:Int) {
         self.init()
         self.id = id
         let date = Utils.dateToDateString(taskDay)
@@ -107,14 +107,14 @@ class EachTask : Object
         self.memo = memo
         self.repeatType = repeatType
         self.weekDay = weekDay
-        self.monthOfWeek = monthOfWeek
+        self.weekOfMonth = weekOfMonth
         //
         self.isEnd = false
         self.isAlarm = false
         self.isDone = false
     }
     
-    convenience init(id:String, taskDay:String, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], monthOfWeek:Int, isEnd:Bool, taskEndDate:String, isAlarm:Bool, alarmTime:String, isDone:Bool) {
+    convenience init(id:String, taskDay:String, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], weekOfMonth:Int, isEnd:Bool, taskEndDate:String, isAlarm:Bool, alarmTime:String, isDone:Bool) {
         self.init()
         self.id = id
         self.taskDay = taskDay
@@ -123,7 +123,7 @@ class EachTask : Object
         self.memo = memo
         self.repeatType = repeatType
         self.weekDay = weekDay
-        self.monthOfWeek = monthOfWeek
+        self.weekOfMonth = weekOfMonth
         self.isEnd = isEnd
         self.taskEndDate = taskEndDate
         self.isAlarm = isAlarm
@@ -201,7 +201,7 @@ class EachTask : Object
     }
     
     func clone() -> EachTask {
-        return EachTask(id: self.id, taskDay: self.taskDay, category: self.category, title: self.title, memo: self.memo, repeatType: self.repeatType, weekDay: self.weekDay, monthOfWeek: self.monthOfWeek, isEnd: self.isEnd, taskEndDate: self.taskEndDate, isAlarm: self.isAlarm, alarmTime: self.alarmTime, isDone: self.isDone)
+        return EachTask(id: self.id, taskDay: self.taskDay, category: self.category, title: self.title, memo: self.memo, repeatType: self.repeatType, weekDay: self.weekDay, weekOfMonth: self.weekOfMonth, isEnd: self.isEnd, taskEndDate: self.taskEndDate, isAlarm: self.isAlarm, alarmTime: self.alarmTime, isDone: self.isDone)
     }
     
     func printTask() {
@@ -216,7 +216,7 @@ class EachTask : Object
         print("repeatType = \(self.repeatType)")
         if self.repeatType != RepeatType.None.rawValue {
             print("weekDayList = \(self.weekDayList)")
-            print("weekOfMonth = \(self.monthOfWeek)")
+            print("weekOfMonth = \(self.weekOfMonth)")
         }
         print("isAlarm = \(self.isAlarm)")
         if self.isAlarm {

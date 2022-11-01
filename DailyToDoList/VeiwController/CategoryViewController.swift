@@ -40,7 +40,9 @@ class CategoryViewController: UIViewController {
         colorWell.isEnabled = false
         btnColor = colorWell
         //
-        SystemManager.shared.closeLoading()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            SystemManager.shared.closeLoading()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

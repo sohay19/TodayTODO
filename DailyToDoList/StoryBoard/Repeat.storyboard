@@ -354,12 +354,12 @@
                     <connections>
                         <outlet property="btnFriday" destination="2eu-L0-rbX" id="8Vd-fm-voL"/>
                         <outlet property="btnMonday" destination="2fj-fR-hdr" id="xzo-9c-pMA"/>
-                        <outlet property="btnMonthOfWeek" destination="dkc-yC-M6U" id="QtF-Cv-K4b"/>
                         <outlet property="btnPullRepeatType" destination="qpT-dY-dw1" id="LRz-5H-Aep"/>
                         <outlet property="btnSaturday" destination="PgK-9W-HDR" id="QzZ-0V-7Ck"/>
                         <outlet property="btnSunday" destination="w7T-8r-1y6" id="1gz-vm-zQr"/>
                         <outlet property="btnThursday" destination="GoQ-E3-838" id="8tv-8z-e2F"/>
                         <outlet property="btnTuseday" destination="Ire-Z6-kt1" id="V8E-9H-pte"/>
+                        <outlet property="btnWeekOfMonth" destination="dkc-yC-M6U" id="Gjp-Vy-gPz"/>
                         <outlet property="btnWensday" destination="GcG-fB-eF5" id="YgW-ko-8gy"/>
                         <outlet property="pickEndDate" destination="IxO-Mr-qpb" id="6nS-Qg-Yot"/>
                         <outlet property="popView" destination="F7J-km-Fae" id="WXP-YO-y8e"/>

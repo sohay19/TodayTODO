@@ -16,7 +16,7 @@ class RepeatViewController: UIViewController {
     //
     @IBOutlet weak var switchEndDate: UISwitch!
     //
-    @IBOutlet weak var btnMonthOfWeek: UIButton!
+    @IBOutlet weak var btnWeekOfMonth: UIButton!
     @IBOutlet weak var btnSunday: UIButton!
     @IBOutlet weak var btnMonday: UIButton!
     @IBOutlet weak var btnTuseday: UIButton!
@@ -55,10 +55,8 @@ class RepeatViewController: UIViewController {
         //
         setDefaultUI()
         //
+        loadWeekOfMonth()
         loadRepeatType()
-        loadMonthofWeek()
-        //
-        SystemManager.shared.closeLoading()
     }
 }
 
@@ -68,7 +66,8 @@ extension RepeatViewController {
     //
     private func calcDate() {
         //지정된 날짜의 weekOfMonth 및 weekDay확인
-        pickWeekOfMonth = Utils.getWeekOfMonth(pickDate)
+        let weekOfMonth = Utils.getWeekOfMonth(pickDate)
+        pickWeekOfMonth = weekOfMonth >= 5 ? -1 : weekOfMonth
         pickWeekDay = Utils.getWeekDay(pickDate)
     }
     //Default UI Setting
@@ -76,8 +75,12 @@ extension RepeatViewController {
         //기본세팅
         switchEndDate.isOn = false
         pickEndDate.isEnabled = false
-        btnMonthOfWeek.isEnabled = false
+        btnWeekOfMonth.isEnabled = false
         contorllWeekDay(false)
+    }
+    //반복 주기 메뉴 로드
+    private func loadWeekOfMonth() {
+        btnWeekOfMonth.setTitle(Utils.getWeekOfMonthInKOR(pickWeekOfMonth), for: .normal)
     }
     //반복 타입 메뉴 로드
     private func loadRepeatType() {
@@ -105,7 +108,7 @@ extension RepeatViewController {
                     //
                     self.setWeekDay()
                 }))
-            case .EachMonthOfOnce:
+            case .EachOnceOfMonth:
                 title = "매 월 \(Utils.getDay(pickDate))일"
                 repeatTypeList.append(UIAction(title: title, handler: { _ in
                     self.btnPullRepeatType.setTitle(title, for: .normal)
@@ -113,7 +116,7 @@ extension RepeatViewController {
                     //
                     self.setDefaultUI()
                 }))
-            case .EachMonthOfWeek:
+            case .EachWeekOfMonth:
                 title = "매 월 \(Utils.getWeekOfMonthInKOR(pickWeekOfMonth)) 주, 선택한 요일"
                 repeatTypeList.append(UIAction(title: title, handler: { _ in
                     self.btnPullRepeatType.setTitle(title, for: .normal)
@@ -123,6 +126,8 @@ extension RepeatViewController {
                     self.contorllWeekDay(true)
                     //
                     self.setWeekDay()
+                    //
+                    self.btnWeekOfMonth.isEnabled = true
                 }))
             case .EachYear:
                 title = "매 년 \(Utils.getDay(pickDate))일"
@@ -143,10 +148,10 @@ extension RepeatViewController {
             }
         }
         btnPullRepeatType.menu = UIMenu(title: "반복 주기", image: UIImage(systemName: "plus"), children: repeatTypeList)
-    }
-    //반복 주기 메뉴 로드
-    private func loadMonthofWeek() {
-        btnMonthOfWeek.setTitle(Utils.getWeekOfMonthInKOR(pickWeekOfMonth), for: .normal)
+        //
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            SystemManager.shared.closeLoading()
+        }
     }
     private func contorllWeekDay(_ isOn:Bool) {
         btnMonday.isEnabled = isOn
@@ -234,13 +239,13 @@ extension RepeatViewController {
                 PopupManager.shared.openOkAlert(self, title: "알림", msg: "요일을 하나 이상 선택해주세요.")
                 return
             }
-        } else if repeatType == .EachMonthOfWeek {
+        } else if repeatType == .EachWeekOfMonth {
             if getWeekDay().filter({ $0 == true }).count == 0 {
                 PopupManager.shared.openOkAlert(self, title: "알림", msg: "요일을 하나 이상 선택해주세요.")
                 return
             }
         }
-        let result = RepeatResult(repeatType: repeatType, weekDay: getWeekDay(), monthOfWeek: pickWeekOfMonth, isEnd: switchEndDate.isOn, endDate: pickEndDate.date)
+        let result = RepeatResult(repeatType: repeatType, weekDay: getWeekDay(), weekOfMonth: pickWeekOfMonth, isEnd: switchEndDate.isOn, endDate: pickEndDate.date)
         clickOk?(result)
         
         self.dismiss(animated: true)

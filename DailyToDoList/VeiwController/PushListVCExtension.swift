@@ -43,11 +43,11 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             repeatMsg.removeLast()
             repeatMsg.removeLast()
             repeatMsg += "요일 반복"
-        case .EachMonthOfOnce:
+        case .EachOnceOfMonth:
             repeatMsg = "매 월 "
             repeatMsg += String(Utils.getDay(pushData.taskDay))
             repeatMsg += "일 반복"
-        case .EachMonthOfWeek:
+        case .EachWeekOfMonth:
             repeatMsg = "매 월 "
             var weekDay = ""
             let weekDayList = pushData.getWeekDayList()
@@ -60,7 +60,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
                 weekDay.removeLast()
                 weekDay.removeLast()
             }
-            repeatMsg += "\(pushData.monthOfWeek)주, "
+            repeatMsg += "\(pushData.weekOfMonth)주, "
             repeatMsg += weekDay
             repeatMsg += "요일 반복"
         case .EachYear:
