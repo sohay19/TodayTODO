@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WidgetKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -57,8 +58,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to undo the changes made on entering the background.
         
         //
-        print("sceneWillEnterForeground")
         WatchConnectManager.shared.sendToWatchTask()
+        WidgetCenter.shared.reloadAllTimelines()
+        print("reloadAllTimelines")
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -67,8 +69,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
         
         //
-        print("sceneDidEnterBackground")
         WatchConnectManager.shared.sendToWatchTask()
+        WidgetCenter.shared.reloadAllTimelines()
+        print("reloadAllTimelines")
     }
 }
 

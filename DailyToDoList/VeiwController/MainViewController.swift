@@ -60,13 +60,15 @@ class MainViewController: UIViewController {
                 SystemManager.shared.openSettingMenu()
             })
         }
-        //
-        loadTask()
-        //
-        initDate()
-        initUI()
-        //
-        changeSegment()
+        DispatchQueue.main.async { [self] in
+            //
+            loadTask()
+            //
+            initDate()
+            initUI()
+            //
+            changeSegment()
+        }
     }
 }
 

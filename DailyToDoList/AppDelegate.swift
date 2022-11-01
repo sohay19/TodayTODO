@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Permission Error = \(error)")
                 return
             }
-            print("Permission Get!")
             //
             let action = UNNotificationAction(identifier: "modal", title: "오늘의 TODO")
             let category = UNNotificationCategory(identifier: "DailyTODO", actions: [action], intentIdentifiers: [])
@@ -97,7 +96,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PushManager.shared.checkExpiredPush()
     }
 }
-
 
 //MARK: - 로컬 푸시
 extension AppDelegate : UNUserNotificationCenterDelegate {

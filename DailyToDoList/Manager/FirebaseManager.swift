@@ -41,7 +41,7 @@ extension FirebaseManager {
             return
         }
         requestPost(url: "https://codesoha.com/token/send", param: [uuid:token], completion: { isSuccess, data in
-            print("isSuccess is \(isSuccess)")
+            print("send Token is \(isSuccess)")
         })
     }
     //GET

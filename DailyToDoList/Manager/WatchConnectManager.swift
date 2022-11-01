@@ -19,13 +19,11 @@ class WatchConnectManager : NSObject {
     
     func initSession() {
 #if os(iOS)
-        print("iOS")
         if WCSession.isSupported() {
             session.delegate = self
             session.activate()
         }
 #else
-        print("watchOS")
         session.delegate = self
         session.activate()
 #endif

@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import Realm
+import WidgetKit
 
 
 class RealmManager {
@@ -106,6 +107,9 @@ extension RealmManager {
                     realm.add(alarmInfo)
                 }
             }
+            if #available(watchOSApplicationExtension 9.0, *) {
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         } catch {
             print("Realm add Error")
         }
@@ -137,6 +141,9 @@ extension RealmManager {
             try realm.write {
                 realm.add(task, update: .modified)
             }
+            if #available(watchOSApplicationExtension 9.0, *) {
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         } catch {
             print("Realm update Error")
         }
@@ -165,7 +172,9 @@ extension RealmManager {
             try realm.write {
                 realm.delete(task)
             }
-            WatchConnectManager.shared.sendToWatchTask()
+            if #available(watchOSApplicationExtension 9.0, *) {
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         } catch {
             print("Realm delete Error")
         }

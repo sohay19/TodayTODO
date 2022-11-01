@@ -31,7 +31,7 @@ struct TaskListEntryView: View {
             if taskList.count == 0 {
                 TaskListView(task: EachTask())
             } else {
-                ForEach(0..<taskList.count, id: \.self) { index in
+                ForEach(0..<maxCount, id: \.self) { index in
                     TaskListView(task: taskList[index])
                 }
             }
@@ -46,31 +46,79 @@ struct TaskListView: View {
     @Environment(\.widgetFamily) var family
     
     var body: some View {
-        if task.title.isEmpty {
-            GeometryReader {
-                geometry in
-                VStack(alignment: .leading) {
-                    Text("일정이 없습니다")
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundColor(Color.init(uiColor: UIColor.label))
-                        .frame(width: geometry.size.width, height: geometry.size.height)
+        GeometryReader {
+            geometry in
+            if task.title.isEmpty {
+                Text("TODO를 등록해주세요!")
+                    .font(.system(size: family == .systemSmall ? 14 : 16, weight: .semibold))
+                    .foregroundColor(Color.init(uiColor: UIColor.label))
+                    .frame(width: geometry.size.width, alignment: .topLeading)
+            } else {
+                switch family {
+                case .systemSmall:
+                    VStack(alignment: .center) {
+                        Text(task.title)
+                            .font(.system(size: family == .systemSmall ? 14 : 16, weight: .semibold))
+                            .foregroundColor(Color.init(uiColor: UIColor.label))
+                            .frame(width: geometry.size.width, height: geometry.size.height * 1/3, alignment: .topLeading)
+                        
+                        Text(task.memo)
+                            .font(.system(size: family == .systemSmall ? 10 : 15, weight: .regular))
+                            .foregroundColor(Color.init(uiColor: UIColor.label))
+                            .frame(width: geometry.size.width, height: geometry.size.height * 2/3, alignment: .topLeading)
+                        
+                    }.frame(width: geometry.size.width, height: family == .systemLarge ? geometry.size.height/3 : geometry.size.height , alignment: .center)
+                case .systemMedium:
+                    VStack(alignment: .center) {
+                        HStack {
+                            Text(task.title)
+                                .font(.system(size: family == .systemSmall ? 14 : 16, weight: .semibold))
+                                .foregroundColor(Color.init(uiColor: UIColor.label))
+                                .frame(width: geometry.size.width * 3/4, alignment: .topLeading)
+                            
+                            Divider()
+                            
+                            Text(task.alarmTime.isEmpty ? "알람 없음" : task.alarmTime)
+                                .font(.system(size: 15, weight: .regular))
+                                .foregroundColor(Color.init(uiColor: UIColor.secondaryLabel))
+                                .frame(width: geometry.size.width * 1/4 ,alignment: .topTrailing)
+                            
+                        }.frame(width: geometry.size.width, height: geometry.size.height * 1/3, alignment: .top)
+                        
+                        Text(task.memo)
+                            .font(.system(size: family == .systemSmall ? 10 : 15, weight: .regular))
+                            .foregroundColor(Color.init(uiColor: UIColor.label))
+                            .frame(width: geometry.size.width, height: geometry.size.height * 2/3, alignment: .topLeading)
+                        
+                    }.frame(width: geometry.size.width, height: geometry.size.height , alignment: .center)
+                default:
+                    //large
+                    VStack(alignment: .center) {
+                        HStack {
+                            Text(task.title)
+                                .font(.system(size: family == .systemSmall ? 14 : 16, weight: .semibold))
+                                .foregroundColor(Color.init(uiColor: UIColor.label))
+                                .frame(width: geometry.size.width * 3/4, alignment: .topLeading)
+                            
+                            Divider()
+                            
+                            Text(task.alarmTime.isEmpty ? "알람 없음" : task.alarmTime)
+                                .font(.system(size: 15, weight: .regular))
+                                .foregroundColor(Color.init(uiColor: UIColor.secondaryLabel))
+                                .frame(width: geometry.size.width * 1/4 ,alignment: .topTrailing)
+                            
+                        }.frame(width: geometry.size.width, height: geometry.size.height * 1/3 * 1/2, alignment: .top)
+                            .padding()
+                        
+                        Text(task.memo)
+                            .font(.system(size: family == .systemSmall ? 10 : 15, weight: .regular))
+                            .foregroundColor(Color.init(uiColor: UIColor.label))
+                            .frame(width: geometry.size.width, height: geometry.size.height * 1/3 * 1/2, alignment: .topLeading)
+                        
+                    }.frame(width: geometry.size.width, height: geometry.size.height * 1/3, alignment: .center)
                 }
             }
-        } else {
-            GeometryReader {
-                geometry in
-                VStack(alignment: .leading) {
-                    Text(task.title)
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundColor(Color.init(uiColor: UIColor.label))
-                        .frame(width: geometry.size.width, alignment: .leading)
-                    
-                    Text(task.memo)
-                        .font(.system(size: 14, weight: .regular))
-                        .foregroundColor(Color.init(uiColor: UIColor.label))
-                }.frame(width: geometry.size.width, height: family == .systemLarge ? geometry.size.height/3 : geometry.size.height , alignment: .top)
-            }
-            .padding()
         }
+        .padding()
     }
 }

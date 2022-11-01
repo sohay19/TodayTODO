@@ -30,10 +30,12 @@ class PushListViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SystemManager.shared.openLoading()
-        //
-        loadPushData()
-        //
-        initUI()
+        DispatchQueue.main.async { [self] in 
+            //
+            loadPushData()
+            //
+            initUI()
+        }
     }
 }
 

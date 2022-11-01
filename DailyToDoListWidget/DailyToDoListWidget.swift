@@ -27,8 +27,8 @@ struct TaskListWidget: Widget {
             TaskListEntryView(entry: entry)
                 .unredacted()
         }
-        .configurationDisplayName("Task List")
-        .description("오늘 해야할 Task들을 볼 수 있습니다.")
+        .configurationDisplayName("Daily TODO")
+        .description("오늘의 TODO를 볼 수 있습니다.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }
