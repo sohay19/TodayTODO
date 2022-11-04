@@ -22,6 +22,8 @@ class MonthlyTaskCell: UITableViewCell {
     }
     
     func initCell() {
+        self.backgroundColor = .clear
         self.selectionStyle = .default
+        labelMonthlyTitle.font = UIFont(name: MainFont, size: 24)
     }
 }

@@ -48,7 +48,6 @@ enum TaskMode:Int {
 
 enum PushType:String {
     case Alert = "Alert"
-    case End = "End"
 }
 
 enum DataType:String {

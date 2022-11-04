@@ -43,31 +43,6 @@ extension PushManager {
         
         return notiContent
     }
-    //종료푸쉬콘텐츠 내용 설정
-    private func setEndNotiContent(_ data:EachTask, _ id:String) -> UNMutableNotificationContent {
-        let notiContent = UNMutableNotificationContent()
-        //카테고리
-        notiContent.categoryIdentifier = "DailyTODO"
-        //제목내용
-        notiContent.title = "오늘 알람이 마지막이에요!"
-        notiContent.body = "알림이 확실하게 삭제될 수 있도록 확인해주세요"
-        //push 메세지에 담긴 데이터
-        notiContent.userInfo = [pushTypeKey:PushType.End.rawValue, endDateKey:data.taskEndDate, idKey:data.id, repeatTypeKey:data.repeatType, alarmTimeKey:data.alarmTime]
-        //알림음 설정
-        notiContent.sound = UNNotificationSound.default
-        //뱃지 표시
-        notiContent.badge = (PushManager.shared.addBadgeCnt()) as NSNumber
-        //썸네일
-        do {
-            //            let imageUrl = Bundle.main.url(forResource: "Tulips", withExtension: "jpg")
-            //            let attach = try UNNotificationAttachment(identifier: "", url: imageUrl!, options: nil)
-            //            notiPush.attachments.append(attach)
-        } catch {
-            print(error)
-        }
-        
-        return notiContent
-    }
     //기본 알람 시간 세팅
     private func getDateComponents(_ data:EachTask) -> DateComponents {
         var dateComponents = DateComponents()
@@ -112,38 +87,12 @@ extension PushManager {
         default:
             idList.append(setNotRepeatNoti(data, index))
         }
-        if data.isEnd {
-            index += 1
-            idList.append(setEndNoti(data, index))
-        }
         return idList
     }
 }
 
 //MARK: - Add
 extension PushManager {
-    //종료알림
-    private func setEndNoti(_ data:EachTask, _ idIndex:Int) -> String {
-        //콘텐츠 설정
-        let id = "\(data.id)_\(idIndex)"
-        let notiContent = setEndNotiContent(data, id)
-        //push 날짜 설정
-        var dateComponents = getDateComponents(data)
-        let dateArr = data.taskEndDate.split(separator: "-")
-        dateComponents.year = Int(dateArr[0])
-        dateComponents.month = Int(dateArr[1])
-        dateComponents.day = Int(dateArr[2])
-        //trigger 세팅
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
-        //
-        notiCenter.add(request) { error in
-            if let error = error {
-                print("Noti Add Error = \(error)")
-            }
-        }
-        return id
-    }
     //반복없음
     private func setNotRepeatNoti(_ data:EachTask, _ idIndex:Int) -> String {
         //콘텐츠 설정

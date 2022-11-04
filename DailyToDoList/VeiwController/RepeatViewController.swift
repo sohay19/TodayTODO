@@ -16,7 +16,6 @@ class RepeatViewController: UIViewController {
     //
     @IBOutlet weak var switchEndDate: UISwitch!
     //
-    @IBOutlet weak var btnWeekOfMonth: UIButton!
     @IBOutlet weak var btnSunday: UIButton!
     @IBOutlet weak var btnMonday: UIButton!
     @IBOutlet weak var btnTuseday: UIButton!
@@ -55,7 +54,6 @@ class RepeatViewController: UIViewController {
         //
         setDefaultUI()
         //
-        loadWeekOfMonth()
         loadRepeatType()
     }
 }
@@ -75,12 +73,10 @@ extension RepeatViewController {
         //기본세팅
         switchEndDate.isOn = false
         pickEndDate.isEnabled = false
-        btnWeekOfMonth.isEnabled = false
+        let minDate = Calendar.current.date(byAdding: .day, value: +1, to: pickDate)!
+        pickEndDate.setDate(minDate, animated: true)
+        pickEndDate.minimumDate = minDate
         contorllWeekDay(false)
-    }
-    //반복 주기 메뉴 로드
-    private func loadWeekOfMonth() {
-        btnWeekOfMonth.setTitle(Utils.getWeekOfMonthInKOR(pickWeekOfMonth), for: .normal)
     }
     //반복 타입 메뉴 로드
     private func loadRepeatType() {
@@ -126,8 +122,6 @@ extension RepeatViewController {
                     self.contorllWeekDay(true)
                     //
                     self.setWeekDay()
-                    //
-                    self.btnWeekOfMonth.isEnabled = true
                 }))
             case .EachYear:
                 title = "매 년 \(Utils.getDay(pickDate))일"
@@ -267,12 +261,8 @@ extension RepeatViewController {
     }
     //pickEndDate Change Value
     @IBAction func changeValueEndDate(_ sender:UIDatePicker) {
-        //종료일 검토
-        if Utils.dateToDateString(pickDate) == Utils.dateToDateString(sender.date) {
-            PopupManager.shared.openOkAlert(self, title: "알림", msg: "시작일과 종료일이 같을 수 없습니다.")
-            pickEndDate.date = Calendar.current.date(byAdding: .day, value: 1, to: pickDate)!
-            return
-        }
+        // 날짜 선택 시 팝업 닫음
+        presentedViewController?.dismiss(animated: false)
     }
     //
     @IBAction func clickBackground(_ sender:Any) {

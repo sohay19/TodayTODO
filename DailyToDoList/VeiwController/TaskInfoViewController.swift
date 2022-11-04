@@ -44,6 +44,7 @@ class TaskInfoViewController : UIViewController {
     var currntDate:Date = Date()
     //
     var refreshTask:(()->Void)?
+    var modifyTask:((EachTask)->Void)?
     //
     //키보드 관련
     private var keyboardHeight:CGFloat?
@@ -467,8 +468,10 @@ extension TaskInfoViewController {
                 SystemManager.shared.closeLoading()
                 return
             }
-            //업데이트
-            RealmManager.shared.updateTaskDataForiOS(data)
+            guard let modifyTask = modifyTask else {
+                return
+            }
+            modifyTask(data)
         default:
             //Look
             break
@@ -476,7 +479,9 @@ extension TaskInfoViewController {
         guard let refreshTask = refreshTask else {
             return
         }
-        dismiss(animated: true, completion: refreshTask)
+        dismiss(animated: true, completion: {
+            refreshTask()
+        })
     }
     @IBAction func clickCancel(_ sender: Any) {
         if isShow {
@@ -488,7 +493,7 @@ extension TaskInfoViewController {
     // 날짜 선택 시 팝업 닫음
     @IBAction func changeDate(_ sender:UIDatePicker) {
         presentedViewController?.dismiss(animated: false)
-        //
+        // 반복 지정 초기화
         switchRepeat.isOn = false
         offRepeat()
     }

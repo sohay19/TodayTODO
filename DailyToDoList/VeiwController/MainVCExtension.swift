@@ -64,7 +64,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         delete.backgroundColor = .systemRed
         
         let modify = UIContextualAction(style: .destructive, title: "수정") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-//            self.deleteTask(indexPath)
+            self.modifyTask(indexPath)
             success(true)
         }
         modify.backgroundColor = .systemIndigo
@@ -82,7 +82,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     //EditMode별 Event
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.deleteTask(indexPath)
+            deleteTask(indexPath)
         }
     }
     //cell별 이동 가능 여부
@@ -97,19 +97,10 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     }
     //cell 클릭 Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
-        guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
         //
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
         //
-        taskInfoVC.currentMode = .LOOK
-        taskInfoVC.refreshTask = loadTask
-        //
-        taskInfoVC.taskData = taskList[indexPath.row]
-        taskInfoVC.modalTransitionStyle = .crossDissolve
-        taskInfoVC.modalPresentationStyle = .overCurrentContext
-        
-        present(taskInfoVC, animated: true)
+        openTaskInfo(.LOOK, taskList[indexPath.row], nil)
     }
 }
 
@@ -119,8 +110,6 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         currentDate = date
         changeDay()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//        }
     }
     //Dot 개수
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {

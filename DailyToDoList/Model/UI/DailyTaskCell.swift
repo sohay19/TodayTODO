@@ -21,6 +21,8 @@ class DailyTaskCell: UITableViewCell {
     }
     
     func initCell() {
+        self.backgroundColor = .clear
         self.selectionStyle = .default
+        labelDailyTitle.font = UIFont(name: MainFont, size: 24)
     }
 }

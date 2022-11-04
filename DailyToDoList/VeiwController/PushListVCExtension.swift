@@ -49,18 +49,11 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             repeatMsg += "일 반복"
         case .EachWeekOfMonth:
             repeatMsg = "매 월 "
-            var weekDay = ""
-            let weekDayList = pushData.getWeekDayList()
-            for weekday in 0..<weekDayList.count {
-                if weekDayList[weekday] {
-                    repeatMsg += Utils.getWeekDayInKOR(weekday)
-                }
-            }
+            repeatMsg += "\(Utils.getWeekOfMonthInKOR(pushData.weekOfMonth))주, "
+            var weekDay = pushData.printWeekDay()
             if !weekDay.isEmpty {
                 weekDay.removeLast()
-                weekDay.removeLast()
             }
-            repeatMsg += "\(pushData.weekOfMonth)주, "
             repeatMsg += weekDay
             repeatMsg += "요일 반복"
         case .EachYear:
@@ -70,7 +63,6 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         default:
             //None
             repeatMsg = "반복 없음"
-            
         }
         pushCell.labelRepeat.text = repeatMsg
         //
@@ -93,15 +85,15 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Event
     //cell 클릭 Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        //
         let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
         guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
-        //
-        tableView.deselectRow(at: indexPath, animated: true)
         guard let data = RealmManager.shared.getTaskData(pushList[indexPath.row].taskId) else {
             return
         }
         taskInfoVC.taskData = data
-        taskInfoVC.modalTransitionStyle = .crossDissolve
+        taskInfoVC.modalTransitionStyle = .coverVertical
         taskInfoVC.modalPresentationStyle = .overCurrentContext
         
         present(taskInfoVC, animated: true)

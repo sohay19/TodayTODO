@@ -8,6 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    //
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelTodayNilMsg: UILabel!
     @IBOutlet weak var labelMonthNilMsg: UILabel!
@@ -28,25 +29,26 @@ class MainViewController: UIViewController {
     var beforeDate:Date = Date()
     //
     var taskList:[EachTask] = []
+    //key = 일자
     var monthlyTaskList:[Int:[EachTask]] = [:]
     var taskDateKeyList:[Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //
+        //뒤로 버튼 없애기
         self.navigationItem.setHidesBackButton(true, animated: false)
         //
         dailyTaskTable.dataSource = self
         dailyTaskTable.delegate = self
-        //
         monthlyTaskTable.dataSource = self
         monthlyTaskTable.delegate = self
-        //
         calendarView.dataSource = self
         calendarView.delegate = self
         //
+        initUI()
+        // 리프레시 컨트롤러 초기화
         initRefreshController()
-        //
+        // 메인 리로드 함수
         RealmManager.shared.reloadMainView = viewWillAppear(_:)
     }
     
@@ -65,7 +67,6 @@ class MainViewController: UIViewController {
             loadTask()
             //
             initDate()
-            initUI()
             //
             changeSegment()
         }
@@ -80,6 +81,14 @@ extension MainViewController {
     }
     
     func initUI() {
+        // 배경 설정
+        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
+        backgroundView.image = UIImage(named: BackgroundImage)
+        view.insertSubview(backgroundView, at: 0)
+        // 폰트 설정
+        labelDate.font = UIFont(name: MenuKORFont, size: 24)
+        btnEdit.titleLabel?.font = UIFont(name: MenuENGFont, size: 18)
+        //
         monthView.isHidden = true
     }
     
@@ -146,7 +155,7 @@ extension MainViewController {
             let tmpList = dataList.map{$0}
             let weekDayList = Utils.getWeekDayList(currentDate)
             //
-            let curMonthDays = Utils.dateToDateString(currentDate).split(separator: "-").map{String($0)}
+            var compareDay = Utils.dateToDateString(currentDate).split(separator: "-").map{String($0)}
             //반복 타입 별 체크
             for task in tmpList {
                 switch RepeatType(rawValue: task.repeatType) {
@@ -155,10 +164,16 @@ extension MainViewController {
                     monthlyTaskList[day]?.append(task)
                 case .EveryDay:
                     for day in taskDateKeyList {
-                        var compareDay = curMonthDays
                         compareDay[2] = String(format: "%02d", day)
-                        if task.taskDay <= compareDay.joined(separator: "-") {
-                            monthlyTaskList[day]?.append(task)
+                        let currentDay = compareDay.joined(separator: "-")
+                        if task.isEnd {
+                            if task.taskEndDate >= currentDay && task.taskDay <= currentDay {
+                                monthlyTaskList[day]?.append(task)
+                            }
+                        } else {
+                            if task.taskDay <= currentDay {
+                                monthlyTaskList[day]?.append(task)
+                            }
                         }
                     }
                 case .Eachweek:
@@ -167,31 +182,51 @@ extension MainViewController {
                             return
                         }
                         for day in weekDayList {
-                            var compareDay = curMonthDays
                             compareDay[2] = String(format: "%02d", day)
-                            if task.taskDay <= compareDay.joined(separator: "-") {
-                                monthlyTaskList[day]?.append(task)
+                            let currentDay = compareDay.joined(separator: "-")
+                            if task.isEnd {
+                                if task.taskEndDate >= currentDay && task.taskDay <= currentDay {
+                                    monthlyTaskList[day]?.append(task)
+                                }
+                            } else {
+                                if task.taskDay <= currentDay {
+                                    monthlyTaskList[day]?.append(task)
+                                }
                             }
                         }
                     }
                 case .EachWeekOfMonth:
                     let daysList = Utils.findDay(currentDate, task.weekOfMonth, task.getWeekDays())
                     for day in daysList {
-                        var compareDay = curMonthDays
                         compareDay[2] = String(format: "%02d", day)
-                        if task.taskDay <= compareDay.joined(separator: "-") {
-                            monthlyTaskList[day]?.append(task)
+                        let currentDay = compareDay.joined(separator: "-")
+                        if task.isEnd {
+                            if task.taskEndDate >= currentDay && task.taskDay <= currentDay {
+                                monthlyTaskList[day]?.append(task)
+                            }
+                        } else {
+                            if task.taskDay <= currentDay {
+                                monthlyTaskList[day]?.append(task)
+                            }
                         }
                     }
                 default:
                     //EachMonthOfOnce
                     //EachYear
                     for day in taskDateKeyList {
-                        var compareDay = curMonthDays
                         compareDay[2] = String(format: "%02d", day)
-                        if task.taskDay <= compareDay.joined(separator: "-") && day == Utils.getDay(task.taskDay) {
-                            monthlyTaskList[day]?.append(task)
+                        let currentDay = compareDay.joined(separator: "-")
+                        
+                        if task.isEnd {
+                            if task.taskEndDate >= currentDay && task.taskDay <= currentDay && day == Utils.getDay(task.taskDay) {
+                                monthlyTaskList[day]?.append(task)
+                            }
+                        } else {
+                            if task.taskDay <= currentDay && day == Utils.getDay(task.taskDay) {
+                                monthlyTaskList[day]?.append(task)
+                            }
                         }
+                        
                     }
                 }
             }
@@ -261,19 +296,22 @@ extension MainViewController {
         }
     }
     //
-    func modifyTask(_ task:EachTask, _ indexPath:IndexPath) {
-        RealmManager.shared.updateTaskDataForiOS(task)
-        taskList[indexPath.row] = task
-        //
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
-            //Today
-            dailyTaskTable.reloadRows(at: [indexPath], with: .none)
-        case 1:
-            //Month
-            monthlyTaskTable.reloadRows(at: [indexPath], with: .none)
-        default:
-            break
+    func modifyTask(_ indexPath:IndexPath) {
+        let beforeTask = taskList[indexPath.row]
+        openTaskInfo(.MODIFY, beforeTask) { [self] task in
+            //
+            RealmManager.shared.updateTaskDataForiOS(task)
+            //
+            switch segmentedController.selectedSegmentIndex {
+            case 0:
+                //Today
+                dailyTaskTable.reloadRows(at: [indexPath], with: .none)
+            case 1:
+                //Month
+                monthlyTaskTable.reloadRows(at: [indexPath], with: .none)
+            default:
+                break
+            }
         }
     }
     //
@@ -286,14 +324,15 @@ extension MainViewController {
         case 0:
             dailyTaskTable.deleteRows(at: [indexPath], with: .none)
         case 1:
-            monthlyTaskTable.deleteRows(at: [indexPath], with: .none)
+            SystemManager.shared.openLoading()
+            loadTask()
         default:
             break
         }
     }
 }
 
-//MARK: - initialize, refresh
+//MARK: - func
 extension MainViewController {
     //refresh controller 초기세팅
     func initRefreshController() {
@@ -322,6 +361,21 @@ extension MainViewController {
         default:
             break
         }
+    }
+    //TaskInfo
+    func openTaskInfo(_ mode:TaskMode, _ task:EachTask?, _ modify:((EachTask)->Void)?) {
+        let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
+        guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
+        //
+        taskInfoVC.currentMode = mode
+        taskInfoVC.refreshTask = loadTask
+        taskInfoVC.modifyTask = modify
+        //
+        taskInfoVC.taskData = task
+        taskInfoVC.modalTransitionStyle = .coverVertical
+        taskInfoVC.modalPresentationStyle = .overCurrentContext
+        
+        present(taskInfoVC, animated: true)
     }
 }
 

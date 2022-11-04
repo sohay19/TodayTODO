@@ -31,3 +31,15 @@ let pushTypeKey = "pushType"
 let dataTypeKey = "dataType"
 let dataKey = "data"
 let sendTypeKey = "sendType"
+
+
+//MARK: - Font
+let LogoFont = "NanumAJumMaJaYu"
+let MainFont = "NanumAmSeuTeReuDam"
+let MenuKORFont = "Bazzi"
+let MenuENGFont = "KOTRA HOPE"
+let DefaultBoldFont = "NanumSquareRoundB"
+let DefaultRegularFont = "NanumSquareRoundR"
+
+//MARK: - Image
+let BackgroundImage = "Background.jpg"

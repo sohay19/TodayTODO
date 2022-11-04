@@ -33,7 +33,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fy-sS-K6C">
                                         <rect key="frame" x="310" y="2.5" width="86" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="알람 전체 삭제"/>
+                                        <state key="normal" title="알람 전체 삭제">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="deleteAllNoti:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jsq-AP-ezu"/>
                                         </connections>
@@ -43,6 +45,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="dgv-do-JnB" secondAttribute="height" multiplier="1:1" id="4Nw-wN-Hv6"/>
                                         </constraints>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="18"/>
@@ -52,7 +55,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dgv-do-JnB" firstAttribute="leading" secondItem="nL7-nt-PhE" secondAttribute="leading" constant="6" id="AB5-Ux-ycO"/>
                                     <constraint firstItem="9fy-sS-K6C" firstAttribute="centerY" secondItem="dgv-do-JnB" secondAttribute="centerY" id="DSX-XP-HjV"/>
@@ -74,7 +77,9 @@
                                             <constraint firstAttribute="width" secondItem="S02-VU-gCk" secondAttribute="height" multiplier="2:1" constant="1" id="ec2-q0-7Xf"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Edit"/>
+                                        <state key="normal" title="Edit">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
                                         <connections>
                                             <action selector="changeDailyTaskEditMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MfH-5j-QIn"/>
                                         </connections>
@@ -87,7 +92,7 @@
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T45-og-L7Z">
                                         <rect key="frame" x="0.0" y="70" width="414" height="663"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 등록된 TODO가 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gt6-zW-da3" userLabel="Message">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -95,20 +100,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" id="zFb-mh-b0M" userLabel="BtnAdd">
-                                            <rect key="frame" x="0.0" y="139.5" width="414" height="90"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <color key="tintColor" systemColor="labelColor"/>
-                                            <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="18"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" image="plus" catalog="system">
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="clickTaskAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZI9-Ka-KrF"/>
-                                            </connections>
-                                        </button>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="DailyTaskCell" id="0Fo-Hl-oys" customClass="DailyTaskCell" customModule="DailyToDoList" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="68" width="414" height="43.5"/>
@@ -138,17 +129,26 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c0h-vX-NoB">
+                                        <rect key="frame" x="324" y="631" width="90" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="3Et-Ah-sl7"/>
+                                            <constraint firstAttribute="height" constant="120" id="Txd-aG-Baa"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="qhK-e7-NYl" firstAttribute="leading" secondItem="T45-og-L7Z" secondAttribute="leading" constant="18" id="EST-oL-kbD"/>
                                     <constraint firstItem="T45-og-L7Z" firstAttribute="top" secondItem="qhK-e7-NYl" secondAttribute="bottom" constant="30" id="JwV-bO-jBy"/>
                                     <constraint firstItem="S02-VU-gCk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="18" id="Ns0-IB-2mr"/>
                                     <constraint firstAttribute="bottom" secondItem="T45-og-L7Z" secondAttribute="bottom" constant="18" id="Pe2-Mp-IBM"/>
+                                    <constraint firstAttribute="trailing" secondItem="c0h-vX-NoB" secondAttribute="trailing" id="Prd-Qe-PI4"/>
                                     <constraint firstAttribute="trailing" secondItem="S02-VU-gCk" secondAttribute="trailing" constant="18" id="T8T-Ms-AvF"/>
                                     <constraint firstItem="qhK-e7-NYl" firstAttribute="top" secondItem="fcp-ST-NiN" secondAttribute="top" constant="18" id="aSq-NM-qle"/>
                                     <constraint firstAttribute="trailing" secondItem="T45-og-L7Z" secondAttribute="trailing" id="p4n-uv-S1i"/>
                                     <constraint firstItem="S02-VU-gCk" firstAttribute="centerY" secondItem="qhK-e7-NYl" secondAttribute="centerY" id="pmE-t9-4hR"/>
+                                    <constraint firstAttribute="bottom" secondItem="c0h-vX-NoB" secondAttribute="bottom" id="qzX-Tq-UMV"/>
                                     <constraint firstItem="T45-og-L7Z" firstAttribute="leading" secondItem="fcp-ST-NiN" secondAttribute="leading" id="rkp-TE-SD6"/>
                                 </constraints>
                             </view>
@@ -164,22 +164,23 @@
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dEB-Nb-JJl">
                                         <rect key="frame" x="0.0" y="405" width="414" height="328"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 등록된 TODO가 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C8B-xB-LYB" userLabel="Message">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="tailTruncation" id="Y22-KD-uG2" userLabel="BtnAdd">
                                             <rect key="frame" x="0.0" y="139.5" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" systemColor="labelColor"/>
                                             <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="18"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" image="plus" catalog="system">
+                                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="24"/>
                                             </state>
                                             <connections>
@@ -217,7 +218,7 @@
                                         </prototypes>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dEB-Nb-JJl" firstAttribute="leading" secondItem="KER-2I-O4L" secondAttribute="leading" id="2UC-rs-GFA"/>
                                     <constraint firstItem="dEB-Nb-JJl" firstAttribute="top" secondItem="MtS-eB-6uU" secondAttribute="bottom" constant="18" id="9f9-vk-7xQ"/>

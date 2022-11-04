@@ -2,6 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NanumBaegEuiEuiCeonSa.ttf</string>
+		<string>NanumAJumMaJaYu.ttf</string>
+		<string>NanumGeumEunBoHwa.ttf</string>
+		<string>NanumAmSeuTeReuDam.ttf</string>
+		<string>NanumSquareRoundR.ttf</string>
+		<string>NanumSquareRoundB.ttf</string>
+		<string>Bazzi.ttf</string>
+		<string>EF_Diary.ttf</string>
+		<string>KOTRA HOPE.ttf</string>
+	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

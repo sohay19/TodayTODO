@@ -44,8 +44,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         //워치 커넥팅을 위한 세선 열기
         WatchConnectManager.shared.initSession()
+        //
+        initUI()
         
         return true
+    }
+    //
+    func initUI() {
+        let attr = NSDictionary(object: UIFont(name: MenuENGFont, size: 15)!, forKey: NSAttributedString.Key.font as NSCopying)
+        UISegmentedControl.appearance().setTitleTextAttributes(attr as? [NSAttributedString.Key : AnyObject], for: .normal)
     }
 
     // MARK: UISceneSession Lifecycle
@@ -108,11 +115,17 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             return
         }
         print("[pushType :: \(pushType)]")
-        //종료일 푸시 일 경우 푸시삭제
+        //푸시 종료일 확인
         switch PushType(rawValue: pushType) {
-        case .End:
-            let idList = RealmManager.shared.getAlarmIdList(userInfo[idKey] as! String)
-            PushManager.shared.deletePush(idList)
+        case .Alert:
+            if let endDate = userInfo[endDateKey] as? String {
+                print("[endDate :: \(endDate)]")
+                let today = Utils.dateToDateString(Date())
+                if endDate <= today {
+                    let idList = RealmManager.shared.getAlarmIdList(userInfo[idKey] as! String)
+                    PushManager.shared.deletePush(idList)
+                }
+            }
             completionHandler([.banner, .list, .badge, .sound])
         default:
             completionHandler([.banner, .list, .badge, .sound])
@@ -127,12 +140,18 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             return
         }
         print("[pushType :: \(pushType)]")
-        //종료일 푸시 일 경우 푸시삭제
+        //푸시 종료일 확인
         switch PushType(rawValue: pushType) {
-        case .End:
-            let idList = RealmManager.shared.getAlarmIdList(userInfo[idKey] as! String)
-                PushManager.shared.deletePush(idList)
-                completionHandler()
+        case .Alert:
+            if let endDate = userInfo[endDateKey] as? String {
+                print("[endDate :: \(endDate)]")
+                let today = Utils.dateToDateString(Date())
+                if endDate <= today {
+                    let idList = RealmManager.shared.getAlarmIdList(userInfo[idKey] as! String)
+                    PushManager.shared.deletePush(idList)
+                }
+            }
+            completionHandler()
         default:
             completionHandler()
         }

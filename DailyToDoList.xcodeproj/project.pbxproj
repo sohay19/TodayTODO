@@ -73,6 +73,34 @@
 		CFD0B14028F90D210029D936 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4228F14D1C008850DC /* UserData.swift */; };
 		CFD0B14628F91CDB0029D936 /* TaskInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFD0B14528F91CDB0029D936 /* TaskInfo.storyboard */; };
 		CFD0B14828F91CEA0029D936 /* TaskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */; };
+		CFE01AC22914F7F1005B3316 /* NanumAJumMaJaYu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AC12914F7F1005B3316 /* NanumAJumMaJaYu.ttf */; };
+		CFE01AC32914F9AB005B3316 /* NanumBaegEuiEuiCeonSa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AC02914F7E0005B3316 /* NanumBaegEuiEuiCeonSa.ttf */; };
+		CFE01AC42914F9DA005B3316 /* NanumBaegEuiEuiCeonSa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AC02914F7E0005B3316 /* NanumBaegEuiEuiCeonSa.ttf */; };
+		CFE01AC52914F9DA005B3316 /* NanumAJumMaJaYu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AC12914F7F1005B3316 /* NanumAJumMaJaYu.ttf */; };
+		CFE01AC62914F9DB005B3316 /* NanumBaegEuiEuiCeonSa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AC02914F7E0005B3316 /* NanumBaegEuiEuiCeonSa.ttf */; };
+		CFE01AC72914F9DB005B3316 /* NanumAJumMaJaYu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AC12914F7F1005B3316 /* NanumAJumMaJaYu.ttf */; };
+		CFE01ACA2914FBA8005B3316 /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AC92914FBA8005B3316 /* Background.jpg */; };
+		CFE01ACD2914FFF1005B3316 /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ACB2914FFF0005B3316 /* NanumSquareRoundB.ttf */; };
+		CFE01ACE2914FFF1005B3316 /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ACB2914FFF0005B3316 /* NanumSquareRoundB.ttf */; };
+		CFE01ACF2914FFF1005B3316 /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ACB2914FFF0005B3316 /* NanumSquareRoundB.ttf */; };
+		CFE01AD02914FFF1005B3316 /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ACC2914FFF0005B3316 /* NanumSquareRoundR.ttf */; };
+		CFE01AD12914FFF1005B3316 /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ACC2914FFF0005B3316 /* NanumSquareRoundR.ttf */; };
+		CFE01AD22914FFF1005B3316 /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ACC2914FFF0005B3316 /* NanumSquareRoundR.ttf */; };
+		CFE01AD529150091005B3316 /* NanumGeumEunBoHwa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AD329150090005B3316 /* NanumGeumEunBoHwa.ttf */; };
+		CFE01AD629150091005B3316 /* NanumGeumEunBoHwa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AD329150090005B3316 /* NanumGeumEunBoHwa.ttf */; };
+		CFE01AD729150091005B3316 /* NanumGeumEunBoHwa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AD329150090005B3316 /* NanumGeumEunBoHwa.ttf */; };
+		CFE01AD829150091005B3316 /* NanumAmSeuTeReuDam.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AD429150091005B3316 /* NanumAmSeuTeReuDam.ttf */; };
+		CFE01AD929150091005B3316 /* NanumAmSeuTeReuDam.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AD429150091005B3316 /* NanumAmSeuTeReuDam.ttf */; };
+		CFE01ADA29150091005B3316 /* NanumAmSeuTeReuDam.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AD429150091005B3316 /* NanumAmSeuTeReuDam.ttf */; };
+		CFE01ADE291502E1005B3316 /* Bazzi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADB291502E0005B3316 /* Bazzi.ttf */; };
+		CFE01ADF291502E1005B3316 /* Bazzi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADB291502E0005B3316 /* Bazzi.ttf */; };
+		CFE01AE0291502E1005B3316 /* Bazzi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADB291502E0005B3316 /* Bazzi.ttf */; };
+		CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADC291502E0005B3316 /* EF_Diary.ttf */; };
+		CFE01AE2291502E1005B3316 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADC291502E0005B3316 /* EF_Diary.ttf */; };
+		CFE01AE3291502E1005B3316 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADC291502E0005B3316 /* EF_Diary.ttf */; };
+		CFE01AE4291502E1005B3316 /* KOTRA HOPE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADD291502E1005B3316 /* KOTRA HOPE.ttf */; };
+		CFE01AE5291502E1005B3316 /* KOTRA HOPE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADD291502E1005B3316 /* KOTRA HOPE.ttf */; };
+		CFE01AE6291502E1005B3316 /* KOTRA HOPE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADD291502E1005B3316 /* KOTRA HOPE.ttf */; };
 		CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DA28F13287008850DC /* AppDelegate.swift */; };
 		CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DC28F13287008850DC /* SceneDelegate.swift */; };
 		CFEB49DF28F13287008850DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DE28F13287008850DC /* MainViewController.swift */; };
@@ -246,6 +274,16 @@
 		CFD0B13A28F905380029D936 /* AlarmInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmInfo.swift; sourceTree = "<group>"; };
 		CFD0B14528F91CDB0029D936 /* TaskInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskInfo.storyboard; sourceTree = "<group>"; };
 		CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoViewController.swift; sourceTree = "<group>"; };
+		CFE01AC02914F7E0005B3316 /* NanumBaegEuiEuiCeonSa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBaegEuiEuiCeonSa.ttf; sourceTree = "<group>"; };
+		CFE01AC12914F7F1005B3316 /* NanumAJumMaJaYu.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumAJumMaJaYu.ttf; sourceTree = "<group>"; };
+		CFE01AC92914FBA8005B3316 /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Background.jpg; sourceTree = "<group>"; };
+		CFE01ACB2914FFF0005B3316 /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
+		CFE01ACC2914FFF0005B3316 /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundR.ttf; sourceTree = "<group>"; };
+		CFE01AD329150090005B3316 /* NanumGeumEunBoHwa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGeumEunBoHwa.ttf; sourceTree = "<group>"; };
+		CFE01AD429150091005B3316 /* NanumAmSeuTeReuDam.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumAmSeuTeReuDam.ttf; sourceTree = "<group>"; };
+		CFE01ADB291502E0005B3316 /* Bazzi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bazzi.ttf; sourceTree = "<group>"; };
+		CFE01ADC291502E0005B3316 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
+		CFE01ADD291502E1005B3316 /* KOTRA HOPE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KOTRA HOPE.ttf"; sourceTree = "<group>"; };
 		CFEB49D728F13287008850DC /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEB49DA28F13287008850DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFEB49DC28F13287008850DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -425,6 +463,30 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		CFE01ABF2914F7CA005B3316 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				CFE01ADB291502E0005B3316 /* Bazzi.ttf */,
+				CFE01ADC291502E0005B3316 /* EF_Diary.ttf */,
+				CFE01ADD291502E1005B3316 /* KOTRA HOPE.ttf */,
+				CFE01ACB2914FFF0005B3316 /* NanumSquareRoundB.ttf */,
+				CFE01ACC2914FFF0005B3316 /* NanumSquareRoundR.ttf */,
+				CFE01AD429150091005B3316 /* NanumAmSeuTeReuDam.ttf */,
+				CFE01AD329150090005B3316 /* NanumGeumEunBoHwa.ttf */,
+				CFE01AC12914F7F1005B3316 /* NanumAJumMaJaYu.ttf */,
+				CFE01AC02914F7E0005B3316 /* NanumBaegEuiEuiCeonSa.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		CFE01AC82914FB96005B3316 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				CFE01AC92914FBA8005B3316 /* Background.jpg */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		CFEB49CE28F13287008850DC = {
 			isa = PBXGroup;
 			children = (
@@ -466,6 +528,8 @@
 				CFEB49DA28F13287008850DC /* AppDelegate.swift */,
 				CFEB49DC28F13287008850DC /* SceneDelegate.swift */,
 				CFEB49E328F13288008850DC /* Assets.xcassets */,
+				CFE01AC82914FB96005B3316 /* Image */,
+				CFE01ABF2914F7CA005B3316 /* Font */,
 				CFEB49E828F13288008850DC /* Info.plist */,
 				CFCEA0C228F1A78600A49D82 /* GoogleService-Info.plist */,
 			);
@@ -775,7 +839,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFE01AC62914F9DB005B3316 /* NanumBaegEuiEuiCeonSa.ttf in Resources */,
+				CFE01AE3291502E1005B3316 /* EF_Diary.ttf in Resources */,
+				CFE01AD729150091005B3316 /* NanumGeumEunBoHwa.ttf in Resources */,
+				CFE01ADA29150091005B3316 /* NanumAmSeuTeReuDam.ttf in Resources */,
 				CF81493C2906B75400FD0974 /* Assets.xcassets in Resources */,
+				CFE01AD22914FFF1005B3316 /* NanumSquareRoundR.ttf in Resources */,
+				CFE01AE0291502E1005B3316 /* Bazzi.ttf in Resources */,
+				CFE01AC72914F9DB005B3316 /* NanumAJumMaJaYu.ttf in Resources */,
+				CFE01ACF2914FFF1005B3316 /* NanumSquareRoundB.ttf in Resources */,
+				CFE01AE6291502E1005B3316 /* KOTRA HOPE.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,7 +856,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFE01AC42914F9DA005B3316 /* NanumBaegEuiEuiCeonSa.ttf in Resources */,
+				CFE01AE2291502E1005B3316 /* EF_Diary.ttf in Resources */,
+				CFE01AD629150091005B3316 /* NanumGeumEunBoHwa.ttf in Resources */,
+				CFE01AD929150091005B3316 /* NanumAmSeuTeReuDam.ttf in Resources */,
 				CFB6EE0428F1793C00E93585 /* Assets.xcassets in Resources */,
+				CFE01AD12914FFF1005B3316 /* NanumSquareRoundR.ttf in Resources */,
+				CFE01ADF291502E1005B3316 /* Bazzi.ttf in Resources */,
+				CFE01AC52914F9DA005B3316 /* NanumAJumMaJaYu.ttf in Resources */,
+				CFE01ACE2914FFF1005B3316 /* NanumSquareRoundB.ttf in Resources */,
+				CFE01AE5291502E1005B3316 /* KOTRA HOPE.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -791,17 +873,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFE01ADE291502E1005B3316 /* Bazzi.ttf in Resources */,
 				CFEB4A6C28F16B15008850DC /* Picker.storyboard in Resources */,
+				CFE01AD829150091005B3316 /* NanumAmSeuTeReuDam.ttf in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
+				CFE01AC22914F7F1005B3316 /* NanumAJumMaJaYu.ttf in Resources */,
+				CFE01ACA2914FBA8005B3316 /* Background.jpg in Resources */,
 				CFEB49E728F13288008850DC /* LaunchScreen.storyboard in Resources */,
 				CFD0B14628F91CDB0029D936 /* TaskInfo.storyboard in Resources */,
 				CFEB4A6628F165C2008850DC /* Category.storyboard in Resources */,
 				CFEB49E428F13288008850DC /* Assets.xcassets in Resources */,
+				CFE01AC32914F9AB005B3316 /* NanumBaegEuiEuiCeonSa.ttf in Resources */,
+				CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CF75960A2900F35B0046FDC1 /* SideMenu.storyboard in Resources */,
 				CFEB49E228F13287008850DC /* Main.storyboard in Resources */,
+				CFE01AD02914FFF1005B3316 /* NanumSquareRoundR.ttf in Resources */,
 				CF75963329024C340046FDC1 /* PushList.storyboard in Resources */,
+				CFE01AD529150091005B3316 /* NanumGeumEunBoHwa.ttf in Resources */,
+				CFE01AE4291502E1005B3316 /* KOTRA HOPE.ttf in Resources */,
 				CFEB4A6228F16234008850DC /* Repeat.storyboard in Resources */,
 				CFEB4A2E28F14B68008850DC /* Setting.storyboard in Resources */,
+				CFE01ACD2914FFF1005B3316 /* NanumSquareRoundB.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

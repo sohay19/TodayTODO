@@ -191,7 +191,6 @@ class EachTask : Object
                 result += "\(findWeekDay(i)), "
             }
         }
-        
         if !result.isEmpty {
             result.removeLast()
             result.removeLast()
