@@ -37,9 +37,10 @@ let sendTypeKey = "sendType"
 let LogoFont = "NanumAJumMaJaYu"
 let MainFont = "NanumAmSeuTeReuDam"
 let MenuKORFont = "Bazzi"
-let MenuENGFont = "KOTRA HOPE"
+let MenuENGFont = "NanumSquareRoundB"  //"KOTRA HOPE"
 let DefaultBoldFont = "NanumSquareRoundB"
 let DefaultRegularFont = "NanumSquareRoundR"
 
 //MARK: - Image
-let BackgroundImage = "Background.jpg"
+let BackgroundImage = "Background.png"
+let BlackBackImage = "BlackBackground.png"

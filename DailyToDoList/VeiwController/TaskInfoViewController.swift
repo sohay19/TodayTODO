@@ -9,7 +9,8 @@ import UIKit
 
 
 class TaskInfoViewController : UIViewController {
-    @IBOutlet weak var popbackView: PopBackView!
+    @IBOutlet weak var backgroundView: UIImageView!
+    @IBOutlet weak var popbackView: UIView!
     @IBOutlet weak var popView:UIView!
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var resultView:UIView!
@@ -58,6 +59,8 @@ class TaskInfoViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //
+        initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +73,6 @@ class TaskInfoViewController : UIViewController {
         pickTaskDate.setDate(currntDate, animated: false)
         //
         setDefaultView()
-        loadUI()
         //키보드 기본세팅
         observeKeyboard()
         //모드에 맞게 세팅
@@ -80,6 +82,27 @@ class TaskInfoViewController : UIViewController {
 
 //MARK: - initialize
 extension TaskInfoViewController {
+    //
+    private func initUI() {
+        //그림자
+        popbackView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        popbackView.layer.shadowRadius = 10
+        popbackView.layer.shadowOpacity = 1
+        // 배경 설정
+        backgroundView.image = UIImage(named: BlackBackImage)
+        popbackView.insertSubview(backgroundView, at: 0)
+        //
+        pickTaskDate.overrideUserInterfaceStyle = .dark
+        pickEndDate.overrideUserInterfaceStyle = .dark
+        pickAlarmTime.overrideUserInterfaceStyle = .dark
+        //
+        popView.backgroundColor = .clear
+        buttonView.backgroundColor = .clear
+        textView.backgroundColor = .clear
+        //
+        switchRepeat.onTintColor = .systemIndigo
+        switchAlarm.onTintColor = .systemIndigo
+    }
     //
     private func changeMode() {
         switch currentMode {
@@ -98,7 +121,7 @@ extension TaskInfoViewController {
             loadData()
         default:
             //
-            inputTitle.placeholder = "TODO를 입력해주세요"
+            inputTitle.attributedPlaceholder = NSAttributedString(string: "TODO를 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.opaqueSeparator])
             switchRepeat.isOn = false
             labelNoRepeat.isHidden = true
             pickEndDate.isEnabled = false
@@ -122,6 +145,15 @@ extension TaskInfoViewController {
     }
     //
     private func setDefaultView() {
+        //기존 사이즈 저장
+        popbackViewSize = popbackView.frame.size
+        resultViewSize = resultView.frame.size
+        buttonViewSize = buttonView.frame.size
+        //
+        pickEndDate.isEnabled = false
+        controllEditMode(false)
+        controllResultView(false)
+        //
         resultView.translatesAutoresizingMaskIntoConstraints = false
         resultViewConstraint = resultView.constraints.first { item in
             return item.identifier == "resultViewHeight"
@@ -159,20 +191,6 @@ extension TaskInfoViewController {
             pickAlarmTime.date = Utils.stringToDate("\(taskData.taskDay)_\(taskData.alarmTime)")!
         }
         textView.text = taskData.memo
-    }
-    //
-    func loadUI() {
-        //기존 사이즈 저장
-        popbackViewSize = popbackView.frame.size
-        resultViewSize = resultView.frame.size
-        buttonViewSize = buttonView.frame.size
-        //
-        popView.layer.cornerRadius = 10
-        buttonView.layer.cornerRadius = 10
-        //
-        pickEndDate.isEnabled = false
-        controllEditMode(false)
-        controllResultView(false)
     }
     //카테고리 로드
     private func loadCategory() {

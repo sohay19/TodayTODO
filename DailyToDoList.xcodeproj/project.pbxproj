@@ -101,6 +101,16 @@
 		CFE01AE4291502E1005B3316 /* KOTRA HOPE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADD291502E1005B3316 /* KOTRA HOPE.ttf */; };
 		CFE01AE5291502E1005B3316 /* KOTRA HOPE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADD291502E1005B3316 /* KOTRA HOPE.ttf */; };
 		CFE01AE6291502E1005B3316 /* KOTRA HOPE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADD291502E1005B3316 /* KOTRA HOPE.ttf */; };
+		CFE01AE82918E289005B3316 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AE72918E289005B3316 /* Background.png */; };
+		CFE01AE92918E289005B3316 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AE72918E289005B3316 /* Background.png */; };
+		CFE01AEA2918E289005B3316 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AE72918E289005B3316 /* Background.png */; };
+		CFE01AF42918E6BE005B3316 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AF32918E6BE005B3316 /* pencil.png */; };
+		CFE01AF52918E6BE005B3316 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AF32918E6BE005B3316 /* pencil.png */; };
+		CFE01AF62918E6BE005B3316 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AF32918E6BE005B3316 /* pencil.png */; };
+		CFE01AF82918EDE6005B3316 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */; };
+		CFE01AFC2918F47A005B3316 /* BlackBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AFB2918F47A005B3316 /* BlackBackground.png */; };
+		CFE01AFD2918F47A005B3316 /* BlackBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AFB2918F47A005B3316 /* BlackBackground.png */; };
+		CFE01AFE2918F47A005B3316 /* BlackBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AFB2918F47A005B3316 /* BlackBackground.png */; };
 		CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DA28F13287008850DC /* AppDelegate.swift */; };
 		CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DC28F13287008850DC /* SceneDelegate.swift */; };
 		CFEB49DF28F13287008850DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DE28F13287008850DC /* MainViewController.swift */; };
@@ -145,7 +155,6 @@
 		CFEC1D3A290E60BB009A9588 /* NSEachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495E2906D28E00FD0974 /* NSEachTask.swift */; };
 		CFEC1D3B290E60C9009A9588 /* WatchConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */; };
 		CFEC1D3C290E60D5009A9588 /* NSCategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */; };
-		CFEC1D3E290E63D7009A9588 /* PopBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC1D3D290E63D7009A9588 /* PopBackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,6 +293,10 @@
 		CFE01ADB291502E0005B3316 /* Bazzi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bazzi.ttf; sourceTree = "<group>"; };
 		CFE01ADC291502E0005B3316 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		CFE01ADD291502E1005B3316 /* KOTRA HOPE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KOTRA HOPE.ttf"; sourceTree = "<group>"; };
+		CFE01AE72918E289005B3316 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
+		CFE01AF32918E6BE005B3316 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
+		CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
+		CFE01AFB2918F47A005B3316 /* BlackBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackBackground.png; sourceTree = "<group>"; };
 		CFEB49D728F13287008850DC /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEB49DA28F13287008850DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFEB49DC28F13287008850DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -329,7 +342,6 @@
 		CFEB4A7528F16BF3008850DC /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		CFEC1D33290D2144009A9588 /* TaskInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInterfaceController.swift; sourceTree = "<group>"; };
 		CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCategoryData.swift; sourceTree = "<group>"; };
-		CFEC1D3D290E63D7009A9588 /* PopBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopBackView.swift; sourceTree = "<group>"; };
 		DBF80313A4FB8B4BD312F2D1 /* Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig"; path = "Target Support Files/Pods-DailyToDoListWatchWatchKitExtension/Pods-DailyToDoListWatchWatchKitExtension.release.xcconfig"; sourceTree = "<group>"; };
 		F34FEDE351436183A07EBDD2 /* Pods-DailyToDoListWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoListWidgetExtension/Pods-DailyToDoListWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		FC66D6BA43C5821A19F5A230 /* Pods-DailyToDoListUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoListUITests.debug.xcconfig"; path = "Target Support Files/Pods-DailyToDoListUITests/Pods-DailyToDoListUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -482,7 +494,10 @@
 		CFE01AC82914FB96005B3316 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				CFE01AE72918E289005B3316 /* Background.png */,
 				CFE01AC92914FBA8005B3316 /* Background.jpg */,
+				CFE01AFB2918F47A005B3316 /* BlackBackground.png */,
+				CFE01AF32918E6BE005B3316 /* pencil.png */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -604,7 +619,7 @@
 				CF7595FD28FD19870046FDC1 /* MonthlyTaskCell.swift */,
 				CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */,
 				CF75963629024F680046FDC1 /* PushCell.swift */,
-				CFEC1D3D290E63D7009A9588 /* PopBackView.swift */,
+				CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -839,10 +854,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFE01AF62918E6BE005B3316 /* pencil.png in Resources */,
 				CFE01AC62914F9DB005B3316 /* NanumBaegEuiEuiCeonSa.ttf in Resources */,
+				CFE01AEA2918E289005B3316 /* Background.png in Resources */,
 				CFE01AE3291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CFE01AD729150091005B3316 /* NanumGeumEunBoHwa.ttf in Resources */,
 				CFE01ADA29150091005B3316 /* NanumAmSeuTeReuDam.ttf in Resources */,
+				CFE01AFE2918F47A005B3316 /* BlackBackground.png in Resources */,
 				CF81493C2906B75400FD0974 /* Assets.xcassets in Resources */,
 				CFE01AD22914FFF1005B3316 /* NanumSquareRoundR.ttf in Resources */,
 				CFE01AE0291502E1005B3316 /* Bazzi.ttf in Resources */,
@@ -856,10 +874,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFE01AF52918E6BE005B3316 /* pencil.png in Resources */,
 				CFE01AC42914F9DA005B3316 /* NanumBaegEuiEuiCeonSa.ttf in Resources */,
+				CFE01AE92918E289005B3316 /* Background.png in Resources */,
 				CFE01AE2291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CFE01AD629150091005B3316 /* NanumGeumEunBoHwa.ttf in Resources */,
 				CFE01AD929150091005B3316 /* NanumAmSeuTeReuDam.ttf in Resources */,
+				CFE01AFD2918F47A005B3316 /* BlackBackground.png in Resources */,
 				CFB6EE0428F1793C00E93585 /* Assets.xcassets in Resources */,
 				CFE01AD12914FFF1005B3316 /* NanumSquareRoundR.ttf in Resources */,
 				CFE01ADF291502E1005B3316 /* Bazzi.ttf in Resources */,
@@ -874,7 +895,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFE01ADE291502E1005B3316 /* Bazzi.ttf in Resources */,
+				CFE01AE82918E289005B3316 /* Background.png in Resources */,
 				CFEB4A6C28F16B15008850DC /* Picker.storyboard in Resources */,
+				CFE01AFC2918F47A005B3316 /* BlackBackground.png in Resources */,
 				CFE01AD829150091005B3316 /* NanumAmSeuTeReuDam.ttf in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
 				CFE01AC22914F7F1005B3316 /* NanumAJumMaJaYu.ttf in Resources */,
@@ -894,6 +917,7 @@
 				CFEB4A6228F16234008850DC /* Repeat.storyboard in Resources */,
 				CFEB4A2E28F14B68008850DC /* Setting.storyboard in Resources */,
 				CFE01ACD2914FFF1005B3316 /* NanumSquareRoundB.ttf in Resources */,
+				CFE01AF42918E6BE005B3316 /* pencil.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1143,6 +1167,7 @@
 				CF75963529024C6A0046FDC1 /* PushListViewController.swift in Sources */,
 				CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */,
 				CFEB4A4628F14D1C008850DC /* UserData.swift in Sources */,
+				CFE01AF82918EDE6005B3316 /* CustomSegmentControl.swift in Sources */,
 				CFEB4A4528F14D1C008850DC /* EachTask.swift in Sources */,
 				CFEB4A6A28F1672F008850DC /* ColorPickerViewController.swift in Sources */,
 				CFEB4A4428F14D1C008850DC /* RepeatResult.swift in Sources */,
@@ -1173,7 +1198,6 @@
 				CFEB4A4928F14D25008850DC /* DailyTaskCell.swift in Sources */,
 				CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */,
 				CFEB4A3228F14BC7008850DC /* LoginViewController.swift in Sources */,
-				CFEC1D3E290E63D7009A9588 /* PopBackView.swift in Sources */,
 				CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */,
 				CFEB4A6E28F16B27008850DC /* PickerViewController.swift in Sources */,
 				CF81495F2906D28E00FD0974 /* NSEachTask.swift in Sources */,

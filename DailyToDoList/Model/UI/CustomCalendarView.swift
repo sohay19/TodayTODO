@@ -18,6 +18,8 @@ class CustomCalendarView : FSCalendar {
     
     func initCalendar() {
         //
+        self.backgroundColor = .clear
+        //
         self.locale = Locale(identifier: "ko_KR")
         // 양옆 년도, 월 지우기
         self.appearance.headerMinimumDissolvedAlpha = 0.0

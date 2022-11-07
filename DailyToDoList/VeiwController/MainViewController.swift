@@ -8,6 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    @IBOutlet weak var imageViewButon: UIImageView!
     //
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelTodayNilMsg: UILabel!
@@ -16,7 +17,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var dailyTaskTable: UITableView!
     @IBOutlet weak var monthlyTaskTable: UITableView!
     //
-    @IBOutlet weak var segmentedController: UISegmentedControl!
+    @IBOutlet weak var segmentedController: CustomSegmentControl!
     //
     @IBOutlet weak var calendarView: CustomCalendarView!
     @IBOutlet weak var todayView: UIView!
@@ -46,6 +47,7 @@ class MainViewController: UIViewController {
         calendarView.delegate = self
         //
         initUI()
+        initButton()
         // 리프레시 컨트롤러 초기화
         initRefreshController()
         // 메인 리로드 함수
@@ -89,7 +91,16 @@ extension MainViewController {
         labelDate.font = UIFont(name: MenuKORFont, size: 24)
         btnEdit.titleLabel?.font = UIFont(name: MenuENGFont, size: 18)
         //
+        dailyTaskTable.separatorColor = .label
+        monthlyTaskTable.separatorColor = .label
+        //
         monthView.isHidden = true
+    }
+    
+    func initButton() {
+        let tapImageViewRecognizer = UITapGestureRecognizer(target: self, action: #selector(clickTaskAdd(_:)))
+        imageViewButon.isUserInteractionEnabled = true
+        imageViewButon.addGestureRecognizer(tapImageViewRecognizer)
     }
     
     func changeSegment() {
@@ -381,7 +392,7 @@ extension MainViewController {
 
 //MARK: - Button Event
 extension MainViewController {
-    @IBAction func clickTaskAdd(_ sender:Any) {//
+    @objc func clickTaskAdd(_ sender:UITapGestureRecognizer) {//
         if dailyTaskTable.isEditing {
             changeEditMode()
             return
@@ -391,9 +402,9 @@ extension MainViewController {
         //
         nextVC.currentMode = .ADD
         nextVC.refreshTask = loadTask
-        //
         nextVC.currntDate = currentDate
-        nextVC.modalTransitionStyle = .crossDissolve
+        //
+        nextVC.modalTransitionStyle = .coverVertical
         nextVC.modalPresentationStyle = .overCurrentContext
         
         present(nextVC, animated: true)
