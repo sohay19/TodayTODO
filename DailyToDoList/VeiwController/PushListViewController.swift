@@ -11,8 +11,9 @@ import UIKit
 
 class PushListViewController : UIViewController {
     @IBOutlet weak var pushTable: UITableView!
-    @IBOutlet weak var segmentedController: UISegmentedControl!
+    @IBOutlet weak var segmentedController: CustomSegmentControl!
     @IBOutlet weak var labelDate: UILabel!
+    @IBOutlet weak var btnDeleteAll: UIButton!
     
     var pushList:[AlarmInfo] = []
     
@@ -24,6 +25,8 @@ class PushListViewController : UIViewController {
         pushTable.delegate = self
         pushTable.dataSource = self
         //
+        initUI()
+        //
         initRefreshController()
     }
     
@@ -34,7 +37,7 @@ class PushListViewController : UIViewController {
             //
             loadPushData()
             //
-            initUI()
+            changeSegment()
         }
     }
 }
@@ -62,6 +65,14 @@ extension PushListViewController {
     }
     //
     func initUI() {
+        //
+        labelDate.font = UIFont(name: MenuKORFont, size: MenuKORFontSize)
+        btnDeleteAll.titleLabel?.font = UIFont(name: MenuKORFont, size: MenuKORFontSize - 6.0)
+        //
+        changeSegment()
+    }
+    //
+    func changeSegment() {
         switch segmentedController.selectedSegmentIndex {
         case 0:
             labelDate.text = "오늘 예정된 알람"
@@ -102,5 +113,10 @@ extension PushListViewController {
     //SegmentedControl
     @IBAction func changeSegment(_ sender:UISegmentedControl) {//
         viewWillAppear(true)
+    }
+    //
+    @IBAction func deleteAllNoti(_ sender:Any) {
+        PushManager.shared.deleteAllPush()
+        RealmManager.shared.deleteAllAlarm()
     }
 }

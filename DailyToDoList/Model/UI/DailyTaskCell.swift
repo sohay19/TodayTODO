@@ -15,14 +15,16 @@ class DailyTaskCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         //
-        self.separatorInset.left = 0
-        //
         initCell()
     }
     
     func initCell() {
         self.backgroundColor = .clear
         self.selectionStyle = .default
-        labelDailyTitle.font = UIFont(name: MainFont, size: 24)
+        //
+        separatorInset.left = 0
+        separatorInset.right = 0
+        //
+        labelDailyTitle.font = UIFont(name: MainFont, size: MainFontSize)
     }
 }

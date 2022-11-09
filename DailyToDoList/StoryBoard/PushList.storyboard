@@ -22,6 +22,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="H0d-ne-KII" secondAttribute="height" multiplier="1:1" id="plq-JI-Dc7"/>
                                 </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="18"/>
@@ -30,7 +31,7 @@
                                     <action selector="clickSideMenu:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6xq-Fh-fVP"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qs4-bw-qt3">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qs4-bw-qt3" customClass="CustomSegmentControl" customModule="DailyToDoList" customModuleProvider="target">
                                 <rect key="frame" x="150.5" y="50" width="113" height="32"/>
                                 <segments>
                                     <segment title="Today"/>
@@ -40,6 +41,16 @@
                                     <action selector="changeSegment:" destination="Y6W-OH-hqX" eventType="valueChanged" id="eo4-vW-LvU"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyo-yY-97R" userLabel="BtnDeleteAll">
+                                <rect key="frame" x="310" y="50.5" width="86" height="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="알람 전체 삭제">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteAllNoti:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="X9p-kp-Fjx"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kGG-Zy-ClK">
                                 <rect key="frame" x="0.0" y="150" width="414" height="712"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -86,8 +97,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="오늘 예정된 알람" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSh-CA-wzF">
-                                <rect key="frame" x="18" y="111" width="272" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 예정된 알람" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSh-CA-wzF">
+                                <rect key="frame" x="18" y="111" width="117.5" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -100,17 +111,20 @@
                             <constraint firstItem="sSh-CA-wzF" firstAttribute="top" secondItem="Qs4-bw-qt3" secondAttribute="bottom" constant="30" id="JS4-YQ-siM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="H0d-ne-KII" secondAttribute="trailing" constant="18" id="NWn-7T-K7R"/>
                             <constraint firstItem="Qs4-bw-qt3" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="OAb-Yg-E9f"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Iyo-yY-97R" secondAttribute="trailing" constant="18" id="OvR-to-IbV"/>
                             <constraint firstItem="sSh-CA-wzF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="18" id="QLy-V4-BTq"/>
                             <constraint firstItem="H0d-ne-KII" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="6" id="XHd-Kc-PTT"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sSh-CA-wzF" secondAttribute="trailing" constant="18" id="Xm5-da-RIx"/>
                             <constraint firstItem="H0d-ne-KII" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-9" id="ZYQ-Qf-8fv"/>
                             <constraint firstItem="kGG-Zy-ClK" firstAttribute="top" secondItem="sSh-CA-wzF" secondAttribute="bottom" constant="18" id="ZgZ-4a-QmQ"/>
                             <constraint firstItem="kGG-Zy-ClK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="czN-HN-blN"/>
+                            <constraint firstItem="Iyo-yY-97R" firstAttribute="centerY" secondItem="H0d-ne-KII" secondAttribute="centerY" id="dNd-ta-8IN"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="kGG-Zy-ClK" secondAttribute="bottom" id="gSE-AD-WZw"/>
                             <constraint firstItem="Qs4-bw-qt3" firstAttribute="centerY" secondItem="H0d-ne-KII" secondAttribute="centerY" id="lLO-AR-ltH"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnDeleteAll" destination="Iyo-yY-97R" id="aYG-nN-MZi"/>
                         <outlet property="labelDate" destination="sSh-CA-wzF" id="kz9-vs-Iw3"/>
                         <outlet property="pushTable" destination="kGG-Zy-ClK" id="zJY-N8-no9"/>
                         <outlet property="segmentedController" destination="Qs4-bw-qt3" id="frH-IJ-Tzh"/>
@@ -123,6 +137,9 @@
     </scenes>
     <resources>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

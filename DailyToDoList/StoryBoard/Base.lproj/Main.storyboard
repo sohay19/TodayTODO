@@ -30,16 +30,6 @@
                                             <action selector="changeSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="hPM-4h-OF6"/>
                                         </connections>
                                     </segmentedControl>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fy-sS-K6C">
-                                        <rect key="frame" x="310" y="2.5" width="86" height="30"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="알람 전체 삭제">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="deleteAllNoti:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jsq-AP-ezu"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgv-do-JnB" userLabel="BtnSidMenu">
                                         <rect key="frame" x="6" y="-9" width="53" height="53"/>
                                         <constraints>
@@ -58,14 +48,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="dgv-do-JnB" firstAttribute="leading" secondItem="nL7-nt-PhE" secondAttribute="leading" constant="6" id="AB5-Ux-ycO"/>
-                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="centerY" secondItem="dgv-do-JnB" secondAttribute="centerY" id="DSX-XP-HjV"/>
                                     <constraint firstItem="bLR-Sq-nbO" firstAttribute="centerX" secondItem="nL7-nt-PhE" secondAttribute="centerX" id="U48-2M-xJX"/>
-                                    <constraint firstAttribute="trailing" secondItem="9fy-sS-K6C" secondAttribute="trailing" constant="18" id="cmc-nF-5a7"/>
                                     <constraint firstItem="bLR-Sq-nbO" firstAttribute="top" secondItem="nL7-nt-PhE" secondAttribute="top" id="ezV-9Y-cIT"/>
                                     <constraint firstItem="dgv-do-JnB" firstAttribute="top" secondItem="nL7-nt-PhE" secondAttribute="top" constant="-9" id="j5F-CI-bAL"/>
                                     <constraint firstItem="bLR-Sq-nbO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dgv-do-JnB" secondAttribute="trailing" constant="18" id="joq-lh-ho4"/>
                                     <constraint firstAttribute="height" constant="45" id="so0-P1-9Lu"/>
-                                    <constraint firstItem="9fy-sS-K6C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bLR-Sq-nbO" secondAttribute="trailing" constant="8" symbolic="YES" id="xNn-DG-GBh"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-ST-NiN" userLabel="TodayView">
@@ -85,7 +72,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhK-e7-NYl">
-                                        <rect key="frame" x="36" y="18" width="40.5" height="22"/>
+                                        <rect key="frame" x="18" y="18" width="40.5" height="22"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -101,7 +88,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyTaskCell" id="0Fo-Hl-oys" customClass="DailyTaskCell" customModule="DailyToDoList" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="DailyTaskCell" id="0Fo-Hl-oys" customClass="DailyTaskCell" customModule="DailyToDoList" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="68" width="378" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Fo-Hl-oys" id="9fX-e1-206">
@@ -133,7 +120,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="qhK-e7-NYl" firstAttribute="leading" secondItem="T45-og-L7Z" secondAttribute="leading" constant="18" id="EST-oL-kbD"/>
+                                    <constraint firstItem="qhK-e7-NYl" firstAttribute="leading" secondItem="T45-og-L7Z" secondAttribute="leading" id="EST-oL-kbD"/>
                                     <constraint firstItem="T45-og-L7Z" firstAttribute="top" secondItem="qhK-e7-NYl" secondAttribute="bottom" constant="30" id="JwV-bO-jBy"/>
                                     <constraint firstItem="S02-VU-gCk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="18" id="Ns0-IB-2mr"/>
                                     <constraint firstAttribute="bottom" secondItem="T45-og-L7Z" secondAttribute="bottom" constant="18" id="Pe2-Mp-IBM"/>

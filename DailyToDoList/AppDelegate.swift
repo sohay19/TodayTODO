@@ -44,15 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         //워치 커넥팅을 위한 세선 열기
         WatchConnectManager.shared.initSession()
-        //
-        initUI()
         
         return true
-    }
-    //
-    func initUI() {
-        let attr = NSDictionary(object: UIFont(name: MenuENGFont, size: 15)!, forKey: NSAttributedString.Key.font as NSCopying)
-        UISegmentedControl.appearance().setTitleTextAttributes(attr as? [NSAttributedString.Key : AnyObject], for: .normal)
     }
 
     // MARK: UISceneSession Lifecycle

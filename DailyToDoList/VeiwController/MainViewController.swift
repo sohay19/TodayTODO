@@ -88,8 +88,8 @@ extension MainViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         // 폰트 설정
-        labelDate.font = UIFont(name: MenuKORFont, size: 24)
-        btnEdit.titleLabel?.font = UIFont(name: MenuENGFont, size: 18)
+        labelDate.font = UIFont(name: MenuNUMFont, size: MenuNUMFontSize)
+        btnEdit.titleLabel?.font = UIFont(name: MenuENGFont, size: MenuENGFontSize)
         //
         dailyTaskTable.separatorColor = .label
         monthlyTaskTable.separatorColor = .label
@@ -421,16 +421,6 @@ extension MainViewController {
             btnEdit.setTitle("Done", for: .normal)
             dailyTaskTable.setEditing(true, animated: false)
         }
-    }
-    //
-    @IBAction func deleteAllNoti(_ sender:Any) {
-        //
-        if dailyTaskTable.isEditing {
-            changeEditMode()
-            return
-        }
-        PushManager.shared.deleteAllPush()
-        RealmManager.shared.deleteAllAlarm()
     }
     //SegmentedControl
     @IBAction func changeSegment(_ sender:UISegmentedControl) {//

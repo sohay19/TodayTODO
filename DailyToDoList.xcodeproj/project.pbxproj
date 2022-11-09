@@ -41,7 +41,7 @@
 		CF81493C2906B75400FD0974 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF81493B2906B75400FD0974 /* Assets.xcassets */; };
 		CF8149412906B75400FD0974 /* DailyTODO.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CF8149232906B75100FD0974 /* DailyTODO.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CF8149492906B76B00FD0974 /* SharedClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13128F1BE500029D936 /* SharedClassExtension.swift */; };
-		CF81494A2906B77100FD0974 /* StringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3D28F14CCA008850DC /* StringKeys.swift */; };
+		CF81494A2906B77100FD0974 /* StaticValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3D28F14CCA008850DC /* StaticValues.swift */; };
 		CF81494B2906B77100FD0974 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3928F14CA0008850DC /* Utils.swift */; };
 		CF81494C2906B77100FD0974 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3B28F14CB4008850DC /* Enums.swift */; };
 		CF81494D2906B77500FD0974 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4228F14D1C008850DC /* UserData.swift */; };
@@ -65,7 +65,7 @@
 		CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFCEA0C228F1A78600A49D82 /* GoogleService-Info.plist */; };
 		CFD0B12A28F1BC2D0029D936 /* EachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4128F14D1C008850DC /* EachTask.swift */; };
 		CFD0B12D28F1BD150029D936 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3B28F14CB4008850DC /* Enums.swift */; };
-		CFD0B12F28F1BD3A0029D936 /* StringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3D28F14CCA008850DC /* StringKeys.swift */; };
+		CFD0B12F28F1BD3A0029D936 /* StaticValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3D28F14CCA008850DC /* StaticValues.swift */; };
 		CFD0B13228F1BE500029D936 /* SharedClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13128F1BE500029D936 /* SharedClassExtension.swift */; };
 		CFD0B13328F2C44F0029D936 /* SharedClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13128F1BE500029D936 /* SharedClassExtension.swift */; };
 		CFD0B13B28F905380029D936 /* AlarmInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B13A28F905380029D936 /* AlarmInfo.swift */; };
@@ -101,16 +101,13 @@
 		CFE01AE4291502E1005B3316 /* KOTRA HOPE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADD291502E1005B3316 /* KOTRA HOPE.ttf */; };
 		CFE01AE5291502E1005B3316 /* KOTRA HOPE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADD291502E1005B3316 /* KOTRA HOPE.ttf */; };
 		CFE01AE6291502E1005B3316 /* KOTRA HOPE.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADD291502E1005B3316 /* KOTRA HOPE.ttf */; };
-		CFE01AE82918E289005B3316 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AE72918E289005B3316 /* Background.png */; };
-		CFE01AE92918E289005B3316 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AE72918E289005B3316 /* Background.png */; };
-		CFE01AEA2918E289005B3316 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AE72918E289005B3316 /* Background.png */; };
 		CFE01AF42918E6BE005B3316 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AF32918E6BE005B3316 /* pencil.png */; };
 		CFE01AF52918E6BE005B3316 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AF32918E6BE005B3316 /* pencil.png */; };
 		CFE01AF62918E6BE005B3316 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AF32918E6BE005B3316 /* pencil.png */; };
 		CFE01AF82918EDE6005B3316 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */; };
-		CFE01AFC2918F47A005B3316 /* BlackBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AFB2918F47A005B3316 /* BlackBackground.png */; };
-		CFE01AFD2918F47A005B3316 /* BlackBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AFB2918F47A005B3316 /* BlackBackground.png */; };
-		CFE01AFE2918F47A005B3316 /* BlackBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AFB2918F47A005B3316 /* BlackBackground.png */; };
+		CFE01B00291B777E005B3316 /* BlackBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AFF291B777E005B3316 /* BlackBackground.png */; };
+		CFE01B01291B777E005B3316 /* BlackBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AFF291B777E005B3316 /* BlackBackground.png */; };
+		CFE01B02291B777E005B3316 /* BlackBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AFF291B777E005B3316 /* BlackBackground.png */; };
 		CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DA28F13287008850DC /* AppDelegate.swift */; };
 		CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DC28F13287008850DC /* SceneDelegate.swift */; };
 		CFEB49DF28F13287008850DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DE28F13287008850DC /* MainViewController.swift */; };
@@ -125,7 +122,7 @@
 		CFEB4A3828F14BEF008850DC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3728F14BEF008850DC /* SettingViewController.swift */; };
 		CFEB4A3A28F14CA0008850DC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3928F14CA0008850DC /* Utils.swift */; };
 		CFEB4A3C28F14CB4008850DC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3B28F14CB4008850DC /* Enums.swift */; };
-		CFEB4A3E28F14CCA008850DC /* StringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3D28F14CCA008850DC /* StringKeys.swift */; };
+		CFEB4A3E28F14CCA008850DC /* StaticValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3D28F14CCA008850DC /* StaticValues.swift */; };
 		CFEB4A4328F14D1C008850DC /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
 		CFEB4A4428F14D1C008850DC /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
 		CFEB4A4528F14D1C008850DC /* EachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4128F14D1C008850DC /* EachTask.swift */; };
@@ -293,10 +290,9 @@
 		CFE01ADB291502E0005B3316 /* Bazzi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bazzi.ttf; sourceTree = "<group>"; };
 		CFE01ADC291502E0005B3316 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		CFE01ADD291502E1005B3316 /* KOTRA HOPE.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KOTRA HOPE.ttf"; sourceTree = "<group>"; };
-		CFE01AE72918E289005B3316 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		CFE01AF32918E6BE005B3316 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
-		CFE01AFB2918F47A005B3316 /* BlackBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackBackground.png; sourceTree = "<group>"; };
+		CFE01AFF291B777E005B3316 /* BlackBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackBackground.png; sourceTree = "<group>"; };
 		CFEB49D728F13287008850DC /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEB49DA28F13287008850DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFEB49DC28F13287008850DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -317,7 +313,7 @@
 		CFEB4A3728F14BEF008850DC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CFEB4A3928F14CA0008850DC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		CFEB4A3B28F14CB4008850DC /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		CFEB4A3D28F14CCA008850DC /* StringKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKeys.swift; sourceTree = "<group>"; };
+		CFEB4A3D28F14CCA008850DC /* StaticValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticValues.swift; sourceTree = "<group>"; };
 		CFEB4A3F28F14D1C008850DC /* CategoryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 		CFEB4A4028F14D1C008850DC /* RepeatResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatResult.swift; sourceTree = "<group>"; };
 		CFEB4A4128F14D1C008850DC /* EachTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EachTask.swift; sourceTree = "<group>"; };
@@ -494,9 +490,8 @@
 		CFE01AC82914FB96005B3316 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				CFE01AE72918E289005B3316 /* Background.png */,
 				CFE01AC92914FBA8005B3316 /* Background.jpg */,
-				CFE01AFB2918F47A005B3316 /* BlackBackground.png */,
+				CFE01AFF291B777E005B3316 /* BlackBackground.png */,
 				CFE01AF32918E6BE005B3316 /* pencil.png */,
 			);
 			path = Image;
@@ -629,7 +624,7 @@
 			children = (
 				CFEB4A3928F14CA0008850DC /* Utils.swift */,
 				CFEB4A3B28F14CB4008850DC /* Enums.swift */,
-				CFEB4A3D28F14CCA008850DC /* StringKeys.swift */,
+				CFEB4A3D28F14CCA008850DC /* StaticValues.swift */,
 			);
 			path = Convenience;
 			sourceTree = "<group>";
@@ -856,11 +851,10 @@
 			files = (
 				CFE01AF62918E6BE005B3316 /* pencil.png in Resources */,
 				CFE01AC62914F9DB005B3316 /* NanumBaegEuiEuiCeonSa.ttf in Resources */,
-				CFE01AEA2918E289005B3316 /* Background.png in Resources */,
 				CFE01AE3291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CFE01AD729150091005B3316 /* NanumGeumEunBoHwa.ttf in Resources */,
 				CFE01ADA29150091005B3316 /* NanumAmSeuTeReuDam.ttf in Resources */,
-				CFE01AFE2918F47A005B3316 /* BlackBackground.png in Resources */,
+				CFE01B02291B777E005B3316 /* BlackBackground.png in Resources */,
 				CF81493C2906B75400FD0974 /* Assets.xcassets in Resources */,
 				CFE01AD22914FFF1005B3316 /* NanumSquareRoundR.ttf in Resources */,
 				CFE01AE0291502E1005B3316 /* Bazzi.ttf in Resources */,
@@ -876,11 +870,10 @@
 			files = (
 				CFE01AF52918E6BE005B3316 /* pencil.png in Resources */,
 				CFE01AC42914F9DA005B3316 /* NanumBaegEuiEuiCeonSa.ttf in Resources */,
-				CFE01AE92918E289005B3316 /* Background.png in Resources */,
 				CFE01AE2291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CFE01AD629150091005B3316 /* NanumGeumEunBoHwa.ttf in Resources */,
 				CFE01AD929150091005B3316 /* NanumAmSeuTeReuDam.ttf in Resources */,
-				CFE01AFD2918F47A005B3316 /* BlackBackground.png in Resources */,
+				CFE01B01291B777E005B3316 /* BlackBackground.png in Resources */,
 				CFB6EE0428F1793C00E93585 /* Assets.xcassets in Resources */,
 				CFE01AD12914FFF1005B3316 /* NanumSquareRoundR.ttf in Resources */,
 				CFE01ADF291502E1005B3316 /* Bazzi.ttf in Resources */,
@@ -895,9 +888,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFE01ADE291502E1005B3316 /* Bazzi.ttf in Resources */,
-				CFE01AE82918E289005B3316 /* Background.png in Resources */,
 				CFEB4A6C28F16B15008850DC /* Picker.storyboard in Resources */,
-				CFE01AFC2918F47A005B3316 /* BlackBackground.png in Resources */,
+				CFE01B00291B777E005B3316 /* BlackBackground.png in Resources */,
 				CFE01AD829150091005B3316 /* NanumAmSeuTeReuDam.ttf in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
 				CFE01AC22914F7F1005B3316 /* NanumAJumMaJaYu.ttf in Resources */,
@@ -1116,7 +1108,7 @@
 				CF81494D2906B77500FD0974 /* UserData.swift in Sources */,
 				CF81494B2906B77100FD0974 /* Utils.swift in Sources */,
 				CF8149342906B75300FD0974 /* InterfaceController.swift in Sources */,
-				CF81494A2906B77100FD0974 /* StringKeys.swift in Sources */,
+				CF81494A2906B77100FD0974 /* StaticValues.swift in Sources */,
 				CF81494F2906B77500FD0974 /* EachTask.swift in Sources */,
 				CF81495D2906CC8C00FD0974 /* WatchConnectManager.swift in Sources */,
 				CF8149512906B77500FD0974 /* AlarmInfo.swift in Sources */,
@@ -1138,7 +1130,7 @@
 				CFB6EE0628F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
 				CFEC1D36290D2AC4009A9588 /* PushManager.swift in Sources */,
 				CF8148CC29067B5000FD0974 /* RealmManager.swift in Sources */,
-				CFD0B12F28F1BD3A0029D936 /* StringKeys.swift in Sources */,
+				CFD0B12F28F1BD3A0029D936 /* StaticValues.swift in Sources */,
 				CFD0B13328F2C44F0029D936 /* SharedClassExtension.swift in Sources */,
 				CFD0B12A28F1BC2D0029D936 /* EachTask.swift in Sources */,
 				CFEC1D3C290E60D5009A9588 /* NSCategoryData.swift in Sources */,
@@ -1160,7 +1152,7 @@
 			files = (
 				CFEB4A4328F14D1C008850DC /* CategoryData.swift in Sources */,
 				CFD0B13228F1BE500029D936 /* SharedClassExtension.swift in Sources */,
-				CFEB4A3E28F14CCA008850DC /* StringKeys.swift in Sources */,
+				CFEB4A3E28F14CCA008850DC /* StaticValues.swift in Sources */,
 				CFD0B13B28F905380029D936 /* AlarmInfo.swift in Sources */,
 				CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */,
 				CFEC1D38290E53F7009A9588 /* NSCategoryData.swift in Sources */,
