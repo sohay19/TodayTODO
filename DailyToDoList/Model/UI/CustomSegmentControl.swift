@@ -18,8 +18,8 @@ class CustomSegmentControl : UISegmentedControl {
         //
         selectedSegmentTintColor = .label
         //
-        setTitleTextAttributes([.font : UIFont(name: MenuENGFont, size: 15)!], for: .normal)
-        setTitleTextAttributes([.foregroundColor: UIColor.systemBackground], for: .selected)
-        setTitleTextAttributes([.foregroundColor: UIColor.secondaryLabel], for: .normal)
+        let font = UIFont(name: MenuENGFont, size: MenuENGFontSize)!
+        setTitleTextAttributes([.font:font, .foregroundColor: UIColor.systemBackground], for: .selected)
+        setTitleTextAttributes([.font:font, .foregroundColor: UIColor.secondaryLabel], for: .normal)
     }
 }

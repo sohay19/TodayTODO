@@ -9,6 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var imageViewButon: UIImageView!
+    @IBOutlet weak var imgUnderline: UIImageView!
     //
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelTodayNilMsg: UILabel!
@@ -78,8 +79,8 @@ class MainViewController: UIViewController {
 //MARK: - UI
 extension MainViewController {
     func initDate() {
-        let date = Utils.dateToDateString(Date())
-        labelDate.text = date
+        let date = Utils.dateToDateString(Date()).split(separator: "-")
+        labelDate.text = date.joined(separator: ". ")
     }
     
     func initUI() {
@@ -87,12 +88,24 @@ extension MainViewController {
         let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
-        // 폰트 설정
-        labelDate.font = UIFont(name: MenuNUMFont, size: MenuNUMFontSize)
-        btnEdit.titleLabel?.font = UIFont(name: MenuENGFont, size: MenuENGFontSize)
         //
+        todayView.backgroundColor = .clear
+        monthView.backgroundColor = .clear
+        // 폰트 설정
+        labelDate.font = UIFont(name: E_N_Font, size: E_N_FontSize+3.0)
+        btnEdit.titleLabel?.font = UIFont(name: E_N_Font, size: E_N_FontSize)
+        //
+        dailyTaskTable.backgroundColor = .clear
+        dailyTaskTable.separatorInsetReference = .fromCellEdges
+        dailyTaskTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         dailyTaskTable.separatorColor = .label
+        monthlyTaskTable.backgroundColor = .clear
+        monthlyTaskTable.separatorInsetReference = .fromCellEdges
+        monthlyTaskTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         monthlyTaskTable.separatorColor = .label
+        //
+        imgUnderline.image = UIImage(named: Underline_Indigo)
+        imgUnderline.alpha = 0.5
         //
         monthView.isHidden = true
     }

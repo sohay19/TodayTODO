@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +14,7 @@
             <objects>
                 <navigationController storyboardIdentifier="SideMenu" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xRO-z0-NBE" customClass="CustomSideMenuNavigation" customModule="DailyToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cxA-3C-d0e">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -33,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODd-MY-6ga">
-                                <rect key="frame" x="164.5" y="208" width="85" height="48"/>
+                                <rect key="frame" x="164.5" y="212" width="85" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="tintColor" systemColor="systemBackgroundColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -43,7 +44,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76C-6R-19l">
-                                <rect key="frame" x="131.5" y="316" width="151" height="48"/>
+                                <rect key="frame" x="131.5" y="320" width="151" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="tintColor" systemColor="systemBackgroundColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -52,14 +53,21 @@
                                     <action selector="clickBtnPushList:" destination="bow-oY-qQo" eventType="touchUpInside" id="5Db-Yy-d9u"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTQ-p3-OO7">
+                                <rect key="frame" x="127" y="428" width="160" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="CATEGORY"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXi-6p-xiS">
-                                <rect key="frame" x="142.5" y="424" width="129" height="48"/>
+                                <rect key="frame" x="142.5" y="536" width="129" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="tintColor" systemColor="systemBackgroundColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="BACK UP"/>
                                 <connections>
-                                    <action selector="clickBtnBackup:" destination="bow-oY-qQo" eventType="touchUpInside" id="9bn-yS-7h8"/>
+                                    <action selector="clickBtnBackup:" destination="bow-oY-qQo" eventType="touchUpInside" id="HMM-h0-DJ5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -68,13 +76,21 @@
                         <constraints>
                             <constraint firstItem="76C-6R-19l" firstAttribute="centerX" secondItem="HRC-gB-25W" secondAttribute="centerX" id="1I4-mQ-w2g"/>
                             <constraint firstItem="HXi-6p-xiS" firstAttribute="centerX" secondItem="HRC-gB-25W" secondAttribute="centerX" id="72M-fl-5ho"/>
+                            <constraint firstItem="HXi-6p-xiS" firstAttribute="top" secondItem="nTQ-p3-OO7" secondAttribute="bottom" constant="60" id="9KQ-c0-9ic"/>
                             <constraint firstItem="ODd-MY-6ga" firstAttribute="top" secondItem="HRC-gB-25W" secondAttribute="top" constant="120" id="CpX-eI-gTq"/>
-                            <constraint firstItem="HXi-6p-xiS" firstAttribute="top" secondItem="76C-6R-19l" secondAttribute="bottom" constant="60" id="TD6-AZ-gyZ"/>
                             <constraint firstItem="ODd-MY-6ga" firstAttribute="centerX" secondItem="HRC-gB-25W" secondAttribute="centerX" id="U81-eD-UBS"/>
+                            <constraint firstItem="nTQ-p3-OO7" firstAttribute="centerX" secondItem="HRC-gB-25W" secondAttribute="centerX" id="vE8-K6-OcB"/>
                             <constraint firstItem="76C-6R-19l" firstAttribute="top" secondItem="ODd-MY-6ga" secondAttribute="bottom" constant="60" id="vk5-ZL-Rqb"/>
+                            <constraint firstItem="nTQ-p3-OO7" firstAttribute="top" secondItem="76C-6R-19l" secondAttribute="bottom" constant="60" id="wwe-cT-DZN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gOl-UU-P91"/>
+                    <connections>
+                        <outlet property="btnBackup" destination="HXi-6p-xiS" id="Ble-he-FSb"/>
+                        <outlet property="btnCategory" destination="nTQ-p3-OO7" id="8PU-qi-fMc"/>
+                        <outlet property="btnPush" destination="76C-6R-19l" id="nT0-q1-q51"/>
+                        <outlet property="btnTODO" destination="ODd-MY-6ga" id="q1f-vU-bkR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYS-eq-DIy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,7 +99,7 @@
     </scenes>
     <resources>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

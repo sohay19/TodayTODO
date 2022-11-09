@@ -21,13 +21,16 @@ class PushCell : UITableViewCell {
     
     func initCell() {
         self.backgroundColor = .clear
-        self.selectionStyle = .default
+        self.selectionStyle = .none
         //
-        separatorInset.left = 0
-        separatorInset.right = 0
+        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         labelTitle.font = UIFont(name: MainFont, size: MainFontSize)
-        labelAlarmTime.font = UIFont(name: MenuNUMFont, size: MenuNUMFontSize - 6.0)
-        labelRepeat.font = UIFont(name: MainFont, size: MainFontSize - 6.0)
+        labelAlarmTime.font = UIFont(name: NumFont, size: NumFontSize)
+        labelRepeat.font = UIFont(name: SubFont, size: SubFontSize)
+        //
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .red
+        selectedBackgroundView = backgroundView
     }
 }

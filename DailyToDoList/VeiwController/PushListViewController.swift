@@ -10,6 +10,8 @@ import UIKit
 
 
 class PushListViewController : UIViewController {
+    @IBOutlet weak var imgUnderline: UIImageView!
+    @IBOutlet weak var imgUnderlinetitle: UIImageView!
     @IBOutlet weak var pushTable: UITableView!
     @IBOutlet weak var segmentedController: CustomSegmentControl!
     @IBOutlet weak var labelDate: UILabel!
@@ -65,9 +67,23 @@ extension PushListViewController {
     }
     //
     func initUI() {
+        // 배경 설정
+        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
+        backgroundView.image = UIImage(named: BackgroundImage)
+        view.insertSubview(backgroundView, at: 0)
+        //
+        pushTable.backgroundColor = .clear
+        pushTable.separatorInsetReference = .fromCellEdges
+        pushTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        pushTable.separatorColor = .label
         //
         labelDate.font = UIFont(name: MenuKORFont, size: MenuKORFontSize)
         btnDeleteAll.titleLabel?.font = UIFont(name: MenuKORFont, size: MenuKORFontSize - 6.0)
+        //
+        imgUnderlinetitle.image = UIImage(named: Underline_Indigo)
+        imgUnderlinetitle.alpha = 0.5
+        imgUnderline.image = UIImage(named: Underline_Pink)
+        imgUnderline.alpha = 0.5
         //
         changeSegment()
     }

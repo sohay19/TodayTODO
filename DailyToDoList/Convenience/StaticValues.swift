@@ -35,15 +35,28 @@ let sendTypeKey = "sendType"
 
 //MARK: - Font
 let LogoFont = "NanumAJumMaJaYu"
+let CalendalFont = "EF_Diary"
+let CalendalFontSize = 18.0
 let MainFont = "NanumBaegEuiEuiCeonSa"
-let MainFontSize = 24.0
-let MenuKORFont = "NanumAmSeuTeReuDam"
+let MainFontSize = 21.0
+let SubFont = "NanumGeumEunBoHwa"
+let SubFontSize = 21.0
+let MenuKORFont = "NanumBaReunHiPi"
 let MenuKORFontSize = 24.0
-let MenuNUMFont = "Bazzi"
-let MenuNUMFontSize = 24.0
+let E_N_Font = "Windsor_Great_Park-Regular"
+let E_N_FontSize = 24.0
+let NumFont = "Bazzi"
+let NumFontSize = 18.0
+//segment
 let MenuENGFont = "NanumSquareRoundB"
-let MenuENGFontSize = 18.0
+let MenuENGFontSize = 12.0
+//sidemenu
+let SideMenuFont = "Worcestershire_Sauce_Press-Regular"
+let SideMenuFontSize = 27.0
+
 
 //MARK: - Image
-let BackgroundImage = "Background.jpg"
+let BackgroundImage = "Background\(Int.random(in: 1...5)).jpg"
 let BlackBackImage = "BlackBackground.png"
+let Underline_Indigo = "underline_Indigo.png"
+let Underline_Pink = "underline_Pink.png"

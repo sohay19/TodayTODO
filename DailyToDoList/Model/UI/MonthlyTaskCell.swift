@@ -23,11 +23,14 @@ class MonthlyTaskCell: UITableViewCell {
     
     func initCell() {
         self.backgroundColor = .clear
-        self.selectionStyle = .default
+        self.selectionStyle = .none
         //
-        separatorInset.left = 0
-        separatorInset.right = 0
+        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         labelMonthlyTitle.font = UIFont(name: MainFont, size: 24)
+        //
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .red
+        selectedBackgroundView = backgroundView
     }
 }

@@ -37,20 +37,24 @@ class CustomCalendarView : FSCalendar {
         self.calendarWeekdayView.weekdayLabels[5].text = "금"
         self.calendarWeekdayView.weekdayLabels[6].text = "토"
         //
-        self.appearance.weekdayTextColor = .secondaryLabel
-        self.appearance.weekdayFont = UIFont.boldSystemFont(ofSize: 15.0)
+        self.appearance.weekdayTextColor = .darkGray
+        self.appearance.weekdayFont = UIFont(name: CalendalFont, size: CalendalFontSize - 5.0)
         //
         self.headerHeight = 45
-        self.appearance.headerTitleOffset = CGPoint(x: 0, y: -6)
-        self.appearance.headerDateFormat = "YYYY년 MM월"
+        self.appearance.headerTitleOffset = CGPoint(x: 6, y: -6)
+        self.appearance.headerDateFormat = "YYYY. MM"
         self.appearance.headerTitleColor = .label
-        self.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 18.0)
+        self.appearance.headerTitleFont = UIFont(name: E_N_Font, size: E_N_FontSize)
         self.appearance.headerTitleAlignment = .left
         //
-        self.today = nil
+        self.today = Date()
+        self.appearance.todayColor = .clear
+        self.appearance.titleTodayColor = .systemPink
+        self.appearance.selectionColor = .systemIndigo
         //
-        self.appearance.titleWeekendColor = .red
+        self.appearance.titleWeekendColor = .systemIndigo
         self.appearance.titleDefaultColor = .label
+        self.appearance.titleFont = UIFont(name: CalendalFont, size: CalendalFontSize - 6.0)
         //
         self.select(Date())
     }

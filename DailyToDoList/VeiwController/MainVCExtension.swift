@@ -98,8 +98,6 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     //cell 클릭 Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //
-        tableView.deselectRow(at: indexPath, animated: false)
-        //
         openTaskInfo(.LOOK, taskList[indexPath.row], nil)
     }
 }
@@ -150,7 +148,7 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
             return nil
         }
         if monthlyTaskList.count > 0 {
-            return [UIColor.red]
+            return [UIColor.systemPink]
         } else {
             return nil
         }
