@@ -19,7 +19,7 @@ class DataManager {
     private init() { }
     
     private let cloudManager = CloudManager()
-    private var notificationToken:RLMNotificationToken = RLMNotificationToken.init()
+    private let pushManager = PushManager()
 }
 
 //MARK: - Func
@@ -28,13 +28,17 @@ extension DataManager {
         deleteiCloudBackupFile()
         RealmManager.shared.deleteOriginFile()
         //
-        PushManager.shared.deleteAllPush()
+        pushManager.deleteAllPush()
         RealmManager.shared.deleteAllAlarm()
     }
 }
 
 //MARK: - iCloud
 extension DataManager {
+    //
+    func getAllBackupFile() -> [(String, URL)] {
+        return cloudManager.getAllBackupFile()
+    }
     //
     func updateCloud(label:UILabel) {
         cloudManager.updateDate(label)
@@ -50,5 +54,12 @@ extension DataManager {
     //
     func deleteiCloudBackupFile() {
         cloudManager.deleteBackupFile()
+    }
+}
+
+//MARK: - Push
+extension DataManager {
+    func removeBadgeCnt() {
+        pushManager.removeBadgeCnt()
     }
 }

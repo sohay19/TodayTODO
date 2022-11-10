@@ -10,9 +10,6 @@ import UserNotifications
 import UIKit
 
 class PushManager {
-    static let shared = PushManager()
-    private init() { }
-        
     private let notiCenter = UNUserNotificationCenter.current()
 }
 
@@ -31,7 +28,7 @@ extension PushManager {
         //알림음 설정
         notiContent.sound = UNNotificationSound.default
         //뱃지 표시
-        notiContent.badge = (PushManager.shared.addBadgeCnt()) as NSNumber
+        notiContent.badge = (addBadgeCnt()) as NSNumber
         //썸네일
         do {
             //            let imageUrl = Bundle.main.url(forResource: "Tulips", withExtension: "jpg")
@@ -258,24 +255,6 @@ extension PushManager {
 
 //MARK: - Etc Event
 extension PushManager {
-    //종료일 체크
-    func checkExpiredPush() {
-        notiCenter.getPendingNotificationRequests(completionHandler: removeExpriedPush(_:))
-    }
-    //
-    func removeExpriedPush(_ requestList:[UNNotificationRequest]) {
-        for request in requestList {
-            guard let endDate = request.content.userInfo[endDateKey] as? String, let alarmTime = request.content.userInfo[alarmTimeKey] as? String else {
-                return
-            }
-            let today = Utils.dateToDateString(Date())
-            let currentTime = Utils.dateToTimeString(Date())
-            if endDate == today && alarmTime < currentTime {
-                let idList = RealmManager.shared.getAlarmIdList(request.content.userInfo[idKey] as! String)
-                self.deletePush(idList)
-            }
-        }
-    }
     //
     func getAllRequest(_ complete: @escaping ([UNNotificationRequest]) -> Void) {
         notiCenter.getPendingNotificationRequests(completionHandler: complete)

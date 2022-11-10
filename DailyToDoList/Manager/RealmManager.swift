@@ -16,6 +16,7 @@ class RealmManager {
     static let shared = RealmManager()
     private init() { }
     
+    private let pushManager = PushManager()
     private let fileManager = FileManager.default
     //
     var realmUrl:URL?
@@ -102,7 +103,7 @@ extension RealmManager {
             try realm.write {
                 realm.add(task)
                 if task.isAlarm {
-                    let idList = PushManager.shared.addNotification(task)
+                    let idList = pushManager.addNotification(task)
                     let alarmInfo = AlarmInfo(task.id, idList, task.alarmTime)
                     realm.add(alarmInfo)
                 }
@@ -126,16 +127,24 @@ extension RealmManager {
             if task.isAlarm {
                 if let alarmInfoData = getAlarmInfo(task.id) {
                     let idList = getAlarmIdList(task.id)
-                    newIdList = PushManager.shared.updatePush(idList, task)
+                    newIdList = pushManager.updatePush(idList, task)
                     try realm.write {
                         realm.delete(alarmInfoData)
                     }
                 } else {
-                    newIdList = PushManager.shared.addNotification(task)
+                    newIdList = pushManager.addNotification(task)
                 }
                 let alarmInfo = AlarmInfo(task.id, newIdList, task.alarmTime)
                 try realm.write {
                     realm.add(alarmInfo)
+                }
+            } else {
+                if let alarmInfoData = getAlarmInfo(task.id) {
+                    let idList = getAlarmIdList(task.id)
+                    try realm.write {
+                        realm.delete(alarmInfoData)
+                    }
+                    pushManager.deletePush(idList)
                 }
             }
             try realm.write {
@@ -167,7 +176,7 @@ extension RealmManager {
                     realm.delete(alarmInfoData)
                 }
                 let idList = getAlarmIdList(task.id)
-                PushManager.shared.deletePush(idList)
+                pushManager.deletePush(idList)
             }
             try realm.write {
                 realm.delete(task)

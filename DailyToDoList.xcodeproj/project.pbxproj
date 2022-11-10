@@ -41,6 +41,12 @@
 		CF535089291BA1BD00AFDC14 /* Worcestershire_Sauce-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF535086291BA1BD00AFDC14 /* Worcestershire_Sauce-Regular.ttf */; };
 		CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */; };
 		CF53508F291BB38A00AFDC14 /* underline_Pink.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508E291BB38A00AFDC14 /* underline_Pink.png */; };
+		CF535091291CC3F900AFDC14 /* Bricks.png in Resources */ = {isa = PBXBuildFile; fileRef = CF535090291CC3F900AFDC14 /* Bricks.png */; };
+		CF535093291CD19300AFDC14 /* LastPage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CF535092291CD19300AFDC14 /* LastPage.jpg */; };
+		CF535097291CD5E400AFDC14 /* sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = CF535095291CD5E400AFDC14 /* sticker.png */; };
+		CF535099291CDAA400AFDC14 /* LastPage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF535098291CDAA400AFDC14 /* LastPage.png */; };
+		CF53509F291CE8FA00AFDC14 /* spring.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53509E291CE8FA00AFDC14 /* spring.png */; };
+		CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */; };
 		CF7595FE28FD19870046FDC1 /* MonthlyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FD28FD19870046FDC1 /* MonthlyTaskCell.swift */; };
 		CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */; };
 		CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */; };
@@ -272,6 +278,12 @@
 		CF535086291BA1BD00AFDC14 /* Worcestershire_Sauce-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Worcestershire_Sauce-Regular.ttf"; sourceTree = "<group>"; };
 		CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Indigo.png; sourceTree = "<group>"; };
 		CF53508E291BB38A00AFDC14 /* underline_Pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Pink.png; sourceTree = "<group>"; };
+		CF535090291CC3F900AFDC14 /* Bricks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bricks.png; sourceTree = "<group>"; };
+		CF535092291CD19300AFDC14 /* LastPage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LastPage.jpg; sourceTree = "<group>"; };
+		CF535095291CD5E400AFDC14 /* sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sticker.png; sourceTree = "<group>"; };
+		CF535098291CDAA400AFDC14 /* LastPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LastPage.png; sourceTree = "<group>"; };
+		CF53509E291CE8FA00AFDC14 /* spring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring.png; sourceTree = "<group>"; };
+		CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpCell.swift; sourceTree = "<group>"; };
 		CF7595FD28FD19870046FDC1 /* MonthlyTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTaskCell.swift; sourceTree = "<group>"; };
 		CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCExtension.swift; sourceTree = "<group>"; };
@@ -521,10 +533,15 @@
 				CFE01AC92914FBA8005B3316 /* Background1.jpg */,
 				CFE01AFF291B777E005B3316 /* BlackBackground.png */,
 				CF53508E291BB38A00AFDC14 /* underline_Pink.png */,
+				CF535090291CC3F900AFDC14 /* Bricks.png */,
+				CF53509E291CE8FA00AFDC14 /* spring.png */,
 				CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */,
+				CF535098291CDAA400AFDC14 /* LastPage.png */,
 				CF535062291B96BB00AFDC14 /* Background2.jpg */,
 				CF535063291B96BB00AFDC14 /* Background3.jpg */,
+				CF535095291CD5E400AFDC14 /* sticker.png */,
 				CF535064291B96BB00AFDC14 /* Background4.jpg */,
+				CF535092291CD19300AFDC14 /* LastPage.jpg */,
 				CF535065291B96BB00AFDC14 /* Background5.jpg */,
 				CFE01AF32918E6BE005B3316 /* pencil.png */,
 			);
@@ -649,6 +666,7 @@
 				CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */,
 				CF75963629024F680046FDC1 /* PushCell.swift */,
 				CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */,
+				CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -938,10 +956,12 @@
 				CFE01AC22914F7F1005B3316 /* NanumAJumMaJaYu.ttf in Resources */,
 				CFE01ACA2914FBA8005B3316 /* Background1.jpg in Resources */,
 				CFEB49E728F13288008850DC /* LaunchScreen.storyboard in Resources */,
+				CF535099291CDAA400AFDC14 /* LastPage.png in Resources */,
 				CFD0B14628F91CDB0029D936 /* TaskInfo.storyboard in Resources */,
 				CFEB4A6628F165C2008850DC /* Category.storyboard in Resources */,
 				CF535069291B96BC00AFDC14 /* Background3.jpg in Resources */,
 				CF535083291BA10D00AFDC14 /* Windsor_Great_Park-Regular.ttf in Resources */,
+				CF53509F291CE8FA00AFDC14 /* spring.png in Resources */,
 				CFEB49E428F13288008850DC /* Assets.xcassets in Resources */,
 				CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */,
 				CF53508F291BB38A00AFDC14 /* underline_Pink.png in Resources */,
@@ -957,7 +977,10 @@
 				CF535087291BA1BD00AFDC14 /* Worcestershire_Sauce-Regular.ttf in Resources */,
 				CFE01AD529150091005B3316 /* NanumGeumEunBoHwa.ttf in Resources */,
 				CFEB4A6228F16234008850DC /* Repeat.storyboard in Resources */,
+				CF535097291CD5E400AFDC14 /* sticker.png in Resources */,
 				CF53506C291B96BC00AFDC14 /* Background4.jpg in Resources */,
+				CF535091291CC3F900AFDC14 /* Bricks.png in Resources */,
+				CF535093291CD19300AFDC14 /* LastPage.jpg in Resources */,
 				CFEB4A2E28F14B68008850DC /* Setting.storyboard in Resources */,
 				CFE01ACD2914FFF1005B3316 /* NanumSquareRoundB.ttf in Resources */,
 				CF535077291B9B1B00AFDC14 /* Worcestershire_Sauce_Press-Regular.ttf in Resources */,
@@ -1219,6 +1242,7 @@
 				CFEB4A3C28F14CB4008850DC /* Enums.swift in Sources */,
 				CF7595FE28FD19870046FDC1 /* MonthlyTaskCell.swift in Sources */,
 				CFEB4A3A28F14CA0008850DC /* Utils.swift in Sources */,
+				CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */,
 				CFEB4A6828F165D1008850DC /* CategoryViewController.swift in Sources */,
 				CFEB4A5628F1559D008850DC /* SystemManager.swift in Sources */,
 				CFEB4A5B28F155E5008850DC /* DataManager.swift in Sources */,

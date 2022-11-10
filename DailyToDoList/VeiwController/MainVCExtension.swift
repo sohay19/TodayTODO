@@ -62,7 +62,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             self.deleteTask(indexPath)
             success(true)
         }
-        delete.backgroundColor = .systemRed
+        delete.backgroundColor = .defaultPink
         
         let modify = UIContextualAction(style: .destructive, title: "수정") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.modifyTask(indexPath)
@@ -128,7 +128,7 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
             return nil
         }
         if monthlyTaskList.count > 0 {
-            return [UIColor.systemPink]
+            return [UIColor.defaultPink!]
         } else {
             return nil
         }

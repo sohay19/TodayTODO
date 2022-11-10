@@ -27,23 +27,26 @@ class SideMenuViewController : UIViewController {
         backgroundView.image = UIImage(named: BlackBackImage)
         view.insertSubview(backgroundView, at: 0)
         // 폰트 설정
-        btnTODO.titleLabel?.font = UIFont(name: SideMenuFont, size: SideMenuFontSize + 6.0)
-        btnPush.titleLabel?.font = UIFont(name: SideMenuFont, size: SideMenuFontSize + 6.0)
-        btnCategory.titleLabel?.font = UIFont(name: SideMenuFont, size: SideMenuFontSize + 6.0)
-        btnBackup.titleLabel?.font = UIFont(name: SideMenuFont, size: SideMenuFontSize + 6.0)
+        btnTODO.titleLabel?.font = UIFont(name: SideMenuFont, size: SideMenuFontSize)
+        btnPush.titleLabel?.font = UIFont(name: SideMenuFont, size: SideMenuFontSize)
+        btnCategory.titleLabel?.font = UIFont(name: SideMenuFont, size: SideMenuFontSize)
+        btnBackup.titleLabel?.font = UIFont(name: SideMenuFont, size: SideMenuFontSize)
     }
 }
 
 extension SideMenuViewController {
     @IBAction func clickBtnTODO(_ sender:Any) {
+        dismiss(animated: true)
         SystemManager.shared.moveMain()
     }
     //
     @IBAction func clickBtnPushList(_ sender:Any) {
+        dismiss(animated: true)
         SystemManager.shared.movePush()
     }
     //
     @IBAction func clickBtnBackup(_ sender:Any) {
+        dismiss(animated: true)
         SystemManager.shared.moveBackup()
     }
 }

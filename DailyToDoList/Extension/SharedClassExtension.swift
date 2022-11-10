@@ -7,6 +7,7 @@
 
 
 import Foundation
+import UIKit
 
 //MARK: - UserDefaults
 extension UserDefaults {
@@ -89,5 +90,12 @@ extension FileManager {
         } catch let error {
             handler?(error)
         }
+    }
+}
+
+//MARK: - Color
+extension UIColor {
+    class var defaultPink:UIColor? {
+        return UIColor(named: "DefaultPink")
     }
 }

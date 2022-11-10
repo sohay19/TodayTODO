@@ -43,7 +43,7 @@ class CustomCalendarView : FSCalendar {
         //
         self.today = Date()
         self.appearance.todayColor = .clear
-        self.appearance.titleTodayColor = .systemPink
+        self.appearance.titleTodayColor = .defaultPink
         self.appearance.selectionColor = .systemIndigo
         //
         self.appearance.titleWeekendColor = .systemIndigo

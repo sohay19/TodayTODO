@@ -101,8 +101,8 @@ extension MainViewController {
         // 폰트 설정
         labelTodayDate.font = UIFont(name: E_N_Font, size: E_N_FontSize)
         labelMonthDate.font = UIFont(name: E_N_Font, size: E_N_FontSize)
-        labelTodayNilMsg.font = UIFont(name: SubFont, size: SubFontSize)
-        labelMonthNilMsg.font = UIFont(name: SubFont, size: SubFontSize)
+        labelTodayNilMsg.font = UIFont(name: MenuKORFont, size: MenuKORFontSize)
+        labelMonthNilMsg.font = UIFont(name: MenuKORFont, size: MenuKORFontSize)
         //
         dailyTaskTable.backgroundColor = .clear
         dailyTaskTable.separatorInsetReference = .fromCellEdges
@@ -165,11 +165,7 @@ extension MainViewController {
                 }
             })
             //
-            if taskList.count == 0 {
-                labelTodayNilMsg.isHidden = false
-            } else {
-                labelTodayNilMsg.isHidden = true
-            }
+            checkNil()
             //
             dailyTaskTable.reloadData()
             dailyTaskTable.flashScrollIndicators()
@@ -276,6 +272,15 @@ extension MainViewController {
             SystemManager.shared.closeLoading()
         }
     }
+    //
+    func checkNil() {
+        //
+        if taskList.count == 0 {
+            labelTodayNilMsg.isHidden = false
+        } else {
+            labelTodayNilMsg.isHidden = true
+        }
+    }
     // 선택된 날짜에 맞는 테이블 로드
     func changeDay() {
         //
@@ -358,6 +363,7 @@ extension MainViewController {
         switch segmentedController.selectedSegmentIndex {
         case 0:
             dailyTaskTable.deleteRows(at: [indexPath], with: .none)
+            checkNil()
         case 1:
             SystemManager.shared.openLoading()
             loadTask()

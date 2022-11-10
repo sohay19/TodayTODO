@@ -18,8 +18,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0d-ne-KII" userLabel="BtnSideMenu">
-                                <rect key="frame" x="6" y="39" width="53" height="53"/>
+                                <rect key="frame" x="9" y="39" width="42" height="42"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="3hE-4d-Esp"/>
                                     <constraint firstAttribute="width" secondItem="H0d-ne-KII" secondAttribute="height" multiplier="1:1" id="plq-JI-Dc7"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
@@ -32,7 +33,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qs4-bw-qt3" customClass="CustomSegmentControl" customModule="DailyToDoList" customModuleProvider="target">
-                                <rect key="frame" x="150.5" y="50" width="113" height="32"/>
+                                <rect key="frame" x="150.5" y="44.5" width="113" height="32"/>
                                 <segments>
                                     <segment title="Today"/>
                                     <segment title="All"/>
@@ -41,21 +42,25 @@
                                     <action selector="changeSegment:" destination="Y6W-OH-hqX" eventType="valueChanged" id="eo4-vW-LvU"/>
                                 </connections>
                             </segmentedControl>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b2u-9d-h0V">
-                                <rect key="frame" x="9" y="111" width="90" height="36"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b2u-9d-h0V">
+                                <rect key="frame" x="9" y="93.5" width="97.5" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="b2u-9d-h0V" secondAttribute="height" multiplier="2.5:1" identifier="aspect" id="9oi-9k-AhW"/>
-                                    <constraint firstAttribute="height" constant="36" identifier="height" id="WLJ-Pd-xSr"/>
+                                    <constraint firstAttribute="height" constant="39" identifier="height" id="WLJ-Pd-xSr"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today Push" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSh-CA-wzF">
-                                <rect key="frame" x="4.5" y="111" width="99" height="21"/>
+                                <rect key="frame" x="8.5" y="105.5" width="99" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyo-yY-97R" userLabel="BtnEdit">
-                                <rect key="frame" x="370.5" y="54.5" width="25.5" height="22"/>
+                                <rect key="frame" x="363" y="39" width="42" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="CN5-QI-uoC"/>
+                                    <constraint firstAttribute="width" secondItem="Iyo-yY-97R" secondAttribute="height" multiplier="1:1" id="pFI-sM-VFF"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="scissors" catalog="system">
@@ -66,7 +71,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kGG-Zy-ClK">
-                                <rect key="frame" x="30" y="150" width="354" height="712"/>
+                                <rect key="frame" x="30" y="144.5" width="354" height="717.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PushCell" id="FvR-NB-mBp" customClass="PushCell" customModule="DailyToDoList" customModuleProvider="target">
@@ -111,8 +116,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 등록된 TODO가 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8R-IL-C5D" userLabel="Message">
-                                <rect key="frame" x="121.5" y="180" width="171" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="예정된 알림이 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8R-IL-C5D" userLabel="Message">
+                                <rect key="frame" x="144.5" y="174.5" width="125" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -125,9 +130,8 @@
                             <constraint firstItem="Iyo-yY-97R" firstAttribute="centerY" secondItem="Qs4-bw-qt3" secondAttribute="centerY" id="EwG-fz-0Wi"/>
                             <constraint firstItem="sSh-CA-wzF" firstAttribute="top" secondItem="Qs4-bw-qt3" secondAttribute="bottom" constant="30" id="JS4-YQ-siM"/>
                             <constraint firstItem="Qs4-bw-qt3" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="OAb-Yg-E9f"/>
-                            <constraint firstItem="Iyo-yY-97R" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qs4-bw-qt3" secondAttribute="trailing" constant="60" id="SYb-qY-WWe"/>
                             <constraint firstItem="b2u-9d-h0V" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="9" id="X3S-3z-8jG"/>
-                            <constraint firstItem="H0d-ne-KII" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="6" id="XHd-Kc-PTT"/>
+                            <constraint firstItem="H0d-ne-KII" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="9" id="XHd-Kc-PTT"/>
                             <constraint firstItem="H0d-ne-KII" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-9" id="ZYQ-Qf-8fv"/>
                             <constraint firstItem="kGG-Zy-ClK" firstAttribute="top" secondItem="sSh-CA-wzF" secondAttribute="bottom" constant="18" id="ZgZ-4a-QmQ"/>
                             <constraint firstItem="v8R-IL-C5D" firstAttribute="centerX" secondItem="kGG-Zy-ClK" secondAttribute="centerX" id="byp-BQ-r5x"/>
@@ -136,8 +140,8 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="kGG-Zy-ClK" secondAttribute="bottom" id="gSE-AD-WZw"/>
                             <constraint firstItem="v8R-IL-C5D" firstAttribute="top" secondItem="kGG-Zy-ClK" secondAttribute="top" constant="30" id="iYj-r7-PT4"/>
                             <constraint firstItem="Qs4-bw-qt3" firstAttribute="centerY" secondItem="H0d-ne-KII" secondAttribute="centerY" id="lLO-AR-ltH"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Iyo-yY-97R" secondAttribute="trailing" constant="18" id="n4C-lT-AzX"/>
-                            <constraint firstItem="b2u-9d-h0V" firstAttribute="bottom" secondItem="sSh-CA-wzF" secondAttribute="bottom" constant="15" identifier="bottom" id="odW-zy-oIp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Iyo-yY-97R" secondAttribute="trailing" constant="9" id="n4C-lT-AzX"/>
+                            <constraint firstItem="b2u-9d-h0V" firstAttribute="bottom" secondItem="sSh-CA-wzF" secondAttribute="bottom" constant="6" identifier="bottom" id="odW-zy-oIp"/>
                         </constraints>
                     </view>
                     <connections>

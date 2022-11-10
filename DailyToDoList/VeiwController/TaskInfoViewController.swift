@@ -188,7 +188,7 @@ extension TaskInfoViewController {
         pickAlarmTime.isHidden = !taskData.isAlarm
         labelNoAlarm.isHidden = taskData.isAlarm
         if taskData.isAlarm {
-            pickAlarmTime.date = Utils.stringToDate("\(taskData.taskDay)_\(taskData.alarmTime)")!
+            pickAlarmTime.date = Utils.stringToDate("\(taskData.taskDay)_\(taskData.alarmTime):00")!
         }
         textView.text = taskData.memo
     }

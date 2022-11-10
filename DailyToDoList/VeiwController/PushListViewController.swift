@@ -18,12 +18,6 @@ class PushListViewController : UIViewController {
     @IBOutlet weak var labelNilMsg: UILabel!
     
     var pushList:[AlarmInfo] = []
-    var heightConstraint:NSLayoutConstraint?
-    var bottomConstraint:NSLayoutConstraint?
-    var heightOriginValue:CGFloat = 0.0
-    var bottomOriginValue:CGFloat = 0.0
-    var heightChangeValue:CGFloat = 39.0
-    var bottomChangeValue:CGFloat = 6.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +26,10 @@ class PushListViewController : UIViewController {
         //
         pushTable.delegate = self
         pushTable.dataSource = self
+        //
+        pushTable.allowsSelectionDuringEditing = true
+        pushTable.allowsMultipleSelectionDuringEditing = true
+        pushTable.allowsFocusDuringEditing = true
         //
         initUI()
         //
@@ -89,20 +87,6 @@ extension PushListViewController {
         //
         imgUnderline.alpha = 0.3
         //
-        for const in imgUnderline.constraints {
-            if const.identifier == "height" {
-                heightConstraint = const
-                heightOriginValue = const.constant
-            }
-        }
-        for const in view.constraints {
-            if const.identifier == "bottom" {
-                bottomConstraint = const
-                bottomOriginValue = const.constant
-                return
-            }
-        }
-        //
         changeTitle()
     }
     //
@@ -111,19 +95,9 @@ extension PushListViewController {
         case 0:
             labelDate.text = "Today Push"
             imgUnderline.image = UIImage(named: Underline_Pink)
-            guard let heightConstraint = heightConstraint, let bottomConstraint = bottomConstraint else {
-                return
-            }
-            heightConstraint.constant = heightOriginValue
-            bottomConstraint.constant = bottomOriginValue
         case 1:
             labelDate.text = "All Push"
             imgUnderline.image = UIImage(named: Underline_Indigo)
-            guard let heightConstraint = heightConstraint, let bottomConstraint = bottomConstraint else {
-                return
-            }
-            heightConstraint.constant = heightChangeValue
-            bottomConstraint.constant = bottomChangeValue
         default:
             break
         }
@@ -150,8 +124,6 @@ extension PushListViewController {
         let newTask = EachTask(id: task.id, taskDay: task.taskDay, category: task.category, title: task.title, memo: task.memo, repeatType: task.repeatType, weekDay: task.getWeekDayList(), weekOfMonth: task.weekOfMonth, isEnd: task.isEnd, taskEndDate: task.taskEndDate, isAlarm: false, alarmTime: "", isDone: task.isDone)
         // task data 업데이트
         RealmManager.shared.updateTaskDataForiOS(newTask)
-        // 알람만 삭제
-        PushManager.shared.deletePush(pushList[indexPath.row].alarmIdList.map{$0})
         // 리스트 삭제
         pushList.remove(at: indexPath.row)
         pushTable.reloadData()
@@ -170,7 +142,7 @@ extension PushListViewController {
     //
     @IBAction func changeDailyTaskEditMode(_ sender:UIButton) {
         if pushList.count == 0 {
-            PopupManager.shared.openOkAlert(self, title: "알림", msg: "현재 예정된 푸시가 없어요")
+            PopupManager.shared.openOkAlert(self, title: "알림", msg: "편집 가능한 알림이 없습니다")
             return
         }
         changeEditMode()
@@ -179,9 +151,15 @@ extension PushListViewController {
         if pushTable.isEditing {
             btnEdit.setImage(UIImage(systemName: "scissors"), for: .normal)
             pushTable.setEditing(false, animated: false)
+            for cell in pushTable.visibleCells {
+                cell.selectionStyle = .none
+            }
         } else {
-            btnEdit.setImage(UIImage(systemName: "return"), for: .normal)
+            btnEdit.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right"), for: .normal)
             pushTable.setEditing(true, animated: false)
+            for cell in pushTable.visibleCells {
+                cell.selectionStyle = .default
+            }
         }
     }
 }

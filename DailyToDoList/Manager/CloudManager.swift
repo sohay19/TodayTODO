@@ -28,6 +28,14 @@ class CloudManager {
 //MARK: - Display
 extension CloudManager {
     //
+    func getAllBackupFile() -> [(String, URL)] {
+        guard let backupDir = backupDir else {
+            return []
+        }
+        let fileList = fileManager.loadFile(backupDir)
+        return fileList.map{($0, backupDir.appendingPathExtension($0))}
+    }
+    //
     func updateDate(_ label:UILabel) {
         labelDate = label
         label.text = fileDate()
@@ -38,7 +46,7 @@ extension CloudManager {
             //기본 백업폴더 없으면 만들기
             return "iCloud Drive를 사용해주세요"
         }
-        guard let backupDir = backupDir else {
+        guard let backupDir = backupDir else {                                                    
             return "다시 시도 해주세요"
         }
         if !fileManager.fileExists(atPath: backupDir.path) {

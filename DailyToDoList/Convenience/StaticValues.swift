@@ -43,8 +43,10 @@ let SubFont = "NanumGeumEunBoHwa"
 let SubFontSize = 21.0
 let MenuKORFont = "NanumBaReunHiPi"
 let MenuKORFontSize = 18.0
-let E_N_Font = "Worcestershire_Sauce-Regular" //"Windsor_Great_Park-Regular"
+let E_N_Font = "Worcestershire_Sauce-Regular"
 let E_N_FontSize = 21.0
+let E_N_Font_s = "Windsor_Great_Park-Regular"
+let E_N_Font_sSize = 21.0
 let NumFont = "Bazzi"
 let NumFontSize = 18.0
 //segment
@@ -52,7 +54,7 @@ let MenuENGFont = "NanumSquareRoundB"
 let MenuENGFontSize = 12.0
 //sidemenu
 let SideMenuFont = "Worcestershire_Sauce_Press-Regular"
-let SideMenuFontSize = 27.0
+let SideMenuFontSize = 33.0
 
 
 //MARK: - Image
@@ -60,3 +62,5 @@ let BackgroundImage = "Background\(Int.random(in: 1...5)).jpg"
 let BlackBackImage = "BlackBackground.png"
 let Underline_Indigo = "underline_Indigo.png"
 let Underline_Pink = "underline_Pink.png"
+let Bricks = "Bricks.png"
+let LastPageImage = "LastPage.png"

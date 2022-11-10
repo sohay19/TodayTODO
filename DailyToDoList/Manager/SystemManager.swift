@@ -114,9 +114,7 @@ extension SystemManager {
         guard let navigation = beforeVC.navigationController as? CustomNavigationController else {
             return
         }
-        navigation.popToRootViewController(complete: {
-            sideMenuNavigation.dismiss(animated: true)
-        })
+        navigation.popToRootViewController()
     }
     //Push Page
     func movePush() {
@@ -134,7 +132,6 @@ extension SystemManager {
         guard let nextVC = board.instantiateViewController(withIdentifier: pushListBoard) as? PushListViewController else { return }
         navigation.popToRootViewController(complete: {
             navigation.pushViewController(nextVC)
-            sideMenuNavigation.dismiss(animated: true)
         })
     }
     //BackUp Page
@@ -151,9 +148,7 @@ extension SystemManager {
         //
         let board = UIStoryboard(name: settingBoard, bundle: nil)
         guard let nextVC = board.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }
-        navigation.pushViewController(nextVC, complete: {
-            sideMenuNavigation.dismiss(animated: true)
-        })
+        navigation.pushViewController(nextVC)
     }
 }
 

@@ -21,6 +21,16 @@ class MonthlyTaskCell: UITableViewCell {
         initCell()
     }
     
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        //
+        if highlighted {
+            labelMonthlyTitle.textColor = .systemIndigo
+        } else {
+            labelMonthlyTitle.textColor = .label
+        }
+    }
+    
     func initCell() {
         self.backgroundColor = .clear
         self.selectionStyle = .none
@@ -28,9 +38,5 @@ class MonthlyTaskCell: UITableViewCell {
         separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         labelMonthlyTitle.font = UIFont(name: MainFont, size: 24)
-        //
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = .red
-        selectedBackgroundView = backgroundView
     }
 }

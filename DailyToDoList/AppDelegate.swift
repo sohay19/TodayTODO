@@ -93,8 +93,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //Silent Push
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Silent Push Notification")
-        //무음 푸시를 받으면 종료일이 지난 노티 삭제
-        PushManager.shared.checkExpiredPush()
     }
 }
 
@@ -109,17 +107,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             return
         }
         print("[pushType :: \(pushType)]")
-        //푸시 종료일 확인
+        
         switch PushType(rawValue: pushType) {
         case .Alert:
-            if let endDate = userInfo[endDateKey] as? String {
-                print("[endDate :: \(endDate)]")
-                let today = Utils.dateToDateString(Date())
-                if endDate <= today {
-                    let idList = RealmManager.shared.getAlarmIdList(userInfo[idKey] as! String)
-                    PushManager.shared.deletePush(idList)
-                }
-            }
             completionHandler([.banner, .list, .badge, .sound])
         default:
             completionHandler([.banner, .list, .badge, .sound])
@@ -134,17 +124,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             return
         }
         print("[pushType :: \(pushType)]")
-        //푸시 종료일 확인
+        
         switch PushType(rawValue: pushType) {
         case .Alert:
-            if let endDate = userInfo[endDateKey] as? String {
-                print("[endDate :: \(endDate)]")
-                let today = Utils.dateToDateString(Date())
-                if endDate <= today {
-                    let idList = RealmManager.shared.getAlarmIdList(userInfo[idKey] as! String)
-                    PushManager.shared.deletePush(idList)
-                }
-            }
             completionHandler()
         default:
             completionHandler()

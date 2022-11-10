@@ -63,7 +63,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             repeatMsg = "반복 없음"
         }
         pushCell.labelRepeat.text = repeatMsg
-        //
+        
         return pushCell
     }
     //MARK: - Swipe
@@ -74,15 +74,16 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             self.deletePush(indexPath)
             success(true)
         }
-        delete.backgroundColor = .systemRed
+        delete.backgroundColor = .defaultPink
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete])
     }
     //MARK: - Event
     //cell 클릭 Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        //
+        if pushTable.isEditing {
+            return
+        }
         let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
         guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
         guard let data = RealmManager.shared.getTaskData(pushList[indexPath.row].taskId) else {
@@ -97,7 +98,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Edit
     //Row별 EditMode-
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
+        return .none
     }
     //EditMode별 Event
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

@@ -19,18 +19,32 @@ class PushCell : UITableViewCell {
         initCell()
     }
     
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        //
+        if highlighted {
+            labelTitle.textColor = .systemPink
+            labelAlarmTime.textColor = .systemPink
+            labelRepeat.textColor = .systemPink
+        } else {
+            labelTitle.textColor = .label
+            labelAlarmTime.textColor = .label
+            labelRepeat.textColor = .label
+        }
+    }
+    
     func initCell() {
         self.backgroundColor = .clear
         self.selectionStyle = .none
         //
         separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
-        labelTitle.font = UIFont(name: MainFont, size: MainFontSize)
+        labelTitle.font = UIFont(name: MainFont, size: MainFontSize + 3.0)
         labelAlarmTime.font = UIFont(name: NumFont, size: NumFontSize)
         labelRepeat.font = UIFont(name: SubFont, size: SubFontSize)
         //
         let backgroundView = UIView()
-        backgroundView.backgroundColor = .red
+        backgroundView.backgroundColor = .clear
         selectedBackgroundView = backgroundView
     }
 }
