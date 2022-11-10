@@ -42,9 +42,9 @@ let MainFontSize = 21.0
 let SubFont = "NanumGeumEunBoHwa"
 let SubFontSize = 21.0
 let MenuKORFont = "NanumBaReunHiPi"
-let MenuKORFontSize = 24.0
-let E_N_Font = "Windsor_Great_Park-Regular"
-let E_N_FontSize = 24.0
+let MenuKORFontSize = 18.0
+let E_N_Font = "Worcestershire_Sauce-Regular" //"Windsor_Great_Park-Regular"
+let E_N_FontSize = 21.0
 let NumFont = "Bazzi"
 let NumFontSize = 18.0
 //segment

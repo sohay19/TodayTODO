@@ -11,7 +11,7 @@ import FSCalendar
 
 //MARK: - TableView
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
-    //
+    //MARK: - Default
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taskList.count
     }
@@ -38,6 +38,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             return taskCell
         }
     }
+    //MARK: - Swipe
     //왼쪽 스와이프
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         //Done Or Not
@@ -71,30 +72,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete, modify])
     }
-    //Row별 EditMode-
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if taskList[indexPath.row].isDone {
-            dailyTaskTable.cellForRow(at: indexPath)?.editingAccessoryType = .checkmark
-        }
-        
-        return .delete
-    }
-    //EditMode별 Event
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            deleteTask(indexPath)
-        }
-    }
-    //cell별 이동 가능 여부
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return taskList[indexPath.row].isDone ? false : true
-    }
-    //Row Move
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let task = taskList[sourceIndexPath.row]
-        taskList.remove(at: sourceIndexPath.row)
-        taskList.insert(task, at: destinationIndexPath.row)
-    }
+    //MARK: - Event
     //cell 클릭 Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //
@@ -128,6 +106,8 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
         }
         currentDate = firstDate
         calendarView.select(currentDate)
+        changeDate()
+        //
         SystemManager.shared.openLoading()
         loadTask()
     }

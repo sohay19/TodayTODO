@@ -131,9 +131,16 @@ class EachTask : Object
         self.isDone = isDone
     }
     
-    func setAlarm(_ time:Date) {
-        self.isAlarm = true
-        self.alarmTime = Utils.dateToTimeString(time)
+    func setAlarm(_ time:Date?) {
+        if let time = time {
+            self.isAlarm = true
+            var time = Utils.dateToTimeString(time).split(separator: ":")
+            time.removeLast()
+            self.alarmTime = time.joined(separator: ":")
+        } else {
+            self.isAlarm = false
+            self.alarmTime = ""
+        }
     }
     
     func setEndDate(_ endDate:Date) {

@@ -11,13 +11,19 @@ import UIKit
 
 class PushListViewController : UIViewController {
     @IBOutlet weak var imgUnderline: UIImageView!
-    @IBOutlet weak var imgUnderlinetitle: UIImageView!
     @IBOutlet weak var pushTable: UITableView!
     @IBOutlet weak var segmentedController: CustomSegmentControl!
     @IBOutlet weak var labelDate: UILabel!
-    @IBOutlet weak var btnDeleteAll: UIButton!
+    @IBOutlet weak var btnEdit: UIButton!
+    @IBOutlet weak var labelNilMsg: UILabel!
     
     var pushList:[AlarmInfo] = []
+    var heightConstraint:NSLayoutConstraint?
+    var bottomConstraint:NSLayoutConstraint?
+    var heightOriginValue:CGFloat = 0.0
+    var bottomOriginValue:CGFloat = 0.0
+    var heightChangeValue:CGFloat = 39.0
+    var bottomChangeValue:CGFloat = 6.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +45,7 @@ class PushListViewController : UIViewController {
             //
             loadPushData()
             //
-            changeSegment()
+            changeTitle()
         }
     }
 }
@@ -59,6 +65,7 @@ extension PushListViewController {
             break
         }
         //
+        labelNilMsg.isHidden = pushList.count == 0 ? false : true
         pushTable.reloadData()
         //
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -77,23 +84,46 @@ extension PushListViewController {
         pushTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         pushTable.separatorColor = .label
         //
-        labelDate.font = UIFont(name: MenuKORFont, size: MenuKORFontSize)
-        btnDeleteAll.titleLabel?.font = UIFont(name: MenuKORFont, size: MenuKORFontSize - 6.0)
+        labelDate.font = UIFont(name: E_N_Font, size: E_N_FontSize)
+        labelNilMsg.font = UIFont(name: MenuKORFont, size: MenuKORFontSize)
         //
-        imgUnderlinetitle.image = UIImage(named: Underline_Indigo)
-        imgUnderlinetitle.alpha = 0.5
-        imgUnderline.image = UIImage(named: Underline_Pink)
-        imgUnderline.alpha = 0.5
+        imgUnderline.alpha = 0.3
         //
-        changeSegment()
+        for const in imgUnderline.constraints {
+            if const.identifier == "height" {
+                heightConstraint = const
+                heightOriginValue = const.constant
+            }
+        }
+        for const in view.constraints {
+            if const.identifier == "bottom" {
+                bottomConstraint = const
+                bottomOriginValue = const.constant
+                return
+            }
+        }
+        //
+        changeTitle()
     }
     //
-    func changeSegment() {
+    func changeTitle() {
         switch segmentedController.selectedSegmentIndex {
         case 0:
-            labelDate.text = "오늘 예정된 알람"
+            labelDate.text = "Today Push"
+            imgUnderline.image = UIImage(named: Underline_Pink)
+            guard let heightConstraint = heightConstraint, let bottomConstraint = bottomConstraint else {
+                return
+            }
+            heightConstraint.constant = heightOriginValue
+            bottomConstraint.constant = bottomOriginValue
         case 1:
-            labelDate.text = "모든 예정된 알람"
+            labelDate.text = "All Push"
+            imgUnderline.image = UIImage(named: Underline_Indigo)
+            guard let heightConstraint = heightConstraint, let bottomConstraint = bottomConstraint else {
+                return
+            }
+            heightConstraint.constant = heightChangeValue
+            bottomConstraint.constant = bottomChangeValue
         default:
             break
         }
@@ -113,6 +143,13 @@ extension PushListViewController {
     }
     //
     func deletePush(_ indexPath:IndexPath) {
+        let id = pushList[indexPath.row].taskId
+        guard let task = RealmManager.shared.getTaskData(id) else {
+            return
+        }
+        let newTask = EachTask(id: task.id, taskDay: task.taskDay, category: task.category, title: task.title, memo: task.memo, repeatType: task.repeatType, weekDay: task.getWeekDayList(), weekOfMonth: task.weekOfMonth, isEnd: task.isEnd, taskEndDate: task.taskEndDate, isAlarm: false, alarmTime: "", isDone: task.isDone)
+        // task data 업데이트
+        RealmManager.shared.updateTaskDataForiOS(newTask)
         // 알람만 삭제
         PushManager.shared.deletePush(pushList[indexPath.row].alarmIdList.map{$0})
         // 리스트 삭제
@@ -127,12 +164,24 @@ extension PushListViewController {
         SystemManager.shared.openSideMenu(self)
     }
     //SegmentedControl
-    @IBAction func changeSegment(_ sender:UISegmentedControl) {//
+    @IBAction func changeSegment(_ sender:UISegmentedControl) {
         viewWillAppear(true)
     }
     //
-    @IBAction func deleteAllNoti(_ sender:Any) {
-        PushManager.shared.deleteAllPush()
-        RealmManager.shared.deleteAllAlarm()
+    @IBAction func changeDailyTaskEditMode(_ sender:UIButton) {
+        if pushList.count == 0 {
+            PopupManager.shared.openOkAlert(self, title: "알림", msg: "현재 예정된 푸시가 없어요")
+            return
+        }
+        changeEditMode()
+    }
+    private func changeEditMode() {
+        if pushTable.isEditing {
+            btnEdit.setImage(UIImage(systemName: "scissors"), for: .normal)
+            pushTable.setEditing(false, animated: false)
+        } else {
+            btnEdit.setImage(UIImage(systemName: "return"), for: .normal)
+            pushTable.setEditing(true, animated: false)
+        }
     }
 }

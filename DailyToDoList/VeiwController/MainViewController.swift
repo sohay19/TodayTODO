@@ -9,9 +9,11 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var imageViewButon: UIImageView!
-    @IBOutlet weak var imgUnderline: UIImageView!
+    @IBOutlet weak var imgTodayUnderline: UIImageView!
+    @IBOutlet weak var imgMonthUnderline: UIImageView!
     //
-    @IBOutlet weak var labelDate: UILabel!
+    @IBOutlet weak var labelTodayDate: UILabel!
+    @IBOutlet weak var labelMonthDate: UILabel!
     @IBOutlet weak var labelTodayNilMsg: UILabel!
     @IBOutlet weak var labelMonthNilMsg: UILabel!
     //
@@ -23,8 +25,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var calendarView: CustomCalendarView!
     @IBOutlet weak var todayView: UIView!
     @IBOutlet weak var monthView: UIView!
-    //
-    @IBOutlet weak var btnEdit: UIButton!
     
     //
     var currentDate:Date = Date()
@@ -34,6 +34,7 @@ class MainViewController: UIViewController {
     //key = 일자
     var monthlyTaskList:[Int:[EachTask]] = [:]
     var taskDateKeyList:[Int] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,9 +81,15 @@ class MainViewController: UIViewController {
 extension MainViewController {
     func initDate() {
         let date = Utils.dateToDateString(Date()).split(separator: "-")
-        labelDate.text = date.joined(separator: ". ")
+        labelTodayDate.text = date.joined(separator: ". ")
+        changeDate()
     }
-    
+    func changeDate() {
+        var date = Utils.dateToDateString(currentDate).split(separator: "-")
+        date.removeLast()
+        labelMonthDate.text = date.joined(separator: ". ")
+    }
+    //
     func initUI() {
         // 배경 설정
         let backgroundView = UIImageView(frame: UIScreen.main.bounds)
@@ -92,8 +99,10 @@ extension MainViewController {
         todayView.backgroundColor = .clear
         monthView.backgroundColor = .clear
         // 폰트 설정
-        labelDate.font = UIFont(name: E_N_Font, size: E_N_FontSize+3.0)
-        btnEdit.titleLabel?.font = UIFont(name: E_N_Font, size: E_N_FontSize)
+        labelTodayDate.font = UIFont(name: E_N_Font, size: E_N_FontSize)
+        labelMonthDate.font = UIFont(name: E_N_Font, size: E_N_FontSize)
+        labelTodayNilMsg.font = UIFont(name: SubFont, size: SubFontSize)
+        labelMonthNilMsg.font = UIFont(name: SubFont, size: SubFontSize)
         //
         dailyTaskTable.backgroundColor = .clear
         dailyTaskTable.separatorInsetReference = .fromCellEdges
@@ -104,8 +113,10 @@ extension MainViewController {
         monthlyTaskTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         monthlyTaskTable.separatorColor = .label
         //
-        imgUnderline.image = UIImage(named: Underline_Indigo)
-        imgUnderline.alpha = 0.5
+        imgTodayUnderline.image = UIImage(named: Underline_Pink)
+        imgTodayUnderline.alpha = 0.3
+        imgMonthUnderline.image = UIImage(named: Underline_Indigo)
+        imgMonthUnderline.alpha = 0.3
         //
         monthView.isHidden = true
     }
@@ -405,11 +416,7 @@ extension MainViewController {
 
 //MARK: - Button Event
 extension MainViewController {
-    @objc func clickTaskAdd(_ sender:UITapGestureRecognizer) {//
-        if dailyTaskTable.isEditing {
-            changeEditMode()
-            return
-        }
+    @objc func clickTaskAdd(_ sender:UITapGestureRecognizer) {
         let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
         guard let nextVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
         //
@@ -422,25 +429,8 @@ extension MainViewController {
         
         present(nextVC, animated: true)
     }
-    //
-    @IBAction func changeDailyTaskEditMode(_ sender:UIButton) {
-        changeEditMode()
-    }
-    private func changeEditMode() {
-        if dailyTaskTable.isEditing {
-            btnEdit.setTitle("Edit", for: .normal)
-            dailyTaskTable.setEditing(false, animated: false)
-        } else {
-            btnEdit.setTitle("Done", for: .normal)
-            dailyTaskTable.setEditing(true, animated: false)
-        }
-    }
     //SegmentedControl
-    @IBAction func changeSegment(_ sender:UISegmentedControl) {//
-        if dailyTaskTable.isEditing {
-            changeEditMode()
-            return
-        }
+    @IBAction func changeSegment(_ sender:UISegmentedControl) {
         currentDate = Date()
         calendarView.select(currentDate)
         //
@@ -449,11 +439,7 @@ extension MainViewController {
         viewWillAppear(true)
     }
     //SideMenu
-    @IBAction func clickSideMenu(_ sender:Any) {//
-        if dailyTaskTable.isEditing {
-            changeEditMode()
-            return
-        }
+    @IBAction func clickSideMenu(_ sender:Any) {
         SystemManager.shared.openSideMenu(self)
     }
 }

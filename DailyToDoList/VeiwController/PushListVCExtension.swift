@@ -24,9 +24,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         pushCell.labelTitle.text = pushData.title
-        var time = pushData.alarmTime.split(separator: ":")
-        time.removeLast()
-        pushCell.labelAlarmTime.text = time.joined(separator: ":")
+        pushCell.labelAlarmTime.text = pushData.alarmTime
         //
         var repeatMsg = ""
         switch RepeatType(rawValue: pushData.repeatType) {
@@ -68,7 +66,6 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         //
         return pushCell
     }
-    
     //MARK: - Swipe
     //오른쪽 스와이프
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -81,7 +78,6 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete])
     }
-    
     //MARK: - Event
     //cell 클릭 Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -98,4 +94,25 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         
         present(taskInfoVC, animated: true)
     }
+    //MARK: - Edit
+    //Row별 EditMode-
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    //EditMode별 Event
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deletePush(indexPath)
+        }
+    }
+    //cell별 이동 가능 여부
+//    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+//        return false : true
+//    }
+//    //Row Move
+//    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//        let task = taskList[sourceIndexPath.row]
+//        taskList.remove(at: sourceIndexPath.row)
+//        taskList.insert(task, at: destinationIndexPath.row)
+//    }
 }

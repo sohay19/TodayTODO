@@ -25,6 +25,7 @@ class CustomCalendarView : FSCalendar {
         self.appearance.headerMinimumDissolvedAlpha = 0.0
         //
         self.placeholderType = .none
+        self.headerHeight = 0
         //
         self.scrollEnabled = true
         self.scrollDirection = .vertical
@@ -39,13 +40,6 @@ class CustomCalendarView : FSCalendar {
         //
         self.appearance.weekdayTextColor = .darkGray
         self.appearance.weekdayFont = UIFont(name: CalendalFont, size: CalendalFontSize - 5.0)
-        //
-        self.headerHeight = 45
-        self.appearance.headerTitleOffset = CGPoint(x: 6, y: -6)
-        self.appearance.headerDateFormat = "YYYY. MM"
-        self.appearance.headerTitleColor = .label
-        self.appearance.headerTitleFont = UIFont(name: E_N_Font, size: E_N_FontSize)
-        self.appearance.headerTitleAlignment = .left
         //
         self.today = Date()
         self.appearance.todayColor = .clear
