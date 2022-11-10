@@ -23,6 +23,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         guard let pushData = pushData else {
             return UITableViewCell()
         }
+        pushCell.isToday = segmentedController.selectedSegmentIndex == 0 ? true : false
         pushCell.labelTitle.text = pushData.title
         pushCell.labelAlarmTime.text = pushData.alarmTime
         //
@@ -74,7 +75,8 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             self.deletePush(indexPath)
             success(true)
         }
-        delete.backgroundColor = .defaultPink
+        delete.image = UIImage(systemName: "trash.fill")
+        delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete])
     }

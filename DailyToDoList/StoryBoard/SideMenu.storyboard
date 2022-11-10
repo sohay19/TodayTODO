@@ -12,6 +12,7 @@
         <!--Custom Side Menu Navigation-->
         <scene sceneID="4tg-qz-PGo">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rtY-vU-YGQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="SideMenu" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xRO-z0-NBE" customClass="CustomSideMenuNavigation" customModule="DailyToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cxA-3C-d0e">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
@@ -21,7 +22,6 @@
                         <segue destination="bow-oY-qQo" kind="relationship" relationship="rootViewController" id="TkI-cW-D4i"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rtY-vU-YGQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-203" y="151"/>
         </scene>
@@ -34,9 +34,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODd-MY-6ga">
-                                <rect key="frame" x="164.5" y="212" width="85" height="48"/>
+                                <rect key="frame" x="146.5" y="122" width="121" height="72"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <inset key="contentEdgeInsets" minX="18" minY="18" maxX="18" maxY="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="TODO"/>
                                 <connections>
@@ -44,9 +45,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76C-6R-19l">
-                                <rect key="frame" x="131.5" y="320" width="151" height="48"/>
+                                <rect key="frame" x="113.5" y="224" width="187" height="72"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <inset key="contentEdgeInsets" minX="18" minY="18" maxX="18" maxY="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="PUSH LIST"/>
                                 <connections>
@@ -54,16 +56,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTQ-p3-OO7">
-                                <rect key="frame" x="127" y="428" width="160" height="48"/>
+                                <rect key="frame" x="109" y="326" width="196" height="72"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <inset key="contentEdgeInsets" minX="18" minY="18" maxX="18" maxY="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="CATEGORY"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXi-6p-xiS">
-                                <rect key="frame" x="142.5" y="536" width="129" height="48"/>
+                                <rect key="frame" x="124.5" y="428" width="165" height="72"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <inset key="contentEdgeInsets" minX="18" minY="18" maxX="18" maxY="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="BACK UP"/>
                                 <connections>
@@ -76,12 +80,12 @@
                         <constraints>
                             <constraint firstItem="76C-6R-19l" firstAttribute="centerX" secondItem="HRC-gB-25W" secondAttribute="centerX" id="1I4-mQ-w2g"/>
                             <constraint firstItem="HXi-6p-xiS" firstAttribute="centerX" secondItem="HRC-gB-25W" secondAttribute="centerX" id="72M-fl-5ho"/>
-                            <constraint firstItem="HXi-6p-xiS" firstAttribute="top" secondItem="nTQ-p3-OO7" secondAttribute="bottom" constant="60" id="9KQ-c0-9ic"/>
-                            <constraint firstItem="ODd-MY-6ga" firstAttribute="top" secondItem="HRC-gB-25W" secondAttribute="top" constant="120" id="CpX-eI-gTq"/>
+                            <constraint firstItem="HXi-6p-xiS" firstAttribute="top" secondItem="nTQ-p3-OO7" secondAttribute="bottom" constant="30" id="9KQ-c0-9ic"/>
+                            <constraint firstItem="ODd-MY-6ga" firstAttribute="top" secondItem="HRC-gB-25W" secondAttribute="top" constant="30" id="CpX-eI-gTq"/>
                             <constraint firstItem="ODd-MY-6ga" firstAttribute="centerX" secondItem="HRC-gB-25W" secondAttribute="centerX" id="U81-eD-UBS"/>
                             <constraint firstItem="nTQ-p3-OO7" firstAttribute="centerX" secondItem="HRC-gB-25W" secondAttribute="centerX" id="vE8-K6-OcB"/>
-                            <constraint firstItem="76C-6R-19l" firstAttribute="top" secondItem="ODd-MY-6ga" secondAttribute="bottom" constant="60" id="vk5-ZL-Rqb"/>
-                            <constraint firstItem="nTQ-p3-OO7" firstAttribute="top" secondItem="76C-6R-19l" secondAttribute="bottom" constant="60" id="wwe-cT-DZN"/>
+                            <constraint firstItem="76C-6R-19l" firstAttribute="top" secondItem="ODd-MY-6ga" secondAttribute="bottom" constant="30" id="vk5-ZL-Rqb"/>
+                            <constraint firstItem="nTQ-p3-OO7" firstAttribute="top" secondItem="76C-6R-19l" secondAttribute="bottom" constant="30" id="wwe-cT-DZN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gOl-UU-P91"/>

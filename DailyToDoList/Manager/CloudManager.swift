@@ -46,7 +46,7 @@ extension CloudManager {
             //기본 백업폴더 없으면 만들기
             return "iCloud Drive를 사용해주세요"
         }
-        guard let backupDir = backupDir else {                                                    
+        guard let backupDir = backupDir else {
             return "다시 시도 해주세요"
         }
         if !fileManager.fileExists(atPath: backupDir.path) {
@@ -59,7 +59,8 @@ extension CloudManager {
         guard let recentlyDir = list.first else {
             return "백업된 데이터가 없습니다"
         }
-        return "마지막 백업날짜: " + recentlyDir
+        let dateList = recentlyDir.components(separatedBy: ["-", "_"])
+        return "\(dateList[0])년 \(dateList[1])월 \(dateList[2])일 \(dateList[3])"
     }
 }
 

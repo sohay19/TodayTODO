@@ -274,7 +274,6 @@ extension MainViewController {
     }
     //
     func checkNil() {
-        //
         if taskList.count == 0 {
             labelTodayNilMsg.isHidden = false
         } else {
@@ -283,12 +282,16 @@ extension MainViewController {
     }
     // 선택된 날짜에 맞는 테이블 로드
     func changeDay() {
-        //
         guard let day = Calendar.current.dateComponents([.day], from: currentDate).day else {
             return
         }
-        //
-        if let monthlyTaskList = monthlyTaskList[day] {
+        guard let monthlyTaskList = monthlyTaskList[day] else {
+            return
+        }
+        if monthlyTaskList.count == 0 {
+            labelMonthNilMsg.isHidden = false
+            taskList = []
+        } else {
             labelMonthNilMsg.isHidden = true
             taskList = monthlyTaskList.sorted(by: { task1, task2 in
                 if task1.isDone {
@@ -297,9 +300,6 @@ extension MainViewController {
                     return true
                 }
             })
-        } else {
-            labelMonthNilMsg.isHidden = false
-            taskList = []
         }
         //
         monthlyTaskTable.reloadData()

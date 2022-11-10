@@ -14,8 +14,10 @@ class SystemManager {
     
     private var backgroundView:UIView?
     private var indicator:UIActivityIndicatorView?
-    
+    //
+    private var navigation:CustomNavigationController?
     private var sideMenuNavigation:CustomSideMenuNavigation?
+    
     private var isLoading = false
 }
 
@@ -50,7 +52,8 @@ extension SystemManager {
         topVC.view.addSubview(indicator)
         
         backgroundView.frame = CGRect(x: 0, y: 0, width: topVC.view.frame.maxX, height: topVC.view.frame.maxY)
-        backgroundView.alpha = 0.0
+        backgroundView.backgroundColor = .white
+        backgroundView.alpha = 0.1
         
         indicator.style = .large
         indicator.center = topVC.view.center
@@ -95,36 +98,26 @@ extension SystemManager {
     }
     //
     func openSideMenu(_ vc:UIViewController) {
+        navigation = vc.navigationController as? CustomNavigationController
         let board = UIStoryboard(name: sideMenuBoard, bundle: nil)
         sideMenuNavigation = board.instantiateViewController(withIdentifier: sideMenuBoard) as? CustomSideMenuNavigation
         guard let sideMenuNavigation = sideMenuNavigation else {
             return
         }
-        sideMenuNavigation.beforeVC = vc
         vc.present(sideMenuNavigation, animated: true)
     }
     //Main Page
     func moveMain() {
-        guard let sideMenuNavigation = sideMenuNavigation else {
+        guard let sideMenuNavigation = sideMenuNavigation, let navigation = navigation else {
             return
         }
-        guard let beforeVC = sideMenuNavigation.beforeVC else {
-            return
-        }
-        guard let navigation = beforeVC.navigationController as? CustomNavigationController else {
-            return
-        }
-        navigation.popToRootViewController()
+        navigation.popToRootViewController(complete: {
+            sideMenuNavigation.dismiss(animated: true)
+        })
     }
     //Push Page
     func movePush() {
-        guard let sideMenuNavigation = sideMenuNavigation else {
-            return
-        }
-        guard let beforeVC = sideMenuNavigation.beforeVC else {
-            return
-        }
-        guard let navigation = beforeVC.navigationController as? CustomNavigationController else {
+        guard let sideMenuNavigation = sideMenuNavigation, let navigation = navigation else {
             return
         }
         //
@@ -132,23 +125,20 @@ extension SystemManager {
         guard let nextVC = board.instantiateViewController(withIdentifier: pushListBoard) as? PushListViewController else { return }
         navigation.popToRootViewController(complete: {
             navigation.pushViewController(nextVC)
+            sideMenuNavigation.dismiss(animated: true)
         })
     }
     //BackUp Page
     func moveBackup() {
-        guard let sideMenuNavigation = sideMenuNavigation else {
-            return
-        }
-        guard let beforeVC = sideMenuNavigation.beforeVC else {
-            return
-        }
-        guard let navigation = beforeVC.navigationController as? CustomNavigationController else {
+        guard let sideMenuNavigation = sideMenuNavigation, let navigation = navigation else {
             return
         }
         //
         let board = UIStoryboard(name: settingBoard, bundle: nil)
         guard let nextVC = board.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }
-        navigation.pushViewController(nextVC)
+        navigation.pushViewController(nextVC, complete: {
+            sideMenuNavigation.dismiss(animated: true)
+        })
     }
 }
 

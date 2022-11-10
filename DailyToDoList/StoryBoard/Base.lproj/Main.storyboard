@@ -31,10 +31,10 @@
                                         </connections>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgv-do-JnB" userLabel="BtnSidMenu">
-                                        <rect key="frame" x="9" y="-9" width="42" height="42"/>
+                                        <rect key="frame" x="6" y="-14.5" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="dgv-do-JnB" secondAttribute="height" multiplier="1:1" id="4Nw-wN-Hv6"/>
-                                            <constraint firstAttribute="height" constant="42" id="Ixf-IA-s2b"/>
+                                            <constraint firstAttribute="height" constant="60" id="Ixf-IA-s2b"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
@@ -48,11 +48,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="dgv-do-JnB" firstAttribute="leading" secondItem="nL7-nt-PhE" secondAttribute="leading" constant="9" id="AB5-Ux-ycO"/>
+                                    <constraint firstItem="dgv-do-JnB" firstAttribute="leading" secondItem="nL7-nt-PhE" secondAttribute="leading" constant="6" id="AB5-Ux-ycO"/>
+                                    <constraint firstItem="dgv-do-JnB" firstAttribute="centerY" secondItem="bLR-Sq-nbO" secondAttribute="centerY" id="MyH-vj-ydd"/>
                                     <constraint firstItem="bLR-Sq-nbO" firstAttribute="centerX" secondItem="nL7-nt-PhE" secondAttribute="centerX" id="U48-2M-xJX"/>
                                     <constraint firstItem="bLR-Sq-nbO" firstAttribute="top" secondItem="nL7-nt-PhE" secondAttribute="top" id="ezV-9Y-cIT"/>
-                                    <constraint firstItem="dgv-do-JnB" firstAttribute="top" secondItem="nL7-nt-PhE" secondAttribute="top" constant="-9" id="j5F-CI-bAL"/>
-                                    <constraint firstItem="bLR-Sq-nbO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dgv-do-JnB" secondAttribute="trailing" constant="18" id="joq-lh-ho4"/>
+                                    <constraint firstItem="bLR-Sq-nbO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dgv-do-JnB" secondAttribute="trailing" constant="18" id="gSS-ku-BwQ"/>
                                     <constraint firstAttribute="height" constant="45" id="so0-P1-9Lu"/>
                                 </constraints>
                             </view>
@@ -77,7 +77,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="DailyTaskCell" id="0Fo-Hl-oys" customClass="DailyTaskCell" customModule="DailyToDoList" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="TaskCell" id="0Fo-Hl-oys" customClass="TaskCell" customModule="DailyToDoList" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="354" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Fo-Hl-oys" id="9fX-e1-206">
@@ -101,13 +101,13 @@
                                                 </constraints>
                                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <connections>
-                                                    <outlet property="labelDailyTitle" destination="lEV-T2-fc5" id="UHk-wT-Np4"/>
+                                                    <outlet property="labelTitle" destination="lEV-T2-fc5" id="Ptx-8w-aT9"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해야할 일을 등록해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gt6-zW-da3" userLabel="Message">
-                                        <rect key="frame" x="131.5" y="99.5" width="151" height="18"/>
+                                        <rect key="frame" x="131.5" y="78.5" width="151" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -116,7 +116,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="qhK-e7-NYl" firstAttribute="centerX" secondItem="eXs-Vg-sWp" secondAttribute="centerX" id="BkX-nR-L57"/>
-                                    <constraint firstItem="Gt6-zW-da3" firstAttribute="top" secondItem="T45-og-L7Z" secondAttribute="top" constant="30" id="CLT-Pk-qeW"/>
+                                    <constraint firstItem="Gt6-zW-da3" firstAttribute="top" secondItem="T45-og-L7Z" secondAttribute="top" constant="9" id="CLT-Pk-qeW"/>
                                     <constraint firstItem="Gt6-zW-da3" firstAttribute="centerX" secondItem="T45-og-L7Z" secondAttribute="centerX" id="MrJ-CR-P8E"/>
                                     <constraint firstAttribute="bottom" secondItem="T45-og-L7Z" secondAttribute="bottom" constant="18" id="Pe2-Mp-IBM"/>
                                     <constraint firstItem="eXs-Vg-sWp" firstAttribute="leading" secondItem="fcp-ST-NiN" secondAttribute="leading" constant="9" id="S5F-Lv-gN3"/>
@@ -156,7 +156,7 @@
                                         <inset key="scrollIndicatorInsets" minX="18" minY="0.0" maxX="18" maxY="0.0"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MonthlyTaskCell" id="nOC-lC-0c4" customClass="MonthlyTaskCell" customModule="DailyToDoList" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" id="nOC-lC-0c4" customClass="TaskCell" customModule="DailyToDoList" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="354" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nOC-lC-0c4" id="PDx-by-aVQ">
@@ -180,14 +180,14 @@
                                                 </constraints>
                                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <connections>
-                                                    <outlet property="labelMonthlyTitle" destination="bHI-Bv-kWn" id="Tg8-zm-I1C"/>
+                                                    <outlet property="labelTitle" destination="bHI-Bv-kWn" id="OEp-D0-et0"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해야할 일을 등록해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8B-xB-LYB" userLabel="Message">
-                                        <rect key="frame" x="117" y="474.5" width="180.5" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <rect key="frame" x="131.5" y="453.5" width="151" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -204,7 +204,7 @@
                                     <constraint firstAttribute="bottom" secondItem="dEB-Nb-JJl" secondAttribute="bottom" constant="18" id="gf7-LB-dj8"/>
                                     <constraint firstItem="MtS-eB-6uU" firstAttribute="leading" secondItem="KER-2I-O4L" secondAttribute="leading" constant="18" id="j7b-qh-YpZ"/>
                                     <constraint firstAttribute="trailing" secondItem="MtS-eB-6uU" secondAttribute="trailing" constant="18" id="lW5-gE-PZt"/>
-                                    <constraint firstItem="C8B-xB-LYB" firstAttribute="top" secondItem="dEB-Nb-JJl" secondAttribute="top" constant="30" id="oKN-Tg-cLv"/>
+                                    <constraint firstItem="C8B-xB-LYB" firstAttribute="top" secondItem="dEB-Nb-JJl" secondAttribute="top" constant="9" id="oKN-Tg-cLv"/>
                                     <constraint firstItem="TaY-SE-uuy" firstAttribute="bottom" secondItem="hnS-7B-jSV" secondAttribute="bottom" constant="6" id="oeZ-Sj-xR2"/>
                                     <constraint firstItem="hnS-7B-jSV" firstAttribute="centerX" secondItem="TaY-SE-uuy" secondAttribute="centerX" id="snB-S5-gxQ"/>
                                 </constraints>

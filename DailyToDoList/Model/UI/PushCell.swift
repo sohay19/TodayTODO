@@ -1,4 +1,4 @@
-//
+//MonthlyTaskCell
 //  PushCell.swift
 //  DailyToDoList
 //
@@ -13,6 +13,8 @@ class PushCell : UITableViewCell {
     @IBOutlet weak var labelAlarmTime:UILabel!
     @IBOutlet weak var labelRepeat:UILabel!
     
+    var isToday = true
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         //
@@ -23,9 +25,9 @@ class PushCell : UITableViewCell {
         super.setHighlighted(highlighted, animated: animated)
         //
         if highlighted {
-            labelTitle.textColor = .systemPink
-            labelAlarmTime.textColor = .systemPink
-            labelRepeat.textColor = .systemPink
+            labelTitle.textColor = isToday ? .defaultPink : .systemIndigo
+            labelAlarmTime.textColor = isToday ? .defaultPink : .systemIndigo
+            labelRepeat.textColor = isToday ? .defaultPink : .systemIndigo
         } else {
             labelTitle.textColor = .label
             labelAlarmTime.textColor = .label

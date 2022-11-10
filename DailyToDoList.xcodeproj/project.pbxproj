@@ -47,11 +47,10 @@
 		CF535099291CDAA400AFDC14 /* LastPage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF535098291CDAA400AFDC14 /* LastPage.png */; };
 		CF53509F291CE8FA00AFDC14 /* spring.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53509E291CE8FA00AFDC14 /* spring.png */; };
 		CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */; };
-		CF7595FE28FD19870046FDC1 /* MonthlyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FD28FD19870046FDC1 /* MonthlyTaskCell.swift */; };
+		CF5350A3291D235000AFDC14 /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350A2291D235000AFDC14 /* CustomSideMenuNavigation.swift */; };
 		CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */; };
 		CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */; };
 		CF75960A2900F35B0046FDC1 /* SideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7596092900F35B0046FDC1 /* SideMenu.storyboard */; };
-		CF75960C2900F39A0046FDC1 /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960B2900F39A0046FDC1 /* CustomSideMenuNavigation.swift */; };
 		CF7596102900F48A0046FDC1 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960F2900F48A0046FDC1 /* SideMenuViewController.swift */; };
 		CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
 		CF75963329024C340046FDC1 /* PushList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF75963229024C340046FDC1 /* PushList.storyboard */; };
@@ -151,7 +150,7 @@
 		CFEB4A4428F14D1C008850DC /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
 		CFEB4A4528F14D1C008850DC /* EachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4128F14D1C008850DC /* EachTask.swift */; };
 		CFEB4A4628F14D1C008850DC /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4228F14D1C008850DC /* UserData.swift */; };
-		CFEB4A4928F14D25008850DC /* DailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4728F14D25008850DC /* DailyTaskCell.swift */; };
+		CFEB4A4928F14D25008850DC /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4728F14D25008850DC /* TaskCell.swift */; };
 		CFEB4A4D28F150BD008850DC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A4C28F150BD008850DC /* CloudKit.framework */; };
 		CFEB4A5528F1559D008850DC /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5228F1559D008850DC /* FirebaseManager.swift */; };
 		CFEB4A5628F1559D008850DC /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5328F1559D008850DC /* SystemManager.swift */; };
@@ -284,11 +283,10 @@
 		CF535098291CDAA400AFDC14 /* LastPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LastPage.png; sourceTree = "<group>"; };
 		CF53509E291CE8FA00AFDC14 /* spring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring.png; sourceTree = "<group>"; };
 		CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpCell.swift; sourceTree = "<group>"; };
-		CF7595FD28FD19870046FDC1 /* MonthlyTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTaskCell.swift; sourceTree = "<group>"; };
+		CF5350A2291D235000AFDC14 /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
 		CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCExtension.swift; sourceTree = "<group>"; };
 		CF7596092900F35B0046FDC1 /* SideMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenu.storyboard; sourceTree = "<group>"; };
-		CF75960B2900F39A0046FDC1 /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
 		CF75960F2900F48A0046FDC1 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		CF75963229024C340046FDC1 /* PushList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PushList.storyboard; sourceTree = "<group>"; };
 		CF75963429024C6A0046FDC1 /* PushListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushListViewController.swift; sourceTree = "<group>"; };
@@ -356,7 +354,7 @@
 		CFEB4A4028F14D1C008850DC /* RepeatResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatResult.swift; sourceTree = "<group>"; };
 		CFEB4A4128F14D1C008850DC /* EachTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EachTask.swift; sourceTree = "<group>"; };
 		CFEB4A4228F14D1C008850DC /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		CFEB4A4728F14D25008850DC /* DailyTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTaskCell.swift; sourceTree = "<group>"; };
+		CFEB4A4728F14D25008850DC /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		CFEB4A4B28F15087008850DC /* DailyToDoList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyToDoList.entitlements; sourceTree = "<group>"; };
 		CFEB4A4C28F150BD008850DC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		CFEB4A5228F1559D008850DC /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -626,11 +624,11 @@
 				CFEB4A6728F165D1008850DC /* CategoryViewController.swift */,
 				CFEB4A6928F1672F008850DC /* ColorPickerViewController.swift */,
 				CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */,
-				CF75960B2900F39A0046FDC1 /* CustomSideMenuNavigation.swift */,
 				CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */,
 				CF75960F2900F48A0046FDC1 /* SideMenuViewController.swift */,
 				CF75963429024C6A0046FDC1 /* PushListViewController.swift */,
 				CF75963D290662900046FDC1 /* PushListVCExtension.swift */,
+				CF5350A2291D235000AFDC14 /* CustomSideMenuNavigation.swift */,
 			);
 			path = VeiwController;
 			sourceTree = "<group>";
@@ -661,8 +659,7 @@
 		CFEB4A2628F14B01008850DC /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CFEB4A4728F14D25008850DC /* DailyTaskCell.swift */,
-				CF7595FD28FD19870046FDC1 /* MonthlyTaskCell.swift */,
+				CFEB4A4728F14D25008850DC /* TaskCell.swift */,
 				CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */,
 				CF75963629024F680046FDC1 /* PushCell.swift */,
 				CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */,
@@ -1240,10 +1237,10 @@
 				CFEB4A4428F14D1C008850DC /* RepeatResult.swift in Sources */,
 				CFEB4A6428F16243008850DC /* RepeatViewController.swift in Sources */,
 				CFEB4A3C28F14CB4008850DC /* Enums.swift in Sources */,
-				CF7595FE28FD19870046FDC1 /* MonthlyTaskCell.swift in Sources */,
 				CFEB4A3A28F14CA0008850DC /* Utils.swift in Sources */,
 				CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */,
 				CFEB4A6828F165D1008850DC /* CategoryViewController.swift in Sources */,
+				CF5350A3291D235000AFDC14 /* CustomSideMenuNavigation.swift in Sources */,
 				CFEB4A5628F1559D008850DC /* SystemManager.swift in Sources */,
 				CFEB4A5B28F155E5008850DC /* DataManager.swift in Sources */,
 				CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */,
@@ -1252,7 +1249,6 @@
 				CF487EA928F1B71900498451 /* TaskListEntryView.swift in Sources */,
 				CFEB4A6028F15621008850DC /* CustomNavigationController.swift in Sources */,
 				CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */,
-				CF75960C2900F39A0046FDC1 /* CustomSideMenuNavigation.swift in Sources */,
 				CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */,
 				CFB6EE0728F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
 				CF75963729024F680046FDC1 /* PushCell.swift in Sources */,
@@ -1263,7 +1259,7 @@
 				CF75963E290662900046FDC1 /* PushListVCExtension.swift in Sources */,
 				CFEB49DF28F13287008850DC /* MainViewController.swift in Sources */,
 				CFEB4A5728F1559D008850DC /* CloudManager.swift in Sources */,
-				CFEB4A4928F14D25008850DC /* DailyTaskCell.swift in Sources */,
+				CFEB4A4928F14D25008850DC /* TaskCell.swift in Sources */,
 				CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */,
 				CFEB4A3228F14BC7008850DC /* LoginViewController.swift in Sources */,
 				CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */,

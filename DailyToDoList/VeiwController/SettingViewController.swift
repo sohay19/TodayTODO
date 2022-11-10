@@ -27,6 +27,9 @@ class SettingViewController: UIViewController {
         //
         self.navigationItem.setHidesBackButton(true, animated: false)
         //
+        tableView.delegate = self
+        tableView.dataSource = self
+        //
         initUI()
     }
     
@@ -62,11 +65,17 @@ extension SettingViewController {
         imgUnderline_table.alpha = 0.5
         //
         tableView.backgroundColor = .clear
+        tableView.layer.borderColor = UIColor.secondaryLabel.cgColor
+        tableView.layer.borderWidth = 0.5
+        tableView.layer.cornerRadius = 5
+        tableView.separatorColor = .label
+        tableView.rowHeight = 49
     }
     
     func loadData() {
         dataList = DataManager.shared.getAllBackupFile()
-        print("dataList.count = \(dataList.count)")
+        //
+        tableView.reloadData()
         //
         SystemManager.shared.closeLoading()
     }
@@ -105,19 +114,18 @@ extension SettingViewController {
 }
 
 //MARK: - TableView
-extension SettingViewController {
+extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count
     }
     //
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let backUpCell = tableView.dequeueReusableCell(withIdentifier: "backUpCell", for: indexPath) as? PushCell else {
+        guard let backUpCell = tableView.dequeueReusableCell(withIdentifier: "backUpCell", for: indexPath) as? BackUpCell else {
             return UITableViewCell()
         }
-//        let backUpData =
-//        guard let backUpData = backUpData else {
-//            return UITableViewCell()
-//        }
+        let backUpData = dataList[indexPath.row]
+        let dateList = backUpData.name.components(separatedBy: ["-", "_"])
+        backUpCell.labelDate.text = "\(dateList[0])년 \(dateList[1])월 \(dateList[2])일 \(dateList[3])"
         
         return backUpCell
     }
@@ -125,23 +133,20 @@ extension SettingViewController {
     //오른쪽 스와이프
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         //
-        let load = UIContextualAction(style: .normal, title: "load") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+        let load = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
 //            self.deletePush(indexPath)
             success(true)
         }
-        load.backgroundColor = .systemIndigo
+        load.image = UIImage(systemName: "tray.and.arrow.up.fill")
+        load.backgroundColor = .systemIndigo.withAlphaComponent(0.5)
         //
-        let delete = UIContextualAction(style: .normal, title: "delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+        let delete = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
 //            self.deletePush(indexPath)
             success(true)
         }
-        delete.backgroundColor = .defaultPink
+        delete.image = UIImage(systemName: "trash.fill")
+        delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete, load])
-    }
-    //MARK: - Event
-    //cell 클릭 Event
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
 }

@@ -8,9 +8,10 @@
 import Foundation
 import UIKit
 
-class DailyTaskCell: UITableViewCell {
-    @IBOutlet weak var labelDailyTitle: UILabel!
+class TaskCell: UITableViewCell {
+    @IBOutlet weak var labelTitle: UILabel!
     
+    var isToday = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,9 +23,9 @@ class DailyTaskCell: UITableViewCell {
         super.setHighlighted(highlighted, animated: animated)
         //
         if highlighted {
-            labelDailyTitle.textColor = .systemPink
+            labelTitle.textColor = isToday ? .defaultPink : .systemIndigo
         } else {
-            labelDailyTitle.textColor = .label
+            labelTitle.textColor = .label
         }
     }
     
@@ -34,6 +35,6 @@ class DailyTaskCell: UITableViewCell {
         //
         separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
-        labelDailyTitle.font = UIFont(name: MainFont, size: MainFontSize)
+        labelTitle.font = UIFont(name: MainFont, size: MainFontSize)
     }
 }

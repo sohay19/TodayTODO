@@ -24,10 +24,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        
+        //root = main
         let rootBoard = UIStoryboard(name: mainBoard, bundle: nil)
-        guard let loginVC = rootBoard.instantiateViewController(withIdentifier: mainBoard) as? MainViewController else { return }
-        let navigationController = CustomNavigationController(rootViewController: loginVC)
+        guard let mainVC = rootBoard.instantiateViewController(withIdentifier: mainBoard) as? MainViewController else { return }
+        let navigationController = CustomNavigationController(rootViewController: mainVC)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }

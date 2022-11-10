@@ -32,8 +32,8 @@ class BackUpCell : UITableViewCell {
         self.backgroundColor = .clear
         self.selectionStyle = .none
         //
-        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        separatorInset = UIEdgeInsets(top: 0, left: 9, bottom: 0, right: 9)
         //
-        labelDate.font = UIFont(name: E_N_Font, size: E_N_FontSize)
+        labelDate.font = UIFont(name: MenuKORFont, size: MenuKORFontSize)
     }
 }

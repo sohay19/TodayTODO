@@ -11,13 +11,24 @@ import UIKit
 
 class PushListViewController : UIViewController {
     @IBOutlet weak var imgUnderline: UIImageView!
-    @IBOutlet weak var pushTable: UITableView!
-    @IBOutlet weak var segmentedController: CustomSegmentControl!
+    //
     @IBOutlet weak var labelDate: UILabel!
-    @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var labelNilMsg: UILabel!
+    //
+    @IBOutlet weak var btnEdit: UIButton!
+    @IBOutlet weak var btnSelectAll: UIButton!
+    @IBOutlet weak var btnDelete: UIButton!
+    //
+    @IBOutlet weak var segmentedController: CustomSegmentControl!
+    //
+    @IBOutlet weak var pushTable: UITableView!
+    @IBOutlet weak var editView: UIView!
     
     var pushList:[AlarmInfo] = []
+    var heightConstraint:NSLayoutConstraint?
+    var heightOrigin:CGFloat = 60
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +42,25 @@ class PushListViewController : UIViewController {
         pushTable.allowsMultipleSelectionDuringEditing = true
         pushTable.allowsFocusDuringEditing = true
         //
-        initUI()
+        for const in editView.constraints {
+            if const.identifier == "height" {
+                heightConstraint = const
+                break
+            }
+        }
         //
+        initUI()
         initRefreshController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //
         SystemManager.shared.openLoading()
+        //
+        if pushTable.isEditing {
+            changeEditMode()
+        }
         DispatchQueue.main.async { [self] in 
             //
             loadPushData()
@@ -77,6 +99,9 @@ extension PushListViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         //
+        editView.backgroundColor = .clear
+        controllEditView(false)
+        //
         pushTable.backgroundColor = .clear
         pushTable.separatorInsetReference = .fromCellEdges
         pushTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -88,6 +113,14 @@ extension PushListViewController {
         imgUnderline.alpha = 0.3
         //
         changeTitle()
+    }
+    func controllEditView(_ isOn:Bool) {
+        guard let heightConstraint = heightConstraint else {
+            return
+        }
+        heightConstraint.constant = isOn ? heightOrigin : 0
+        btnSelectAll.isHidden = isOn ? false : true
+        btnDelete.isHidden = isOn ? false : true
     }
     //
     func changeTitle() {
@@ -154,12 +187,39 @@ extension PushListViewController {
             for cell in pushTable.visibleCells {
                 cell.selectionStyle = .none
             }
+            controllEditView(false)
         } else {
             btnEdit.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right"), for: .normal)
             pushTable.setEditing(true, animated: false)
             for cell in pushTable.visibleCells {
                 cell.selectionStyle = .default
             }
+            controllEditView(true)
         }
+    }
+    @IBAction func clickSelectAll(_ sender:UIButton) {
+        guard let list = pushTable.indexPathsForVisibleRows else {
+            return
+        }
+        if let selectedList = pushTable.indexPathsForSelectedRows {
+            if list.count == selectedList.count {
+                for index in list {
+                    pushTable.deselectRow(at: index, animated: true)
+                }
+                return
+            }
+        }
+        for index in list {
+            pushTable.selectRow(at: index, animated: true, scrollPosition: .none)
+        }
+    }
+    @IBAction func clickDelete(_ sender:UIButton) {
+        guard let list = pushTable.indexPathsForSelectedRows else {
+            return
+        }
+        for index in list {
+            deletePush(index)
+        }
+        controllEditView(false)
     }
 }

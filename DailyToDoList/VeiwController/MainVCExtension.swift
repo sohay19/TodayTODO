@@ -17,58 +17,43 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     }
     //
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch segmentedController.selectedSegmentIndex {
-        case 1:
-            guard let taskCell = tableView.dequeueReusableCell(withIdentifier: "MonthlyTaskCell", for: indexPath) as? MonthlyTaskCell else {
-                return UITableViewCell()
-            }
-            taskCell.labelMonthlyTitle.text = taskList[indexPath.row].title
-            let isDone = taskList[indexPath.row].isDone
-            taskCell.accessoryType = isDone ? .checkmark : .none
-            
-            return taskCell
-        default:
-            guard let taskCell = tableView.dequeueReusableCell(withIdentifier: "DailyTaskCell", for: indexPath) as? DailyTaskCell else {
-                return UITableViewCell()
-            }
-            taskCell.labelDailyTitle.text = taskList[indexPath.row].title
-            let isDone = taskList[indexPath.row].isDone
-            taskCell.accessoryType = isDone ? .checkmark : .none
-            
-            return taskCell
+        guard let taskCell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as? TaskCell else {
+            return UITableViewCell()
         }
+        taskCell.isToday = segmentedController.selectedSegmentIndex == 0 ? true : false
+        taskCell.labelTitle.text = taskList[indexPath.row].title
+        
+        return taskCell
     }
     //MARK: - Swipe
     //왼쪽 스와이프
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         //Done Or Not
-        let done = UIContextualAction(style: .normal, title: "Done") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.taskIsDone(true, indexPath)
+        let isDone = taskList[indexPath.row].isDone
+        let done = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.taskIsDone(!isDone, indexPath)
             success(true)
         }
-        done.backgroundColor = .darkGray
-        
-        let notDone = UIContextualAction(style: .normal, title: "Not") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.taskIsDone(false, indexPath)
-            success(true)
-        }
-        notDone.backgroundColor = .systemGray
+        done.image = UIImage(systemName: isDone ? "xmark" : "pencil")
+        done.backgroundColor = isDone ? UIColor.systemGray.withAlphaComponent(0.5) : UIColor.systemRed.withAlphaComponent(0.5)
         //index = 0, 왼쪽
-        return UISwipeActionsConfiguration(actions:[done, notDone])
+        return UISwipeActionsConfiguration(actions:[done])
     }
     //오른쪽 스와이프
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .destructive, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.deleteTask(indexPath)
-            success(true)
-        }
-        delete.backgroundColor = .defaultPink
-        
-        let modify = UIContextualAction(style: .destructive, title: "수정") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+        let modify = UIContextualAction(style: .destructive, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.modifyTask(indexPath)
             success(true)
         }
-        modify.backgroundColor = .systemIndigo
+        modify.image = UIImage(systemName: "eraser.fill")
+        modify.backgroundColor = .systemIndigo.withAlphaComponent(0.5)
+        
+        let delete = UIContextualAction(style: .destructive, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.deleteTask(indexPath)
+            success(true)
+        }
+        delete.image = UIImage(systemName: "trash.fill")
+        delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete, modify])
     }
