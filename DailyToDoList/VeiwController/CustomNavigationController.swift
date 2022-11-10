@@ -7,8 +7,13 @@
 
 import Foundation
 import UIKit
+import SideMenu
 
 class CustomNavigationController : UINavigationController {
+    
+}
+
+extension CustomNavigationController {
     //pop
     func popViewController() {
         let _ = super.popViewController(animated: false)
@@ -20,26 +25,19 @@ class CustomNavigationController : UINavigationController {
     //popRoot
     func popToRootViewController() {
         let _ = popToRootViewController(animated: false)
-        guard let rootVC = self.topViewController else {
-            return
-        }
-        DispatchQueue.main.async {
-            self.completeMotion(false) {
-                rootVC.viewWillAppear(true)
+        completeMotion(false) { [self] in
+            guard let rootVC = topViewController else {
+                return
             }
+            rootVC.viewWillAppear(true)
         }
     }
     func popToRootViewController(complete: @escaping ()->Void) {
         let _ = popToRootViewController(animated: false)
-        DispatchQueue.main.async {
-            self.completeMotion(false) {
-                complete()
-            }
+        completeMotion(false) {
+            complete()
         }
     }
-}
-
-extension CustomNavigationController {
     //push
     func pushViewController(_ viewController: UIViewController) {
         super.pushViewController(viewController, animated: false)

@@ -7,13 +7,13 @@
 
 import Foundation
 import UIKit
+import SideMenu
 
 class SideMenuViewController : UIViewController {
     @IBOutlet weak var btnTODO: UIButton!
     @IBOutlet weak var btnPush: UIButton!
     @IBOutlet weak var btnCategory: UIButton!
     @IBOutlet weak var btnBackup: UIButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

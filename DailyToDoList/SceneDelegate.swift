@@ -28,6 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let rootBoard = UIStoryboard(name: mainBoard, bundle: nil)
         guard let mainVC = rootBoard.instantiateViewController(withIdentifier: mainBoard) as? MainViewController else { return }
         let navigationController = CustomNavigationController(rootViewController: mainVC)
+        //
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }

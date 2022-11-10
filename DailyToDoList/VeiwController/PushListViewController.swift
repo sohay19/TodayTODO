@@ -166,6 +166,7 @@ extension PushListViewController {
 //MARK: - Button Event
 extension PushListViewController {
     @IBAction func clickSideMenu(_ sender:Any) {
+        SystemManager.shared.openLoading()
         SystemManager.shared.openSideMenu(self)
     }
     //SegmentedControl

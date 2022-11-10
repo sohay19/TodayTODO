@@ -32,8 +32,9 @@ extension CloudManager {
         guard let backupDir = backupDir else {
             return []
         }
-        let fileList = fileManager.loadFile(backupDir)
-        return fileList.map{($0, backupDir.appendingPathExtension($0))}
+        var fileList = fileManager.loadFile(backupDir)
+        fileList.sort(by: { $0 > $1 })
+        return fileList.map{($0, backupDir.appendingPathComponent($0))}
     }
     //
     func updateDate(_ label:UILabel) {
@@ -85,7 +86,7 @@ extension CloudManager {
         updateDate(label)
     }
     //최신파일 로드
-    func loadBackupFile(_ vc:UIViewController) {
+    func loadRecentlyBackupFile(_ vc:UIViewController) {
         guard let originRealm = realmUrl, let backupDir = backupDir else {
             return
         }
@@ -96,8 +97,21 @@ extension CloudManager {
             self.copyToOriginDir(vc, sUrl: backupDir.appendingPathComponent(list.first!), dUrl: originRealm.deletingLastPathComponent())
         })
     }
-    //백업 파일 삭제
-    func deleteBackupFile() {
+    //선택파일 로드
+    func loadBackupFile(_ vc:UIViewController, _ url:URL) {
+        guard let originRealm = realmUrl else {
+            return
+        }
+        PopupManager.shared.openYesOrNo(vc, title: "백업파일 로드", msg: "가장 최신 파일로 로드하시겠습니까?\n(기존에 파일이 있던 경우 덮어쓰기 됩니다.)", completeYes: { _ in
+            self.copyToOriginDir(vc, sUrl: url, dUrl: originRealm.deletingLastPathComponent())
+        })
+    }
+    //백업 폴더 선택 삭제
+    func deleteBackupFile(_ url:URL) {
+        fileManager.deleteDir(url, nil)
+    }
+    //백업 파일 전부 삭제
+    func deleteAllBackupFile() {
         guard let backupDir = backupDir else {
             return
         }

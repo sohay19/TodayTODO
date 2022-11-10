@@ -25,7 +25,7 @@ class DataManager {
 //MARK: - Func
 extension DataManager {
     func deleteAllFile() {
-        deleteiCloudBackupFile()
+        deleteiCloudAllBackupFile()
         RealmManager.shared.deleteOriginFile()
         //
         pushManager.deleteAllPush()
@@ -48,12 +48,18 @@ extension DataManager {
         cloudManager.backUpFile(vc)
     }
     //
-    func iCloudLoadFile(_ vc:UIViewController) {
-        cloudManager.loadBackupFile(vc)
+    func iCloudLoadFile(_ vc:UIViewController, _ url:URL) {
+        cloudManager.loadBackupFile(vc, url)
+    }
+    func iCloudLoadRecentlyFile(_ vc:UIViewController) {
+        cloudManager.loadRecentlyBackupFile(vc)
     }
     //
-    func deleteiCloudBackupFile() {
-        cloudManager.deleteBackupFile()
+    func deleteiCloudBackupFile(_ url:URL) {
+        cloudManager.deleteBackupFile(url)
+    }
+    func deleteiCloudAllBackupFile() {
+        cloudManager.deleteAllBackupFile()
     }
 }
 

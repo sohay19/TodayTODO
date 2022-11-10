@@ -237,7 +237,7 @@
                     </view>
                     <connections>
                         <outlet property="calendarView" destination="MtS-eB-6uU" id="zX9-Zg-iE0"/>
-                        <outlet property="dailyTaskTable" destination="T45-og-L7Z" id="fNM-Ey-6T3"/>
+                        <outlet property="dailyTaskTable" destination="T45-og-L7Z" id="WLo-47-ts4"/>
                         <outlet property="imageViewButon" destination="c0h-vX-NoB" id="znv-nK-MkJ"/>
                         <outlet property="imgMonthUnderline" destination="TaY-SE-uuy" id="vUM-KK-bEa"/>
                         <outlet property="imgTodayUnderline" destination="eXs-Vg-sWp" id="VCW-72-51h"/>

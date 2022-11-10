@@ -16,5 +16,6 @@ class CustomSideMenuNavigation: SideMenuNavigationController {
         self.presentationStyle = .viewSlideOut
         self.leftSide = true
         self.statusBarEndAlpha = 0
+        self.isNavigationBarHidden = true
     }
 }

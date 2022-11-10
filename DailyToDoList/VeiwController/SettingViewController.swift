@@ -74,41 +74,54 @@ extension SettingViewController {
     
     func loadData() {
         dataList = DataManager.shared.getAllBackupFile()
-        //
         tableView.reloadData()
         //
         SystemManager.shared.closeLoading()
     }
 }
 
+//MARK: - Func
+extension SettingViewController {
+    func updateDate() {
+        DataManager.shared.updateCloud(label: labelBackupDate)
+    }
+    
+    func loadBackupFile(_ indexPath:IndexPath) {
+        let url = self.dataList[indexPath.row].url
+        DataManager.shared.iCloudLoadFile(self, url)
+    }
+    
+    func deleteBackupFile(_ indexPath:IndexPath)  {
+        let url = self.dataList[indexPath.row].url
+        DataManager.shared.deleteiCloudBackupFile(url)
+        //
+        dataList.remove(at: indexPath.row)
+        tableView.reloadData()
+        updateDate()
+    }
+}
 
 //MARK: - Button Event
 extension SettingViewController {
     //데이터 백업
     @IBAction func backData(_ sender: Any) {
         DataManager.shared.iCloudBackup(self)
-    }
-    //데이터 로드
-    @IBAction func loadData(_ sender: Any) {
-        DataManager.shared.iCloudLoadFile(self)
+        viewWillAppear(true)
     }
     //refresh
     @IBAction func clickRefresh(_ sender: Any) {
-        DataManager.shared.updateCloud(label: labelBackupDate)
+        updateDate()
     }
-    
-    @IBAction func removeBackupFile(_ sender: Any) {
-        DataManager.shared.deleteiCloudBackupFile()
-    }
-    
+    //
     @IBAction func removeAllFile(_ sender: Any) {
         DataManager.shared.deleteAllFile()
-        guard let navigation = self.navigationController as? CustomNavigationController else {
-            return
-        }
-        navigation.popToRootViewController()
+        dataList.removeAll()
+        tableView.reloadData()
+        
     }
+    //
     @IBAction func clickSideMenu(_ sender: Any) {
+        SystemManager.shared.openLoading()
         SystemManager.shared.openSideMenu(self)
     }
 }
@@ -134,14 +147,14 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         //
         let load = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-//            self.deletePush(indexPath)
+            self.loadBackupFile(indexPath)
             success(true)
         }
         load.image = UIImage(systemName: "tray.and.arrow.up.fill")
         load.backgroundColor = .systemIndigo.withAlphaComponent(0.5)
         //
         let delete = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-//            self.deletePush(indexPath)
+            self.deleteBackupFile(indexPath)
             success(true)
         }
         delete.image = UIImage(systemName: "trash.fill")

@@ -10,14 +10,19 @@ import Foundation
 
 class SystemManager {
     static let shared = SystemManager()
-    private init() { }
-    
+    private init() {
+        let board = UIStoryboard(name: sideMenuBoard, bundle: nil)
+        guard let sideVC = board.instantiateViewController(withIdentifier: sideMenuBoard) as? SideMenuViewController else {
+            return
+        }
+        sideMenu = CustomSideMenuNavigation(rootViewController: sideVC)
+    }
+    //
+    private var navigation:CustomNavigationController?
+    private var sideMenu:CustomSideMenuNavigation?
     private var backgroundView:UIView?
     private var indicator:UIActivityIndicatorView?
     //
-    private var navigation:CustomNavigationController?
-    private var sideMenuNavigation:CustomSideMenuNavigation?
-    
     private var isLoading = false
 }
 
@@ -53,7 +58,7 @@ extension SystemManager {
         
         backgroundView.frame = CGRect(x: 0, y: 0, width: topVC.view.frame.maxX, height: topVC.view.frame.maxY)
         backgroundView.backgroundColor = .white
-        backgroundView.alpha = 0.1
+        backgroundView.alpha = 0
         
         indicator.style = .large
         indicator.center = topVC.view.center
@@ -68,11 +73,9 @@ extension SystemManager {
                 return getTopViewController(selected)
             }
         }
-        
         if let presented = controller.presentedViewController {
             return getTopViewController(presented)
         }
-        
         return controller
     }
     //
@@ -99,49 +102,42 @@ extension SystemManager {
     //
     func openSideMenu(_ vc:UIViewController) {
         navigation = vc.navigationController as? CustomNavigationController
-        let board = UIStoryboard(name: sideMenuBoard, bundle: nil)
-        sideMenuNavigation = board.instantiateViewController(withIdentifier: sideMenuBoard) as? CustomSideMenuNavigation
-        guard let sideMenuNavigation = sideMenuNavigation else {
+        guard let sideMenu = sideMenu, let navigation = navigation else {
             return
         }
-        vc.present(sideMenuNavigation, animated: true)
+        navigation.present(sideMenu, animated: true) {
+            self.closeLoading()
+        }
     }
     //Main Page
     func moveMain() {
-        guard let sideMenuNavigation = sideMenuNavigation, let navigation = navigation else {
+        guard let navigation = navigation else {
             return
         }
-        navigation.popToRootViewController(complete: {
-            sideMenuNavigation.dismiss(animated: true)
-        })
+        navigation.popToRootViewController()
     }
     //Push Page
     func movePush() {
-        guard let sideMenuNavigation = sideMenuNavigation, let navigation = navigation else {
+        let board = UIStoryboard(name: pushListBoard, bundle: nil)
+        guard let nextVC = board.instantiateViewController(withIdentifier: pushListBoard) as? PushListViewController else { return
+        }
+        guard let navigation = navigation else {
             return
         }
-        //
-        let board = UIStoryboard(name: pushListBoard, bundle: nil)
-        guard let nextVC = board.instantiateViewController(withIdentifier: pushListBoard) as? PushListViewController else { return }
-        navigation.popToRootViewController(complete: {
-            navigation.pushViewController(nextVC)
-            sideMenuNavigation.dismiss(animated: true)
-        })
+        navigation.pushViewController(nextVC)
     }
     //BackUp Page
     func moveBackup() {
-        guard let sideMenuNavigation = sideMenuNavigation, let navigation = navigation else {
-            return
-        }
-        //
         let board = UIStoryboard(name: settingBoard, bundle: nil)
         guard let nextVC = board.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }
-        navigation.pushViewController(nextVC, complete: {
-            sideMenuNavigation.dismiss(animated: true)
-        })
+        guard let navigation = navigation else {
+            return
+        }
+        navigation.pushViewController(nextVC)
     }
 }
 
+//MARK: - ETC
 extension SystemManager {
     //
     func getUUID() -> String {

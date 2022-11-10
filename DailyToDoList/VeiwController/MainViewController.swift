@@ -446,6 +446,7 @@ extension MainViewController {
     }
     //SideMenu
     @IBAction func clickSideMenu(_ sender:Any) {
+        SystemManager.shared.openLoading()
         SystemManager.shared.openSideMenu(self)
     }
 }

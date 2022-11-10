@@ -29,9 +29,6 @@ extension FileManager {
     
     func copyDir(_ sUrl:URL, _ dUrl:URL, _ handler:((Error)->Void)?) {
         do {
-            print("s = \(sUrl.path+"/")")
-            print("d = \(dUrl.path+"/")")
-            
             try copyItem(atPath: sUrl.path+"/", toPath: dUrl.path+"/")
         } catch {
             handler?(error)
@@ -62,9 +59,17 @@ extension FileManager {
         }
     }
     
-    func deleteDir(_ url:URL, _ handler:((Error)->Void)?) {
+    func deleteFile(_ url:URL, _ handler:((Error)->Void)?) {
         do {
             try removeItem(at: url)
+        } catch let error {
+            handler?(error)
+        }
+    }
+    
+    func deleteDir(_ url:URL, _ handler:((Error)->Void)?) {
+        do {
+            try removeItem(atPath: url.path+"/")
         } catch let error {
             handler?(error)
         }
