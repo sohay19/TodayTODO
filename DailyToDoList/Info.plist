@@ -8,17 +8,13 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>NanumBaegEuiEuiCeonSa.ttf</string>
 		<string>NanumAJumMaJaYu.ttf</string>
-		<string>NanumGeumEunBoHwa.ttf</string>
-		<string>NanumBaReunHiPi.ttf</string>
-		<string>NanumSquareRoundR.ttf</string>
-		<string>NanumSquareRoundB.ttf</string>
-		<string>Bazzi.ttf</string>
 		<string>EF_Diary.ttf</string>
-		<string>Worcestershire_Sauce_Press-Regular.ttf</string>
-		<string>Worcestershire_Sauce-Regular.ttf</string>
-		<string>Windsor_Great_Park-Regular.ttf</string>
+		<string>NanumBarunpenB.otf</string>
+		<string>NanumBarunpenR.otf</string>
+		<string>Worcestershire_Sauce_Press-Regular.otf</string>
+		<string>Worcestershire_Sauce-Regular.otf</string>
+		<string>Windsor_Great_Park-Regular.otf</string>
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>

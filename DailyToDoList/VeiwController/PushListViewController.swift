@@ -107,8 +107,8 @@ extension PushListViewController {
         pushTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         pushTable.separatorColor = .label
         //
-        labelDate.font = UIFont(name: E_N_Font, size: E_N_FontSize)
-        labelNilMsg.font = UIFont(name: MenuKORFont, size: MenuKORFontSize)
+        labelDate.font = UIFont(name: E_N_Font_B, size: E_N_FontSize)
+        labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
         imgUnderline.alpha = 0.3
         //
@@ -165,12 +165,9 @@ extension PushListViewController {
 
 //MARK: - Button Event
 extension PushListViewController {
-    @IBAction func clickSideMenu(_ sender:Any) {
-        SystemManager.shared.openLoading()
-        SystemManager.shared.openSideMenu(self)
-    }
     //SegmentedControl
     @IBAction func changeSegment(_ sender:UISegmentedControl) {
+        beginAppearanceTransition(true, animated: true)
         viewWillAppear(true)
     }
     //

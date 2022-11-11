@@ -91,7 +91,7 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
         }
         currentDate = firstDate
         calendarView.select(currentDate)
-        changeDate()
+        initDate()
         //
         SystemManager.shared.openLoading()
         loadTask()

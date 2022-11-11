@@ -9,11 +9,9 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var imageViewButon: UIImageView!
-    @IBOutlet weak var imgTodayUnderline: UIImageView!
-    @IBOutlet weak var imgMonthUnderline: UIImageView!
+    @IBOutlet weak var imgUnderline: UIImageView!
     //
-    @IBOutlet weak var labelTodayDate: UILabel!
-    @IBOutlet weak var labelMonthDate: UILabel!
+    @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelTodayNilMsg: UILabel!
     @IBOutlet weak var labelMonthNilMsg: UILabel!
     //
@@ -69,9 +67,7 @@ class MainViewController: UIViewController {
         DispatchQueue.main.async { [self] in
             //
             loadTask()
-            //
             initDate()
-            //
             changeSegment()
         }
     }
@@ -80,14 +76,11 @@ class MainViewController: UIViewController {
 //MARK: - UI
 extension MainViewController {
     func initDate() {
-        let date = Utils.dateToDateString(Date()).split(separator: "-")
-        labelTodayDate.text = date.joined(separator: ". ")
-        changeDate()
-    }
-    func changeDate() {
-        var date = Utils.dateToDateString(currentDate).split(separator: "-")
-        date.removeLast()
-        labelMonthDate.text = date.joined(separator: ". ")
+        var date = Utils.dateToDateString(Date()).split(separator: "-")
+        if segmentedController.selectedSegmentIndex != 0 {
+            date.removeLast()
+        }
+        labelDate.text = date.joined(separator: ". ")
     }
     //
     func initUI() {
@@ -99,10 +92,9 @@ extension MainViewController {
         todayView.backgroundColor = .clear
         monthView.backgroundColor = .clear
         // 폰트 설정
-        labelTodayDate.font = UIFont(name: E_N_Font, size: E_N_FontSize)
-        labelMonthDate.font = UIFont(name: E_N_Font, size: E_N_FontSize)
-        labelTodayNilMsg.font = UIFont(name: MenuKORFont, size: MenuKORFontSize)
-        labelMonthNilMsg.font = UIFont(name: MenuKORFont, size: MenuKORFontSize)
+        labelDate.font = UIFont(name: E_N_Font_B, size: E_N_FontSize)
+        labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
         dailyTaskTable.backgroundColor = .clear
         dailyTaskTable.separatorInsetReference = .fromCellEdges
@@ -112,11 +104,6 @@ extension MainViewController {
         monthlyTaskTable.separatorInsetReference = .fromCellEdges
         monthlyTaskTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         monthlyTaskTable.separatorColor = .label
-        //
-        imgTodayUnderline.image = UIImage(named: Underline_Pink)
-        imgTodayUnderline.alpha = 0.3
-        imgMonthUnderline.image = UIImage(named: Underline_Indigo)
-        imgMonthUnderline.alpha = 0.3
         //
         monthView.isHidden = true
     }
@@ -128,6 +115,10 @@ extension MainViewController {
     }
     
     func changeSegment() {
+        //
+        imgUnderline.image = UIImage(named: segmentedController.selectedSegmentIndex == 0 ? Underline_Pink : Underline_Indigo)
+        imgUnderline.alpha = 0.3
+        //
         switch segmentedController.selectedSegmentIndex {
         case 0:
             beforeDate = currentDate
@@ -268,7 +259,7 @@ extension MainViewController {
         default:
             break
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.async {
             SystemManager.shared.closeLoading()
         }
     }
@@ -442,12 +433,8 @@ extension MainViewController {
         //
         SystemManager.shared.openLoading()
         //
+        beginAppearanceTransition(true, animated: true)
         viewWillAppear(true)
-    }
-    //SideMenu
-    @IBAction func clickSideMenu(_ sender:Any) {
-        SystemManager.shared.openLoading()
-        SystemManager.shared.openSideMenu(self)
     }
 }
 

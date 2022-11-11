@@ -35,6 +35,6 @@ class TaskCell: UITableViewCell {
         //
         separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
-        labelTitle.font = UIFont(name: MainFont, size: MainFontSize)
+        labelTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
     }
 }

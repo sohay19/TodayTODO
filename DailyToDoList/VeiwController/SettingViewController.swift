@@ -55,9 +55,9 @@ extension SettingViewController {
         view.insertSubview(backgroundView, at: 0)
         //폰트 설정
         labelTitle.font = UIFont(name: SideMenuFont, size: SideMenuFontSize)
-        labelDate.font = UIFont(name: MenuKORFont, size: MenuKORFontSize + 6.0)
-        labelBackupDate.font = UIFont(name: MenuKORFont, size: MenuKORFontSize)
-        labelTableTitle.font = UIFont(name: MenuKORFont, size: MenuKORFontSize + 6.0)
+        labelDate.font = UIFont(name: K_Font_B, size: K_FontSize)
+        labelBackupDate.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelTableTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
         //
         imgUnderline.image = UIImage(named: Underline_Pink)
         imgUnderline.alpha = 0.5
@@ -106,6 +106,7 @@ extension SettingViewController {
     //데이터 백업
     @IBAction func backData(_ sender: Any) {
         DataManager.shared.iCloudBackup(self)
+        beginAppearanceTransition(true, animated: true)
         viewWillAppear(true)
     }
     //refresh
@@ -118,11 +119,6 @@ extension SettingViewController {
         dataList.removeAll()
         tableView.reloadData()
         
-    }
-    //
-    @IBAction func clickSideMenu(_ sender: Any) {
-        SystemManager.shared.openLoading()
-        SystemManager.shared.openSideMenu(self)
     }
 }
 
@@ -137,8 +133,7 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let backUpData = dataList[indexPath.row]
-        let dateList = backUpData.name.components(separatedBy: ["-", "_"])
-        backUpCell.labelDate.text = "\(dateList[0])년 \(dateList[1])월 \(dateList[2])일 \(dateList[3])"
+        backUpCell.labelDate.text = backUpData.name
         
         return backUpCell
     }

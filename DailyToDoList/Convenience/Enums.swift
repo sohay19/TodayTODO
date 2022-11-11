@@ -50,6 +50,13 @@ enum PushType:String {
     case Alert = "Alert"
 }
 
+enum PageType:Int {
+    case Main
+    case Category
+    case Push
+    case Backup
+}
+
 enum DataType:String {
     case EachTask = "EachTask"
     case NSEachTask = "NSEachTask"

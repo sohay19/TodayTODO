@@ -555,12 +555,6 @@ extension TaskInfoViewController {
 
 //MARK: - 키보드
 extension TaskInfoViewController {
-    //
-    @IBAction func clickPopView(_ sender:Any) {
-        if isShow {
-            keyboardDown()
-        }
-    }
     //키보드 옵저버
     private func observeKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)

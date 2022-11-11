@@ -41,9 +41,9 @@ class PushCell : UITableViewCell {
         //
         separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
-        labelTitle.font = UIFont(name: MainFont, size: MainFontSize + 3.0)
-        labelAlarmTime.font = UIFont(name: NumFont, size: NumFontSize)
-        labelRepeat.font = UIFont(name: SubFont, size: SubFontSize)
+        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
+        labelAlarmTime.font = UIFont(name: E_N_Font_B, size: E_N_FontSize)
+        labelRepeat.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
         let backgroundView = UIView()
         backgroundView.backgroundColor = .clear

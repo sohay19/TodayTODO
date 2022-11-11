@@ -29,6 +29,7 @@ extension CustomNavigationController {
             guard let rootVC = topViewController else {
                 return
             }
+            rootVC.beginAppearanceTransition(true, animated: true)
             rootVC.viewWillAppear(true)
         }
     }

@@ -44,8 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         //워치 커넥팅을 위한 세선 열기
         WatchConnectManager.shared.initSession()
-        
-        
         return true
     }
 

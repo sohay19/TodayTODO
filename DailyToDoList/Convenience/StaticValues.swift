@@ -14,12 +14,13 @@ let BadgeCountKey = "BadgeCount"
 
 //MARK: - Board
 let mainBoard = "Main"
+let menuBoard = "Menu"
+let LoadingBoard = "Loading"
 let repeatBoard = "Repeat"
 let pickerBoard = "Picker"
 let categoryBoard = "Category"
 let settingBoard = "Setting"
 let taskInfoBoard = "TaskInfo"
-let sideMenuBoard = "SideMenu"
 let pushListBoard = "PushList"
 
 //MARK: - Push UserInfo key
@@ -35,23 +36,16 @@ let sendTypeKey = "sendType"
 
 //MARK: - Font
 let LogoFont = "NanumAJumMaJaYu"
+//
 let CalendalFont = "EF_Diary"
 let CalendalFontSize = 18.0
-let MainFont = "NanumBaegEuiEuiCeonSa"
-let MainFontSize = 21.0
-let SubFont = "NanumGeumEunBoHwa"
-let SubFontSize = 21.0
-let MenuKORFont = "NanumBaReunHiPi"
-let MenuKORFontSize = 18.0
-let E_N_Font = "Worcestershire_Sauce-Regular"
-let E_N_FontSize = 21.0
-let E_N_Font_s = "Windsor_Great_Park-Regular"
-let E_N_Font_sSize = 21.0
-let NumFont = "Bazzi"
-let NumFontSize = 18.0
-//segment
-let MenuENGFont = "NanumSquareRoundB"
-let MenuENGFontSize = 12.0
+//
+let K_Font_B = "NanumBarunpenOTF-Bold"
+let K_Font_R = "NanumBarunpenOTF"
+let E_N_Font_B = "Worcestershire_Sauce-Regular"
+let E_N_Font_R = "Windsor_Great_Park-Regular"
+let K_FontSize = 18.0
+let E_N_FontSize = 24.0
 //sidemenu
 let SideMenuFont = "Worcestershire_Sauce_Press-Regular"
 let SideMenuFontSize = 33.0
