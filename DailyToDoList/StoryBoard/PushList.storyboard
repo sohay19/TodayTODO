@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qs4-bw-qt3" customClass="CustomSegmentControl" customModule="DailyToDoList" customModuleProvider="target">
-                                <rect key="frame" x="292" y="48" width="113" height="32"/>
+                                <rect key="frame" x="283" y="48" width="113" height="32"/>
                                 <segments>
                                     <segment title="Today"/>
                                     <segment title="All"/>
@@ -28,14 +28,14 @@
                                 </connections>
                             </segmentedControl>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b2u-9d-h0V">
-                                <rect key="frame" x="9" y="41" width="97.5" height="39"/>
+                                <rect key="frame" x="12" y="41" width="97.5" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="b2u-9d-h0V" secondAttribute="height" multiplier="2.5:1" identifier="aspect" id="9oi-9k-AhW"/>
                                     <constraint firstAttribute="height" constant="39" identifier="height" id="WLJ-Pd-xSr"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today Push" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSh-CA-wzF">
-                                <rect key="frame" x="8.5" y="53" width="99" height="21"/>
+                                <rect key="frame" x="11.5" y="53" width="99" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -151,10 +151,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kGG-Zy-ClK" secondAttribute="trailing" constant="30" id="0BI-O2-ipt"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Qs4-bw-qt3" secondAttribute="trailing" constant="9" id="5id-yw-oPz"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Qs4-bw-qt3" secondAttribute="trailing" constant="18" id="5id-yw-oPz"/>
                             <constraint firstItem="jcM-hb-gY3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7T4-D6-fml"/>
                             <constraint firstItem="sSh-CA-wzF" firstAttribute="centerY" secondItem="Qs4-bw-qt3" secondAttribute="centerY" id="Iy4-57-w5Z"/>
-                            <constraint firstItem="b2u-9d-h0V" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="9" id="X3S-3z-8jG"/>
+                            <constraint firstItem="b2u-9d-h0V" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="12" id="X3S-3z-8jG"/>
                             <constraint firstItem="v8R-IL-C5D" firstAttribute="centerX" secondItem="kGG-Zy-ClK" secondAttribute="centerX" id="byp-BQ-r5x"/>
                             <constraint firstItem="Qs4-bw-qt3" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="cxd-TH-7b2"/>
                             <constraint firstItem="kGG-Zy-ClK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="czN-HN-blN"/>

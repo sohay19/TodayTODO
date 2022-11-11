@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bLR-Sq-nbO" customClass="CustomSegmentControl" customModule="DailyToDoList" customModuleProvider="target">
-                                <rect key="frame" x="276" y="59" width="99" height="32"/>
+                                <rect key="frame" x="258" y="59" width="117" height="32"/>
                                 <segments>
                                     <segment title="Today"/>
                                     <segment title="Month"/>
@@ -27,14 +27,14 @@
                                 </connections>
                             </segmentedControl>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eXs-Vg-sWp">
-                                <rect key="frame" x="18" y="55.333333333333343" width="108" height="36"/>
+                                <rect key="frame" x="12" y="55.333333333333343" width="108" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eXs-Vg-sWp" secondAttribute="height" multiplier="3:1" id="3sP-Ym-2BU"/>
                                     <constraint firstAttribute="height" constant="36" id="Lfc-CF-cLH"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhK-e7-NYl">
-                                <rect key="frame" x="52" y="63.666666666666664" width="40.333333333333343" height="21.666666666666664"/>
+                                <rect key="frame" x="46" y="63.666666666666664" width="40.333333333333343" height="21.666666666666664"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -169,7 +169,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="eXs-Vg-sWp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="2XX-Rw-Vxc"/>
+                            <constraint firstItem="eXs-Vg-sWp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="2XX-Rw-Vxc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c0h-vX-NoB" secondAttribute="trailing" constant="6" id="3yk-0b-jQK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KER-2I-O4L" secondAttribute="trailing" id="784-KU-DMM"/>
                             <constraint firstAttribute="bottom" secondItem="c0h-vX-NoB" secondAttribute="bottom" id="EPw-vV-j12"/>
@@ -181,7 +181,7 @@
                             <constraint firstItem="fcp-ST-NiN" firstAttribute="top" secondItem="bLR-Sq-nbO" secondAttribute="bottom" constant="14" id="Z2U-2G-qRr"/>
                             <constraint firstItem="qhK-e7-NYl" firstAttribute="centerY" secondItem="bLR-Sq-nbO" secondAttribute="centerY" id="bPm-mi-EDH"/>
                             <constraint firstItem="qhK-e7-NYl" firstAttribute="centerX" secondItem="eXs-Vg-sWp" secondAttribute="centerX" id="gUX-Jz-Ddo"/>
-                            <constraint firstItem="bLR-Sq-nbO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="183.66666666666666" id="p4V-zV-aSa"/>
+                            <constraint firstItem="bLR-Sq-nbO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qhK-e7-NYl" secondAttribute="trailing" constant="18" id="p4V-zV-aSa"/>
                             <constraint firstItem="eXs-Vg-sWp" firstAttribute="bottom" secondItem="qhK-e7-NYl" secondAttribute="bottom" constant="6" id="pPM-Pd-Ca4"/>
                             <constraint firstItem="KER-2I-O4L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rqd-yK-18o"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fcp-ST-NiN" secondAttribute="trailing" id="xJ3-h2-HD0"/>
