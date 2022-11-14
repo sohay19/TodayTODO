@@ -93,9 +93,12 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         }
         taskInfoVC.taskData = data
         taskInfoVC.modalTransitionStyle = .coverVertical
-        taskInfoVC.modalPresentationStyle = .overCurrentContext
+        taskInfoVC.modalPresentationStyle = .fullScreen
         
-        present(taskInfoVC, animated: true)
+        guard let navaigatiocn = self.navigationController as? CustomNavigationController else {
+            return
+        }
+        navaigatiocn.pushViewController(taskInfoVC)
     }
     //MARK: - Edit
     //Row별 EditMode-

@@ -9,10 +9,7 @@ import UIKit
 
 
 class TaskInfoViewController : UIViewController {
-    @IBOutlet weak var backgroundView: UIImageView!
-    @IBOutlet weak var popbackView: UIView!
     @IBOutlet weak var popView:UIView!
-    @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var resultView:UIView!
     @IBOutlet weak var textView:UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -51,11 +48,8 @@ class TaskInfoViewController : UIViewController {
     private var keyboardHeight:CGFloat?
     private var isShow = false
     //View 관련
-    private var popbackViewSize:CGSize?
     private var resultViewSize:CGSize?
-    private var buttonViewSize:CGSize?
     private var resultViewConstraint:NSLayoutConstraint?
-    private var popbackViewConstraint:NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,20 +78,16 @@ class TaskInfoViewController : UIViewController {
 extension TaskInfoViewController {
     //
     private func initUI() {
-        //그림자
-        popbackView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        popbackView.layer.shadowRadius = 10
-        popbackView.layer.shadowOpacity = 1
         // 배경 설정
+        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BlackBackImage)
-        popbackView.insertSubview(backgroundView, at: 0)
+        view.insertSubview(backgroundView, at: 0)
         //
         pickTaskDate.overrideUserInterfaceStyle = .dark
         pickEndDate.overrideUserInterfaceStyle = .dark
         pickAlarmTime.overrideUserInterfaceStyle = .dark
         //
         popView.backgroundColor = .clear
-        buttonView.backgroundColor = .clear
         textView.backgroundColor = .clear
         //
         switchRepeat.onTintColor = .systemIndigo
@@ -108,13 +98,11 @@ extension TaskInfoViewController {
         switch currentMode {
         case .LOOK:
             //
-            controllBtnView(false)
             controllEditMode(false)
             //
             loadData()
         case .MODIFY:
             //
-            controllBtnView(true)
             controllEditMode(true)
             //
             loadCategory()
@@ -134,7 +122,6 @@ extension TaskInfoViewController {
             //
             printResultView()
             controllReusltView(false)
-            controllBtnView(true)
             //
             loadCategory()
         }
@@ -146,9 +133,7 @@ extension TaskInfoViewController {
     //
     private func setDefaultView() {
         //기존 사이즈 저장
-        popbackViewSize = popbackView.frame.size
         resultViewSize = resultView.frame.size
-        buttonViewSize = buttonView.frame.size
         //
         pickEndDate.isEnabled = false
         controllEditMode(false)
@@ -157,10 +142,6 @@ extension TaskInfoViewController {
         resultView.translatesAutoresizingMaskIntoConstraints = false
         resultViewConstraint = resultView.constraints.first { item in
             return item.identifier == "resultViewHeight"
-        }
-        popbackView.translatesAutoresizingMaskIntoConstraints = false
-        popbackViewConstraint = popbackView.constraints.first { item in
-            return item.identifier == "popbackViewHeight"
         }
     }
     //
@@ -257,21 +238,6 @@ extension TaskInfoViewController {
         controllReusltView(true)
         //반복 주기
         setResultView(repeatResult.repeatType, isResult: true)
-    }
-    //buttonView 컨트롤
-    private func controllBtnView(_ isOpen:Bool) {
-        buttonView.isHidden = !isOpen
-        if isOpen {
-            let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
-                popbackViewConstraint?.constant = popbackViewSize!.height
-            }
-            anim.startAnimation()
-        } else {
-            let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
-                popbackViewConstraint?.constant = popbackViewSize!.height - buttonViewSize!.height
-            }
-            anim.startAnimation()
-        }
     }
     //
     private func controllEditMode(_ isOn:Bool) {

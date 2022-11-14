@@ -41,18 +41,6 @@ extension SystemManager {
         //
         let topVC = getTopViewController(rootVC);
         navigation = topVC.navigationController as? CustomNavigationController
-        // 메뉴로드
-        menuView = Bundle.main.loadNibNamed(menuBoard, owner: topVC, options: nil)?.first as? Menu
-        guard let menuView = menuView else {
-            return
-        }
-        menuView.frame = CGRect(x: 0, y: 0, width: 0, height: 60)
-        menuView.translatesAutoresizingMaskIntoConstraints = false
-        topVC.view.addSubview(menuView)
-        menuView.leadingAnchor.constraint(equalTo: topVC.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        menuView.trailingAnchor.constraint(equalTo: topVC.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        menuView.bottomAnchor.constraint(equalTo: topVC.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        menuView.initUI(currentPage == .Backup ? .systemBackground : .label)
         // 로딩화면 추가
         loadingView = Bundle.main.loadNibNamed(LoadingBoard, owner: topVC, options: nil)?.first as? Loading
         guard let loadingView = loadingView else {
@@ -60,7 +48,6 @@ extension SystemManager {
         }
         loadingView.frame = topVC.view.frame
         topVC.view.addSubview(loadingView)
-        //
         loadingView.initUI()
     }
     private func getTopViewController(_ controller:UIViewController) -> UIViewController {
@@ -95,6 +82,21 @@ extension SystemManager {
     @available (iOSApplicationExtension, unavailable)
     func openSettingMenu() {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+    }
+    //
+    func openMenu(_ vc:UIViewController) {
+        // 메뉴로드
+        menuView = Bundle.main.loadNibNamed(menuBoard, owner: vc, options: nil)?.first as? Menu
+        guard let menuView = menuView else {
+            return
+        }
+        menuView.translatesAutoresizingMaskIntoConstraints = false
+        vc.view.addSubview(menuView)
+        menuView.initUI()
+        menuView.leadingAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        menuView.trailingAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        menuView.bottomAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        menuView.heightAnchor.constraint(equalToConstant: 69).isActive = true
     }
     //Main Page
     func moveMain() {

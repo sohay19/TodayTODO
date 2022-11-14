@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,29 +17,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Edd-tf-TbJ">
-                                <rect key="frame" x="102" y="348" width="210" height="210"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlackBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="Edd-tf-TbJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title.png" translatesAutoresizingMaskIntoConstraints="NO" id="40H-cL-d04">
+                                <rect key="frame" x="117" y="410" width="180" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="210" id="47A-tR-brI"/>
-                                    <constraint firstAttribute="width" secondItem="Edd-tf-TbJ" secondAttribute="height" multiplier="1:1" id="Egi-eB-oQR"/>
+                                    <constraint firstAttribute="width" secondItem="40H-cL-d04" secondAttribute="height" multiplier="2:1" id="mPS-ES-iek"/>
+                                    <constraint firstAttribute="width" constant="180" id="nWO-Gk-DR4"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Edd-tf-TbJ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="p2K-tR-aJ8"/>
-                            <constraint firstItem="Edd-tf-TbJ" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="rex-tQ-1XN"/>
+                            <constraint firstItem="40H-cL-d04" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6xg-AD-Wtq"/>
+                            <constraint firstItem="Edd-tf-TbJ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="9zG-Mp-zcs"/>
+                            <constraint firstItem="Edd-tf-TbJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="FeW-zC-Ce7"/>
+                            <constraint firstAttribute="bottom" secondItem="Edd-tf-TbJ" secondAttribute="bottom" id="KSV-yV-y8E"/>
+                            <constraint firstAttribute="trailing" secondItem="Edd-tf-TbJ" secondAttribute="trailing" id="OgU-XJ-Gzu"/>
+                            <constraint firstItem="40H-cL-d04" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="jGg-Xs-8Pk"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
+        <image name="BlackBackground.png" width="1875" height="2560"/>
+        <image name="title.png" width="180" height="80"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

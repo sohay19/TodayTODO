@@ -51,6 +51,8 @@ class PushListViewController : UIViewController {
         //
         initUI()
         initRefreshController()
+        //메뉴
+        SystemManager.shared.openMenu(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,7 +109,7 @@ extension PushListViewController {
         pushTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         pushTable.separatorColor = .label
         //
-        labelDate.font = UIFont(name: E_N_Font_B, size: E_N_FontSize)
+        labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
         imgUnderline.alpha = 0.3

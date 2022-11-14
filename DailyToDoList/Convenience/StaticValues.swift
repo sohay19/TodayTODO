@@ -42,13 +42,12 @@ let CalendalFontSize = 18.0
 //
 let K_Font_B = "NanumBarunpenOTF-Bold"
 let K_Font_R = "NanumBarunpenOTF"
+let K_FontSize = 15.0
+let E_N_Font_E = "Worcestershire_Sauce_Press-Regular"
+let MenuFontSize = 30.0
 let E_N_Font_B = "Worcestershire_Sauce-Regular"
 let E_N_Font_R = "Windsor_Great_Park-Regular"
-let K_FontSize = 18.0
-let E_N_FontSize = 24.0
-//sidemenu
-let SideMenuFont = "Worcestershire_Sauce_Press-Regular"
-let SideMenuFontSize = 33.0
+let E_N_FontSize = 21.0
 
 
 //MARK: - Image
@@ -56,5 +55,6 @@ let BackgroundImage = "Background\(Int.random(in: 1...5)).jpg"
 let BlackBackImage = "BlackBackground.png"
 let Underline_Indigo = "underline_Indigo.png"
 let Underline_Pink = "underline_Pink.png"
+let Underline_Black = "underline_Black.png"
 let Bricks = "Bricks.png"
 let LastPageImage = "LastPage.png"

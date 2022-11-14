@@ -41,10 +41,10 @@ extension CustomNavigationController {
     }
     //push
     func pushViewController(_ viewController: UIViewController) {
-        super.pushViewController(viewController, animated: false)
+        super.pushViewController(viewController, animated: true)
     }
     func pushViewController(_ viewController: UIViewController, complete: @escaping ()->Void) {
-        super.pushViewController(viewController, animated: false)
+        super.pushViewController(viewController, animated: true)
         completeMotion(false, complete: complete)
     }
     //

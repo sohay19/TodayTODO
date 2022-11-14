@@ -18,7 +18,6 @@
 		CF487EA928F1B71900498451 /* TaskListEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA428F1B6D200498451 /* TaskListEntryView.swift */; };
 		CF487EAA28F1B72900498451 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3928F14CA0008850DC /* Utils.swift */; };
 		CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */; };
-		CF53508F291BB38A00AFDC14 /* underline_Pink.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508E291BB38A00AFDC14 /* underline_Pink.png */; };
 		CF535097291CD5E400AFDC14 /* sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = CF535095291CD5E400AFDC14 /* sticker.png */; };
 		CF53509F291CE8FA00AFDC14 /* spring.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53509E291CE8FA00AFDC14 /* spring.png */; };
 		CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */; };
@@ -42,6 +41,11 @@
 		CF5350CF291E98DC00AFDC14 /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5350CE291E98DC00AFDC14 /* Menu.xib */; };
 		CF5350D1291E9CD600AFDC14 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350D0291E9CD600AFDC14 /* Loading.swift */; };
 		CF5350D3291E9CE200AFDC14 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D2291E9CE200AFDC14 /* Loading.xib */; };
+		CF5350D52921E92F00AFDC14 /* underline_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D42921E92E00AFDC14 /* underline_Black.png */; };
+		CF5350D72921F3F300AFDC14 /* underline_Pink.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D62921F3F300AFDC14 /* underline_Pink.png */; };
+		CF5350D929221D6700AFDC14 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D829221D6700AFDC14 /* pencil.png */; };
+		CF5350E32922277B00AFDC14 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350E22922277B00AFDC14 /* clock.png */; };
+		CF5350E52922310100AFDC14 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350E42922310100AFDC14 /* title.png */; };
 		CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */; };
 		CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */; };
 		CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
@@ -97,7 +101,6 @@
 		CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADC291502E0005B3316 /* EF_Diary.ttf */; };
 		CFE01AE2291502E1005B3316 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADC291502E0005B3316 /* EF_Diary.ttf */; };
 		CFE01AE3291502E1005B3316 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADC291502E0005B3316 /* EF_Diary.ttf */; };
-		CFE01AF42918E6BE005B3316 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE01AF32918E6BE005B3316 /* pencil.png */; };
 		CFE01AF82918EDE6005B3316 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */; };
 		CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DA28F13287008850DC /* AppDelegate.swift */; };
 		CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DC28F13287008850DC /* SceneDelegate.swift */; };
@@ -236,7 +239,6 @@
 		CF487EA428F1B6D200498451 /* TaskListEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListEntryView.swift; sourceTree = "<group>"; };
 		CF487EA628F1B6F100498451 /* TaskListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListProvider.swift; sourceTree = "<group>"; };
 		CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Indigo.png; sourceTree = "<group>"; };
-		CF53508E291BB38A00AFDC14 /* underline_Pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Pink.png; sourceTree = "<group>"; };
 		CF535095291CD5E400AFDC14 /* sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sticker.png; sourceTree = "<group>"; };
 		CF53509E291CE8FA00AFDC14 /* spring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring.png; sourceTree = "<group>"; };
 		CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpCell.swift; sourceTree = "<group>"; };
@@ -260,6 +262,11 @@
 		CF5350CE291E98DC00AFDC14 /* Menu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Menu.xib; sourceTree = "<group>"; };
 		CF5350D0291E9CD600AFDC14 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		CF5350D2291E9CE200AFDC14 /* Loading.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Loading.xib; sourceTree = "<group>"; };
+		CF5350D42921E92E00AFDC14 /* underline_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Black.png; sourceTree = "<group>"; };
+		CF5350D62921F3F300AFDC14 /* underline_Pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Pink.png; sourceTree = "<group>"; };
+		CF5350D829221D6700AFDC14 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
+		CF5350E22922277B00AFDC14 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		CF5350E42922310100AFDC14 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCExtension.swift; sourceTree = "<group>"; };
 		CF75963229024C340046FDC1 /* PushList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PushList.storyboard; sourceTree = "<group>"; };
@@ -293,7 +300,6 @@
 		CFD0B14528F91CDB0029D936 /* TaskInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskInfo.storyboard; sourceTree = "<group>"; };
 		CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoViewController.swift; sourceTree = "<group>"; };
 		CFE01ADC291502E0005B3316 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
-		CFE01AF32918E6BE005B3316 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
 		CFEB49D728F13287008850DC /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEB49DA28F13287008850DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -490,19 +496,22 @@
 		CFE01AC82914FB96005B3316 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				CF53508E291BB38A00AFDC14 /* underline_Pink.png */,
 				CF53509E291CE8FA00AFDC14 /* spring.png */,
 				CF5350AF291E3D4B00AFDC14 /* Background1.jpg */,
 				CF5350A8291E3D4A00AFDC14 /* Background2.jpg */,
 				CF5350AE291E3D4B00AFDC14 /* Background3.jpg */,
+				CF5350E22922277B00AFDC14 /* clock.png */,
+				CF5350E42922310100AFDC14 /* title.png */,
 				CF5350AB291E3D4A00AFDC14 /* Background4.jpg */,
 				CF5350AD291E3D4A00AFDC14 /* Background5.jpg */,
 				CF5350A9291E3D4A00AFDC14 /* BlackBackground.png */,
+				CF5350D829221D6700AFDC14 /* pencil.png */,
 				CF5350AA291E3D4A00AFDC14 /* Bricks.png */,
 				CF5350AC291E3D4A00AFDC14 /* LastPage.png */,
+				CF5350D42921E92E00AFDC14 /* underline_Black.png */,
+				CF5350D62921F3F300AFDC14 /* underline_Pink.png */,
 				CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */,
 				CF535095291CD5E400AFDC14 /* sticker.png */,
-				CFE01AF32918E6BE005B3316 /* pencil.png */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -881,12 +890,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5350C1291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf in Resources */,
+				CF5350D72921F3F300AFDC14 /* underline_Pink.png in Resources */,
+				CF5350E32922277B00AFDC14 /* clock.png in Resources */,
 				CF5350B0291E3D4B00AFDC14 /* Background2.jpg in Resources */,
 				CF5350CF291E98DC00AFDC14 /* Menu.xib in Resources */,
 				CFEB4A6C28F16B15008850DC /* Picker.storyboard in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
 				CF5350BD291E457400AFDC14 /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CF5350BE291E457400AFDC14 /* NanumBarunpenB.otf in Resources */,
+				CF5350E52922310100AFDC14 /* title.png in Resources */,
 				CF5350BF291E457400AFDC14 /* NanumBarunpenR.otf in Resources */,
 				CFEB49E728F13288008850DC /* LaunchScreen.storyboard in Resources */,
 				CFD0B14628F91CDB0029D936 /* TaskInfo.storyboard in Resources */,
@@ -897,10 +909,10 @@
 				CF53509F291CE8FA00AFDC14 /* spring.png in Resources */,
 				CFEB49E428F13288008850DC /* Assets.xcassets in Resources */,
 				CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */,
-				CF53508F291BB38A00AFDC14 /* underline_Pink.png in Resources */,
 				CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CF5350C0291E457400AFDC14 /* Windsor_Great_Park-Regular.otf in Resources */,
 				CF5350B2291E3D4B00AFDC14 /* Bricks.png in Resources */,
+				CF5350D929221D6700AFDC14 /* pencil.png in Resources */,
 				CFEB49E228F13287008850DC /* Main.storyboard in Resources */,
 				CF5350C3291E45F300AFDC14 /* NanumAJumMaJaYu.ttf in Resources */,
 				CF5350B3291E3D4B00AFDC14 /* Background4.jpg in Resources */,
@@ -909,9 +921,9 @@
 				CF5350D3291E9CE200AFDC14 /* Loading.xib in Resources */,
 				CF535097291CD5E400AFDC14 /* sticker.png in Resources */,
 				CFEB4A2E28F14B68008850DC /* Setting.storyboard in Resources */,
+				CF5350D52921E92F00AFDC14 /* underline_Black.png in Resources */,
 				CF5350B6291E3D4B00AFDC14 /* Background3.jpg in Resources */,
 				CF5350B5291E3D4B00AFDC14 /* Background5.jpg in Resources */,
-				CFE01AF42918E6BE005B3316 /* pencil.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

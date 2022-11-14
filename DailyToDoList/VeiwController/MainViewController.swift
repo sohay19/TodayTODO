@@ -8,7 +8,6 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    @IBOutlet weak var imageViewButon: UIImageView!
     @IBOutlet weak var imgUnderline: UIImageView!
     //
     @IBOutlet weak var labelDate: UILabel!
@@ -19,6 +18,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var monthlyTaskTable: UITableView!
     //
     @IBOutlet weak var segmentedController: CustomSegmentControl!
+    @IBOutlet weak var btnAdd: UIButton!
     //
     @IBOutlet weak var calendarView: CustomCalendarView!
     @IBOutlet weak var todayView: UIView!
@@ -47,11 +47,12 @@ class MainViewController: UIViewController {
         calendarView.delegate = self
         //
         initUI()
-        initButton()
         // 리프레시 컨트롤러 초기화
         initRefreshController()
         // 메인 리로드 함수
         RealmManager.shared.reloadMainView = viewWillAppear(_:)
+        //메뉴
+        SystemManager.shared.openMenu(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,7 +93,8 @@ extension MainViewController {
         todayView.backgroundColor = .clear
         monthView.backgroundColor = .clear
         // 폰트 설정
-        labelDate.font = UIFont(name: E_N_Font_B, size: E_N_FontSize)
+        btnAdd.titleLabel?.font = UIFont(name: LogoFont, size: E_N_FontSize + 3.0)
+        labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
         labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
@@ -106,12 +108,6 @@ extension MainViewController {
         monthlyTaskTable.separatorColor = .label
         //
         monthView.isHidden = true
-    }
-    
-    func initButton() {
-        let tapImageViewRecognizer = UITapGestureRecognizer(target: self, action: #selector(clickTaskAdd(_:)))
-        imageViewButon.isUserInteractionEnabled = true
-        imageViewButon.addGestureRecognizer(tapImageViewRecognizer)
     }
     
     func changeSegment() {
@@ -405,15 +401,18 @@ extension MainViewController {
         //
         taskInfoVC.taskData = task
         taskInfoVC.modalTransitionStyle = .coverVertical
-        taskInfoVC.modalPresentationStyle = .overCurrentContext
+        taskInfoVC.modalPresentationStyle = .fullScreen
         
-        present(taskInfoVC, animated: true)
+        guard let navaigatiocn = self.navigationController as? CustomNavigationController else {
+            return
+        }
+        navaigatiocn.pushViewController(taskInfoVC)
     }
 }
 
 //MARK: - Button Event
 extension MainViewController {
-    @objc func clickTaskAdd(_ sender:UITapGestureRecognizer) {
+    @IBAction func clickTaskAdd(_ sender:Any) {
         let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
         guard let nextVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
         //
@@ -422,9 +421,12 @@ extension MainViewController {
         nextVC.currntDate = currentDate
         //
         nextVC.modalTransitionStyle = .coverVertical
-        nextVC.modalPresentationStyle = .overCurrentContext
+        nextVC.modalPresentationStyle = .fullScreen
         
-        present(nextVC, animated: true)
+        guard let navaigatiocn = self.navigationController as? CustomNavigationController else {
+            return
+        }
+        navaigatiocn.pushViewController(nextVC)
     }
     //SegmentedControl
     @IBAction func changeSegment(_ sender:UISegmentedControl) {

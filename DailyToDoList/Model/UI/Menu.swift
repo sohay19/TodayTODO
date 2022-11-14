@@ -7,39 +7,53 @@
 
 import UIKit
 
-class Menu: UIStackView {
+class Menu: UIView {
+    @IBOutlet weak var menuVeiw: UIStackView!
+    //
     @IBOutlet weak var btnTODO: UIButton!
     @IBOutlet weak var btnCategory: UIButton!
     @IBOutlet weak var btnPush: UIButton!
     @IBOutlet weak var btnBackup: UIButton!
+    //
+    @IBOutlet weak var imgTODO: UIImageView!
+    @IBOutlet weak var imgCategory: UIImageView!
+    @IBOutlet weak var imgPush: UIImageView!
+    @IBOutlet weak var imgBackup: UIImageView!
+    //
+    @IBOutlet weak var line: UIView!
     
     
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder: coder)
-        //
-        initailize()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+    }
+    
+    func initUI() {
+        menuVeiw.axis = .horizontal
+        menuVeiw.alignment = .center
+        menuVeiw.distribution = .equalSpacing
+        menuVeiw.backgroundColor = .clear
+        menuVeiw.isLayoutMarginsRelativeArrangement = true
+        menuVeiw.layoutMargins = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
         //
-        initailize()
-    }
-    
-    private func initailize() {
-        axis = .horizontal
-        alignment = .center
-        distribution = .equalSpacing
-        backgroundColor = .clear
-        isLayoutMarginsRelativeArrangement = true
-        layoutMargins = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
-    }
-    
-    func initUI(_ color:UIColor) {
-        btnTODO.tintColor = color
-        btnCategory.tintColor = color
-        btnPush.tintColor = color
-        btnBackup.tintColor = color
+        imgTODO.image = UIImage(named: Underline_Black)
+        imgCategory.image = UIImage(named: Underline_Black)
+        imgPush.image = UIImage(named: Underline_Black)
+        imgBackup.image = UIImage(named: Underline_Black)
+        imgTODO.alpha = 0.8
+        imgCategory.alpha = 0.8
+        imgPush.alpha = 0.8
+        imgBackup.alpha = 0.8
+        //
+        btnTODO.tintColor = .systemBackground
+        btnCategory.tintColor = .systemBackground
+        btnPush.tintColor = .systemBackground
+        btnBackup.tintColor = .systemBackground
+        //
+        line.backgroundColor = .systemGray
     }
 }
 

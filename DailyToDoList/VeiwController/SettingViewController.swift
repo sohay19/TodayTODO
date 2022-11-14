@@ -31,6 +31,8 @@ class SettingViewController: UIViewController {
         tableView.dataSource = self
         //
         initUI()
+        //메뉴
+        SystemManager.shared.openMenu(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,10 +56,10 @@ extension SettingViewController {
         backgroundView.image = UIImage(named: LastPageImage)
         view.insertSubview(backgroundView, at: 0)
         //폰트 설정
-        labelTitle.font = UIFont(name: SideMenuFont, size: SideMenuFontSize)
-        labelDate.font = UIFont(name: K_Font_B, size: K_FontSize)
+        labelTitle.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
+        labelDate.font = UIFont(name: K_Font_B, size: K_FontSize + 3.0)
         labelBackupDate.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelTableTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
+        labelTableTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 3.0)
         //
         imgUnderline.image = UIImage(named: Underline_Pink)
         imgUnderline.alpha = 0.5
