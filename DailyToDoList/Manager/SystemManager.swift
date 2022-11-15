@@ -92,7 +92,7 @@ extension SystemManager {
         }
         menuView.translatesAutoresizingMaskIntoConstraints = false
         vc.view.addSubview(menuView)
-        menuView.initUI()
+        menuView.initUI(currentPage == .Backup ? .systemBackground : .label)
         menuView.leadingAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         menuView.trailingAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         menuView.bottomAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.bottomAnchor).isActive = true

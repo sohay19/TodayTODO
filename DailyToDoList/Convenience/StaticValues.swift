@@ -5,6 +5,7 @@
 //  Created by 소하 on 2022/10/08.
 //
 
+import UIKit
 import Foundation
 
 //MARK: - UserDefaultkey
@@ -58,3 +59,4 @@ let Underline_Pink = "underline_Pink.png"
 let Underline_Black = "underline_Black.png"
 let Bricks = "Bricks.png"
 let LastPageImage = "LastPage.png"
+let imageConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .bold, scale: .large)

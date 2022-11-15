@@ -15,11 +15,6 @@ class Menu: UIView {
     @IBOutlet weak var btnPush: UIButton!
     @IBOutlet weak var btnBackup: UIButton!
     //
-    @IBOutlet weak var imgTODO: UIImageView!
-    @IBOutlet weak var imgCategory: UIImageView!
-    @IBOutlet weak var imgPush: UIImageView!
-    @IBOutlet weak var imgBackup: UIImageView!
-    //
     @IBOutlet weak var line: UIView!
     
     
@@ -31,7 +26,7 @@ class Menu: UIView {
         super.init(frame: frame)
     }
     
-    func initUI() {
+    func initUI(_ color:UIColor) {
         menuVeiw.axis = .horizontal
         menuVeiw.alignment = .center
         menuVeiw.distribution = .equalSpacing
@@ -39,21 +34,12 @@ class Menu: UIView {
         menuVeiw.isLayoutMarginsRelativeArrangement = true
         menuVeiw.layoutMargins = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
         //
-        imgTODO.image = UIImage(named: Underline_Black)
-        imgCategory.image = UIImage(named: Underline_Black)
-        imgPush.image = UIImage(named: Underline_Black)
-        imgBackup.image = UIImage(named: Underline_Black)
-        imgTODO.alpha = 0.8
-        imgCategory.alpha = 0.8
-        imgPush.alpha = 0.8
-        imgBackup.alpha = 0.8
+        btnTODO.tintColor = color
+        btnCategory.tintColor = color
+        btnPush.tintColor = color
+        btnBackup.tintColor = color
         //
-        btnTODO.tintColor = .systemBackground
-        btnCategory.tintColor = .systemBackground
-        btnPush.tintColor = .systemBackground
-        btnBackup.tintColor = .systemBackground
-        //
-        line.backgroundColor = .systemGray
+        line.backgroundColor = .lightGray
     }
 }
 

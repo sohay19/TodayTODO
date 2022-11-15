@@ -26,17 +26,13 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vD9-bH-J7E">
                             <rect key="frame" x="0.0" y="8" width="65" height="52"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7g4-ev-tIU" userLabel="imgTODO">
-                                    <rect key="frame" x="0.0" y="7.3333333333333321" width="65" height="47.666666666666671"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="7g4-ev-tIU" secondAttribute="height" multiplier="1.5:1.1" id="DFP-KC-ibS"/>
-                                    </constraints>
-                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNx-OP-OuB" userLabel="BtnTODO">
                                     <rect key="frame" x="0.0" y="0.0" width="65" height="52"/>
                                     <color key="tintColor" systemColor="labelColor"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="calendar" catalog="system"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="calendar" catalog="system">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="21"/>
+                                    </buttonConfiguration>
                                     <connections>
                                         <action selector="clickTODO:" destination="gcR-sY-kKm" eventType="touchUpInside" id="dlg-Qj-9y1"/>
                                     </connections>
@@ -45,31 +41,23 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="eNx-OP-OuB" firstAttribute="top" secondItem="vD9-bH-J7E" secondAttribute="top" id="96F-qE-mbx"/>
-                                <constraint firstItem="7g4-ev-tIU" firstAttribute="centerX" secondItem="vD9-bH-J7E" secondAttribute="centerX" id="CcY-Pv-dql"/>
                                 <constraint firstAttribute="height" constant="52" id="FSI-mZ-pnP"/>
-                                <constraint firstItem="7g4-ev-tIU" firstAttribute="bottom" secondItem="eNx-OP-OuB" secondAttribute="bottom" constant="3" id="HEg-Kg-H8O"/>
-                                <constraint firstAttribute="trailing" secondItem="7g4-ev-tIU" secondAttribute="trailing" id="LaF-Ga-TRS"/>
                                 <constraint firstAttribute="trailing" secondItem="eNx-OP-OuB" secondAttribute="trailing" id="XSM-VH-F8r"/>
                                 <constraint firstAttribute="bottom" secondItem="eNx-OP-OuB" secondAttribute="bottom" id="aAN-kS-wJi"/>
                                 <constraint firstItem="eNx-OP-OuB" firstAttribute="leading" secondItem="vD9-bH-J7E" secondAttribute="leading" id="aAh-xZ-3oQ"/>
-                                <constraint firstItem="7g4-ev-tIU" firstAttribute="leading" secondItem="vD9-bH-J7E" secondAttribute="leading" id="jbv-vV-wX8"/>
                                 <constraint firstAttribute="width" secondItem="vD9-bH-J7E" secondAttribute="height" multiplier="1.5:1.2" id="x2v-fa-CvD"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QgB-46-jOW">
                             <rect key="frame" x="111.66666666666669" y="8" width="65" height="52"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gHe-ok-J3Q" userLabel="imgCategory">
-                                    <rect key="frame" x="0.0" y="7.3333333333333321" width="65" height="47.666666666666671"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="gHe-ok-J3Q" secondAttribute="height" multiplier="1.5:1.1" id="xh3-Ym-qP4"/>
-                                    </constraints>
-                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giy-Z2-LNw" userLabel="BtnCategory">
                                     <rect key="frame" x="0.0" y="0.0" width="65" height="52"/>
                                     <color key="tintColor" systemColor="labelColor"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="list.bullet" catalog="system"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="list.bullet" catalog="system">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="21"/>
+                                    </buttonConfiguration>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,29 +65,21 @@
                                 <constraint firstItem="giy-Z2-LNw" firstAttribute="top" secondItem="QgB-46-jOW" secondAttribute="top" id="EXD-cb-SEx"/>
                                 <constraint firstItem="giy-Z2-LNw" firstAttribute="leading" secondItem="QgB-46-jOW" secondAttribute="leading" id="Lgb-RQ-KpB"/>
                                 <constraint firstAttribute="trailing" secondItem="giy-Z2-LNw" secondAttribute="trailing" id="LhE-MV-7xV"/>
-                                <constraint firstAttribute="trailing" secondItem="gHe-ok-J3Q" secondAttribute="trailing" id="PdV-3h-bvO"/>
-                                <constraint firstItem="gHe-ok-J3Q" firstAttribute="centerX" secondItem="QgB-46-jOW" secondAttribute="centerX" id="Zwc-CL-qi6"/>
                                 <constraint firstAttribute="height" constant="52" id="a7o-Qw-PLU"/>
                                 <constraint firstAttribute="width" secondItem="QgB-46-jOW" secondAttribute="height" multiplier="1.5:1.2" id="cSs-FA-ac6"/>
-                                <constraint firstItem="gHe-ok-J3Q" firstAttribute="bottom" secondItem="giy-Z2-LNw" secondAttribute="bottom" constant="3" id="hCh-d5-ogs"/>
                                 <constraint firstAttribute="bottom" secondItem="giy-Z2-LNw" secondAttribute="bottom" id="qEz-TL-32n"/>
-                                <constraint firstItem="gHe-ok-J3Q" firstAttribute="leading" secondItem="QgB-46-jOW" secondAttribute="leading" id="zE8-u5-74T"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xUw-gr-YnZ">
                             <rect key="frame" x="223.33333333333334" y="8" width="65.000000000000028" height="52"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5O3-uf-vbP" userLabel="imgPush">
-                                    <rect key="frame" x="0.0" y="7.3333333333333321" width="65" height="47.666666666666671"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="5O3-uf-vbP" secondAttribute="height" multiplier="1.5:1.1" id="6dY-TZ-8aB"/>
-                                    </constraints>
-                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXK-b5-ZaB" userLabel="BtnPush">
                                     <rect key="frame" x="0.0" y="0.0" width="65" height="52"/>
                                     <color key="tintColor" systemColor="labelColor"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="alarm.fill" catalog="system"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="alarm.fill" catalog="system">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="21"/>
+                                    </buttonConfiguration>
                                     <connections>
                                         <action selector="clickPush:" destination="gcR-sY-kKm" eventType="touchUpInside" id="9Bk-rh-lFk"/>
                                     </connections>
@@ -107,14 +87,10 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="5O3-uf-vbP" secondAttribute="trailing" id="4jy-sC-fZ5"/>
-                                <constraint firstItem="5O3-uf-vbP" firstAttribute="leading" secondItem="xUw-gr-YnZ" secondAttribute="leading" id="5ZV-ot-uKY"/>
-                                <constraint firstItem="5O3-uf-vbP" firstAttribute="centerX" secondItem="xUw-gr-YnZ" secondAttribute="centerX" id="7zs-aM-gMK"/>
                                 <constraint firstAttribute="width" secondItem="xUw-gr-YnZ" secondAttribute="height" multiplier="1.5:1.2" id="Ajg-sd-huF"/>
                                 <constraint firstAttribute="bottom" secondItem="SXK-b5-ZaB" secondAttribute="bottom" id="Dxv-ou-zMu"/>
                                 <constraint firstItem="SXK-b5-ZaB" firstAttribute="leading" secondItem="xUw-gr-YnZ" secondAttribute="leading" id="MJi-Gw-AAF"/>
                                 <constraint firstAttribute="height" constant="52" id="T6T-np-849"/>
-                                <constraint firstItem="5O3-uf-vbP" firstAttribute="bottom" secondItem="SXK-b5-ZaB" secondAttribute="bottom" constant="3" id="n2Q-5W-Avg"/>
                                 <constraint firstItem="SXK-b5-ZaB" firstAttribute="top" secondItem="xUw-gr-YnZ" secondAttribute="top" id="qLh-UB-mHl"/>
                                 <constraint firstAttribute="trailing" secondItem="SXK-b5-ZaB" secondAttribute="trailing" id="rs9-gZ-arf"/>
                             </constraints>
@@ -122,17 +98,13 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZo-4z-u6k">
                             <rect key="frame" x="335" y="8" width="65" height="52"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kpi-cK-uN5" userLabel="imgBackup">
-                                    <rect key="frame" x="0.0" y="7.3333333333333321" width="65" height="47.666666666666671"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="kpi-cK-uN5" secondAttribute="height" multiplier="1.5:1.1" id="zoq-Vx-Pl8"/>
-                                    </constraints>
-                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NA-Pn-UUi" userLabel="BtnBackup">
                                     <rect key="frame" x="0.0" y="0.0" width="65" height="52"/>
                                     <color key="tintColor" systemColor="labelColor"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="icloud.fill" catalog="system"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="icloud.fill" catalog="system">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="21"/>
+                                    </buttonConfiguration>
                                     <connections>
                                         <action selector="clickBackup:" destination="gcR-sY-kKm" eventType="touchUpInside" id="Pi4-hx-7zC"/>
                                     </connections>
@@ -140,16 +112,12 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="kpi-cK-uN5" firstAttribute="leading" secondItem="KZo-4z-u6k" secondAttribute="leading" id="4bo-rm-QTK"/>
                                 <constraint firstItem="0NA-Pn-UUi" firstAttribute="leading" secondItem="KZo-4z-u6k" secondAttribute="leading" id="5WN-hA-cmf"/>
-                                <constraint firstItem="kpi-cK-uN5" firstAttribute="centerX" secondItem="KZo-4z-u6k" secondAttribute="centerX" id="E4z-Dq-dZ5"/>
                                 <constraint firstAttribute="trailing" secondItem="0NA-Pn-UUi" secondAttribute="trailing" id="J0w-5N-TKM"/>
                                 <constraint firstAttribute="width" secondItem="KZo-4z-u6k" secondAttribute="height" multiplier="1.5:1.2" id="KVY-do-CPm"/>
                                 <constraint firstAttribute="height" constant="52" id="LGa-XO-gg8"/>
                                 <constraint firstAttribute="bottom" secondItem="0NA-Pn-UUi" secondAttribute="bottom" id="YTX-YE-ZBq"/>
-                                <constraint firstAttribute="trailing" secondItem="kpi-cK-uN5" secondAttribute="trailing" id="eLG-fA-JGZ"/>
                                 <constraint firstItem="0NA-Pn-UUi" firstAttribute="top" secondItem="KZo-4z-u6k" secondAttribute="top" id="sXG-X3-fz8"/>
-                                <constraint firstItem="kpi-cK-uN5" firstAttribute="bottom" secondItem="0NA-Pn-UUi" secondAttribute="bottom" constant="3" id="vok-TD-lMh"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -171,10 +139,6 @@
                 <outlet property="btnCategory" destination="giy-Z2-LNw" id="EUz-xL-kZy"/>
                 <outlet property="btnPush" destination="SXK-b5-ZaB" id="3oE-rv-voW"/>
                 <outlet property="btnTODO" destination="eNx-OP-OuB" id="z5G-cS-zCh"/>
-                <outlet property="imgBackup" destination="kpi-cK-uN5" id="Ebh-u5-2IZ"/>
-                <outlet property="imgCategory" destination="gHe-ok-J3Q" id="jYa-ju-JtA"/>
-                <outlet property="imgPush" destination="5O3-uf-vbP" id="ZIw-7z-APY"/>
-                <outlet property="imgTODO" destination="7g4-ev-tIU" id="ptY-S7-Ec7"/>
                 <outlet property="line" destination="3IH-Is-zV0" id="tFx-Pm-KQx"/>
                 <outlet property="menuVeiw" destination="7R5-r8-vRs" id="z3m-s8-axy"/>
             </connections>

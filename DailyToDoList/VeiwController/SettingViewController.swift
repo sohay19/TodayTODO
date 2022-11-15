@@ -147,14 +147,14 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             self.loadBackupFile(indexPath)
             success(true)
         }
-        load.image = UIImage(systemName: "tray.and.arrow.up.fill")
+        load.image = UIImage(systemName: "tray.and.arrow.up.fill", withConfiguration: imageConfig)
         load.backgroundColor = .systemIndigo.withAlphaComponent(0.5)
         //
         let delete = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.deleteBackupFile(indexPath)
             success(true)
         }
-        delete.image = UIImage(systemName: "trash.fill")
+        delete.image = UIImage(systemName: "trash.fill", withConfiguration: imageConfig)
         delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete, load])

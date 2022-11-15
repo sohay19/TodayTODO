@@ -466,19 +466,14 @@ extension MainViewController {
     }
     //
     func reloadTable() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [self] in
-            checkNil()
-            switch segmentedController.selectedSegmentIndex {
-            case 0:
-                dailyTaskTable.reloadData()
-                dailyTaskTable.flashScrollIndicators()
-            case 1:
-                monthlyTaskTable.reloadData()
-                monthlyTaskTable.flashScrollIndicators()
-            default:
-                return
-            }
-            print("end")
+        checkNil()
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            dailyTaskTable.reloadData()
+        case 1:
+            monthlyTaskTable.reloadData()
+        default:
+            return
         }
     }
 }
