@@ -112,6 +112,8 @@ extension PushListViewController {
         labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
+        btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: imageConfig), for: .normal)
+        //
         imgUnderline.alpha = 0.3
         //
         changeTitle()

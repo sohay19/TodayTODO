@@ -77,7 +77,10 @@ extension CloudManager {
             PopupManager.shared.openOkAlert(vc, title: "알림", msg: "iCloud 설정을 확인해주세요")
             return
         }
-        //copy
+        let fileList = fileManager.loadFile(backupDir).sorted(by: {$0 < $1})
+        if fileList.count >= 10 {
+            deleteBackupFile(backupDir.appendingPathComponent(fileList.first!))
+        }
         copyToRealmDir(vc, sUrl: originRealm.deletingLastPathComponent(), dUrl: backupDir)
         //백업 날짜 업데이트
         guard let label = labelDate else {

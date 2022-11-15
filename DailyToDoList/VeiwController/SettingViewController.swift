@@ -66,6 +66,7 @@ extension SettingViewController {
         imgUnderline_table.image = UIImage(named: Underline_Pink)
         imgUnderline_table.alpha = 0.5
         //
+        tableView.allowsSelection = false
         tableView.backgroundColor = .clear
         tableView.layer.borderColor = UIColor.secondaryLabel.cgColor
         tableView.layer.borderWidth = 0.5

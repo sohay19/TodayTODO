@@ -48,7 +48,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGZ-qB-EjY" userLabel="BtnRefresh">
-                                <rect key="frame" x="159" y="164" width="45" height="45"/>
+                                <rect key="frame" x="156" y="164" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="JGZ-qB-EjY" secondAttribute="height" multiplier="1:1" id="LZz-Vi-M8B"/>
                                     <constraint firstAttribute="width" constant="45" id="a70-dH-qdf"/>
@@ -146,7 +146,7 @@
                             <constraint firstItem="JGZ-qB-EjY" firstAttribute="centerY" secondItem="Qkb-HB-DGp" secondAttribute="centerY" id="MNZ-8S-0J9"/>
                             <constraint firstItem="JIb-L7-p6O" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="MYS-yI-vZu"/>
                             <constraint firstItem="D71-Au-wc0" firstAttribute="centerX" secondItem="Qkb-HB-DGp" secondAttribute="centerX" id="Mv3-09-gCF"/>
-                            <constraint firstItem="JGZ-qB-EjY" firstAttribute="leading" secondItem="Qkb-HB-DGp" secondAttribute="trailing" constant="3" id="N7h-dS-PgM"/>
+                            <constraint firstItem="JGZ-qB-EjY" firstAttribute="leading" secondItem="Qkb-HB-DGp" secondAttribute="trailing" id="N7h-dS-PgM"/>
                             <constraint firstItem="qZ4-DL-UZO" firstAttribute="leading" secondItem="Qkb-HB-DGp" secondAttribute="leading" id="Syu-Fd-vBn"/>
                             <constraint firstItem="4rV-m1-gIN" firstAttribute="centerX" secondItem="qZ4-DL-UZO" secondAttribute="centerX" id="UAL-VY-rEH"/>
                             <constraint firstItem="GNA-av-BUe" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="-9" id="WLF-Zj-f6D"/>

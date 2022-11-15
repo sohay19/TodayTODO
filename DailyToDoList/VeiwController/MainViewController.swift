@@ -94,7 +94,7 @@ extension MainViewController {
         todayView.backgroundColor = .clear
         monthView.backgroundColor = .clear
         // 폰트 설정
-        btnAdd.titleLabel?.font = UIFont(name: LogoFont, size: E_N_FontSize + 3.0)
+        btnAdd.setImage(UIImage(systemName: "pencil", withConfiguration: imageConfig), for: .normal)
         labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
         labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)

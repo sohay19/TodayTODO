@@ -23,14 +23,15 @@
                                     <constraint firstAttribute="height" constant="90" id="Txd-aG-Baa"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eer-ML-wxG">
-                                <rect key="frame" x="321" y="87.333333333333329" width="60" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eer-ML-wxG">
+                                <rect key="frame" x="321" y="72.333333333333329" width="60" height="59.999999999999986"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="eer-ML-wxG" secondAttribute="height" multiplier="2:1" id="xL1-aY-cWH"/>
+                                    <constraint firstAttribute="height" constant="60" id="FUi-0x-AyY"/>
+                                    <constraint firstAttribute="width" secondItem="eer-ML-wxG" secondAttribute="height" multiplier="1:1" id="xL1-aY-cWH"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="TODO+"/>
+                                <state key="normal" image="pencil" catalog="system"/>
                                 <connections>
                                     <action selector="clickTaskAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E6g-AK-6g4"/>
                                 </connections>
@@ -222,6 +223,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="pencil.png" width="1693" height="488"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
