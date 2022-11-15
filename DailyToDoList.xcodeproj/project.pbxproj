@@ -45,7 +45,6 @@
 		CF5350D72921F3F300AFDC14 /* underline_Pink.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D62921F3F300AFDC14 /* underline_Pink.png */; };
 		CF5350D929221D6700AFDC14 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D829221D6700AFDC14 /* pencil.png */; };
 		CF5350E32922277B00AFDC14 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350E22922277B00AFDC14 /* clock.png */; };
-		CF5350E52922310100AFDC14 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350E42922310100AFDC14 /* title.png */; };
 		CF5350E7292376BB00AFDC14 /* MonthltyDayTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */; };
 		CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */; };
 		CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */; };
@@ -81,6 +80,7 @@
 		CF81495D2906CC8C00FD0974 /* WatchConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */; };
 		CF81495F2906D28E00FD0974 /* NSEachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495E2906D28E00FD0974 /* NSEachTask.swift */; };
 		CF8149602906D28E00FD0974 /* NSEachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495E2906D28E00FD0974 /* NSEachTask.swift */; };
+		CF995F462923C54B00FAE2F1 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = CF995F452923C54B00FAE2F1 /* title.png */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
 		CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */; };
@@ -267,7 +267,6 @@
 		CF5350D62921F3F300AFDC14 /* underline_Pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Pink.png; sourceTree = "<group>"; };
 		CF5350D829221D6700AFDC14 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		CF5350E22922277B00AFDC14 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
-		CF5350E42922310100AFDC14 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthltyDayTask.swift; sourceTree = "<group>"; };
 		CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCExtension.swift; sourceTree = "<group>"; };
@@ -291,6 +290,7 @@
 		CF8149572906BFD800FD0974 /* DailyToDoListWatchWatchKitExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyToDoListWatchWatchKitExtension.entitlements; sourceTree = "<group>"; };
 		CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectManager.swift; sourceTree = "<group>"; };
 		CF81495E2906D28E00FD0974 /* NSEachTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEachTask.swift; sourceTree = "<group>"; };
+		CF995F452923C54B00FAE2F1 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* DailyTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToDoListWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0228F1793B00E93585 /* DailyToDoListWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = DailyToDoListWidget.intentdefinition; sourceTree = "<group>"; };
@@ -503,8 +503,8 @@
 				CF5350A8291E3D4A00AFDC14 /* Background2.jpg */,
 				CF5350AE291E3D4B00AFDC14 /* Background3.jpg */,
 				CF5350E22922277B00AFDC14 /* clock.png */,
-				CF5350E42922310100AFDC14 /* title.png */,
 				CF5350AB291E3D4A00AFDC14 /* Background4.jpg */,
+				CF995F452923C54B00FAE2F1 /* title.png */,
 				CF5350AD291E3D4A00AFDC14 /* Background5.jpg */,
 				CF5350A9291E3D4A00AFDC14 /* BlackBackground.png */,
 				CF5350D829221D6700AFDC14 /* pencil.png */,
@@ -901,7 +901,7 @@
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
 				CF5350BD291E457400AFDC14 /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CF5350BE291E457400AFDC14 /* NanumBarunpenB.otf in Resources */,
-				CF5350E52922310100AFDC14 /* title.png in Resources */,
+				CF995F462923C54B00FAE2F1 /* title.png in Resources */,
 				CF5350BF291E457400AFDC14 /* NanumBarunpenR.otf in Resources */,
 				CFEB49E728F13288008850DC /* LaunchScreen.storyboard in Resources */,
 				CFD0B14628F91CDB0029D936 /* TaskInfo.storyboard in Resources */,

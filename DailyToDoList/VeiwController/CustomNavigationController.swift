@@ -10,6 +10,8 @@ import UIKit
 import SideMenu
 
 class CustomNavigationController : UINavigationController {
+    let anim = false
+    
     private var backButtonImage: UIImage? {
         return UIImage(named: "button")?.withAlignmentRectInsets(UIEdgeInsets(top: 0.0, left: -12.0, bottom: -5.0, right: 0.0))
     }
@@ -33,16 +35,16 @@ extension CustomNavigationController {
 extension CustomNavigationController {
     //pop
     func popViewController() {
-        let _ = super.popViewController(animated: false)
+        let _ = super.popViewController(animated: anim)
     }
     func popViewController(complete: @escaping () -> Void) {
-        super.popViewController(animated: false)
-        completeMotion(false, complete: complete)
+        super.popViewController(animated: anim)
+        completeMotion(anim, complete: complete)
     }
     //popRoot
     func popToRootViewController() {
-        let _ = popToRootViewController(animated: false)
-        completeMotion(false) { [self] in
+        let _ = popToRootViewController(animated: anim)
+        completeMotion(anim) { [self] in
             guard let rootVC = topViewController else {
                 return
             }
@@ -51,17 +53,17 @@ extension CustomNavigationController {
         }
     }
     func popToRootViewController(complete: @escaping ()->Void) {
-        let _ = popToRootViewController(animated: false)
-        completeMotion(false) {
+        let _ = popToRootViewController(animated: anim)
+        completeMotion(anim) {
             complete()
         }
     }
     //push
     func pushViewController(_ viewController: UIViewController) {
-        super.pushViewController(viewController, animated: true)
+        super.pushViewController(viewController, animated: anim)
     }
     func pushViewController(_ viewController: UIViewController, complete: @escaping ()->Void) {
-        super.pushViewController(viewController, animated: true)
+        super.pushViewController(viewController, animated: anim)
         completeMotion(false, complete: complete)
     }
     //

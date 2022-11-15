@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title.png" translatesAutoresizingMaskIntoConstraints="NO" id="40H-cL-d04">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title.png" translatesAutoresizingMaskIntoConstraints="NO" id="40H-cL-d04" userLabel="logo">
                                 <rect key="frame" x="117" y="410" width="180" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="40H-cL-d04" secondAttribute="height" multiplier="2:1" id="mPS-ES-iek"/>
@@ -48,7 +48,7 @@
     </scenes>
     <resources>
         <image name="BlackBackground.png" width="1875" height="2560"/>
-        <image name="title.png" width="180" height="80"/>
+        <image name="title.png" width="600" height="400"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

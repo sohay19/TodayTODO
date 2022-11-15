@@ -17,7 +17,7 @@ class SystemManager {
     private var loadingView:Loading?
     //
     private var isLoading = false
-    private var currentPage:PageType = .Main
+    private var pageList:[PageType] = [.Main]
 }
 
 //MARK: - Loading
@@ -92,7 +92,7 @@ extension SystemManager {
         }
         menuView.translatesAutoresizingMaskIntoConstraints = false
         vc.view.addSubview(menuView)
-        menuView.initUI(currentPage == .Backup ? .systemBackground : .label)
+        menuView.initUI(pageList.last! == .Backup ? .systemBackground : .label)
         menuView.leadingAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         menuView.trailingAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         menuView.bottomAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -103,28 +103,53 @@ extension SystemManager {
         guard let navigation = navigation else {
             return
         }
-        currentPage = .Main
+        if  pageList.last! == .Main {
+            return
+        }
+        pageList = [.Main]
         navigation.popToRootViewController()
+    }
+    //
+    func moveCategory() {
+        if  pageList.last! == .Category {
+            return
+        }
     }
     //Push Page
     func movePush() {
+        if  pageList.last! == .Push {
+            return
+        }
         let board = UIStoryboard(name: pushListBoard, bundle: nil)
         guard let nextVC = board.instantiateViewController(withIdentifier: pushListBoard) as? PushListViewController else { return }
         guard let navigation = navigation else {
             return
         }
-        currentPage = .Push
-        navigation.pushViewController(nextVC)
+        if pageList.count > 1 && pageList[pageList.endIndex-2] == .Push {
+            pageList.removeLast()
+            navigation.popViewController()
+        } else {
+            pageList.append(.Push)
+            navigation.pushViewController(nextVC)
+        }
     }
     //BackUp Page
     func moveBackup() {
+        if  pageList.last! == .Backup {
+            return
+        }
         let board = UIStoryboard(name: settingBoard, bundle: nil)
         guard let nextVC = board.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }
         guard let navigation = navigation else {
             return
         }
-        currentPage = .Backup
-        navigation.pushViewController(nextVC)
+        if pageList.count > 1 && pageList[pageList.endIndex-2] == .Backup {
+            pageList.removeLast()
+            navigation.popViewController()
+        } else {
+            pageList.append(.Backup)
+            navigation.pushViewController(nextVC)
+        }
     }
 }
 
