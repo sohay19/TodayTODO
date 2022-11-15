@@ -46,6 +46,7 @@
 		CF5350D929221D6700AFDC14 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D829221D6700AFDC14 /* pencil.png */; };
 		CF5350E32922277B00AFDC14 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350E22922277B00AFDC14 /* clock.png */; };
 		CF5350E52922310100AFDC14 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350E42922310100AFDC14 /* title.png */; };
+		CF5350E7292376BB00AFDC14 /* MonthltyDayTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */; };
 		CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */; };
 		CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */; };
 		CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
@@ -267,6 +268,7 @@
 		CF5350D829221D6700AFDC14 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		CF5350E22922277B00AFDC14 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		CF5350E42922310100AFDC14 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
+		CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthltyDayTask.swift; sourceTree = "<group>"; };
 		CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCExtension.swift; sourceTree = "<group>"; };
 		CF75963229024C340046FDC1 /* PushList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PushList.storyboard; sourceTree = "<group>"; };
@@ -622,6 +624,7 @@
 				CFD0B13A28F905380029D936 /* AlarmInfo.swift */,
 				CF81495E2906D28E00FD0974 /* NSEachTask.swift */,
 				CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */,
+				CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1189,6 +1192,7 @@
 				CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */,
 				CFD0B14828F91CEA0029D936 /* TaskInfoViewController.swift in Sources */,
 				CFEB4A5C28F155E5008850DC /* PushManager.swift in Sources */,
+				CF5350E7292376BB00AFDC14 /* MonthltyDayTask.swift in Sources */,
 				CF5350CB291E8A6700AFDC14 /* Menu.swift in Sources */,
 				CF487EA928F1B71900498451 /* TaskListEntryView.swift in Sources */,
 				CFEB4A6028F15621008850DC /* CustomNavigationController.swift in Sources */,

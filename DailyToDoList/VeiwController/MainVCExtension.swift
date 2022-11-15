@@ -13,23 +13,95 @@ import FSCalendar
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Default
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskList.count
+        let category = categoryList[section]
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            guard let list = resultList[category] else {
+                return 0
+            }
+            return list.count
+        case 1:
+            guard let list = monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category] else {
+                return 0
+            }
+            return list.count
+        default:
+            return 0
+        }
     }
     //
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let taskCell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as? TaskCell else {
             return UITableViewCell()
         }
-        taskCell.isToday = segmentedController.selectedSegmentIndex == 0 ? true : false
-        taskCell.labelTitle.text = taskList[indexPath.row].title
+        let category = categoryList[indexPath.section]
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            taskCell.isToday = true
+            guard let list = resultList[category] else {
+                return UITableViewCell()
+            }
+            taskCell.labelTitle.text = list[indexPath.row].title
+        case 1:
+            taskCell.isToday = false
+            guard let list = monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category] else {
+                return UITableViewCell()
+            }
+            taskCell.labelTitle.text = list[indexPath.row].title
+        default:
+            return UITableViewCell()
+        }
         
         return taskCell
+    }
+    //MARK: - Section
+    func numberOfSections(in tableView: UITableView) -> Int {
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            return categoryList.count
+        case 1:
+            guard let list = monthlyTaskList[Utils.getDay(currentDate)]?.categoryList else {
+                return 0
+            }
+            return list.count
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            return categoryList[section]
+        case 1:
+            return monthlyTaskList[Utils.getDay(currentDate)]?.categoryList[section]
+        default:
+            return nil
+        }
     }
     //MARK: - Swipe
     //왼쪽 스와이프
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let category = categoryList[indexPath.section]
+        var task:EachTask = EachTask()
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            guard let result = resultList[category]?[indexPath.row] else {
+                return nil
+            }
+            task = result
+        case 1:
+            //Month
+            guard let result = monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category]?[indexPath.row] else {
+                return nil
+            }
+            task = result
+            monthlyTaskTable.reloadRows(at: [indexPath], with: .none)
+        default:
+            return nil
+        }
         //Done Or Not
-        let isDone = taskList[indexPath.row].isDone
+        let isDone = task.isDone
         let done = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.taskIsDone(!isDone, indexPath)
             success(true)
@@ -60,8 +132,21 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Event
     //cell 클릭 Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
-        openTaskInfo(.LOOK, taskList[indexPath.row], nil)
+        let category = categoryList[indexPath.section]
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            guard let list = resultList[category] else {
+                return
+            }
+            openTaskInfo(.LOOK, list[indexPath.row], nil)
+        case 1:
+            guard let list = monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category] else {
+                return
+            }
+            openTaskInfo(.LOOK, list[indexPath.row], nil)
+        default:
+            return
+        }
     }
 }
 
@@ -70,18 +155,14 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
     // 특정 날짜 선택 시
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         currentDate = date
-        changeDay()
+        reloadTable()
     }
     //Dot 개수
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        guard let monthlyTaskList = monthlyTaskList[Utils.getDay(date)] else {
+        guard let list = monthlyTaskList[Utils.getDay(currentDate)] else {
             return 0
         }
-        if monthlyTaskList.count > 0 {
-            return 1
-        } else {
-            return 0
-        }
+        return list.isEmpty ? 0 : 1
     }
     // 월 넘기기
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
@@ -91,32 +172,24 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
         }
         currentDate = firstDate
         calendarView.select(currentDate)
-        initDate()
         //
         SystemManager.shared.openLoading()
+        initDate()
         loadTask()
     }
     // Dot default 색상 변경
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
-        guard let monthlyTaskList = monthlyTaskList[Utils.getDay(date)] else {
+        guard let list = monthlyTaskList[Utils.getDay(currentDate)] else {
             return nil
         }
-        if monthlyTaskList.count > 0 {
-            return [UIColor.secondaryLabel]
-        } else {
-            return nil
-        }
+        return list.isEmpty ? nil : [UIColor.secondaryLabel]
     }
     // Dot click 색상 변경
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
-        guard let monthlyTaskList = monthlyTaskList[Utils.getDay(date)] else {
+        guard let list = monthlyTaskList[Utils.getDay(currentDate)] else {
             return nil
         }
-        if monthlyTaskList.count > 0 {
-            return [UIColor.defaultPink!]
-        } else {
-            return nil
-        }
+        return list.isEmpty ? nil : [UIColor.defaultPink!]
     }
 }
 

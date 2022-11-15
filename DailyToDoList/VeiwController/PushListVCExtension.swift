@@ -98,6 +98,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         guard let navaigatiocn = self.navigationController as? CustomNavigationController else {
             return
         }
+        navaigatiocn.setNavigationBarAppearance(self)
         navaigatiocn.pushViewController(taskInfoVC)
     }
     //MARK: - Edit

@@ -28,16 +28,15 @@ class MainViewController: UIViewController {
     var currentDate:Date = Date()
     var beforeDate:Date = Date()
     //
-    var taskList:[EachTask] = []
+    var categoryList:[String] = []
+    var resultList:[String:[EachTask]] = [:]
     //key = 일자
-    var monthlyTaskList:[Int:[EachTask]] = [:]
+    var monthlyTaskList:[Int:MonthltyDayTask] = [:]
     var taskDateKeyList:[Int] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //뒤로 버튼 없애기
-        self.navigationItem.setHidesBackButton(true, animated: false)
         //
         dailyTaskTable.dataSource = self
         dailyTaskTable.delegate = self
@@ -57,6 +56,8 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //뒤로 버튼 없애기
+        self.navigationItem.setHidesBackButton(true, animated: false)
         //
         SystemManager.shared.openLoading()
         //버전체크
@@ -69,7 +70,7 @@ class MainViewController: UIViewController {
             //
             loadTask()
             initDate()
-            changeSegment()
+            initSegment()
         }
     }
 }
@@ -77,7 +78,7 @@ class MainViewController: UIViewController {
 //MARK: - UI
 extension MainViewController {
     func initDate() {
-        var date = Utils.dateToDateString(Date()).split(separator: "-")
+        var date = Utils.dateToDateString(currentDate).split(separator: "-")
         if segmentedController.selectedSegmentIndex != 0 {
             date.removeLast()
         }
@@ -98,10 +99,12 @@ extension MainViewController {
         labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
+        dailyTaskTable.sectionHeaderTopPadding = 6
         dailyTaskTable.backgroundColor = .clear
         dailyTaskTable.separatorInsetReference = .fromCellEdges
         dailyTaskTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         dailyTaskTable.separatorColor = .label
+        monthlyTaskTable.sectionHeaderTopPadding = 6
         monthlyTaskTable.backgroundColor = .clear
         monthlyTaskTable.separatorInsetReference = .fromCellEdges
         monthlyTaskTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -110,7 +113,7 @@ extension MainViewController {
         monthView.isHidden = true
     }
     
-    func changeSegment() {
+    func initSegment() {
         //
         imgUnderline.image = UIImage(named: segmentedController.selectedSegmentIndex == 0 ? Underline_Pink : Underline_Indigo)
         imgUnderline.alpha = 0.3
@@ -135,16 +138,21 @@ extension MainViewController {
 
 //MARK: - Task
 extension MainViewController {
+    func resetTask() {
+        // data reset
+        taskDateKeyList = []
+        categoryList = []
+        resultList = [:]
+        monthlyTaskList = [:]
+    }
     //Task 세팅
     func loadTask() {
         switch segmentedController.selectedSegmentIndex {
         case 0:
-            // data reset
-            taskList = []
-            monthlyTaskList = [:]
-            taskDateKeyList = []
+            resetTask()
+            //
             let dataList = RealmManager.shared.getTaskDataForDay(date: currentDate)
-            taskList = dataList.sorted(by: { task1, task2 in
+            let sortedList = dataList.sorted(by: { task1, task2 in
                 if task1.isDone {
                     return task2.isDone ? true : false
                 } else {
@@ -152,45 +160,64 @@ extension MainViewController {
                 }
             })
             //
-            checkNil()
-            //
-            dailyTaskTable.reloadData()
-            dailyTaskTable.flashScrollIndicators()
+            for task in sortedList {
+                let category = task.category
+                if !categoryList.contains(where: {$0 == category}) {
+                    categoryList.append(category)
+                    resultList[category] = []
+                }
+                if resultList[category] != nil {
+                    resultList[category]?.append(task)
+                }
+            }
         case 1:
-            // data reset
-            taskList = []
-            monthlyTaskList = [:]
-            taskDateKeyList = []
+            resetTask()
             //
             let dataList = RealmManager.shared.getTaskDataForMonth(date: currentDate)
+            let sortedList = dataList.sorted(by: { task1, task2 in
+                if task1.isDone {
+                    return task2.isDone ? true : false
+                } else {
+                    return true
+                }
+            })
+            //
+            for task in sortedList {
+                let category = task.category
+                if !categoryList.contains(where: {$0 == category}) {
+                    categoryList.append(category)
+                    resultList[category] = []
+                }
+                if resultList[category] != nil {
+                    resultList[category]?.append(task)
+                }
+            }
             //한달
             taskDateKeyList = [Int](1...Utils.getLastDay(currentDate))
             //딕셔너리 초기화
             for i in taskDateKeyList {
-                monthlyTaskList[i] = []
+                monthlyTaskList[i] = MonthltyDayTask()
             }
             //
-            let tmpList = dataList.map{$0}
             let weekDayList = Utils.getWeekDayList(currentDate)
-            //
             var compareDay = Utils.dateToDateString(currentDate).split(separator: "-").map{String($0)}
             //반복 타입 별 체크
-            for task in tmpList {
+            for task in sortedList {
                 switch RepeatType(rawValue: task.repeatType) {
                 case .None:
                     let day = Utils.getDay(task.taskDay)
-                    monthlyTaskList[day]?.append(task)
+                    monthlyTaskList[day]?.append(task.category, task)
                 case .EveryDay:
                     for day in taskDateKeyList {
                         compareDay[2] = String(format: "%02d", day)
                         let currentDay = compareDay.joined(separator: "-")
                         if task.isEnd {
                             if task.taskEndDate >= currentDay && task.taskDay <= currentDay {
-                                monthlyTaskList[day]?.append(task)
+                                monthlyTaskList[day]?.append(task.category, task)
                             }
                         } else {
                             if task.taskDay <= currentDay {
-                                monthlyTaskList[day]?.append(task)
+                                monthlyTaskList[day]?.append(task.category, task)
                             }
                         }
                     }
@@ -204,11 +231,11 @@ extension MainViewController {
                             let currentDay = compareDay.joined(separator: "-")
                             if task.isEnd {
                                 if task.taskEndDate >= currentDay && task.taskDay <= currentDay {
-                                    monthlyTaskList[day]?.append(task)
+                                    monthlyTaskList[day]?.append(task.category, task)
                                 }
                             } else {
                                 if task.taskDay <= currentDay {
-                                    monthlyTaskList[day]?.append(task)
+                                    monthlyTaskList[day]?.append(task.category, task)
                                 }
                             }
                         }
@@ -220,11 +247,11 @@ extension MainViewController {
                         let currentDay = compareDay.joined(separator: "-")
                         if task.isEnd {
                             if task.taskEndDate >= currentDay && task.taskDay <= currentDay {
-                                monthlyTaskList[day]?.append(task)
+                                monthlyTaskList[day]?.append(task.category, task)
                             }
                         } else {
                             if task.taskDay <= currentDay {
-                                monthlyTaskList[day]?.append(task)
+                                monthlyTaskList[day]?.append(task.category, task)
                             }
                         }
                     }
@@ -237,11 +264,11 @@ extension MainViewController {
                         
                         if task.isEnd {
                             if task.taskEndDate >= currentDay && task.taskDay <= currentDay && day == Utils.getDay(task.taskDay) {
-                                monthlyTaskList[day]?.append(task)
+                                monthlyTaskList[day]?.append(task.category, task)
                             }
                         } else {
                             if task.taskDay <= currentDay && day == Utils.getDay(task.taskDay) {
-                                monthlyTaskList[day]?.append(task)
+                                monthlyTaskList[day]?.append(task.category, task)
                             }
                         }
                         
@@ -250,72 +277,77 @@ extension MainViewController {
             }
             //month가 바뀌었으므로 캘린더 리로드
             calendarView.reloadData()
-            //
-            changeDay()
         default:
             break
         }
-        DispatchQueue.main.async {
-            SystemManager.shared.closeLoading()
-        }
+        reloadTable()
+        SystemManager.shared.closeLoading()
     }
     //
     func checkNil() {
-        if taskList.count == 0 {
-            labelTodayNilMsg.isHidden = false
-        } else {
-            labelTodayNilMsg.isHidden = true
-        }
-    }
-    // 선택된 날짜에 맞는 테이블 로드
-    func changeDay() {
-        guard let day = Calendar.current.dateComponents([.day], from: currentDate).day else {
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            if resultList.keys.count == 0 {
+                labelTodayNilMsg.isHidden = false
+            } else {
+                labelTodayNilMsg.isHidden = true
+            }
+        case 1:
+            guard let list = monthlyTaskList[Utils.getDay(currentDate)] else {
+                labelMonthNilMsg.isHidden = false
+                return
+            }
+            if list.isEmpty {
+                labelMonthNilMsg.isHidden = false
+            } else {
+                labelMonthNilMsg.isHidden = true
+            }
+        default:
             return
         }
-        guard let monthlyTaskList = monthlyTaskList[day] else {
-            return
-        }
-        if monthlyTaskList.count == 0 {
-            labelMonthNilMsg.isHidden = false
-            taskList = []
-        } else {
-            labelMonthNilMsg.isHidden = true
-            taskList = monthlyTaskList.sorted(by: { task1, task2 in
-                if task1.isDone {
-                    return task2.isDone ? true : false
-                } else {
-                    return true
-                }
-            })
-        }
-        //
-        monthlyTaskTable.reloadData()
-        monthlyTaskTable.flashScrollIndicators()
     }
     //
     func taskIsDone(_ isDone:Bool, _ indexPath:IndexPath) {
-        let modifyTask = taskList[indexPath.row].clone()
-        modifyTask.isDone = isDone
-        RealmManager.shared.updateTaskDataForiOS(modifyTask)
+        let category = categoryList[indexPath.section]
         switch segmentedController.selectedSegmentIndex {
         case 0:
             //Today
+            guard let task = resultList[category]?[indexPath.row] else {
+                return
+            }
+            let modifyTask = task.clone()
+            modifyTask.isDone = isDone
+            RealmManager.shared.updateTaskDataForiOS(modifyTask)
+            //
             dailyTaskTable.reloadRows(at: [indexPath], with: .none)
-            let task = taskList.remove(at: indexPath.row)
+            guard let taskList = resultList[category] else {
+                return
+            }
+            resultList[category]?.remove(at: indexPath.row)
             if isDone {
-                taskList.append(task)
+                resultList[category]?.append(task)
             } else {
-                taskList = [task] + taskList
+                resultList[category] = [task] + taskList
             }
             dailyTaskTable.reloadData()
         case 1:
             //Month
+            guard let task = monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category]?[indexPath.row] else {
+                return
+            }
+            let modifyTask = task.clone()
+            modifyTask.isDone = isDone
+            RealmManager.shared.updateTaskDataForiOS(modifyTask)
+            //
             monthlyTaskTable.reloadRows(at: [indexPath], with: .none)
-            let task = taskList.remove(at: indexPath.row)
+            guard let taskList = monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category] else {
+                return
+            }
+            monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category]?.remove(at: indexPath.row)
             if isDone {
-                taskList.append(task)
+                monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category]?.append(task)
             } else {
-                taskList = [task] + taskList
+                monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category] = [task] + taskList
             }
             monthlyTaskTable.reloadData()
         default:
@@ -324,9 +356,27 @@ extension MainViewController {
     }
     //
     func modifyTask(_ indexPath:IndexPath) {
-        let beforeTask = taskList[indexPath.row]
+        let category = categoryList[indexPath.section]
+        var beforeTask:EachTask = EachTask()
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            //Today
+            guard let task = resultList[category]?[indexPath.row] else {
+                return
+            }
+            beforeTask = task
+            dailyTaskTable.reloadRows(at: [indexPath], with: .none)
+        case 1:
+            //Month
+            guard let task = monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category]?[indexPath.row] else {
+                return
+            }
+            beforeTask = task
+            monthlyTaskTable.reloadRows(at: [indexPath], with: .none)
+        default:
+            break
+        }
         openTaskInfo(.MODIFY, beforeTask) { [self] task in
-            //
             RealmManager.shared.updateTaskDataForiOS(task)
             //
             switch segmentedController.selectedSegmentIndex {
@@ -343,9 +393,12 @@ extension MainViewController {
     }
     //
     func deleteTask(_ indexPath:IndexPath) {
-        let task = taskList[indexPath.row]
+        let category = categoryList[indexPath.section]
+        guard let task = resultList[category]?[indexPath.row] else {
+            return
+        }
         RealmManager.shared.deleteTaskDataForiOS(task)
-        taskList.remove(at: indexPath.row)
+        resultList[category]?.remove(at: indexPath.row)
         //
         switch segmentedController.selectedSegmentIndex {
         case 0:
@@ -379,15 +432,17 @@ extension MainViewController {
     }
     //
     @objc func refreshTaskView() {
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
-            dailyTaskTable.refreshControl?.endRefreshing()
-            dailyTaskTable.reloadData()
-        case 1:
-            monthlyTaskTable.refreshControl?.endRefreshing()
-            monthlyTaskTable.reloadData()
-        default:
-            break
+        DispatchQueue.main.async { [self] in
+            switch segmentedController.selectedSegmentIndex {
+            case 0:
+                dailyTaskTable.refreshControl?.endRefreshing()
+                dailyTaskTable.reloadData()
+            case 1:
+                monthlyTaskTable.refreshControl?.endRefreshing()
+                monthlyTaskTable.reloadData()
+            default:
+                break
+            }
         }
     }
     //TaskInfo
@@ -406,7 +461,25 @@ extension MainViewController {
         guard let navaigatiocn = self.navigationController as? CustomNavigationController else {
             return
         }
+        navaigatiocn.setNavigationBarAppearance(self)
         navaigatiocn.pushViewController(taskInfoVC)
+    }
+    //
+    func reloadTable() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [self] in
+            checkNil()
+            switch segmentedController.selectedSegmentIndex {
+            case 0:
+                dailyTaskTable.reloadData()
+                dailyTaskTable.flashScrollIndicators()
+            case 1:
+                monthlyTaskTable.reloadData()
+                monthlyTaskTable.flashScrollIndicators()
+            default:
+                return
+            }
+            print("end")
+        }
     }
 }
 
@@ -426,12 +499,19 @@ extension MainViewController {
         guard let navaigatiocn = self.navigationController as? CustomNavigationController else {
             return
         }
+        navaigatiocn.setNavigationBarAppearance(self)
         navaigatiocn.pushViewController(nextVC)
     }
     //SegmentedControl
     @IBAction func changeSegment(_ sender:UISegmentedControl) {
-        currentDate = Date()
-        calendarView.select(currentDate)
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            currentDate = Date()
+        case 1:
+            calendarView.select(currentDate)
+        default:
+            return
+        }
         //
         SystemManager.shared.openLoading()
         //

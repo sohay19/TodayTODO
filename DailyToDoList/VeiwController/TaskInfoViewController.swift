@@ -460,18 +460,11 @@ extension TaskInfoViewController {
             //Look
             break
         }
-        guard let refreshTask = refreshTask else {
+        guard let refreshTask = refreshTask, let navigationController = self.navigationController as? CustomNavigationController else {
             return
         }
-        dismiss(animated: true, completion: {
+        navigationController.popViewController {
             refreshTask()
-        })
-    }
-    @IBAction func clickCancel(_ sender: Any) {
-        if isShow {
-            keyboardDown()
-        } else {
-            self.dismiss(animated: true)
         }
     }
     // 날짜 선택 시 팝업 닫음
