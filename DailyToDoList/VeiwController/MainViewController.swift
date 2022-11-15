@@ -33,7 +33,8 @@ class MainViewController: UIViewController {
     //key = 일자
     var monthlyTaskList:[Int:MonthltyDayTask] = [:]
     var taskDateKeyList:[Int] = []
-    
+    //
+    var openedTask:OpenedTask?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,11 +105,14 @@ extension MainViewController {
         dailyTaskTable.separatorInsetReference = .fromCellEdges
         dailyTaskTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         dailyTaskTable.separatorColor = .label
+        dailyTaskTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        //
         monthlyTaskTable.sectionHeaderTopPadding = 6
         monthlyTaskTable.backgroundColor = .clear
         monthlyTaskTable.separatorInsetReference = .fromCellEdges
         monthlyTaskTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         monthlyTaskTable.separatorColor = .label
+        monthlyTaskTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         monthView.isHidden = true
     }

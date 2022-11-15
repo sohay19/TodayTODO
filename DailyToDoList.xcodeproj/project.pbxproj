@@ -81,6 +81,7 @@
 		CF81495F2906D28E00FD0974 /* NSEachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495E2906D28E00FD0974 /* NSEachTask.swift */; };
 		CF8149602906D28E00FD0974 /* NSEachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495E2906D28E00FD0974 /* NSEachTask.swift */; };
 		CF995F462923C54B00FAE2F1 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = CF995F452923C54B00FAE2F1 /* title.png */; };
+		CF995F482923D02600FAE2F1 /* OpenedTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF995F472923D02600FAE2F1 /* OpenedTask.swift */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
 		CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */; };
@@ -291,6 +292,7 @@
 		CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectManager.swift; sourceTree = "<group>"; };
 		CF81495E2906D28E00FD0974 /* NSEachTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEachTask.swift; sourceTree = "<group>"; };
 		CF995F452923C54B00FAE2F1 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
+		CF995F472923D02600FAE2F1 /* OpenedTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenedTask.swift; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* DailyTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToDoListWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0228F1793B00E93585 /* DailyToDoListWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = DailyToDoListWidget.intentdefinition; sourceTree = "<group>"; };
@@ -625,6 +627,7 @@
 				CF81495E2906D28E00FD0974 /* NSEachTask.swift */,
 				CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */,
 				CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */,
+				CF995F472923D02600FAE2F1 /* OpenedTask.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1197,6 +1200,7 @@
 				CF487EA928F1B71900498451 /* TaskListEntryView.swift in Sources */,
 				CFEB4A6028F15621008850DC /* CustomNavigationController.swift in Sources */,
 				CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */,
+				CF995F482923D02600FAE2F1 /* OpenedTask.swift in Sources */,
 				CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */,
 				CFB6EE0728F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
 				CF75963729024F680046FDC1 /* PushCell.swift in Sources */,

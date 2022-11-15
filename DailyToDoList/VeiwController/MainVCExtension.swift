@@ -42,7 +42,15 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             guard let list = resultList[category] else {
                 return 0
             }
-            return list.count
+            if let openedTask = openedTask {
+                if openedTask.indexPath.section == section {
+                    return list.count+1
+                } else {
+                    return list.count
+                }
+            } else {
+                return list.count
+            }
         case 1:
             guard let list = monthlyTaskList[Utils.getDay(currentDate)] else {
                 return 0
@@ -63,12 +71,22 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         }
         switch segmentedController.selectedSegmentIndex {
         case 0:
+            var index = indexPath
+            if let openedTask = openedTask {
+                let next = IndexPath(row: openedTask.indexPath.row+1, section: openedTask.indexPath.section)
+                if index.section == next.section && index > next { //열린 이후의 셀
+                    index = IndexPath(row: indexPath.row-1, section: indexPath.section)
+                } else if index.section == next.section && index == next { //열린 셀
+                    taskCell.labelTitle.text = "열린셀"
+                    return taskCell
+                }
+            }
             taskCell.isToday = true
-            let category = categoryList[indexPath.section]
+            let category = categoryList[index.section]
             guard let list = resultList[category] else {
                 return UITableViewCell()
             }
-            taskCell.labelTitle.text = list[indexPath.row].title
+            taskCell.labelTitle.text = list[index.row].title
         case 1:
             taskCell.isToday = false
             guard let list = monthlyTaskList[Utils.getDay(currentDate)] else {
@@ -82,8 +100,25 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         default:
             return UITableViewCell()
         }
-        
         return taskCell
+    }
+    //MARK: - Expandable
+    //
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            if let openedTask = openedTask {
+                if indexPath == IndexPath(row: openedTask.indexPath.row+1, section: openedTask.indexPath.section) {
+                    return 180
+                }
+                return 45
+            }
+            return 45
+        case 1:
+            return 45
+        default:
+            return 0
+        }
     }
     //MARK: - Swipe
     //왼쪽 스와이프
@@ -138,20 +173,32 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Event
     //cell 클릭 Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let category = categoryList[indexPath.section]
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
-            guard let list = resultList[category] else {
+        if let _ = openedTask {
+            openedTask = nil
+            reloadTable()
+        } else {
+            switch segmentedController.selectedSegmentIndex {
+            case 0:
+                let category = categoryList[indexPath.section]
+                guard let list = resultList[category] else {
+                    return
+                }
+                let task = list[indexPath.row]
+                openedTask = OpenedTask(task.id, category, indexPath)
+                reloadTable()
+            case 1:
+                guard let list = monthlyTaskList[Utils.getDay(currentDate)] else {
+                    return
+                }
+                let category = list.categoryList[indexPath.section]
+                guard let taskList = list.taskList[category] else {
+                    return
+                }
+                let task = taskList[indexPath.row]
+                openTaskInfo(.LOOK, task, nil)
+            default:
                 return
             }
-            openTaskInfo(.LOOK, list[indexPath.row], nil)
-        case 1:
-            guard let list = monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category] else {
-                return
-            }
-            openTaskInfo(.LOOK, list[indexPath.row], nil)
-        default:
-            return
         }
     }
 }
