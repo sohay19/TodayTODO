@@ -24,7 +24,8 @@ extension PushManager {
         notiContent.title = data.title
         notiContent.body = data.memo
         //push 메세지에 담긴 데이터
-        notiContent.userInfo = [pushTypeKey:PushType.Alert.rawValue, endDateKey:data.taskEndDate, idKey:data.id, repeatTypeKey:data.repeatType, alarmTimeKey:data.alarmTime]
+        let option = data.optionData ?? OptionData()
+        notiContent.userInfo = [pushTypeKey:PushType.Alert.rawValue, endDateKey:option.taskEndDate, idKey:data.taskId, repeatTypeKey:data.repeatType, alarmTimeKey:option.alarmTime]
         //알림음 설정
         notiContent.sound = UNNotificationSound.default
         //뱃지 표시
@@ -45,7 +46,8 @@ extension PushManager {
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         //알람 시간 설정
-        let time = data.alarmTime.split(separator: ":")
+        let option = data.optionData ?? OptionData()
+        let time = option.alarmTime.split(separator: ":")
         let h = Int(time[0])
         let m = Int(time[1])
         dateComponents.hour = h
@@ -57,14 +59,16 @@ extension PushManager {
         //
         var idList:[String] = []
         var index = 0
+        let option = data.optionData ?? OptionData()
+        let weekDayList = option.weekDayList
         //반복 여부 체크
         switch RepeatType.init(rawValue: data.repeatType) {
         case .EveryDay:
             idList.append(setRepeatDayNoti(data, index))
         case .Eachweek:
             //
-            for i in 0..<data.weekDayList.count {
-                if data.weekDayList[i] {
+            for i in 0..<weekDayList.count {
+                if weekDayList[i] {
                     index += 1
                     idList.append(setRepeatWeekNoti(data, index))
                 }
@@ -73,8 +77,8 @@ extension PushManager {
             idList.append(setRepeatMonthOfOnceNoti(data, index))
         case .EachWeekOfMonth:
             //
-            for i in 0..<data.weekDayList.count {
-                if data.weekDayList[i] {
+            for i in 0..<weekDayList.count {
+                if weekDayList[i] {
                     index += 1
                     idList.append(setRepeatWeekOfMonthNoti(data, index))
                 }
@@ -93,7 +97,7 @@ extension PushManager {
     //반복없음
     private func setNotRepeatNoti(_ data:EachTask, _ idIndex:Int) -> String {
         //콘텐츠 설정
-        let id = "\(data.id)_\(idIndex)"
+        let id = "\(data.taskId)_\(idIndex)"
         let notiContent = setNotiContent(data, id)
         //push 날짜 설정
         var dateComponents = getDateComponents(data)
@@ -115,7 +119,7 @@ extension PushManager {
     //매일 반복
     private func setRepeatDayNoti(_ data:EachTask, _ idIndex:Int) -> String {
         //콘텐츠 설정
-        let id = "\(data.id)_\(idIndex)"
+        let id = "\(data.taskId)_\(idIndex)"
         let notiContent = setNotiContent(data, id)
         //push 날짜 설정
         let dateComponents = getDateComponents(data)
@@ -133,7 +137,7 @@ extension PushManager {
     //주 n회 반복
     private func setRepeatWeekNoti(_ data:EachTask, _ weekDay:Int) -> String {
         //콘텐츠 설정
-        let id = "\(data.id)_\(weekDay)"
+        let id = "\(data.taskId)_\(weekDay)"
         let notiContent = setNotiContent(data, id)
         //push 날짜 설정
         var dateComponents = getDateComponents(data)
@@ -152,7 +156,7 @@ extension PushManager {
     //월 1회 반복
     private func setRepeatMonthOfOnceNoti(_ data:EachTask, _ idIndex:Int) -> String {
         //콘텐츠 설정
-        let id = "\(data.id)_\(idIndex)"
+        let id = "\(data.taskId)_\(idIndex)"
         let notiContent = setNotiContent(data, id)
         //push 날짜 설정
         var dateComponents = getDateComponents(data)
@@ -172,15 +176,17 @@ extension PushManager {
     //월 n회 반복
     private func setRepeatWeekOfMonthNoti(_ data:EachTask, _ weekDay:Int) -> String {
         //콘텐츠 설정
-        let id = "\(data.id)_\(weekDay)"
+        let id = "\(data.taskId)_\(weekDay)"
         let notiContent = setNotiContent(data, id)
+        let option = data.optionData ?? OptionData()
         //push 날짜 설정
         var dateComponents = getDateComponents(data)
         dateComponents.weekday = weekDay+1
-        if data.weekOfMonth == -1 {
-            dateComponents.weekdayOrdinal = data.weekOfMonth
+        let weekOfMonth = option.weekOfMonth
+        if weekOfMonth == -1 {
+            dateComponents.weekdayOrdinal = weekOfMonth
         } else {
-            dateComponents.weekOfMonth = data.weekOfMonth
+            dateComponents.weekOfMonth = weekOfMonth
         }
         //trigger 세팅
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
@@ -196,7 +202,7 @@ extension PushManager {
     //연 1회 반복
     private func setRepeatYearNoti(_ data:EachTask, _ idIndex:Int) -> String {
         //콘텐츠 설정
-        let id = "\(data.id)_\(idIndex)"
+        let id = "\(data.taskId)_\(idIndex)"
         let notiContent = setNotiContent(data, id)
         //push 날짜 설정
         var dateComponents = getDateComponents(data)

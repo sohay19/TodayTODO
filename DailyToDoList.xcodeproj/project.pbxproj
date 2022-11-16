@@ -17,6 +17,12 @@
 		CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA628F1B6F100498451 /* TaskListProvider.swift */; };
 		CF487EA928F1B71900498451 /* TaskListEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA428F1B6D200498451 /* TaskListEntryView.swift */; };
 		CF487EAA28F1B72900498451 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3928F14CA0008850DC /* Utils.swift */; };
+		CF50BC5C2924CDD900AB538B /* OptionalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50BC5B2924CDD900AB538B /* OptionalData.swift */; };
+		CF50BC5E2924D13500AB538B /* NSOptionalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50BC5D2924D13500AB538B /* NSOptionalData.swift */; };
+		CF50BC5F2924D78500AB538B /* NSOptionalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50BC5D2924D13500AB538B /* NSOptionalData.swift */; };
+		CF50BC602924D78500AB538B /* OptionalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50BC5B2924CDD900AB538B /* OptionalData.swift */; };
+		CF50BC612924D78700AB538B /* NSOptionalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50BC5D2924D13500AB538B /* NSOptionalData.swift */; };
+		CF50BC622924D78700AB538B /* OptionalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50BC5B2924CDD900AB538B /* OptionalData.swift */; };
 		CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */; };
 		CF535097291CD5E400AFDC14 /* sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = CF535095291CD5E400AFDC14 /* sticker.png */; };
 		CF53509F291CE8FA00AFDC14 /* spring.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53509E291CE8FA00AFDC14 /* spring.png */; };
@@ -85,8 +91,6 @@
 		CF995F4E2924BF6600FAE2F1 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF995F4C2924BF6600FAE2F1 /* TaskCell.xib */; };
 		CF995F502924C15D00FAE2F1 /* PushCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF995F4F2924C15D00FAE2F1 /* PushCell.xib */; };
 		CF995F522924C34400FAE2F1 /* BackUpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF995F512924C34400FAE2F1 /* BackUpCell.xib */; };
-		CF995F552924C4F500FAE2F1 /* ExpandableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF995F532924C4F500FAE2F1 /* ExpandableCell.swift */; };
-		CF995F562924C4F500FAE2F1 /* ExpandableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF995F542924C4F500FAE2F1 /* ExpandableCell.xib */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
 		CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */; };
@@ -245,6 +249,8 @@
 		CF487EA328F1B6C900498451 /* DailyToDoListWidget.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = DailyToDoListWidget.entitlements; sourceTree = "<group>"; };
 		CF487EA428F1B6D200498451 /* TaskListEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListEntryView.swift; sourceTree = "<group>"; };
 		CF487EA628F1B6F100498451 /* TaskListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListProvider.swift; sourceTree = "<group>"; };
+		CF50BC5B2924CDD900AB538B /* OptionalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalData.swift; sourceTree = "<group>"; };
+		CF50BC5D2924D13500AB538B /* NSOptionalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSOptionalData.swift; sourceTree = "<group>"; };
 		CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Indigo.png; sourceTree = "<group>"; };
 		CF535095291CD5E400AFDC14 /* sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sticker.png; sourceTree = "<group>"; };
 		CF53509E291CE8FA00AFDC14 /* spring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring.png; sourceTree = "<group>"; };
@@ -301,8 +307,6 @@
 		CF995F4C2924BF6600FAE2F1 /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		CF995F4F2924C15D00FAE2F1 /* PushCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PushCell.xib; sourceTree = "<group>"; };
 		CF995F512924C34400FAE2F1 /* BackUpCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackUpCell.xib; sourceTree = "<group>"; };
-		CF995F532924C4F500FAE2F1 /* ExpandableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableCell.swift; sourceTree = "<group>"; };
-		CF995F542924C4F500FAE2F1 /* ExpandableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableCell.xib; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* DailyTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToDoListWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0228F1793B00E93585 /* DailyToDoListWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = DailyToDoListWidget.intentdefinition; sourceTree = "<group>"; };
@@ -632,9 +636,11 @@
 				CFEB4A4228F14D1C008850DC /* UserData.swift */,
 				CFEB4A3F28F14D1C008850DC /* CategoryData.swift */,
 				CFEB4A4128F14D1C008850DC /* EachTask.swift */,
+				CF50BC5B2924CDD900AB538B /* OptionalData.swift */,
 				CFEB4A4028F14D1C008850DC /* RepeatResult.swift */,
 				CFD0B13A28F905380029D936 /* AlarmInfo.swift */,
 				CF81495E2906D28E00FD0974 /* NSEachTask.swift */,
+				CF50BC5D2924D13500AB538B /* NSOptionalData.swift */,
 				CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */,
 				CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */,
 				CF995F472923D02600FAE2F1 /* OpenedTask.swift */,
@@ -657,8 +663,6 @@
 				CF75963629024F680046FDC1 /* PushCell.swift */,
 				CF995F512924C34400FAE2F1 /* BackUpCell.xib */,
 				CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */,
-				CF995F542924C4F500FAE2F1 /* ExpandableCell.xib */,
-				CF995F532924C4F500FAE2F1 /* ExpandableCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -915,7 +919,6 @@
 				CF5350E32922277B00AFDC14 /* clock.png in Resources */,
 				CF5350B0291E3D4B00AFDC14 /* Background2.jpg in Resources */,
 				CF5350CF291E98DC00AFDC14 /* Menu.xib in Resources */,
-				CF995F562924C4F500FAE2F1 /* ExpandableCell.xib in Resources */,
 				CFEB4A6C28F16B15008850DC /* Picker.storyboard in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
 				CF5350BD291E457400AFDC14 /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
@@ -1139,6 +1142,7 @@
 			files = (
 				CFEC1D39290E6092009A9588 /* NSCategoryData.swift in Sources */,
 				CF8149382906B75300FD0974 /* NotificationController.swift in Sources */,
+				CF50BC612924D78700AB538B /* NSOptionalData.swift in Sources */,
 				CF81494E2906B77500FD0974 /* CategoryData.swift in Sources */,
 				CFEC1D34290D2144009A9588 /* TaskInterfaceController.swift in Sources */,
 				CF8149532906B77D00FD0974 /* RealmManager.swift in Sources */,
@@ -1149,6 +1153,7 @@
 				CF8149342906B75300FD0974 /* InterfaceController.swift in Sources */,
 				CF81494A2906B77100FD0974 /* StaticValues.swift in Sources */,
 				CF81494F2906B77500FD0974 /* EachTask.swift in Sources */,
+				CF50BC622924D78700AB538B /* OptionalData.swift in Sources */,
 				CF81495D2906CC8C00FD0974 /* WatchConnectManager.swift in Sources */,
 				CF8149512906B77500FD0974 /* AlarmInfo.swift in Sources */,
 				CF8149502906B77500FD0974 /* RepeatResult.swift in Sources */,
@@ -1169,7 +1174,9 @@
 				CFB6EE0628F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
 				CFEC1D36290D2AC4009A9588 /* PushManager.swift in Sources */,
 				CF8148CC29067B5000FD0974 /* RealmManager.swift in Sources */,
+				CF50BC602924D78500AB538B /* OptionalData.swift in Sources */,
 				CFD0B12F28F1BD3A0029D936 /* StaticValues.swift in Sources */,
+				CF50BC5F2924D78500AB538B /* NSOptionalData.swift in Sources */,
 				CFD0B13328F2C44F0029D936 /* SharedClassExtension.swift in Sources */,
 				CFD0B12A28F1BC2D0029D936 /* EachTask.swift in Sources */,
 				CFEC1D3C290E60D5009A9588 /* NSCategoryData.swift in Sources */,
@@ -1202,19 +1209,20 @@
 				CF5350D1291E9CD600AFDC14 /* Loading.swift in Sources */,
 				CFEB4A4528F14D1C008850DC /* EachTask.swift in Sources */,
 				CFEB4A6A28F1672F008850DC /* ColorPickerViewController.swift in Sources */,
-				CF995F552924C4F500FAE2F1 /* ExpandableCell.swift in Sources */,
 				CFEB4A4428F14D1C008850DC /* RepeatResult.swift in Sources */,
 				CFEB4A6428F16243008850DC /* RepeatViewController.swift in Sources */,
 				CFEB4A3C28F14CB4008850DC /* Enums.swift in Sources */,
 				CFEB4A3A28F14CA0008850DC /* Utils.swift in Sources */,
 				CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */,
 				CFEB4A6828F165D1008850DC /* CategoryViewController.swift in Sources */,
+				CF50BC5E2924D13500AB538B /* NSOptionalData.swift in Sources */,
 				CF5350A3291D235000AFDC14 /* CustomSideMenuNavigation.swift in Sources */,
 				CFEB4A5628F1559D008850DC /* SystemManager.swift in Sources */,
 				CFEB4A5B28F155E5008850DC /* DataManager.swift in Sources */,
 				CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */,
 				CFD0B14828F91CEA0029D936 /* TaskInfoViewController.swift in Sources */,
 				CFEB4A5C28F155E5008850DC /* PushManager.swift in Sources */,
+				CF50BC5C2924CDD900AB538B /* OptionalData.swift in Sources */,
 				CF5350E7292376BB00AFDC14 /* MonthltyDayTask.swift in Sources */,
 				CF5350CB291E8A6700AFDC14 /* Menu.swift in Sources */,
 				CF487EA928F1B71900498451 /* TaskListEntryView.swift in Sources */,

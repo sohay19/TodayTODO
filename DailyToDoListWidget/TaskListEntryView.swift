@@ -46,6 +46,10 @@ struct TaskListView: View {
     @Environment(\.widgetFamily) var family
     
     var body: some View {
+        let option = task.optionData ?? OptionData()
+        let isAlarm = option.isAlarm
+        let alarmTime = option.alarmTime
+        
         GeometryReader {
             geometry in
             if task.title.isEmpty {
@@ -78,7 +82,7 @@ struct TaskListView: View {
                             
                             Divider()
                             
-                            Text(task.alarmTime.isEmpty ? "알람 없음" : task.alarmTime)
+                            Text(isAlarm ? alarmTime : "알람 없음")
                                 .font(.system(size: 15, weight: .regular))
                                 .foregroundColor(Color.init(uiColor: UIColor.secondaryLabel))
                                 .frame(width: geometry.size.width * 1/4 ,alignment: .topTrailing)
@@ -102,7 +106,7 @@ struct TaskListView: View {
                             
                             Divider()
                             
-                            Text(task.alarmTime.isEmpty ? "알람 없음" : task.alarmTime)
+                            Text(isAlarm ? alarmTime : "알람 없음")
                                 .font(.system(size: 15, weight: .regular))
                                 .foregroundColor(Color.init(uiColor: UIColor.secondaryLabel))
                                 .frame(width: geometry.size.width * 1/4 ,alignment: .topTrailing)

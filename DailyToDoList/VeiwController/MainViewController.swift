@@ -102,6 +102,7 @@ extension MainViewController {
         todayView.backgroundColor = .clear
         monthView.backgroundColor = .clear
         // 폰트 설정
+        btnAdd.contentMode = .center
         btnAdd.setImage(UIImage(systemName: "pencil", withConfiguration: imageConfig), for: .normal)
         labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
         labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
@@ -217,6 +218,10 @@ extension MainViewController {
             var compareDay = Utils.dateToDateString(monthDate).split(separator: "-").map{String($0)}
             //반복 타입 별 체크
             for task in sortedList {
+                let option = task.optionData ?? OptionData()
+                let isEnd = option.isEnd
+                let taskEndDate = option.taskEndDate
+                //
                 switch RepeatType(rawValue: task.repeatType) {
                 case .None:
                     let day = Utils.getDay(task.taskDay)
@@ -225,8 +230,8 @@ extension MainViewController {
                     for day in taskDateKeyList {
                         compareDay[2] = String(format: "%02d", day)
                         let currentDay = compareDay.joined(separator: "-")
-                        if task.isEnd {
-                            if task.taskEndDate >= currentDay && task.taskDay <= currentDay {
+                        if isEnd {
+                            if taskEndDate >= currentDay && task.taskDay <= currentDay {
                                 monthlyTaskList[day]?.append(task.category, task)
                             }
                         } else {
@@ -243,8 +248,8 @@ extension MainViewController {
                         for day in weekDayList {
                             compareDay[2] = String(format: "%02d", day)
                             let currentDay = compareDay.joined(separator: "-")
-                            if task.isEnd {
-                                if task.taskEndDate >= currentDay && task.taskDay <= currentDay {
+                            if isEnd {
+                                if taskEndDate >= currentDay && task.taskDay <= currentDay {
                                     monthlyTaskList[day]?.append(task.category, task)
                                 }
                             } else {
@@ -255,12 +260,12 @@ extension MainViewController {
                         }
                     }
                 case .EachWeekOfMonth:
-                    let daysList = Utils.findDay(monthDate, task.weekOfMonth, task.getWeekDays())
+                    let daysList = Utils.findDay(monthDate, option.weekOfMonth, task.getWeekDays())
                     for day in daysList {
                         compareDay[2] = String(format: "%02d", day)
                         let currentDay = compareDay.joined(separator: "-")
-                        if task.isEnd {
-                            if task.taskEndDate >= currentDay && task.taskDay <= currentDay {
+                        if isEnd {
+                            if taskEndDate >= currentDay && task.taskDay <= currentDay {
                                 monthlyTaskList[day]?.append(task.category, task)
                             }
                         } else {
@@ -276,8 +281,8 @@ extension MainViewController {
                         compareDay[2] = String(format: "%02d", day)
                         let currentDay = compareDay.joined(separator: "-")
                         
-                        if task.isEnd {
-                            if task.taskEndDate >= currentDay && task.taskDay <= currentDay && day == Utils.getDay(task.taskDay) {
+                        if isEnd {
+                            if taskEndDate >= currentDay && task.taskDay <= currentDay && day == Utils.getDay(task.taskDay) {
                                 monthlyTaskList[day]?.append(task.category, task)
                             }
                         } else {

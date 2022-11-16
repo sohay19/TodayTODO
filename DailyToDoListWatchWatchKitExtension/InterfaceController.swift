@@ -63,11 +63,14 @@ extension InterfaceController {
             guard let row = taskTable.rowController(at: i) as? TaskTableRowController else {
                 return
             }
+            let option = task.optionData ?? OptionData()
+            let alarmTime = option.alarmTime
+            //
             row.updateDone = updateTask(_:_:)
             row.task = task
             //
             row.labelTitle.setText(task.title)
-            row.labelTime.setText(task.alarmTime)
+            row.labelTime.setText(alarmTime)
             row.btnDone.setBackgroundImage(UIImage(systemName: "checkmark"))
             row.btnDone.setBackgroundColor(task.isDone ? UIColor.red : UIColor.gray)
         }

@@ -200,6 +200,30 @@ extension Utils {
     static func getMonth(_ date:Date) -> Int {
         return Calendar.current.dateComponents([.month], from: date).month!
     }
+    static func findWeekDay(_ index:Int) -> String {
+        var weekDay = ""
+        
+        switch index {
+        case 0:
+            weekDay = "일"
+        case 1:
+            weekDay = "월"
+        case 2:
+            weekDay = "화"
+        case 3:
+            weekDay = "수"
+        case 4:
+            weekDay = "목"
+        case 5:
+            weekDay = "금"
+        case 6:
+            weekDay = "토"
+        default:
+            break
+        }
+        
+        return weekDay
+    }
 }
 
 //MARK: - 변환

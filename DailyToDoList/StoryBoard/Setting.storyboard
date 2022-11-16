@@ -137,6 +137,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnBackup" destination="NO2-3G-T8X" id="5XQ-L2-1P7"/>
                         <outlet property="imgUnderline" destination="Qkb-HB-DGp" id="WFj-55-cTu"/>
                         <outlet property="imgUnderline_table" destination="qZ4-DL-UZO" id="3pL-vX-mLR"/>
                         <outlet property="labelBackupDate" destination="Yyi-LU-gpQ" id="gaf-63-5sS"/>

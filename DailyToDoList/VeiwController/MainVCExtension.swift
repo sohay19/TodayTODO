@@ -72,13 +72,16 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         switch segmentedController.selectedSegmentIndex {
         case 0:
             var index = indexPath
+            var isOpened = false
+            var openIndex = indexPath
+            var nextIndex = indexPath
             if let openedTask = openedTask {
+                //선택된 다음셀
                 let next = IndexPath(row: openedTask.indexPath.row+1, section: openedTask.indexPath.section)
-                if index.section == next.section && index > next { //열린 이후의 셀
+                if index.section == next.section && index >= next {
                     index = IndexPath(row: indexPath.row-1, section: indexPath.section)
-                } else if index.section == next.section && index == next { //열린 셀
-                    taskCell.labelTitle.text = "열린셀"
-                    return taskCell
+                    isOpened = true
+                    openIndex = next
                 }
             }
             taskCell.isToday = true
@@ -86,7 +89,26 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             guard let list = resultList[category] else {
                 return UITableViewCell()
             }
-            taskCell.labelTitle.text = list[index.row].title
+            if isOpened && indexPath == openIndex {
+                //열린 내용셀
+                let task = list[index.row]
+                taskCell.labelTitle.isHidden = true
+                taskCell.btnArrow.isHidden = true
+                taskCell.expandableView.isHidden = false
+                taskCell.labelTime.text = task.taskTime
+                taskCell.memoView.text = task.memo
+            } else if isOpened && indexPath == nextIndex {
+                //열린 타이틀셀
+                taskCell.labelTitle.isHidden = false
+                taskCell.expandableView.isHidden = true
+                taskCell.labelTitle.text = list[index.row].title
+                taskCell.btnArrow.image = UIImage(systemName: "chevron.up", withConfiguration: smallConfig)
+                print("???")
+            } else {
+                taskCell.labelTitle.isHidden = false
+                taskCell.expandableView.isHidden = true
+                taskCell.labelTitle.text = list[index.row].title
+            }
         case 1:
             taskCell.isToday = false
             guard let list = monthlyTaskList[Utils.getDay(monthDate)] else {
@@ -96,6 +118,9 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             guard let taskList = list.taskList[category] else {
                 return UITableViewCell()
             }
+            taskCell.labelTitle.isHidden = false
+            taskCell.expandableView.isHidden = true
+            taskCell.btnArrow.isHidden = true
             taskCell.labelTitle.text = taskList[indexPath.row].title
         default:
             return UITableViewCell()
@@ -184,7 +209,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                     return
                 }
                 let task = list[indexPath.row]
-                openedTask = OpenedTask(task.id, category, indexPath)
+                openedTask = OpenedTask(task.taskId, category, indexPath)
                 reloadTable()
             case 1:
                 guard let list = monthlyTaskList[Utils.getDay(monthDate)] else {

@@ -163,19 +163,24 @@ extension TaskInfoViewController {
         pickTaskDate.date = Utils.dateStringToDate(taskData.taskDay)!
         //
         let repeatType = RepeatType(rawValue: taskData.repeatType)!
-        repeatResult = RepeatResult(repeatType: repeatType, weekDay: taskData.getWeekDayList(), weekOfMonth: taskData.weekOfMonth, isEnd: taskData.isEnd, endDate: Utils.dateStringToDate(taskData.taskEndDate))
+        let option = taskData.optionData ?? OptionData()
+        let isEnd = option.isEnd
+        let taskEndDate = option.taskEndDate
+        let isAlarm = option.isAlarm
+        let alarmTime = option.alarmTime
+        repeatResult = RepeatResult(repeatType: repeatType, weekDay: option.getWeekDayList(), weekOfMonth: option.weekOfMonth, isEnd: isEnd, endDate: Utils.dateStringToDate(taskEndDate))
         //
         setResultView(repeatType, isResult: false)
-        pickEndDate.isHidden = !taskData.isEnd
-        labelNoEndDate.isHidden = taskData.isEnd
-        if taskData.isEnd {
-            pickEndDate.date = Utils.dateStringToDate(taskData.taskEndDate)!
+        pickEndDate.isHidden = !isEnd
+        labelNoEndDate.isHidden = isEnd
+        if isEnd {
+            pickEndDate.date = Utils.dateStringToDate(taskEndDate)!
         }
-        switchAlarm.isOn = taskData.isAlarm
-        pickAlarmTime.isHidden = !taskData.isAlarm
-        labelNoAlarm.isHidden = taskData.isAlarm
-        if taskData.isAlarm {
-            pickAlarmTime.date = Utils.stringToDate("\(taskData.taskDay)_\(taskData.alarmTime):00")!
+        switchAlarm.isOn = isAlarm
+        pickAlarmTime.isHidden = !isAlarm
+        labelNoAlarm.isHidden = isAlarm
+        if isAlarm {
+            pickAlarmTime.date = Utils.stringToDate("\(taskData.taskDay)_\(alarmTime):00")!
         }
         textView.text = taskData.memo
     }
@@ -294,9 +299,10 @@ extension TaskInfoViewController {
             guard let taskData = taskData else {
                 return
             }
+            let option = taskData.optionData ?? OptionData()
             weekDay = taskData.printWeekDay()
             day = String(taskData.taskDay.split(separator: "-")[2])
-            weekOfMonth = Utils.getWeekOfMonthInKOR(taskData.weekOfMonth)
+            weekOfMonth = Utils.getWeekOfMonthInKOR(option.weekOfMonth)
         }
         //
         switch repeatType  {
@@ -423,12 +429,16 @@ extension TaskInfoViewController {
         var data = EachTask()
         switch currentMode {
         case .ADD:
-            data = EachTask(taskDay: pickTaskDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, weekOfMonth: weekOfMonth)
+            data = EachTask(taskDay: pickTaskDate.date, category: category, time: "", title: title, memo: textView.text!, repeatType: repeatType.rawValue)
+            let option = OptionData(taskId: data.taskId, weekDay: weekDay, weekOfMonth: weekOfMonth)
+            data.setOptionData(option)
         case .MODIFY:
             guard let taskData = taskData else {
                 return nil
             }
-            data = EachTask(id:taskData.id, taskDay: pickTaskDate.date, category: category, title: title, memo: textView.text!, repeatType: repeatType.rawValue, weekDay: weekDay, weekOfMonth: weekOfMonth)
+            let option = OptionData(taskId: taskData.taskId, weekDay: weekDay, weekOfMonth: weekOfMonth)
+            data = EachTask(id:taskData.taskId, taskDay: pickTaskDate.date, category: category, time: "", title: title, memo: textView.text!, repeatType: repeatType.rawValue, optionData: option)
+            data.setOptionData(option)
         default:
             break
         }

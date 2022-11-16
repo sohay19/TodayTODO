@@ -102,9 +102,12 @@ extension RealmManager {
         do {
             try realm.write {
                 realm.add(task)
-                if task.isAlarm {
+                let option = task.optionData ?? OptionData()
+                let isAlarm = option.isAlarm
+                let alarmTime = option.alarmTime
+                if isAlarm {
                     let idList = pushManager.addNotification(task)
-                    let alarmInfo = AlarmInfo(task.id, idList, task.alarmTime)
+                    let alarmInfo = AlarmInfo(task.taskId, idList, alarmTime)
                     realm.add(alarmInfo)
                 }
             }
@@ -124,9 +127,10 @@ extension RealmManager {
         }    //
         do {
             var newIdList:[String] = []
-            if task.isAlarm {
-                if let alarmInfoData = getAlarmInfo(task.id) {
-                    let idList = getAlarmIdList(task.id)
+            let option = task.optionData ?? OptionData()
+            if option.isAlarm {
+                if let alarmInfoData = getAlarmInfo(task.taskId) {
+                    let idList = getAlarmIdList(task.taskId)
                     newIdList = pushManager.updatePush(idList, task)
                     try realm.write {
                         realm.delete(alarmInfoData)
@@ -134,13 +138,13 @@ extension RealmManager {
                 } else {
                     newIdList = pushManager.addNotification(task)
                 }
-                let alarmInfo = AlarmInfo(task.id, newIdList, task.alarmTime)
+                let alarmInfo = AlarmInfo(task.taskId, newIdList, option.alarmTime)
                 try realm.write {
                     realm.add(alarmInfo)
                 }
             } else {
-                if let alarmInfoData = getAlarmInfo(task.id) {
-                    let idList = getAlarmIdList(task.id)
+                if let alarmInfoData = getAlarmInfo(task.taskId) {
+                    let idList = getAlarmIdList(task.taskId)
                     try realm.write {
                         realm.delete(alarmInfoData)
                     }
@@ -165,9 +169,10 @@ extension RealmManager {
             return
         }
         do {
-            if task.isAlarm {
+            let option = task.optionData ?? OptionData()
+            if option.isAlarm {
                 var alarmInfoData:AlarmInfo?
-                let data =  getAlarmInfo(task.id)
+                let data =  getAlarmInfo(task.taskId)
                 alarmInfoData = data
                 guard let alarmInfoData = alarmInfoData else {
                     return
@@ -175,7 +180,7 @@ extension RealmManager {
                 try realm.write {
                     realm.delete(alarmInfoData)
                 }
-                let idList = getAlarmIdList(task.id)
+                let idList = getAlarmIdList(task.taskId)
                 pushManager.deletePush(idList)
             }
             try realm.write {
@@ -292,7 +297,7 @@ extension RealmManager {
         var result:[AlarmInfo] = []
         let taskList = getTaskDataForDay(date: Date())
         for task in taskList {
-            if let item = getAlarmInfo(task.id) {
+            if let item = getAlarmInfo(task.taskId) {
                 result.append(item)
             }
         }
@@ -324,7 +329,7 @@ extension RealmManager {
         }
         //전체 DB
         let taskDataBase = realm.objects(EachTask.self)
-        return taskDataBase.first { $0.id == taskId }
+        return taskDataBase.first { $0.taskId == taskId }
     }
     //
     func getTaskDataForDay(date:Date) -> [EachTask] {
@@ -342,41 +347,45 @@ extension RealmManager {
         //전체 DB
         let taskDataBase = realm.objects(EachTask.self)
         
-        let foundData = taskDataBase.filter {
+        let foundData = taskDataBase.filter { task in
             let today = Utils.dateToDateString(date)
             let days = today.split(separator: "-")
-            let loadDays = $0.taskDay.split(separator: "-")
+            let loadDays = task.taskDay.split(separator: "-")
             
-            if today < $0.taskDay {
+            if today < task.taskDay {
                 return false
             }
             
-            switch RepeatType(rawValue:$0.repeatType) {
+            let option = task.optionData ?? OptionData()
+            let isEnd = option.isEnd
+            let taskEndDate = option.taskEndDate
+            let weekDayList = option.weekDayList
+            switch RepeatType(rawValue:task.repeatType) {
                 //매일 반복
             case .EveryDay:
-                return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
+                return isEnd ? taskEndDate >= Utils.dateToDateString(date) : true
                 //매주 해당 요일 반복
             case .Eachweek:
-                if $0.weekDayList[weekdayIndex] {
-                    return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
+                if weekDayList[weekdayIndex] {
+                    return isEnd ? taskEndDate >= Utils.dateToDateString(date) : true
                 } else {
                     return false
                 }
                 //매월 해당 일 반복
             case .EachOnceOfMonth:
                 if days[2] == loadDays[2] {
-                    return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
+                    return isEnd ? taskEndDate >= Utils.dateToDateString(date) : true
                 } else {
                     return false
                 }
                 //매월 해당 주, 해당 요일 반복
             case .EachWeekOfMonth:
-                if $0.weekDayList[weekdayIndex] {
-                    let week = $0.weekOfMonth
+                if weekDayList[weekdayIndex] {
+                    let week = option.weekOfMonth
                     if week == 6 {
                         return weekOfMonth == lastWeek
                     } else if week == weekOfMonth {
-                        return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
+                        return isEnd ? taskEndDate >= Utils.dateToDateString(date) : true
                     } else {
                         return false
                     }
@@ -386,13 +395,13 @@ extension RealmManager {
                 //매년 반복
             case .EachYear:
                 if days[1] == loadDays[1] && days[2] == loadDays[2] {
-                    return $0.isEnd ? $0.taskEndDate >= Utils.dateToDateString(date) : true
+                    return isEnd ? taskEndDate >= Utils.dateToDateString(date) : true
                 } else {
                     return false
                 }
                 //반복 없음
             default:
-                return $0.taskDay == Utils.dateToDateString(date)
+                return task.taskDay == Utils.dateToDateString(date)
             }
             //
         }
@@ -415,30 +424,32 @@ extension RealmManager {
         }
         //전체 DB
         let taskDataBase = realm.objects(EachTask.self)
-        
-        let foundData = taskDataBase.filter {
-            if Utils.dateToDateString(lastDate) < $0.taskDay {
+        let foundData = taskDataBase.filter { task in
+            if Utils.dateToDateString(lastDate) < task.taskDay {
                 return false
             }
-            
             let today = Utils.dateToDateString(date)
             let days = today.split(separator: "-")
-            let loadDays = $0.taskDay.split(separator: "-")
-            
-            switch RepeatType(rawValue:$0.repeatType) {
+            let loadDays = task.taskDay.split(separator: "-")
+            //
+            let option = task.optionData ?? OptionData()
+            let isEnd = option.isEnd
+            let taskEndDate = option.taskEndDate
+            //
+            switch RepeatType(rawValue:task.repeatType) {
                 //반복 없음
             case .None:
                 return days[0] == loadDays[0] && days[1] == loadDays[1] ? true : false
                 //매년 반복
             case .EachYear:
                 if days[1] == loadDays[1] {
-                    return $0.isEnd ? $0.taskEndDate >=  Utils.dateToDateString(firstDate) : true
+                    return isEnd ? taskEndDate >=  Utils.dateToDateString(firstDate) : true
                 } else {
                     return false
                 }
             default:
                 //그 외 모든 반복
-                return $0.isEnd ? $0.taskEndDate >=  Utils.dateToDateString(firstDate): true
+                return isEnd ? taskEndDate >=  Utils.dateToDateString(firstDate): true
             }
         }
         return foundData.map{$0}

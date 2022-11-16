@@ -76,9 +76,11 @@ enum TaskCodingKeys:String, CodingKey {
     case id
     case taskDay
     case category
+    case taskTime
     case title
     case memo
     case repeatType
+    case optionData
     case weekDay
     case weekOfMonth
     case isEnd

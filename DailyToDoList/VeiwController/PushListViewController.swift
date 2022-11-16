@@ -114,6 +114,7 @@ extension PushListViewController {
         labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
+        btnEdit.contentMode = .center
         btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: swipeConfig), for: .normal)
         //
         imgUnderline.alpha = 0.3
@@ -166,7 +167,8 @@ extension PushListViewController {
         guard let task = RealmManager.shared.getTaskData(id) else {
             return
         }
-        let newTask = EachTask(id: task.id, taskDay: task.taskDay, category: task.category, title: task.title, memo: task.memo, repeatType: task.repeatType, weekDay: task.getWeekDayList(), weekOfMonth: task.weekOfMonth, isEnd: task.isEnd, taskEndDate: task.taskEndDate, isAlarm: false, alarmTime: "", isDone: task.isDone)
+        let option = task.optionData ?? OptionData()
+        let newTask = EachTask(id: task.taskId, taskDay: task.taskDay, category: task.category, time: task.taskTime, title: task.title, memo: task.memo, repeatType: task.repeatType, optionData: option, isDone: task.isDone)
         // task data 업데이트
         RealmManager.shared.updateTaskDataForiOS(newTask)
         // 리스트 삭제

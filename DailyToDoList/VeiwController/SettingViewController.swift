@@ -18,6 +18,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var labelBackupDate: UILabel!
     //
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var btnBackup: UIButton!
     
     var dataList:[(name:String, url:URL)] = []
     
@@ -73,7 +74,9 @@ extension SettingViewController {
         tableView.layer.borderWidth = 0.5
         tableView.layer.cornerRadius = 5
         tableView.separatorColor = .label
-        tableView.rowHeight = 49
+        //
+        btnBackup.contentMode = .center
+        btnBackup.setImage(UIImage(systemName: "tray.and.arrow.down.fill", withConfiguration: swipeConfig), for: .normal)
     }
     //
     func initCell() {
@@ -161,7 +164,7 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             self.deleteBackupFile(indexPath)
             success(true)
         }
-        delete.image = UIImage(systemName: "trash.fill", withConfiguration: imageConfig)
+        delete.image = UIImage(systemName: "trash.fill", withConfiguration: swipeConfig)
         delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete, load])

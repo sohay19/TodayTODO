@@ -23,9 +23,11 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         guard let pushData = pushData else {
             return UITableViewCell()
         }
+        let option = pushData.optionData ?? OptionData()
+        //
         pushCell.isToday = segmentedController.selectedSegmentIndex == 0 ? true : false
         pushCell.labelTitle.text = pushData.title
-        pushCell.labelAlarmTime.text = pushData.alarmTime
+        pushCell.labelAlarmTime.text = option.alarmTime
         //
         var repeatMsg = ""
         switch RepeatType(rawValue: pushData.repeatType) {
@@ -33,7 +35,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             repeatMsg = "매일 반복"
         case .Eachweek:
             repeatMsg = "매 주 "
-            let weekDayList = pushData.getWeekDayList()
+            let weekDayList = option.getWeekDayList()
             for weekday in 0..<weekDayList.count {
                 if weekDayList[weekday] {
                     repeatMsg += Utils.getWeekDayInKOR(weekday)
@@ -48,7 +50,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             repeatMsg += "일 반복"
         case .EachWeekOfMonth:
             repeatMsg = "매 월 "
-            repeatMsg += "\(Utils.getWeekOfMonthInKOR(pushData.weekOfMonth))주, "
+            repeatMsg += "\(Utils.getWeekOfMonthInKOR(option.weekOfMonth))주, "
             var weekDay = pushData.printWeekDay()
             if !weekDay.isEmpty {
                 weekDay.removeLast()

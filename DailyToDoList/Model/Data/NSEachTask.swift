@@ -13,29 +13,21 @@ struct NSEachTaskList: Codable {
 
 struct NSEachTask: Codable {
     //아이디
-    var id:String = ""
+    var taskId:String = ""
     //Task 날짜 (yyyy-MM-dd)
     var taskDay:String = ""
     //카테고리
     var category:String = ""
+    //시간
+    var taskTime:String = ""
     //제목
     var title:String = ""
     //내용
     var memo:String = ""
     //반복 타입
     var repeatType:String = ""
-    //반복요일 체크(일요일 = 0) -> DateComponents (일요일 = 1)
-    var weekDay:[Bool] = []
-    //반복 주 체크
-    var weekOfMonth:Int = 0
-    //종료일 여부
-    var isEnd:Bool = false
-    //종료일
-    var taskEndDate:String = ""
-    //알람 여부
-    var isAlarm:Bool = false
-    //알람 시간
-    var alarmTime:String = ""
+    //부가정보
+    var optionData:NSOptionData
     //Done or Not
     var isDone:Bool = false
     
@@ -43,52 +35,40 @@ struct NSEachTask: Codable {
     // Init
     init(task:EachTask)
     {
-        self.id = task.id
+        self.taskId = task.taskId
         self.taskDay = task.taskDay
         self.category = task.category
+        self.taskTime = task.taskTime
+        self.repeatType = task.repeatType
+        self.optionData = NSOptionData(option: task.optionData ?? OptionData())
         self.title = task.title
         self.memo = task.memo
-        self.repeatType = task.repeatType
-        self.weekDay = task.getWeekDayList()
-        self.weekOfMonth = task.weekOfMonth
-        self.isEnd = task.isEnd
-        self.taskEndDate = task.taskEndDate
-        self.isAlarm = task.isAlarm
-        self.alarmTime = task.alarmTime
         self.isDone = task.isDone
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: TaskCodingKeys.self)
-        try container.encode(id, forKey: .id)
+        try container.encode(taskId, forKey: .id)
         try container.encode(taskDay, forKey: .taskDay)
         try container.encode(category, forKey: .category)
+        try container.encode(taskTime, forKey: .taskTime)
+        try container.encode(repeatType, forKey: .repeatType)
+        try container.encode(optionData, forKey: .optionData)
         try container.encode(title, forKey: .title)
         try container.encode(memo, forKey: .memo)
-        try container.encode(repeatType, forKey: .repeatType)
-        try container.encode(weekDay, forKey: .weekDay)
-        try container.encode(weekOfMonth, forKey: .weekOfMonth)
-        try container.encode(isEnd, forKey: .isEnd)
-        try container.encode(taskEndDate, forKey: .taskEndDate)
-        try container.encode(isAlarm, forKey: .isAlarm)
-        try container.encode(alarmTime, forKey: .alarmTime)
         try container.encode(isDone, forKey: .isDone)
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: TaskCodingKeys.self)
-        id = try container.decode(String.self, forKey: .id)
+        taskId = try container.decode(String.self, forKey: .id)
         taskDay = try container.decode(String.self, forKey: .taskDay)
         category = try container.decode(String.self, forKey: .category)
+        taskTime = try container.decode(String.self, forKey: .taskTime)
+        repeatType = try container.decode(String.self, forKey: .repeatType)
+        optionData = try container.decode(NSOptionData.self, forKey: .optionData)
         title = try container.decode(String.self, forKey: .title)
         memo = try container.decode(String.self, forKey: .memo)
-        repeatType = try container.decode(String.self, forKey: .repeatType)
-        weekDay = try container.decode([Bool].self, forKey: .weekDay)
-        weekOfMonth = try container.decode(Int.self, forKey: .weekOfMonth)
-        isEnd = try container.decode(Bool.self, forKey: .isEnd)
-        taskEndDate = try container.decode(String.self, forKey: .taskEndDate)
-        isAlarm = try container.decode(Bool.self, forKey: .isAlarm)
-        alarmTime = try container.decode(String.self, forKey: .alarmTime)
         isDone = try container.decode(Bool.self, forKey: .isDone)
     }
 }

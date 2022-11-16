@@ -46,9 +46,13 @@ extension TaskInterfaceController {
         labelCategory.setTextColor(color)
         labelCategory.setText(task.category)
         //
-        if task.isAlarm {
+        let option = task.optionData ?? OptionData()
+        let isAlarm = option.isAlarm
+        let alarmTime = option.alarmTime
+        //
+        if isAlarm {
             labelTime.setHidden(false)
-            labelTime.setText(task.alarmTime)
+            labelTime.setText(alarmTime)
         } else {
             labelTime.setHidden(true)
         }

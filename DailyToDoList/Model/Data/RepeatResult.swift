@@ -41,7 +41,7 @@ struct RepeatResult {
         var result = ""
         for i in 0..<weekDay.count {
             if weekDay[i] {
-                result += "\(findWeekDay(i)), "
+                result += "\(Utils.findWeekDay(i)), "
             }
         }
         
@@ -51,30 +51,5 @@ struct RepeatResult {
         }
         
         return result
-    }
-    
-    func findWeekDay(_ index:Int) -> String {
-        var weekDay = ""
-        
-        switch index {
-        case 0:
-            weekDay = "일"
-        case 1:
-            weekDay = "월"
-        case 2:
-            weekDay = "화"
-        case 3:
-            weekDay = "수"
-        case 4:
-            weekDay = "목"
-        case 5:
-            weekDay = "금"
-        case 6:
-            weekDay = "토"
-        default:
-            break
-        }
-        
-        return weekDay
     }
 }

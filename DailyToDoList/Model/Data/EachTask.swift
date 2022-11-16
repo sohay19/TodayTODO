@@ -13,49 +13,28 @@ class EachTask : Object
 {
     //아이디
     @Persisted(primaryKey: true)
-    var id:String
+    var taskId:String
     //Task 날짜 (yyyy-MM-dd)
     @Persisted
     var taskDay:String
     //카테고리
     @Persisted
     var category:String
+    //시간
+    @Persisted
+    var taskTime:String
+    //반복 타입
+    @Persisted
+    var repeatType:String
+    //부가정보
+    @Persisted
+    var optionData:OptionData?
     //제목
     @Persisted
     var title:String
     //내용
     @Persisted
     var memo:String
-    //반복 타입
-    @Persisted
-    var repeatType:String
-    //반복요일 체크(일요일 = 0) -> DateComponents (일요일 = 1)
-    @Persisted
-    var weekDayList:List<Bool>
-    private var weekDay:[Bool] {
-        get {
-            return weekDayList.map{$0}
-        }
-        set {
-            weekDayList.removeAll()
-            weekDayList.append(objectsIn: newValue)
-        }
-    }
-    //반복 주 체크
-    @Persisted
-    var weekOfMonth:Int
-    //종료일 여부
-    @Persisted
-    var isEnd:Bool
-    //종료일
-    @Persisted
-    var taskEndDate:String
-    //알람 여부
-    @Persisted
-    var isAlarm:Bool
-    //알람 시간
-    @Persisted
-    var alarmTime:String
     //Done or Not
     @Persisted
     var isDone:Bool
@@ -64,121 +43,81 @@ class EachTask : Object
     convenience init(task:NSEachTask)
     {
         self.init()
-        self.id = task.id
+        self.taskId = task.taskId
         self.taskDay = task.taskDay
         self.category = task.category
+        self.taskTime = task.taskTime
+        self.repeatType = task.repeatType
+        self.optionData = OptionData(option: task.optionData)
         self.title = task.title
         self.memo = task.memo
-        self.repeatType = task.repeatType
-        self.weekDay = task.weekDay
-        self.weekOfMonth = task.weekOfMonth
-        self.isEnd = task.isEnd
-        self.taskEndDate = task.taskEndDate
-        self.isAlarm = task.isAlarm
-        self.alarmTime = task.alarmTime
         self.isDone = task.isDone
     }
     
             
-    convenience init(taskDay:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], weekOfMonth:Int) {
+    convenience init(taskDay:Date, category:String, time:String, title:String, memo:String, repeatType:String) {
         self.init()
-        self.id = Utils.dateToId(Date())
+        self.taskId = Utils.dateToId(Date())
         let date = Utils.dateToDateString(taskDay)
         self.taskDay = date
         self.category = category
+        self.taskTime = time
         self.title = title
         self.memo = memo
         self.repeatType = repeatType
-        self.weekDay = weekDay
-        self.weekOfMonth = weekOfMonth
-        //
-        self.isEnd = false
-        self.isAlarm = false
+        self.optionData = OptionData()
         self.isDone = false
     }
     
-    convenience init(id:String, taskDay:Date, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], weekOfMonth:Int) {
+    convenience init(id:String, taskDay:Date, category:String, time:String, title:String, memo:String, repeatType:String, optionData:OptionData) {
         self.init()
-        self.id = id
+        self.taskId = id
         let date = Utils.dateToDateString(taskDay)
         self.taskDay = date
         self.category = category
+        self.taskTime = time
         self.title = title
         self.memo = memo
         self.repeatType = repeatType
-        self.weekDay = weekDay
-        self.weekOfMonth = weekOfMonth
-        //
-        self.isEnd = false
-        self.isAlarm = false
+        self.optionData = optionData
         self.isDone = false
     }
     
-    convenience init(id:String, taskDay:String, category:String, title:String, memo:String, repeatType:String, weekDay:[Bool], weekOfMonth:Int, isEnd:Bool, taskEndDate:String, isAlarm:Bool, alarmTime:String, isDone:Bool) {
+    convenience init(id:String, taskDay:String, category:String, time:String, title:String, memo:String, repeatType:String, optionData:OptionData, isDone:Bool) {
         self.init()
-        self.id = id
+        self.taskId = id
         self.taskDay = taskDay
         self.category = category
+        self.taskTime = time
         self.title = title
         self.memo = memo
         self.repeatType = repeatType
-        self.weekDay = weekDay
-        self.weekOfMonth = weekOfMonth
-        self.isEnd = isEnd
-        self.taskEndDate = taskEndDate
-        self.isAlarm = isAlarm
-        self.alarmTime = alarmTime
+        self.optionData = optionData
         self.isDone = isDone
     }
     
-    func setAlarm(_ time:Date?) {
-        if let time = time {
-            self.isAlarm = true
-            var time = Utils.dateToTimeString(time).split(separator: ":")
-            time.removeLast()
-            self.alarmTime = time.joined(separator: ":")
-        } else {
-            self.isAlarm = false
-            self.alarmTime = ""
-        }
-    }
-    
-    func setEndDate(_ endDate:Date) {
-        self.isEnd = true
-        self.taskEndDate = Utils.dateToDateString(endDate)
+    func setOptionData(_ option:OptionData) {
+        self.optionData = option
     }
     
     func changeIsDone() {
         self.isDone = !self.isDone
     }
     
-    private func findWeekDay(_ index:Int) -> String {
-        var weekDay = ""
-        
-        switch index {
-        case 0:
-            weekDay = "일"
-        case 1:
-            weekDay = "월"
-        case 2:
-            weekDay = "화"
-        case 3:
-            weekDay = "수"
-        case 4:
-            weekDay = "목"
-        case 5:
-            weekDay = "금"
-        case 6:
-            weekDay = "토"
-        default:
-            break
+    func setEndDate(_ endDate:Date) {
+        guard let optionData = optionData else {
+            return
         }
-        
-        return weekDay
+        optionData.isEnd = true
+        optionData.taskEndDate = Utils.dateToDateString(endDate)
     }
     
     func getWeekDays() -> [Int] {
+        guard let optionData = optionData else {
+            return []
+        }
         var result:[Int] = []
+        let weekDay = optionData.weekDayList
         for i in 0..<weekDay.count {
             if weekDay[i] {
                 result.append(i)
@@ -188,14 +127,21 @@ class EachTask : Object
     }
    
     func getWeekDayList() -> [Bool] {
-        return weekDay
+        guard let optionData = optionData else {
+            return []
+        }
+        return optionData.getWeekDayList()
     }
     
     func printWeekDay() -> String {
+        guard let optionData = optionData else {
+            return ""
+        }
         var result = ""
+        let weekDay = optionData.weekDayList
         for i in 0..<weekDay.count {
             if weekDay[i] {
-                result += "\(findWeekDay(i)), "
+                result += "\(Utils.findWeekDay(i)), "
             }
         }
         if !result.isEmpty {
@@ -206,27 +152,48 @@ class EachTask : Object
         return result
     }
     
+    func setAlarm(_ time:Date?) {
+        guard let optionData = optionData else {
+            return
+        }
+        if let time = time {
+            optionData.isAlarm = true
+            var time = Utils.dateToTimeString(time).split(separator: ":")
+            time.removeLast()
+            optionData.alarmTime = time.joined(separator: ":")
+        } else {
+            optionData.isAlarm = false
+            optionData.alarmTime = ""
+        }
+    }
+    
     func clone() -> EachTask {
-        return EachTask(id: self.id, taskDay: self.taskDay, category: self.category, title: self.title, memo: self.memo, repeatType: self.repeatType, weekDay: self.weekDay, weekOfMonth: self.weekOfMonth, isEnd: self.isEnd, taskEndDate: self.taskEndDate, isAlarm: self.isAlarm, alarmTime: self.alarmTime, isDone: self.isDone)
+        guard let optionData = optionData else {
+            return EachTask()
+        }
+        return EachTask(id: self.taskId, taskDay: self.taskDay, category: self.category, time: self.taskTime, title: self.title, memo: self.memo, repeatType: self.repeatType, optionData: optionData, isDone: self.isDone)
     }
     
     func printTask() {
-        print("========== \(self.id) ==========")
+        guard let optionData = optionData else {
+            return
+        }
+        print("========== \(self.taskId) ==========")
         print("title = \(self.title)")
         print("category = \(self.category)")
         print("date = \(self.taskDay)")
-        print("isEnd = \(self.isEnd)")
-        if self.isEnd {
-            print("endDate = \(self.taskEndDate)")
+        print("isEnd = \(optionData.isEnd)")
+        if optionData.isEnd {
+            print("endDate = \(optionData.taskEndDate)")
         }
         print("repeatType = \(self.repeatType)")
         if self.repeatType != RepeatType.None.rawValue {
-            print("weekDayList = \(self.weekDayList)")
-            print("weekOfMonth = \(self.weekOfMonth)")
+            print("weekDayList = \(optionData.weekDayList)")
+            print("weekOfMonth = \(optionData.weekOfMonth)")
         }
-        print("isAlarm = \(self.isAlarm)")
-        if self.isAlarm {
-            print("alarmTime = \(self.alarmTime)")
+        print("isAlarm = \(optionData.isAlarm)")
+        if optionData.isAlarm {
+            print("alarmTime = \(optionData.alarmTime)")
         }
         print("memo = \(self.memo)")
     }
