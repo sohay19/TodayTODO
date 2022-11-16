@@ -50,6 +50,8 @@ class PushListViewController : UIViewController {
         }
         //
         initUI()
+        initCell()
+        //
         initRefreshController()
         //메뉴
         SystemManager.shared.openMenu(self)
@@ -112,12 +114,18 @@ extension PushListViewController {
         labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
-        btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: imageConfig), for: .normal)
+        btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: swipeConfig), for: .normal)
         //
         imgUnderline.alpha = 0.3
         //
         changeTitle()
     }
+    //
+    func initCell() {
+        let nibName = UINib(nibName: "PushCell", bundle: nil)
+        pushTable.register(nibName, forCellReuseIdentifier: "PushCell")
+    }
+    //
     func controllEditView(_ isOn:Bool) {
         guard let heightConstraint = heightConstraint else {
             return
@@ -184,14 +192,14 @@ extension PushListViewController {
     }
     private func changeEditMode() {
         if pushTable.isEditing {
-            btnEdit.setImage(UIImage(systemName: "scissors"), for: .normal)
+            btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: swipeConfig), for: .normal)
             pushTable.setEditing(false, animated: false)
             for cell in pushTable.visibleCells {
                 cell.selectionStyle = .none
             }
             controllEditView(false)
         } else {
-            btnEdit.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right"), for: .normal)
+            btnEdit.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right", withConfiguration: swipeConfig), for: .normal)
             pushTable.setEditing(true, animated: false)
             for cell in pushTable.visibleCells {
                 cell.selectionStyle = .default

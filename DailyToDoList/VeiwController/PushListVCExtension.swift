@@ -75,7 +75,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             self.deletePush(indexPath)
             success(true)
         }
-        delete.image = UIImage(systemName: "trash.fill", withConfiguration: imageConfig)
+        delete.image = UIImage(systemName: "trash.fill", withConfiguration: swipeConfig)
         delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete])
@@ -86,20 +86,10 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         if pushTable.isEditing {
             return
         }
-        let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
-        guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
         guard let data = RealmManager.shared.getTaskData(pushList[indexPath.row].taskId) else {
             return
         }
-        taskInfoVC.taskData = data
-        taskInfoVC.modalTransitionStyle = .coverVertical
-        taskInfoVC.modalPresentationStyle = .fullScreen
-        
-        guard let navaigatiocn = self.navigationController as? CustomNavigationController else {
-            return
-        }
-        navaigatiocn.setNavigationBarAppearance(self)
-        navaigatiocn.pushViewController(taskInfoVC)
+        SystemManager.shared.openTaskInfo(.LOOK, data, nil, nil)
     }
     //MARK: - Edit
     //Row별 EditMode-

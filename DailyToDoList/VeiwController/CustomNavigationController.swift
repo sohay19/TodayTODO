@@ -10,26 +10,9 @@ import UIKit
 import SideMenu
 
 class CustomNavigationController : UINavigationController {
-    let anim = false
-    
-    private var backButtonImage: UIImage? {
-        return UIImage(named: "button")?.withAlignmentRectInsets(UIEdgeInsets(top: 0.0, left: -12.0, bottom: -5.0, right: 0.0))
-    }
-    // backButton하단에 표출되는 text를 안보이게 설정
-    private var backBarButtonItem: UIBarButtonItem {
-        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        backBarButtonItem.tintColor = .systemBackground
-        return backBarButtonItem
-    }
+    let anim = true
 }
 
-//MARK: - Appearance
-extension CustomNavigationController {
-    func setNavigationBarAppearance(_ vc:UIViewController) {
-        vc.navigationItem.backBarButtonItem = backBarButtonItem
-        vc.navigationController?.navigationBar.backIndicatorImage = backButtonImage
-    }
-}
 
 //MARK: - pop, push
 extension CustomNavigationController {

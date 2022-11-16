@@ -60,3 +60,4 @@ let Underline_Black = "underline_Black.png"
 let Bricks = "Bricks.png"
 let LastPageImage = "LastPage.png"
 let imageConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .bold, scale: .large)
+let swipeConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .bold, scale: .large)

@@ -58,48 +58,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kGG-Zy-ClK">
                                 <rect key="frame" x="30" y="149.5" width="354" height="583.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PushCell" id="FvR-NB-mBp" customClass="PushCell" customModule="DailyToDoList" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="354" height="90"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FvR-NB-mBp" id="nMd-Ip-Eo1">
-                                            <rect key="frame" x="0.0" y="0.0" width="354" height="90"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfP-Ay-UfJ">
-                                                    <rect key="frame" x="18" y="18" width="47" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <color key="highlightedColor" systemColor="secondarySystemBackgroundColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPZ-yE-3ft">
-                                                    <rect key="frame" x="292" y="18" width="44" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwG-Y2-crD">
-                                                    <rect key="frame" x="298.5" y="48" width="37.5" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="zfP-Ay-UfJ" firstAttribute="leading" secondItem="nMd-Ip-Eo1" secondAttribute="leading" constant="18" id="03c-mG-Kt1"/>
-                                                <constraint firstAttribute="trailing" secondItem="KPZ-yE-3ft" secondAttribute="trailing" constant="18" id="9sg-c0-Lb2"/>
-                                                <constraint firstItem="KPZ-yE-3ft" firstAttribute="centerY" secondItem="zfP-Ay-UfJ" secondAttribute="centerY" id="EAx-NK-uhT"/>
-                                                <constraint firstItem="UwG-Y2-crD" firstAttribute="trailing" secondItem="KPZ-yE-3ft" secondAttribute="trailing" id="Hwa-Ve-gAG"/>
-                                                <constraint firstItem="UwG-Y2-crD" firstAttribute="top" secondItem="KPZ-yE-3ft" secondAttribute="bottom" constant="9" id="VXy-oI-Hi2"/>
-                                                <constraint firstItem="zfP-Ay-UfJ" firstAttribute="top" secondItem="nMd-Ip-Eo1" secondAttribute="top" constant="18" id="qG6-9y-W9T"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="labelAlarmTime" destination="KPZ-yE-3ft" id="REs-ux-xf6"/>
-                                            <outlet property="labelRepeat" destination="UwG-Y2-crD" id="ra7-BI-4Nq"/>
-                                            <outlet property="labelTitle" destination="zfP-Ay-UfJ" id="PJ5-C7-fIE"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcM-hb-gY3" userLabel="EditView">
                                 <rect key="frame" x="0.0" y="733" width="414" height="60"/>
@@ -202,9 +160,6 @@
         <image name="trash.fill" catalog="system" width="119" height="128"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -82,6 +82,11 @@
 		CF8149602906D28E00FD0974 /* NSEachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495E2906D28E00FD0974 /* NSEachTask.swift */; };
 		CF995F462923C54B00FAE2F1 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = CF995F452923C54B00FAE2F1 /* title.png */; };
 		CF995F482923D02600FAE2F1 /* OpenedTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF995F472923D02600FAE2F1 /* OpenedTask.swift */; };
+		CF995F4E2924BF6600FAE2F1 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF995F4C2924BF6600FAE2F1 /* TaskCell.xib */; };
+		CF995F502924C15D00FAE2F1 /* PushCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF995F4F2924C15D00FAE2F1 /* PushCell.xib */; };
+		CF995F522924C34400FAE2F1 /* BackUpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF995F512924C34400FAE2F1 /* BackUpCell.xib */; };
+		CF995F552924C4F500FAE2F1 /* ExpandableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF995F532924C4F500FAE2F1 /* ExpandableCell.swift */; };
+		CF995F562924C4F500FAE2F1 /* ExpandableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF995F542924C4F500FAE2F1 /* ExpandableCell.xib */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
 		CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */; };
@@ -293,6 +298,11 @@
 		CF81495E2906D28E00FD0974 /* NSEachTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEachTask.swift; sourceTree = "<group>"; };
 		CF995F452923C54B00FAE2F1 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		CF995F472923D02600FAE2F1 /* OpenedTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenedTask.swift; sourceTree = "<group>"; };
+		CF995F4C2924BF6600FAE2F1 /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
+		CF995F4F2924C15D00FAE2F1 /* PushCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PushCell.xib; sourceTree = "<group>"; };
+		CF995F512924C34400FAE2F1 /* BackUpCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackUpCell.xib; sourceTree = "<group>"; };
+		CF995F532924C4F500FAE2F1 /* ExpandableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableCell.swift; sourceTree = "<group>"; };
+		CF995F542924C4F500FAE2F1 /* ExpandableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableCell.xib; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* DailyTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToDoListWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0228F1793B00E93585 /* DailyToDoListWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = DailyToDoListWidget.intentdefinition; sourceTree = "<group>"; };
@@ -635,15 +645,20 @@
 		CFEB4A2628F14B01008850DC /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CFEB4A4728F14D25008850DC /* TaskCell.swift */,
 				CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */,
-				CF75963629024F680046FDC1 /* PushCell.swift */,
 				CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */,
-				CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */,
-				CF5350CA291E8A6700AFDC14 /* Menu.swift */,
 				CF5350CE291E98DC00AFDC14 /* Menu.xib */,
-				CF5350D0291E9CD600AFDC14 /* Loading.swift */,
+				CF5350CA291E8A6700AFDC14 /* Menu.swift */,
 				CF5350D2291E9CE200AFDC14 /* Loading.xib */,
+				CF5350D0291E9CD600AFDC14 /* Loading.swift */,
+				CF995F4C2924BF6600FAE2F1 /* TaskCell.xib */,
+				CFEB4A4728F14D25008850DC /* TaskCell.swift */,
+				CF995F4F2924C15D00FAE2F1 /* PushCell.xib */,
+				CF75963629024F680046FDC1 /* PushCell.swift */,
+				CF995F512924C34400FAE2F1 /* BackUpCell.xib */,
+				CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */,
+				CF995F542924C4F500FAE2F1 /* ExpandableCell.xib */,
+				CF995F532924C4F500FAE2F1 /* ExpandableCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -900,6 +915,7 @@
 				CF5350E32922277B00AFDC14 /* clock.png in Resources */,
 				CF5350B0291E3D4B00AFDC14 /* Background2.jpg in Resources */,
 				CF5350CF291E98DC00AFDC14 /* Menu.xib in Resources */,
+				CF995F562924C4F500FAE2F1 /* ExpandableCell.xib in Resources */,
 				CFEB4A6C28F16B15008850DC /* Picker.storyboard in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
 				CF5350BD291E457400AFDC14 /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
@@ -922,7 +938,10 @@
 				CFEB49E228F13287008850DC /* Main.storyboard in Resources */,
 				CF5350C3291E45F300AFDC14 /* NanumAJumMaJaYu.ttf in Resources */,
 				CF5350B3291E3D4B00AFDC14 /* Background4.jpg in Resources */,
+				CF995F522924C34400FAE2F1 /* BackUpCell.xib in Resources */,
 				CF75963329024C340046FDC1 /* PushList.storyboard in Resources */,
+				CF995F4E2924BF6600FAE2F1 /* TaskCell.xib in Resources */,
+				CF995F502924C15D00FAE2F1 /* PushCell.xib in Resources */,
 				CFEB4A6228F16234008850DC /* Repeat.storyboard in Resources */,
 				CF5350D3291E9CE200AFDC14 /* Loading.xib in Resources */,
 				CF535097291CD5E400AFDC14 /* sticker.png in Resources */,
@@ -1183,6 +1202,7 @@
 				CF5350D1291E9CD600AFDC14 /* Loading.swift in Sources */,
 				CFEB4A4528F14D1C008850DC /* EachTask.swift in Sources */,
 				CFEB4A6A28F1672F008850DC /* ColorPickerViewController.swift in Sources */,
+				CF995F552924C4F500FAE2F1 /* ExpandableCell.swift in Sources */,
 				CFEB4A4428F14D1C008850DC /* RepeatResult.swift in Sources */,
 				CFEB4A6428F16243008850DC /* RepeatViewController.swift in Sources */,
 				CFEB4A3C28F14CB4008850DC /* Enums.swift in Sources */,

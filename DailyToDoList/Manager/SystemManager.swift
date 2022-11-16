@@ -84,6 +84,24 @@ extension SystemManager {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
     }
     //
+    func openTaskInfo(_ mode:TaskMode, _ task:EachTask?, _ load:(() -> Void)?, _ modify:((EachTask)->Void)?) {
+        let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
+        guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
+        //
+        taskInfoVC.currentMode = mode
+        taskInfoVC.refreshTask = load
+        taskInfoVC.modifyTask = modify
+        //
+        taskInfoVC.taskData = task
+        taskInfoVC.modalTransitionStyle = .coverVertical
+        taskInfoVC.modalPresentationStyle = .overFullScreen
+        
+        guard let navaigation = navigation else {
+            return
+        }
+        navaigation.pushViewController(taskInfoVC)
+    }
+    //
     func openMenu(_ vc:UIViewController) {
         // 메뉴로드
         menuView = Bundle.main.loadNibNamed(menuBoard, owner: vc, options: nil)?.first as? Menu

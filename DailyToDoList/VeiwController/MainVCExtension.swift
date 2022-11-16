@@ -17,7 +17,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         case 0:
             return categoryList.count
         case 1:
-            guard let list = monthlyTaskList[Utils.getDay(currentDate)]?.categoryList else {
+            guard let list = monthlyTaskList[Utils.getDay(monthDate)]?.categoryList else {
                 return 0
             }
             return list.count
@@ -30,7 +30,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         case 0:
             return categoryList[section]
         case 1:
-            return monthlyTaskList[Utils.getDay(currentDate)]?.categoryList[section]
+            return monthlyTaskList[Utils.getDay(monthDate)]?.categoryList[section]
         default:
             return nil
         }
@@ -52,7 +52,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 return list.count
             }
         case 1:
-            guard let list = monthlyTaskList[Utils.getDay(currentDate)] else {
+            guard let list = monthlyTaskList[Utils.getDay(monthDate)] else {
                 return 0
             }
             let category = list.categoryList[section]
@@ -89,7 +89,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             taskCell.labelTitle.text = list[index.row].title
         case 1:
             taskCell.isToday = false
-            guard let list = monthlyTaskList[Utils.getDay(currentDate)] else {
+            guard let list = monthlyTaskList[Utils.getDay(monthDate)] else {
                 return UITableViewCell()
             }
             let category = list.categoryList[indexPath.section]
@@ -133,7 +133,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             task = result
         case 1:
             //Month
-            guard let result = monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category]?[indexPath.row] else {
+            guard let result = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else {
                 return nil
             }
             task = result
@@ -158,14 +158,14 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             self.modifyTask(indexPath)
             success(true)
         }
-        modify.image = UIImage(systemName: "eraser.fill", withConfiguration: imageConfig)
+        modify.image = UIImage(systemName: "eraser.fill", withConfiguration: swipeConfig)
         modify.backgroundColor = .systemIndigo.withAlphaComponent(0.5)
         
         let delete = UIContextualAction(style: .destructive, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.deleteTask(indexPath)
             success(true)
         }
-        delete.image = UIImage(systemName: "trash.fill", withConfiguration: imageConfig)
+        delete.image = UIImage(systemName: "trash.fill", withConfiguration: swipeConfig)
         delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete, modify])
@@ -187,7 +187,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 openedTask = OpenedTask(task.id, category, indexPath)
                 reloadTable()
             case 1:
-                guard let list = monthlyTaskList[Utils.getDay(currentDate)] else {
+                guard let list = monthlyTaskList[Utils.getDay(monthDate)] else {
                     return
                 }
                 let category = list.categoryList[indexPath.section]
@@ -195,7 +195,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                     return
                 }
                 let task = taskList[indexPath.row]
-                openTaskInfo(.LOOK, task, nil)
+                SystemManager.shared.openTaskInfo(.LOOK, task, loadTask, nil)
             default:
                 return
             }
@@ -207,7 +207,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
 extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     // 특정 날짜 선택 시
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        currentDate = date
+        monthDate = date
         reloadTable()
     }
     //Dot 개수
@@ -223,8 +223,8 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
         guard let firstDate = Utils.dateStringToDate(curDate) else {
             return
         }
-        currentDate = firstDate
-        calendarView.select(currentDate)
+        monthDate = firstDate
+        calendarView.select(monthDate)
         //
         SystemManager.shared.openLoading()
         DispatchQueue.main.async { [self] in

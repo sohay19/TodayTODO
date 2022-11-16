@@ -31,6 +31,7 @@ class SettingViewController: UIViewController {
         tableView.dataSource = self
         //
         initUI()
+        initCell()
         //메뉴
         SystemManager.shared.openMenu(self)
     }
@@ -74,7 +75,12 @@ extension SettingViewController {
         tableView.separatorColor = .label
         tableView.rowHeight = 49
     }
-    
+    //
+    func initCell() {
+        let nibName = UINib(nibName: "BackUpCell", bundle: nil)
+        tableView.register(nibName, forCellReuseIdentifier: "BackUpCell")
+    }
+    //
     func loadData() {
         dataList = DataManager.shared.getAllBackupFile()
         tableView.reloadData()
@@ -132,7 +138,7 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
     }
     //
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let backUpCell = tableView.dequeueReusableCell(withIdentifier: "backUpCell", for: indexPath) as? BackUpCell else {
+        guard let backUpCell = tableView.dequeueReusableCell(withIdentifier: "BackUpCell", for: indexPath) as? BackUpCell else {
             return UITableViewCell()
         }
         let backUpData = dataList[indexPath.row]
@@ -148,7 +154,7 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             self.loadBackupFile(indexPath)
             success(true)
         }
-        load.image = UIImage(systemName: "tray.and.arrow.up.fill", withConfiguration: imageConfig)
+        load.image = UIImage(systemName: "tray.and.arrow.up.fill", withConfiguration: swipeConfig)
         load.backgroundColor = .systemIndigo.withAlphaComponent(0.5)
         //
         let delete = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in

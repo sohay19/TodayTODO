@@ -30,6 +30,7 @@ class TaskInfoViewController : UIViewController {
     @IBOutlet weak var btnPullCategory:UIButton!
     @IBOutlet weak var btnFirst:UIButton!
     @IBOutlet weak var btnSecond:UIButton!
+    @IBOutlet weak var btnBack: UIButton!
     //
     @IBOutlet weak var switchRepeat:UISwitch!
     @IBOutlet weak var switchAlarm:UISwitch!
@@ -53,6 +54,8 @@ class TaskInfoViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //
+        self.navigationItem.setHidesBackButton(true, animated: false)
         //
         initUI()
     }
@@ -89,6 +92,9 @@ extension TaskInfoViewController {
         //
         popView.backgroundColor = .clear
         textView.backgroundColor = .clear
+        //
+        btnBack.setImage(UIImage(systemName: "chevron.backward", withConfiguration: imageConfig), for: .normal)
+        btnBack.tintColor = .systemBackground
         //
         switchRepeat.onTintColor = .systemIndigo
         switchAlarm.onTintColor = .systemIndigo
@@ -473,6 +479,12 @@ extension TaskInfoViewController {
         // 반복 지정 초기화
         switchRepeat.isOn = false
         offRepeat()
+    }
+    @IBAction func clickBack(_ sender:Any) {
+        guard let navigation = self.navigationController as? CustomNavigationController else {
+            return
+        }
+        navigation.popViewController()
     }
 }
 

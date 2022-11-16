@@ -25,8 +25,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var monthView: UIView!
     
     //
-    var currentDate:Date = Date()
-    var beforeDate:Date = Date()
+    var todayDate:Date = Date()
+    var monthDate:Date = Date()
     //
     var categoryList:[String] = []
     var resultList:[String:[EachTask]] = [:]
@@ -47,6 +47,7 @@ class MainViewController: UIViewController {
         calendarView.delegate = self
         //
         initUI()
+        initCell()
         // 리프레시 컨트롤러 초기화
         initRefreshController()
         // 메인 리로드 함수
@@ -67,9 +68,9 @@ class MainViewController: UIViewController {
                 SystemManager.shared.openSettingMenu()
             })
         }
+        loadTask()
         DispatchQueue.main.async { [self] in
             //
-            loadTask()
             initDate()
             initSegment()
         }
@@ -79,9 +80,15 @@ class MainViewController: UIViewController {
 //MARK: - UI
 extension MainViewController {
     func initDate() {
-        var date = Utils.dateToDateString(currentDate).split(separator: "-")
-        if segmentedController.selectedSegmentIndex != 0 {
+        var date:[Substring] = []
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            date = Utils.dateToDateString(todayDate).split(separator: "-")
+        case 1:
+            date = Utils.dateToDateString(monthDate).split(separator: "-")
             date.removeLast()
+        default:
+            return
         }
         labelDate.text = date.joined(separator: ". ")
     }
@@ -116,7 +123,13 @@ extension MainViewController {
         //
         monthView.isHidden = true
     }
-    
+    //
+    func initCell() {
+        let nibName = UINib(nibName: "TaskCell", bundle: nil)
+        dailyTaskTable.register(nibName, forCellReuseIdentifier: "TaskCell")
+        monthlyTaskTable.register(nibName, forCellReuseIdentifier: "TaskCell")
+    }
+    //
     func initSegment() {
         //
         imgUnderline.image = UIImage(named: segmentedController.selectedSegmentIndex == 0 ? Underline_Pink : Underline_Indigo)
@@ -124,13 +137,10 @@ extension MainViewController {
         //
         switch segmentedController.selectedSegmentIndex {
         case 0:
-            beforeDate = currentDate
-            currentDate = Date()
             //Today
             monthView.isHidden = true
             todayView.isHidden = false
         case 1:
-            currentDate = beforeDate
             //Month
             monthView.isHidden = false
             todayView.isHidden = true
@@ -155,7 +165,7 @@ extension MainViewController {
         case 0:
             resetTask()
             //
-            let dataList = RealmManager.shared.getTaskDataForDay(date: currentDate)
+            let dataList = RealmManager.shared.getTaskDataForDay(date: todayDate)
             let sortedList = dataList.sorted(by: { task1, task2 in
                 if task1.isDone {
                     return task2.isDone ? true : false
@@ -177,7 +187,7 @@ extension MainViewController {
         case 1:
             resetTask()
             //
-            let dataList = RealmManager.shared.getTaskDataForMonth(date: currentDate)
+            let dataList = RealmManager.shared.getTaskDataForMonth(date: monthDate)
             let sortedList = dataList.sorted(by: { task1, task2 in
                 if task1.isDone {
                     return task2.isDone ? true : false
@@ -197,14 +207,14 @@ extension MainViewController {
                 }
             }
             //한달
-            taskDateKeyList = [Int](1...Utils.getLastDay(currentDate))
+            taskDateKeyList = [Int](1...Utils.getLastDay(monthDate))
             //딕셔너리 초기화
             for i in taskDateKeyList {
                 monthlyTaskList[i] = MonthltyDayTask()
             }
             //
-            let weekDayList = Utils.getWeekDayList(currentDate)
-            var compareDay = Utils.dateToDateString(currentDate).split(separator: "-").map{String($0)}
+            let weekDayList = Utils.getWeekDayList(monthDate)
+            var compareDay = Utils.dateToDateString(monthDate).split(separator: "-").map{String($0)}
             //반복 타입 별 체크
             for task in sortedList {
                 switch RepeatType(rawValue: task.repeatType) {
@@ -245,7 +255,7 @@ extension MainViewController {
                         }
                     }
                 case .EachWeekOfMonth:
-                    let daysList = Utils.findDay(currentDate, task.weekOfMonth, task.getWeekDays())
+                    let daysList = Utils.findDay(monthDate, task.weekOfMonth, task.getWeekDays())
                     for day in daysList {
                         compareDay[2] = String(format: "%02d", day)
                         let currentDay = compareDay.joined(separator: "-")
@@ -297,7 +307,7 @@ extension MainViewController {
                 labelTodayNilMsg.isHidden = true
             }
         case 1:
-            guard let list = monthlyTaskList[Utils.getDay(currentDate)] else {
+            guard let list = monthlyTaskList[Utils.getDay(monthDate)] else {
                 labelMonthNilMsg.isHidden = false
                 return
             }
@@ -336,7 +346,7 @@ extension MainViewController {
             dailyTaskTable.reloadData()
         case 1:
             //Month
-            guard let task = monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category]?[indexPath.row] else {
+            guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else {
                 return
             }
             let modifyTask = task.clone()
@@ -344,14 +354,15 @@ extension MainViewController {
             RealmManager.shared.updateTaskDataForiOS(modifyTask)
             //
             monthlyTaskTable.reloadRows(at: [indexPath], with: .none)
-            guard let taskList = monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category] else {
+            let day = Utils.getDay(monthDate)
+            guard let taskList = monthlyTaskList[day]?.taskList[category] else {
                 return
             }
-            monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category]?.remove(at: indexPath.row)
+            monthlyTaskList[day]?.taskList[category]?.remove(at: indexPath.row)
             if isDone {
-                monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category]?.append(task)
+                monthlyTaskList[day]?.taskList[category]?.append(task)
             } else {
-                monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category] = [task] + taskList
+                monthlyTaskList[day]?.taskList[category] = [task] + taskList
             }
             monthlyTaskTable.reloadData()
         default:
@@ -372,7 +383,7 @@ extension MainViewController {
             dailyTaskTable.reloadRows(at: [indexPath], with: .none)
         case 1:
             //Month
-            guard let task = monthlyTaskList[Utils.getDay(currentDate)]?.taskList[category]?[indexPath.row] else {
+            guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else {
                 return
             }
             beforeTask = task
@@ -380,7 +391,7 @@ extension MainViewController {
         default:
             break
         }
-        openTaskInfo(.MODIFY, beforeTask) { [self] task in
+        SystemManager.shared.openTaskInfo(.MODIFY, beforeTask, loadTask) { [self] task in
             RealmManager.shared.updateTaskDataForiOS(task)
             //
             switch segmentedController.selectedSegmentIndex {
@@ -449,25 +460,6 @@ extension MainViewController {
             }
         }
     }
-    //TaskInfo
-    func openTaskInfo(_ mode:TaskMode, _ task:EachTask?, _ modify:((EachTask)->Void)?) {
-        let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
-        guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
-        //
-        taskInfoVC.currentMode = mode
-        taskInfoVC.refreshTask = loadTask
-        taskInfoVC.modifyTask = modify
-        //
-        taskInfoVC.taskData = task
-        taskInfoVC.modalTransitionStyle = .coverVertical
-        taskInfoVC.modalPresentationStyle = .fullScreen
-        
-        guard let navaigatiocn = self.navigationController as? CustomNavigationController else {
-            return
-        }
-        navaigatiocn.setNavigationBarAppearance(self)
-        navaigatiocn.pushViewController(taskInfoVC)
-    }
     //
     func reloadTable() {
         checkNil()
@@ -485,34 +477,20 @@ extension MainViewController {
 //MARK: - Button Event
 extension MainViewController {
     @IBAction func clickTaskAdd(_ sender:Any) {
-        let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
-        guard let nextVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
-        //
-        nextVC.currentMode = .ADD
-        nextVC.refreshTask = loadTask
-        nextVC.currntDate = currentDate
-        //
-        nextVC.modalTransitionStyle = .coverVertical
-        nextVC.modalPresentationStyle = .fullScreen
-        
-        guard let navaigatiocn = self.navigationController as? CustomNavigationController else {
-            return
-        }
-        navaigatiocn.setNavigationBarAppearance(self)
-        navaigatiocn.pushViewController(nextVC)
+        SystemManager.shared.openTaskInfo(.ADD, nil, loadTask, nil)
     }
     //SegmentedControl
     @IBAction func changeSegment(_ sender:UISegmentedControl) {
+        //
+        SystemManager.shared.openLoading()
         switch segmentedController.selectedSegmentIndex {
         case 0:
-            currentDate = Date()
+            todayDate = Date()
         case 1:
-            calendarView.select(currentDate)
+            calendarView.select(monthDate)
         default:
             return
         }
-        //
-        SystemManager.shared.openLoading()
         //
         beginAppearanceTransition(true, animated: true)
         viewWillAppear(true)
