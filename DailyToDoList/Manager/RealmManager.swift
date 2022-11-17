@@ -52,8 +52,8 @@ extension RealmManager {
             }
             realmUrl = realm.configuration.fileURL
             if !haveDefault() {
-                let newList:[Float] = Utils.FloatFromRGB(rgbValue: 0xBDBDBD, alpha: 1)
-                let newCategory = CategoryData("Default", newList)
+                let newList:[Float] = Utils.FloatFromRGB(rgbValue: 0x000000, alpha: 1)
+                let newCategory = CategoryData(DefaultCategory, newList)
                 addCategory(newCategory)
             }
         } catch let error {
@@ -74,8 +74,8 @@ extension RealmManager {
             }
             watchUrl = realm.configuration.fileURL
             if !haveDefault() {
-                let newList:[Float] = Utils.FloatFromRGB(rgbValue: 0xBDBDBD, alpha: 1)
-                let newCategory = CategoryData("Default", newList)
+                let newList:[Float] = Utils.FloatFromRGB(rgbValue: 0x000000, alpha: 1)
+                let newCategory = CategoryData(DefaultCategory, newList)
                 addCategory(newCategory)
             }
         } catch let error {
@@ -524,7 +524,7 @@ extension RealmManager {
             return false
         }
         let categoryList = realm.objects(CategoryData.self)
-        guard let _ = categoryList.first(where: { $0.title == "Default" }) else {
+        guard let _ = categoryList.first(where: { $0.title == DefaultCategory }) else {
             return false
         }
         return true
@@ -534,7 +534,7 @@ extension RealmManager {
             return false
         }
         let categoryList = realm.objects(CategoryData.self)
-        guard let _ = categoryList.first(where: { $0.title == "Default" }) else {
+        guard let _ = categoryList.first(where: { $0.title == DefaultCategory }) else {
             return false
         }
         return true

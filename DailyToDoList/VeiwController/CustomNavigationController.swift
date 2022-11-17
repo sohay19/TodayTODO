@@ -11,6 +11,10 @@ import SideMenu
 
 class CustomNavigationController : UINavigationController {
     let anim = true
+    
+    override func viewDidLoad() {
+        navigationBar.isHidden = true
+    }
 }
 
 

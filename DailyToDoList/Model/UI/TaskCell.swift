@@ -48,7 +48,6 @@ class TaskCell: UITableViewCell {
         memoView.isSelectable = false
         expandableView.backgroundColor = .clear
         //
-        btnArrow.image = UIImage(systemName: "chevron.down", withConfiguration: smallConfig)
         btnArrow.contentMode = .center
         btnArrow.tintColor = .label
     }

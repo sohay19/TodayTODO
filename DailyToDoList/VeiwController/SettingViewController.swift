@@ -26,8 +26,6 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        //
         tableView.delegate = self
         tableView.dataSource = self
         //
@@ -55,7 +53,7 @@ extension SettingViewController {
     func initUI() {
         // 배경 설정
         let backgroundView = UIImageView(frame: UIScreen.main.bounds)
-        backgroundView.image = UIImage(named: LastPageImage)
+        backgroundView.image = UIImage(named: BlackBackImage)
         view.insertSubview(backgroundView, at: 0)
         //폰트 설정
         labelTitle.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
@@ -76,7 +74,7 @@ extension SettingViewController {
         tableView.separatorColor = .label
         //
         btnBackup.contentMode = .center
-        btnBackup.setImage(UIImage(systemName: "tray.and.arrow.down.fill", withConfiguration: swipeConfig), for: .normal)
+        btnBackup.setImage(UIImage(systemName: "tray.and.arrow.down.fill", withConfiguration: mediumConfig), for: .normal)
     }
     //
     func initCell() {
@@ -157,14 +155,14 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             self.loadBackupFile(indexPath)
             success(true)
         }
-        load.image = UIImage(systemName: "tray.and.arrow.up.fill", withConfiguration: swipeConfig)
+        load.image = UIImage(systemName: "tray.and.arrow.up.fill", withConfiguration: regularConfig)
         load.backgroundColor = .systemIndigo.withAlphaComponent(0.5)
         //
         let delete = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.deleteBackupFile(indexPath)
             success(true)
         }
-        delete.image = UIImage(systemName: "trash.fill", withConfiguration: swipeConfig)
+        delete.image = UIImage(systemName: "trash.fill", withConfiguration: regularConfig)
         delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete, load])

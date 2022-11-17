@@ -72,7 +72,6 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         switch segmentedController.selectedSegmentIndex {
         case 0:
             var index = indexPath
-            var isOpened = false
             var openIndex = indexPath
             var nextIndex = indexPath
             if let openedTask = openedTask {
@@ -80,8 +79,8 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 let next = IndexPath(row: openedTask.indexPath.row+1, section: openedTask.indexPath.section)
                 if index.section == next.section && index >= next {
                     index = IndexPath(row: indexPath.row-1, section: indexPath.section)
-                    isOpened = true
-                    openIndex = next
+                    openIndex = openedTask.indexPath
+                    nextIndex = next
                 }
             }
             taskCell.isToday = true
@@ -90,6 +89,12 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             if isOpened && indexPath == openIndex {
+                //열린 타이틀셀
+                taskCell.labelTitle.isHidden = false
+                taskCell.expandableView.isHidden = true
+                taskCell.labelTitle.text = list[index.row].title
+                taskCell.btnArrow.image = UIImage(systemName: "chevron.up", withConfiguration: thinConfig)
+            } else if isOpened && indexPath == nextIndex {
                 //열린 내용셀
                 let task = list[index.row]
                 taskCell.labelTitle.isHidden = true
@@ -97,17 +102,11 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 taskCell.expandableView.isHidden = false
                 taskCell.labelTime.text = task.taskTime
                 taskCell.memoView.text = task.memo
-            } else if isOpened && indexPath == nextIndex {
-                //열린 타이틀셀
-                taskCell.labelTitle.isHidden = false
-                taskCell.expandableView.isHidden = true
-                taskCell.labelTitle.text = list[index.row].title
-                taskCell.btnArrow.image = UIImage(systemName: "chevron.up", withConfiguration: smallConfig)
-                print("???")
             } else {
                 taskCell.labelTitle.isHidden = false
                 taskCell.expandableView.isHidden = true
                 taskCell.labelTitle.text = list[index.row].title
+                taskCell.btnArrow.image = UIImage(systemName: "chevron.down", withConfiguration: thinConfig)
             }
         case 1:
             taskCell.isToday = false
@@ -172,7 +171,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             self.taskIsDone(!isDone, indexPath)
             success(true)
         }
-        done.image = UIImage(systemName: isDone ? "xmark" : "pencil.line", withConfiguration: imageConfig)
+        done.image = UIImage(systemName: isDone ? "xmark" : "highligter", withConfiguration: regularConfig)
         done.backgroundColor = isDone ? UIColor.systemGray.withAlphaComponent(0.5) : UIColor.systemRed.withAlphaComponent(0.5)
         //index = 0, 왼쪽
         return UISwipeActionsConfiguration(actions:[done])
@@ -183,14 +182,14 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             self.modifyTask(indexPath)
             success(true)
         }
-        modify.image = UIImage(systemName: "eraser.fill", withConfiguration: swipeConfig)
+        modify.image = UIImage(systemName: "eraser.fill", withConfiguration: regularConfig)
         modify.backgroundColor = .systemIndigo.withAlphaComponent(0.5)
         
         let delete = UIContextualAction(style: .destructive, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.deleteTask(indexPath)
             success(true)
         }
-        delete.image = UIImage(systemName: "trash.fill", withConfiguration: swipeConfig)
+        delete.image = UIImage(systemName: "trash.fill", withConfiguration: regularConfig)
         delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete, modify])
@@ -199,6 +198,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     //cell 클릭 Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let _ = openedTask {
+            isOpened = false
             openedTask = nil
             reloadTable()
         } else {
@@ -209,6 +209,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                     return
                 }
                 let task = list[indexPath.row]
+                isOpened = true
                 openedTask = OpenedTask(task.taskId, category, indexPath)
                 reloadTable()
             case 1:

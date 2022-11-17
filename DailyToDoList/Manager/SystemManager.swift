@@ -12,7 +12,6 @@ class SystemManager {
     static let shared = SystemManager()
     private init() { }
     //
-    private var navigation:CustomNavigationController?
     private var menuView:Menu?
     private var loadingView:Loading?
     //
@@ -28,19 +27,9 @@ extension SystemManager {
             return
         }
         isLoading = true
-        //
-        guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+        guard let topVC = findTopVC() else {
             return
         }
-        guard let firstWindow = firstScene.windows.first else {
-            return
-        }
-        guard let rootVC = firstWindow.rootViewController else {
-            return
-        }
-        //
-        let topVC = getTopViewController(rootVC);
-        navigation = topVC.navigationController as? CustomNavigationController
         // 로딩화면 추가
         loadingView = Bundle.main.loadNibNamed(LoadingBoard, owner: topVC, options: nil)?.first as? Loading
         guard let loadingView = loadingView else {
@@ -49,6 +38,18 @@ extension SystemManager {
         loadingView.frame = topVC.view.frame
         topVC.view.addSubview(loadingView)
         loadingView.initUI()
+    }
+    private func findTopVC() -> UIViewController? {
+        guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return nil
+        }
+        guard let firstWindow = firstScene.windows.first else {
+            return nil
+        }
+        guard let rootVC = firstWindow.rootViewController else {
+            return nil
+        }
+        return getTopViewController(rootVC);
     }
     private func getTopViewController(_ controller:UIViewController) -> UIViewController {
         if let navigationController = controller as? UINavigationController {
@@ -95,11 +96,10 @@ extension SystemManager {
         taskInfoVC.taskData = task
         taskInfoVC.modalTransitionStyle = .coverVertical
         taskInfoVC.modalPresentationStyle = .overFullScreen
-        
-        guard let navaigation = navigation else {
+        guard let navigation = findTopVC()?.navigationController as? CustomNavigationController else {
             return
         }
-        navaigation.pushViewController(taskInfoVC)
+        navigation.pushViewController(taskInfoVC)
     }
     //
     func openMenu(_ vc:UIViewController) {
@@ -118,10 +118,10 @@ extension SystemManager {
     }
     //Main Page
     func moveMain() {
-        guard let navigation = navigation else {
+        if  pageList.last! == .Main {
             return
         }
-        if  pageList.last! == .Main {
+        guard let navigation = findTopVC()?.navigationController as? CustomNavigationController else {
             return
         }
         pageList = [.Main]
@@ -140,7 +140,7 @@ extension SystemManager {
         }
         let board = UIStoryboard(name: pushListBoard, bundle: nil)
         guard let nextVC = board.instantiateViewController(withIdentifier: pushListBoard) as? PushListViewController else { return }
-        guard let navigation = navigation else {
+        guard let navigation = findTopVC()?.navigationController as? CustomNavigationController else {
             return
         }
         if pageList.count > 1 && pageList[pageList.endIndex-2] == .Push {
@@ -158,7 +158,7 @@ extension SystemManager {
         }
         let board = UIStoryboard(name: settingBoard, bundle: nil)
         guard let nextVC = board.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }
-        guard let navigation = navigation else {
+        guard let navigation = findTopVC()?.navigationController as? CustomNavigationController else {
             return
         }
         if pageList.count > 1 && pageList[pageList.endIndex-2] == .Backup {

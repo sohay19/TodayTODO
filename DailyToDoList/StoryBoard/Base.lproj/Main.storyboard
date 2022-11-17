@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -14,43 +14,43 @@
             <objects>
                 <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainViewController" customModule="DailyToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.png" translatesAutoresizingMaskIntoConstraints="NO" id="c0h-vX-NoB" userLabel="image">
-                                <rect key="frame" x="138" y="18" width="270" height="90"/>
+                                <rect key="frame" x="141" y="18" width="270" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="270" id="3Et-Ah-sl7"/>
                                     <constraint firstAttribute="height" constant="90" id="Txd-aG-Baa"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eer-ML-wxG">
-                                <rect key="frame" x="321" y="72.333333333333329" width="60" height="59.999999999999986"/>
+                                <rect key="frame" x="324" y="102.33333333333331" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="FUi-0x-AyY"/>
                                     <constraint firstAttribute="width" secondItem="eer-ML-wxG" secondAttribute="height" multiplier="1:1" id="xL1-aY-cWH"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="pencil" catalog="system"/>
+                                <state key="normal" image="square.and.pencil" catalog="system"/>
                                 <connections>
                                     <action selector="clickTaskAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E6g-AK-6g4"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eXs-Vg-sWp">
-                                <rect key="frame" x="12" y="35.666666666666664" width="108" height="35.999999999999993"/>
+                                <rect key="frame" x="12" y="56.666666666666657" width="108" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eXs-Vg-sWp" secondAttribute="height" multiplier="3:1" id="3sP-Ym-2BU"/>
                                     <constraint firstAttribute="height" constant="36" id="Lfc-CF-cLH"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhK-e7-NYl">
-                                <rect key="frame" x="46" y="47" width="40.333333333333343" height="21.666666666666671"/>
+                                <rect key="frame" x="46" y="68" width="40" height="21.666666666666671"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bLR-Sq-nbO" customClass="CustomSegmentControl" customModule="DailyToDoList" customModuleProvider="target">
-                                <rect key="frame" x="12" y="86.666666666666671" width="117" height="32"/>
+                                <rect key="frame" x="12" y="116.66666666666669" width="117" height="32"/>
                                 <segments>
                                     <segment title="Today"/>
                                     <segment title="Month"/>
@@ -60,15 +60,15 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-ST-NiN" userLabel="TodayView">
-                                <rect key="frame" x="0.0" y="123.66666666666669" width="390" height="647.33333333333326"/>
+                                <rect key="frame" x="0.0" y="153.66666666666669" width="393" height="625.33333333333326"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T45-og-L7Z">
-                                        <rect key="frame" x="30" y="30" width="330" height="599.33333333333337"/>
+                                        <rect key="frame" x="30" y="30" width="333" height="577.33333333333337"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해야할 일을 등록해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gt6-zW-da3" userLabel="Message">
-                                        <rect key="frame" x="119.66666666666669" y="38.999999999999986" width="151" height="18"/>
+                                        <rect key="frame" x="121" y="39" width="151" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -85,22 +85,22 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KER-2I-O4L" userLabel="MonthView">
-                                <rect key="frame" x="0.0" y="123.66666666666669" width="390" height="647.33333333333326"/>
+                                <rect key="frame" x="0.0" y="153.66666666666669" width="393" height="625.33333333333326"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MtS-eB-6uU" customClass="CustomCalendarView" customModule="DailyToDoList" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="17.999999999999972" width="348" height="313.33333333333326"/>
+                                        <rect key="frame" x="21" y="18" width="351" height="316"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="MtS-eB-6uU" secondAttribute="height" multiplier="1:0.9" id="yfp-fD-gSz"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dEB-Nb-JJl">
-                                        <rect key="frame" x="30" y="349.33333333333331" width="330" height="279.99999999999994"/>
+                                        <rect key="frame" x="30" y="352" width="333" height="255.33333333333337"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해야할 일을 등록해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8B-xB-LYB" userLabel="Message">
-                                        <rect key="frame" x="119.66666666666669" y="349.33333333333331" width="151" height="18"/>
+                                        <rect key="frame" x="121" y="352" width="151" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -128,12 +128,12 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KER-2I-O4L" secondAttribute="trailing" id="784-KU-DMM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fcp-ST-NiN" secondAttribute="bottom" constant="39" id="Eqn-yP-wac"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KER-2I-O4L" secondAttribute="bottom" constant="39" id="LAu-wZ-zxA"/>
-                            <constraint firstItem="bLR-Sq-nbO" firstAttribute="top" secondItem="eXs-Vg-sWp" secondAttribute="bottom" constant="15" id="OhP-ZI-GE5"/>
+                            <constraint firstItem="bLR-Sq-nbO" firstAttribute="top" secondItem="eXs-Vg-sWp" secondAttribute="bottom" constant="24" id="OhP-ZI-GE5"/>
                             <constraint firstItem="eer-ML-wxG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bLR-Sq-nbO" secondAttribute="trailing" constant="18" id="Soz-Pf-6Je"/>
                             <constraint firstItem="fcp-ST-NiN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V75-55-LqF"/>
                             <constraint firstItem="qhK-e7-NYl" firstAttribute="centerX" secondItem="eXs-Vg-sWp" secondAttribute="centerX" id="bPm-Xy-aS2"/>
                             <constraint firstItem="eXs-Vg-sWp" firstAttribute="bottom" secondItem="qhK-e7-NYl" secondAttribute="bottom" constant="3" id="cbc-OY-MVE"/>
-                            <constraint firstItem="qhK-e7-NYl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="e6S-vk-MIO"/>
+                            <constraint firstItem="qhK-e7-NYl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="9" id="e6S-vk-MIO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c0h-vX-NoB" secondAttribute="trailing" constant="-18" id="fba-V1-O2u"/>
                             <constraint firstItem="eXs-Vg-sWp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="qg7-4a-b8x"/>
                             <constraint firstItem="KER-2I-O4L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rqd-yK-18o"/>
@@ -164,8 +164,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="pencil.png" width="1693" height="488"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

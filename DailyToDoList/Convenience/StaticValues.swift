@@ -34,7 +34,6 @@ let dataTypeKey = "dataType"
 let dataKey = "data"
 let sendTypeKey = "sendType"
 
-
 //MARK: - Font
 let LogoFont = "NanumAJumMaJaYu"
 //
@@ -50,7 +49,6 @@ let E_N_Font_B = "Worcestershire_Sauce-Regular"
 let E_N_Font_R = "Windsor_Great_Park-Regular"
 let E_N_FontSize = 21.0
 
-
 //MARK: - Image
 let BackgroundImage = "Background\(Int.random(in: 1...5)).jpg"
 let BlackBackImage = "BlackBackground.png"
@@ -59,6 +57,10 @@ let Underline_Pink = "underline_Pink.png"
 let Underline_Black = "underline_Black.png"
 let Bricks = "Bricks.png"
 let LastPageImage = "LastPage.png"
-let imageConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .bold, scale: .large)
-let swipeConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .regular, scale: .medium)
-let smallConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .regular, scale: .small)
+let boldConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .bold, scale: .large)
+let mediumConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .medium, scale: .large)
+let regularConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .regular, scale: .medium)
+let thinConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .thin, scale: .small)
+
+//MARK: - ETC
+let DefaultCategory = "TODO"

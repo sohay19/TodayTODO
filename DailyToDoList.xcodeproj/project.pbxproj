@@ -12,6 +12,9 @@
 		B9967607F860F087E446E7EF /* Pods_DailyToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C12BA33F1B3E3C5B12A1F6 /* Pods_DailyToDoList.framework */; };
 		C8905F2F4AFCDB126CAFB727 /* Pods_DailyToDoListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDBD8A08AAA3B0743BB9594 /* Pods_DailyToDoListUITests.framework */; };
 		C8D4663202202A17357EE111 /* Pods_DailyToDoListWatchWatchKitExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FA45D3AEC8B47DFC470BBC /* Pods_DailyToDoListWatchWatchKitExtension.framework */; };
+		CF2BAF0F2925DAFE00EB49F4 /* spring_black.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2BAF0D2925DAFE00EB49F4 /* spring_black.png */; };
+		CF2BAF102925DAFE00EB49F4 /* spring_white.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2BAF0E2925DAFE00EB49F4 /* spring_white.png */; };
+		CF2BAF1229263E0700EB49F4 /* TaskInfoVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2BAF1129263E0700EB49F4 /* TaskInfoVCExtension.swift */; };
 		CF487EA528F1B6D200498451 /* TaskListEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA428F1B6D200498451 /* TaskListEntryView.swift */; };
 		CF487EA728F1B6F100498451 /* TaskListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA628F1B6F100498451 /* TaskListProvider.swift */; };
 		CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA628F1B6F100498451 /* TaskListProvider.swift */; };
@@ -25,7 +28,6 @@
 		CF50BC622924D78700AB538B /* OptionalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50BC5B2924CDD900AB538B /* OptionalData.swift */; };
 		CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */; };
 		CF535097291CD5E400AFDC14 /* sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = CF535095291CD5E400AFDC14 /* sticker.png */; };
-		CF53509F291CE8FA00AFDC14 /* spring.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53509E291CE8FA00AFDC14 /* spring.png */; };
 		CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */; };
 		CF5350A3291D235000AFDC14 /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350A2291D235000AFDC14 /* CustomSideMenuNavigation.swift */; };
 		CF5350B0291E3D4B00AFDC14 /* Background2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CF5350A8291E3D4A00AFDC14 /* Background2.jpg */; };
@@ -246,6 +248,9 @@
 		8033FBF14AB333027223E55C /* Pods_DailyToDoListWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyToDoListWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BDBD8A08AAA3B0743BB9594 /* Pods_DailyToDoListUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyToDoListUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F72011CC0BCA202BCB048B /* Pods-DailyToDoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyToDoList.release.xcconfig"; path = "Target Support Files/Pods-DailyToDoList/Pods-DailyToDoList.release.xcconfig"; sourceTree = "<group>"; };
+		CF2BAF0D2925DAFE00EB49F4 /* spring_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring_black.png; sourceTree = "<group>"; };
+		CF2BAF0E2925DAFE00EB49F4 /* spring_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring_white.png; sourceTree = "<group>"; };
+		CF2BAF1129263E0700EB49F4 /* TaskInfoVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoVCExtension.swift; sourceTree = "<group>"; };
 		CF487EA328F1B6C900498451 /* DailyToDoListWidget.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = DailyToDoListWidget.entitlements; sourceTree = "<group>"; };
 		CF487EA428F1B6D200498451 /* TaskListEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListEntryView.swift; sourceTree = "<group>"; };
 		CF487EA628F1B6F100498451 /* TaskListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListProvider.swift; sourceTree = "<group>"; };
@@ -253,7 +258,6 @@
 		CF50BC5D2924D13500AB538B /* NSOptionalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSOptionalData.swift; sourceTree = "<group>"; };
 		CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Indigo.png; sourceTree = "<group>"; };
 		CF535095291CD5E400AFDC14 /* sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sticker.png; sourceTree = "<group>"; };
-		CF53509E291CE8FA00AFDC14 /* spring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring.png; sourceTree = "<group>"; };
 		CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpCell.swift; sourceTree = "<group>"; };
 		CF5350A2291D235000AFDC14 /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
 		CF5350A8291E3D4A00AFDC14 /* Background2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Background2.jpg; sourceTree = "<group>"; };
@@ -514,9 +518,10 @@
 		CFE01AC82914FB96005B3316 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				CF53509E291CE8FA00AFDC14 /* spring.png */,
 				CF5350AF291E3D4B00AFDC14 /* Background1.jpg */,
 				CF5350A8291E3D4A00AFDC14 /* Background2.jpg */,
+				CF2BAF0D2925DAFE00EB49F4 /* spring_black.png */,
+				CF2BAF0E2925DAFE00EB49F4 /* spring_white.png */,
 				CF5350AE291E3D4B00AFDC14 /* Background3.jpg */,
 				CF5350E22922277B00AFDC14 /* clock.png */,
 				CF5350AB291E3D4A00AFDC14 /* Background4.jpg */,
@@ -611,6 +616,7 @@
 				CFEB4A6728F165D1008850DC /* CategoryViewController.swift */,
 				CFEB4A6928F1672F008850DC /* ColorPickerViewController.swift */,
 				CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */,
+				CF2BAF1129263E0700EB49F4 /* TaskInfoVCExtension.swift */,
 				CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */,
 				CFEB4A3728F14BEF008850DC /* SettingViewController.swift */,
 				CF75963429024C6A0046FDC1 /* PushListViewController.swift */,
@@ -918,6 +924,7 @@
 				CF5350D72921F3F300AFDC14 /* underline_Pink.png in Resources */,
 				CF5350E32922277B00AFDC14 /* clock.png in Resources */,
 				CF5350B0291E3D4B00AFDC14 /* Background2.jpg in Resources */,
+				CF2BAF0F2925DAFE00EB49F4 /* spring_black.png in Resources */,
 				CF5350CF291E98DC00AFDC14 /* Menu.xib in Resources */,
 				CFEB4A6C28F16B15008850DC /* Picker.storyboard in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
@@ -931,7 +938,6 @@
 				CFEB4A6628F165C2008850DC /* Category.storyboard in Resources */,
 				CF5350B1291E3D4B00AFDC14 /* BlackBackground.png in Resources */,
 				CF5350B4291E3D4B00AFDC14 /* LastPage.png in Resources */,
-				CF53509F291CE8FA00AFDC14 /* spring.png in Resources */,
 				CFEB49E428F13288008850DC /* Assets.xcassets in Resources */,
 				CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */,
 				CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */,
@@ -939,6 +945,7 @@
 				CF5350B2291E3D4B00AFDC14 /* Bricks.png in Resources */,
 				CF5350D929221D6700AFDC14 /* pencil.png in Resources */,
 				CFEB49E228F13287008850DC /* Main.storyboard in Resources */,
+				CF2BAF102925DAFE00EB49F4 /* spring_white.png in Resources */,
 				CF5350C3291E45F300AFDC14 /* NanumAJumMaJaYu.ttf in Resources */,
 				CF5350B3291E3D4B00AFDC14 /* Background4.jpg in Resources */,
 				CF995F522924C34400FAE2F1 /* BackUpCell.xib in Resources */,
@@ -1222,6 +1229,7 @@
 				CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */,
 				CFD0B14828F91CEA0029D936 /* TaskInfoViewController.swift in Sources */,
 				CFEB4A5C28F155E5008850DC /* PushManager.swift in Sources */,
+				CF2BAF1229263E0700EB49F4 /* TaskInfoVCExtension.swift in Sources */,
 				CF50BC5C2924CDD900AB538B /* OptionalData.swift in Sources */,
 				CF5350E7292376BB00AFDC14 /* MonthltyDayTask.swift in Sources */,
 				CF5350CB291E8A6700AFDC14 /* Menu.swift in Sources */,

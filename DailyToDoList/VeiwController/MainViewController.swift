@@ -34,6 +34,7 @@ class MainViewController: UIViewController {
     var monthlyTaskList:[Int:MonthltyDayTask] = [:]
     var taskDateKeyList:[Int] = []
     //
+    var isOpened = false
     var openedTask:OpenedTask?
     
     override func viewDidLoad() {
@@ -58,8 +59,6 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //뒤로 버튼 없애기
-        self.navigationItem.setHidesBackButton(true, animated: false)
         //
         SystemManager.shared.openLoading()
         //버전체크
@@ -103,7 +102,7 @@ extension MainViewController {
         monthView.backgroundColor = .clear
         // 폰트 설정
         btnAdd.contentMode = .center
-        btnAdd.setImage(UIImage(systemName: "pencil", withConfiguration: imageConfig), for: .normal)
+        btnAdd.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: mediumConfig), for: .normal)
         labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
         labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)

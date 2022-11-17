@@ -18,20 +18,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b2u-9d-h0V">
-                                <rect key="frame" x="15" y="33.5" width="109" height="39"/>
+                                <rect key="frame" x="15" y="42.5" width="109" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="b2u-9d-h0V" secondAttribute="height" multiplier="2.8:1" identifier="aspect" id="9oi-9k-AhW"/>
                                     <constraint firstAttribute="height" constant="39" identifier="height" id="WLJ-Pd-xSr"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today Push" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSh-CA-wzF">
-                                <rect key="frame" x="20" y="48" width="99" height="21.5"/>
+                                <rect key="frame" x="20" y="57" width="99" height="21.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qs4-bw-qt3" customClass="CustomSegmentControl" customModule="DailyToDoList" customModuleProvider="target">
-                                <rect key="frame" x="15" y="84.5" width="113" height="32"/>
+                                <rect key="frame" x="15" y="102.5" width="113" height="32"/>
                                 <segments>
                                     <segment title="Today"/>
                                     <segment title="All"/>
@@ -41,7 +41,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyo-yY-97R" userLabel="BtnEdit">
-                                <rect key="frame" x="348" y="70" width="60" height="60"/>
+                                <rect key="frame" x="348" y="88" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="CN5-QI-uoC"/>
                                     <constraint firstAttribute="width" secondItem="Iyo-yY-97R" secondAttribute="height" multiplier="1:1" id="pFI-sM-VFF"/>
@@ -56,7 +56,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kGG-Zy-ClK">
-                                <rect key="frame" x="30" y="149.5" width="354" height="583.5"/>
+                                <rect key="frame" x="30" y="167.5" width="354" height="565.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcM-hb-gY3" userLabel="EditView">
@@ -99,7 +99,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="예정된 알림이 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8R-IL-C5D" userLabel="Message">
-                                <rect key="frame" x="144.5" y="158.5" width="125" height="18"/>
+                                <rect key="frame" x="144.5" y="176.5" width="125" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                             <constraint firstItem="jcM-hb-gY3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7T4-D6-fml"/>
                             <constraint firstItem="kGG-Zy-ClK" firstAttribute="top" secondItem="Qs4-bw-qt3" secondAttribute="bottom" constant="34" id="9Fk-qK-FSF"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="jcM-hb-gY3" secondAttribute="bottom" constant="69" id="Ijg-5U-iY5"/>
-                            <constraint firstItem="sSh-CA-wzF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="S9B-S0-hhE"/>
+                            <constraint firstItem="sSh-CA-wzF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="9" id="S9B-S0-hhE"/>
                             <constraint firstItem="fwR-hO-Gzt" firstAttribute="leading" secondItem="b2u-9d-h0V" secondAttribute="trailing" constant="30" id="YbH-fS-zaW"/>
                             <constraint firstItem="v8R-IL-C5D" firstAttribute="centerX" secondItem="kGG-Zy-ClK" secondAttribute="centerX" id="byp-BQ-r5x"/>
                             <constraint firstItem="Qs4-bw-qt3" firstAttribute="leading" secondItem="b2u-9d-h0V" secondAttribute="leading" id="cUM-5R-6bZ"/>
@@ -132,7 +132,7 @@
                             <constraint firstItem="b2u-9d-h0V" firstAttribute="bottom" secondItem="sSh-CA-wzF" secondAttribute="bottom" constant="3" identifier="bottom" id="odW-zy-oIp"/>
                             <constraint firstItem="b2u-9d-h0V" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="qho-GA-gwE"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="fwR-hO-Gzt" secondAttribute="bottom" constant="-60" id="xfw-U0-vD5"/>
-                            <constraint firstItem="Qs4-bw-qt3" firstAttribute="top" secondItem="sSh-CA-wzF" secondAttribute="bottom" constant="15" id="xux-JB-lZ3"/>
+                            <constraint firstItem="Qs4-bw-qt3" firstAttribute="top" secondItem="sSh-CA-wzF" secondAttribute="bottom" constant="24" id="xux-JB-lZ3"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jcM-hb-gY3" secondAttribute="trailing" id="zLg-67-WNR"/>
                         </constraints>
                     </view>

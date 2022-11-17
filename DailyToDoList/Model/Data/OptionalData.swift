@@ -57,7 +57,7 @@ class OptionData : Object
     
     convenience init(taskId:String, weekDay:[Bool], weekOfMonth:Int, isEnd:Bool, taskEndDate:String, isAlarm:Bool, alarmTime:String) {
         self.init()
-        self.id = id
+        self.id = taskId
         self.weekDay = weekDay
         self.weekOfMonth = weekOfMonth
         self.isEnd = isEnd
@@ -68,7 +68,7 @@ class OptionData : Object
     
     convenience init(taskId:String, weekDay:[Bool], weekOfMonth:Int) {
         self.init()
-        self.id = id
+        self.id = taskId
         self.weekDay = weekDay
         self.weekOfMonth = weekOfMonth
         self.isEnd = false

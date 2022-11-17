@@ -33,8 +33,6 @@ class PushListViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        //
         pushTable.delegate = self
         pushTable.dataSource = self
         //
@@ -115,7 +113,7 @@ extension PushListViewController {
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
         btnEdit.contentMode = .center
-        btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: swipeConfig), for: .normal)
+        btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: mediumConfig), for: .normal)
         //
         imgUnderline.alpha = 0.3
         //
@@ -194,14 +192,14 @@ extension PushListViewController {
     }
     private func changeEditMode() {
         if pushTable.isEditing {
-            btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: swipeConfig), for: .normal)
+            btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: mediumConfig), for: .normal)
             pushTable.setEditing(false, animated: false)
             for cell in pushTable.visibleCells {
                 cell.selectionStyle = .none
             }
             controllEditView(false)
         } else {
-            btnEdit.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right", withConfiguration: swipeConfig), for: .normal)
+            btnEdit.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right", withConfiguration: mediumConfig), for: .normal)
             pushTable.setEditing(true, animated: false)
             for cell in pushTable.visibleCells {
                 cell.selectionStyle = .default
