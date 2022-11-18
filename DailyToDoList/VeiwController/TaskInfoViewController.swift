@@ -236,6 +236,7 @@ extension TaskInfoViewController {
         //알람
         if option.isAlarm {
             setAlarm()
+            clickBtnAlarm(true)
         }
         memoView.text = taskData.memo
     }
@@ -301,9 +302,7 @@ extension TaskInfoViewController {
         btnPullCategory.isEnabled = isOn
         pickTaskDate.isEnabled = isOn
         switchTime.isEnabled = isOn
-        if !switchTime.isOn {
-            pickTaskTime.isEnabled = isOn
-        }
+        pickTaskTime.isEnabled = isOn
         btnRepeat.isEnabled = isOn
         if btnRepeat.isSelected {
             switchEndDate.isEnabled = isOn
@@ -616,6 +615,7 @@ extension TaskInfoViewController {
     }
     private func clickBtnRepeat(_ isOn:Bool) {
         btnRepeat.setImage(UIImage(systemName: isOn ? "checkmark.square.fill" : "square.fill"), for: .normal)
+        btnRepeat.isSelected = isOn
     }
     private func offRepeat() {
         setRepeatResult()
@@ -629,7 +629,7 @@ extension TaskInfoViewController {
     }
     private func clickBtnAlarm(_ isOn:Bool) {
         btnAlarm.setImage(UIImage(systemName: isOn ? "checkmark.square.fill" : "square.fill"), for: .normal)
-        //알람 활성화, 비활성화
+        btnAlarm.isSelected = isOn
         controllAlarmView(isOn)
     }
 }
