@@ -32,23 +32,27 @@ extension TaskInfoViewController {
         }
         scrollView.contentInset.bottom = keyboardHeight
         scrollView.isScrollEnabled = true
+        if memoView.isFirstResponder {
+            scrollMemo()
+        }
     }
-    @objc private func hideKeyboard(_ sender: Notification) {
-        //
+    private func scrollMemo() {
+        let padding = scrollView.contentSize.height - scrollView.bounds.size.height
+        let height = padding + scrollView.contentInset.bottom
+        scrollView.setContentOffset(CGPoint(x: 0, y: height), animated: true)
+    }
+    @objc func hideKeyboard(_ sender: Notification) {
         scrollView.contentInset.bottom = 0
-        scrollView.isScrollEnabled = false
         isShow = false
     }
     //키보드 내리기
-    func keyboardDown() {
+    @objc func keyboardDown() {
         self.view.endEditing(true)
-        isShow = false
+        scrollView.isScrollEnabled = false
     }
-}
-
-extension TaskInfoViewController {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        keyboardDown()
-        return true
+    //메모가 최상단에 오도록 스크롤
+    @objc func focusedMemoView() {
+        memoView.becomeFirstResponder()
+        scrollMemo()
     }
 }

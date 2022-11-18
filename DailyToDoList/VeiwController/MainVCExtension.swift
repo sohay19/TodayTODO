@@ -12,6 +12,17 @@ import FSCalendar
 //MARK: - TableView
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Section
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let myLabel = UILabel()
+//        myLabel.frame = CGRect(x: 20, y: 8, width: 320, height: 20)
+//        myLabel.font = UIFont.boldSystemFont(ofSize: 18)
+//        myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+//
+//        let headerView = UIView()
+//        headerView.addSubview(myLabel)
+//
+//        return headerView
+//    }
     func numberOfSections(in tableView: UITableView) -> Int {
         switch segmentedController.selectedSegmentIndex {
         case 0:
@@ -72,15 +83,19 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         switch segmentedController.selectedSegmentIndex {
         case 0:
             var index = indexPath
-            var openIndex = indexPath
-            var nextIndex = indexPath
+            var isOpenIndex = false
+            var isNextIndex = false
             if let openedTask = openedTask {
                 //선택된 다음셀
-                let next = IndexPath(row: openedTask.indexPath.row+1, section: openedTask.indexPath.section)
-                if index.section == next.section && index >= next {
+                let nextIndex = IndexPath(row: openedTask.indexPath.row+1, section: openedTask.indexPath.section)
+                if index.section == nextIndex.section && index >= nextIndex {
                     index = IndexPath(row: indexPath.row-1, section: indexPath.section)
-                    openIndex = openedTask.indexPath
-                    nextIndex = next
+                }
+                if indexPath == openedTask.indexPath {
+                    isOpenIndex = true
+                }
+                if indexPath == nextIndex {
+                    isNextIndex = true
                 }
             }
             taskCell.isToday = true
@@ -88,25 +103,17 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             guard let list = resultList[category] else {
                 return UITableViewCell()
             }
-            if isOpened && indexPath == openIndex {
-                //열린 타이틀셀
-                taskCell.labelTitle.isHidden = false
-                taskCell.expandableView.isHidden = true
-                taskCell.labelTitle.text = list[index.row].title
-                taskCell.btnArrow.image = UIImage(systemName: "chevron.up", withConfiguration: thinConfig)
-            } else if isOpened && indexPath == nextIndex {
+            let task = list[index.row]
+            if isNextIndex {
                 //열린 내용셀
-                let task = list[index.row]
-                taskCell.labelTitle.isHidden = true
-                taskCell.btnArrow.isHidden = true
-                taskCell.expandableView.isHidden = false
-                taskCell.labelTime.text = task.taskTime
+                taskCell.controllMain(false)
                 taskCell.memoView.text = task.memo
             } else {
-                taskCell.labelTitle.isHidden = false
-                taskCell.expandableView.isHidden = true
-                taskCell.labelTitle.text = list[index.row].title
-                taskCell.btnArrow.image = UIImage(systemName: "chevron.down", withConfiguration: thinConfig)
+                //나머지 셀
+                taskCell.controllMain(true)
+                taskCell.labelTitle.text = task.title
+                taskCell.labelTime.text = task.taskTime
+                taskCell.btnArrow.image = UIImage(systemName: isOpenIndex ? "chevron.up" : "chevron.down", withConfiguration: thinConfig)
             }
         case 1:
             taskCell.isToday = false
@@ -117,17 +124,16 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             guard let taskList = list.taskList[category] else {
                 return UITableViewCell()
             }
-            taskCell.labelTitle.isHidden = false
-            taskCell.expandableView.isHidden = true
-            taskCell.btnArrow.isHidden = true
-            taskCell.labelTitle.text = taskList[indexPath.row].title
+            let task = taskList[indexPath.row]
+            taskCell.setMonthCell()
+            taskCell.labelTitle.text = task.title
+            taskCell.labelTime.text = task.taskTime
         default:
             return UITableViewCell()
         }
         return taskCell
     }
     //MARK: - Expandable
-    //
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch segmentedController.selectedSegmentIndex {
         case 0:
@@ -171,7 +177,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             self.taskIsDone(!isDone, indexPath)
             success(true)
         }
-        done.image = UIImage(systemName: isDone ? "xmark" : "highligter", withConfiguration: regularConfig)
+        done.image = UIImage(systemName: isDone ? "xmark" : "highlighter", withConfiguration: regularConfig)
         done.backgroundColor = isDone ? UIColor.systemGray.withAlphaComponent(0.5) : UIColor.systemRed.withAlphaComponent(0.5)
         //index = 0, 왼쪽
         return UISwipeActionsConfiguration(actions:[done])
@@ -195,10 +201,8 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions:[delete, modify])
     }
     //MARK: - Event
-    //cell 클릭 Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let _ = openedTask {
-            isOpened = false
             openedTask = nil
             reloadTable()
         } else {
@@ -209,7 +213,6 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                     return
                 }
                 let task = list[indexPath.row]
-                isOpened = true
                 openedTask = OpenedTask(task.taskId, category, indexPath)
                 reloadTable()
             case 1:
@@ -221,7 +224,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                     return
                 }
                 let task = taskList[indexPath.row]
-                SystemManager.shared.openTaskInfo(.LOOK, task, loadTask, nil)
+                SystemManager.shared.openTaskInfo(.LOOK, date: nil, task: task, load: loadTask, modify: afterModifyTask)
             default:
                 return
             }
@@ -273,4 +276,3 @@ extension MainViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalen
         return list.isEmpty ? nil : [UIColor.defaultPink!]
     }
 }
-

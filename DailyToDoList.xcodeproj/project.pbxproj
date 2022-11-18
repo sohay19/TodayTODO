@@ -15,6 +15,7 @@
 		CF2BAF0F2925DAFE00EB49F4 /* spring_black.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2BAF0D2925DAFE00EB49F4 /* spring_black.png */; };
 		CF2BAF102925DAFE00EB49F4 /* spring_white.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2BAF0E2925DAFE00EB49F4 /* spring_white.png */; };
 		CF2BAF1229263E0700EB49F4 /* TaskInfoVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2BAF1129263E0700EB49F4 /* TaskInfoVCExtension.swift */; };
+		CF2BAF382927D1B400EB49F4 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2BAF372927D1B400EB49F4 /* CustomTabBarController.swift */; };
 		CF487EA528F1B6D200498451 /* TaskListEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA428F1B6D200498451 /* TaskListEntryView.swift */; };
 		CF487EA728F1B6F100498451 /* TaskListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA628F1B6F100498451 /* TaskListProvider.swift */; };
 		CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA628F1B6F100498451 /* TaskListProvider.swift */; };
@@ -29,7 +30,6 @@
 		CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */; };
 		CF535097291CD5E400AFDC14 /* sticker.png in Resources */ = {isa = PBXBuildFile; fileRef = CF535095291CD5E400AFDC14 /* sticker.png */; };
 		CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */; };
-		CF5350A3291D235000AFDC14 /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350A2291D235000AFDC14 /* CustomSideMenuNavigation.swift */; };
 		CF5350B0291E3D4B00AFDC14 /* Background2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CF5350A8291E3D4A00AFDC14 /* Background2.jpg */; };
 		CF5350B1291E3D4B00AFDC14 /* BlackBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350A9291E3D4A00AFDC14 /* BlackBackground.png */; };
 		CF5350B2291E3D4B00AFDC14 /* Bricks.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350AA291E3D4A00AFDC14 /* Bricks.png */; };
@@ -44,7 +44,6 @@
 		CF5350C0291E457400AFDC14 /* Windsor_Great_Park-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350BB291E457400AFDC14 /* Windsor_Great_Park-Regular.otf */; };
 		CF5350C1291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350BC291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf */; };
 		CF5350C3291E45F300AFDC14 /* NanumAJumMaJaYu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350C2291E45F300AFDC14 /* NanumAJumMaJaYu.ttf */; };
-		CF5350C7291E812F00AFDC14 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350C6291E812F00AFDC14 /* MenuViewController.swift */; };
 		CF5350CB291E8A6700AFDC14 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350CA291E8A6700AFDC14 /* Menu.swift */; };
 		CF5350CF291E98DC00AFDC14 /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5350CE291E98DC00AFDC14 /* Menu.xib */; };
 		CF5350D1291E9CD600AFDC14 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350D0291E9CD600AFDC14 /* Loading.swift */; };
@@ -251,6 +250,7 @@
 		CF2BAF0D2925DAFE00EB49F4 /* spring_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring_black.png; sourceTree = "<group>"; };
 		CF2BAF0E2925DAFE00EB49F4 /* spring_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring_white.png; sourceTree = "<group>"; };
 		CF2BAF1129263E0700EB49F4 /* TaskInfoVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoVCExtension.swift; sourceTree = "<group>"; };
+		CF2BAF372927D1B400EB49F4 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		CF487EA328F1B6C900498451 /* DailyToDoListWidget.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = DailyToDoListWidget.entitlements; sourceTree = "<group>"; };
 		CF487EA428F1B6D200498451 /* TaskListEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListEntryView.swift; sourceTree = "<group>"; };
 		CF487EA628F1B6F100498451 /* TaskListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListProvider.swift; sourceTree = "<group>"; };
@@ -259,7 +259,6 @@
 		CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Indigo.png; sourceTree = "<group>"; };
 		CF535095291CD5E400AFDC14 /* sticker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sticker.png; sourceTree = "<group>"; };
 		CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpCell.swift; sourceTree = "<group>"; };
-		CF5350A2291D235000AFDC14 /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
 		CF5350A8291E3D4A00AFDC14 /* Background2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Background2.jpg; sourceTree = "<group>"; };
 		CF5350A9291E3D4A00AFDC14 /* BlackBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackBackground.png; sourceTree = "<group>"; };
 		CF5350AA291E3D4A00AFDC14 /* Bricks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bricks.png; sourceTree = "<group>"; };
@@ -274,7 +273,6 @@
 		CF5350BB291E457400AFDC14 /* Windsor_Great_Park-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Windsor_Great_Park-Regular.otf"; sourceTree = "<group>"; };
 		CF5350BC291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Worcestershire_Sauce-Regular.otf"; sourceTree = "<group>"; };
 		CF5350C2291E45F300AFDC14 /* NanumAJumMaJaYu.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumAJumMaJaYu.ttf; sourceTree = "<group>"; };
-		CF5350C6291E812F00AFDC14 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		CF5350CA291E8A6700AFDC14 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		CF5350CE291E98DC00AFDC14 /* Menu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Menu.xib; sourceTree = "<group>"; };
 		CF5350D0291E9CD600AFDC14 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
@@ -621,8 +619,7 @@
 				CFEB4A3728F14BEF008850DC /* SettingViewController.swift */,
 				CF75963429024C6A0046FDC1 /* PushListViewController.swift */,
 				CF75963D290662900046FDC1 /* PushListVCExtension.swift */,
-				CF5350A2291D235000AFDC14 /* CustomSideMenuNavigation.swift */,
-				CF5350C6291E812F00AFDC14 /* MenuViewController.swift */,
+				CF2BAF372927D1B400EB49F4 /* CustomTabBarController.swift */,
 			);
 			path = VeiwController;
 			sourceTree = "<group>";
@@ -1213,6 +1210,7 @@
 				CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */,
 				CFEB4A4628F14D1C008850DC /* UserData.swift in Sources */,
 				CFE01AF82918EDE6005B3316 /* CustomSegmentControl.swift in Sources */,
+				CF2BAF382927D1B400EB49F4 /* CustomTabBarController.swift in Sources */,
 				CF5350D1291E9CD600AFDC14 /* Loading.swift in Sources */,
 				CFEB4A4528F14D1C008850DC /* EachTask.swift in Sources */,
 				CFEB4A6A28F1672F008850DC /* ColorPickerViewController.swift in Sources */,
@@ -1223,7 +1221,6 @@
 				CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */,
 				CFEB4A6828F165D1008850DC /* CategoryViewController.swift in Sources */,
 				CF50BC5E2924D13500AB538B /* NSOptionalData.swift in Sources */,
-				CF5350A3291D235000AFDC14 /* CustomSideMenuNavigation.swift in Sources */,
 				CFEB4A5628F1559D008850DC /* SystemManager.swift in Sources */,
 				CFEB4A5B28F155E5008850DC /* DataManager.swift in Sources */,
 				CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */,
@@ -1241,7 +1238,6 @@
 				CFB6EE0728F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
 				CF75963729024F680046FDC1 /* PushCell.swift in Sources */,
 				CF81495C2906CC0000FD0974 /* WatchConnectManager.swift in Sources */,
-				CF5350C7291E812F00AFDC14 /* MenuViewController.swift in Sources */,
 				CFEB4A3828F14BEF008850DC /* SettingViewController.swift in Sources */,
 				CFEB4A5528F1559D008850DC /* FirebaseManager.swift in Sources */,
 				CF75963E290662900046FDC1 /* PushListVCExtension.swift in Sources */,
@@ -1607,6 +1603,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -1662,6 +1659,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};

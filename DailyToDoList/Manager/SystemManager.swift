@@ -85,11 +85,12 @@ extension SystemManager {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
     }
     //
-    func openTaskInfo(_ mode:TaskMode, _ task:EachTask?, _ load:(() -> Void)?, _ modify:((EachTask)->Void)?) {
+    func openTaskInfo(_ mode:TaskMode, date:Date?, task:EachTask?, load:(() -> Void)?, modify:((EachTask)->Void)?) {
         let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
         guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
         //
         taskInfoVC.currentMode = mode
+        taskInfoVC.currntDate = date == nil ? Date() : date!
         taskInfoVC.refreshTask = load
         taskInfoVC.modifyTask = modify
         //

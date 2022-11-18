@@ -25,9 +25,12 @@ class PushListViewController : UIViewController {
     @IBOutlet weak var editView: UIView!
     
     var pushList:[AlarmInfo] = []
+    var taskList:[EachTask] = []
+    var categoryList:[String] = []
     var heightConstraint:NSLayoutConstraint?
     var heightOrigin:CGFloat = 60
-    
+    //
+    var openedPush:OpenedTask?
     
     
     override func viewDidLoad() {
@@ -51,8 +54,6 @@ class PushListViewController : UIViewController {
         initCell()
         //
         initRefreshController()
-        //메뉴
-        SystemManager.shared.openMenu(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,10 +64,8 @@ class PushListViewController : UIViewController {
         if pushTable.isEditing {
             changeEditMode()
         }
-        DispatchQueue.main.async { [self] in 
-            //
-            loadPushData()
-            //
+        loadPushData()
+        DispatchQueue.main.async { [self] in
             changeTitle()
         }
     }
@@ -76,15 +75,26 @@ class PushListViewController : UIViewController {
 //MARK: - Func
 extension PushListViewController {
     func loadPushData() {
+        var dataList:[AlarmInfo] = []
         switch segmentedController.selectedSegmentIndex {
         case 0:
-            let pushlist = RealmManager.shared.getTodayAlarmInfo()
-            pushList = pushlist.sorted { $0.alarmTime < $1.alarmTime }
+            dataList = RealmManager.shared.getTodayAlarmInfo()
         case 1:
-            let pushlist = RealmManager.shared.getAllAlarmInfo()
-            pushList = pushlist.sorted { $0.alarmTime < $1.alarmTime }
+            dataList = RealmManager.shared.getAllAlarmInfo()
         default:
             break
+        }
+        pushList = dataList.sorted { $0.alarmTime < $1.alarmTime }
+        //
+        for push in pushList {
+            guard let task = RealmManager.shared.getTaskData(push.taskId) else {
+                return
+            }
+            taskList.append(task)
+            let category = task.category
+            if !categoryList.contains(where: {$0 == category}) {
+                categoryList.append(category)
+            }
         }
         //
         labelNilMsg.isHidden = pushList.count == 0 ? false : true
@@ -104,10 +114,12 @@ extension PushListViewController {
         editView.backgroundColor = .clear
         controllEditView(false)
         //
+        pushTable.sectionHeaderTopPadding = 6
         pushTable.backgroundColor = .clear
         pushTable.separatorInsetReference = .fromCellEdges
         pushTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         pushTable.separatorColor = .label
+        pushTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)

@@ -45,7 +45,7 @@ class Utils {
     //시간만 구하기
     static func dateToTimeString(_ date:Date) -> String {
         let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "HH:mm:ss"
+        dateformatter.dateFormat = "HH:mm"
         
         return dateformatter.string(from: date)
     }

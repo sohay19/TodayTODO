@@ -158,9 +158,7 @@ class EachTask : Object
         }
         if let time = time {
             optionData.isAlarm = true
-            var time = Utils.dateToTimeString(time).split(separator: ":")
-            time.removeLast()
-            optionData.alarmTime = time.joined(separator: ":")
+            optionData.alarmTime = Utils.dateToTimeString(time)
         } else {
             optionData.isAlarm = false
             optionData.alarmTime = ""

@@ -31,8 +31,6 @@ class SettingViewController: UIViewController {
         //
         initUI()
         initCell()
-        //메뉴
-        SystemManager.shared.openMenu(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {

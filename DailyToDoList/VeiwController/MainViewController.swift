@@ -34,7 +34,6 @@ class MainViewController: UIViewController {
     var monthlyTaskList:[Int:MonthltyDayTask] = [:]
     var taskDateKeyList:[Int] = []
     //
-    var isOpened = false
     var openedTask:OpenedTask?
     
     override func viewDidLoad() {
@@ -53,8 +52,6 @@ class MainViewController: UIViewController {
         initRefreshController()
         // 메인 리로드 함수
         RealmManager.shared.reloadMainView = viewWillAppear(_:)
-        //메뉴
-        SystemManager.shared.openMenu(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +64,7 @@ class MainViewController: UIViewController {
                 SystemManager.shared.openSettingMenu()
             })
         }
+        //
         loadTask()
         DispatchQueue.main.async { [self] in
             //
@@ -107,14 +105,14 @@ extension MainViewController {
         labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
-        dailyTaskTable.sectionHeaderTopPadding = 6
+        dailyTaskTable.sectionHeaderTopPadding = 18
         dailyTaskTable.backgroundColor = .clear
         dailyTaskTable.separatorInsetReference = .fromCellEdges
         dailyTaskTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         dailyTaskTable.separatorColor = .label
         dailyTaskTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
-        monthlyTaskTable.sectionHeaderTopPadding = 6
+        monthlyTaskTable.sectionHeaderTopPadding = 18
         monthlyTaskTable.backgroundColor = .clear
         monthlyTaskTable.separatorInsetReference = .fromCellEdges
         monthlyTaskTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -395,19 +393,21 @@ extension MainViewController {
         default:
             break
         }
-        SystemManager.shared.openTaskInfo(.MODIFY, beforeTask, loadTask) { [self] task in
-            RealmManager.shared.updateTaskDataForiOS(task)
-            //
-            switch segmentedController.selectedSegmentIndex {
-            case 0:
-                //Today
-                dailyTaskTable.reloadRows(at: [indexPath], with: .none)
-            case 1:
-                //Month
-                monthlyTaskTable.reloadRows(at: [indexPath], with: .none)
-            default:
-                break
-            }
+        SystemManager.shared.openTaskInfo(.MODIFY, date: nil, task: beforeTask, load: loadTask, modify: afterModifyTask)
+    }
+    //
+    func afterModifyTask(_ task:EachTask) {
+        RealmManager.shared.updateTaskDataForiOS(task)
+        //
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            //Today
+            dailyTaskTable.reloadData()
+        case 1:
+            //Month
+            monthlyTaskTable.reloadData()
+        default:
+            break
         }
     }
     //
@@ -481,7 +481,8 @@ extension MainViewController {
 //MARK: - Button Event
 extension MainViewController {
     @IBAction func clickTaskAdd(_ sender:Any) {
-        SystemManager.shared.openTaskInfo(.ADD, nil, loadTask, nil)
+        let date = segmentedController.selectedSegmentIndex == 0 ? todayDate : monthDate
+        SystemManager.shared.openTaskInfo(.ADD, date: date, task: nil, load:loadTask, modify: nil)
     }
     //SegmentedControl
     @IBAction func changeSegment(_ sender:UISegmentedControl) {

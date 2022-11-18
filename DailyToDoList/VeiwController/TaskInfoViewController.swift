@@ -8,14 +8,20 @@
 import UIKit
 
 
-class TaskInfoViewController : UIViewController, UIGestureRecognizerDelegate {
+class TaskInfoViewController : UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var popView:UIView!
+    @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var repeatView:UIView!
     @IBOutlet weak var alarmView: UIView!
     @IBOutlet weak var memoView:UITextView!
     //
     @IBOutlet weak var inputTitle:UITextField!
+    @IBOutlet weak var imgUnderline_1: UIImageView!
+    @IBOutlet weak var imgUnderline_2: UIImageView!
+    @IBOutlet weak var imgUnderline_3: UIImageView!
+    @IBOutlet weak var imgUnderline_4: UIImageView!
+    @IBOutlet weak var imgUnderline_5: UIImageView!
     //
     @IBOutlet weak var pickTaskDate:UIDatePicker!
     @IBOutlet weak var pickTaskTime: UIDatePicker!
@@ -25,21 +31,20 @@ class TaskInfoViewController : UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelCategory: UILabel!
     @IBOutlet weak var labelSchedule: UILabel!
-    @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelTime: UILabel!
     @IBOutlet weak var labelOption: UILabel!
     @IBOutlet weak var labelMemo: UILabel!
-    @IBOutlet weak var labelFirst:UILabel!
-    @IBOutlet weak var labelSecond:UILabel!
-    @IBOutlet weak var labelThird:UILabel!
+    @IBOutlet weak var labelRepeatType:UILabel!
+    @IBOutlet weak var labelWeek:UILabel!
+    @IBOutlet weak var labelWeekUnit:UILabel!
+    @IBOutlet weak var labelDay:UILabel!
+    @IBOutlet weak var labelDayUnit:UILabel!
     @IBOutlet weak var labelEndDate: UILabel!
     @IBOutlet weak var labelAlarm: UILabel!
     //
     @IBOutlet weak var btnPullCategory:UIButton!
     @IBOutlet weak var btnRepeat: UIButton!
     @IBOutlet weak var btnAlarm: UIButton!
-    @IBOutlet weak var btnFirst:UIButton!
-    @IBOutlet weak var btnSecond:UIButton!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnWrite: UIButton!
     //
@@ -64,7 +69,9 @@ class TaskInfoViewController : UIViewController, UIGestureRecognizerDelegate {
     private var repeatViewSize:CGSize?
     private var repeatViewConstraint:NSLayoutConstraint?
     private var alarmViewSize:CGSize?
-    private var alarmtViewConstraint:NSLayoutConstraint?
+    private var alarmViewConstraint:NSLayoutConstraint?
+    private var timeViewSize:CGSize?
+    private var timeViewConstraint:NSLayoutConstraint?
     //
     private var categoryList:[(name:String, action:UIAction)] = []
     
@@ -80,16 +87,12 @@ class TaskInfoViewController : UIViewController, UIGestureRecognizerDelegate {
         super.viewWillAppear(animated)
         //
         SystemManager.shared.openLoading()
-        //
         scrollView.isScrollEnabled = false
         //날짜 지정
         pickTaskDate.setDate(currntDate, animated: false)
         //기본세팅
         observeKeyboard()
         setMode()
-        //
-        btnRepeat.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
-        btnAlarm.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
         //
         loadCategory()
     }
@@ -111,50 +114,68 @@ extension TaskInfoViewController {
         //
         scrollView.backgroundColor = .clear
         popView.backgroundColor = .clear
+        timeView.backgroundColor = .clear
         repeatView.backgroundColor = .clear
         alarmView.backgroundColor = .clear
         memoView.backgroundColor = .clear
         //
-        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
-        labelCategory.font = UIFont(name: K_Font_B, size: K_FontSize)
-        labelSchedule.font = UIFont(name: K_Font_B, size: K_FontSize)
-        labelOption.font = UIFont(name: K_Font_B, size: K_FontSize)
-        labelMemo.font = UIFont(name: K_Font_B, size: K_FontSize)
-        labelDate.font = UIFont(name: K_Font_R, size: K_FontSize)
+        let K_B_FontSize = K_FontSize + 3.0
+        labelTitle.font = UIFont(name: K_Font_B, size: K_B_FontSize)
+        labelCategory.font = UIFont(name: K_Font_B, size: K_B_FontSize)
+        labelSchedule.font = UIFont(name: K_Font_B, size: K_B_FontSize)
+        labelOption.font = UIFont(name: K_Font_B, size: K_B_FontSize)
+        labelMemo.font = UIFont(name: K_Font_B, size: K_B_FontSize)
         labelTime.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelFirst.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelSecond.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelThird.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelRepeatType.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelWeekUnit.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelDayUnit.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelEndDate.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelAlarm.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
         inputTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
         memoView.font = UIFont(name: K_Font_R, size: K_FontSize)
+        memoView.layer.cornerRadius = 5
+        memoView.layer.borderWidth = 0.5
+        memoView.layer.borderColor = UIColor.secondaryLabel.cgColor
+        memoView.contentInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        //
+        //
+        btnRepeat.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
+        btnAlarm.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
+        btnPullCategory.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
         //
         btnPullCategory.layer.shadowColor = UIColor.darkGray.cgColor
-        btnPullCategory.layer.shadowOpacity = 0.5
+        btnPullCategory.layer.shadowOpacity = 0.3
         btnPullCategory.layer.shadowOffset = CGSize.zero
         btnPullCategory.layer.shadowRadius = 6
-        btnRepeat.layer.shadowColor = UIColor.darkGray.cgColor
-        btnRepeat.layer.shadowOpacity = 0.5
-        btnRepeat.layer.shadowOffset = CGSize.zero
-        btnRepeat.layer.shadowRadius = 6
-        btnAlarm.layer.shadowColor = UIColor.darkGray.cgColor
-        btnAlarm.layer.shadowOpacity = 0.5
-        btnAlarm.layer.shadowOffset = CGSize.zero
-        btnAlarm.layer.shadowRadius = 6
+        btnPullCategory.layer.cornerRadius = 5
+        btnRepeat.backgroundColor = .clear
+        btnAlarm.backgroundColor = .clear
         //
         btnWrite.setImage(UIImage(systemName: "pencil", withConfiguration: mediumConfig), for: .normal)
         btnWrite.tintColor = .systemBackground
         btnBack.setImage(UIImage(systemName: "chevron.backward", withConfiguration: mediumConfig), for: .normal)
         btnBack.tintColor = .systemBackground
+        //
+        imgUnderline_1.image = UIImage(named: Underline_Indigo)
+        imgUnderline_1.alpha = 0.5
+        imgUnderline_2.image = UIImage(named: Underline_Indigo)
+        imgUnderline_2.alpha = 0.5
+        imgUnderline_3.image = UIImage(named: Underline_Indigo)
+        imgUnderline_3.alpha = 0.5
+        imgUnderline_4.image = UIImage(named: Underline_Indigo)
+        imgUnderline_4.alpha = 0.5
+        imgUnderline_5.image = UIImage(named: Underline_Indigo)
+        imgUnderline_5.alpha = 0.5
     }
     //
     private func initGesture() {
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer()
-        tapGesture.delegate = self
-        
-        self.view.addGestureRecognizer(tapGesture)
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardDown))
+        tapGesture.numberOfTapsRequired = 1
+        scrollView.addGestureRecognizer(tapGesture)
+        let focusGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(focusedMemoView))
+        focusGesture.numberOfTapsRequired = 1
+        memoView.addGestureRecognizer(focusGesture)
     }
     //
     private func setMode() {
@@ -177,12 +198,9 @@ extension TaskInfoViewController {
     //
     private func setDefaultUI() {
         inputTitle.attributedPlaceholder = NSAttributedString(string: "TODO를 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.opaqueSeparator])
-        //시간 끄기
-        let isTime = false
-        switchTime.isOn = isTime
-        pickTaskTime.isEnabled = isTime
-        switchEndDate.isOn = isTime
-        pickEndDate.isEnabled = isTime
+        //시간, 종료일 끄기
+        switchingTime(true)
+        switchingEndDate(false)
         //반복, 알람 닫기
         controllRepeatView(false)
         controllAlarmView(false)
@@ -201,30 +219,24 @@ extension TaskInfoViewController {
                 break
             }
         }
+        //날짜
         pickTaskDate.date = Utils.dateStringToDate(taskData.taskDay)!
-        if taskData.taskTime.isEmpty {
-            switchTime.isOn = false
-        } else {
-            switchTime.isOn = false
-            let date = taskData.taskDay + taskData.taskTime + ":00"
+        //시간
+        switchingTime(taskData.taskTime.isEmpty ? true : false)
+        if !switchTime.isOn {
+            let date = taskData.taskDay + "_" + taskData.taskTime + ":00"
             pickTaskTime.date = Utils.stringToDate(date)!
         }
-        //
+        //반복(+종료일)
         let repeatType = RepeatType(rawValue: taskData.repeatType)!
         let option = taskData.optionData ?? OptionData()
         let isEnd = option.isEnd
         let taskEndDate = option.taskEndDate
-        if repeatType == .None {
-            if btnRepeat.isSelected {
-                btnRepeat.sendActions(for: .touchUpInside)
-            }
-        } else {
-            if !btnRepeat.isSelected {
-                btnRepeat.sendActions(for: .touchUpInside)
-            }
+        if repeatType != .None {
             repeatResult = RepeatResult(repeatType: repeatType, weekDay: option.getWeekDayList(), weekOfMonth: option.weekOfMonth, isEnd: isEnd, endDate: Utils.dateStringToDate(taskEndDate))
         }
         showRepeatView(repeatType)
+        //알람
         if option.isAlarm {
             setAlarm()
         }
@@ -240,9 +252,7 @@ extension TaskInfoViewController {
             let image =  category.loadImage()
             let action = UIAction(title: category.title, image: image, handler: { [self] _ in
                 btnPullCategory.setTitle(category.title, for: .normal)
-                btnPullCategory.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
-                btnPullCategory.tintColor = category.loadColor()
-                btnPullCategory.layer.cornerRadius = 10
+                btnPullCategory.backgroundColor = category.loadColor()
             })
             let element = (category.title, action)
             categoryList.append(element)
@@ -267,6 +277,7 @@ extension TaskInfoViewController {
     //
     private func saveDefaultSize() {
         //기존 사이즈 저장
+        timeViewSize = timeView.frame.size
         repeatViewSize = repeatView.frame.size
         alarmViewSize = alarmView.frame.size
         //
@@ -275,8 +286,12 @@ extension TaskInfoViewController {
             return item.identifier == "repeatViewHeight"
         }
         alarmView.translatesAutoresizingMaskIntoConstraints = false
-        alarmtViewConstraint = alarmView.constraints.first { item in
+        alarmViewConstraint = alarmView.constraints.first { item in
             return item.identifier == "alarmViewHeight"
+        }
+        timeView.translatesAutoresizingMaskIntoConstraints = false
+        timeViewConstraint = timeView.constraints.first { item in
+            return item.identifier == "timeViewHeight"
         }
     }
 }
@@ -288,8 +303,21 @@ extension TaskInfoViewController {
         inputTitle.isEnabled = isOn
         btnPullCategory.isEnabled = isOn
         pickTaskDate.isEnabled = isOn
+        switchTime.isEnabled = isOn
+        if !switchTime.isOn {
+            pickTaskTime.isEnabled = isOn
+        }
         btnRepeat.isEnabled = isOn
+        if btnRepeat.isSelected {
+            switchEndDate.isEnabled = isOn
+            if switchEndDate.isOn {
+                pickEndDate.isEnabled = isOn
+            }
+        }
         btnAlarm.isEnabled = isOn
+        if btnAlarm.isSelected {
+            pickAlarmTime.isEnabled = isOn
+        }
         memoView.isEditable = isOn
     }
     //resultView 컨트롤
@@ -318,12 +346,27 @@ extension TaskInfoViewController {
         pickAlarmTime.isHidden = !isOpen
         if isOpen {
             let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
-                alarmtViewConstraint?.constant = alarmViewSize!.height
+                alarmViewConstraint?.constant = alarmViewSize!.height
             }
             anim.startAnimation()
         } else {
             let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
-                alarmtViewConstraint?.constant = 0
+                alarmViewConstraint?.constant = 0
+            }
+            anim.startAnimation()
+        }
+    }
+    //TimeView 컨트롤
+    private func controllTimeView(_ isOpen:Bool) {
+        pickTaskTime.isHidden = isOpen
+        if isOpen {
+            let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
+                timeViewConstraint?.constant = 0
+            }
+            anim.startAnimation()
+        } else {
+            let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) { [self] in
+                timeViewConstraint?.constant = timeViewSize!.height
             }
             anim.startAnimation()
         }
@@ -390,44 +433,44 @@ extension TaskInfoViewController {
     }
     //repeatResult setting
     private func setRepeatResult() {
-        labelFirst.isHidden = true
-        labelSecond.isHidden = true
-        labelThird.isHidden = true
-        btnFirst.isHidden = true
-        btnSecond.isHidden = true
+        labelRepeatType.isHidden = true
+        labelWeekUnit.isHidden = true
+        labelDayUnit.isHidden = true
+        labelWeek.isHidden = true
+        labelDay.isHidden = true
     }
-    private func setRepeatResult(_ thrid:String) {
-        labelFirst.isHidden = true
-        labelSecond.isHidden = true
-        labelThird.isHidden = false
-        labelThird.text = thrid
+    private func setRepeatResult(_ dayUnit:String) {
+        labelRepeatType.isHidden = true
+        labelWeekUnit.isHidden = true
+        labelDayUnit.isHidden = false
+        labelDayUnit.text = dayUnit
         //
-        btnFirst.isHidden = true
-        btnSecond.isHidden = true
+        labelWeek.isHidden = true
+        labelDay.isHidden = true
     }
-    private func setRepeatResult(_ second:String, _ btnsecond:String, _ thrid:String) {
-        labelFirst.isHidden = true
-        labelSecond.isHidden = false
-        labelSecond.text = second
-        labelThird.isHidden = false
-        labelThird.text = thrid
+    private func setRepeatResult(_ weekUnit:String, _ day:String, _ dayUnit:String) {
+        labelRepeatType.isHidden = true
+        labelWeekUnit.isHidden = false
+        labelWeekUnit.text = weekUnit
+        labelDayUnit.isHidden = false
+        labelDayUnit.text = dayUnit
         //
-        btnFirst.isHidden = true
-        btnSecond.isHidden = false
-        btnSecond.setTitle(btnsecond, for: .normal)
+        labelWeek.isHidden = true
+        labelDay.isHidden = false
+        labelDay.text = day
     }
-    private func setRepeatResult(_ first:String, _ btnfirst:String, _ second:String, _ btnsecond:String, _ thrid:String) {
-        labelFirst.isHidden = false
-        labelFirst.text = first
-        labelSecond.isHidden = false
-        labelSecond.text = second
-        labelThird.isHidden = false
-        labelThird.text = thrid
+    private func setRepeatResult(_ type:String, _ week:String, _ weekUnit:String, _ day:String, _ dayUnit:String) {
+        labelRepeatType.isHidden = false
+        labelRepeatType.text = type
+        labelWeekUnit.isHidden = false
+        labelWeekUnit.text = weekUnit
+        labelDayUnit.isHidden = false
+        labelDayUnit.text = dayUnit
         //
-        btnFirst.isHidden = false
-        btnFirst.setTitle(btnfirst, for: .normal)
-        btnSecond.isHidden = false
-        btnSecond.setTitle(btnsecond, for: .normal)
+        labelWeek.isHidden = false
+        labelWeek.text = week
+        labelDay.isHidden = false
+        labelDay.text = day
     }
     //알람 세팅
     private func setAlarm() {
@@ -459,7 +502,7 @@ extension TaskInfoViewController {
         }
         //종료일 검토
         let taskDay = Utils.dateToDateString(pickTaskDate.date)
-        if !pickEndDate.isEnabled && taskDay == Utils.dateToDateString(pickEndDate.date) {
+        if switchEndDate.isOn && taskDay == Utils.dateToDateString(pickEndDate.date) {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "시작일과 종료일이 같을 수 없습니다.")
             return nil
         }
@@ -480,9 +523,10 @@ extension TaskInfoViewController {
         }
         //태스크 생성
         var data = EachTask()
+        let time = switchTime.isOn ? "" : Utils.dateToTimeString(pickTaskTime.date)
         switch currentMode {
         case .ADD:
-            data = EachTask(taskDay: pickTaskDate.date, category: category, time: "", title: title, memo: memoView.text!, repeatType: repeatType.rawValue)
+            data = EachTask(taskDay: pickTaskDate.date, category: category, time: time, title: title, memo: memoView.text!, repeatType: repeatType.rawValue)
             let option = OptionData(taskId: data.taskId, weekDay: weekDay, weekOfMonth: weekOfMonth)
             data.setOptionData(option)
         case .MODIFY:
@@ -490,10 +534,11 @@ extension TaskInfoViewController {
                 return nil
             }
             let option = OptionData(taskId: taskData.taskId, weekDay: weekDay, weekOfMonth: weekOfMonth)
-            data = EachTask(id:taskData.taskId, taskDay: pickTaskDate.date, category: category, time: "", title: title, memo: memoView.text!, repeatType: repeatType.rawValue, optionData: option)
+            data = EachTask(id:taskData.taskId, taskDay: pickTaskDate.date, category: category, time: time, title: title, memo: memoView.text!, repeatType: repeatType.rawValue, optionData: option)
         default:
             break
         }
+        //종료일 확인
         if switchEndDate.isOn {
             data.setEndDate(pickEndDate.date)
         }
@@ -555,12 +600,12 @@ extension TaskInfoViewController {
     //RepeatView 열기
     @IBAction func clickRepeat(_ sender: Any) {
         btnRepeat.isSelected = !btnRepeat.isSelected
+        clickBtnRepeat(btnRepeat.isSelected)
         if btnRepeat.isSelected {
             let board = UIStoryboard(name: repeatBoard, bundle: nil)
             guard let repeatVC = board.instantiateViewController(withIdentifier: repeatBoard) as? RepeatViewController else {
                 return
             }
-            //
             repeatVC.pickDate = pickTaskDate.date
             repeatVC.clickOk = loadResult(_:)
             repeatVC.clickCancel = { self.btnRepeat.isSelected = false }
@@ -572,6 +617,9 @@ extension TaskInfoViewController {
             offRepeat()
         }
     }
+    private func clickBtnRepeat(_ isOn:Bool) {
+        btnRepeat.setImage(UIImage(systemName: isOn ? "checkmark.square.fill" : "square.fill"), for: .normal)
+    }
     private func offRepeat() {
         setRepeatResult()
         repeatResult = nil
@@ -580,8 +628,12 @@ extension TaskInfoViewController {
     //AlarmView 열기
     @IBAction func clickAlarm(_ sender: Any) {
         btnAlarm.isSelected = !btnAlarm.isSelected
+        clickBtnAlarm(btnAlarm.isSelected)
+    }
+    private func clickBtnAlarm(_ isOn:Bool) {
+        btnAlarm.setImage(UIImage(systemName: isOn ? "checkmark.square.fill" : "square.fill"), for: .normal)
         //알람 활성화, 비활성화
-        controllAlarmView(btnAlarm.isSelected)
+        controllAlarmView(isOn)
     }
 }
 
@@ -589,10 +641,18 @@ extension TaskInfoViewController {
 extension TaskInfoViewController {
     //
     @IBAction func clickSwitchTime(_ sender: UISwitch) {
-        pickTaskTime.isEnabled = sender.isOn
+        switchingTime(sender.isOn)
+    }
+    private func switchingTime(_ isOn:Bool) {
+        switchTime.isOn = isOn
+        controllTimeView(isOn)
     }
     //
     @IBAction func clickSwitchEndDate(_ sender: UISwitch) {
-        pickEndDate.isEnabled = sender.isOn
+        switchingEndDate(sender.isOn)
+    }
+    private func switchingEndDate(_ isOn:Bool) {
+        switchEndDate.isOn = isOn
+        pickEndDate.isEnabled = isOn
     }
 }
