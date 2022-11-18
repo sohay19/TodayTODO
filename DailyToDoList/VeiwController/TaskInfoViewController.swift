@@ -134,9 +134,6 @@ extension TaskInfoViewController {
         //
         inputTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
         memoView.font = UIFont(name: K_Font_R, size: K_FontSize)
-        memoView.layer.cornerRadius = 5
-        memoView.layer.borderWidth = 0.5
-        memoView.layer.borderColor = UIColor.secondaryLabel.cgColor
         memoView.contentInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
         //
         //

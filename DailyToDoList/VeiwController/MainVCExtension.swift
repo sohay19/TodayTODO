@@ -167,7 +167,6 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 return nil
             }
             task = result
-            monthlyTaskTable.reloadRows(at: [indexPath], with: .none)
         default:
             return nil
         }

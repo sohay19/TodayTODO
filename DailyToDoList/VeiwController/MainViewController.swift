@@ -335,11 +335,10 @@ extension MainViewController {
             modifyTask.isDone = isDone
             RealmManager.shared.updateTaskDataForiOS(modifyTask)
             //
-            dailyTaskTable.reloadRows(at: [indexPath], with: .none)
+            resultList[category]?.remove(at: indexPath.row)
             guard let taskList = resultList[category] else {
                 return
             }
-            resultList[category]?.remove(at: indexPath.row)
             if isDone {
                 resultList[category]?.append(task)
             } else {
@@ -355,12 +354,11 @@ extension MainViewController {
             modifyTask.isDone = isDone
             RealmManager.shared.updateTaskDataForiOS(modifyTask)
             //
-            monthlyTaskTable.reloadRows(at: [indexPath], with: .none)
             let day = Utils.getDay(monthDate)
+            monthlyTaskList[day]?.taskList[category]?.remove(at: indexPath.row)
             guard let taskList = monthlyTaskList[day]?.taskList[category] else {
                 return
             }
-            monthlyTaskList[day]?.taskList[category]?.remove(at: indexPath.row)
             if isDone {
                 monthlyTaskList[day]?.taskList[category]?.append(task)
             } else {

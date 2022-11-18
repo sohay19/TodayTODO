@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         //워치 커넥팅을 위한 세선 열기
         WatchConnectManager.shared.initSession()
+        
         return true
     }
 
@@ -88,6 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         #endif
     }
+    
     //Silent Push
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Silent Push Notification")
@@ -113,6 +115,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             completionHandler([.banner, .list, .badge, .sound])
         }
     }
+    
     //background 상태에서 받은 후 실행
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
