@@ -42,7 +42,7 @@ extension TaskInterfaceController {
         //
         labelTitle.setText(task.title)
         //
-        let color = RealmManager.shared.getCategoryColor(task.category)
+        let color = DataManager.shared.getCategoryColor(task.category)
         labelCategory.setTextColor(color)
         labelCategory.setText(task.category)
         //

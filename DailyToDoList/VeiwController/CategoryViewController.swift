@@ -70,7 +70,7 @@ extension CategoryViewController {
         } else {
             let newList = list.map{Float($0)}
             let newCategory = CategoryData(title, newList)
-            RealmManager.shared.addCategory(newCategory)
+            DataManager.shared.addCategory(newCategory)
             guard let reload = self.reloadCategory else {
                 return
             }

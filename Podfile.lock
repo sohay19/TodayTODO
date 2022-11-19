@@ -115,7 +115,6 @@ PODS:
   - Realm/Headers (10.32.0)
   - RealmSwift (10.32.0):
     - Realm (= 10.32.0)
-  - SideMenu (6.5.0)
 
 DEPENDENCIES:
   - FirebaseAnalytics (> 9.0.0)
@@ -125,7 +124,6 @@ DEPENDENCIES:
   - FSCalendar (> 2.0.0)
   - GoogleSignIn (> 6.0.0)
   - RealmSwift (> 10.0.0)
-  - SideMenu
 
 SPEC REPOS:
   trunk:
@@ -149,7 +147,6 @@ SPEC REPOS:
     - PromisesObjC
     - Realm
     - RealmSwift
-    - SideMenu
 
 SPEC CHECKSUMS:
   AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
@@ -172,8 +169,7 @@ SPEC CHECKSUMS:
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   Realm: a00e93347b8d26d372c7a82f6c0b08d6536a21c8
   RealmSwift: fe09c29ca409f8f905fe4086f2a52936193f2e3d
-  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 2aa3ac838b58b7207eb964d2809a2548e62017ab
+PODFILE CHECKSUM: 24ad2dc28357a161b605e6ef406dd5475dea4f57
 
 COCOAPODS: 1.11.3

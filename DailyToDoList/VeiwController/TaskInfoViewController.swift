@@ -245,7 +245,7 @@ extension TaskInfoViewController {
         //
         let funcLoadCategory:()->Void = self.loadCategory
         var actionList:[UIAction] = []
-        let categories = RealmManager.shared.loadCategory()
+        let categories = DataManager.shared.loadCategory()
         for category in categories {
             let image =  category.loadImage()
             let action = UIAction(title: category.title, image: image, handler: { [self] _ in
@@ -548,7 +548,7 @@ extension TaskInfoViewController {
                 return
             }
             //realm에 추가
-            RealmManager.shared.addTaskDataForiOS(data)
+            DataManager.shared.addTask(data)
         case .MODIFY:
             guard let data = makeTask() else {
                 print("task is Nil")

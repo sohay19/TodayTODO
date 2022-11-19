@@ -14,7 +14,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         // Perform any final initialization of your application.
         
         //
-        RealmManager.shared.openRealm()
+        DataManager.shared.initRealm()
         //
         WatchConnectManager.shared.initSession()
     }

@@ -21,9 +21,9 @@ struct TaskListProvider: TimelineProvider {
         let option1 = OptionData(taskId: "task_Id", weekDay: [false,false,false,false,false,false,false], weekOfMonth: 0, isEnd: false, taskEndDate: "", isAlarm: true, alarmTime: "09:30")
         let task1 = EachTask(id: "task_Id", taskDay: "9999-12-31", category: "카테고리", time: "09:30", title: "오늘의 TODO!", memo: "오늘의 할일은~?", repeatType: RepeatType.None.rawValue, optionData: option1, isDone: false)
         let option2 = OptionData(taskId: "task_Id", weekDay: [false,false,false,false,false,false,false], weekOfMonth: 0, isEnd: false, taskEndDate: "", isAlarm: true, alarmTime: "13:30")
-        let task2 = EachTask(id: "task_Id", taskDay: "9999-12-31", category: "카테고리", time: "13:30", title: "두번째 TODO!", memo: "열심히", repeatType: RepeatType.None.rawValue, optionData: option1, isDone: false)
+        let task2 = EachTask(id: "task_Id", taskDay: "9999-12-31", category: "카테고리", time: "13:30", title: "두번째 TODO!", memo: "열심히", repeatType: RepeatType.None.rawValue, optionData: option2, isDone: false)
         let option3 = OptionData(taskId: "task_Id", weekDay: [false,false,false,false,false,false,false], weekOfMonth: 0, isEnd: false, taskEndDate: "", isAlarm: true, alarmTime: "16:30")
-        let task3 = EachTask(id: "task_Id", taskDay: "9999-12-31", category: "카테고리", time: "16:30", title: "마지막 TODO!", memo: "달리자", repeatType: RepeatType.None.rawValue, optionData: option1, isDone: false)
+        let task3 = EachTask(id: "task_Id", taskDay: "9999-12-31", category: "카테고리", time: "16:30", title: "마지막 TODO!", memo: "달리자", repeatType: RepeatType.None.rawValue, optionData: option3, isDone: false)
         let entry = TaskListEntry(date: Date(), taskList: [task1, task2, task3])
         completion(entry)
     }
@@ -36,7 +36,7 @@ struct TaskListProvider: TimelineProvider {
             return
         }
         //데이터 가져오기
-        let taskList = RealmManager.shared.getTaskDataForDay(date:Date())
+        let taskList = DataManager.shared.getTodayTask()
         let entry = Entry(date: refreshTimer, taskList: taskList)
         let entries:[Entry] = [entry]
         let timeline = Timeline(entries: entries, policy: .atEnd)

@@ -14,10 +14,6 @@ import UserNotifications
 
 
 class RealmManager {
-    static let shared = RealmManager()
-    private init() { }
-    
-    private let pushManager = PushManager()
     private let fileManager = FileManager.default
     //
     var realmUrl:URL?
@@ -92,8 +88,11 @@ extension RealmManager {
         }
         fileManager.deleteDir(realmDir, nil)
     }
+}
+extension RealmManager {
+    //MARK: - Task
     //
-    private func addTaskData(_ task:EachTask) {
+    func addTask(_ task:EachTask) {
         openRealm()
         guard let realm = realm else {
             print("realm is nil")
@@ -103,159 +102,106 @@ extension RealmManager {
         do {
             try realm.write {
                 realm.add(task)
-                let option = task.optionData ?? OptionData()
-                let isAlarm = option.isAlarm
-                let alarmTime = option.alarmTime
-                if isAlarm {
-                    let idList = pushManager.addNotification(task)
-                    let alarmInfo = AlarmInfo(task.taskId, idList, alarmTime)
-                    realm.add(alarmInfo)
-                }
             }
+#if os(iOS)
             if #available(watchOSApplicationExtension 9.0, *) {
                 WidgetCenter.shared.reloadAllTimelines()
             }
+            DispatchQueue.main.async {
+                WatchConnectManager.shared.sendToWatchTask()
+            }
+#else
+            guard let reloadMainView = reloadMainView else {
+                return
+            }
+            DispatchQueue.main.async {
+                reloadMainView()
+            }
+#endif
         } catch {
             print("Realm add Error")
         }
     }
     //
-    private func updateTaskData(_ task:EachTask) {
+    func updateTask(_ task:EachTask) {
         openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return
         }    //
         do {
-            var newIdList:[String] = []
-            let option = task.optionData ?? OptionData()
-            if option.isAlarm {
-                if let alarmInfoData = getAlarmInfo(task.taskId) {
-                    let idList = getAlarmIdList(task.taskId)
-                    newIdList = pushManager.updatePush(idList, task)
-                    try realm.write {
-                        realm.delete(alarmInfoData)
-                    }
-                } else {
-                    newIdList = pushManager.addNotification(task)
-                }
-                let alarmInfo = AlarmInfo(task.taskId, newIdList, option.alarmTime)
-                try realm.write {
-                    realm.add(alarmInfo)
-                }
-            } else {
-                if let alarmInfoData = getAlarmInfo(task.taskId) {
-                    let idList = getAlarmIdList(task.taskId)
-                    try realm.write {
-                        realm.delete(alarmInfoData)
-                    }
-                    pushManager.deletePush(idList)
-                }
-            }
             try realm.write {
                 realm.add(task, update: .modified)
             }
+#if os(iOS)
             if #available(watchOSApplicationExtension 9.0, *) {
                 WidgetCenter.shared.reloadAllTimelines()
             }
+            DispatchQueue.main.async {
+                WatchConnectManager.shared.sendToWatchTask()
+            }
+#else
+            guard let reloadMainView = reloadMainView else {
+                return
+            }
+            DispatchQueue.main.async {
+                reloadMainView()
+            }
+#endif
         } catch {
             print("Realm update Error")
         }
     }
-    
-    private func deleteTaskData(_ task:EachTask) {
+    //
+    func deleteTask(_ task:EachTask) {
         openRealm()
         guard let realm = realm else {
             print("realm is nil")
             return
         }
         do {
-            let option = task.optionData ?? OptionData()
-            if option.isAlarm {
-                var alarmInfoData:AlarmInfo?
-                let data =  getAlarmInfo(task.taskId)
-                alarmInfoData = data
-                guard let alarmInfoData = alarmInfoData else {
-                    return
-                }
-                try realm.write {
-                    realm.delete(alarmInfoData)
-                }
-                let idList = getAlarmIdList(task.taskId)
-                pushManager.deletePush(idList)
-            }
             try realm.write {
                 realm.delete(task)
             }
+#if os(iOS)
             if #available(watchOSApplicationExtension 9.0, *) {
                 WidgetCenter.shared.reloadAllTimelines()
             }
+            DispatchQueue.main.async {
+                WatchConnectManager.shared.sendToWatchTask()
+            }
+#else
+            guard let reloadMainView = reloadMainView else {
+                return
+            }
+            DispatchQueue.main.async {
+                reloadMainView()
+            }
+#endif
         } catch {
             print("Realm delete Error")
         }
     }
 }
 
-//MARK: - Task add/update/delete (iOS)
-extension RealmManager {
-    func addTaskDataForiOS(_ task:EachTask) {
-        addTaskData(task)
-        DispatchQueue.main.async {
-            WatchConnectManager.shared.sendToWatchTask()
-        }
-    }
-    
-    func updateTaskDataForiOS(_ task:EachTask) {
-        updateTaskData(task)
-        DispatchQueue.main.async {
-            WatchConnectManager.shared.sendToWatchTask()
-        }
-    }
-    
-    func deleteTaskDataForiOS(_ task:EachTask) {
-        deleteTaskData(task)
-        DispatchQueue.main.async {
-            WatchConnectManager.shared.sendToWatchTask()
-        }
-    }
-}
 
-//MARK: - Task add/update/delete (Watch)
+//MARK: - Alarm
 extension RealmManager {
-    func addTaskDataForWatch(_ task:EachTask) {
-        addTaskData(task)
-        guard let reloadMainView = reloadMainView else {
+    //alarmInfo ADD
+    func addAlarm(_ idList:[String], _ alarmInfo:AlarmInfo) {
+        openRealm()
+        guard let realm = realm else {
+            print("realm is nil")
             return
         }
-        DispatchQueue.main.async {
-            reloadMainView()
+        do {
+            try realm.write {
+                realm.add(alarmInfo)
+            }
+        } catch {
+            print("Realm add Error")
         }
     }
-    
-    func updateTaskDataForWatch(_ task:EachTask) {
-        updateTaskData(task)
-        guard let reloadMainView = reloadMainView else {
-            return
-        }
-        DispatchQueue.main.async {
-            reloadMainView()
-        }
-    }
-    
-    func deleteTaskDataForWatch(_ task:EachTask) {
-        deleteTaskData(task)
-        guard let reloadMainView = reloadMainView else {
-            return
-        }
-        DispatchQueue.main.async {
-            reloadMainView()
-        }
-    }
-}
-
-
-//MARK: - Alarm/Push
-extension RealmManager {
     //alarmInfo 선택 삭제
     func deleteAlarm(_ taskId:String) {
         openRealm()

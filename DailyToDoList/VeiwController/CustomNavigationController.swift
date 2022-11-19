@@ -6,8 +6,8 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
-import SideMenu
 
 class CustomNavigationController : UINavigationController {
     let anim = true
@@ -67,3 +67,4 @@ extension CustomNavigationController {
     }
     
 }
+#endif

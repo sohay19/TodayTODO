@@ -7,8 +7,8 @@
 
 import Foundation
 import CloudKit
+#if os(iOS)
 import UIKit
-import SwiftUI
 
 class CloudManager {
     private let fileManager = FileManager.default
@@ -19,9 +19,7 @@ class CloudManager {
         }
         return defaultDir.appendingPathComponent("Realm", isDirectory: true)
     }
-    var realmUrl:URL? {
-        return RealmManager.shared.realmUrl
-    }
+    var realmUrl:URL?
     var labelDate:UILabel?
 }
 
@@ -169,3 +167,4 @@ extension CloudManager {
         })
     }
 }
+#endif

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Firabase 설정
         FirebaseApp.configure()
         //메인 로딩을 위해 Realm 열기
-        RealmManager.shared.openRealm()
+        DataManager.shared.initRealm()
         //로컬 푸시 설정
         UNUserNotificationCenter.current().delegate = self
         //노티 권한 및 옵션 설정

@@ -68,12 +68,14 @@ class TaskCell: UITableViewCell {
         labelTime.isHidden = !isOn
         btnArrow.isHidden = !isOn
         controllExpandable(!isOn)
+        btnArrow.translatesAutoresizingMaskIntoConstraints = false
         btnArrowConstraint?.constant = btnArrowSize
     }
     
     func setMonthCell() {
         controllMain(true)
         btnArrow.isHidden = true
+        btnArrow.translatesAutoresizingMaskIntoConstraints = false
         btnArrowConstraint?.constant = 0
     }
     

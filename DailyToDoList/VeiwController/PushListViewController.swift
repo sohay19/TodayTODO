@@ -30,6 +30,7 @@ class PushListViewController : UIViewController {
     var heightOrigin:CGFloat = 60
     //
     var openedPush:OpenedTask?
+    var isRefresh = false
     
     
     override func viewDidLoad() {
@@ -98,7 +99,7 @@ extension PushListViewController {
                 guard let taskId = request.content.userInfo[idKey] as? String else {
                     return
                 }
-                if let task = RealmManager.shared.getTaskData(taskId) {
+                if let task = DataManager.shared.getTask(taskId) {
                     taskList.append(task)
                     let category = task.category
                     if !categoryList.contains(where: {$0 == category}) {
@@ -112,7 +113,10 @@ extension PushListViewController {
             pushTable.reloadData()
             
             SystemManager.shared.closeLoading()
-            endAppearanceTransition()
+            if isRefresh {
+                endAppearanceTransition()
+                isRefresh = false
+            }
         }
     }
     //
@@ -191,7 +195,7 @@ extension PushListViewController {
         let newOption = OptionData(taskId: task.taskId, weekDay: task.getWeekDayList(), weekOfMonth: option.weekOfMonth, isEnd: option.isEnd, taskEndDate: option.taskEndDate, isAlarm: false, alarmTime: "")
         let newTask = EachTask(id: task.taskId, taskDay: task.taskDay, category: task.category, time: task.taskTime, title: task.title, memo: task.memo, repeatType: task.repeatType, optionData: newOption, isDone: task.isDone)
         // task data 업데이트
-        RealmManager.shared.updateTaskDataForiOS(newTask)
+        DataManager.shared.updateTask(newTask)
         // 리스트 삭제
         taskList.remove(at: indexPath.row)
         pushTable.reloadData()
@@ -208,6 +212,7 @@ extension PushListViewController {
         refresh()
     }
     private func refresh() {
+        isRefresh = true
         beginAppearanceTransition(true, animated: true)
     }
     //

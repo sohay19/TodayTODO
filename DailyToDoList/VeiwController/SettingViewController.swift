@@ -145,6 +145,9 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
         
         return backUpCell
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
+    }
     //MARK: - Swipe
     //오른쪽 스와이프
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

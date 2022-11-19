@@ -40,7 +40,7 @@ extension WatchConnectManager {
         }
         do {
             //Category 보내기
-            let loadCategoryList = RealmManager.shared.loadCategory()
+            let loadCategoryList = DataManager.shared.loadCategory()
             var categoryList:[NSCategoryData] = []
             for data in loadCategoryList {
                 categoryList.append(NSCategoryData.init(category:data))
@@ -48,7 +48,7 @@ extension WatchConnectManager {
             let categoryDataForWatch = try JSONEncoder().encode(NSCategoryDataList(categoryList: categoryList))
             session.transferUserInfo([ sendTypeKey:SendType.Update.rawValue, dataTypeKey:DataType.NSCategoryDataList.rawValue, dataKey:categoryDataForWatch])
             //Task 보내기
-            let founData = RealmManager.shared.getTaskDataForDay(date: Date())
+            let founData = DataManager.shared.getTodayTask()
             var taskList:[NSEachTask] = []
             for data in founData {
                 taskList.append(NSEachTask.init(task: data))
@@ -117,7 +117,7 @@ extension WatchConnectManager : WCSessionDelegate {
                 case .NSEachTask:
                     let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[dataKey] as! Data)
                     let task = EachTask(task:receiveMsgData)
-                    RealmManager.shared.updateTaskDataForWatch(task)
+                    DataManager.shared.updateTask(task)
                 case .NSEachTaskList:
                     break
                 case .NSCategoryData:
@@ -161,11 +161,11 @@ extension WatchConnectManager : WCSessionDelegate {
                     break
                 case .NSCategoryDataList:
                     let receiveMsgData = try JSONDecoder().decode(NSCategoryDataList.self, from: userInfo[dataKey] as! Data)
-                    let loadList = RealmManager.shared.loadCategory()
+                    let loadList = DataManager.shared.loadCategory()
                     for data in receiveMsgData.categoryList {
                         let found = loadList.first(where: {$0.title == data.title})
                         if found == nil {
-                            RealmManager.shared.addCategory(CategoryData(data.title, data.colorList))
+                            DataManager.shared.addCategory(CategoryData(data.title, data.colorList))
                         }
                     }
                 default:
