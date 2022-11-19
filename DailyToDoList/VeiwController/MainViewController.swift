@@ -51,25 +51,27 @@ class MainViewController: UIViewController {
         // 리프레시 컨트롤러 초기화
         initRefreshController()
         // 메인 리로드 함수
-        RealmManager.shared.reloadMainView = viewWillAppear(_:)
+        RealmManager.shared.reloadMainView = refresh
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //
         SystemManager.shared.openLoading()
-        //버전체크
+        checkVersion()
+        loadTask()
+        DispatchQueue.main.async { [self] in
+            initDate()
+            initSegment()
+        }
+    }
+    
+    //버전체크
+    private func checkVersion() {
         guard #available(iOS 15, *) else {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "iOS 15이상에서만 사용가능합니다.\n[설정->일반->소프트웨어 업데이트]\n에서 업데이트해주세요.", complete: { _ in
                 SystemManager.shared.openSettingMenu()
             })
-        }
-        //
-        loadTask()
-        DispatchQueue.main.async { [self] in
-            //
-            initDate()
-            initSegment()
         }
     }
 }
@@ -150,8 +152,8 @@ extension MainViewController {
 
 //MARK: - Task
 extension MainViewController {
+    // data reset
     func resetTask() {
-        // data reset
         taskDateKeyList = []
         categoryList = []
         resultList = [:]
@@ -159,90 +161,70 @@ extension MainViewController {
     }
     //Task 세팅
     func loadTask() {
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
+        DispatchQueue.main.async { [self] in
             resetTask()
-            //
-            let dataList = RealmManager.shared.getTaskDataForDay(date: todayDate)
-            let sortedList = dataList.sorted(by: { task1, task2 in
-                if task1.isDone {
-                    return task2.isDone ? true : false
-                } else {
-                    return true
-                }
-            })
-            //
-            for task in sortedList {
-                let category = task.category
-                if !categoryList.contains(where: {$0 == category}) {
-                    categoryList.append(category)
-                    resultList[category] = []
-                }
-                if resultList[category] != nil {
-                    resultList[category]?.append(task)
-                }
-            }
-        case 1:
-            resetTask()
-            //
-            let dataList = RealmManager.shared.getTaskDataForMonth(date: monthDate)
-            let sortedList = dataList.sorted(by: { task1, task2 in
-                if task1.isDone {
-                    return task2.isDone ? true : false
-                } else {
-                    return true
-                }
-            })
-            //
-            for task in sortedList {
-                let category = task.category
-                if !categoryList.contains(where: {$0 == category}) {
-                    categoryList.append(category)
-                    resultList[category] = []
-                }
-                if resultList[category] != nil {
-                    resultList[category]?.append(task)
-                }
-            }
-            //한달
-            taskDateKeyList = [Int](1...Utils.getLastDay(monthDate))
-            //딕셔너리 초기화
-            for i in taskDateKeyList {
-                monthlyTaskList[i] = MonthltyDayTask()
-            }
-            //
-            let weekDayList = Utils.getWeekDayList(monthDate)
-            var compareDay = Utils.dateToDateString(monthDate).split(separator: "-").map{String($0)}
-            //반복 타입 별 체크
-            for task in sortedList {
-                let option = task.optionData ?? OptionData()
-                let isEnd = option.isEnd
-                let taskEndDate = option.taskEndDate
-                //
-                switch RepeatType(rawValue: task.repeatType) {
-                case .None:
-                    let day = Utils.getDay(task.taskDay)
-                    monthlyTaskList[day]?.append(task.category, task)
-                case .EveryDay:
-                    for day in taskDateKeyList {
-                        compareDay[2] = String(format: "%02d", day)
-                        let currentDay = compareDay.joined(separator: "-")
-                        if isEnd {
-                            if taskEndDate >= currentDay && task.taskDay <= currentDay {
-                                monthlyTaskList[day]?.append(task.category, task)
-                            }
-                        } else {
-                            if task.taskDay <= currentDay {
-                                monthlyTaskList[day]?.append(task.category, task)
-                            }
-                        }
+            switch segmentedController.selectedSegmentIndex {
+            case 0:
+                let dataList = RealmManager.shared.getTaskDataForDay(date: todayDate)
+                let sortedList = dataList.sorted(by: { task1, task2 in
+                    if task1.isDone {
+                        return task2.isDone ? true : false
+                    } else {
+                        return true
                     }
-                case .Eachweek:
-                    for weekDay in task.getWeekDays() {
-                        guard let weekDayList = weekDayList[weekDay] else {
-                            return
-                        }
-                        for day in weekDayList {
+                })
+                //
+                for task in sortedList {
+                    let category = task.category
+                    if !categoryList.contains(where: {$0 == category}) {
+                        categoryList.append(category)
+                        resultList[category] = []
+                    }
+                    if resultList[category] != nil {
+                        resultList[category]?.append(task)
+                    }
+                }
+            case 1:
+                let dataList = RealmManager.shared.getTaskDataForMonth(date: monthDate)
+                let sortedList = dataList.sorted(by: { task1, task2 in
+                    if task1.isDone {
+                        return task2.isDone ? true : false
+                    } else {
+                        return true
+                    }
+                })
+                //
+                for task in sortedList {
+                    let category = task.category
+                    if !categoryList.contains(where: {$0 == category}) {
+                        categoryList.append(category)
+                        resultList[category] = []
+                    }
+                    if resultList[category] != nil {
+                        resultList[category]?.append(task)
+                    }
+                }
+                //한달
+                taskDateKeyList = [Int](1...Utils.getLastDay(monthDate))
+                //딕셔너리 초기화
+                for i in taskDateKeyList {
+                    monthlyTaskList[i] = MonthltyDayTask()
+                }
+                //
+                let weekDayList = Utils.getWeekDayList(monthDate)
+                var compareDay = Utils.dateToDateString(monthDate).split(separator: "-").map{String($0)}
+                //반복 타입 별 체크
+                for task in sortedList {
+                    let option = task.optionData ?? OptionData()
+                    let isEnd = option.isEnd
+                    let taskEndDate = option.taskEndDate
+                    //
+                    switch RepeatType(rawValue: task.repeatType) {
+                    case .None:
+                        let day = Utils.getDay(task.taskDay)
+                        monthlyTaskList[day]?.append(task.category, task)
+                    case .EveryDay:
+                        for day in taskDateKeyList {
                             compareDay[2] = String(format: "%02d", day)
                             let currentDay = compareDay.joined(separator: "-")
                             if isEnd {
@@ -255,49 +237,69 @@ extension MainViewController {
                                 }
                             }
                         }
-                    }
-                case .EachWeekOfMonth:
-                    let daysList = Utils.findDay(monthDate, option.weekOfMonth, task.getWeekDays())
-                    for day in daysList {
-                        compareDay[2] = String(format: "%02d", day)
-                        let currentDay = compareDay.joined(separator: "-")
-                        if isEnd {
-                            if taskEndDate >= currentDay && task.taskDay <= currentDay {
-                                monthlyTaskList[day]?.append(task.category, task)
+                    case .Eachweek:
+                        for weekDay in task.getWeekDays() {
+                            guard let weekDayList = weekDayList[weekDay] else {
+                                return
                             }
-                        } else {
-                            if task.taskDay <= currentDay {
-                                monthlyTaskList[day]?.append(task.category, task)
-                            }
-                        }
-                    }
-                default:
-                    //EachMonthOfOnce
-                    //EachYear
-                    for day in taskDateKeyList {
-                        compareDay[2] = String(format: "%02d", day)
-                        let currentDay = compareDay.joined(separator: "-")
-                        
-                        if isEnd {
-                            if taskEndDate >= currentDay && task.taskDay <= currentDay && day == Utils.getDay(task.taskDay) {
-                                monthlyTaskList[day]?.append(task.category, task)
-                            }
-                        } else {
-                            if task.taskDay <= currentDay && day == Utils.getDay(task.taskDay) {
-                                monthlyTaskList[day]?.append(task.category, task)
+                            for day in weekDayList {
+                                compareDay[2] = String(format: "%02d", day)
+                                let currentDay = compareDay.joined(separator: "-")
+                                if isEnd {
+                                    if taskEndDate >= currentDay && task.taskDay <= currentDay {
+                                        monthlyTaskList[day]?.append(task.category, task)
+                                    }
+                                } else {
+                                    if task.taskDay <= currentDay {
+                                        monthlyTaskList[day]?.append(task.category, task)
+                                    }
+                                }
                             }
                         }
-                        
+                    case .EachWeekOfMonth:
+                        let daysList = Utils.findDay(monthDate, option.weekOfMonth, task.getWeekDays())
+                        for day in daysList {
+                            compareDay[2] = String(format: "%02d", day)
+                            let currentDay = compareDay.joined(separator: "-")
+                            if isEnd {
+                                if taskEndDate >= currentDay && task.taskDay <= currentDay {
+                                    monthlyTaskList[day]?.append(task.category, task)
+                                }
+                            } else {
+                                if task.taskDay <= currentDay {
+                                    monthlyTaskList[day]?.append(task.category, task)
+                                }
+                            }
+                        }
+                    default:
+                        //EachMonthOfOnce
+                        //EachYear
+                        for day in taskDateKeyList {
+                            compareDay[2] = String(format: "%02d", day)
+                            let currentDay = compareDay.joined(separator: "-")
+                            
+                            if isEnd {
+                                if taskEndDate >= currentDay && task.taskDay <= currentDay && day == Utils.getDay(task.taskDay) {
+                                    monthlyTaskList[day]?.append(task.category, task)
+                                }
+                            } else {
+                                if task.taskDay <= currentDay && day == Utils.getDay(task.taskDay) {
+                                    monthlyTaskList[day]?.append(task.category, task)
+                                }
+                            }
+                            
+                        }
                     }
                 }
+                //month가 바뀌었으므로 캘린더 리로드
+                calendarView.reloadData()
+            default:
+                break
             }
-            //month가 바뀌었으므로 캘린더 리로드
-            calendarView.reloadData()
-        default:
-            break
+            reloadTable()
+            SystemManager.shared.closeLoading()
+            endAppearanceTransition()
         }
-        reloadTable()
-        SystemManager.shared.closeLoading()
     }
     //
     func checkNil() {
@@ -485,7 +487,6 @@ extension MainViewController {
     //SegmentedControl
     @IBAction func changeSegment(_ sender:UISegmentedControl) {
         //
-        SystemManager.shared.openLoading()
         switch segmentedController.selectedSegmentIndex {
         case 0:
             todayDate = Date()
@@ -494,9 +495,10 @@ extension MainViewController {
         default:
             return
         }
-        //
+        refresh()
+    }
+    private func refresh() {
         beginAppearanceTransition(true, animated: true)
-        viewWillAppear(true)
     }
 }
 

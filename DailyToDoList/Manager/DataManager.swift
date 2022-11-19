@@ -28,8 +28,7 @@ extension DataManager {
         deleteiCloudAllBackupFile()
         RealmManager.shared.deleteOriginFile()
         //
-        pushManager.deleteAllPush()
-        RealmManager.shared.deleteAllAlarm()
+        DataManager.shared.deleteAllAlarmPush()
     }
 }
 
@@ -65,6 +64,57 @@ extension DataManager {
 
 //MARK: - Push
 extension DataManager {
+    //전체 push load
+    func getAllPush(_ complete: @escaping ([UNNotificationRequest]) -> Void) {
+        pushManager.getAllRequest(complete)
+    }
+    //오늘자 push load
+    func getTodayPush(_ complete: @escaping ([UNNotificationRequest]) -> Void) {
+        pushManager.getAllRequest { list in
+            let date = Utils.dateToDateString(Date())
+            let requestList = list.filter { request in
+                guard let trigger = request.trigger as? UNCalendarNotificationTrigger else {
+                    return false
+                }
+                guard let next = trigger.nextTriggerDate() else {
+                    return false
+                }
+                let nextDate = Utils.dateToDateString(next)
+                if date == nextDate {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            complete(requestList)
+        }
+    }
+    // 푸시만 삭제
+    private func deletePush(_ idList:[String]) {
+        pushManager.deletePush(idList)
+    }
+    private func deletePush(_ id:String) {
+        pushManager.deletePush([id])
+    }
+    //alarmInfo, push 선택 삭제
+    func deleteAlarmPush(_ taskId:String, _ id:String) {
+        let idList = RealmManager.shared.getAlarmIdList(taskId)
+        //alarminfo가 없을 때
+        if idList.isEmpty {
+            deletePush(id)
+            return
+        }
+        pushManager.deletePush(idList)
+        // alarmInfo 삭제
+        RealmManager.shared.deleteAlarm(taskId)
+    }
+    //alarmInfo, push 모두 삭제
+    func deleteAllAlarmPush() {
+        pushManager.deleteAllPush()
+        // alarmInfo 모두 삭제
+        RealmManager.shared.deleteAllAlarm()
+    }
+    //
     func removeBadgeCnt() {
         pushManager.removeBadgeCnt()
     }

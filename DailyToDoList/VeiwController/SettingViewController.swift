@@ -85,6 +85,7 @@ extension SettingViewController {
         tableView.reloadData()
         //
         SystemManager.shared.closeLoading()
+        endAppearanceTransition()
     }
 }
 
@@ -115,7 +116,6 @@ extension SettingViewController {
     @IBAction func backData(_ sender: Any) {
         DataManager.shared.iCloudBackup(self)
         beginAppearanceTransition(true, animated: true)
-        viewWillAppear(true)
     }
     //refresh
     @IBAction func clickRefresh(_ sender: Any) {

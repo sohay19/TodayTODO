@@ -228,6 +228,10 @@ extension Utils {
 
 //MARK: - 변환
 extension Utils {
+    //
+    static func transTime(_ date:String, _ time:String) -> Date {
+        return stringToDate(date + "_" + time + ":00")!
+    }
     //첫번째 날로 변환
     static func transFirstDate(_ date:Date) -> Date? {
         return Calendar.current.startOfDay(for: date)

@@ -221,8 +221,8 @@ extension TaskInfoViewController {
         //시간
         switchingTime(taskData.taskTime.isEmpty ? true : false)
         if !switchTime.isOn {
-            let date = taskData.taskDay + "_" + taskData.taskTime + ":00"
-            pickTaskTime.date = Utils.stringToDate(date)!
+            let time = Utils.transTime(taskData.taskDay, taskData.taskTime)
+            pickTaskTime.date = time
         }
         //반복(+종료일)
         let repeatType = RepeatType(rawValue: taskData.repeatType)!
@@ -304,16 +304,10 @@ extension TaskInfoViewController {
         switchTime.isEnabled = isOn
         pickTaskTime.isEnabled = isOn
         btnRepeat.isEnabled = isOn
-        if btnRepeat.isSelected {
-            switchEndDate.isEnabled = isOn
-            if switchEndDate.isOn {
-                pickEndDate.isEnabled = isOn
-            }
-        }
+        switchEndDate.isEnabled = isOn
+        pickEndDate.isEnabled = isOn
         btnAlarm.isEnabled = isOn
-        if btnAlarm.isSelected {
-            pickAlarmTime.isEnabled = isOn
-        }
+        pickAlarmTime.isEnabled = isOn
         memoView.isEditable = isOn
     }
     //resultView 컨트롤
@@ -475,8 +469,8 @@ extension TaskInfoViewController {
         }
         let option = taskData.optionData ?? OptionData()
         pickAlarmTime.isHidden = !option.isAlarm
-        let time = taskData.taskDay + option.alarmTime + ":00"
-        pickAlarmTime.date = Utils.stringToDate(time)!
+        let time = Utils.transTime(taskData.taskDay, option.alarmTime)
+        pickAlarmTime.date = time
     }
 }
 

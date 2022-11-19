@@ -24,7 +24,6 @@ class PushListViewController : UIViewController {
     @IBOutlet weak var pushTable: UITableView!
     @IBOutlet weak var editView: UIView!
     
-    var pushList:[AlarmInfo] = []
     var taskList:[EachTask] = []
     var categoryList:[String] = []
     var heightConstraint:NSLayoutConstraint?
@@ -74,34 +73,46 @@ class PushListViewController : UIViewController {
 
 //MARK: - Func
 extension PushListViewController {
+    // data reset
+    func resetTask() {
+        taskList = []
+        categoryList = []
+    }
     func loadPushData() {
-        var dataList:[AlarmInfo] = []
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
-            dataList = RealmManager.shared.getTodayAlarmInfo()
-        case 1:
-            dataList = RealmManager.shared.getAllAlarmInfo()
-        default:
-            break
-        }
-        pushList = dataList.sorted { $0.alarmTime < $1.alarmTime }
-        //
-        for push in pushList {
-            guard let task = RealmManager.shared.getTaskData(push.taskId) else {
-                return
-            }
-            taskList.append(task)
-            let category = task.category
-            if !categoryList.contains(where: {$0 == category}) {
-                categoryList.append(category)
+        DispatchQueue.main.async { [self] in
+            resetTask()
+            //
+            switch segmentedController.selectedSegmentIndex {
+            case 0:
+                DataManager.shared.getTodayPush(loadPushList(_:))
+            case 1:
+                DataManager.shared.getAllPush(loadPushList(_:))
+            default:
+                break
             }
         }
-        //
-        labelNilMsg.isHidden = pushList.count == 0 ? false : true
-        pushTable.reloadData()
-        //
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+    }
+    private func loadPushList(_ requestList:[UNNotificationRequest]) {
+        DispatchQueue.main.sync { [self] in
+            for request in requestList {
+                guard let taskId = request.content.userInfo[idKey] as? String else {
+                    return
+                }
+                if let task = RealmManager.shared.getTaskData(taskId) {
+                    taskList.append(task)
+                    let category = task.category
+                    if !categoryList.contains(where: {$0 == category}) {
+                        categoryList.append(category)
+                    }
+                } else {
+                    DataManager.shared.deleteAlarmPush(taskId, request.identifier)
+                }
+            }
+            labelNilMsg.isHidden = taskList.count == 0 ? false : true
+            pushTable.reloadData()
+            
             SystemManager.shared.closeLoading()
+            endAppearanceTransition()
         }
     }
     //
@@ -173,16 +184,16 @@ extension PushListViewController {
     }
     //
     func deletePush(_ indexPath:IndexPath) {
-        let id = pushList[indexPath.row].taskId
-        guard let task = RealmManager.shared.getTaskData(id) else {
+        let task = taskList[indexPath.row]
+        guard let option = task.optionData else {
             return
         }
-        let option = task.optionData ?? OptionData()
-        let newTask = EachTask(id: task.taskId, taskDay: task.taskDay, category: task.category, time: task.taskTime, title: task.title, memo: task.memo, repeatType: task.repeatType, optionData: option, isDone: task.isDone)
+        let newOption = OptionData(taskId: task.taskId, weekDay: task.getWeekDayList(), weekOfMonth: option.weekOfMonth, isEnd: option.isEnd, taskEndDate: option.taskEndDate, isAlarm: false, alarmTime: "")
+        let newTask = EachTask(id: task.taskId, taskDay: task.taskDay, category: task.category, time: task.taskTime, title: task.title, memo: task.memo, repeatType: task.repeatType, optionData: newOption, isDone: task.isDone)
         // task data 업데이트
         RealmManager.shared.updateTaskDataForiOS(newTask)
         // 리스트 삭제
-        pushList.remove(at: indexPath.row)
+        taskList.remove(at: indexPath.row)
         pushTable.reloadData()
     }
 }
@@ -191,12 +202,17 @@ extension PushListViewController {
 extension PushListViewController {
     //SegmentedControl
     @IBAction func changeSegment(_ sender:UISegmentedControl) {
+        if pushTable.isEditing {
+            pushTable.setEditing(false, animated: true)
+        }
+        refresh()
+    }
+    private func refresh() {
         beginAppearanceTransition(true, animated: true)
-        viewWillAppear(true)
     }
     //
     @IBAction func changeDailyTaskEditMode(_ sender:UIButton) {
-        if pushList.count == 0 {
+        if taskList.count == 0 {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "편집 가능한 알림이 없습니다")
             return
         }

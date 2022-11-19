@@ -20,12 +20,12 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let openedPush = openedPush {
             if openedPush.indexPath.section == section {
-                return pushList.count+1
+                return taskList.count+1
             } else {
-                return pushList.count
+                return taskList.count
             }
         }
-        return pushList.count
+        return taskList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let pushCell = tableView.dequeueReusableCell(withIdentifier: "PushCell", for: indexPath) as? PushCell else {
@@ -99,8 +99,6 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             }
             pushCell.labelRepeat.text = repeatMsg
         }
-        
-        
         return pushCell
     }
     //MARK: - Expandable
@@ -117,7 +115,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
     //오른쪽 스와이프
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         //
-        let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+        let delete = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.deletePush(indexPath)
             success(true)
         }
@@ -128,11 +126,14 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
     }
     //MARK: - Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if pushTable.isEditing {
+            return
+        }
         if let _ = openedPush {
             openedPush = nil
             pushTable.reloadData()
         } else {
-            let task = pushList[indexPath.row]
+            let task = taskList[indexPath.row]
             openedPush = OpenedTask(task.taskId, categoryList[indexPath.section], indexPath)
             pushTable.reloadData()
         }

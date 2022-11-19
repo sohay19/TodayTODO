@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 import Realm
 import WidgetKit
+import UserNotifications
 
 
 class RealmManager {
@@ -27,7 +28,7 @@ class RealmManager {
     private var watchRealm:Realm?
     private let watchDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Realm_DailyToDoList", conformingTo: .directory)
     //
-    var reloadMainView:((Bool)->Void)?
+    var reloadMainView:(()->Void)?
 }
 
 //MARK: - Main
@@ -227,7 +228,7 @@ extension RealmManager {
             return
         }
         DispatchQueue.main.async {
-            reloadMainView(true)
+            reloadMainView()
         }
     }
     
@@ -237,7 +238,7 @@ extension RealmManager {
             return
         }
         DispatchQueue.main.async {
-            reloadMainView(true)
+            reloadMainView()
         }
     }
     
@@ -247,14 +248,48 @@ extension RealmManager {
             return
         }
         DispatchQueue.main.async {
-            reloadMainView(true)
+            reloadMainView()
         }
     }
 }
 
 
-//MARK: - Alarm Search
+//MARK: - Alarm/Push
 extension RealmManager {
+    //alarmInfo 선택 삭제
+    func deleteAlarm(_ taskId:String) {
+        openRealm()
+        guard let realm = realm else {
+            print("realm is nil")
+            return
+        }
+        guard let alarmInfo = getAlarmInfo(taskId) else {
+            return
+        }
+        do {
+            try realm.write {
+                realm.delete(alarmInfo)
+            }
+        } catch {
+            print("delete Alarm & Push Error")
+        }
+    }
+    //alarmInfo 모두 삭제
+    func deleteAllAlarm() {
+        openRealm()
+        guard let realm = realm else {
+            print("realm is nil")
+            return
+        }
+        do {
+            let alarmDataBase = realm.objects(AlarmInfo.self)
+            try realm.write {
+                realm.delete(alarmDataBase)
+            }
+        } catch {
+            print("delete All Alarm & Push Error")
+        }
+    }
     //
     func getAlarmIdList(_ taskId:String) -> [String] {
         openRealm()
@@ -291,31 +326,6 @@ extension RealmManager {
             return []
         }
         return realm.objects(AlarmInfo.self).map{$0}
-    }
-    //
-    func getTodayAlarmInfo() -> [AlarmInfo] {
-        var result:[AlarmInfo] = []
-        let taskList = getTaskDataForDay(date: Date())
-        for task in taskList {
-            if let item = getAlarmInfo(task.taskId) {
-                result.append(item)
-            }
-        }
-        return result
-    }
-    func deleteAllAlarm() {
-        openRealm()
-        guard let realm = realm else {
-            print("realm is nil")
-            return
-        }
-        do {
-            try realm.write {
-                realm.delete(realm.objects(AlarmInfo.self))
-            }
-        } catch {
-            print("delete AllAlarm Error")
-        }
     }
 }
 
