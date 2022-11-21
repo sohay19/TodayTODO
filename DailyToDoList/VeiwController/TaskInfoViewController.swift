@@ -104,13 +104,8 @@ extension TaskInfoViewController {
     private func initUI() {
         // 배경 설정
         let backgroundView = UIImageView(frame: UIScreen.main.bounds)
-        backgroundView.image = UIImage(named: BlackBackImage)
+        backgroundView.image = UIImage(named: PaperImage)
         view.insertSubview(backgroundView, at: 0)
-        //
-        pickTaskDate.overrideUserInterfaceStyle = .dark
-        pickTaskTime.overrideUserInterfaceStyle = .dark
-        pickEndDate.overrideUserInterfaceStyle = .dark
-        pickAlarmTime.overrideUserInterfaceStyle = .dark
         //
         scrollView.backgroundColor = .clear
         popView.backgroundColor = .clear
@@ -120,20 +115,36 @@ extension TaskInfoViewController {
         memoView.backgroundColor = .clear
         //
         let K_B_FontSize = K_FontSize + 3.0
-        labelTitle.font = UIFont(name: K_Font_B, size: K_B_FontSize)
-        labelCategory.font = UIFont(name: K_Font_B, size: K_B_FontSize)
-        labelSchedule.font = UIFont(name: K_Font_B, size: K_B_FontSize)
-        labelOption.font = UIFont(name: K_Font_B, size: K_B_FontSize)
-        labelMemo.font = UIFont(name: K_Font_B, size: K_B_FontSize)
-        labelTime.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelRepeatType.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelWeekUnit.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelDayUnit.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelEndDate.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelAlarm.font = UIFont(name: K_Font_R, size: K_FontSize)
+        let bold = UIFont(name: K_Font_B, size: K_B_FontSize)
+        let regular = UIFont(name: K_Font_R, size: K_FontSize)
+        labelTitle.font = bold
+        labelCategory.font = bold
+        labelSchedule.font = bold
+        labelOption.font = bold
+        labelMemo.font = bold
+        labelTime.font = regular
+        labelRepeatType.font = regular
+        labelWeekUnit.font = regular
+        labelDayUnit.font = regular
+        labelEndDate.font = regular
+        labelAlarm.font = regular
         //
-        inputTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
-        memoView.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelTitle.textColor = .label
+        labelCategory.textColor = .label
+        labelSchedule.textColor = .label
+        labelOption.textColor = .label
+        labelMemo.textColor = .label
+        labelTime.textColor = .label
+        labelRepeatType.textColor = .label
+        labelWeekUnit.textColor = .label
+        labelDayUnit.textColor = .label
+        labelEndDate.textColor = .label
+        labelAlarm.textColor = .label
+        //
+        inputTitle.font = regular
+        inputTitle.textColor = .label
+        memoView.font = regular
+        memoView.textColor = .label
         memoView.contentInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
         //
         //
@@ -142,7 +153,7 @@ extension TaskInfoViewController {
         btnPullCategory.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
         //
         btnPullCategory.layer.shadowColor = UIColor.darkGray.cgColor
-        btnPullCategory.layer.shadowOpacity = 0.3
+        btnPullCategory.layer.shadowOpacity = 0.5
         btnPullCategory.layer.shadowOffset = CGSize.zero
         btnPullCategory.layer.shadowRadius = 6
         btnPullCategory.layer.cornerRadius = 5
@@ -150,20 +161,22 @@ extension TaskInfoViewController {
         btnAlarm.backgroundColor = .clear
         //
         btnWrite.setImage(UIImage(systemName: "pencil", withConfiguration: mediumConfig), for: .normal)
-        btnWrite.tintColor = .systemBackground
+        btnWrite.tintColor = .label
         btnBack.setImage(UIImage(systemName: "chevron.backward", withConfiguration: mediumConfig), for: .normal)
-        btnBack.tintColor = .systemBackground
+        btnBack.tintColor = .label
         //
-        imgUnderline_1.image = UIImage(named: Underline_Indigo)
-        imgUnderline_1.alpha = 0.5
-        imgUnderline_2.image = UIImage(named: Underline_Indigo)
-        imgUnderline_2.alpha = 0.5
-        imgUnderline_3.image = UIImage(named: Underline_Indigo)
-        imgUnderline_3.alpha = 0.5
-        imgUnderline_4.image = UIImage(named: Underline_Indigo)
-        imgUnderline_4.alpha = 0.5
-        imgUnderline_5.image = UIImage(named: Underline_Indigo)
-        imgUnderline_5.alpha = 0.5
+        let image = UIImage(named: Underline_Indigo)
+        let alpha = 0.3
+        imgUnderline_1.image = image
+        imgUnderline_1.alpha = alpha
+        imgUnderline_2.image = image
+        imgUnderline_2.alpha = alpha
+        imgUnderline_3.image = image
+        imgUnderline_3.alpha = alpha
+        imgUnderline_4.image = image
+        imgUnderline_4.alpha = alpha
+        imgUnderline_5.image = image
+        imgUnderline_5.alpha = alpha
     }
     //
     private func initGesture() {
@@ -194,7 +207,7 @@ extension TaskInfoViewController {
     }
     //
     private func setDefaultUI() {
-        inputTitle.attributedPlaceholder = NSAttributedString(string: "TODO를 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.opaqueSeparator])
+        inputTitle.attributedPlaceholder = NSAttributedString(string: "TODO를 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.secondaryLabel])
         //시간, 종료일 끄기
         switchingTime(true)
         switchingEndDate(false)
@@ -270,7 +283,7 @@ extension TaskInfoViewController {
         actionList.append(addCategory)
         btnPullCategory.menu = UIMenu(title: "카테고리", children: actionList)
         //첫 카테고리 선택
-        btnPullCategory.sendAction(categoryList.first!.action)
+        btnPullCategory.sendAction(actionList[0])
     }
     //
     private func saveDefaultSize() {

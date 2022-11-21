@@ -24,7 +24,7 @@ class PushListViewController : UIViewController {
     @IBOutlet weak var pushTable: UITableView!
     @IBOutlet weak var editView: UIView!
     
-    var taskList:[EachTask] = []
+    var taskList:[String:[EachTask]] = [:]
     var categoryList:[String] = []
     var heightConstraint:NSLayoutConstraint?
     var heightOrigin:CGFloat = 60
@@ -76,7 +76,7 @@ class PushListViewController : UIViewController {
 extension PushListViewController {
     // data reset
     func resetTask() {
-        taskList = []
+        taskList = [:]
         categoryList = []
     }
     func loadPushData() {
@@ -100,10 +100,13 @@ extension PushListViewController {
                     return
                 }
                 if let task = DataManager.shared.getTask(taskId) {
-                    taskList.append(task)
                     let category = task.category
                     if !categoryList.contains(where: {$0 == category}) {
                         categoryList.append(category)
+                        taskList[category] = []
+                    }
+                    if taskList[category] != nil {
+                        taskList[category]?.append(task)
                     }
                 } else {
                     DataManager.shared.deleteAlarmPush(taskId, request.identifier)
@@ -137,7 +140,7 @@ extension PushListViewController {
         pushTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
-        labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
         //
         btnEdit.contentMode = .center
         btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: mediumConfig), for: .normal)
@@ -165,10 +168,10 @@ extension PushListViewController {
         switch segmentedController.selectedSegmentIndex {
         case 0:
             labelDate.text = "Today Push"
-            imgUnderline.image = UIImage(named: Underline_Pink)
+            imgUnderline.image = UIImage(named: Underline_Indigo)
         case 1:
             labelDate.text = "All Push"
-            imgUnderline.image = UIImage(named: Underline_Indigo)
+            imgUnderline.image = UIImage(named: Underline_Pink)
         default:
             break
         }
@@ -188,7 +191,10 @@ extension PushListViewController {
     }
     //
     func deletePush(_ indexPath:IndexPath) {
-        let task = taskList[indexPath.row]
+        let category = categoryList[indexPath.section]
+        guard let task = taskList[category]?[indexPath.row] else {
+            return
+        }
         guard let option = task.optionData else {
             return
         }
@@ -197,7 +203,12 @@ extension PushListViewController {
         // task data 업데이트
         DataManager.shared.updateTask(newTask)
         // 리스트 삭제
-        taskList.remove(at: indexPath.row)
+        taskList[category]?.remove(at: indexPath.row)
+        if let list = taskList[category] {
+            if list.isEmpty {
+                categoryList.remove(at: indexPath.section)
+            }
+        }
         pushTable.reloadData()
     }
 }

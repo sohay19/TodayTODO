@@ -7,7 +7,6 @@
 // App
 
 
-import UIKit
 import Foundation
 import FirebaseAuth
 import UserNotifications
@@ -20,9 +19,6 @@ class DataManager {
     private init() { }
     
     private let realmManager = RealmManager()
-#if os(iOS)
-    private let cloudManager = CloudManager()
-#endif
     private let pushManager = PushManager()
 }
 
@@ -31,53 +27,19 @@ extension DataManager {
     func initRealm() {
         realmManager.openRealm()
     }
+    //
     func setReloadMain(_ reloadMain:@escaping () -> Void) {
         realmManager.reloadMainView = reloadMain
     }
-}
-#if os(iOS)
-//MARK: - iCloud
-extension DataManager {
     //
-    func getAllBackupFile() -> [(String, URL)] {
-        cloudManager.realmUrl = realmManager.realmUrl
-        return cloudManager.getAllBackupFile()
+    func getRealmURL() -> URL? {
+        return realmManager.getRealmURL()
     }
     //
-    func updateCloud(label:UILabel) {
-        cloudManager.realmUrl = realmManager.realmUrl
-        cloudManager.updateDate(label)
-    }
-    //
-    func iCloudBackup(_ vc:UIViewController) {
-        cloudManager.realmUrl = realmManager.realmUrl
-        cloudManager.backUpFile(vc)
-    }
-    //
-    func iCloudLoadFile(_ vc:UIViewController, _ url:URL) {
-        cloudManager.realmUrl = realmManager.realmUrl
-        cloudManager.loadBackupFile(vc, url)
-    }
-    func iCloudLoadRecentlyFile(_ vc:UIViewController) {
-        cloudManager.realmUrl = realmManager.realmUrl
-        cloudManager.loadRecentlyBackupFile(vc)
-    }
-    //
-    func deleteiCloudBackupFile(_ url:URL) {
-        cloudManager.realmUrl = realmManager.realmUrl
-        cloudManager.deleteBackupFile(url)
-    }
-    func deleteiCloudAllBackupFile() {
-        cloudManager.realmUrl = realmManager.realmUrl
-        cloudManager.deleteAllBackupFile()
-    }
-    func deleteAllFile() {
-        deleteiCloudAllBackupFile()
+    func deleteRealm() {
         realmManager.deleteOriginFile()
-        deleteAllAlarmPush()
     }
 }
-#endif
 
 //MARK: - Task
 extension DataManager {
@@ -98,9 +60,7 @@ extension DataManager {
         let option = task.optionData ?? OptionData()
         let isAlarm = option.isAlarm
         if isAlarm {
-            let idList = realmManager.getAlarmIdList(task.taskId)
-            deletePush(idList)
-            realmManager.deleteAlarm(task.taskId)
+            deleteAlarmPush(task.taskId)
         }
         realmManager.deleteTask(task)
     }
@@ -158,13 +118,6 @@ extension DataManager {
             complete(requestList)
         }
     }
-    // 푸시만 삭제
-    private func deletePush(_ idList:[String]) {
-        pushManager.deletePush(idList)
-    }
-    private func deletePush(_ id:String) {
-        pushManager.deletePush([id])
-    }
     // 뱃지 카운트 zero set
     func removeBadgeCnt() {
         pushManager.removeBadgeCnt()
@@ -185,11 +138,8 @@ extension DataManager {
     func updateAlarmPush(_ task:EachTask) {
         let option = task.optionData ?? OptionData()
         let isAlarm = option.isAlarm
-        //기존 푸시가 있다면 삭제
-        var idList = realmManager.getAlarmIdList(task.taskId)
-        idList = pushManager.updatePush(idList, task)
-        //기존 알람이 있다면 삭제
-        realmManager.deleteAlarm(task.taskId)
+        //삭제
+        deleteAlarmPush(task.taskId)
         //새로운 알람이 있다면 추가
         if isAlarm {
             addAlarmPush(task)
@@ -197,21 +147,23 @@ extension DataManager {
     }
     //alarmInfo, push 선택 삭제
     func deleteAlarmPush(_ taskId:String, _ id:String) {
-        let idList = realmManager.getAlarmIdList(taskId)
-        //alarminfo가 없을 때
-        if idList.isEmpty {
-            deletePush(id)
-            return
+        //alarminfo 있을 때
+        if let alarmInfo = realmManager.getAlarmInfo(taskId) {
+            let idList = realmManager.getAlarmIdList(taskId)
+            pushManager.deletePush(idList)
+            realmManager.deleteAlarm(alarmInfo)
+        } else {
+            //alarminfo가 없을 때
+            pushManager.deletePush([id])
         }
-        pushManager.deletePush(idList)
-        // alarmInfo 삭제
-        realmManager.deleteAlarm(taskId)
     }
     func deleteAlarmPush(_ taskId:String) {
-        let idList = realmManager.getAlarmIdList(taskId)
-        pushManager.deletePush(idList)
-        // alarmInfo 삭제
-        realmManager.deleteAlarm(taskId)
+        //alarminfo 있을 때
+        if let alarmInfo = realmManager.getAlarmInfo(taskId) {
+            let idList = realmManager.getAlarmIdList(taskId)
+            pushManager.deletePush(idList)
+            realmManager.deleteAlarm(alarmInfo)
+        }
     }
     //alarmInfo, push 모두 삭제
     func deleteAllAlarmPush() {

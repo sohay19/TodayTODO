@@ -18,16 +18,6 @@ class BackUpCell : UITableViewCell {
         initCell()
     }
     
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        super.setHighlighted(highlighted, animated: animated)
-        //
-        if highlighted {
-            labelDate.textColor = .systemPink
-        } else {
-            labelDate.textColor = .systemBackground
-        }
-    }
-    
     func initCell() {
         self.backgroundColor = .clear
         self.selectionStyle = .none
@@ -35,5 +25,6 @@ class BackUpCell : UITableViewCell {
         separatorInset = UIEdgeInsets(top: 0, left: 9, bottom: 0, right: 9)
         //
         labelDate.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelDate.tintColor = .label
     }
 }

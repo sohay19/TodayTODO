@@ -45,7 +45,7 @@ extension CustomTabBarController : UITabBarControllerDelegate {
             let tabBarItem = UITabBarItem(
                 title: nil,
                 image: UIImage(systemName: icon)?.withConfiguration(boldConfig).withTintColor(.label, renderingMode: .alwaysOriginal),
-                selectedImage: UIImage(systemName: icon)?.withConfiguration(boldConfig).withTintColor(.defaultPink!, renderingMode: .alwaysOriginal)
+                selectedImage: UIImage(systemName: icon)?.withConfiguration(boldConfig).withTintColor(.systemIndigo, renderingMode: .alwaysOriginal)
             )
             currentTab.tabBarItem = tabBarItem
         }

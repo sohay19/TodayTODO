@@ -16,11 +16,11 @@ import UserNotifications
 class RealmManager {
     private let fileManager = FileManager.default
     //
-    var realmUrl:URL?
+    private var realmUrl:URL?
     private var realm:Realm?
     private let realmDir = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupId)?.appendingPathComponent("Realm_DailyToDoList", isDirectory: true)
     //
-    var watchUrl:URL?
+    private var watchUrl:URL?
     private var watchRealm:Realm?
     private let watchDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Realm_DailyToDoList", conformingTo: .directory)
     //
@@ -88,10 +88,13 @@ extension RealmManager {
         }
         fileManager.deleteDir(realmDir, nil)
     }
+    //
+    func getRealmURL() -> URL? {
+        return realmUrl
+    }
 }
 extension RealmManager {
     //MARK: - Task
-    //
     func addTask(_ task:EachTask) {
         openRealm()
         guard let realm = realm else {
@@ -210,6 +213,20 @@ extension RealmManager {
             return
         }
         guard let alarmInfo = getAlarmInfo(taskId) else {
+            return
+        }
+        do {
+            try realm.write {
+                realm.delete(alarmInfo)
+            }
+        } catch {
+            print("delete Alarm & Push Error")
+        }
+    }
+    func deleteAlarm(_ alarmInfo:AlarmInfo) {
+        openRealm()
+        guard let realm = realm else {
+            print("realm is nil")
             return
         }
         do {

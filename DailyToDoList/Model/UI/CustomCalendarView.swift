@@ -43,10 +43,10 @@ class CustomCalendarView : FSCalendar {
         //
         self.today = Date()
         self.appearance.todayColor = .clear
-        self.appearance.titleTodayColor = .defaultPink
-        self.appearance.selectionColor = .systemIndigo
+        self.appearance.titleTodayColor = .systemIndigo
+        self.appearance.selectionColor = .defaultPink
         //
-        self.appearance.titleWeekendColor = .systemIndigo
+        self.appearance.titleWeekendColor = .defaultPink
         self.appearance.titleDefaultColor = .label
         self.appearance.titleFont = UIFont(name: CalendalFont, size: CalendalFontSize - 6.0)
         //

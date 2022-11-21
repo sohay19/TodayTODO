@@ -20,7 +20,11 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnBackup: UIButton!
     
+    
+    private let cloudManager = CloudManager()
+    
     var dataList:[(name:String, url:URL)] = []
+    var isRefresh = false
     
     
     override func viewDidLoad() {
@@ -38,7 +42,7 @@ class SettingViewController: UIViewController {
         //
         SystemManager.shared.openLoading()
         //백업파일 날짜로드
-        DataManager.shared.updateCloud(label: labelBackupDate)
+        updateCloud(label: labelBackupDate)
         //
         DispatchQueue.main.async { [self] in
             loadData()
@@ -51,25 +55,27 @@ extension SettingViewController {
     func initUI() {
         // 배경 설정
         let backgroundView = UIImageView(frame: UIScreen.main.bounds)
-        backgroundView.image = UIImage(named: BlackBackImage)
+        backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         //폰트 설정
         labelTitle.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
-        labelDate.font = UIFont(name: K_Font_B, size: K_FontSize + 3.0)
+        labelDate.font = UIFont(name: K_Font_B, size: K_FontSize + 1.0)
         labelBackupDate.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelTableTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 3.0)
+        labelTableTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 1.0)
+        labelTitle.textColor = .label
+        labelDate.textColor = .systemBackground
+        labelBackupDate.textColor = .label
+        labelTableTitle.textColor = .systemBackground
         //
-        imgUnderline.image = UIImage(named: Underline_Pink)
-        imgUnderline.alpha = 0.5
-        imgUnderline_table.image = UIImage(named: Underline_Pink)
-        imgUnderline_table.alpha = 0.5
+        imgUnderline.image = UIImage(named: Underline_Black)
+        imgUnderline.alpha = 0.8
+        imgUnderline_table.image = UIImage(named: Underline_Black)
+        imgUnderline_table.alpha = 0.8
         //
         tableView.allowsSelection = false
-        tableView.backgroundColor = .clear
-        tableView.layer.borderColor = UIColor.secondaryLabel.cgColor
-        tableView.layer.borderWidth = 0.5
+        tableView.backgroundColor = .label.withAlphaComponent(0.1)
         tableView.layer.cornerRadius = 5
-        tableView.separatorColor = .label
+        tableView.separatorColor = .systemFill
         //
         btnBackup.contentMode = .center
         btnBackup.setImage(UIImage(systemName: "tray.and.arrow.down.fill", withConfiguration: mediumConfig), for: .normal)
@@ -81,28 +87,73 @@ extension SettingViewController {
     }
     //
     func loadData() {
-        dataList = DataManager.shared.getAllBackupFile()
+        dataList = getAllBackupFile()
         tableView.reloadData()
         //
         SystemManager.shared.closeLoading()
-        endAppearanceTransition()
+        if isRefresh {
+            endAppearanceTransition()
+            isRefresh = false
+        }
+    }
+}
+
+//MARK: - iCloud
+extension SettingViewController {
+    //
+    func getAllBackupFile() -> [(String, URL)] {
+        cloudManager.realmUrl = DataManager.shared.getRealmURL()
+        return cloudManager.getAllBackupFile()
+    }
+    //
+    func updateCloud(label:UILabel) {
+        cloudManager.realmUrl = DataManager.shared.getRealmURL()
+        cloudManager.updateDate(label)
+    }
+    //
+    func iCloudBackup(_ vc:UIViewController) {
+        cloudManager.realmUrl = DataManager.shared.getRealmURL()
+        cloudManager.backUpFile(vc)
+    }
+    //
+    func iCloudLoadFile(_ vc:UIViewController, _ url:URL) {
+        cloudManager.realmUrl = DataManager.shared.getRealmURL()
+        cloudManager.loadBackupFile(vc, url)
+    }
+    func iCloudLoadRecentlyFile(_ vc:UIViewController) {
+        cloudManager.realmUrl = DataManager.shared.getRealmURL()
+        cloudManager.loadRecentlyBackupFile(vc)
+    }
+    //
+    func deleteiCloudBackupFile(_ url:URL) {
+        cloudManager.realmUrl = DataManager.shared.getRealmURL()
+        cloudManager.deleteBackupFile(url)
+    }
+    func deleteiCloudAllBackupFile() {
+        cloudManager.realmUrl = DataManager.shared.getRealmURL()
+        cloudManager.deleteAllBackupFile()
+    }
+    func deleteAllFile() {
+        deleteiCloudAllBackupFile()
+        DataManager.shared.deleteRealm()
+        DataManager.shared.deleteAllAlarmPush()
     }
 }
 
 //MARK: - Func
 extension SettingViewController {
     func updateDate() {
-        DataManager.shared.updateCloud(label: labelBackupDate)
+        updateCloud(label: labelBackupDate)
     }
     
     func loadBackupFile(_ indexPath:IndexPath) {
         let url = self.dataList[indexPath.row].url
-        DataManager.shared.iCloudLoadFile(self, url)
+        iCloudLoadFile(self, url)
     }
     
     func deleteBackupFile(_ indexPath:IndexPath)  {
         let url = self.dataList[indexPath.row].url
-        DataManager.shared.deleteiCloudBackupFile(url)
+        deleteiCloudBackupFile(url)
         //
         dataList.remove(at: indexPath.row)
         tableView.reloadData()
@@ -114,7 +165,8 @@ extension SettingViewController {
 extension SettingViewController {
     //데이터 백업
     @IBAction func backData(_ sender: Any) {
-        DataManager.shared.iCloudBackup(self)
+        iCloudBackup(self)
+        isRefresh = true
         beginAppearanceTransition(true, animated: true)
     }
     //refresh
@@ -123,7 +175,7 @@ extension SettingViewController {
     }
     //
     @IBAction func removeAllFile(_ sender: Any) {
-        DataManager.shared.deleteAllFile()
+        deleteAllFile()
         dataList.removeAll()
         tableView.reloadData()
         

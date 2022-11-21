@@ -57,6 +57,11 @@ enum PageType:Int {
     case Backup
 }
 
+enum MainType:Int {
+    case Today
+    case Month
+}
+
 enum DataType:String {
     case EachTask = "EachTask"
     case NSEachTask = "NSEachTask"

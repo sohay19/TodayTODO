@@ -30,9 +30,9 @@ class PushCell : UITableViewCell {
         super.setHighlighted(highlighted, animated: animated)
         //
         if highlighted {
-            labelTitle.textColor = isToday ? .defaultPink : .systemIndigo
-            labelAlarmTime.textColor = isToday ? .defaultPink : .systemIndigo
-            labelRepeat.textColor = isToday ? .defaultPink : .systemIndigo
+            labelTitle.textColor = isToday ? .systemIndigo : .defaultPink
+            labelAlarmTime.textColor = isToday ? .systemIndigo : .defaultPink
+            labelRepeat.textColor = isToday ? .systemIndigo : .defaultPink
         } else {
             labelTitle.textColor = .label
             labelAlarmTime.textColor = .label

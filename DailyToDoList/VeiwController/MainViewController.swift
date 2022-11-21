@@ -8,7 +8,12 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    @IBOutlet weak var imgUnderline: UIImageView!
+    @IBOutlet weak var imgNil: UIImageView!
+    @IBOutlet weak var img_Underline: UIImageView!
+    //
+    @IBOutlet weak var segmentedController: CustomSegmentControl!
+    @IBOutlet weak var btnAdd: UIButton!
+    @IBOutlet weak var btnToday: UIButton!
     //
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelTodayNilMsg: UILabel!
@@ -17,15 +22,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var dailyTaskTable: UITableView!
     @IBOutlet weak var monthlyTaskTable: UITableView!
     //
-    @IBOutlet weak var segmentedController: CustomSegmentControl!
-    @IBOutlet weak var btnAdd: UIButton!
-    //
     @IBOutlet weak var calendarView: CustomCalendarView!
     @IBOutlet weak var todayView: UIView!
     @IBOutlet weak var monthView: UIView!
     
     //
-//    var todayDate:Date = Date()
     var monthDate:Date = Date()
     //
     var categoryList:[String] = []
@@ -34,6 +35,7 @@ class MainViewController: UIViewController {
     var monthlyTaskList:[Int:MonthltyDayTask] = [:]
     var taskDateKeyList:[Int] = []
     //
+    var currentType:MainType = .Today
     var openedTask:OpenedTask?
     var isRefresh = false
     
@@ -66,7 +68,6 @@ class MainViewController: UIViewController {
             initSegment()
         }
     }
-    
     //버전체크
     private func checkVersion() {
         guard #available(iOS 15, *) else {
@@ -80,17 +81,13 @@ class MainViewController: UIViewController {
 //MARK: - UI
 extension MainViewController {
     func initDate() {
-        var date:[Substring] = []
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
-            date = Utils.dateToDateString(Date()).split(separator: "-")
-        case 1:
-            date = Utils.dateToDateString(monthDate).split(separator: "-")
-            date.removeLast()
-        default:
-            return
+        var dateList:[Substring] = []
+        dateList = Utils.dateToDateString(currentType == .Today ? Date() : monthDate).split(separator: "-")
+        img_Underline.image = UIImage(named: currentType == .Today ? Underline_Indigo : Underline_Pink)
+        if currentType == .Month {
+            dateList.removeLast()
         }
-        labelDate.text = date.joined(separator: ". ")
+        labelDate.text = dateList.joined(separator: ".")
     }
     //
     func initUI() {
@@ -102,20 +99,27 @@ extension MainViewController {
         todayView.backgroundColor = .clear
         monthView.backgroundColor = .clear
         // 폰트 설정
-        btnAdd.contentMode = .center
-        btnAdd.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: mediumConfig), for: .normal)
-        labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
-        labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
         labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
-        dailyTaskTable.sectionHeaderTopPadding = 18
+        labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
+        img_Underline.alpha = 0.3
+        //
+        btnAdd.contentMode = .center
+        btnAdd.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: mediumConfig), for: .normal)
+        //
+        dailyTaskTable.sectionHeaderTopPadding = 0
+        dailyTaskTable.sectionHeaderHeight = 30
+        dailyTaskTable.sectionFooterHeight = 30
         dailyTaskTable.backgroundColor = .clear
         dailyTaskTable.separatorInsetReference = .fromCellEdges
         dailyTaskTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         dailyTaskTable.separatorColor = .label
         dailyTaskTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
-        monthlyTaskTable.sectionHeaderTopPadding = 18
+        monthlyTaskTable.sectionHeaderTopPadding = 0
+        monthlyTaskTable.sectionHeaderHeight = 30
+        monthlyTaskTable.sectionFooterHeight = 30
         monthlyTaskTable.backgroundColor = .clear
         monthlyTaskTable.separatorInsetReference = .fromCellEdges
         monthlyTaskTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -132,22 +136,20 @@ extension MainViewController {
     }
     //
     func initSegment() {
-        //
-        imgUnderline.image = UIImage(named: segmentedController.selectedSegmentIndex == 0 ? Underline_Pink : Underline_Indigo)
-        imgUnderline.alpha = 0.3
-        //
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
-            //Today
+        switch currentType {
+        case .Today:
             monthView.isHidden = true
             todayView.isHidden = false
-        case 1:
-            //Month
+            btnToday.isHidden = true
+        case .Month:
             monthView.isHidden = false
             todayView.isHidden = true
-        default:
-            break
+            btnToday.isHidden = false
         }
+    }
+    private func refresh() {
+        isRefresh = true
+        beginAppearanceTransition(true, animated: true)
     }
 }
 
@@ -164,8 +166,8 @@ extension MainViewController {
     func loadTask() {
         DispatchQueue.main.async { [self] in
             resetTask()
-            switch segmentedController.selectedSegmentIndex {
-            case 0:
+            switch currentType {
+            case .Today:
                 let dataList = DataManager.shared.getTodayTask()
                 let sortedList = dataList.sorted(by: { task1, task2 in
                     if task1.isDone {
@@ -185,7 +187,7 @@ extension MainViewController {
                         resultList[category]?.append(task)
                     }
                 }
-            case 1:
+            case .Month:
                 let dataList = DataManager.shared.getMonthTask(date: monthDate)
                 let sortedList = dataList.sorted(by: { task1, task2 in
                     if task1.isDone {
@@ -294,8 +296,6 @@ extension MainViewController {
                 }
                 //month가 바뀌었으므로 캘린더 리로드
                 calendarView.reloadData()
-            default:
-                break
             }
             reloadTable()
             SystemManager.shared.closeLoading()
@@ -307,14 +307,16 @@ extension MainViewController {
     }
     //
     func checkNil() {
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
+        switch currentType {
+        case .Today:
             if resultList.keys.count == 0 {
                 labelTodayNilMsg.isHidden = false
+                imgNil.isHidden = false
             } else {
                 labelTodayNilMsg.isHidden = true
+                imgNil.isHidden = true
             }
-        case 1:
+        case .Month:
             guard let list = monthlyTaskList[Utils.getDay(monthDate)] else {
                 labelMonthNilMsg.isHidden = false
                 return
@@ -324,15 +326,13 @@ extension MainViewController {
             } else {
                 labelMonthNilMsg.isHidden = true
             }
-        default:
-            return
         }
     }
     //
     func taskIsDone(_ isDone:Bool, _ indexPath:IndexPath) {
         let category = categoryList[indexPath.section]
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
+        switch currentType {
+        case .Today:
             //Today
             guard let task = resultList[category]?[indexPath.row] else {
                 return
@@ -351,7 +351,7 @@ extension MainViewController {
                 resultList[category] = [task] + taskList
             }
             dailyTaskTable.reloadData()
-        case 1:
+        case .Month:
             //Month
             guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else {
                 return
@@ -371,31 +371,23 @@ extension MainViewController {
                 monthlyTaskList[day]?.taskList[category] = [task] + taskList
             }
             monthlyTaskTable.reloadData()
-        default:
-            break
         }
     }
     //
     func modifyTask(_ indexPath:IndexPath) {
         let category = categoryList[indexPath.section]
         var beforeTask:EachTask = EachTask()
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
-            //Today
+        switch currentType {
+        case .Today:
             guard let task = resultList[category]?[indexPath.row] else {
                 return
             }
             beforeTask = task
-//            dailyTaskTable.reloadRows(at: [indexPath], with: .none)
-        case 1:
-            //Month
+        case .Month:
             guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else {
                 return
             }
             beforeTask = task
-//            monthlyTaskTable.reloadRows(at: [indexPath], with: .none)
-        default:
-            break
         }
         SystemManager.shared.openTaskInfo(.MODIFY, date: nil, task: beforeTask, load: loadTask, modify: afterModifyTask)
     }
@@ -403,15 +395,11 @@ extension MainViewController {
     func afterModifyTask(_ task:EachTask) {
         DataManager.shared.updateTask(task)
         //
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
-            //Today
+        switch currentType {
+        case .Today:
             dailyTaskTable.reloadData()
-        case 1:
-            //Month
+        case .Month:
             monthlyTaskTable.reloadData()
-        default:
-            break
         }
     }
     //
@@ -421,8 +409,8 @@ extension MainViewController {
             return
         }
         DataManager.shared.deleteTask(task)
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
+        switch currentType {
+        case .Today:
             resultList[category]?.remove(at: indexPath.row)
             if let list = resultList[category] {
                 if list.isEmpty {
@@ -431,11 +419,9 @@ extension MainViewController {
             }
             dailyTaskTable.reloadData()
             checkNil()
-        case 1:
+        case .Month:
             SystemManager.shared.openLoading()
             loadTask()
-        default:
-            break
         }
     }
 }
@@ -460,28 +446,24 @@ extension MainViewController {
     //
     @objc func refreshTaskView() {
         DispatchQueue.main.async { [self] in
-            switch segmentedController.selectedSegmentIndex {
-            case 0:
+            switch currentType {
+            case .Today:
                 dailyTaskTable.refreshControl?.endRefreshing()
                 dailyTaskTable.reloadData()
-            case 1:
+            case .Month:
                 monthlyTaskTable.refreshControl?.endRefreshing()
                 monthlyTaskTable.reloadData()
-            default:
-                break
             }
         }
     }
     //
     func reloadTable() {
         checkNil()
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
+        switch currentType {
+        case .Today:
             dailyTaskTable.reloadData()
-        case 1:
+        case .Month:
             monthlyTaskTable.reloadData()
-        default:
-            return
         }
     }
 }
@@ -489,20 +471,28 @@ extension MainViewController {
 //MARK: - Button Event
 extension MainViewController {
     @IBAction func clickTaskAdd(_ sender:Any) {
-        let date = segmentedController.selectedSegmentIndex == 0 ? Date() : monthDate
+        let date = currentType == .Today ? Date() : monthDate
         SystemManager.shared.openTaskInfo(.ADD, date: date, task: nil, load:loadTask, modify: nil)
     }
     //SegmentedControl
     @IBAction func changeSegment(_ sender:UISegmentedControl) {
         //
-        if segmentedController.selectedSegmentIndex == 1 {
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            currentType = .Today
+            btnToday.isHidden = true
+        case 1:
+            currentType = .Month
             calendarView.select(monthDate)
+            btnToday.isHidden = false
+        default:
+            return
         }
         refresh()
     }
-    private func refresh() {
-        isRefresh = true
-        beginAppearanceTransition(true, animated: true)
+    @IBAction func clickToday(_ sender:Any) {
+        monthDate = Date()
+        calendarView.select(monthDate)
     }
 }
 

@@ -51,8 +51,6 @@
 		CF5350D3291E9CE200AFDC14 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D2291E9CE200AFDC14 /* Loading.xib */; };
 		CF5350D52921E92F00AFDC14 /* underline_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D42921E92E00AFDC14 /* underline_Black.png */; };
 		CF5350D72921F3F300AFDC14 /* underline_Pink.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D62921F3F300AFDC14 /* underline_Pink.png */; };
-		CF5350D929221D6700AFDC14 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D829221D6700AFDC14 /* pencil.png */; };
-		CF5350E32922277B00AFDC14 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350E22922277B00AFDC14 /* clock.png */; };
 		CF5350E7292376BB00AFDC14 /* MonthltyDayTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */; };
 		CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */; };
 		CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */; };
@@ -115,12 +113,12 @@
 		CFE01AF82918EDE6005B3316 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */; };
 		CFE45D232928A605007024EB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
 		CFE45D242928A606007024EB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
-		CFE45D272928AAC9007024EB /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5A28F155E5008850DC /* PopupManager.swift */; };
 		CFE45D292928AADE007024EB /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */; };
 		CFE45D2A2928AADF007024EB /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */; };
-		CFE45D2B2928AC61007024EB /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5A28F155E5008850DC /* PopupManager.swift */; };
-		CFE45D2C2928AD56007024EB /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5428F1559D008850DC /* CloudManager.swift */; };
-		CFE45D2D2928AD57007024EB /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5428F1559D008850DC /* CloudManager.swift */; };
+		CFE45D30292B1D2B007024EB /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D2E292B1D2A007024EB /* clock.png */; };
+		CFE45D31292B1D2B007024EB /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D2F292B1D2B007024EB /* pencil.png */; };
+		CFE45D37292B5A4E007024EB /* DefaultBack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D36292B5A4E007024EB /* DefaultBack.jpg */; };
+		CFE45D3B292B6F17007024EB /* AddCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D3A292B6F17007024EB /* AddCategory.storyboard */; };
 		CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DA28F13287008850DC /* AppDelegate.swift */; };
 		CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DC28F13287008850DC /* SceneDelegate.swift */; };
 		CFEB49DF28F13287008850DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DE28F13287008850DC /* MainViewController.swift */; };
@@ -288,8 +286,6 @@
 		CF5350D2291E9CE200AFDC14 /* Loading.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Loading.xib; sourceTree = "<group>"; };
 		CF5350D42921E92E00AFDC14 /* underline_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Black.png; sourceTree = "<group>"; };
 		CF5350D62921F3F300AFDC14 /* underline_Pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Pink.png; sourceTree = "<group>"; };
-		CF5350D829221D6700AFDC14 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
-		CF5350E22922277B00AFDC14 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthltyDayTask.swift; sourceTree = "<group>"; };
 		CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCExtension.swift; sourceTree = "<group>"; };
@@ -330,6 +326,10 @@
 		CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoViewController.swift; sourceTree = "<group>"; };
 		CFE01ADC291502E0005B3316 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
+		CFE45D2E292B1D2A007024EB /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		CFE45D2F292B1D2B007024EB /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
+		CFE45D36292B5A4E007024EB /* DefaultBack.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DefaultBack.jpg; sourceTree = "<group>"; };
+		CFE45D3A292B6F17007024EB /* AddCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCategory.storyboard; sourceTree = "<group>"; };
 		CFEB49D728F13287008850DC /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEB49DA28F13287008850DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFEB49DC28F13287008850DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -526,15 +526,16 @@
 			children = (
 				CF5350AF291E3D4B00AFDC14 /* Background1.jpg */,
 				CF5350A8291E3D4A00AFDC14 /* Background2.jpg */,
+				CFE45D36292B5A4E007024EB /* DefaultBack.jpg */,
 				CF2BAF0D2925DAFE00EB49F4 /* spring_black.png */,
 				CF2BAF0E2925DAFE00EB49F4 /* spring_white.png */,
 				CF5350AE291E3D4B00AFDC14 /* Background3.jpg */,
-				CF5350E22922277B00AFDC14 /* clock.png */,
 				CF5350AB291E3D4A00AFDC14 /* Background4.jpg */,
 				CF995F452923C54B00FAE2F1 /* title.png */,
+				CFE45D2E292B1D2A007024EB /* clock.png */,
+				CFE45D2F292B1D2B007024EB /* pencil.png */,
 				CF5350AD291E3D4A00AFDC14 /* Background5.jpg */,
 				CF5350A9291E3D4A00AFDC14 /* BlackBackground.png */,
-				CF5350D829221D6700AFDC14 /* pencil.png */,
 				CF5350AA291E3D4A00AFDC14 /* Bricks.png */,
 				CF5350AC291E3D4A00AFDC14 /* LastPage.png */,
 				CF5350D42921E92E00AFDC14 /* underline_Black.png */,
@@ -623,10 +624,10 @@
 				CFEB4A6928F1672F008850DC /* ColorPickerViewController.swift */,
 				CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */,
 				CF2BAF1129263E0700EB49F4 /* TaskInfoVCExtension.swift */,
-				CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */,
 				CFEB4A3728F14BEF008850DC /* SettingViewController.swift */,
 				CF75963429024C6A0046FDC1 /* PushListViewController.swift */,
 				CF75963D290662900046FDC1 /* PushListVCExtension.swift */,
+				CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */,
 				CF2BAF372927D1B400EB49F4 /* CustomTabBarController.swift */,
 			);
 			path = VeiwController;
@@ -699,6 +700,7 @@
 				CFEB4A6B28F16B15008850DC /* Picker.storyboard */,
 				CFD0B14528F91CDB0029D936 /* TaskInfo.storyboard */,
 				CF75963229024C340046FDC1 /* PushList.storyboard */,
+				CFE45D3A292B6F17007024EB /* AddCategory.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -927,7 +929,6 @@
 			files = (
 				CF5350C1291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf in Resources */,
 				CF5350D72921F3F300AFDC14 /* underline_Pink.png in Resources */,
-				CF5350E32922277B00AFDC14 /* clock.png in Resources */,
 				CF5350B0291E3D4B00AFDC14 /* Background2.jpg in Resources */,
 				CF2BAF0F2925DAFE00EB49F4 /* spring_black.png in Resources */,
 				CF5350CF291E98DC00AFDC14 /* Menu.xib in Resources */,
@@ -936,7 +937,9 @@
 				CF5350BD291E457400AFDC14 /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CF5350BE291E457400AFDC14 /* NanumBarunpenB.otf in Resources */,
 				CF995F462923C54B00FAE2F1 /* title.png in Resources */,
+				CFE45D30292B1D2B007024EB /* clock.png in Resources */,
 				CF5350BF291E457400AFDC14 /* NanumBarunpenR.otf in Resources */,
+				CFE45D37292B5A4E007024EB /* DefaultBack.jpg in Resources */,
 				CFEB49E728F13288008850DC /* LaunchScreen.storyboard in Resources */,
 				CFD0B14628F91CDB0029D936 /* TaskInfo.storyboard in Resources */,
 				CF5350B7291E3D4B00AFDC14 /* Background1.jpg in Resources */,
@@ -948,17 +951,18 @@
 				CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CF5350C0291E457400AFDC14 /* Windsor_Great_Park-Regular.otf in Resources */,
 				CF5350B2291E3D4B00AFDC14 /* Bricks.png in Resources */,
-				CF5350D929221D6700AFDC14 /* pencil.png in Resources */,
 				CFEB49E228F13287008850DC /* Main.storyboard in Resources */,
 				CF2BAF102925DAFE00EB49F4 /* spring_white.png in Resources */,
 				CF5350C3291E45F300AFDC14 /* NanumAJumMaJaYu.ttf in Resources */,
 				CF5350B3291E3D4B00AFDC14 /* Background4.jpg in Resources */,
+				CFE45D3B292B6F17007024EB /* AddCategory.storyboard in Resources */,
 				CF995F522924C34400FAE2F1 /* BackUpCell.xib in Resources */,
 				CF75963329024C340046FDC1 /* PushList.storyboard in Resources */,
 				CF995F4E2924BF6600FAE2F1 /* TaskCell.xib in Resources */,
 				CF995F502924C15D00FAE2F1 /* PushCell.xib in Resources */,
 				CFEB4A6228F16234008850DC /* Repeat.storyboard in Resources */,
 				CF5350D3291E9CE200AFDC14 /* Loading.xib in Resources */,
+				CFE45D31292B1D2B007024EB /* pencil.png in Resources */,
 				CF535097291CD5E400AFDC14 /* sticker.png in Resources */,
 				CFEB4A2E28F14B68008850DC /* Setting.storyboard in Resources */,
 				CF5350D52921E92F00AFDC14 /* underline_Black.png in Resources */,
@@ -1157,7 +1161,6 @@
 				CF50BC612924D78700AB538B /* NSOptionalData.swift in Sources */,
 				CF81494E2906B77500FD0974 /* CategoryData.swift in Sources */,
 				CFEC1D34290D2144009A9588 /* TaskInterfaceController.swift in Sources */,
-				CFE45D2D2928AD57007024EB /* CloudManager.swift in Sources */,
 				CFE45D242928A606007024EB /* RealmManager.swift in Sources */,
 				CF2BAF3A2928A30800EB49F4 /* DataManager.swift in Sources */,
 				CF81493A2906B75300FD0974 /* ComplicationController.swift in Sources */,
@@ -1167,7 +1170,6 @@
 				CF8149342906B75300FD0974 /* InterfaceController.swift in Sources */,
 				CFE45D2A2928AADF007024EB /* CustomNavigationController.swift in Sources */,
 				CF81494A2906B77100FD0974 /* StaticValues.swift in Sources */,
-				CFE45D2B2928AC61007024EB /* PopupManager.swift in Sources */,
 				CF81494F2906B77500FD0974 /* EachTask.swift in Sources */,
 				CF50BC622924D78700AB538B /* OptionalData.swift in Sources */,
 				CF81495D2906CC8C00FD0974 /* WatchConnectManager.swift in Sources */,
@@ -1200,7 +1202,6 @@
 				CFEC1D3C290E60D5009A9588 /* NSCategoryData.swift in Sources */,
 				CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */,
 				CF487EA528F1B6D200498451 /* TaskListEntryView.swift in Sources */,
-				CFE45D2C2928AD56007024EB /* CloudManager.swift in Sources */,
 				CFD0B13C28F90C2B0029D936 /* AlarmInfo.swift in Sources */,
 				CFEC1D3B290E60C9009A9588 /* WatchConnectManager.swift in Sources */,
 				CF487EA728F1B6F100498451 /* TaskListProvider.swift in Sources */,
@@ -1208,7 +1209,6 @@
 				CFD0B12D28F1BD150029D936 /* Enums.swift in Sources */,
 				CF487EAA28F1B72900498451 /* Utils.swift in Sources */,
 				CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */,
-				CFE45D272928AAC9007024EB /* PopupManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

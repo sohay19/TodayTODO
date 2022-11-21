@@ -224,11 +224,6 @@ extension PushManager {
 
 //MARK: - update/delete
 extension PushManager {
-    //모든 푸쉬 삭제
-    func deleteAllPush() {
-        notiCenter.removeAllPendingNotificationRequests()
-        print("Delete All Noti")
-    }
     //
     func updatePush(_ idList:[String], _ task:EachTask) -> [String] {
         deletePush(idList)
@@ -237,6 +232,11 @@ extension PushManager {
     //
     func deletePush(_ idList:[String]) {
         notiCenter.removePendingNotificationRequests(withIdentifiers: idList)
+    }
+    //모든 푸쉬 삭제
+    func deleteAllPush() {
+        notiCenter.removeAllPendingNotificationRequests()
+        print("Delete All Noti")
     }
 }
 

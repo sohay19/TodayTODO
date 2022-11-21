@@ -12,43 +12,41 @@ import FSCalendar
 //MARK: - TableView
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Section
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let myLabel = UILabel()
-//        myLabel.frame = CGRect(x: 20, y: 8, width: 320, height: 20)
-//        myLabel.font = UIFont.boldSystemFont(ofSize: 18)
-//        myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
-//
-//        let headerView = UIView()
-//        headerView.addSubview(myLabel)
-//
-//        return headerView
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let myLabel = UILabel()
+        myLabel.frame = CGRect(x: 0, y: 0, width: 320, height: 30)
+        myLabel.font = UIFont(name: K_Font_B, size: K_FontSize + 1.0)
+        let category = categoryList[section]
+        myLabel.text = category
+        myLabel.textColor = DataManager.shared.getCategoryColor(category)
+
+        let headerView = UIView()
+        headerView.addSubview(myLabel)
+
+        return headerView
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
+        switch currentType {
+        case .Today:
             return categoryList.count
-        case 1:
+        case .Month:
             guard let list = monthlyTaskList[Utils.getDay(monthDate)]?.categoryList else {
                 return 0
             }
             return list.count
-        default:
-            return 0
         }
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
+        switch currentType {
+        case .Today:
             return categoryList[section]
-        case 1:
+        case .Month:
             return monthlyTaskList[Utils.getDay(monthDate)]?.categoryList[section]
-        default:
-            return nil
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
+        switch currentType {
+        case .Today:
             let category = categoryList[section]
             guard let list = resultList[category] else {
                 return 0
@@ -62,7 +60,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             } else {
                 return list.count
             }
-        case 1:
+        case .Month:
             guard let list = monthlyTaskList[Utils.getDay(monthDate)] else {
                 return 0
             }
@@ -71,8 +69,6 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 return 0
             }
             return list.count
-        default:
-            return 0
         }
     }
     //
@@ -80,8 +76,8 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         guard let taskCell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as? TaskCell else {
             return UITableViewCell()
         }
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
+        switch currentType {
+        case .Today:
             var index = indexPath
             var isOpenIndex = false
             var isNextIndex = false
@@ -104,6 +100,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             let task = list[index.row]
+            let taskTitle = task.title
             if isNextIndex {
                 //열린 내용셀
                 taskCell.controllMain(false)
@@ -111,11 +108,16 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             } else {
                 //나머지 셀
                 taskCell.controllMain(true)
-                taskCell.labelTitle.text = task.title
-                taskCell.labelTime.text = task.taskTime
+                taskCell.labelTitle.text = taskTitle
+                if task.taskTime.isEmpty {
+                    taskCell.labelTime.text = task.taskTime
+                } else {
+                    let taskTime = task.taskTime.split(separator: ":")
+                    taskCell.labelTime.text = "\(taskTime[0]) : \(taskTime[1])"
+                }
                 taskCell.btnArrow.image = UIImage(systemName: isOpenIndex ? "chevron.up" : "chevron.down", withConfiguration: thinConfig)
             }
-        case 1:
+        case .Month:
             taskCell.isToday = false
             guard let list = monthlyTaskList[Utils.getDay(monthDate)] else {
                 return UITableViewCell()
@@ -125,18 +127,22 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             let task = taskList[indexPath.row]
+            let taskTitle = task.title
             taskCell.setMonthCell()
-            taskCell.labelTitle.text = task.title
-            taskCell.labelTime.text = task.taskTime
-        default:
-            return UITableViewCell()
+            taskCell.labelTitle.text = taskTitle
+            if task.taskTime.isEmpty {
+                taskCell.labelTime.text = task.taskTime
+            } else {
+                let taskTime = task.taskTime.split(separator: ":")
+                taskCell.labelTime.text = "\(taskTime[0]) : \(taskTime[1])"
+            }
         }
         return taskCell
     }
     //MARK: - Expandable
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
+        switch currentType {
+        case .Today:
             if let openedTask = openedTask {
                 if indexPath == IndexPath(row: openedTask.indexPath.row+1, section: openedTask.indexPath.section) {
                     return 180
@@ -144,10 +150,8 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 return 45
             }
             return 45
-        case 1:
+        case .Month:
             return 45
-        default:
-            return 0
         }
     }
     //MARK: - Swipe
@@ -155,20 +159,17 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let category = categoryList[indexPath.section]
         var task:EachTask = EachTask()
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
+        switch currentType {
+        case .Today:
             guard let result = resultList[category]?[indexPath.row] else {
                 return nil
             }
             task = result
-        case 1:
-            //Month
+        case .Month:
             guard let result = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else {
                 return nil
             }
             task = result
-        default:
-            return nil
         }
         //Done Or Not
         let isDone = task.isDone
@@ -205,8 +206,8 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             openedTask = nil
             reloadTable()
         } else {
-            switch segmentedController.selectedSegmentIndex {
-            case 0:
+            switch currentType {
+            case .Today:
                 let category = categoryList[indexPath.section]
                 guard let list = resultList[category] else {
                     return
@@ -214,7 +215,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 let task = list[indexPath.row]
                 openedTask = OpenedTask(task.taskId, category, indexPath)
                 reloadTable()
-            case 1:
+            case .Month:
                 guard let list = monthlyTaskList[Utils.getDay(monthDate)] else {
                     return
                 }
@@ -224,8 +225,6 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 }
                 let task = taskList[indexPath.row]
                 SystemManager.shared.openTaskInfo(.LOOK, date: nil, task: task, load: loadTask, modify: afterModifyTask)
-            default:
-                return
             }
         }
     }

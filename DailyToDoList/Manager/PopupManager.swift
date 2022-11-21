@@ -6,7 +6,6 @@
 //
 
 import Foundation
-#if os(iOS)
 import UIKit
 
 class PopupManager {
@@ -54,4 +53,3 @@ extension PopupManager {
         navigation.present(alertPopup, animated: true)
     }
 }
-#endif

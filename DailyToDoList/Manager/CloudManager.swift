@@ -7,7 +7,6 @@
 
 import Foundation
 import CloudKit
-#if os(iOS)
 import UIKit
 
 class CloudManager {
@@ -167,4 +166,3 @@ extension CloudManager {
         })
     }
 }
-#endif

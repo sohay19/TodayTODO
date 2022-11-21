@@ -38,7 +38,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vry-wb-prK" userLabel="LabelTitle">
                                                 <rect key="frame" x="45.5" y="87" width="43.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UsW-rm-eIp" userLabel="title">
@@ -57,7 +57,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카테고리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWy-HY-Z6r" userLabel="LabelCategory">
                                                 <rect key="frame" x="35" y="135" width="52" height="18"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="glH-XQ-WBy">
@@ -66,11 +66,10 @@
                                                     <constraint firstAttribute="height" constant="33" id="SML-gM-TrL"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Worcestershire_Sauce-Regular" family="Worcestershire_Sauce" pointSize="15"/>
-                                                <color key="tintColor" systemColor="systemGroupedBackgroundColor"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="TODO">
-                                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
-                                                    <color key="titleShadowColor" systemColor="labelColor"/>
+                                                    <color key="titleColor" systemColor="systemGroupedBackgroundColor"/>
                                                 </state>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.up.chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="G2j-hg-GNr">
@@ -88,7 +87,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veq-O3-01l" userLabel="LabelSchedule">
                                                 <rect key="frame" x="59" y="183" width="26" height="18"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Mf9-VB-kPO">
@@ -106,7 +105,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pas-nh-06b" userLabel="LabelTime">
                                                 <rect key="frame" x="136" y="183" width="26" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I17-IS-FGY" userLabel="TimeView">
@@ -121,7 +120,6 @@
                                                         <locale key="locale" localeIdentifier="ko_KR"/>
                                                     </datePicker>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" identifier="timeViewHeight" id="6MJ-Ek-f3J"/>
                                                     <constraint firstAttribute="trailing" secondItem="bqm-YU-iV9" secondAttribute="trailing" id="j1E-Vm-KT0"/>
@@ -138,7 +136,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="옵션" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlO-Ur-H1e" userLabel="LabelOption">
                                                 <rect key="frame" x="59" y="280.5" width="26" height="18"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="efd-sV-XJM" userLabel="BtnRepeat">
@@ -146,10 +144,10 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="efd-sV-XJM" secondAttribute="height" multiplier="4:1" priority="250" id="kcJ-CV-WDo"/>
                                                 </constraints>
-                                                <color key="tintColor" systemColor="systemGroupedBackgroundColor"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="반복  " image="square.fill" catalog="system">
-                                                    <color key="titleColor" systemColor="systemGroupedBackgroundColor"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="clickRepeat:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="MP2-io-gMC"/>
@@ -160,10 +158,10 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ehh-xK-F6D" secondAttribute="height" multiplier="4:1" priority="250" id="UXK-MF-Vz4"/>
                                                 </constraints>
-                                                <color key="tintColor" systemColor="systemGroupedBackgroundColor"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="알람  " image="square.fill" catalog="system">
-                                                    <color key="titleColor" systemColor="systemGroupedBackgroundColor"/>
+                                                    <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="clickAlarm:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hwS-Em-zxF"/>
@@ -175,31 +173,31 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5p-CI-Wd1" userLabel="repeatType">
                                                         <rect key="frame" x="156.5" y="0.0" width="26" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                        <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utq-X9-tXR" userLabel="week">
                                                         <rect key="frame" x="191.5" y="0.0" width="8" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" systemColor="systemGroupedBackgroundColor"/>
+                                                        <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주, " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2An-4j-CAU" userLabel="weekUnit">
                                                         <rect key="frame" x="202.5" y="0.0" width="22" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                        <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJw-QL-rvc" userLabel="day">
                                                         <rect key="frame" x="233.5" y="0.0" width="7.5" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" systemColor="systemGroupedBackgroundColor"/>
+                                                        <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vz5-FZ-bqE" userLabel="dayUnit">
                                                         <rect key="frame" x="244" y="0.0" width="13" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                        <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker autoresizesSubviews="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="VIg-iS-f8i" userLabel="endDate">
@@ -223,11 +221,10 @@
                                                             <constraint firstAttribute="height" constant="30" id="hcc-W8-TJX"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                        <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="vz5-FZ-bqE" secondAttribute="trailing" constant="9" id="3eo-Zw-gPy"/>
                                                     <constraint firstAttribute="height" constant="79" identifier="repeatViewHeight" id="4nq-oY-llh"/>
@@ -254,7 +251,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알람" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov5-ou-aS3" userLabel="LabelAlarm">
                                                         <rect key="frame" x="18" y="7.5" width="26" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                        <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="NeJ-g1-yb6">
@@ -270,7 +267,6 @@
                                                         </connections>
                                                     </datePicker>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="NeJ-g1-yb6" secondAttribute="trailing" id="BcR-cr-GRC"/>
                                                     <constraint firstItem="ov5-ou-aS3" firstAttribute="centerY" secondItem="NeJ-g1-yb6" secondAttribute="centerY" id="I7W-cM-QuB"/>
@@ -294,8 +290,7 @@
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gMj-5E-3Dd" userLabel="MemoView">
                                                 <rect key="frame" x="53" y="516.5" width="313" height="233.5"/>
-                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" systemColor="systemGroupedBackgroundColor"/>
+                                                <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -309,7 +304,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qah-vc-BrR" userLabel="LabelMemo">
                                                 <rect key="frame" x="59" y="477.5" width="26" height="18"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YjJ-eV-uHA" userLabel="SwitchTime">
@@ -388,12 +383,12 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuZ-zK-Qti" userLabel="BtnWrite">
-                                        <rect key="frame" x="354" y="0.0" width="60" height="60"/>
+                                        <rect key="frame" x="345" y="0.0" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="UuZ-zK-Qti" secondAttribute="height" multiplier="1:1" id="7lX-vc-KxO"/>
                                             <constraint firstAttribute="height" constant="60" id="Qkt-by-Mcv"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="systemGroupedBackgroundColor"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="pencil" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
@@ -408,7 +403,7 @@
                                             <constraint firstAttribute="width" secondItem="KJ0-2e-3S3" secondAttribute="height" multiplier="1:1" id="DCS-zf-oWc"/>
                                             <constraint firstAttribute="height" constant="60" id="FBu-iI-sJC"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="systemGroupedBackgroundColor"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
                                         <connections>
@@ -423,7 +418,7 @@
                                     <constraint firstItem="BTh-Aq-a07" firstAttribute="top" secondItem="UuZ-zK-Qti" secondAttribute="bottom" constant="18" id="QjV-yN-hb6"/>
                                     <constraint firstItem="tqQ-lG-uat" firstAttribute="leading" secondItem="ANm-cg-0YA" secondAttribute="leading" id="Rru-RD-RiK"/>
                                     <constraint firstItem="KJ0-2e-3S3" firstAttribute="centerY" secondItem="UuZ-zK-Qti" secondAttribute="centerY" id="YbI-XM-hTO"/>
-                                    <constraint firstAttribute="trailing" secondItem="UuZ-zK-Qti" secondAttribute="trailing" id="ZNI-Oo-Pdw"/>
+                                    <constraint firstAttribute="trailing" secondItem="UuZ-zK-Qti" secondAttribute="trailing" constant="9" id="ZNI-Oo-Pdw"/>
                                     <constraint firstItem="UuZ-zK-Qti" firstAttribute="top" secondItem="jtI-Sy-4WC" secondAttribute="top" id="bcg-9n-wIY"/>
                                     <constraint firstItem="tqQ-lG-uat" firstAttribute="bottom" secondItem="ANm-cg-0YA" secondAttribute="bottom" id="fTu-Sm-Q1x"/>
                                     <constraint firstItem="tqQ-lG-uat" firstAttribute="width" secondItem="8d7-pN-c5g" secondAttribute="width" id="sBw-zK-hkK"/>
@@ -433,6 +428,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="jtI-Sy-4WC" secondAttribute="bottom" id="0WT-UW-scF"/>
                             <constraint firstItem="jtI-Sy-4WC" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Dcb-qF-o8o"/>

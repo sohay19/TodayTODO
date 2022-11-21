@@ -50,8 +50,9 @@ let E_N_Font_R = "Windsor_Great_Park-Regular"
 let E_N_FontSize = 21.0
 
 //MARK: - Image
-let BackgroundImage = "Background\(Int.random(in: 1...5)).jpg"
+let BackgroundImage = "DefaultBack.jpg"
 let BlackBackImage = "BlackBackground.png"
+let PaperImage = "Background\(Int.random(in: 1...5)).jpg"
 let Underline_Indigo = "underline_Indigo.png"
 let Underline_Pink = "underline_Pink.png"
 let Underline_Black = "underline_Black.png"

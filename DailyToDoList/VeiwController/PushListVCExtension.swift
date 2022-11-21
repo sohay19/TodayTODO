@@ -47,7 +47,10 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
                 isNextIndex = true
             }
         }
-        let taskData = taskList[index.row]
+        let category = categoryList[index.section]
+        guard let taskData = taskList[category]?[index.row] else {
+            return UITableViewCell()
+        }
         let option = taskData.optionData ?? OptionData()
         //
         if isNextIndex {
@@ -133,7 +136,10 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             openedPush = nil
             pushTable.reloadData()
         } else {
-            let task = taskList[indexPath.row]
+            let category = categoryList[indexPath.section]
+            guard let task = taskList[category]?[indexPath.row] else {
+                return
+            }
             openedPush = OpenedTask(task.taskId, categoryList[indexPath.section], indexPath)
             pushTable.reloadData()
         }
