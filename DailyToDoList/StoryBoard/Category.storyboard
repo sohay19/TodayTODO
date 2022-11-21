@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dV0-c3-vSp">
-                                <rect key="frame" x="346" y="74" width="50" height="31"/>
+                                <rect key="frame" x="341" y="78" width="55" height="34.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add"/>
                                 <connections>
@@ -25,25 +26,25 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카테고리 명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ByL-hl-oT6" userLabel="Category">
-                                <rect key="frame" x="30" y="123" width="69" height="18"/>
+                                <rect key="frame" x="30" y="130.5" width="69" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="카테고리 명을 입력해주세요." adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="CZi-Gb-eH2" userLabel="Title">
-                                <rect key="frame" x="117" y="122" width="219" height="20"/>
+                                <rect key="frame" x="117" y="129.5" width="219" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mO8-Py-ag7" userLabel="line">
-                                <rect key="frame" x="117" y="150" width="219" height="1"/>
+                                <rect key="frame" x="117" y="157.5" width="219" height="1"/>
                                 <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="BQH-9S-5ik"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGC-wD-cPS" userLabel="BtnColor" customClass="UIColorWell">
-                                <rect key="frame" x="354" y="117" width="30" height="30"/>
+                                <rect key="frame" x="354" y="124.5" width="30" height="30"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eGC-wD-cPS" secondAttribute="height" multiplier="1:1" id="cdp-y5-PuH"/>
@@ -51,7 +52,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSJ-Ac-Rg6" userLabel="ColorView">
-                                <rect key="frame" x="30" y="181" width="354" height="651"/>
+                                <rect key="frame" x="30" y="188.5" width="354" height="643.5"/>
                                 <connections>
                                     <segue destination="F57-Q1-HjR" kind="embed" id="dF2-Lg-Oge"/>
                                 </connections>
@@ -93,7 +94,7 @@
             <objects>
                 <viewController storyboardIdentifier="CategoryColorView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F57-Q1-HjR" customClass="ColorPickerViewController" customModule="DailyToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UGy-Sm-OQ0">
-                        <rect key="frame" x="0.0" y="0.0" width="354" height="651"/>
+                        <rect key="frame" x="0.0" y="0.0" width="354" height="643.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="RgO-F4-GY1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
