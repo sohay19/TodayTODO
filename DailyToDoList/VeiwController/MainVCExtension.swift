@@ -16,7 +16,14 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         let myLabel = UILabel()
         myLabel.frame = CGRect(x: 0, y: 0, width: 320, height: 30)
         myLabel.font = UIFont(name: K_Font_B, size: K_FontSize + 1.0)
-        let category = categoryList[section]
+        var list:[String] = []
+        switch currentType {
+        case .Today:
+            list = categoryList
+        case .Month:
+            list = monthlyTaskList[Utils.getDay(monthDate)]?.categoryList ?? []
+        }
+        let category = list[section]
         myLabel.text = category
         myLabel.textColor = DataManager.shared.getCategoryColor(category)
 

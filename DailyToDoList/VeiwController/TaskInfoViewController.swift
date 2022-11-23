@@ -75,13 +75,12 @@ class TaskInfoViewController : UIViewController {
         //
         SystemManager.shared.openLoading()
         scrollView.isScrollEnabled = false
-        //날짜 지정
-        pickTaskDate.setDate(currntDate, animated: false)
         //기본세팅
-        observeKeyboard()
-        setMode()
-        //
+        pickTaskDate.setDate(currntDate, animated: false)
         loadCategory()
+        observeKeyboard()
+        //
+        setMode()
     }
 }
 
@@ -208,8 +207,10 @@ extension TaskInfoViewController {
         }
         //title, category
         inputTitle.text = taskData.title
+        print(categoryList.count)
         for item in categoryList {
             if item.name == taskData.category {
+                print(item.name)
                 btnPullCategory.sendAction(item.action)
                 break
             }
@@ -269,6 +270,7 @@ extension TaskInfoViewController {
         btnPullCategory.menu = UIMenu(title: "카테고리", children: actionList)
         //첫 카테고리 선택
         btnPullCategory.sendAction(actionList[0])
+        print("end")
     }
 }
 
