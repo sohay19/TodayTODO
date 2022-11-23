@@ -17,6 +17,7 @@
 		CF2BAF382927D1B400EB49F4 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2BAF372927D1B400EB49F4 /* CustomTabBarController.swift */; };
 		CF2BAF392928A30700EB49F4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5828F155E5008850DC /* DataManager.swift */; };
 		CF2BAF3A2928A30800EB49F4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5828F155E5008850DC /* DataManager.swift */; };
+		CF42F255292E398200DB0F8E /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF42F254292E398200DB0F8E /* LineView.swift */; };
 		CF487EA528F1B6D200498451 /* TaskListEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA428F1B6D200498451 /* TaskListEntryView.swift */; };
 		CF487EA728F1B6F100498451 /* TaskListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA628F1B6F100498451 /* TaskListProvider.swift */; };
 		CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF487EA628F1B6F100498451 /* TaskListProvider.swift */; };
@@ -259,6 +260,7 @@
 		CF2BAF0E2925DAFE00EB49F4 /* spring_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring_white.png; sourceTree = "<group>"; };
 		CF2BAF1129263E0700EB49F4 /* TaskInfoVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoVCExtension.swift; sourceTree = "<group>"; };
 		CF2BAF372927D1B400EB49F4 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		CF42F254292E398200DB0F8E /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		CF487EA328F1B6C900498451 /* DailyToDoListWidget.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = DailyToDoListWidget.entitlements; sourceTree = "<group>"; };
 		CF487EA428F1B6D200498451 /* TaskListEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListEntryView.swift; sourceTree = "<group>"; };
 		CF487EA628F1B6F100498451 /* TaskListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListProvider.swift; sourceTree = "<group>"; };
@@ -678,6 +680,7 @@
 				CF75963629024F680046FDC1 /* PushCell.swift */,
 				CF995F512924C34400FAE2F1 /* BackUpCell.xib */,
 				CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */,
+				CF42F254292E398200DB0F8E /* LineView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1223,6 +1226,7 @@
 				CFD0B13228F1BE500029D936 /* SharedClassExtension.swift in Sources */,
 				CFEB4A3E28F14CCA008850DC /* StaticValues.swift in Sources */,
 				CFD0B13B28F905380029D936 /* AlarmInfo.swift in Sources */,
+				CF42F255292E398200DB0F8E /* LineView.swift in Sources */,
 				CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */,
 				CFEC1D38290E53F7009A9588 /* NSCategoryData.swift in Sources */,
 				CF75963529024C6A0046FDC1 /* PushListViewController.swift in Sources */,

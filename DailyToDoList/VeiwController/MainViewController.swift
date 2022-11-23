@@ -100,7 +100,7 @@ extension MainViewController {
         // 폰트 설정
         labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
         labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
+        labelDate.font = UIFont(name: E_Font_E, size: MenuFontSize)
         //
         btnAdd.contentMode = .center
         btnAdd.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: regularConfig), for: .normal)

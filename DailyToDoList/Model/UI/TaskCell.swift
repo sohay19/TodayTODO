@@ -19,6 +19,7 @@ class TaskCell: UITableViewCell {
     var isToday = true
     private var btnArrowSize:CGFloat = 45
     private var btnArrowConstraint:NSLayoutConstraint?
+    private var lineView:LineView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,7 +47,7 @@ class TaskCell: UITableViewCell {
         self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         labelTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelTime.font = UIFont(name: E_N_Font_R, size: E_N_FontSize)
+        labelTime.font = UIFont(name: N_Font, size: N_FontSize)
         labelTime.tintColor = .secondaryLabel
         memoView.font = UIFont(name: K_Font_R, size: K_FontSize)
         memoView.isEditable = false
@@ -84,13 +85,42 @@ class TaskCell: UITableViewCell {
         memoView.isHidden = !isOn
     }
     
-    func inputCell(_ title:String, memo:String, time:String) {
+    func inputCell(title:String, memo:String, time:String) {
         labelTitle.text = title
+        labelTitle.sizeToFit()
         memoView.text = memo
-        labelTitle.text = time
+        labelTime.text = time
     }
     
     func changeArrow(_ isUp:Bool) {
         btnArrow.image = UIImage(systemName: isUp ? "chevron.up" : "chevron.down", withConfiguration: thinConfig)
+    }
+    
+    func taskIsDone(_ isDone:Bool) {
+        if isDone {
+            removeLine()
+            //
+            labelTitle.sizeToFit()
+            lineView = LineView()
+            guard let lineView = lineView, let title = labelTime.text else {
+                return
+            }
+            DispatchQueue.main.async { [self] in
+                let width = title.isEmpty ? labelTitle.bounds.width : labelTime.frame.maxX - labelTitle.frame.origin.x
+                lineView.frame = CGRect(
+                    origin: CGPoint(x: labelTitle.frame.origin.x, y: 0),
+                    size: CGSize(width: width, height: frame.height))
+                self.addSubview(lineView)
+            }
+        } else {
+            removeLine()
+        }
+    }
+    
+    func removeLine() {
+        guard let lineView = lineView else {
+            return
+        }
+        lineView.removeFromSuperview()
     }
 }

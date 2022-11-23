@@ -38,17 +38,17 @@ let sendTypeKey = "sendType"
 //MARK: - Font
 let LogoFont = "NanumAJumMaJaYu"
 //
-let CalendalFont = "EF_Diary"
-let CalendalFontSize = 18.0
+let N_Font = "EF_Diary"
+let N_FontSize = 12.0
 //
 let K_Font_B = "NanumBarunpenOTF-Bold"
 let K_Font_R = "NanumBarunpenOTF"
 let K_FontSize = 15.0
-let E_N_Font_E = "Worcestershire_Sauce_Press-Regular"
+let E_Font_E = "Worcestershire_Sauce_Press-Regular"
 let MenuFontSize = 30.0
-let E_N_Font_B = "Worcestershire_Sauce-Regular"
-let E_N_Font_R = "Windsor_Great_Park-Regular"
-let E_N_FontSize = 21.0
+let E_Font_B = "Worcestershire_Sauce-Regular"
+let E_Font_R = "Windsor_Great_Park-Regular"
+let E_FontSize = 21.0
 
 //MARK: - Image
 let BackgroundImage = "DefaultBack.jpg"

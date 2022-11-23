@@ -50,9 +50,9 @@ class PushCell : UITableViewCell {
         separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 2.0)
-        labelAlarmTime.font = UIFont(name: E_N_Font_B, size: E_N_FontSize)
+        labelAlarmTime.font = UIFont(name: E_Font_B, size: E_FontSize)
         labelRepeat.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelTime.font = UIFont(name: E_N_Font_B, size: E_N_FontSize)
+        labelTime.font = UIFont(name: E_Font_B, size: E_FontSize)
         memoView.font = UIFont(name: K_Font_B, size: K_FontSize)
         //
         btnArrow.contentMode = .center

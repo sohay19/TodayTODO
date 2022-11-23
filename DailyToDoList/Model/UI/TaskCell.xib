@@ -40,23 +40,26 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etG-Cf-sdK">
                         <rect key="frame" x="0.0" y="0.0" width="394" height="240"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3n-5u-nTN">
-                                <rect key="frame" x="9.0000000000000036" y="109.66666666666667" width="47.333333333333343" height="21.000000000000014"/>
+                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3n-5u-nTN">
+                                <rect key="frame" x="9.0000000000000036" y="109.33333333333333" width="47.333333333333343" height="21.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYE-rv-2DM">
-                                <rect key="frame" x="303.66666666666669" y="109.66666666666667" width="33.333333333333314" height="21.000000000000014"/>
+                                <rect key="frame" x="327.66666666666669" y="109" width="33.333333333333314" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lYE-rv-2DM" secondAttribute="height" multiplier="1.5:1" id="OZs-4S-FEa"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DsR-Df-BBT">
-                                <rect key="frame" x="346" y="103" width="45" height="35"/>
+                                <rect key="frame" x="361" y="110.33333333333333" width="30" height="19.999999999999986"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DsR-Df-BBT" secondAttribute="height" multiplier="1:1" id="aga-bX-K6H"/>
-                                    <constraint firstAttribute="width" constant="45" identifier="btnArrowWidth" id="yvZ-vp-w9f"/>
+                                    <constraint firstAttribute="width" constant="30" identifier="btnArrowWidth" id="yvZ-vp-w9f"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -65,7 +68,7 @@
                             <constraint firstItem="lYE-rv-2DM" firstAttribute="centerY" secondItem="X3n-5u-nTN" secondAttribute="centerY" id="2oH-JP-3y6"/>
                             <constraint firstItem="X3n-5u-nTN" firstAttribute="centerY" secondItem="etG-Cf-sdK" secondAttribute="centerY" id="CiL-pc-2oL"/>
                             <constraint firstAttribute="trailing" secondItem="DsR-Df-BBT" secondAttribute="trailing" constant="3" id="WNO-qT-HtD"/>
-                            <constraint firstItem="DsR-Df-BBT" firstAttribute="leading" secondItem="lYE-rv-2DM" secondAttribute="trailing" constant="9" id="gRL-8a-coj"/>
+                            <constraint firstItem="DsR-Df-BBT" firstAttribute="leading" secondItem="lYE-rv-2DM" secondAttribute="trailing" id="gRL-8a-coj"/>
                             <constraint firstItem="X3n-5u-nTN" firstAttribute="leading" secondItem="etG-Cf-sdK" secondAttribute="leading" constant="9" id="vx3-NG-eZm"/>
                             <constraint firstItem="DsR-Df-BBT" firstAttribute="centerY" secondItem="X3n-5u-nTN" secondAttribute="centerY" id="xzQ-f7-LTh"/>
                             <constraint firstItem="lYE-rv-2DM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X3n-5u-nTN" secondAttribute="trailing" constant="9" id="zxc-ez-2JK"/>

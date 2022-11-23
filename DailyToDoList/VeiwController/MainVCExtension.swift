@@ -76,6 +76,10 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         guard let taskCell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as? TaskCell else {
             return UITableViewCell()
         }
+        var title = ""
+        var memo = ""
+        var time = ""
+        var isDone = false
         switch currentType {
         case .Today:
             var index = indexPath
@@ -100,13 +104,14 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             let task = list[index.row]
+            isDone = task.isDone
+            title = task.title
             if isNextIndex {
                 //열린 내용셀
                 taskCell.controllMain(false)
-                taskCell.inputCell("", memo: task.memo, time: "")
+                memo = task.memo
             } else {
                 //나머지 셀
-                var time = ""
                 taskCell.controllMain(true)
                 if task.taskTime.isEmpty {
                     time = task.taskTime
@@ -114,7 +119,6 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                     let taskTime = task.taskTime.split(separator: ":")
                     time = "\(taskTime[0]):\(taskTime[1])"
                 }
-                taskCell.inputCell(task.title, memo: "", time: time)
                 taskCell.changeArrow(isOpenIndex ? true : false)
             }
         case .Month:
@@ -127,16 +131,19 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             let task = taskList[indexPath.row]
+            isDone = task.isDone
+            title = task.title
+            //
             taskCell.setMonthCell()
-            var time = ""
             if task.taskTime.isEmpty {
                 time = task.taskTime
             } else {
                 let taskTime = task.taskTime.split(separator: ":")
                 time = "\(taskTime[0]):\(taskTime[1])"
             }
-            taskCell.inputCell(task.title, memo: "", time: time)
         }
+        taskCell.inputCell(title: title, memo: memo, time: time)
+        taskCell.taskIsDone(isDone)
         return taskCell
     }
     //MARK: - Expandable
@@ -157,19 +164,23 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Swipe
     //왼쪽 스와이프
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let category = categoryList[indexPath.section]
         var task:EachTask = EachTask()
         switch currentType {
         case .Today:
+            let category = categoryList[indexPath.section]
             guard let result = resultList[category]?[indexPath.row] else {
                 return nil
             }
             task = result
         case .Month:
-            guard let result = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else {
+            guard let result = monthlyTaskList[Utils.getDay(monthDate)] else {
                 return nil
             }
-            task = result
+            let category = result.categoryList[indexPath.section]
+            guard let taskList = result.taskList[category] else {
+                return nil
+            }
+            task = taskList[indexPath.row]
         }
         //Done Or Not
         let isDone = task.isDone

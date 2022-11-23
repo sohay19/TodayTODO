@@ -49,7 +49,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="glH-XQ-WBy">
+                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glH-XQ-WBy">
                                                 <rect key="frame" x="48" y="186" width="336" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="SML-gM-TrL"/>
@@ -121,7 +121,7 @@
                                                         <rect key="frame" x="0.0" y="45" width="336" height="45"/>
                                                         <subviews>
                                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="bqm-YU-iV9">
-                                                                <rect key="frame" x="228" y="6" width="99" height="33"/>
+                                                                <rect key="frame" x="223.5" y="6" width="103.5" height="33"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="bqm-YU-iV9" secondAttribute="height" multiplier="3:1" priority="250" id="5c9-11-WY2"/>
                                                                     <constraint firstAttribute="height" constant="33" id="9D7-Q2-fa4"/>
@@ -414,6 +414,7 @@
                         <outlet property="labelWeek" destination="utq-X9-tXR" id="9Ki-D9-pm3"/>
                         <outlet property="labelWeekUnit" destination="2An-4j-CAU" id="5eg-LG-VaF"/>
                         <outlet property="memoView" destination="gMj-5E-3Dd" id="dOD-DY-5aA"/>
+                        <outlet property="menuIcon" destination="G2j-hg-GNr" id="t6l-pz-IDd"/>
                         <outlet property="optionStackView" destination="hwx-CT-UfR" id="e5K-Nl-LZf"/>
                         <outlet property="pickAlarmTime" destination="NeJ-g1-yb6" id="C2b-wz-a4g"/>
                         <outlet property="pickEndDate" destination="VIg-iS-f8i" id="zyT-m4-raC"/>

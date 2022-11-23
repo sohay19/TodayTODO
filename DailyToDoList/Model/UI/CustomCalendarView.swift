@@ -39,7 +39,7 @@ class CustomCalendarView : FSCalendar {
         self.calendarWeekdayView.weekdayLabels[6].text = "토"
         //
         self.appearance.weekdayTextColor = .darkGray
-        self.appearance.weekdayFont = UIFont(name: CalendalFont, size: CalendalFontSize - 5.0)
+        self.appearance.weekdayFont = UIFont(name: N_Font, size: N_FontSize)
         //
         self.today = Date()
         self.appearance.todayColor = .clear
@@ -48,7 +48,7 @@ class CustomCalendarView : FSCalendar {
         //
         self.appearance.titleWeekendColor = .defaultPink
         self.appearance.titleDefaultColor = .label
-        self.appearance.titleFont = UIFont(name: CalendalFont, size: CalendalFontSize - 6.0)
+        self.appearance.titleFont = UIFont(name: N_Font, size: N_FontSize)
         //
         self.select(Date())
     }

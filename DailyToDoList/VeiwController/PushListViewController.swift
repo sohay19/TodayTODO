@@ -138,7 +138,7 @@ extension PushListViewController {
         pushTable.separatorColor = .label
         pushTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
-        labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
+        labelDate.font = UIFont(name: E_Font_E, size: MenuFontSize)
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
         //
         btnEdit.contentMode = .center

@@ -43,6 +43,8 @@ class TaskInfoViewController : UIViewController {
     @IBOutlet weak var btnEndDate: UIButton!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnWrite: UIButton!
+    //
+    @IBOutlet weak var menuIcon: UIImageView!
     
     
     //
@@ -144,8 +146,10 @@ extension TaskInfoViewController {
         btnPullCategory.layer.cornerRadius = 5
         btnRepeat.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
         btnRepeat.backgroundColor = .clear
+        btnRepeat.tintColor = .darkGray
         btnAlarm.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
         btnAlarm.backgroundColor = .clear
+        btnAlarm.tintColor = .darkGray
         btnAllDay.titleLabel?.font = regular
         btnAllDay.tintColor = .gray
         btnEndDate.titleLabel?.font = regular
@@ -274,6 +278,7 @@ extension TaskInfoViewController {
     private func controllEditMode(_ isOn:Bool) {
         inputTitle.isEnabled = isOn
         btnPullCategory.isEnabled = isOn
+        menuIcon.isHidden = !isOn
         pickTaskDate.isEnabled = isOn
         btnAllDay.isEnabled = isOn
         pickTaskTime.isEnabled = isOn
