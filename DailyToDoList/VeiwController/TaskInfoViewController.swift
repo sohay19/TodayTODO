@@ -207,10 +207,8 @@ extension TaskInfoViewController {
         }
         //title, category
         inputTitle.text = taskData.title
-        print(categoryList.count)
         for item in categoryList {
             if item.name == taskData.category {
-                print(item.name)
                 btnPullCategory.sendAction(item.action)
                 break
             }
@@ -259,18 +257,18 @@ extension TaskInfoViewController {
             btnPullCategory.sendAction(actionList[0])
             let board = UIStoryboard(name: addCategoryBoard, bundle: nil)
             guard let addCategoryVC = board.instantiateViewController(withIdentifier: addCategoryBoard) as? AddCategoryViewController else { return }
-            
             addCategoryVC.reloadCategory = self.loadCategory
             addCategoryVC.modalTransitionStyle = .coverVertical
             addCategoryVC.modalPresentationStyle = .overFullScreen
-            
-            self.present(addCategoryVC, animated: true)
+            guard let navigation = self.navigationController as? CustomNavigationController else {
+                return
+            }
+            navigation.present(addCategoryVC, animated: true)
         })
         actionList.append(addCategory)
         btnPullCategory.menu = UIMenu(title: "카테고리", children: actionList)
         //첫 카테고리 선택
         btnPullCategory.sendAction(actionList[0])
-        print("end")
     }
 }
 

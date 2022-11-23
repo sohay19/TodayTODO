@@ -28,7 +28,6 @@ class AddCategoryViewController: UIViewController {
         //
         initUI()
         initGesture()
-//        initFunc()
     }
     
     override func viewWillAppear(_ animated: Bool) {

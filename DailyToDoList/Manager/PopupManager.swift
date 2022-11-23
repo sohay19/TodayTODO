@@ -52,4 +52,15 @@ extension PopupManager {
         }
         navigation.present(alertPopup, animated: true)
     }
+    
+    func openActionSheet(_ vc:UIViewController, title:String, msg:String) {
+        let alertSheet = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        alertSheet.addAction(UIAlertAction(title: "Yes", style: .default))
+        alertSheet.addAction(UIAlertAction(title: "Add", style: .default))
+        alertSheet.addAction(UIAlertAction(title: "No", style: .cancel))
+        guard let navigation = vc.navigationController as? CustomNavigationController else {
+            return
+        }
+        navigation.present(alertSheet, animated: true)
+    }
 }

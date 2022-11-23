@@ -9,7 +9,6 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var imgNil: UIImageView!
-//    @IBOutlet weak var img_Underline: UIImageView!
     //
     @IBOutlet weak var segmentedController: CustomSegmentControl!
     @IBOutlet weak var btnAdd: UIButton!
@@ -461,8 +460,10 @@ extension MainViewController {
         switch currentType {
         case .Today:
             dailyTaskTable.reloadData()
+            dailyTaskTable.setContentOffset(.zero, animated: true)
         case .Month:
             monthlyTaskTable.reloadData()
+            monthlyTaskTable.setContentOffset(.zero, animated: true)
         }
     }
 }
