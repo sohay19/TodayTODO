@@ -9,9 +9,6 @@ import UIKit
 import FirebaseAuth
 
 class SettingViewController: UIViewController {
-    @IBOutlet weak var imgUnderline: UIImageView!
-    @IBOutlet weak var imgUnderline_table: UIImageView!
-    //
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelTableTitle: UILabel!
     @IBOutlet weak var labelDate: UILabel!
@@ -43,10 +40,7 @@ class SettingViewController: UIViewController {
         SystemManager.shared.openLoading()
         //백업파일 날짜로드
         updateCloud(label: labelBackupDate)
-        //
-        DispatchQueue.main.async { [self] in
-            loadData()
-        }
+        loadData()
     }
 }
 
@@ -63,17 +57,12 @@ extension SettingViewController {
         labelBackupDate.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelTableTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 1.0)
         labelTitle.textColor = .label
-        labelDate.textColor = .systemBackground
+        labelDate.textColor = .label
         labelBackupDate.textColor = .label
-        labelTableTitle.textColor = .systemBackground
-        //
-        imgUnderline.image = UIImage(named: Underline_Black)
-        imgUnderline.alpha = 0.8
-        imgUnderline_table.image = UIImage(named: Underline_Black)
-        imgUnderline_table.alpha = 0.8
+        labelTableTitle.textColor = .label
         //
         tableView.allowsSelection = false
-        tableView.backgroundColor = .label.withAlphaComponent(0.1)
+        tableView.backgroundColor = .lightGray.withAlphaComponent(0.1)
         tableView.layer.cornerRadius = 5
         tableView.separatorColor = .systemFill
         //

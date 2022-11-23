@@ -10,7 +10,6 @@ import UIKit
 
 
 class PushListViewController : UIViewController {
-    @IBOutlet weak var imgUnderline: UIImageView!
     //
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelNilMsg: UILabel!
@@ -143,9 +142,7 @@ extension PushListViewController {
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
         //
         btnEdit.contentMode = .center
-        btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: mediumConfig), for: .normal)
-        //
-        imgUnderline.alpha = 0.3
+        btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: regularConfig), for: .normal)
         //
         changeTitle()
     }
@@ -168,10 +165,8 @@ extension PushListViewController {
         switch segmentedController.selectedSegmentIndex {
         case 0:
             labelDate.text = "Today Push"
-            imgUnderline.image = UIImage(named: Underline_Indigo)
         case 1:
             labelDate.text = "All Push"
-            imgUnderline.image = UIImage(named: Underline_Pink)
         default:
             break
         }

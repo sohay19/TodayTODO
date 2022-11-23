@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var imgNil: UIImageView!
-    @IBOutlet weak var img_Underline: UIImageView!
+//    @IBOutlet weak var img_Underline: UIImageView!
     //
     @IBOutlet weak var segmentedController: CustomSegmentControl!
     @IBOutlet weak var btnAdd: UIButton!
@@ -83,7 +83,6 @@ extension MainViewController {
     func initDate() {
         var dateList:[Substring] = []
         dateList = Utils.dateToDateString(currentType == .Today ? Date() : monthDate).split(separator: "-")
-        img_Underline.image = UIImage(named: currentType == .Today ? Underline_Indigo : Underline_Pink)
         if currentType == .Month {
             dateList.removeLast()
         }
@@ -101,12 +100,12 @@ extension MainViewController {
         // 폰트 설정
         labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
         labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
-        //
         labelDate.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
-        img_Underline.alpha = 0.3
         //
         btnAdd.contentMode = .center
-        btnAdd.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: mediumConfig), for: .normal)
+        btnAdd.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: regularConfig), for: .normal)
+        btnToday.contentMode = .center
+        btnToday.setImage(UIImage(systemName: "plus.viewfinder", withConfiguration: regularConfig), for: .normal)
         //
         dailyTaskTable.sectionHeaderTopPadding = 0
         dailyTaskTable.sectionHeaderHeight = 30

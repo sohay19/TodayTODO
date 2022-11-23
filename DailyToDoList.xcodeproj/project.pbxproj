@@ -119,6 +119,7 @@
 		CFE45D31292B1D2B007024EB /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D2F292B1D2B007024EB /* pencil.png */; };
 		CFE45D37292B5A4E007024EB /* DefaultBack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D36292B5A4E007024EB /* DefaultBack.jpg */; };
 		CFE45D3B292B6F17007024EB /* AddCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D3A292B6F17007024EB /* AddCategory.storyboard */; };
+		CFE45D3D292C96FC007024EB /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE45D3C292C96FC007024EB /* AddCategoryViewController.swift */; };
 		CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DA28F13287008850DC /* AppDelegate.swift */; };
 		CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DC28F13287008850DC /* SceneDelegate.swift */; };
 		CFEB49DF28F13287008850DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DE28F13287008850DC /* MainViewController.swift */; };
@@ -330,6 +331,7 @@
 		CFE45D2F292B1D2B007024EB /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		CFE45D36292B5A4E007024EB /* DefaultBack.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DefaultBack.jpg; sourceTree = "<group>"; };
 		CFE45D3A292B6F17007024EB /* AddCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCategory.storyboard; sourceTree = "<group>"; };
+		CFE45D3C292C96FC007024EB /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		CFEB49D728F13287008850DC /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEB49DA28F13287008850DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFEB49DC28F13287008850DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -629,6 +631,7 @@
 				CF75963D290662900046FDC1 /* PushListVCExtension.swift */,
 				CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */,
 				CF2BAF372927D1B400EB49F4 /* CustomTabBarController.swift */,
+				CFE45D3C292C96FC007024EB /* AddCategoryViewController.swift */,
 			);
 			path = VeiwController;
 			sourceTree = "<group>";
@@ -1263,6 +1266,7 @@
 				CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */,
 				CFEB4A3228F14BC7008850DC /* LoginViewController.swift in Sources */,
 				CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */,
+				CFE45D3D292C96FC007024EB /* AddCategoryViewController.swift in Sources */,
 				CFEB4A6E28F16B27008850DC /* PickerViewController.swift in Sources */,
 				CF81495F2906D28E00FD0974 /* NSEachTask.swift in Sources */,
 				CFEB4A5D28F155E5008850DC /* PopupManager.swift in Sources */,
