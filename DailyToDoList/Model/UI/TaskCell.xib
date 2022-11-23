@@ -68,6 +68,7 @@
                             <constraint firstItem="DsR-Df-BBT" firstAttribute="leading" secondItem="lYE-rv-2DM" secondAttribute="trailing" constant="9" id="gRL-8a-coj"/>
                             <constraint firstItem="X3n-5u-nTN" firstAttribute="leading" secondItem="etG-Cf-sdK" secondAttribute="leading" constant="9" id="vx3-NG-eZm"/>
                             <constraint firstItem="DsR-Df-BBT" firstAttribute="centerY" secondItem="X3n-5u-nTN" secondAttribute="centerY" id="xzQ-f7-LTh"/>
+                            <constraint firstItem="lYE-rv-2DM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X3n-5u-nTN" secondAttribute="trailing" constant="9" id="zxc-ez-2JK"/>
                         </constraints>
                     </view>
                 </subviews>

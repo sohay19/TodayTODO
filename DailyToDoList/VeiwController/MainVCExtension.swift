@@ -100,22 +100,22 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             let task = list[index.row]
-            let taskTitle = task.title
             if isNextIndex {
                 //열린 내용셀
                 taskCell.controllMain(false)
-                taskCell.memoView.text = task.memo
+                taskCell.inputCell("", memo: task.memo, time: "")
             } else {
                 //나머지 셀
+                var time = ""
                 taskCell.controllMain(true)
-                taskCell.labelTitle.text = taskTitle
                 if task.taskTime.isEmpty {
-                    taskCell.labelTime.text = task.taskTime
+                    time = task.taskTime
                 } else {
                     let taskTime = task.taskTime.split(separator: ":")
-                    taskCell.labelTime.text = "\(taskTime[0]) : \(taskTime[1])"
+                    time = "\(taskTime[0]):\(taskTime[1])"
                 }
-                taskCell.btnArrow.image = UIImage(systemName: isOpenIndex ? "chevron.up" : "chevron.down", withConfiguration: thinConfig)
+                taskCell.inputCell(task.title, memo: "", time: time)
+                taskCell.changeArrow(isOpenIndex ? true : false)
             }
         case .Month:
             taskCell.isToday = false
@@ -127,15 +127,15 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             let task = taskList[indexPath.row]
-            let taskTitle = task.title
             taskCell.setMonthCell()
-            taskCell.labelTitle.text = taskTitle
+            var time = ""
             if task.taskTime.isEmpty {
-                taskCell.labelTime.text = task.taskTime
+                time = task.taskTime
             } else {
                 let taskTime = task.taskTime.split(separator: ":")
-                taskCell.labelTime.text = "\(taskTime[0]) : \(taskTime[1])"
+                time = "\(taskTime[0]):\(taskTime[1])"
             }
+            taskCell.inputCell(task.title, memo: "", time: time)
         }
         return taskCell
     }

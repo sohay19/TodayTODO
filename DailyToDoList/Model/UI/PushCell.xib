@@ -76,6 +76,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="dKl-VR-a8f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QHj-2j-xd5" secondAttribute="trailing" constant="9" id="5DZ-tF-KjO"/>
                             <constraint firstItem="QHj-2j-xd5" firstAttribute="top" secondItem="p6B-jU-ooY" secondAttribute="top" constant="18" id="DTd-9K-qwv"/>
                             <constraint firstAttribute="trailing" secondItem="dKl-VR-a8f" secondAttribute="trailing" constant="9" id="EEL-2P-Axe"/>
                             <constraint firstAttribute="bottom" secondItem="nNh-Ej-NCS" secondAttribute="bottom" id="Enr-hq-gXi"/>

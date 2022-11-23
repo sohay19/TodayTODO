@@ -83,4 +83,14 @@ class TaskCell: UITableViewCell {
         expandableView.isHidden = !isOn
         memoView.isHidden = !isOn
     }
+    
+    func inputCell(_ title:String, memo:String, time:String) {
+        labelTitle.text = title
+        memoView.text = memo
+        labelTitle.text = time
+    }
+    
+    func changeArrow(_ isUp:Bool) {
+        btnArrow.image = UIImage(systemName: isUp ? "chevron.up" : "chevron.down", withConfiguration: thinConfig)
+    }
 }

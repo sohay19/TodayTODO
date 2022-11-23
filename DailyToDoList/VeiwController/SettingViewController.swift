@@ -53,9 +53,9 @@ extension SettingViewController {
         view.insertSubview(backgroundView, at: 0)
         //폰트 설정
         labelTitle.font = UIFont(name: E_N_Font_E, size: MenuFontSize)
-        labelDate.font = UIFont(name: K_Font_B, size: K_FontSize + 1.0)
+        labelDate.font = UIFont(name: K_Font_B, size: K_FontSize + 3.0)
         labelBackupDate.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelTableTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 1.0)
+        labelTableTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 3.0)
         labelTitle.textColor = .label
         labelDate.textColor = .label
         labelBackupDate.textColor = .label
