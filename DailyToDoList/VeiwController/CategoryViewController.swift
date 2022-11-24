@@ -47,15 +47,15 @@ extension CategoryViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         //
-        line.backgroundColor = .systemBackground.withAlphaComponent(0.3)
+        line.backgroundColor = .systemBackground.withAlphaComponent(0.2)
         //
         labelTitle.font = UIFont(name: E_Font_E, size: MenuFontSize)
         labelTitle.textColor = .label
         //
-        tableView.backgroundColor = .clear
+        tableView.backgroundColor = .lightGray.withAlphaComponent(0.1)
         tableView.separatorInsetReference = .fromCellEdges
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        tableView.separatorColor = .label
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 6)
+        tableView.separatorColor = .gray.withAlphaComponent(0.5)
         tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         btnSave.titleLabel?.font = UIFont(name: E_Font_B, size: E_FontSize)

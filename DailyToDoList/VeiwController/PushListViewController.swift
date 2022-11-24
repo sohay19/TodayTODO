@@ -82,7 +82,7 @@ extension PushListViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         //
-        line.backgroundColor = .systemBackground.withAlphaComponent(0.3)
+        line.backgroundColor = .systemBackground.withAlphaComponent(0.2)
         //
         editView.backgroundColor = .clear
         controllEditView(false)
@@ -92,7 +92,6 @@ extension PushListViewController {
         pushTable.sectionFooterHeight = 30
         pushTable.backgroundColor = .clear
         pushTable.separatorInsetReference = .fromCellEdges
-        pushTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         pushTable.separatorColor = .label
         pushTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //

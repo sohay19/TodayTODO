@@ -95,17 +95,17 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kGG-Zy-ClK">
-                                <rect key="frame" x="30" y="209.5" width="354" height="622.5"/>
+                                <rect key="frame" x="30" y="200.5" width="354" height="631.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock.png" translatesAutoresizingMaskIntoConstraints="NO" id="fwR-hO-Gzt" userLabel="image">
-                                <rect key="frame" x="90" y="299.5" width="234" height="234"/>
+                                <rect key="frame" x="90" y="290.5" width="234" height="234"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fwR-hO-Gzt" secondAttribute="height" multiplier="1:1" id="phu-dj-dhH"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="예정된 알림이 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8R-IL-C5D" userLabel="Message">
-                                <rect key="frame" x="144.5" y="551.5" width="125" height="18"/>
+                                <rect key="frame" x="144.5" y="542.5" width="125" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -126,7 +126,7 @@
                             <constraint firstItem="rRd-Mk-r7u" firstAttribute="top" secondItem="sSh-CA-wzF" secondAttribute="bottom" constant="6" id="O16-kd-9Xq"/>
                             <constraint firstItem="sSh-CA-wzF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="6" id="S9B-S0-hhE"/>
                             <constraint firstItem="v8R-IL-C5D" firstAttribute="centerX" secondItem="kGG-Zy-ClK" secondAttribute="centerX" id="Sbc-WS-67q"/>
-                            <constraint firstItem="kGG-Zy-ClK" firstAttribute="top" secondItem="jcM-hb-gY3" secondAttribute="bottom" constant="18" id="Vx8-ov-iW4"/>
+                            <constraint firstItem="kGG-Zy-ClK" firstAttribute="top" secondItem="jcM-hb-gY3" secondAttribute="bottom" constant="9" id="Vx8-ov-iW4"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rRd-Mk-r7u" secondAttribute="trailing" id="ZXg-RB-h0u"/>
                             <constraint firstItem="fwR-hO-Gzt" firstAttribute="top" secondItem="kGG-Zy-ClK" secondAttribute="top" constant="90" id="bRE-5F-lR2"/>
                             <constraint firstItem="kGG-Zy-ClK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="czN-HN-blN"/>

@@ -53,7 +53,7 @@ extension SettingViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         //
-        line.backgroundColor = .systemBackground.withAlphaComponent(0.3)
+        line.backgroundColor = .systemBackground.withAlphaComponent(0.2)
         //폰트 설정
         labelTitle.font = UIFont(name: E_Font_E, size: MenuFontSize)
         labelDate.font = UIFont(name: K_Font_B, size: K_FontSize + 3.0)
@@ -66,11 +66,8 @@ extension SettingViewController {
         //
         tableView.allowsSelection = false
         tableView.backgroundColor = .lightGray.withAlphaComponent(0.1)
-        tableView.layer.cornerRadius = 5
-        tableView.separatorColor = .systemFill
         tableView.separatorInsetReference = .fromCellEdges
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        tableView.separatorColor = .label
+        tableView.separatorColor = .gray.withAlphaComponent(0.5)
         tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         btnBackup.contentMode = .center
