@@ -29,8 +29,6 @@ class PushListViewController : UIViewController {
     var categoryList:[String] = []
     var heightConstraint:NSLayoutConstraint?
     var heightOrigin:CGFloat = 60
-    //
-    var openedPush:OpenedTask?
     var isRefresh = false
     
     

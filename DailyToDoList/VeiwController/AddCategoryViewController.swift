@@ -51,6 +51,7 @@ extension AddCategoryViewController {
         labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
         inputTitle.textColor = .systemBackground
         inputTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
+        inputTitle.backgroundColor = .systemBackground.withAlphaComponent(0.1)
         inputTitle.attributedPlaceholder = NSAttributedString(string: "카테고리 명을 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
         inputTitle.textContentType = .nickname
         inputTitle.keyboardType = .default

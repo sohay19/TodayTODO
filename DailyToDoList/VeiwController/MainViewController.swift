@@ -456,14 +456,16 @@ extension MainViewController {
     }
     //
     func reloadTable() {
+        DispatchQueue.main.async { [self] in
+            dailyTaskTable.setContentOffset(.zero, animated: true)
+            monthlyTaskTable.setContentOffset(.zero, animated: true)
+        }
         checkNil()
         switch currentType {
         case .Today:
             dailyTaskTable.reloadData()
-            dailyTaskTable.setContentOffset(.zero, animated: true)
         case .Month:
             monthlyTaskTable.reloadData()
-            monthlyTaskTable.setContentOffset(.zero, animated: true)
         }
     }
 }

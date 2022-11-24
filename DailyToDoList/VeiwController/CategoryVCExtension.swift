@@ -27,3 +27,14 @@ extension CategoryViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
+
+//cell별 이동 가능 여부
+//    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+//        return false : true
+//    }
+//    //Row Move
+//    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//        let task = taskList[sourceIndexPath.row]
+//        taskList.remove(at: sourceIndexPath.row)
+//        taskList.insert(task, at: destinationIndexPath.row)
+//    }

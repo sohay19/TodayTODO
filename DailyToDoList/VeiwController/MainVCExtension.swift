@@ -86,7 +86,6 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         var title = ""
         var memo = ""
         var time = ""
-        var alarm = ""
         var isDone = false
         switch currentType {
         case .Today:
@@ -114,23 +113,22 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             let task = list[index.row]
             isDone = task.isDone
             title = task.title
-            if let option = task.optionData {
-                alarm = option.alarmTime
-            }
             if isNextIndex {
                 //열린 내용셀
                 taskCell.controllMain(false)
                 memo = task.memo
-            } else {
-                //나머지 셀
-                taskCell.controllMain(true)
                 if task.taskTime.isEmpty {
                     time = task.taskTime
                 } else {
                     let taskTime = task.taskTime.split(separator: ":")
                     time = "\(taskTime[0]):\(taskTime[1])"
                 }
+                taskCell.taskIsDone(false)
+            } else {
+                //나머지 셀
+                taskCell.controllMain(true)
                 taskCell.changeArrow(isOpenIndex ? true : false)
+                taskCell.taskIsDone(isDone)
             }
         case .Month:
             taskCell.isToday = false
@@ -144,9 +142,6 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             let task = taskList[indexPath.row]
             isDone = task.isDone
             title = task.title
-            if let option = task.optionData {
-                alarm = option.alarmTime
-            }
             taskCell.setMonthCell()
             if task.taskTime.isEmpty {
                 time = task.taskTime
@@ -154,9 +149,9 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 let taskTime = task.taskTime.split(separator: ":")
                 time = "\(taskTime[0]):\(taskTime[1])"
             }
+            taskCell.taskIsDone(isDone)
         }
-        taskCell.inputCell(title: title, memo: memo, time: time, alarm: alarm)
-        taskCell.taskIsDone(isDone)
+        taskCell.inputCell(title: title, memo: memo, time: time)
         return taskCell
     }
     //MARK: - Expandable

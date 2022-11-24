@@ -12,7 +12,6 @@ class TaskCell: UITableViewCell {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelTime: UILabel!
-    @IBOutlet weak var labelAlarm: UILabel!
     @IBOutlet weak var expandableView: UIView!
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var memoView: UITextView!
@@ -50,11 +49,9 @@ class TaskCell: UITableViewCell {
         self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         labelTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelTitle.textColor = .secondaryLabel
+        labelTitle.textColor = .label
         labelTime.font = UIFont(name: N_Font, size: N_FontSize)
-        labelTime.textColor = .secondaryLabel
-        labelAlarm.font = UIFont(name: N_Font, size: N_FontSize)
-        labelAlarm.textColor = .label
+        labelTime.textColor = .gray
         memoView.font = UIFont(name: K_Font_R, size: K_FontSize)
         memoView.isEditable = false
         memoView.isSelectable = false
@@ -91,20 +88,18 @@ class TaskCell: UITableViewCell {
         expandableView.isHidden = !isOn
         timeView.isHidden = !isOn
         iconClock.isHidden = !isOn
-        labelAlarm.isHidden = !isOn
         memoView.isHidden = !isOn
     }
     
-    func inputCell(title:String, memo:String, time:String, alarm:String) {
+    func inputCell(title:String, memo:String, time:String) {
         labelTitle.text = title
         labelTitle.sizeToFit()
         memoView.text = memo
         labelTime.text = time.isEmpty ? "--:--" : time
-        labelAlarm.text = alarm.isEmpty ? "없음" : alarm
         // 알람 아이콘 라벨에 넣기
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(systemName: alarm.isEmpty ? "alarm" : "alarm.waves.left.and.right")?.withTintColor(.label).withConfiguration(UIImage.SymbolConfiguration(scale: .small))
+        imageAttachment.image = UIImage(systemName: "stopwatch")?.withTintColor(.label).withConfiguration(UIImage.SymbolConfiguration(scale: .small)).withTintColor(.gray, renderingMode: .alwaysOriginal)
         attributedString.append(NSAttributedString(attachment: imageAttachment))
         iconClock.attributedText = attributedString
     }
@@ -123,9 +118,9 @@ class TaskCell: UITableViewCell {
                 return
             }
             DispatchQueue.main.async { [self] in
-                let width = labelTitle.frame.maxX - labelTime.frame.origin.x
+                let width = labelTitle.frame.maxX - labelTitle.frame.origin.x
                 lineView.frame = CGRect(
-                    origin: CGPoint(x: labelTime.frame.origin.x, y: 0),
+                    origin: CGPoint(x: labelTitle.frame.origin.x, y: 0),
                     size: CGSize(width: width, height: frame.height))
                 self.addSubview(lineView)
             }

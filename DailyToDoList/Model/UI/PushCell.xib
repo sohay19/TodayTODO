@@ -38,104 +38,44 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkV-mD-JPV">
-                                <rect key="frame" x="313.66666666666669" y="48" width="37.333333333333314" height="32"/>
+                                <rect key="frame" x="313.66666666666669" y="48" width="37.333333333333314" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nNh-Ej-NCS">
-                                <rect key="frame" x="321" y="86.333333333333329" width="39" height="27"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="39" id="JPT-gC-pbv"/>
-                                    <constraint firstAttribute="width" secondItem="nNh-Ej-NCS" secondAttribute="height" multiplier="1:1" id="g3f-UL-HOf"/>
-                                </constraints>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="light"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dKl-VR-a8f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QHj-2j-xd5" secondAttribute="trailing" constant="9" id="5DZ-tF-KjO"/>
                             <constraint firstItem="QHj-2j-xd5" firstAttribute="top" secondItem="p6B-jU-ooY" secondAttribute="top" constant="18" id="DTd-9K-qwv"/>
                             <constraint firstAttribute="trailing" secondItem="dKl-VR-a8f" secondAttribute="trailing" constant="9" id="EEL-2P-Axe"/>
-                            <constraint firstAttribute="bottom" secondItem="nNh-Ej-NCS" secondAttribute="bottom" id="Enr-hq-gXi"/>
                             <constraint firstItem="QHj-2j-xd5" firstAttribute="leading" secondItem="p6B-jU-ooY" secondAttribute="leading" constant="9" id="JfV-p9-Uo3"/>
                             <constraint firstItem="dKl-VR-a8f" firstAttribute="centerY" secondItem="QHj-2j-xd5" secondAttribute="centerY" id="Y7J-Ta-7ja"/>
                             <constraint firstItem="HJo-Ga-FpX" firstAttribute="centerY" secondItem="dKl-VR-a8f" secondAttribute="centerY" id="d6j-pi-bLl"/>
                             <constraint firstItem="MkV-mD-JPV" firstAttribute="top" secondItem="dKl-VR-a8f" secondAttribute="bottom" constant="9" id="o6Z-QJ-9TD"/>
                             <constraint firstItem="MkV-mD-JPV" firstAttribute="trailing" secondItem="dKl-VR-a8f" secondAttribute="trailing" id="pOS-IV-DtH"/>
                             <constraint firstItem="dKl-VR-a8f" firstAttribute="leading" secondItem="HJo-Ga-FpX" secondAttribute="trailing" constant="3" id="pYH-Mj-sJ5"/>
-                            <constraint firstAttribute="trailing" secondItem="nNh-Ej-NCS" secondAttribute="trailing" id="sEC-md-DWj"/>
-                            <constraint firstItem="nNh-Ej-NCS" firstAttribute="top" secondItem="MkV-mD-JPV" secondAttribute="bottom" id="ukk-16-LxF"/>
-                        </constraints>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7b-ip-LxU" userLabel="ExpandableView">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="119"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXn-Qj-YSC" userLabel="IconCalendar">
-                                <rect key="frame" x="9" y="9" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJH-do-457">
-                                <rect key="frame" x="54" y="9" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="memo" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmT-Ps-957">
-                                <rect key="frame" x="9" y="36" width="342" height="74"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="hmT-Ps-957" secondAttribute="bottom" constant="9" id="21X-hj-Xv7"/>
-                            <constraint firstItem="OJH-do-457" firstAttribute="centerY" secondItem="EXn-Qj-YSC" secondAttribute="centerY" id="EGm-Cf-jfA"/>
-                            <constraint firstItem="EXn-Qj-YSC" firstAttribute="leading" secondItem="h7b-ip-LxU" secondAttribute="leading" constant="9" id="MgY-FZ-1d9"/>
-                            <constraint firstItem="OJH-do-457" firstAttribute="leading" secondItem="EXn-Qj-YSC" secondAttribute="trailing" constant="3" id="MqL-kE-2qn"/>
-                            <constraint firstItem="hmT-Ps-957" firstAttribute="top" secondItem="EXn-Qj-YSC" secondAttribute="bottom" constant="6" id="hxR-dh-OdW"/>
-                            <constraint firstItem="EXn-Qj-YSC" firstAttribute="top" secondItem="h7b-ip-LxU" secondAttribute="top" constant="9" id="jqq-dS-UoU"/>
-                            <constraint firstAttribute="trailing" secondItem="hmT-Ps-957" secondAttribute="trailing" constant="9" id="xj0-sF-mdd"/>
-                            <constraint firstItem="hmT-Ps-957" firstAttribute="leading" secondItem="EXn-Qj-YSC" secondAttribute="leading" id="yQj-5n-c57"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="h7b-ip-LxU" secondAttribute="bottom" id="498-vE-Umi"/>
                     <constraint firstAttribute="trailing" secondItem="p6B-jU-ooY" secondAttribute="trailing" id="WSf-kT-Dck"/>
                     <constraint firstItem="p6B-jU-ooY" firstAttribute="top" secondItem="AuQ-cV-FPy" secondAttribute="top" id="WiT-sE-zcX"/>
-                    <constraint firstAttribute="trailing" secondItem="h7b-ip-LxU" secondAttribute="trailing" id="Xcg-fw-apB"/>
                     <constraint firstItem="p6B-jU-ooY" firstAttribute="leading" secondItem="AuQ-cV-FPy" secondAttribute="leading" id="ahJ-Ot-Wa6"/>
                     <constraint firstAttribute="bottom" secondItem="p6B-jU-ooY" secondAttribute="bottom" id="cOT-Mp-REB"/>
-                    <constraint firstItem="h7b-ip-LxU" firstAttribute="top" secondItem="AuQ-cV-FPy" secondAttribute="top" id="czV-rp-vxP"/>
-                    <constraint firstItem="h7b-ip-LxU" firstAttribute="leading" secondItem="AuQ-cV-FPy" secondAttribute="leading" id="hQc-Sl-mJj"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="btnArrow" destination="nNh-Ej-NCS" id="Ieu-WE-NEK"/>
-                <outlet property="expandableView" destination="h7b-ip-LxU" id="aGi-HD-jC9"/>
-                <outlet property="iconCalendar" destination="EXn-Qj-YSC" id="h40-AR-b3a"/>
                 <outlet property="iconClock" destination="HJo-Ga-FpX" id="LVm-hS-yFt"/>
                 <outlet property="labelAlarmTime" destination="dKl-VR-a8f" id="FX4-DB-YU2"/>
                 <outlet property="labelRepeat" destination="MkV-mD-JPV" id="yRi-dC-liv"/>
-                <outlet property="labelTime" destination="OJH-do-457" id="jcZ-fY-cex"/>
                 <outlet property="labelTitle" destination="QHj-2j-xd5" id="5mz-aA-ajC"/>
                 <outlet property="mainView" destination="p6B-jU-ooY" id="idA-2t-yQn"/>
-                <outlet property="memoView" destination="hmT-Ps-957" id="AEb-DW-fzE"/>
             </connections>
             <point key="canvasLocation" x="134.35114503816794" y="-1.0563380281690142"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="chevron.down" catalog="system" width="128" height="70"/>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
