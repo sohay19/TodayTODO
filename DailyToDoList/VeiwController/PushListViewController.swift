@@ -10,6 +10,7 @@ import UIKit
 
 
 class PushListViewController : UIViewController {
+    @IBOutlet weak var imgClock: UIImageView!
     //
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelNilMsg: UILabel!
@@ -73,6 +74,32 @@ class PushListViewController : UIViewController {
 
 //MARK: - Func
 extension PushListViewController {
+    //
+    func initUI() {
+        // 배경 설정
+        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
+        backgroundView.image = UIImage(named: BackgroundImage)
+        view.insertSubview(backgroundView, at: 0)
+        //
+        editView.backgroundColor = .clear
+        controllEditView(false)
+        //pushTable        dailyTaskTable.sectionHeaderTopPadding = 0
+        pushTable.sectionHeaderHeight = 30
+        pushTable.sectionFooterHeight = 30
+        pushTable.backgroundColor = .clear
+        pushTable.separatorInsetReference = .fromCellEdges
+        pushTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        pushTable.separatorColor = .label
+        pushTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        //
+        labelDate.font = UIFont(name: E_Font_E, size: MenuFontSize)
+        labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
+        //
+        btnEdit.contentMode = .center
+        btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: regularConfig), for: .normal)
+        //
+        changeTitle()
+    }
     // data reset
     func resetTask() {
         taskList = [:]
@@ -102,9 +129,8 @@ extension PushListViewController {
                     let category = task.category
                     if !categoryList.contains(where: {$0 == category}) {
                         categoryList.append(category)
-                        taskList[category] = []
-                    }
-                    if taskList[category] != nil {
+                        taskList[category] = [task]
+                    } else {
                         taskList[category]?.append(task)
                     }
                 } else {
@@ -112,6 +138,7 @@ extension PushListViewController {
                 }
             }
             labelNilMsg.isHidden = taskList.count == 0 ? false : true
+            imgClock.isHidden = taskList.count == 0 ? false : true
             pushTable.reloadData()
             
             SystemManager.shared.closeLoading()
@@ -120,31 +147,6 @@ extension PushListViewController {
                 isRefresh = false
             }
         }
-    }
-    //
-    func initUI() {
-        // 배경 설정
-        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
-        backgroundView.image = UIImage(named: BackgroundImage)
-        view.insertSubview(backgroundView, at: 0)
-        //
-        editView.backgroundColor = .clear
-        controllEditView(false)
-        //
-        pushTable.sectionHeaderTopPadding = 6
-        pushTable.backgroundColor = .clear
-        pushTable.separatorInsetReference = .fromCellEdges
-        pushTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        pushTable.separatorColor = .label
-        pushTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        //
-        labelDate.font = UIFont(name: E_Font_E, size: MenuFontSize)
-        labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
-        //
-        btnEdit.contentMode = .center
-        btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: regularConfig), for: .normal)
-        //
-        changeTitle()
     }
     //
     func initCell() {

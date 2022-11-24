@@ -12,9 +12,12 @@ class TaskCell: UITableViewCell {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelTime: UILabel!
+    @IBOutlet weak var labelAlarm: UILabel!
     @IBOutlet weak var expandableView: UIView!
+    @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var memoView: UITextView!
     @IBOutlet weak var btnArrow: UIImageView!
+    @IBOutlet weak var iconClock: UILabel!
     
     var isToday = true
     private var btnArrowSize:CGFloat = 45
@@ -47,12 +50,17 @@ class TaskCell: UITableViewCell {
         self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         labelTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelTitle.textColor = .secondaryLabel
         labelTime.font = UIFont(name: N_Font, size: N_FontSize)
-        labelTime.tintColor = .secondaryLabel
+        labelTime.textColor = .secondaryLabel
+        labelAlarm.font = UIFont(name: N_Font, size: N_FontSize)
+        labelAlarm.textColor = .label
         memoView.font = UIFont(name: K_Font_R, size: K_FontSize)
         memoView.isEditable = false
         memoView.isSelectable = false
         memoView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        //
+        expandableView.backgroundColor = .lightGray.withAlphaComponent(0.1)
         //
         btnArrow.contentMode = .center
         btnArrow.tintColor = .label
@@ -66,7 +74,6 @@ class TaskCell: UITableViewCell {
     func controllMain(_ isOn:Bool) {
         mainView.isHidden = !isOn
         labelTitle.isHidden = !isOn
-        labelTime.isHidden = !isOn
         btnArrow.isHidden = !isOn
         controllExpandable(!isOn)
         btnArrow.translatesAutoresizingMaskIntoConstraints = false
@@ -82,14 +89,24 @@ class TaskCell: UITableViewCell {
     
     private func controllExpandable(_ isOn:Bool) {
         expandableView.isHidden = !isOn
+        timeView.isHidden = !isOn
+        iconClock.isHidden = !isOn
+        labelAlarm.isHidden = !isOn
         memoView.isHidden = !isOn
     }
     
-    func inputCell(title:String, memo:String, time:String) {
+    func inputCell(title:String, memo:String, time:String, alarm:String) {
         labelTitle.text = title
         labelTitle.sizeToFit()
         memoView.text = memo
-        labelTime.text = time
+        labelTime.text = time.isEmpty ? "--:--" : time
+        labelAlarm.text = alarm.isEmpty ? "없음" : alarm
+        // 알람 아이콘 라벨에 넣기
+        let attributedString = NSMutableAttributedString(string: "")
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = UIImage(systemName: alarm.isEmpty ? "alarm" : "alarm.waves.left.and.right")?.withTintColor(.label).withConfiguration(UIImage.SymbolConfiguration(scale: .small))
+        attributedString.append(NSAttributedString(attachment: imageAttachment))
+        iconClock.attributedText = attributedString
     }
     
     func changeArrow(_ isUp:Bool) {
@@ -102,13 +119,13 @@ class TaskCell: UITableViewCell {
             //
             labelTitle.sizeToFit()
             lineView = LineView()
-            guard let lineView = lineView, let title = labelTime.text else {
+            guard let lineView = lineView else {
                 return
             }
             DispatchQueue.main.async { [self] in
-                let width = title.isEmpty ? labelTitle.bounds.width : labelTime.frame.maxX - labelTitle.frame.origin.x
+                let width = labelTitle.frame.maxX - labelTime.frame.origin.x
                 lineView.frame = CGRect(
-                    origin: CGPoint(x: labelTitle.frame.origin.x, y: 0),
+                    origin: CGPoint(x: labelTime.frame.origin.x, y: 0),
                     size: CGSize(width: width, height: frame.height))
                 self.addSubview(lineView)
             }

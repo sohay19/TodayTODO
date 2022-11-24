@@ -17,6 +17,8 @@ class PushCell : UITableViewCell {
     @IBOutlet weak var labelTime: UILabel!
     @IBOutlet weak var memoView: UITextView!
     @IBOutlet weak var btnArrow: UIImageView!
+    @IBOutlet weak var iconCalendar: UILabel!
+    @IBOutlet weak var iconClock: UILabel!
     
     var isToday = true
     
@@ -52,8 +54,13 @@ class PushCell : UITableViewCell {
         labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 2.0)
         labelAlarmTime.font = UIFont(name: E_Font_B, size: E_FontSize)
         labelRepeat.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelTime.font = UIFont(name: E_Font_B, size: E_FontSize)
-        memoView.font = UIFont(name: K_Font_B, size: K_FontSize)
+        labelTime.font = UIFont(name: N_Font, size: N_FontSize)
+        memoView.font = UIFont(name: K_Font_R, size: K_FontSize)
+        memoView.isEditable = false
+        memoView.isSelectable = false
+        memoView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        //
+        expandableView.backgroundColor = .lightGray.withAlphaComponent(0.1)
         //
         btnArrow.contentMode = .center
         btnArrow.tintColor = .label
@@ -76,5 +83,30 @@ class PushCell : UITableViewCell {
         expandableView.isHidden = !isOn
         labelTime.isHidden = !isOn
         memoView.isHidden = !isOn
+    }
+    
+    func changeArrow(_ isUp:Bool) {
+        btnArrow.image = UIImage(systemName: isUp ? "chevron.up" : "chevron.down", withConfiguration: thinConfig)
+    }
+    
+    func inputCell(title:String, memo:String, alarmTime:String, repeatType:String, time:String) {
+        labelTitle.text = title
+        memoView.text = memo
+        // 알람
+        labelAlarmTime.text = alarmTime
+        let attributedString = NSMutableAttributedString(string: "")
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = UIImage(systemName: "alarm.waves.left.and.right")?.withTintColor(.label).withConfiguration(UIImage.SymbolConfiguration(scale: .medium)).withBaselineOffset(fromBottom: 3)
+        attributedString.append(NSAttributedString(attachment: imageAttachment))
+        iconClock.attributedText = attributedString
+        //
+        labelRepeat.text = repeatType
+        //시간
+        labelTime.text = time.isEmpty ? "--:--" : time
+        let attributedStringTime = NSMutableAttributedString(string: "")
+        let imageAttachmentTime = NSTextAttachment()
+        imageAttachmentTime.image = UIImage(systemName: "calendar")?.withTintColor(.label).withConfiguration(UIImage.SymbolConfiguration(scale: .small))
+        attributedStringTime.append(NSAttributedString(attachment: imageAttachmentTime))
+        iconCalendar.attributedText = attributedStringTime
     }
 }

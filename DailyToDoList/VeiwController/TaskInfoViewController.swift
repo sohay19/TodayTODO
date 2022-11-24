@@ -176,6 +176,7 @@ extension TaskInfoViewController {
         case .ADD:
             controllEditMode(true)
         case .LOOK:
+            btnWrite.isHidden = true
             controllEditMode(false)
             loadData()
         case .MODIFY:

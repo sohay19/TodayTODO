@@ -17,33 +17,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="360" height="119"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7b-ip-LxU" userLabel="ExpandableView">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="119"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJH-do-457">
-                                <rect key="frame" x="9" y="9" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="memo" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmT-Ps-957">
-                                <rect key="frame" x="9" y="30" width="351" height="89"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="hmT-Ps-957" secondAttribute="bottom" id="21X-hj-Xv7"/>
-                            <constraint firstItem="OJH-do-457" firstAttribute="leading" secondItem="h7b-ip-LxU" secondAttribute="leading" constant="9" id="3Og-iw-fmA"/>
-                            <constraint firstItem="hmT-Ps-957" firstAttribute="top" secondItem="OJH-do-457" secondAttribute="bottom" id="7st-ZZ-UjB"/>
-                            <constraint firstItem="hmT-Ps-957" firstAttribute="leading" secondItem="OJH-do-457" secondAttribute="leading" id="KFH-oE-Irs"/>
-                            <constraint firstItem="OJH-do-457" firstAttribute="top" secondItem="h7b-ip-LxU" secondAttribute="top" constant="9" id="aKa-LO-4WO"/>
-                            <constraint firstAttribute="trailing" secondItem="hmT-Ps-957" secondAttribute="trailing" id="xj0-sF-mdd"/>
-                        </constraints>
-                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6B-jU-ooY" userLabel="MainView">
                         <rect key="frame" x="0.0" y="0.0" width="360" height="119"/>
                         <subviews>
@@ -52,7 +25,13 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="highlightedColor" systemColor="secondarySystemBackgroundColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKl-VR-a8f">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJo-Ga-FpX" userLabel="IconClock">
+                                <rect key="frame" x="262" y="18" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKl-VR-a8f">
                                 <rect key="frame" x="307" y="18" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -82,10 +61,47 @@
                             <constraint firstAttribute="bottom" secondItem="nNh-Ej-NCS" secondAttribute="bottom" id="Enr-hq-gXi"/>
                             <constraint firstItem="QHj-2j-xd5" firstAttribute="leading" secondItem="p6B-jU-ooY" secondAttribute="leading" constant="9" id="JfV-p9-Uo3"/>
                             <constraint firstItem="dKl-VR-a8f" firstAttribute="centerY" secondItem="QHj-2j-xd5" secondAttribute="centerY" id="Y7J-Ta-7ja"/>
+                            <constraint firstItem="HJo-Ga-FpX" firstAttribute="centerY" secondItem="dKl-VR-a8f" secondAttribute="centerY" id="d6j-pi-bLl"/>
                             <constraint firstItem="MkV-mD-JPV" firstAttribute="top" secondItem="dKl-VR-a8f" secondAttribute="bottom" constant="9" id="o6Z-QJ-9TD"/>
                             <constraint firstItem="MkV-mD-JPV" firstAttribute="trailing" secondItem="dKl-VR-a8f" secondAttribute="trailing" id="pOS-IV-DtH"/>
+                            <constraint firstItem="dKl-VR-a8f" firstAttribute="leading" secondItem="HJo-Ga-FpX" secondAttribute="trailing" constant="3" id="pYH-Mj-sJ5"/>
                             <constraint firstAttribute="trailing" secondItem="nNh-Ej-NCS" secondAttribute="trailing" id="sEC-md-DWj"/>
                             <constraint firstItem="nNh-Ej-NCS" firstAttribute="top" secondItem="MkV-mD-JPV" secondAttribute="bottom" id="ukk-16-LxF"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7b-ip-LxU" userLabel="ExpandableView">
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="119"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXn-Qj-YSC" userLabel="IconCalendar">
+                                <rect key="frame" x="9" y="9" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJH-do-457">
+                                <rect key="frame" x="54" y="9" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="memo" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmT-Ps-957">
+                                <rect key="frame" x="9" y="36" width="342" height="74"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="hmT-Ps-957" secondAttribute="bottom" constant="9" id="21X-hj-Xv7"/>
+                            <constraint firstItem="OJH-do-457" firstAttribute="centerY" secondItem="EXn-Qj-YSC" secondAttribute="centerY" id="EGm-Cf-jfA"/>
+                            <constraint firstItem="EXn-Qj-YSC" firstAttribute="leading" secondItem="h7b-ip-LxU" secondAttribute="leading" constant="9" id="MgY-FZ-1d9"/>
+                            <constraint firstItem="OJH-do-457" firstAttribute="leading" secondItem="EXn-Qj-YSC" secondAttribute="trailing" constant="3" id="MqL-kE-2qn"/>
+                            <constraint firstItem="hmT-Ps-957" firstAttribute="top" secondItem="EXn-Qj-YSC" secondAttribute="bottom" constant="6" id="hxR-dh-OdW"/>
+                            <constraint firstItem="EXn-Qj-YSC" firstAttribute="top" secondItem="h7b-ip-LxU" secondAttribute="top" constant="9" id="jqq-dS-UoU"/>
+                            <constraint firstAttribute="trailing" secondItem="hmT-Ps-957" secondAttribute="trailing" constant="9" id="xj0-sF-mdd"/>
+                            <constraint firstItem="hmT-Ps-957" firstAttribute="leading" secondItem="EXn-Qj-YSC" secondAttribute="leading" id="yQj-5n-c57"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -103,6 +119,8 @@
             <connections>
                 <outlet property="btnArrow" destination="nNh-Ej-NCS" id="Ieu-WE-NEK"/>
                 <outlet property="expandableView" destination="h7b-ip-LxU" id="aGi-HD-jC9"/>
+                <outlet property="iconCalendar" destination="EXn-Qj-YSC" id="h40-AR-b3a"/>
+                <outlet property="iconClock" destination="HJo-Ga-FpX" id="LVm-hS-yFt"/>
                 <outlet property="labelAlarmTime" destination="dKl-VR-a8f" id="FX4-DB-YU2"/>
                 <outlet property="labelRepeat" destination="MkV-mD-JPV" id="yRi-dC-liv"/>
                 <outlet property="labelTime" destination="OJH-do-457" id="jcZ-fY-cex"/>

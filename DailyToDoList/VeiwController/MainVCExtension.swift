@@ -86,6 +86,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         var title = ""
         var memo = ""
         var time = ""
+        var alarm = ""
         var isDone = false
         switch currentType {
         case .Today:
@@ -113,6 +114,9 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             let task = list[index.row]
             isDone = task.isDone
             title = task.title
+            if let option = task.optionData {
+                alarm = option.alarmTime
+            }
             if isNextIndex {
                 //열린 내용셀
                 taskCell.controllMain(false)
@@ -140,7 +144,9 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             let task = taskList[indexPath.row]
             isDone = task.isDone
             title = task.title
-            //
+            if let option = task.optionData {
+                alarm = option.alarmTime
+            }
             taskCell.setMonthCell()
             if task.taskTime.isEmpty {
                 time = task.taskTime
@@ -149,7 +155,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                 time = "\(taskTime[0]):\(taskTime[1])"
             }
         }
-        taskCell.inputCell(title: title, memo: memo, time: time)
+        taskCell.inputCell(title: title, memo: memo, time: time, alarm: alarm)
         taskCell.taskIsDone(isDone)
         return taskCell
     }

@@ -41,10 +41,10 @@ class LineView:UIView {
         shapeLayer.strokeColor = UIColor.label.cgColor
         self.layer.addSublayer(shapeLayer)
         //
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.fromValue = 0.0
-        animation.toValue = 1.0
-        animation.duration = 0.1
-        shapeLayer.add(animation, forKey: "drawLineAnimation")
+//        let animation = CABasicAnimation(keyPath: "strokeEnd")
+//        animation.fromValue = 0.0
+//        animation.toValue = 1.0
+//        animation.duration = 0.1
+//        shapeLayer.add(animation, forKey: "drawLineAnimation")
     }
 }

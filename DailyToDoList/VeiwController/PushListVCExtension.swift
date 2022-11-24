@@ -11,6 +11,19 @@ import UIKit
 
 extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Section
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let myLabel = UILabel()
+        myLabel.frame = CGRect(x: 0, y: 0, width: 320, height: 30)
+        myLabel.font = UIFont(name: K_Font_B, size: K_FontSize + 1.0)
+        let category = categoryList[section]
+        myLabel.text = category
+        myLabel.textColor = DataManager.shared.getCategoryColor(category)
+
+        let headerView = UIView()
+        headerView.addSubview(myLabel)
+
+        return headerView
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return categoryList.count
     }
@@ -18,6 +31,10 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         return categoryList[section]
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let category = categoryList[section]
+        guard let taskList = taskList[category] else {
+            return 0
+        }
         if let openedPush = openedPush {
             if openedPush.indexPath.section == section {
                 return taskList.count+1
@@ -53,55 +70,51 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         }
         let option = taskData.optionData ?? OptionData()
         //
+        var repeatType = ""
         if isNextIndex {
             pushCell.controllMain(false)
-            pushCell.labelTime.text = taskData.taskTime
-            pushCell.memoView.text = taskData.memo
         } else {
             pushCell.controllMain(true)
-            pushCell.btnArrow.image = UIImage(systemName: isOpenIndex ? "chevron.up" : "chevron.down", withConfiguration: thinConfig)
+            pushCell.changeArrow(isOpenIndex ? true : false)
             pushCell.isToday = segmentedController.selectedSegmentIndex == 0 ? true : false
-            pushCell.labelTitle.text = taskData.title
-            pushCell.labelAlarmTime.text = option.alarmTime
             //
-            var repeatMsg = ""
             switch RepeatType(rawValue: taskData.repeatType) {
             case .EveryDay:
-                repeatMsg = "매일 반복"
+                repeatType = "매일 반복"
             case .Eachweek:
-                repeatMsg = "매 주 "
+                repeatType = "매 주 "
                 let weekDayList = option.getWeekDayList()
                 for weekday in 0..<weekDayList.count {
                     if weekDayList[weekday] {
-                        repeatMsg += Utils.getWeekDayInKOR(weekday)
+                        repeatType += Utils.getWeekDayInKOR(weekday)
                     }
                 }
-                repeatMsg.removeLast()
-                repeatMsg.removeLast()
-                repeatMsg += "요일 반복"
+                repeatType.removeLast()
+                repeatType.removeLast()
+                repeatType += "요일 반복"
             case .EachOnceOfMonth:
-                repeatMsg = "매 월 "
-                repeatMsg += String(Utils.getDay(taskData.taskDay))
-                repeatMsg += "일 반복"
+                repeatType = "매 월 "
+                repeatType += String(Utils.getDay(taskData.taskDay))
+                repeatType += "일 반복"
             case .EachWeekOfMonth:
-                repeatMsg = "매 월 "
-                repeatMsg += "\(Utils.getWeekOfMonthInKOR(option.weekOfMonth))주, "
+                repeatType = "매 월 "
+                repeatType += "\(Utils.getWeekOfMonthInKOR(option.weekOfMonth))주, "
                 var weekDay = taskData.printWeekDay()
                 if !weekDay.isEmpty {
                     weekDay.removeLast()
                 }
-                repeatMsg += weekDay
-                repeatMsg += "요일 반복"
+                repeatType += weekDay
+                repeatType += "요일 반복"
             case .EachYear:
-                repeatMsg = "매 년 "
-                repeatMsg += String(Utils.getDay(taskData.taskDay))
-                repeatMsg += "일 반복"
+                repeatType = "매 년 "
+                repeatType += String(Utils.getDay(taskData.taskDay))
+                repeatType += "일 반복"
             default:
                 //None
-                repeatMsg = "반복 없음"
+                repeatType = "반복 없음"
             }
-            pushCell.labelRepeat.text = repeatMsg
         }
+        pushCell.inputCell(title: taskData.title, memo:taskData.memo ,alarmTime: option.alarmTime, repeatType: repeatType, time: taskData.taskTime)
         return pushCell
     }
     //MARK: - Expandable
