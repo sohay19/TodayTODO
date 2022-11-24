@@ -32,13 +32,20 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBi-rD-W96">
-                                <rect key="frame" x="18.000000000000004" y="68" width="40.333333333333343" height="21.666666666666671"/>
+                                <rect key="frame" x="18.000000000000004" y="65" width="40.333333333333343" height="21.666666666666671"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ki-rp-JXu" userLabel="line">
+                                <rect key="frame" x="0.0" y="92.666666666666671" width="393" height="1"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="56d-9B-wXR"/>
+                                </constraints>
+                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iq3-Tm-Na7" customClass="CustomSegmentControl" customModule="DailyToDoList" customModuleProvider="target">
-                                <rect key="frame" x="18" y="107.66666666666667" width="117" height="32.000000000000014"/>
+                                <rect key="frame" x="18" y="108.66666666666667" width="117" height="32.000000000000014"/>
                                 <segments>
                                     <segment title="Today"/>
                                     <segment title="Month"/>
@@ -48,7 +55,7 @@
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DGn-43-cga">
-                                <rect key="frame" x="294" y="100.66666666666667" width="90" height="45.000000000000014"/>
+                                <rect key="frame" x="294" y="101.66666666666667" width="90" height="45.000000000000014"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxX-PF-hmk" userLabel="BtnToday">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
@@ -69,7 +76,7 @@
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="square.and.pencil" catalog="system"/>
+                                        <state key="normal" image="scribble.variable" catalog="system"/>
                                         <connections>
                                             <action selector="clickTaskAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ZH-tc-Gj3"/>
                                         </connections>
@@ -80,10 +87,10 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-ST-NiN" userLabel="TodayView">
-                                <rect key="frame" x="0.0" y="156.66666666666669" width="393" height="661.33333333333326"/>
+                                <rect key="frame" x="0.0" y="157.66666666666669" width="393" height="660.33333333333326"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T45-og-L7Z">
-                                        <rect key="frame" x="30" y="18" width="333" height="625.33333333333337"/>
+                                        <rect key="frame" x="30" y="0.0" width="333" height="630.33333333333337"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableView>
@@ -104,9 +111,9 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Gt6-zW-da3" firstAttribute="top" secondItem="c0h-vX-NoB" secondAttribute="bottom" id="INk-89-25x"/>
-                                    <constraint firstItem="T45-og-L7Z" firstAttribute="top" secondItem="fcp-ST-NiN" secondAttribute="top" constant="18" id="Jce-Kw-ZbB"/>
+                                    <constraint firstItem="T45-og-L7Z" firstAttribute="top" secondItem="fcp-ST-NiN" secondAttribute="top" id="Jce-Kw-ZbB"/>
                                     <constraint firstItem="Gt6-zW-da3" firstAttribute="centerX" secondItem="T45-og-L7Z" secondAttribute="centerX" id="MrJ-CR-P8E"/>
-                                    <constraint firstAttribute="bottom" secondItem="T45-og-L7Z" secondAttribute="bottom" constant="18" id="Pe2-Mp-IBM"/>
+                                    <constraint firstAttribute="bottom" secondItem="T45-og-L7Z" secondAttribute="bottom" constant="30" id="Pe2-Mp-IBM"/>
                                     <constraint firstItem="c0h-vX-NoB" firstAttribute="centerX" secondItem="fcp-ST-NiN" secondAttribute="centerX" id="VUp-jh-FiC"/>
                                     <constraint firstAttribute="trailing" secondItem="T45-og-L7Z" secondAttribute="trailing" constant="30" id="p4n-uv-S1i"/>
                                     <constraint firstItem="T45-og-L7Z" firstAttribute="leading" secondItem="fcp-ST-NiN" secondAttribute="leading" constant="30" id="rkp-TE-SD6"/>
@@ -114,22 +121,22 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KER-2I-O4L" userLabel="MonthView">
-                                <rect key="frame" x="0.0" y="156.66666666666669" width="393" height="661.33333333333326"/>
+                                <rect key="frame" x="0.0" y="157.66666666666669" width="393" height="660.33333333333326"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MtS-eB-6uU" customClass="CustomCalendarView" customModule="DailyToDoList" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="18" width="351" height="316"/>
+                                        <rect key="frame" x="21" y="0.0" width="351" height="316"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="MtS-eB-6uU" secondAttribute="height" multiplier="1:0.9" id="yfp-fD-gSz"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dEB-Nb-JJl">
-                                        <rect key="frame" x="30" y="343" width="333" height="300.33333333333326"/>
+                                        <rect key="frame" x="30" y="325" width="333" height="305.33333333333326"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해야할 일을 등록해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8B-xB-LYB" userLabel="Message">
-                                        <rect key="frame" x="121" y="343" width="151" height="18"/>
+                                        <rect key="frame" x="121" y="325" width="151" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -141,8 +148,8 @@
                                     <constraint firstItem="dEB-Nb-JJl" firstAttribute="top" secondItem="MtS-eB-6uU" secondAttribute="bottom" constant="9" id="9f9-vk-7xQ"/>
                                     <constraint firstAttribute="trailing" secondItem="dEB-Nb-JJl" secondAttribute="trailing" constant="30" id="LQl-N0-Pk1"/>
                                     <constraint firstItem="C8B-xB-LYB" firstAttribute="centerX" secondItem="dEB-Nb-JJl" secondAttribute="centerX" id="UCi-q9-pfd"/>
-                                    <constraint firstAttribute="bottom" secondItem="dEB-Nb-JJl" secondAttribute="bottom" constant="18" id="gf7-LB-dj8"/>
-                                    <constraint firstItem="MtS-eB-6uU" firstAttribute="top" secondItem="KER-2I-O4L" secondAttribute="top" constant="18" id="ilK-55-0kt"/>
+                                    <constraint firstAttribute="bottom" secondItem="dEB-Nb-JJl" secondAttribute="bottom" constant="30" id="gf7-LB-dj8"/>
+                                    <constraint firstItem="MtS-eB-6uU" firstAttribute="top" secondItem="KER-2I-O4L" secondAttribute="top" id="ilK-55-0kt"/>
                                     <constraint firstItem="MtS-eB-6uU" firstAttribute="leading" secondItem="KER-2I-O4L" secondAttribute="leading" constant="21" id="j7b-qh-YpZ"/>
                                     <constraint firstAttribute="trailing" secondItem="MtS-eB-6uU" secondAttribute="trailing" constant="21" id="lW5-gE-PZt"/>
                                     <constraint firstItem="C8B-xB-LYB" firstAttribute="top" secondItem="dEB-Nb-JJl" secondAttribute="top" id="oKN-Tg-cLv"/>
@@ -153,20 +160,23 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DGn-43-cga" firstAttribute="centerY" secondItem="iq3-Tm-Na7" secondAttribute="centerY" id="1lS-bz-6IF"/>
-                            <constraint firstItem="EBi-rD-W96" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="9" id="3oY-ki-OUH"/>
                             <constraint firstItem="fcp-ST-NiN" firstAttribute="top" secondItem="iq3-Tm-Na7" secondAttribute="bottom" constant="18" id="61F-x8-Nig"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KER-2I-O4L" secondAttribute="trailing" id="784-KU-DMM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EBi-rD-W96" secondAttribute="trailing" constant="18" id="AOu-CT-bTK"/>
+                            <constraint firstItem="2ki-rp-JXu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Aa7-IP-rOK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fcp-ST-NiN" secondAttribute="bottom" id="Dce-LH-ai6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2ki-rp-JXu" secondAttribute="trailing" id="Dtu-R2-EMD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DGn-43-cga" secondAttribute="trailing" constant="9" id="FfS-JD-7BZ"/>
-                            <constraint firstItem="iq3-Tm-Na7" firstAttribute="top" secondItem="EBi-rD-W96" secondAttribute="bottom" constant="18" id="TXd-2h-No9"/>
+                            <constraint firstItem="iq3-Tm-Na7" firstAttribute="top" secondItem="2ki-rp-JXu" secondAttribute="bottom" constant="15" id="GOB-hI-qyf"/>
+                            <constraint firstItem="2ki-rp-JXu" firstAttribute="top" secondItem="EBi-rD-W96" secondAttribute="bottom" constant="6" id="JaR-zD-22q"/>
+                            <constraint firstItem="EBi-rD-W96" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="Ogg-DA-oRu"/>
                             <constraint firstItem="fcp-ST-NiN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V75-55-LqF"/>
+                            <constraint firstItem="EBi-rD-W96" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="XRl-Rn-9nx"/>
                             <constraint firstItem="DGn-43-cga" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iq3-Tm-Na7" secondAttribute="trailing" constant="18" id="Y6T-nF-doa"/>
-                            <constraint firstItem="iq3-Tm-Na7" firstAttribute="leading" secondItem="EBi-rD-W96" secondAttribute="leading" id="cb6-k1-f7C"/>
                             <constraint firstItem="KER-2I-O4L" firstAttribute="top" secondItem="iq3-Tm-Na7" secondAttribute="bottom" constant="18" id="j9l-Yf-rjT"/>
                             <constraint firstItem="KER-2I-O4L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rqd-yK-18o"/>
-                            <constraint firstItem="EBi-rD-W96" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="upg-G6-Lsp"/>
+                            <constraint firstItem="iq3-Tm-Na7" firstAttribute="leading" secondItem="EBi-rD-W96" secondAttribute="leading" id="wOp-7b-tP1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fcp-ST-NiN" secondAttribute="trailing" id="xJ3-h2-HD0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EBi-rD-W96" secondAttribute="trailing" constant="18" id="yTr-2w-94w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KER-2I-O4L" secondAttribute="bottom" id="zyQ-Kh-eQW"/>
                         </constraints>
                     </view>
@@ -179,6 +189,7 @@
                         <outlet property="labelDate" destination="EBi-rD-W96" id="NEf-mt-7JQ"/>
                         <outlet property="labelMonthNilMsg" destination="C8B-xB-LYB" id="yN6-96-Ccg"/>
                         <outlet property="labelTodayNilMsg" destination="Gt6-zW-da3" id="vqc-w2-hnL"/>
+                        <outlet property="line" destination="2ki-rp-JXu" id="oJb-1p-TRG"/>
                         <outlet property="monthView" destination="KER-2I-O4L" id="Tf7-cx-m7q"/>
                         <outlet property="monthlyTaskTable" destination="dEB-Nb-JJl" id="Y8d-Kh-xB0"/>
                         <outlet property="segmentedController" destination="iq3-Tm-Na7" id="xSH-dJ-LfD"/>
@@ -193,12 +204,15 @@
     <resources>
         <image name="pencil.png" width="1691" height="750"/>
         <image name="plus.viewfinder" catalog="system" width="128" height="115"/>
-        <image name="square.and.pencil" catalog="system" width="128" height="113"/>
+        <image name="scribble.variable" catalog="system" width="128" height="119"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

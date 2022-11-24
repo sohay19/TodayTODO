@@ -121,7 +121,7 @@
                                                         <rect key="frame" x="0.0" y="45" width="336" height="45"/>
                                                         <subviews>
                                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="bqm-YU-iV9">
-                                                                <rect key="frame" x="223.5" y="6" width="103.5" height="33"/>
+                                                                <rect key="frame" x="228" y="6" width="99" height="33"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="bqm-YU-iV9" secondAttribute="height" multiplier="3:1" priority="250" id="5c9-11-WY2"/>
                                                                     <constraint firstAttribute="height" constant="33" id="9D7-Q2-fa4"/>
@@ -347,7 +347,7 @@
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="pencil" catalog="system">
+                                        <state key="normal" image="square.and.pencil" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                         </state>
                                         <connections>
@@ -435,7 +435,7 @@
     <resources>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="chevron.up.chevron.down" catalog="system" width="128" height="128"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="113"/>
         <image name="square.fill" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

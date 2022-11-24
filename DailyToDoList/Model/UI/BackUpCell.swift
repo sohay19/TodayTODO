@@ -22,7 +22,7 @@ class BackUpCell : UITableViewCell {
         self.backgroundColor = .clear
         self.selectionStyle = .none
         //
-        separatorInset = UIEdgeInsets(top: 0, left: 9, bottom: 0, right: 9)
+        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         labelDate.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelDate.tintColor = .label

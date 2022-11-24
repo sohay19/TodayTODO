@@ -427,6 +427,17 @@ extension RealmManager {
         }
         return foundData.map{$0}
     }
+    //
+    func getTaskForCategory(_ category:String) -> [EachTask] {
+        openRealm()
+        guard let realm = realm else {
+            print("realm is nil")
+            return []
+        }
+        let taskDataBase = realm.objects(EachTask.self)
+        let foundData = taskDataBase.filter{ $0.category == category }
+        return foundData.map{$0}
+    }
 }
 
 //MARK: - Category

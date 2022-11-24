@@ -9,6 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var imgNil: UIImageView!
+    @IBOutlet weak var line: UIView!
     //
     @IBOutlet weak var segmentedController: CustomSegmentControl!
     @IBOutlet weak var btnAdd: UIButton!
@@ -94,17 +95,20 @@ extension MainViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         //
+        line.backgroundColor = .systemBackground.withAlphaComponent(0.3)
+        //
         todayView.backgroundColor = .clear
         monthView.backgroundColor = .clear
         // 폰트 설정
         labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
         labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelDate.font = UIFont(name: E_Font_E, size: MenuFontSize)
+        labelDate.textColor = .label
         //
         btnAdd.contentMode = .center
-        btnAdd.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: regularConfig), for: .normal)
+        btnAdd.setImage(UIImage(systemName: "scribble.variable", withConfiguration: mediumConfig), for: .normal)
         btnToday.contentMode = .center
-        btnToday.setImage(UIImage(systemName: "plus.viewfinder", withConfiguration: regularConfig), for: .normal)
+        btnToday.setImage(UIImage(systemName: "plus.viewfinder", withConfiguration: mediumConfig), for: .normal)
         //
         dailyTaskTable.sectionHeaderTopPadding = 0
         dailyTaskTable.sectionHeaderHeight = 30
@@ -123,8 +127,6 @@ extension MainViewController {
         monthlyTaskTable.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         monthlyTaskTable.separatorColor = .label
         monthlyTaskTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        //
-        monthView.isHidden = true
     }
     //
     func initCell() {

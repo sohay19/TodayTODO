@@ -65,6 +65,10 @@ extension SettingViewController {
         tableView.backgroundColor = .lightGray.withAlphaComponent(0.1)
         tableView.layer.cornerRadius = 5
         tableView.separatorColor = .systemFill
+        tableView.separatorInsetReference = .fromCellEdges
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.separatorColor = .label
+        tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         btnBackup.contentMode = .center
         btnBackup.setImage(UIImage(systemName: "tray.and.arrow.down.fill", withConfiguration: mediumConfig), for: .normal)
@@ -197,14 +201,14 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             self.loadBackupFile(indexPath)
             success(true)
         }
-        load.image = UIImage(systemName: "tray.and.arrow.up.fill", withConfiguration: regularConfig)
+        load.image = UIImage(systemName: "tray.and.arrow.up.fill", withConfiguration: mediumConfig)
         load.backgroundColor = .systemIndigo.withAlphaComponent(0.5)
         //
         let delete = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.deleteBackupFile(indexPath)
             success(true)
         }
-        delete.image = UIImage(systemName: "trash.fill", withConfiguration: regularConfig)
+        delete.image = UIImage(systemName: "trash.fill", withConfiguration: mediumConfig)
         delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete, load])

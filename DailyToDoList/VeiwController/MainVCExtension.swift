@@ -201,7 +201,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             self.taskIsDone(!isDone, indexPath)
             success(true)
         }
-        done.image = UIImage(systemName: isDone ? "xmark" : "highlighter", withConfiguration: regularConfig)
+        done.image = UIImage(systemName: isDone ? "xmark" : "highlighter", withConfiguration: mediumConfig)
         done.backgroundColor = isDone ? UIColor.systemGray.withAlphaComponent(0.5) : UIColor.systemRed.withAlphaComponent(0.5)
         //index = 0, 왼쪽
         return UISwipeActionsConfiguration(actions:[done])
@@ -212,14 +212,14 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             self.modifyTask(indexPath)
             success(true)
         }
-        modify.image = UIImage(systemName: "eraser.fill", withConfiguration: regularConfig)
+        modify.image = UIImage(systemName: "eraser.fill", withConfiguration: mediumConfig)
         modify.backgroundColor = .systemIndigo.withAlphaComponent(0.5)
         
         let delete = UIContextualAction(style: .destructive, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.deleteTask(indexPath)
             success(true)
         }
-        delete.image = UIImage(systemName: "trash.fill", withConfiguration: regularConfig)
+        delete.image = UIImage(systemName: "trash.fill", withConfiguration: mediumConfig)
         delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete, modify])

@@ -74,6 +74,9 @@ extension DataManager {
     func getTask(_ taskId:String) -> EachTask? {
         return realmManager.getTaskData(taskId)
     }
+    func getTaskCategory(category:String ) -> [EachTask] {
+        return realmManager.getTaskForCategory(category)
+    }
 }
 
 //MARK: - Cetegory

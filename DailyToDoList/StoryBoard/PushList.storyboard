@@ -18,13 +18,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today Push" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSh-CA-wzF">
-                                <rect key="frame" x="18" y="57" width="99" height="21.5"/>
+                                <rect key="frame" x="18" y="54" width="99" height="21.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRd-Mk-r7u" userLabel="line">
+                                <rect key="frame" x="0.0" y="81.5" width="414" height="1"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="0d9-f7-cRp"/>
+                                </constraints>
+                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qs4-bw-qt3" customClass="CustomSegmentControl" customModule="DailyToDoList" customModuleProvider="target">
-                                <rect key="frame" x="18" y="96.5" width="113" height="32"/>
+                                <rect key="frame" x="18" y="97.5" width="113" height="32"/>
                                 <segments>
                                     <segment title="Today"/>
                                     <segment title="All"/>
@@ -34,7 +41,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyo-yY-97R" userLabel="BtnEdit">
-                                <rect key="frame" x="360" y="89.5" width="45" height="45"/>
+                                <rect key="frame" x="360" y="90.5" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="CN5-QI-uoC"/>
                                     <constraint firstAttribute="width" secondItem="Iyo-yY-97R" secondAttribute="height" multiplier="1:1" id="pFI-sM-VFF"/>
@@ -49,7 +56,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcM-hb-gY3" userLabel="EditView">
-                                <rect key="frame" x="0.0" y="145.5" width="414" height="45"/>
+                                <rect key="frame" x="0.0" y="146.5" width="414" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anC-4D-2zy" userLabel="BtinSelectAll">
                                         <rect key="frame" x="6" y="0.0" width="45" height="45"/>
@@ -88,17 +95,17 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kGG-Zy-ClK">
-                                <rect key="frame" x="30" y="208.5" width="354" height="635.5"/>
+                                <rect key="frame" x="30" y="209.5" width="354" height="622.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock.png" translatesAutoresizingMaskIntoConstraints="NO" id="fwR-hO-Gzt" userLabel="image">
-                                <rect key="frame" x="90" y="298.5" width="234" height="234"/>
+                                <rect key="frame" x="90" y="299.5" width="234" height="234"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fwR-hO-Gzt" secondAttribute="height" multiplier="1:1" id="phu-dj-dhH"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="예정된 알림이 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8R-IL-C5D" userLabel="Message">
-                                <rect key="frame" x="144.5" y="550.5" width="125" height="18"/>
+                                <rect key="frame" x="144.5" y="551.5" width="125" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -115,16 +122,19 @@
                             <constraint firstItem="jcM-hb-gY3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7T4-D6-fml"/>
                             <constraint firstItem="Qs4-bw-qt3" firstAttribute="leading" secondItem="sSh-CA-wzF" secondAttribute="leading" id="G65-5d-Tuh"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="fwR-hO-Gzt" secondAttribute="trailing" constant="90" id="K5k-pW-G7v"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="kGG-Zy-ClK" secondAttribute="bottom" constant="18" id="Mfd-Db-bQ7"/>
-                            <constraint firstItem="sSh-CA-wzF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="9" id="S9B-S0-hhE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="kGG-Zy-ClK" secondAttribute="bottom" constant="30" id="Mfd-Db-bQ7"/>
+                            <constraint firstItem="rRd-Mk-r7u" firstAttribute="top" secondItem="sSh-CA-wzF" secondAttribute="bottom" constant="6" id="O16-kd-9Xq"/>
+                            <constraint firstItem="sSh-CA-wzF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="6" id="S9B-S0-hhE"/>
                             <constraint firstItem="v8R-IL-C5D" firstAttribute="centerX" secondItem="kGG-Zy-ClK" secondAttribute="centerX" id="Sbc-WS-67q"/>
-                            <constraint firstItem="Qs4-bw-qt3" firstAttribute="top" secondItem="sSh-CA-wzF" secondAttribute="bottom" constant="18" id="V8V-RJ-YkJ"/>
                             <constraint firstItem="kGG-Zy-ClK" firstAttribute="top" secondItem="jcM-hb-gY3" secondAttribute="bottom" constant="18" id="Vx8-ov-iW4"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rRd-Mk-r7u" secondAttribute="trailing" id="ZXg-RB-h0u"/>
                             <constraint firstItem="fwR-hO-Gzt" firstAttribute="top" secondItem="kGG-Zy-ClK" secondAttribute="top" constant="90" id="bRE-5F-lR2"/>
                             <constraint firstItem="kGG-Zy-ClK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="czN-HN-blN"/>
                             <constraint firstItem="v8R-IL-C5D" firstAttribute="top" secondItem="fwR-hO-Gzt" secondAttribute="bottom" constant="18" id="fb7-PS-YKf"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sSh-CA-wzF" secondAttribute="trailing" constant="18" id="iST-Q9-i9N"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Iyo-yY-97R" secondAttribute="trailing" constant="9" id="n4C-lT-AzX"/>
+                            <constraint firstItem="Qs4-bw-qt3" firstAttribute="top" secondItem="rRd-Mk-r7u" secondAttribute="bottom" constant="15" id="o1Q-2U-w9O"/>
+                            <constraint firstItem="rRd-Mk-r7u" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="wy0-dK-2Ng"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jcM-hb-gY3" secondAttribute="trailing" id="zLg-67-WNR"/>
                         </constraints>
                     </view>
@@ -136,6 +146,7 @@
                         <outlet property="imgClock" destination="fwR-hO-Gzt" id="gaJ-VP-fbE"/>
                         <outlet property="labelDate" destination="sSh-CA-wzF" id="cVg-35-peY"/>
                         <outlet property="labelNilMsg" destination="v8R-IL-C5D" id="XY6-u7-7WM"/>
+                        <outlet property="line" destination="rRd-Mk-r7u" id="a9x-5L-hFr"/>
                         <outlet property="pushTable" destination="kGG-Zy-ClK" id="uef-47-r2U"/>
                         <outlet property="segmentedController" destination="Qs4-bw-qt3" id="frH-IJ-Tzh"/>
                     </connections>
@@ -155,6 +166,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

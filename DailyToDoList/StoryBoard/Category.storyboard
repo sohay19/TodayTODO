@@ -23,35 +23,52 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Q8S-7o-Chk">
-                                <rect key="frame" x="30" y="158.5" width="354" height="685.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="W0e-Eg-rfi">
-                                <rect key="frame" x="360" y="95.5" width="45" height="45"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0e-Eg-rfi">
+                                <rect key="frame" x="264" y="95.5" width="141" height="45"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaP-fH-oDY">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaP-fH-oDY" userLabel="BtnSave">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="4e3-PH-Ct7"/>
-                                            <constraint firstAttribute="width" secondItem="yaP-fH-oDY" secondAttribute="height" multiplier="1:1" id="cFH-cz-wWX"/>
+                                            <constraint firstAttribute="width" secondItem="yaP-fH-oDY" secondAttribute="height" multiplier="1:1" id="U9y-2M-ZcM"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="scissors" catalog="system"/>
-                                        <connections>
-                                            <action selector="clickEdit:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4vW-x8-8bm"/>
-                                        </connections>
+                                        <state key="normal" image="scissors" catalog="system">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KQ-qT-YiX" userLabel="BtnSave">
+                                        <rect key="frame" x="45" y="0.0" width="37" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="L9O-o8-WSO"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="SAVE"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x0-E1-1zs" userLabel="BtnCancel">
+                                        <rect key="frame" x="82" y="0.0" width="59" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="6hJ-Dh-wV9"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="CANCEL"/>
                                     </button>
                                 </subviews>
                             </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Q8S-7o-Chk">
+                                <rect key="frame" x="30" y="158.5" width="354" height="673.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VmR-ka-L5l"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="W0e-Eg-rfi" firstAttribute="top" secondItem="Ooc-Id-dPX" secondAttribute="bottom" constant="18" id="31c-JF-t35"/>
                             <constraint firstItem="Ooc-Id-dPX" firstAttribute="leading" secondItem="VmR-ka-L5l" secondAttribute="leading" constant="18" id="MGm-Do-yGu"/>
-                            <constraint firstItem="VmR-ka-L5l" firstAttribute="bottom" secondItem="Q8S-7o-Chk" secondAttribute="bottom" constant="18" id="MZQ-f0-JOe"/>
+                            <constraint firstItem="VmR-ka-L5l" firstAttribute="bottom" secondItem="Q8S-7o-Chk" secondAttribute="bottom" constant="30" id="MZQ-f0-JOe"/>
                             <constraint firstItem="W0e-Eg-rfi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VmR-ka-L5l" secondAttribute="leading" constant="18" id="Own-a7-SOm"/>
                             <constraint firstItem="Q8S-7o-Chk" firstAttribute="leading" secondItem="VmR-ka-L5l" secondAttribute="leading" constant="30" id="SBN-kW-2Ql"/>
                             <constraint firstItem="VmR-ka-L5l" firstAttribute="trailing" secondItem="W0e-Eg-rfi" secondAttribute="trailing" constant="9" id="Zdx-eG-umd"/>
@@ -62,8 +79,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btnEdit" destination="yaP-fH-oDY" id="vgD-tZ-dt6"/>
+                        <outlet property="btnCancel" destination="2x0-E1-1zs" id="HOt-Mz-Dls"/>
+                        <outlet property="btnEdit" destination="yaP-fH-oDY" id="mq9-Bt-XLl"/>
+                        <outlet property="btnSave" destination="5KQ-qT-YiX" id="Ald-RT-ZUU"/>
                         <outlet property="labelTitle" destination="Ooc-Id-dPX" id="6zs-rk-dDQ"/>
+                        <outlet property="tableView" destination="Q8S-7o-Chk" id="IBG-0t-FXa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

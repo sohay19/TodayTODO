@@ -154,7 +154,7 @@ extension TaskInfoViewController {
         btnEndDate.titleLabel?.font = regular
         btnEndDate.tintColor = .darkGray
         //
-        btnWrite.setImage(UIImage(systemName: "pencil", withConfiguration: mediumConfig), for: .normal)
+        btnWrite.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: mediumConfig), for: .normal)
         btnWrite.tintColor = .label
         btnBack.setImage(UIImage(systemName: "chevron.backward", withConfiguration: mediumConfig), for: .normal)
         btnBack.tintColor = .label

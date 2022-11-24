@@ -11,6 +11,7 @@ import UIKit
 
 class PushListViewController : UIViewController {
     @IBOutlet weak var imgClock: UIImageView!
+    @IBOutlet weak var line: UIView!
     //
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelNilMsg: UILabel!
@@ -81,9 +82,12 @@ extension PushListViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         //
+        line.backgroundColor = .systemBackground.withAlphaComponent(0.3)
+        //
         editView.backgroundColor = .clear
         controllEditView(false)
-        //pushTable        dailyTaskTable.sectionHeaderTopPadding = 0
+        //
+        pushTable.sectionHeaderTopPadding = 0
         pushTable.sectionHeaderHeight = 30
         pushTable.sectionFooterHeight = 30
         pushTable.backgroundColor = .clear
@@ -96,9 +100,6 @@ extension PushListViewController {
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
         //
         btnEdit.contentMode = .center
-        btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: regularConfig), for: .normal)
-        //
-        changeTitle()
     }
     // data reset
     func resetTask() {

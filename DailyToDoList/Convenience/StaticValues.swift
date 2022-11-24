@@ -45,7 +45,7 @@ let K_Font_B = "NanumBarunpenOTF-Bold"
 let K_Font_R = "NanumBarunpenOTF"
 let K_FontSize = 15.0
 let E_Font_E = "Worcestershire_Sauce_Press-Regular"
-let MenuFontSize = 30.0
+let MenuFontSize = 33.0
 let E_Font_B = "Worcestershire_Sauce-Regular"
 let E_Font_R = "Windsor_Great_Park-Regular"
 let E_FontSize = 21.0
@@ -60,9 +60,8 @@ let Underline_Black = "underline_Black.png"
 let Bricks = "Bricks.png"
 let LastPageImage = "LastPage.png"
 let boldConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .bold, scale: .large)
-let mediumConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .medium, scale: .medium)
-let regularConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .regular, scale: .medium)
-let thinConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .thin, scale: .small)
+let mediumConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .regular, scale: .medium)
+let thinConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .thin, scale: .small)
 
 //MARK: - ETC
 let DefaultCategory = "TODO"

@@ -60,6 +60,9 @@
 		CF75963529024C6A0046FDC1 /* PushListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963429024C6A0046FDC1 /* PushListViewController.swift */; };
 		CF75963729024F680046FDC1 /* PushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963629024F680046FDC1 /* PushCell.swift */; };
 		CF75963E290662900046FDC1 /* PushListVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963D290662900046FDC1 /* PushListVCExtension.swift */; };
+		CF79090F292F5DB00027D25D /* CategoryVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79090E292F5DB00027D25D /* CategoryVCExtension.swift */; };
+		CF790912292F65510027D25D /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF790910292F65510027D25D /* CategoryCell.swift */; };
+		CF790913292F65510027D25D /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF790911292F65510027D25D /* CategoryCell.xib */; };
 		CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
 		CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8148F229068E0700FD0974 /* ClassExtension.swift */; };
 		CF8149272906B75100FD0974 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8149252906B75100FD0974 /* Interface.storyboard */; };
@@ -296,6 +299,9 @@
 		CF75963429024C6A0046FDC1 /* PushListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushListViewController.swift; sourceTree = "<group>"; };
 		CF75963629024F680046FDC1 /* PushCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushCell.swift; sourceTree = "<group>"; };
 		CF75963D290662900046FDC1 /* PushListVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushListVCExtension.swift; sourceTree = "<group>"; };
+		CF79090E292F5DB00027D25D /* CategoryVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVCExtension.swift; sourceTree = "<group>"; };
+		CF790910292F65510027D25D /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		CF790911292F65510027D25D /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		CF8148F229068E0700FD0974 /* ClassExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassExtension.swift; sourceTree = "<group>"; };
 		CF8149232906B75100FD0974 /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8149262906B75100FD0974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -625,6 +631,7 @@
 				CFEB4A6328F16243008850DC /* RepeatViewController.swift */,
 				CFEB4A6D28F16B27008850DC /* PickerViewController.swift */,
 				CFEB4A6728F165D1008850DC /* CategoryViewController.swift */,
+				CF79090E292F5DB00027D25D /* CategoryVCExtension.swift */,
 				CFEB4A6928F1672F008850DC /* ColorPickerViewController.swift */,
 				CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */,
 				CF2BAF1129263E0700EB49F4 /* TaskInfoVCExtension.swift */,
@@ -670,6 +677,7 @@
 			children = (
 				CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */,
 				CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */,
+				CF42F254292E398200DB0F8E /* LineView.swift */,
 				CF5350CE291E98DC00AFDC14 /* Menu.xib */,
 				CF5350CA291E8A6700AFDC14 /* Menu.swift */,
 				CF5350D2291E9CE200AFDC14 /* Loading.xib */,
@@ -680,7 +688,8 @@
 				CF75963629024F680046FDC1 /* PushCell.swift */,
 				CF995F512924C34400FAE2F1 /* BackUpCell.xib */,
 				CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */,
-				CF42F254292E398200DB0F8E /* LineView.swift */,
+				CF790911292F65510027D25D /* CategoryCell.xib */,
+				CF790910292F65510027D25D /* CategoryCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -934,6 +943,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5350C1291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf in Resources */,
+				CF790913292F65510027D25D /* CategoryCell.xib in Resources */,
 				CF5350D72921F3F300AFDC14 /* underline_Pink.png in Resources */,
 				CF5350B0291E3D4B00AFDC14 /* Background2.jpg in Resources */,
 				CF2BAF0F2925DAFE00EB49F4 /* spring_black.png in Resources */,
@@ -1231,6 +1241,7 @@
 				CFEC1D38290E53F7009A9588 /* NSCategoryData.swift in Sources */,
 				CF75963529024C6A0046FDC1 /* PushListViewController.swift in Sources */,
 				CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */,
+				CF79090F292F5DB00027D25D /* CategoryVCExtension.swift in Sources */,
 				CFEB4A4628F14D1C008850DC /* UserData.swift in Sources */,
 				CFE01AF82918EDE6005B3316 /* CustomSegmentControl.swift in Sources */,
 				CF2BAF382927D1B400EB49F4 /* CustomTabBarController.swift in Sources */,
@@ -1244,6 +1255,7 @@
 				CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */,
 				CFEB4A6828F165D1008850DC /* CategoryViewController.swift in Sources */,
 				CF50BC5E2924D13500AB538B /* NSOptionalData.swift in Sources */,
+				CF790912292F65510027D25D /* CategoryCell.swift in Sources */,
 				CFEB4A5628F1559D008850DC /* SystemManager.swift in Sources */,
 				CFEB4A5B28F155E5008850DC /* DataManager.swift in Sources */,
 				CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */,
