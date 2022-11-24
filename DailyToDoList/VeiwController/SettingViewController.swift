@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 
 class SettingViewController: UIViewController {
+    @IBOutlet weak var line: UIView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelTableTitle: UILabel!
     @IBOutlet weak var labelDate: UILabel!
@@ -51,6 +52,8 @@ extension SettingViewController {
         let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
+        //
+        line.backgroundColor = .systemBackground.withAlphaComponent(0.3)
         //폰트 설정
         labelTitle.font = UIFont(name: E_Font_E, size: MenuFontSize)
         labelDate.font = UIFont(name: K_Font_B, size: K_FontSize + 3.0)

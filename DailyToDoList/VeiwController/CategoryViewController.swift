@@ -8,6 +8,7 @@
 import UIKit
 
 class CategoryViewController: UIViewController {
+    @IBOutlet weak var line: UIView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnEdit: UIButton!
@@ -45,6 +46,8 @@ extension CategoryViewController {
         let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
+        //
+        line.backgroundColor = .systemBackground.withAlphaComponent(0.3)
         //
         labelTitle.font = UIFont(name: E_Font_E, size: MenuFontSize)
         labelTitle.textColor = .label
