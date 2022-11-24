@@ -27,13 +27,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="카테고리 명을 입력해주세요." adjustsFontSizeToFit="NO" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tEd-g3-REU" userLabel="InputCategory">
-                                        <rect key="frame" x="27" y="60" width="212" height="34"/>
+                                        <rect key="frame" x="27" y="54" width="212" height="34"/>
                                         <color key="textColor" systemColor="systemGroupedBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" textContentType="nickname"/>
                                     </textField>
                                     <colorWell contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="N85-em-gvp">
-                                        <rect key="frame" x="248" y="63" width="28" height="28"/>
+                                        <rect key="frame" x="248" y="57" width="28" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="N85-em-gvp" secondAttribute="height" multiplier="1:1" id="gSJ-FC-ppd"/>
                                         </constraints>
@@ -82,7 +82,7 @@
                                     <constraint firstAttribute="bottom" secondItem="DGR-BC-vVC" secondAttribute="bottom" constant="42" id="LJQ-kv-tua"/>
                                     <constraint firstItem="J72-7k-ldg" firstAttribute="top" secondItem="DGR-BC-vVC" secondAttribute="top" id="Nmi-lA-Rmj"/>
                                     <constraint firstAttribute="width" constant="300" id="YMU-Fw-n8y"/>
-                                    <constraint firstItem="tEd-g3-REU" firstAttribute="top" secondItem="1Jd-Lp-LqQ" secondAttribute="bottom" constant="24" id="btI-u1-Ksm"/>
+                                    <constraint firstItem="tEd-g3-REU" firstAttribute="top" secondItem="1Jd-Lp-LqQ" secondAttribute="bottom" constant="18" id="btI-u1-Ksm"/>
                                     <constraint firstItem="N85-em-gvp" firstAttribute="leading" secondItem="tEd-g3-REU" secondAttribute="trailing" constant="9" id="doo-7j-f9t"/>
                                     <constraint firstItem="DGR-BC-vVC" firstAttribute="leading" secondItem="Oh3-Mf-mVE" secondAttribute="leading" id="gUT-2R-7R2"/>
                                     <constraint firstAttribute="bottom" secondItem="qGz-97-s0I" secondAttribute="bottom" id="gqS-iQ-rYM"/>
