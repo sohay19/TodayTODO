@@ -48,7 +48,7 @@ extension AddCategoryViewController {
         backView.backgroundColor = .clear
         //
         labelTitle.textColor = .systemBackground
-        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
+        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 2.0)
         inputTitle.textColor = .systemBackground
         inputTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
         inputTitle.backgroundColor = .systemBackground.withAlphaComponent(0.1)
