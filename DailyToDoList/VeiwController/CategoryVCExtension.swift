@@ -11,10 +11,10 @@ import UIKit
 
 //MARK: - tableView
 extension CategoryViewController : UITableViewDelegate, UITableViewDataSource {
+    //MARK: - Default
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryList.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell") as? CategoryCell else {
             return UITableViewCell()
@@ -26,15 +26,29 @@ extension CategoryViewController : UITableViewDelegate, UITableViewDataSource {
         cell.inputCell(title: category, counter: list.count)
         return cell
     }
-}
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
+    }
+    //MARK: - Edit
+    //Row별 EditMode-
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteCategory(categoryList[indexPath.row])
+        }
+    }
 
-//cell별 이동 가능 여부
-//    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-//        return false : true
-//    }
-//    //Row Move
-//    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        let task = taskList[sourceIndexPath.row]
-//        taskList.remove(at: sourceIndexPath.row)
-//        taskList.insert(task, at: destinationIndexPath.row)
-//    }
+    //MARK: - Move
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let category = categoryList[sourceIndexPath.row]
+        categoryList.remove(at: sourceIndexPath.row)
+        categoryList.insert(category, at: destinationIndexPath.row)
+        //
+        changeMoveMode(originList != categoryList ? true : false)
+    }
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+}

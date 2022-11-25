@@ -9,9 +9,9 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var imgNil: UIImageView!
-    @IBOutlet weak var line: UIView!
+    @IBOutlet weak var segmentView: UIView!
+    @IBOutlet weak var underline: UIView!
     //
-    @IBOutlet weak var segmentedController: CustomSegmentControl!
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var btnToday: UIButton!
     //
@@ -26,6 +26,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var todayView: UIView!
     @IBOutlet weak var monthView: UIView!
     
+    var segmentControl = CustomSegmentControl()
     //
     var monthDate:Date = Date()
     //
@@ -76,6 +77,12 @@ class MainViewController: UIViewController {
             })
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //
+        segmentControl.selectedSegmentIndex = 0
+    }
 }
 
 //MARK: - UI
@@ -83,10 +90,12 @@ extension MainViewController {
     func initDate() {
         var dateList:[Substring] = []
         dateList = Utils.dateToDateString(currentType == .Today ? Date() : monthDate).split(separator: "-")
-        if currentType == .Month {
-            dateList.removeLast()
+        switch currentType {
+        case .Today:
+            labelDate.text = "\(dateList[1])월\(dateList[2])일"
+        case .Month:
+            labelDate.text = "\(dateList[0])년 \(dateList[1])월"
         }
-        labelDate.text = dateList.joined(separator: ".")
     }
     //
     func initUI() {
@@ -95,15 +104,19 @@ extension MainViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         //
-        line.backgroundColor = .systemBackground.withAlphaComponent(0.2)
+        segmentView.backgroundColor = .clear
+        addSegmentcontrol()
+        underline.backgroundColor = .label
         //
         todayView.backgroundColor = .clear
         monthView.backgroundColor = .clear
         // 폰트 설정
+        labelDate.font = UIFont(name: N_Font, size: N_FontSize + 1.0)
         labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
         labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelDate.font = UIFont(name: E_Font_E, size: MenuFontSize)
         labelDate.textColor = .label
+        labelTodayNilMsg.textColor = .label
+        labelMonthNilMsg.textColor = .label
         //
         btnAdd.contentMode = .center
         btnAdd.setImage(UIImage(systemName: "scribble.variable", withConfiguration: mediumConfig), for: .normal)
@@ -124,7 +137,16 @@ extension MainViewController {
         monthlyTaskTable.backgroundColor = .clear
         monthlyTaskTable.separatorInsetReference = .fromCellEdges
         monthlyTaskTable.separatorColor = .label
-        monthlyTaskTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        monthlyTaskTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left:0, bottom: 0, right: 0)
+    }
+    //
+    private func addSegmentcontrol() {
+        let segment = CustomSegmentControl(items: ["Today TODO", "Month TODO"])
+        segment.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: segmentView.frame.size)
+        segment.addTarget(self, action: #selector(changeSegment(_:)), for: .valueChanged)
+        segment.selectedSegmentIndex = 0
+        segmentControl = segment
+        segmentView.addSubview(segment)
     }
     //
     func initCell() {
@@ -194,17 +216,6 @@ extension MainViewController {
                         return true
                     }
                 })
-                //
-                for task in sortedList {
-                    let category = task.category
-                    if !categoryList.contains(where: {$0 == category}) {
-                        categoryList.append(category)
-                        resultList[category] = []
-                    }
-                    if resultList[category] != nil {
-                        resultList[category]?.append(task)
-                    }
-                }
                 //한달
                 taskDateKeyList = [Int](1...Utils.getLastDay(monthDate))
                 //딕셔너리 초기화
@@ -295,11 +306,35 @@ extension MainViewController {
                 //month가 바뀌었으므로 캘린더 리로드
                 calendarView.reloadData()
             }
+            //
+            sortCategory()
             reloadTable()
+            //
             SystemManager.shared.closeLoading()
             if isRefresh {
                 endAppearanceTransition()
                 isRefresh = false
+            }
+        }
+    }
+    //
+    private func sortCategory() {
+        guard let list = UserDefaults.shared.array(forKey: CategoryList) as? [String] else {
+            return
+        }
+        switch currentType {
+        case .Today:
+            categoryList.sort {
+                if let first = list.firstIndex(of: $0), let second = list.firstIndex(of: $1) {
+                    return first < second
+                }
+                return false
+            }
+        case .Month:
+            for day in taskDateKeyList {
+                if let _ = monthlyTaskList[day] {
+                    monthlyTaskList[day]?.sortCateogry(list)
+                }
             }
         }
     }
@@ -472,14 +507,10 @@ extension MainViewController {
 
 //MARK: - Button Event
 extension MainViewController {
-    @IBAction func clickTaskAdd(_ sender:Any) {
-        let date = currentType == .Today ? Date() : monthDate
-        SystemManager.shared.openTaskInfo(.ADD, date: date, task: nil, load:loadTask, modify: nil)
-    }
     //SegmentedControl
-    @IBAction func changeSegment(_ sender:UISegmentedControl) {
+    @objc private func changeSegment(_ sender:UISegmentedControl) {
         //
-        switch segmentedController.selectedSegmentIndex {
+        switch segmentControl.selectedSegmentIndex {
         case 0:
             currentType = .Today
             btnToday.isHidden = true
@@ -491,6 +522,10 @@ extension MainViewController {
             return
         }
         refresh()
+    }
+    @IBAction func clickTaskAdd(_ sender:Any) {
+        let date = currentType == .Today ? Date() : monthDate
+        SystemManager.shared.openTaskInfo(.ADD, date: date, task: nil, load:loadTask, modify: nil)
     }
     @IBAction func clickToday(_ sender:Any) {
         monthDate = Date()

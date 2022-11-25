@@ -32,8 +32,10 @@ extension CustomTabBarController : UITabBarControllerDelegate {
         let pushBoard = UIStoryboard(name: pushListBoard, bundle: nil)
         guard let pushTab = pushBoard.instantiateViewController(withIdentifier: pushListBoard) as? PushListViewController else { return }
         
-        let setBoard = UIStoryboard(name: settingBoard, bundle: nil)
-        guard let settingTab = setBoard.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }
+        let setBoard = UIStoryboard(name: backupBoard, bundle: nil)
+        guard let settingTab = setBoard.instantiateViewController(withIdentifier: backupBoard) as? BackupViewController else { return }
+//        let setBoard = UIStoryboard(name: settingBoard, bundle: nil)
+//        guard let settingTab = setBoard.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }
         
         self.viewControllers = [mainTab, categoryTab, pushTab, settingTab]
         

@@ -11,19 +11,18 @@ import UIKit
 
 class PushListViewController : UIViewController {
     @IBOutlet weak var imgClock: UIImageView!
-    @IBOutlet weak var line: UIView!
     //
-    @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelNilMsg: UILabel!
     //
     @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var btnSelectAll: UIButton!
     @IBOutlet weak var btnDelete: UIButton!
     //
-    @IBOutlet weak var segmentedController: CustomSegmentControl!
-    //
     @IBOutlet weak var pushTable: UITableView!
+    @IBOutlet weak var segmentView: UIView!
     @IBOutlet weak var editView: UIView!
+    
+    var segmentControl = CustomSegmentControl()
     
     var taskList:[String:[EachTask]] = [:]
     var categoryList:[String] = []
@@ -42,12 +41,7 @@ class PushListViewController : UIViewController {
         pushTable.allowsMultipleSelectionDuringEditing = true
         pushTable.allowsFocusDuringEditing = true
         //
-        for const in editView.constraints {
-            if const.identifier == "height" {
-                heightConstraint = const
-                break
-            }
-        }
+        initConstraints()
         //
         initUI()
         initCell()
@@ -59,19 +53,19 @@ class PushListViewController : UIViewController {
         super.viewWillAppear(animated)
         //
         SystemManager.shared.openLoading()
-        //
-        if pushTable.isEditing {
-            changeEditMode()
-        }
         loadPushData()
-        DispatchQueue.main.async { [self] in
-            changeTitle()
-        }
+        changeEditMode(false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //
+        segmentControl.selectedSegmentIndex = 0
+        changeEditMode(false)
     }
 }
 
-
-//MARK: - Func
+//MARK: - init
 extension PushListViewController {
     //
     func initUI() {
@@ -80,10 +74,10 @@ extension PushListViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         //
-        line.backgroundColor = .systemBackground.withAlphaComponent(0.2)
+        segmentView.backgroundColor = .clear
+        addSegmentcontrol()
         //
         editView.backgroundColor = .clear
-        controllEditView(false)
         //
         pushTable.sectionHeaderTopPadding = 0
         pushTable.sectionHeaderHeight = 30
@@ -93,11 +87,49 @@ extension PushListViewController {
         pushTable.separatorColor = .label
         pushTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
-        labelDate.font = UIFont(name: E_Font_E, size: MenuFontSize)
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
         //
         btnEdit.contentMode = .center
     }
+    //
+    private func addSegmentcontrol() {
+        let segment = CustomSegmentControl(items: ["Today Alarm", "More Alarm"])
+        segment.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: segmentView.frame.size)
+        segment.addTarget(self, action: #selector(changeSegment(_:)), for: .valueChanged)
+        segment.selectedSegmentIndex = 0
+        segmentControl = segment
+        segmentView.addSubview(segment)
+    }
+    private func initConstraints() {
+        for const in editView.constraints {
+            if const.identifier == "height" {
+                heightConstraint = const
+                break
+            }
+        }
+    }
+    //
+    func initCell() {
+        let nibName = UINib(nibName: "PushCell", bundle: nil)
+        pushTable.register(nibName, forCellReuseIdentifier: "PushCell")
+    }
+    //refresh controller 초기세팅
+    func initRefreshController() {
+        //
+        let pushRefreshControl = UIRefreshControl()
+        pushRefreshControl.addTarget(self, action: #selector(refreshPushView), for: .valueChanged)
+        //초기화
+        pushRefreshControl.endRefreshing()
+        pushTable.refreshControl = pushRefreshControl
+    }
+    @objc func refreshPushView() {
+        pushTable.refreshControl?.endRefreshing()
+        pushTable.reloadData()
+    }
+}
+
+//MARK: - Func
+extension PushListViewController {
     // data reset
     func resetTask() {
         taskList = [:]
@@ -107,7 +139,7 @@ extension PushListViewController {
         DispatchQueue.main.async { [self] in
             resetTask()
             //
-            switch segmentedController.selectedSegmentIndex {
+            switch segmentControl.selectedSegmentIndex {
             case 0:
                 DataManager.shared.getTodayPush(loadPushList(_:))
             case 1:
@@ -147,11 +179,6 @@ extension PushListViewController {
         }
     }
     //
-    func initCell() {
-        let nibName = UINib(nibName: "PushCell", bundle: nil)
-        pushTable.register(nibName, forCellReuseIdentifier: "PushCell")
-    }
-    //
     func controllEditView(_ isOn:Bool) {
         guard let heightConstraint = heightConstraint else {
             return
@@ -159,30 +186,6 @@ extension PushListViewController {
         heightConstraint.constant = isOn ? heightOrigin : 0
         btnSelectAll.isHidden = isOn ? false : true
         btnDelete.isHidden = isOn ? false : true
-    }
-    //
-    func changeTitle() {
-        switch segmentedController.selectedSegmentIndex {
-        case 0:
-            labelDate.text = "Today Push"
-        case 1:
-            labelDate.text = "All Push"
-        default:
-            break
-        }
-    }
-    //refresh controller 초기세팅
-    func initRefreshController() {
-        //
-        let pushRefreshControl = UIRefreshControl()
-        pushRefreshControl.addTarget(self, action: #selector(refreshPushView), for: .valueChanged)
-        //초기화
-        pushRefreshControl.endRefreshing()
-        pushTable.refreshControl = pushRefreshControl
-    }
-    @objc func refreshPushView() {
-        pushTable.refreshControl?.endRefreshing()
-        pushTable.reloadData()
     }
     //
     func deletePush(_ indexPath:IndexPath) {
@@ -213,7 +216,7 @@ extension PushListViewController {
     //SegmentedControl
     @IBAction func changeSegment(_ sender:UISegmentedControl) {
         if pushTable.isEditing {
-            pushTable.setEditing(false, animated: true)
+            changeEditMode(false)
         }
         refresh()
     }
@@ -222,29 +225,21 @@ extension PushListViewController {
         beginAppearanceTransition(true, animated: true)
     }
     //
-    @IBAction func changeDailyTaskEditMode(_ sender:UIButton) {
+    @IBAction func clickEditMode(_ sender:Any) {
         if taskList.count == 0 {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "편집 가능한 알림이 없습니다")
             return
         }
-        changeEditMode()
+        btnEdit.isSelected = !btnEdit.isSelected
+        changeEditMode(btnEdit.isSelected)
     }
-    private func changeEditMode() {
-        if pushTable.isEditing {
-            btnEdit.setImage(UIImage(systemName: "scissors", withConfiguration: mediumConfig), for: .normal)
-            pushTable.setEditing(false, animated: false)
-            for cell in pushTable.visibleCells {
-                cell.selectionStyle = .none
-            }
-            controllEditView(false)
-        } else {
-            btnEdit.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right", withConfiguration: mediumConfig), for: .normal)
-            pushTable.setEditing(true, animated: false)
-            for cell in pushTable.visibleCells {
-                cell.selectionStyle = .default
-            }
-            controllEditView(true)
+    private func changeEditMode(_ isOn:Bool) {
+        pushTable.setEditing(isOn, animated: true)
+        btnEdit.setImage(UIImage(systemName: isOn ? "rectangle.portrait.and.arrow.right" : "scissors", withConfiguration: mediumConfig), for: .normal)
+        for cell in pushTable.visibleCells {
+            cell.selectionStyle = isOn ? .default : .none
         }
+        controllEditView(isOn)
     }
     @IBAction func clickSelectAll(_ sender:UIButton) {
         guard let list = pushTable.indexPathsForVisibleRows else {
@@ -269,6 +264,6 @@ extension PushListViewController {
         for index in list {
             deletePush(index)
         }
-        controllEditView(false)
+        changeEditMode(false)
     }
 }

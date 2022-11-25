@@ -16,116 +16,9 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iCloud Drive BackUp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIb-L7-p6O" userLabel="LabelTitle">
-                                <rect key="frame" x="18" y="65" width="157" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aR8-I5-Wh3" userLabel="line">
-                                <rect key="frame" x="0.0" y="92" width="393" height="1"/>
-                                <color key="backgroundColor" systemColor="systemGray2Color"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="fSk-ic-HEM"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 백업 날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D71-Au-wc0" userLabel="LabelDate">
-                                <rect key="frame" x="36" y="111" width="97" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="backupDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyi-LU-gpQ">
-                                <rect key="frame" x="53.999999999999993" y="141" width="92.333333333333314" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGZ-qB-EjY" userLabel="BtnRefresh">
-                                <rect key="frame" x="142" y="99" width="45" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="JGZ-qB-EjY" secondAttribute="height" multiplier="1:1" id="LZz-Vi-M8B"/>
-                                    <constraint firstAttribute="width" constant="45" id="a70-dH-qdf"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="15"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="clickRefresh:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4Q8-sH-aOl"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="백업파일 리스트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rV-m1-gIN" userLabel="LabelTableTitle">
-                                <rect key="frame" x="35.999999999999993" y="192" width="107.33333333333331" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NO2-3G-T8X" userLabel="BtnBackup">
-                                <rect key="frame" x="312" y="121.66666666666669" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="NO2-3G-T8X" secondAttribute="height" multiplier="1:1" id="Ld6-lW-nvH"/>
-                                    <constraint firstAttribute="height" constant="60" id="LwD-x8-BUF"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="tray.and.arrow.down.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="21"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="backData:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3Z3-Pu-MHO"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TNx-rZ-am5">
-                                <rect key="frame" x="45" y="222" width="309" height="513.66666666666663"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdC-94-zXN" userLabel="BtnDeleteAll">
-                                <rect key="frame" x="90.666666666666686" y="765.66666666666663" width="212" height="34.333333333333371"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Delete origin/backup File"/>
-                                <connections>
-                                    <action selector="removeAllFile:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ThM-Yd-Hja"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TNx-rZ-am5" secondAttribute="trailing" constant="39" id="36c-vt-Hkr"/>
-                            <constraint firstItem="JIb-L7-p6O" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="6" id="43p-5Q-7CV"/>
-                            <constraint firstItem="aR8-I5-Wh3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="E7A-83-DBu"/>
-                            <constraint firstItem="NO2-3G-T8X" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Yyi-LU-gpQ" secondAttribute="trailing" constant="9" id="EkG-y6-dPO"/>
-                            <constraint firstItem="JGZ-qB-EjY" firstAttribute="centerY" secondItem="D71-Au-wc0" secondAttribute="centerY" id="Elu-pt-Rc8"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="AdC-94-zXN" secondAttribute="bottom" constant="18" id="Jaw-OU-EYp"/>
-                            <constraint firstItem="JGZ-qB-EjY" firstAttribute="leading" secondItem="D71-Au-wc0" secondAttribute="trailing" constant="9" id="KZz-3Z-BQ4"/>
-                            <constraint firstItem="TNx-rZ-am5" firstAttribute="top" secondItem="4rV-m1-gIN" secondAttribute="bottom" constant="9" id="LS7-Zr-my8"/>
-                            <constraint firstItem="AdC-94-zXN" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="M49-59-dDe"/>
-                            <constraint firstItem="JIb-L7-p6O" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="18" id="MYS-yI-vZu"/>
-                            <constraint firstItem="NO2-3G-T8X" firstAttribute="trailing" secondItem="TNx-rZ-am5" secondAttribute="trailing" constant="18" id="b44-jA-FT5"/>
-                            <constraint firstItem="D71-Au-wc0" firstAttribute="leading" secondItem="JIb-L7-p6O" secondAttribute="leading" constant="18" id="d8Y-mX-bi7"/>
-                            <constraint firstItem="4rV-m1-gIN" firstAttribute="top" secondItem="Yyi-LU-gpQ" secondAttribute="bottom" constant="30" id="dQz-pl-a1p"/>
-                            <constraint firstItem="AdC-94-zXN" firstAttribute="top" secondItem="TNx-rZ-am5" secondAttribute="bottom" constant="30" id="ece-rg-s3S"/>
-                            <constraint firstItem="aR8-I5-Wh3" firstAttribute="top" secondItem="JIb-L7-p6O" secondAttribute="bottom" constant="6" id="fcA-f8-8rr"/>
-                            <constraint firstItem="D71-Au-wc0" firstAttribute="top" secondItem="aR8-I5-Wh3" secondAttribute="bottom" constant="18" id="hcE-MW-nPz"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aR8-I5-Wh3" secondAttribute="trailing" id="kfv-J6-mcj"/>
-                            <constraint firstItem="4rV-m1-gIN" firstAttribute="leading" secondItem="D71-Au-wc0" secondAttribute="leading" id="kk3-bG-UkI"/>
-                            <constraint firstItem="Yyi-LU-gpQ" firstAttribute="leading" secondItem="D71-Au-wc0" secondAttribute="leading" constant="18" id="mAC-UC-9c9"/>
-                            <constraint firstItem="TNx-rZ-am5" firstAttribute="leading" secondItem="4rV-m1-gIN" secondAttribute="leading" constant="9" id="qxe-7h-slP"/>
-                            <constraint firstItem="Yyi-LU-gpQ" firstAttribute="top" secondItem="D71-Au-wc0" secondAttribute="bottom" constant="9" id="soT-hX-g78"/>
-                            <constraint firstItem="NO2-3G-T8X" firstAttribute="centerY" secondItem="Yyi-LU-gpQ" secondAttribute="centerY" id="x7J-Pk-yN3"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="btnBackup" destination="NO2-3G-T8X" id="5XQ-L2-1P7"/>
-                        <outlet property="labelBackupDate" destination="Yyi-LU-gpQ" id="gaf-63-5sS"/>
-                        <outlet property="labelDate" destination="D71-Au-wc0" id="S9H-zT-eNA"/>
-                        <outlet property="labelTableTitle" destination="4rV-m1-gIN" id="uU2-pW-40C"/>
-                        <outlet property="labelTitle" destination="JIb-L7-p6O" id="jBs-zj-gmP"/>
-                        <outlet property="line" destination="aR8-I5-Wh3" id="zih-JC-8kK"/>
-                        <outlet property="tableView" destination="TNx-rZ-am5" id="CXQ-zR-K4E"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -133,17 +26,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
-        <image name="tray.and.arrow.down.fill" catalog="system" width="128" height="115"/>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

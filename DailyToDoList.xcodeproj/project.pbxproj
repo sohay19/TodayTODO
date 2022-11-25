@@ -46,8 +46,6 @@
 		CF5350C0291E457400AFDC14 /* Windsor_Great_Park-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350BB291E457400AFDC14 /* Windsor_Great_Park-Regular.otf */; };
 		CF5350C1291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350BC291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf */; };
 		CF5350C3291E45F300AFDC14 /* NanumAJumMaJaYu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350C2291E45F300AFDC14 /* NanumAJumMaJaYu.ttf */; };
-		CF5350CB291E8A6700AFDC14 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350CA291E8A6700AFDC14 /* Menu.swift */; };
-		CF5350CF291E98DC00AFDC14 /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5350CE291E98DC00AFDC14 /* Menu.xib */; };
 		CF5350D1291E9CD600AFDC14 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350D0291E9CD600AFDC14 /* Loading.swift */; };
 		CF5350D3291E9CE200AFDC14 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D2291E9CE200AFDC14 /* Loading.xib */; };
 		CF5350D52921E92F00AFDC14 /* underline_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D42921E92E00AFDC14 /* underline_Black.png */; };
@@ -63,6 +61,8 @@
 		CF79090F292F5DB00027D25D /* CategoryVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79090E292F5DB00027D25D /* CategoryVCExtension.swift */; };
 		CF790912292F65510027D25D /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF790910292F65510027D25D /* CategoryCell.swift */; };
 		CF790913292F65510027D25D /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF790911292F65510027D25D /* CategoryCell.xib */; };
+		CF7909152930A3D40027D25D /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7909142930A3D40027D25D /* Backup.storyboard */; };
+		CF7909172930A3E30027D25D /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7909162930A3E30027D25D /* BackupViewController.swift */; };
 		CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
 		CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8148F229068E0700FD0974 /* ClassExtension.swift */; };
 		CF8149272906B75100FD0974 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8149252906B75100FD0974 /* Interface.storyboard */; };
@@ -117,8 +117,6 @@
 		CFE01AF82918EDE6005B3316 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */; };
 		CFE45D232928A605007024EB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
 		CFE45D242928A606007024EB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
-		CFE45D292928AADE007024EB /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */; };
-		CFE45D2A2928AADF007024EB /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */; };
 		CFE45D30292B1D2B007024EB /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D2E292B1D2A007024EB /* clock.png */; };
 		CFE45D31292B1D2B007024EB /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D2F292B1D2B007024EB /* pencil.png */; };
 		CFE45D37292B5A4E007024EB /* DefaultBack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D36292B5A4E007024EB /* DefaultBack.jpg */; };
@@ -156,9 +154,6 @@
 		CFEB4A6428F16243008850DC /* RepeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A6328F16243008850DC /* RepeatViewController.swift */; };
 		CFEB4A6628F165C2008850DC /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4A6528F165C2008850DC /* Category.storyboard */; };
 		CFEB4A6828F165D1008850DC /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A6728F165D1008850DC /* CategoryViewController.swift */; };
-		CFEB4A6A28F1672F008850DC /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A6928F1672F008850DC /* ColorPickerViewController.swift */; };
-		CFEB4A6C28F16B15008850DC /* Picker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4A6B28F16B15008850DC /* Picker.storyboard */; };
-		CFEB4A6E28F16B27008850DC /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A6D28F16B27008850DC /* PickerViewController.swift */; };
 		CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
 		CFEC1D34290D2144009A9588 /* TaskInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC1D33290D2144009A9588 /* TaskInterfaceController.swift */; };
 		CFEC1D35290D2AB3009A9588 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5928F155E5008850DC /* PushManager.swift */; };
@@ -286,8 +281,6 @@
 		CF5350BB291E457400AFDC14 /* Windsor_Great_Park-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Windsor_Great_Park-Regular.otf"; sourceTree = "<group>"; };
 		CF5350BC291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Worcestershire_Sauce-Regular.otf"; sourceTree = "<group>"; };
 		CF5350C2291E45F300AFDC14 /* NanumAJumMaJaYu.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumAJumMaJaYu.ttf; sourceTree = "<group>"; };
-		CF5350CA291E8A6700AFDC14 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		CF5350CE291E98DC00AFDC14 /* Menu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Menu.xib; sourceTree = "<group>"; };
 		CF5350D0291E9CD600AFDC14 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		CF5350D2291E9CE200AFDC14 /* Loading.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Loading.xib; sourceTree = "<group>"; };
 		CF5350D42921E92E00AFDC14 /* underline_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Black.png; sourceTree = "<group>"; };
@@ -302,6 +295,8 @@
 		CF79090E292F5DB00027D25D /* CategoryVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVCExtension.swift; sourceTree = "<group>"; };
 		CF790910292F65510027D25D /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		CF790911292F65510027D25D /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
+		CF7909142930A3D40027D25D /* Backup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Backup.storyboard; sourceTree = "<group>"; };
+		CF7909162930A3E30027D25D /* BackupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
 		CF8148F229068E0700FD0974 /* ClassExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassExtension.swift; sourceTree = "<group>"; };
 		CF8149232906B75100FD0974 /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8149262906B75100FD0974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -379,9 +374,6 @@
 		CFEB4A6328F16243008850DC /* RepeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatViewController.swift; sourceTree = "<group>"; };
 		CFEB4A6528F165C2008850DC /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
 		CFEB4A6728F165D1008850DC /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		CFEB4A6928F1672F008850DC /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
-		CFEB4A6B28F16B15008850DC /* Picker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Picker.storyboard; sourceTree = "<group>"; };
-		CFEB4A6D28F16B27008850DC /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		CFEB4A7528F16BF3008850DC /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		CFEC1D33290D2144009A9588 /* TaskInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInterfaceController.swift; sourceTree = "<group>"; };
 		CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCategoryData.swift; sourceTree = "<group>"; };
@@ -629,18 +621,15 @@
 				CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */,
 				CFEB4A3128F14BC7008850DC /* LoginViewController.swift */,
 				CFEB4A6328F16243008850DC /* RepeatViewController.swift */,
-				CFEB4A6D28F16B27008850DC /* PickerViewController.swift */,
 				CFEB4A6728F165D1008850DC /* CategoryViewController.swift */,
 				CF79090E292F5DB00027D25D /* CategoryVCExtension.swift */,
-				CFEB4A6928F1672F008850DC /* ColorPickerViewController.swift */,
 				CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */,
 				CF2BAF1129263E0700EB49F4 /* TaskInfoVCExtension.swift */,
 				CFEB4A3728F14BEF008850DC /* SettingViewController.swift */,
 				CF75963429024C6A0046FDC1 /* PushListViewController.swift */,
 				CF75963D290662900046FDC1 /* PushListVCExtension.swift */,
-				CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */,
-				CF2BAF372927D1B400EB49F4 /* CustomTabBarController.swift */,
 				CFE45D3C292C96FC007024EB /* AddCategoryViewController.swift */,
+				CF7909162930A3E30027D25D /* BackupViewController.swift */,
 			);
 			path = VeiwController;
 			sourceTree = "<group>";
@@ -677,9 +666,9 @@
 			children = (
 				CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */,
 				CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */,
+				CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */,
+				CF2BAF372927D1B400EB49F4 /* CustomTabBarController.swift */,
 				CF42F254292E398200DB0F8E /* LineView.swift */,
-				CF5350CE291E98DC00AFDC14 /* Menu.xib */,
-				CF5350CA291E8A6700AFDC14 /* Menu.swift */,
 				CF5350D2291E9CE200AFDC14 /* Loading.xib */,
 				CF5350D0291E9CD600AFDC14 /* Loading.swift */,
 				CF995F4C2924BF6600FAE2F1 /* TaskCell.xib */,
@@ -712,10 +701,10 @@
 				CFEB4A2D28F14B68008850DC /* Setting.storyboard */,
 				CFEB4A6128F16234008850DC /* Repeat.storyboard */,
 				CFEB4A6528F165C2008850DC /* Category.storyboard */,
-				CFEB4A6B28F16B15008850DC /* Picker.storyboard */,
 				CFD0B14528F91CDB0029D936 /* TaskInfo.storyboard */,
 				CF75963229024C340046FDC1 /* PushList.storyboard */,
 				CFE45D3A292B6F17007024EB /* AddCategory.storyboard */,
+				CF7909142930A3D40027D25D /* Backup.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -947,10 +936,9 @@
 				CF5350D72921F3F300AFDC14 /* underline_Pink.png in Resources */,
 				CF5350B0291E3D4B00AFDC14 /* Background2.jpg in Resources */,
 				CF2BAF0F2925DAFE00EB49F4 /* spring_black.png in Resources */,
-				CF5350CF291E98DC00AFDC14 /* Menu.xib in Resources */,
-				CFEB4A6C28F16B15008850DC /* Picker.storyboard in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
 				CF5350BD291E457400AFDC14 /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
+				CF7909152930A3D40027D25D /* Backup.storyboard in Resources */,
 				CF5350BE291E457400AFDC14 /* NanumBarunpenB.otf in Resources */,
 				CF995F462923C54B00FAE2F1 /* title.png in Resources */,
 				CFE45D30292B1D2B007024EB /* clock.png in Resources */,
@@ -1184,7 +1172,6 @@
 				CF81494D2906B77500FD0974 /* UserData.swift in Sources */,
 				CF81494B2906B77100FD0974 /* Utils.swift in Sources */,
 				CF8149342906B75300FD0974 /* InterfaceController.swift in Sources */,
-				CFE45D2A2928AADF007024EB /* CustomNavigationController.swift in Sources */,
 				CF81494A2906B77100FD0974 /* StaticValues.swift in Sources */,
 				CF81494F2906B77500FD0974 /* EachTask.swift in Sources */,
 				CF50BC622924D78700AB538B /* OptionalData.swift in Sources */,
@@ -1214,7 +1201,6 @@
 				CFD0B13328F2C44F0029D936 /* SharedClassExtension.swift in Sources */,
 				CFD0B12A28F1BC2D0029D936 /* EachTask.swift in Sources */,
 				CF2BAF392928A30700EB49F4 /* DataManager.swift in Sources */,
-				CFE45D292928AADE007024EB /* CustomNavigationController.swift in Sources */,
 				CFEC1D3C290E60D5009A9588 /* NSCategoryData.swift in Sources */,
 				CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */,
 				CF487EA528F1B6D200498451 /* TaskListEntryView.swift in Sources */,
@@ -1247,12 +1233,12 @@
 				CF2BAF382927D1B400EB49F4 /* CustomTabBarController.swift in Sources */,
 				CF5350D1291E9CD600AFDC14 /* Loading.swift in Sources */,
 				CFEB4A4528F14D1C008850DC /* EachTask.swift in Sources */,
-				CFEB4A6A28F1672F008850DC /* ColorPickerViewController.swift in Sources */,
 				CFEB4A4428F14D1C008850DC /* RepeatResult.swift in Sources */,
 				CFEB4A6428F16243008850DC /* RepeatViewController.swift in Sources */,
 				CFEB4A3C28F14CB4008850DC /* Enums.swift in Sources */,
 				CFEB4A3A28F14CA0008850DC /* Utils.swift in Sources */,
 				CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */,
+				CF7909172930A3E30027D25D /* BackupViewController.swift in Sources */,
 				CFEB4A6828F165D1008850DC /* CategoryViewController.swift in Sources */,
 				CF50BC5E2924D13500AB538B /* NSOptionalData.swift in Sources */,
 				CF790912292F65510027D25D /* CategoryCell.swift in Sources */,
@@ -1264,7 +1250,6 @@
 				CF2BAF1229263E0700EB49F4 /* TaskInfoVCExtension.swift in Sources */,
 				CF50BC5C2924CDD900AB538B /* OptionalData.swift in Sources */,
 				CF5350E7292376BB00AFDC14 /* MonthltyDayTask.swift in Sources */,
-				CF5350CB291E8A6700AFDC14 /* Menu.swift in Sources */,
 				CF487EA928F1B71900498451 /* TaskListEntryView.swift in Sources */,
 				CFEB4A6028F15621008850DC /* CustomNavigationController.swift in Sources */,
 				CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */,
@@ -1283,7 +1268,6 @@
 				CFEB4A3228F14BC7008850DC /* LoginViewController.swift in Sources */,
 				CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */,
 				CFE45D3D292C96FC007024EB /* AddCategoryViewController.swift in Sources */,
-				CFEB4A6E28F16B27008850DC /* PickerViewController.swift in Sources */,
 				CF81495F2906D28E00FD0974 /* NSEachTask.swift in Sources */,
 				CFEB4A5D28F155E5008850DC /* PopupManager.swift in Sources */,
 			);

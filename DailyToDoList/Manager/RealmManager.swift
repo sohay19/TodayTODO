@@ -501,7 +501,7 @@ extension RealmManager {
 #else
         guard let realm = watchRealm else {
             print("watchRealm is nil")
-            return []
+            return
         }
 #endif
         do {
@@ -530,7 +530,7 @@ extension RealmManager {
 #else
         guard let realm = watchRealm else {
             print("watchRealm is nil")
-            return []
+            return
         }
 #endif
         do {
@@ -555,7 +555,7 @@ extension RealmManager {
 #else
         guard let realm = watchRealm else {
             print("watchRealm is nil")
-            return []
+            return
         }
 #endif
         do {

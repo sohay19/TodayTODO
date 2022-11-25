@@ -39,17 +39,17 @@ extension WatchConnectManager {
             return
         }
         do {
-            //Category 보내기
-//            let loadCategoryList = DataManager.shared.loadCategory()
-//            var categoryList:[NSCategoryData] = []
-//            for data in loadCategoryList {
-//                categoryList.append(NSCategoryData.init(category:data))
-//            }
-//            let categoryDataForWatch = try JSONEncoder().encode(NSCategoryDataList(categoryList: categoryList))
-//            session.transferUserInfo([
-//                sendTypeKey:SendType.Update.rawValue,
-//                dataTypeKey:DataType.NSCategoryDataList.rawValue,
-//                dataKey:categoryDataForWatch])
+            //Category리스트 보내기
+            let loadCategoryList = DataManager.shared.loadCategory()
+            var categoryList:[NSCategoryData] = []
+            for data in loadCategoryList {
+                categoryList.append(NSCategoryData.init(category:data))
+            }
+            let categoryDataForWatch = try JSONEncoder().encode(NSCategoryDataList(categoryList: categoryList))
+            session.transferUserInfo([
+                sendTypeKey:SendType.Update.rawValue,
+                dataTypeKey:DataType.NSCategoryDataList.rawValue,
+                dataKey:categoryDataForWatch])
             //Task 보내기
             let founData = DataManager.shared.getTodayTask()
             var taskList:[NSEachTask] = []

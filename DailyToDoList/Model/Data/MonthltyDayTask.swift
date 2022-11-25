@@ -31,4 +31,13 @@ struct MonthltyDayTask {
             taskList[category] = [task]
         }
     }
+    
+    mutating func sortCateogry(_ list:[String]) {
+        categoryList.sort {
+            if let first = list.firstIndex(of: $0), let second = list.firstIndex(of: $1) {
+                return first < second
+            }
+            return false
+        }
+    }
 }

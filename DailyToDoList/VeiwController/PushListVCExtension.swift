@@ -48,7 +48,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         let option = taskData.optionData ?? OptionData()
         //
         var repeatType = ""
-        pushCell.isToday = segmentedController.selectedSegmentIndex == 0 ? true : false
+        pushCell.isToday = segmentControl.selectedSegmentIndex == 0 ? true : false
         //
         switch RepeatType(rawValue: taskData.repeatType) {
         case .EveryDay:
@@ -120,11 +120,5 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
     //Row별 EditMode-
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .none
-    }
-    //EditMode별 Event
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            deletePush(indexPath)
-        }
     }
 }

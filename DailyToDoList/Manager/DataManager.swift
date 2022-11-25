@@ -96,6 +96,9 @@ extension DataManager {
     func deleteCategory(_ category:String) {
         realmManager.deleteCategory(category)
     }
+    func deleteCategory(_ category:CategoryData) {
+        realmManager.deleteCategory(category)
+    }
     //
     func deleteAllCategory() {
         realmManager.deleteAllCategory()

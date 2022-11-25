@@ -54,7 +54,7 @@ enum PageType:Int {
     case Main
     case Category
     case Push
-    case Backup
+    case Setting
 }
 
 enum MainType:Int {

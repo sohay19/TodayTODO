@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Backup View Controller-->
+        <scene sceneID="Bix-5n-BnY">
+            <objects>
+                <viewController storyboardIdentifier="Backup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Iu-ra-9xS" customClass="BackupViewController" customModule="DailyToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WBJ-ES-Bh2">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnU-vo-Nkv">
+                                <rect key="frame" x="0.0" y="59" width="393" height="60"/>
+                                <viewLayoutGuide key="safeArea" id="NO5-eh-1kz"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="7s4-4X-10X"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 백업 날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SgC-y9-dAu" userLabel="LabelDate">
+                                <rect key="frame" x="21" y="149" width="97" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="backupDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8e-XG-ryA">
+                                <rect key="frame" x="38.999999999999993" y="179" width="92.333333333333314" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C01-m9-LOQ" userLabel="BtnRefresh">
+                                <rect key="frame" x="127" y="137" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="C01-m9-LOQ" secondAttribute="height" multiplier="1:1" id="jmJ-Sl-xmq"/>
+                                    <constraint firstAttribute="width" constant="45" id="zw8-Er-B1Q"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="clickRefresh:" destination="5Iu-ra-9xS" eventType="touchUpInside" id="lKF-ec-f4S"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="백업파일 리스트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iES-Qm-PJF" userLabel="LabelTableTitle">
+                                <rect key="frame" x="20.999999999999993" y="230" width="107.33333333333331" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQc-EI-bNc" userLabel="BtnBackup">
+                                <rect key="frame" x="312" y="159.66666666666666" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hQc-EI-bNc" secondAttribute="height" multiplier="1:1" id="3T5-d8-FaY"/>
+                                    <constraint firstAttribute="height" constant="60" id="Ijj-y9-azb"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="tray.and.arrow.down.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="21"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backData:" destination="5Iu-ra-9xS" eventType="touchUpInside" id="mP8-4S-Lbb"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="aLT-OG-p0d">
+                                <rect key="frame" x="30" y="266" width="324" height="469.66666666666674"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7W-wP-52O" userLabel="BtnDeleteAll">
+                                <rect key="frame" x="90.666666666666686" y="765.66666666666663" width="212" height="34.333333333333371"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Delete origin/backup File"/>
+                                <connections>
+                                    <action selector="removeAllFile:" destination="5Iu-ra-9xS" eventType="touchUpInside" id="L7a-mx-pWj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7Bl-0P-7V0"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SgC-y9-dAu" firstAttribute="top" secondItem="nnU-vo-Nkv" secondAttribute="bottom" constant="30" id="0iK-Xd-5D9"/>
+                            <constraint firstItem="h7W-wP-52O" firstAttribute="centerX" secondItem="7Bl-0P-7V0" secondAttribute="centerX" id="3pp-LC-rSo"/>
+                            <constraint firstItem="hQc-EI-bNc" firstAttribute="trailing" secondItem="aLT-OG-p0d" secondAttribute="trailing" constant="18" id="5AZ-Rj-7oZ"/>
+                            <constraint firstItem="c8e-XG-ryA" firstAttribute="top" secondItem="SgC-y9-dAu" secondAttribute="bottom" constant="9" id="ATT-c9-MX2"/>
+                            <constraint firstItem="iES-Qm-PJF" firstAttribute="top" secondItem="c8e-XG-ryA" secondAttribute="bottom" constant="30" id="Dv3-jW-ZjW"/>
+                            <constraint firstItem="nnU-vo-Nkv" firstAttribute="top" secondItem="7Bl-0P-7V0" secondAttribute="top" id="EuZ-sj-1xt"/>
+                            <constraint firstItem="iES-Qm-PJF" firstAttribute="leading" secondItem="SgC-y9-dAu" secondAttribute="leading" id="HDl-lB-MeS"/>
+                            <constraint firstItem="c8e-XG-ryA" firstAttribute="leading" secondItem="SgC-y9-dAu" secondAttribute="leading" constant="18" id="LUL-3c-4m3"/>
+                            <constraint firstItem="h7W-wP-52O" firstAttribute="top" secondItem="aLT-OG-p0d" secondAttribute="bottom" constant="30" id="Pl0-Lx-dkU"/>
+                            <constraint firstItem="hQc-EI-bNc" firstAttribute="centerY" secondItem="c8e-XG-ryA" secondAttribute="centerY" id="Rwg-Do-jhw"/>
+                            <constraint firstItem="C01-m9-LOQ" firstAttribute="leading" secondItem="SgC-y9-dAu" secondAttribute="trailing" constant="9" id="VdL-RQ-qw7"/>
+                            <constraint firstItem="7Bl-0P-7V0" firstAttribute="trailing" secondItem="nnU-vo-Nkv" secondAttribute="trailing" id="WBB-JK-QVE"/>
+                            <constraint firstItem="nnU-vo-Nkv" firstAttribute="leading" secondItem="7Bl-0P-7V0" secondAttribute="leading" id="Wpe-OI-o67"/>
+                            <constraint firstItem="7Bl-0P-7V0" firstAttribute="bottom" secondItem="h7W-wP-52O" secondAttribute="bottom" constant="18" id="apG-JH-pvj"/>
+                            <constraint firstItem="aLT-OG-p0d" firstAttribute="top" secondItem="iES-Qm-PJF" secondAttribute="bottom" constant="15" id="cvY-pW-qoJ"/>
+                            <constraint firstItem="7Bl-0P-7V0" firstAttribute="trailing" secondItem="aLT-OG-p0d" secondAttribute="trailing" constant="39" id="gW7-w1-6JV"/>
+                            <constraint firstItem="aLT-OG-p0d" firstAttribute="leading" secondItem="iES-Qm-PJF" secondAttribute="leading" constant="9" id="pXS-MJ-fBL"/>
+                            <constraint firstItem="C01-m9-LOQ" firstAttribute="centerY" secondItem="SgC-y9-dAu" secondAttribute="centerY" id="pZh-4h-ZJU"/>
+                            <constraint firstItem="aLT-OG-p0d" firstAttribute="leading" secondItem="7Bl-0P-7V0" secondAttribute="leading" constant="30" id="rsc-0M-AL4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnBackup" destination="hQc-EI-bNc" id="sN7-1F-fud"/>
+                        <outlet property="labelBackupDate" destination="c8e-XG-ryA" id="Q4i-hx-lJP"/>
+                        <outlet property="labelDate" destination="SgC-y9-dAu" id="aIA-ro-gSx"/>
+                        <outlet property="labelTableTitle" destination="iES-Qm-PJF" id="icP-Hk-HdD"/>
+                        <outlet property="segmentView" destination="nnU-vo-Nkv" id="n2f-MF-a5u"/>
+                        <outlet property="tableView" destination="aLT-OG-p0d" id="Vlw-YW-GwH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SAs-eH-Fde" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="156" y="40"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
+        <image name="tray.and.arrow.down.fill" catalog="system" width="128" height="115"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

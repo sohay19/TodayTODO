@@ -16,12 +16,11 @@ let CategoryList = "CategoryList"
 
 //MARK: - Board
 let mainBoard = "Main"
-let menuBoard = "Menu"
 let LoadingBoard = "Loading"
 let repeatBoard = "Repeat"
-let pickerBoard = "Picker"
 let addCategoryBoard = "AddCategory"
 let categoryBoard = "Category"
+let backupBoard = "Backup"
 let settingBoard = "Setting"
 let taskInfoBoard = "TaskInfo"
 let pushListBoard = "PushList"
@@ -46,7 +45,7 @@ let K_Font_B = "NanumBarunpenOTF-Bold"
 let K_Font_R = "NanumBarunpenOTF"
 let K_FontSize = 15.0
 let E_Font_E = "Worcestershire_Sauce_Press-Regular"
-let MenuFontSize = 33.0
+let MenuFontSize = 30.0
 let E_Font_B = "Worcestershire_Sauce-Regular"
 let E_Font_R = "Windsor_Great_Park-Regular"
 let E_FontSize = 21.0

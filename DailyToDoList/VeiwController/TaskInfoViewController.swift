@@ -211,6 +211,12 @@ extension TaskInfoViewController {
         //항상 꺼둠
         btnEndDate.isEnabled = false
         pickEndDate.isEnabled = false
+        //
+        guard let date = Calendar.current.date(byAdding: .minute, value: 5, to: currntDate) else {
+            return
+        }
+        pickTaskTime.setDate(date, animated: true)
+        pickAlarmTime.setDate(date, animated: true)
     }
     //
     private func loadData() {
