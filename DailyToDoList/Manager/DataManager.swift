@@ -92,6 +92,14 @@ extension DataManager {
     func getCategoryColor(_ category:String) -> UIColor {
         return realmManager.getCategoryColor(category)
     }
+    //
+    func deleteCategory(_ category:String) {
+        realmManager.deleteCategory(category)
+    }
+    //
+    func deleteAllCategory() {
+        realmManager.deleteAllCategory()
+    }
 }
 
 //MARK: - Push

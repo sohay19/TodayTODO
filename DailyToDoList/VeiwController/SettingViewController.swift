@@ -127,9 +127,14 @@ extension SettingViewController {
         cloudManager.deleteAllBackupFile()
     }
     func deleteAllFile() {
+        //백업 파일 삭제
         deleteiCloudAllBackupFile()
+        //origin Realm 파일 삭제
         DataManager.shared.deleteRealm()
+        //알람 삭제
         DataManager.shared.deleteAllAlarmPush()
+        //카테고리 삭제
+        DataManager.shared.deleteAllCategory()
     }
 }
 
@@ -171,7 +176,6 @@ extension SettingViewController {
         deleteAllFile()
         dataList.removeAll()
         tableView.reloadData()
-        
     }
 }
 

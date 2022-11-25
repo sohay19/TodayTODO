@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqQ-lG-uat" userLabel="PopView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="780"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="814"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vry-wb-prK" userLabel="LabelTitle">
                                                 <rect key="frame" x="30" y="78" width="43.5" height="18"/>
@@ -298,12 +298,18 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gMj-5E-3Dd" userLabel="MemoView">
-                                                <rect key="frame" x="48" y="582" width="336" height="180"/>
+                                                <rect key="frame" x="48" y="582" width="336" height="187"/>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmw-Pe-Wms">
+                                                <rect key="frame" x="338" y="554" width="46" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -322,14 +328,17 @@
                                             <constraint firstItem="gMj-5E-3Dd" firstAttribute="trailing" secondItem="hwx-CT-UfR" secondAttribute="trailing" id="GP8-0v-rbd"/>
                                             <constraint firstAttribute="trailing" secondItem="UsW-rm-eIp" secondAttribute="trailing" constant="30" id="H7F-Jn-rWQ"/>
                                             <constraint firstItem="a2J-4Z-wze" firstAttribute="leading" secondItem="UsW-rm-eIp" secondAttribute="leading" id="IAi-Bv-J6x"/>
+                                            <constraint firstItem="Hmw-Pe-Wms" firstAttribute="centerY" secondItem="qah-vc-BrR" secondAttribute="centerY" id="Mua-Gr-EtO"/>
+                                            <constraint firstItem="Hmw-Pe-Wms" firstAttribute="trailing" secondItem="gMj-5E-3Dd" secondAttribute="trailing" id="NLf-vT-al1"/>
                                             <constraint firstItem="3h0-eV-yBR" firstAttribute="trailing" secondItem="UsW-rm-eIp" secondAttribute="trailing" id="R5u-3X-8jD"/>
+                                            <constraint firstAttribute="height" constant="814" id="Sr9-gg-vYp"/>
                                             <constraint firstItem="f4Q-iy-NbQ" firstAttribute="leading" secondItem="vry-wb-prK" secondAttribute="leading" id="ZMm-HK-4Q0"/>
                                             <constraint firstItem="G2j-hg-GNr" firstAttribute="height" secondItem="glH-XQ-WBy" secondAttribute="height" id="Zmw-Y9-EC5"/>
                                             <constraint firstItem="glH-XQ-WBy" firstAttribute="trailing" secondItem="UsW-rm-eIp" secondAttribute="trailing" id="Zob-aM-Mab"/>
                                             <constraint firstItem="gMj-5E-3Dd" firstAttribute="top" secondItem="qah-vc-BrR" secondAttribute="bottom" constant="9" id="cpS-CP-cKD"/>
                                             <constraint firstItem="a2J-4Z-wze" firstAttribute="trailing" secondItem="UsW-rm-eIp" secondAttribute="trailing" id="dzF-A6-qUR"/>
                                             <constraint firstItem="gMj-5E-3Dd" firstAttribute="leading" secondItem="hwx-CT-UfR" secondAttribute="leading" id="eHz-aU-7rd"/>
-                                            <constraint firstAttribute="bottom" secondItem="gMj-5E-3Dd" secondAttribute="bottom" constant="18" id="g4e-oy-BnL"/>
+                                            <constraint firstAttribute="bottom" secondItem="gMj-5E-3Dd" secondAttribute="bottom" constant="45" id="g4e-oy-BnL"/>
                                             <constraint firstItem="ZWy-HY-Z6r" firstAttribute="leading" secondItem="vry-wb-prK" secondAttribute="leading" id="g5G-bH-yKO"/>
                                             <constraint firstItem="hwx-CT-UfR" firstAttribute="top" secondItem="f4Q-iy-NbQ" secondAttribute="bottom" constant="9" id="gTa-Gh-GdR"/>
                                             <constraint firstItem="ZWy-HY-Z6r" firstAttribute="top" secondItem="UsW-rm-eIp" secondAttribute="bottom" constant="18" id="guX-K2-Hg8"/>
@@ -339,7 +348,6 @@
                                             <constraint firstItem="RoC-Xc-WMB" firstAttribute="centerY" secondItem="f4Q-iy-NbQ" secondAttribute="centerY" id="l1C-n4-e3s"/>
                                             <constraint firstItem="RoC-Xc-WMB" firstAttribute="trailing" secondItem="UsW-rm-eIp" secondAttribute="trailing" id="m1F-kx-CIq"/>
                                             <constraint firstItem="G2j-hg-GNr" firstAttribute="centerY" secondItem="glH-XQ-WBy" secondAttribute="centerY" id="mnz-oM-jiw"/>
-                                            <constraint firstAttribute="height" constant="780" id="s8r-cQ-giC"/>
                                             <constraint firstItem="qah-vc-BrR" firstAttribute="top" secondItem="hwx-CT-UfR" secondAttribute="bottom" constant="18" id="svz-3h-2dL"/>
                                             <constraint firstItem="hwx-CT-UfR" firstAttribute="trailing" secondItem="a2J-4Z-wze" secondAttribute="trailing" id="tnG-8m-93z"/>
                                             <constraint firstItem="UsW-rm-eIp" firstAttribute="leading" secondItem="vry-wb-prK" secondAttribute="leading" constant="18" id="vlp-bd-Rpn"/>
@@ -421,6 +429,7 @@
                         <outlet property="labelTitle" destination="vry-wb-prK" id="Duc-te-Ltb"/>
                         <outlet property="labelWeek" destination="utq-X9-tXR" id="9Ki-D9-pm3"/>
                         <outlet property="labelWeekUnit" destination="2An-4j-CAU" id="5eg-LG-VaF"/>
+                        <outlet property="memoCounter" destination="Hmw-Pe-Wms" id="beD-uW-Alj"/>
                         <outlet property="memoView" destination="gMj-5E-3Dd" id="dOD-DY-5aA"/>
                         <outlet property="menuIcon" destination="G2j-hg-GNr" id="t6l-pz-IDd"/>
                         <outlet property="optionStackView" destination="hwx-CT-UfR" id="e5K-Nl-LZf"/>

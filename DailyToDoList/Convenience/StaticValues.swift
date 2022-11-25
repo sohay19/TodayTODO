@@ -12,6 +12,7 @@ import Foundation
 let appGroupId = "group.com.bailey.DailyToDoList.DailyToDoListWidget"
 let LoginTypeKey = "LoginType"
 let BadgeCountKey = "BadgeCount"
+let CategoryList = "CategoryList"
 
 //MARK: - Board
 let mainBoard = "Main"

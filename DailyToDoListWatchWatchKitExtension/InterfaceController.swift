@@ -77,7 +77,7 @@ extension InterfaceController {
     }
     //
     func updateTask(_ newTask:EachTask, _ complete:()->Void) {
-        WatchConnectManager.shared.sendAppToTask(newTask)
+        WatchConnectManager.shared.sendToAppTask(newTask)
         complete()
     }
 }

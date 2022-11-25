@@ -71,7 +71,9 @@ enum DataType:String {
 }
 
 enum SendType:String {
+    case Add = "add"
     case Update = "update"
+    case Delete = "delete"
 }
 
 //MARK: - CodingKey

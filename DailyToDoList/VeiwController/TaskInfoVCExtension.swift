@@ -69,3 +69,16 @@ extension TaskInfoViewController : UITextFieldDelegate {
         return changedText.count < 20
     }
 }
+
+//MARK: - TextView
+extension TaskInfoViewController : UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else {
+            return false
+        }
+        let changedText = currentText.replacingCharacters(in: stringRange, with: text)
+        memoCounter.text = "\(changedText.count)/300"
+        return changedText.count < 300
+    }
+}

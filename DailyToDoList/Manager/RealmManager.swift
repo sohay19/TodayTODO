@@ -449,10 +449,13 @@ extension RealmManager {
             return
         }
         do {
+            var array = UserDefaults.shared.array(forKey: CategoryList) as? [String] ?? [String]()
+            array.append(data.title)
+            UserDefaults.shared.set(array, forKey: CategoryList)
             try realm.write {
                 realm.add(data)
             }
-            WatchConnectManager.shared.sendToWatchTask()
+            WatchConnectManager.shared.sendToWatchAddCategory(data)
         } catch {
             print("Realm add Error")
         }
@@ -472,25 +475,121 @@ extension RealmManager {
     }
     
     func loadCategory() -> [CategoryData] {
-#if os(iOS)
         openRealm()
+#if os(iOS)
         guard let realm = realm else {
             print("realm is nil")
             return []
         }
-        let categoryList = realm.objects(CategoryData.self)
-        return Array(categoryList)
 #else
-        openRealm()
         guard let realm = watchRealm else {
             print("watchRealm is nil")
             return []
         }
+#endif
         let categoryList = realm.objects(CategoryData.self)
         return Array(categoryList)
-#endif
     }
-    
+    //
+    func deleteCategory(_ category:String) {
+        openRealm()
+#if os(iOS)
+        guard let realm = realm else {
+            print("realm is nil")
+            return
+        }
+#else
+        guard let realm = watchRealm else {
+            print("watchRealm is nil")
+            return []
+        }
+#endif
+        do {
+            let data = realm.objects(CategoryData.self)
+            guard let findCategory = data.first(where: {$0.title == category}) else {
+                return
+            }
+            #if os(iOS)
+            WatchConnectManager.shared.sendToWatchCategoryDelete(findCategory)
+            #endif
+            try realm.write {
+                realm.delete(findCategory)
+            }
+        } catch {
+            print("Realm add Error")
+        }
+    }
+    //
+    func deleteCategory(_ category:CategoryData) {
+        openRealm()
+#if os(iOS)
+        guard let realm = realm else {
+            print("realm is nil")
+            return
+        }
+#else
+        guard let realm = watchRealm else {
+            print("watchRealm is nil")
+            return []
+        }
+#endif
+        do {
+            #if os(iOS)
+            WatchConnectManager.shared.sendToWatchCategoryDelete(category)
+            #endif
+            try realm.write {
+                realm.delete(category)
+            }
+        } catch {
+            print("Realm add Error")
+        }
+    }
+    //
+    func deleteAllCategory() {
+        openRealm()
+#if os(iOS)
+        guard let realm = realm else {
+            print("realm is nil")
+            return
+        }
+#else
+        guard let realm = watchRealm else {
+            print("watchRealm is nil")
+            return []
+        }
+#endif
+        do {
+            let data = realm.objects(CategoryData.self)
+            try realm.write {
+                realm.delete(data)
+            }
+            #if os(iOS)
+            WatchConnectManager.shared.sendToWatchCategoryDelete(nil)
+            #endif
+        } catch {
+            print("Realm add Error")
+        }
+    }
+    //
+    private func haveDefault() -> Bool {
+#if os(iOS)
+        guard let realm = realm else {
+            print("realm is nil")
+            return false
+        }
+#else
+        guard let realm = watchRealm else {
+            print("watchRealm is nil")
+            return false
+        }
+#endif
+        let categoryList = realm.objects(CategoryData.self)
+        guard let _ = categoryList.first(where: { $0.title == DefaultCategory }) else {
+            return false
+        }
+        return true
+    }
+    //
     func getCategoryColor(_ category:String) -> UIColor {
         let categoryList = loadCategory()
         if let target = categoryList.first(where: {$0.title == category}){
@@ -499,29 +598,5 @@ extension RealmManager {
         } else {
             return .clear
         }
-    }
-    
-    private func haveDefault() -> Bool {
-#if os(iOS)
-        guard let realm = realm else {
-            print("realm is nil")
-            return false
-        }
-        let categoryList = realm.objects(CategoryData.self)
-        guard let _ = categoryList.first(where: { $0.title == DefaultCategory }) else {
-            return false
-        }
-        return true
-#else
-        guard let realm = watchRealm else {
-            print("watchRealm is nil")
-            return false
-        }
-        let categoryList = realm.objects(CategoryData.self)
-        guard let _ = categoryList.first(where: { $0.title == DefaultCategory }) else {
-            return false
-        }
-        return true
-#endif
     }
 }

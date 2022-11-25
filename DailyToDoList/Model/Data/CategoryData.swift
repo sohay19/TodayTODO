@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import RealmSwift
 
-
 class CategoryData : Object {
     @Persisted
     var title = ""

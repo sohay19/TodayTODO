@@ -74,12 +74,10 @@ extension CategoryViewController {
 //MARK: - Func
 extension CategoryViewController {
     private func loadData() {
-        let list = DataManager.shared.loadCategory()
-        for category in list {
-            let categoryName = category.title
-            categoryList.append(categoryName)
-            let taskes = DataManager.shared.getTaskCategory(category: categoryName)
-            taskList[categoryName] = taskes
+        categoryList = UserDefaults.shared.array(forKey: CategoryList) as? [String] ?? [String]()
+        for category in categoryList {
+            let taskes = DataManager.shared.getTaskCategory(category: category)
+            taskList[category] = taskes
         }
         SystemManager.shared.closeLoading()
     }
