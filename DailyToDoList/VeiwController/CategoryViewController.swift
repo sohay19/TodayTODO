@@ -104,10 +104,6 @@ extension CategoryViewController {
             taskList[category] = taskes
         }
         tableView.reloadData()
-        if isRefresh {
-            endAppearanceTransition()
-            isRefresh = false
-        }
         SystemManager.shared.closeLoading()
         if isRefresh {
             endAppearanceTransition()
@@ -138,10 +134,31 @@ extension CategoryViewController {
         guard let list = taskList[cateogry] else {
             return
         }
+        //임시
+        return
         if list.count > 0 {
-            
+            var actionList:[(UIAlertAction)->Void] = []
+            //
+            actionList.append { _ in
+                
+            }
+            //
+            actionList.append { _ in
+                
+            }
+            //
+            actionList.append { _ in
+                
+            }
+            PopupManager.shared.openAlertSheet(
+                self, title: "카테고리 삭제",
+                msg: "카테고리에 TODO가 존재합니다.\n정말 삭제하시겠습니까?",
+                btnMsg: ["포함된 TODO 모두 삭제", "다른 카테고리로 TODO 옮기기", "취소"],
+                complete: actionList
+                )
         } else {
-            
+            DataManager.shared.deleteCategory(cateogry)
+            refresh()
         }
     }
 }

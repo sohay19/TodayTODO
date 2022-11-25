@@ -26,13 +26,13 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="W0e-Eg-rfi">
-                                <rect key="frame" x="216" y="119" width="159" height="42"/>
+                                <rect key="frame" x="219" y="128" width="159" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaP-fH-oDY" userLabel="BtnSave">
-                                        <rect key="frame" x="0.0" y="0.0" width="45" height="42"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="4e3-PH-Ct7"/>
-                                            <constraint firstAttribute="width" constant="45" id="HMd-O2-GG9"/>
+                                            <constraint firstAttribute="height" constant="45" id="4e3-PH-Ct7"/>
+                                            <constraint firstAttribute="width" secondItem="yaP-fH-oDY" secondAttribute="height" multiplier="1:1" id="oLA-I6-LVz"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -44,7 +44,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KQ-qT-YiX" userLabel="BtnSave">
-                                        <rect key="frame" x="54" y="0.0" width="37" height="42"/>
+                                        <rect key="frame" x="54" y="0.0" width="37" height="45"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="SAVE"/>
@@ -53,7 +53,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x0-E1-1zs" userLabel="BtnCancel">
-                                        <rect key="frame" x="100" y="0.0" width="59" height="42"/>
+                                        <rect key="frame" x="100" y="0.0" width="59" height="45"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="CANCEL"/>
@@ -64,7 +64,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Q8S-7o-Chk">
-                                <rect key="frame" x="30" y="176" width="333" height="612"/>
+                                <rect key="frame" x="30" y="188" width="333" height="600"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -76,9 +76,9 @@
                             <constraint firstItem="W0e-Eg-rfi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VmR-ka-L5l" secondAttribute="leading" constant="18" id="Own-a7-SOm"/>
                             <constraint firstItem="09Z-1z-nrA" firstAttribute="top" secondItem="VmR-ka-L5l" secondAttribute="top" id="Rfz-wQ-Pop"/>
                             <constraint firstItem="Q8S-7o-Chk" firstAttribute="leading" secondItem="VmR-ka-L5l" secondAttribute="leading" constant="30" id="SBN-kW-2Ql"/>
-                            <constraint firstItem="VmR-ka-L5l" firstAttribute="trailing" secondItem="W0e-Eg-rfi" secondAttribute="trailing" constant="18" id="Zdx-eG-umd"/>
+                            <constraint firstItem="VmR-ka-L5l" firstAttribute="trailing" secondItem="W0e-Eg-rfi" secondAttribute="trailing" constant="15" id="Zdx-eG-umd"/>
                             <constraint firstItem="VmR-ka-L5l" firstAttribute="trailing" secondItem="Q8S-7o-Chk" secondAttribute="trailing" constant="30" id="k3t-1v-Bu8"/>
-                            <constraint firstItem="W0e-Eg-rfi" firstAttribute="top" secondItem="09Z-1z-nrA" secondAttribute="bottom" id="lOr-8E-g2Q"/>
+                            <constraint firstItem="W0e-Eg-rfi" firstAttribute="top" secondItem="09Z-1z-nrA" secondAttribute="bottom" constant="9" id="lOr-8E-g2Q"/>
                             <constraint firstItem="09Z-1z-nrA" firstAttribute="leading" secondItem="VmR-ka-L5l" secondAttribute="leading" id="mf3-8d-yIW"/>
                             <constraint firstItem="Q8S-7o-Chk" firstAttribute="top" secondItem="yaP-fH-oDY" secondAttribute="bottom" constant="15" id="oQe-X7-TPN"/>
                         </constraints>

@@ -82,6 +82,7 @@ class MainViewController: UIViewController {
         super.viewWillDisappear(animated)
         //
         segmentControl.selectedSegmentIndex = 0
+        currentType = .Today
     }
 }
 
