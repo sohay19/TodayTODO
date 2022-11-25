@@ -35,6 +35,7 @@ class TaskInfoViewController : UIViewController {
     @IBOutlet weak var labelWeekUnit:UILabel!
     @IBOutlet weak var labelDay:UILabel!
     @IBOutlet weak var labelDayUnit:UILabel!
+    @IBOutlet weak var textCounter: UILabel!
     //
     @IBOutlet weak var btnPullCategory:UIButton!
     @IBOutlet weak var btnAllDay: UIButton!
@@ -65,6 +66,8 @@ class TaskInfoViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //
+        inputTitle.delegate = self
         //
         initUI()
         initGesture()
@@ -136,6 +139,9 @@ extension TaskInfoViewController {
         inputTitle.font = regular
         inputTitle.textColor = .label
         inputTitle.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        inputTitle.clearButtonMode = .whileEditing
+        textCounter.textColor = .label
+        textCounter.font = UIFont(name: N_Font, size: N_FontSize - 5.0)
         //
         btnPullCategory.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
         btnPullCategory.layer.shadowColor = UIColor.gray.cgColor

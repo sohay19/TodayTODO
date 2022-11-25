@@ -68,6 +68,12 @@
                                             <action selector="clickCancel:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IPX-cf-5h9"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWm-ne-R8K">
+                                        <rect key="frame" x="203.66666666666669" y="91" width="35.333333333333343" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <constraints>
@@ -75,7 +81,9 @@
                                     <constraint firstAttribute="width" secondItem="Oh3-Mf-mVE" secondAttribute="height" multiplier="2:1.1" id="3gP-6j-Ez0"/>
                                     <constraint firstItem="J72-7k-ldg" firstAttribute="centerX" secondItem="DGR-BC-vVC" secondAttribute="centerX" id="6LI-sD-ewP"/>
                                     <constraint firstAttribute="trailing" secondItem="N85-em-gvp" secondAttribute="trailing" constant="24" id="87F-rX-lP0"/>
+                                    <constraint firstItem="TWm-ne-R8K" firstAttribute="top" secondItem="tEd-g3-REU" secondAttribute="bottom" constant="3" id="AoT-xB-KWi"/>
                                     <constraint firstItem="DGR-BC-vVC" firstAttribute="top" relation="greaterThanOrEqual" secondItem="N85-em-gvp" secondAttribute="bottom" constant="24" id="Bp6-Sr-mlf"/>
+                                    <constraint firstItem="TWm-ne-R8K" firstAttribute="trailing" secondItem="tEd-g3-REU" secondAttribute="trailing" id="Cxs-vw-4pt"/>
                                     <constraint firstItem="tEd-g3-REU" firstAttribute="leading" secondItem="1Jd-Lp-LqQ" secondAttribute="leading" constant="9" id="Ey7-0N-dod"/>
                                     <constraint firstAttribute="trailing" secondItem="qGz-97-s0I" secondAttribute="trailing" id="HuN-9o-GvK"/>
                                     <constraint firstItem="Xlt-hD-QD3" firstAttribute="leading" secondItem="Oh3-Mf-mVE" secondAttribute="leading" id="IQn-14-3zO"/>
@@ -109,10 +117,11 @@
                         <outlet property="backView" destination="5EZ-qb-Rvc" id="43m-dL-EGM"/>
                         <outlet property="btnCancel" destination="qGz-97-s0I" id="23H-PF-nz2"/>
                         <outlet property="btnOK" destination="Xlt-hD-QD3" id="VxK-JP-DEv"/>
-                        <outlet property="colorWell" destination="N85-em-gvp" id="gGm-yG-kOG"/>
+                        <outlet property="colorWell" destination="N85-em-gvp" id="PgK-yD-7F2"/>
                         <outlet property="inputTitle" destination="tEd-g3-REU" id="Yrb-ur-0d0"/>
                         <outlet property="labelTitle" destination="1Jd-Lp-LqQ" id="XMW-lI-ADe"/>
                         <outlet property="popView" destination="Oh3-Mf-mVE" id="IH5-7a-Ihb"/>
+                        <outlet property="textCounter" destination="TWm-ne-R8K" id="ieD-ol-MmX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

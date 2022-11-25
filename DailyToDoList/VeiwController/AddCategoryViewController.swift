@@ -13,6 +13,7 @@ class AddCategoryViewController: UIViewController {
     @IBOutlet weak var popView: UIView!
     //
     @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var textCounter: UILabel!
     @IBOutlet weak var inputTitle: UITextField!
     @IBOutlet weak var colorWell: UIColorWell!
     //
@@ -25,6 +26,8 @@ class AddCategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //
+        inputTitle.delegate = self
         //
         initUI()
         initGesture()
@@ -55,6 +58,10 @@ extension AddCategoryViewController {
         inputTitle.attributedPlaceholder = NSAttributedString(string: "카테고리 명을 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
         inputTitle.textContentType = .nickname
         inputTitle.keyboardType = .default
+        inputTitle.clearButtonMode = .whileEditing
+        //
+        textCounter.textColor = .systemBackground
+        textCounter.font = UIFont(name: N_Font, size: N_FontSize - 5.0)
         //
         btnOK.tintColor = .systemBackground
         btnOK.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
@@ -119,5 +126,18 @@ extension AddCategoryViewController {
     }
     @objc private func exit() {
         dismiss(animated: true)
+    }
+}
+
+//MARK: - TextField
+extension AddCategoryViewController : UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else {
+            return false
+        }
+        let changedText = currentText.replacingCharacters(in: stringRange, with: string)
+        textCounter.text = "\(changedText.count)/10"
+        return changedText.count < 10
     }
 }
