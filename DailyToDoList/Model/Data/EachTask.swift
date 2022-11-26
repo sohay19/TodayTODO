@@ -53,7 +53,6 @@ class EachTask : Object
         self.memo = task.memo
         self.isDone = task.isDone
     }
-    
             
     convenience init(taskDay:Date, category:String, time:String, title:String, memo:String, repeatType:String) {
         self.init()
@@ -163,6 +162,10 @@ class EachTask : Object
             optionData.isAlarm = false
             optionData.alarmTime = ""
         }
+    }
+    
+    func setCategory(_ category:String) {
+        self.category = category
     }
     
     func clone() -> EachTask {

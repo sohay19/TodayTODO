@@ -63,6 +63,10 @@
 		CF790913292F65510027D25D /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF790911292F65510027D25D /* CategoryCell.xib */; };
 		CF7909152930A3D40027D25D /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7909142930A3D40027D25D /* Backup.storyboard */; };
 		CF7909172930A3E30027D25D /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7909162930A3E30027D25D /* BackupViewController.swift */; };
+		CF790919293234F00027D25D /* PopList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF790918293234F00027D25D /* PopList.storyboard */; };
+		CF79091B293234FA0027D25D /* PopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79091A293234FA0027D25D /* PopListViewController.swift */; };
+		CF79091E293236D50027D25D /* PopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79091C293236D50027D25D /* PopCell.swift */; };
+		CF79091F293236D50027D25D /* PopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF79091D293236D50027D25D /* PopCell.xib */; };
 		CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
 		CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8148F229068E0700FD0974 /* ClassExtension.swift */; };
 		CF8149272906B75100FD0974 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8149252906B75100FD0974 /* Interface.storyboard */; };
@@ -297,6 +301,10 @@
 		CF790911292F65510027D25D /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		CF7909142930A3D40027D25D /* Backup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Backup.storyboard; sourceTree = "<group>"; };
 		CF7909162930A3E30027D25D /* BackupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
+		CF790918293234F00027D25D /* PopList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopList.storyboard; sourceTree = "<group>"; };
+		CF79091A293234FA0027D25D /* PopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopListViewController.swift; sourceTree = "<group>"; };
+		CF79091C293236D50027D25D /* PopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopCell.swift; sourceTree = "<group>"; };
+		CF79091D293236D50027D25D /* PopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopCell.xib; sourceTree = "<group>"; };
 		CF8148F229068E0700FD0974 /* ClassExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassExtension.swift; sourceTree = "<group>"; };
 		CF8149232906B75100FD0974 /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8149262906B75100FD0974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -630,6 +638,7 @@
 				CF75963D290662900046FDC1 /* PushListVCExtension.swift */,
 				CFE45D3C292C96FC007024EB /* AddCategoryViewController.swift */,
 				CF7909162930A3E30027D25D /* BackupViewController.swift */,
+				CF79091A293234FA0027D25D /* PopListViewController.swift */,
 			);
 			path = VeiwController;
 			sourceTree = "<group>";
@@ -679,6 +688,8 @@
 				CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */,
 				CF790911292F65510027D25D /* CategoryCell.xib */,
 				CF790910292F65510027D25D /* CategoryCell.swift */,
+				CF79091D293236D50027D25D /* PopCell.xib */,
+				CF79091C293236D50027D25D /* PopCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -705,6 +716,7 @@
 				CF75963229024C340046FDC1 /* PushList.storyboard */,
 				CFE45D3A292B6F17007024EB /* AddCategory.storyboard */,
 				CF7909142930A3D40027D25D /* Backup.storyboard */,
+				CF790918293234F00027D25D /* PopList.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -969,8 +981,10 @@
 				CFE45D31292B1D2B007024EB /* pencil.png in Resources */,
 				CF535097291CD5E400AFDC14 /* sticker.png in Resources */,
 				CFEB4A2E28F14B68008850DC /* Setting.storyboard in Resources */,
+				CF790919293234F00027D25D /* PopList.storyboard in Resources */,
 				CF5350D52921E92F00AFDC14 /* underline_Black.png in Resources */,
 				CF5350B6291E3D4B00AFDC14 /* Background3.jpg in Resources */,
+				CF79091F293236D50027D25D /* PopCell.xib in Resources */,
 				CF5350B5291E3D4B00AFDC14 /* Background5.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1240,6 +1254,7 @@
 				CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */,
 				CF7909172930A3E30027D25D /* BackupViewController.swift in Sources */,
 				CFEB4A6828F165D1008850DC /* CategoryViewController.swift in Sources */,
+				CF79091B293234FA0027D25D /* PopListViewController.swift in Sources */,
 				CF50BC5E2924D13500AB538B /* NSOptionalData.swift in Sources */,
 				CF790912292F65510027D25D /* CategoryCell.swift in Sources */,
 				CFEB4A5628F1559D008850DC /* SystemManager.swift in Sources */,
@@ -1264,6 +1279,7 @@
 				CFEB49DF28F13287008850DC /* MainViewController.swift in Sources */,
 				CFEB4A5728F1559D008850DC /* CloudManager.swift in Sources */,
 				CFEB4A4928F14D25008850DC /* TaskCell.swift in Sources */,
+				CF79091E293236D50027D25D /* PopCell.swift in Sources */,
 				CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */,
 				CFEB4A3228F14BC7008850DC /* LoginViewController.swift in Sources */,
 				CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */,

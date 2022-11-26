@@ -320,9 +320,7 @@ extension MainViewController {
     }
     //
     private func sortCategory() {
-        guard let list = UserDefaults.shared.array(forKey: CategoryList) as? [String] else {
-            return
-        }
+        let list = DataManager.shared.getCategoryOrder()
         switch currentType {
         case .Today:
             categoryList.sort {

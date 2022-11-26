@@ -32,7 +32,12 @@ extension CategoryViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Edit
     //Row별 EditMode-
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
+        let cateogry = categoryList[indexPath.row]
+        if cateogry == "TODO" {
+            return .none
+        } else {
+            return .delete
+        }
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {

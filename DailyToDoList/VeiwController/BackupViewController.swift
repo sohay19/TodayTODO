@@ -122,6 +122,7 @@ extension BackupViewController {
     func iCloudBackup(_ vc:UIViewController) {
         cloudManager.realmUrl = DataManager.shared.getRealmURL()
         cloudManager.backUpFile(vc)
+        refresh()
     }
     //
     func iCloudLoadFile(_ vc:UIViewController, _ url:URL) {
@@ -157,7 +158,6 @@ extension BackupViewController {
 extension BackupViewController {
     func updateDate() {
         updateCloud(label: labelBackupDate)
-        
     }
     
     func loadBackupFile(_ indexPath:IndexPath) {

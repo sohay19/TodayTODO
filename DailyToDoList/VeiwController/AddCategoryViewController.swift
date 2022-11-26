@@ -19,6 +19,8 @@ class AddCategoryViewController: UIViewController {
     //
     @IBOutlet weak var btnOK: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var line1: UIView!
+    @IBOutlet weak var line2: UIView!
     
     
     var reloadCategory:(() -> Void)?
@@ -45,10 +47,17 @@ extension AddCategoryViewController {
         let backgroundView = UIImageView(frame: popView.bounds)
         backgroundView.image = UIImage(named: BlackBackImage)
         backgroundView.clipsToBounds = true
-        backgroundView.layer.cornerRadius = 10
+        backgroundView.layer.cornerRadius = 9
         popView.insertSubview(backgroundView, at: 0)
-        popView.layer.cornerRadius = 10
+        popView.layer.cornerRadius = 9
+        popView.layer.shadowColor = UIColor.darkGray.cgColor
+        popView.layer.shadowOffset = CGSize(width: 0, height: 0.5)
+        popView.layer.shadowOpacity = 0.6
+        popView.layer.shadowRadius = 10
+        //
         backView.backgroundColor = .clear
+        line1.backgroundColor = .darkGray
+        line2.backgroundColor = .darkGray
         //
         labelTitle.textColor = .systemBackground
         labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 2.0)
@@ -81,10 +90,9 @@ extension AddCategoryViewController {
         colorWell.addTarget(self, action: #selector(changedColor(_:)), for: .valueChanged)
     }
     @objc func changedColor(_ sender:Any) {
-        guard let color = colorWell.selectedColor else {
+        guard let _ = colorWell.selectedColor else {
             return
         }
-        print(color)
     }
 }
 
@@ -98,6 +106,12 @@ extension AddCategoryViewController {
         }
         guard let title = inputTitle.text else {
             return
+        }
+        let array = DataManager.shared.getCategoryOrder()
+        for name in array {
+            if name == title {
+                PopupManager.shared.openOkAlert(self, title: "알림", msg: "이미 존재하는 카테고리입니다")
+            }
         }
         if title.isEmpty {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "카테고리 명을 입력해주세요")

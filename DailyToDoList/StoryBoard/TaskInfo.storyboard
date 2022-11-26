@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqQ-lG-uat" userLabel="PopView">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="814"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="690"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vry-wb-prK" userLabel="LabelTitle">
                                                 <rect key="frame" x="29.999999999999996" y="78" width="43.666666666666657" height="18"/>
@@ -127,7 +127,7 @@
                                                         <rect key="frame" x="0.0" y="45" width="315" height="45"/>
                                                         <subviews>
                                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="bqm-YU-iV9">
-                                                                <rect key="frame" x="202.33333333333334" y="6" width="103.66666666666666" height="33"/>
+                                                                <rect key="frame" x="207" y="6" width="99" height="33"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="bqm-YU-iV9" secondAttribute="height" multiplier="3:1" priority="250" id="5c9-11-WY2"/>
                                                                     <constraint firstAttribute="height" constant="33" id="9D7-Q2-fa4"/>
@@ -298,7 +298,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gMj-5E-3Dd" userLabel="MemoView">
-                                                <rect key="frame" x="48" y="582" width="315" height="187"/>
+                                                <rect key="frame" x="48" y="582" width="315" height="63"/>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -331,7 +331,7 @@
                                             <constraint firstItem="Hmw-Pe-Wms" firstAttribute="centerY" secondItem="qah-vc-BrR" secondAttribute="centerY" id="Mua-Gr-EtO"/>
                                             <constraint firstItem="Hmw-Pe-Wms" firstAttribute="trailing" secondItem="gMj-5E-3Dd" secondAttribute="trailing" id="NLf-vT-al1"/>
                                             <constraint firstItem="3h0-eV-yBR" firstAttribute="trailing" secondItem="UsW-rm-eIp" secondAttribute="trailing" id="R5u-3X-8jD"/>
-                                            <constraint firstAttribute="height" constant="814" id="Sr9-gg-vYp"/>
+                                            <constraint firstAttribute="height" constant="690" id="Sr9-gg-vYp"/>
                                             <constraint firstItem="f4Q-iy-NbQ" firstAttribute="leading" secondItem="vry-wb-prK" secondAttribute="leading" id="ZMm-HK-4Q0"/>
                                             <constraint firstItem="G2j-hg-GNr" firstAttribute="height" secondItem="glH-XQ-WBy" secondAttribute="height" id="Zmw-Y9-EC5"/>
                                             <constraint firstItem="glH-XQ-WBy" firstAttribute="trailing" secondItem="UsW-rm-eIp" secondAttribute="trailing" id="Zob-aM-Mab"/>
@@ -415,7 +415,7 @@
                         <outlet property="btnAllDay" destination="tUc-bA-C0O" id="QWB-LA-rW0"/>
                         <outlet property="btnBack" destination="KJ0-2e-3S3" id="9RV-8k-wma"/>
                         <outlet property="btnEndDate" destination="Ab4-Z7-0mY" id="f3W-ak-oyW"/>
-                        <outlet property="btnPullCategory" destination="glH-XQ-WBy" id="NXe-Zs-FTk"/>
+                        <outlet property="btnPullCategory" destination="glH-XQ-WBy" id="dQ4-0C-1Nh"/>
                         <outlet property="btnRepeat" destination="efd-sV-XJM" id="sbW-BX-N0C"/>
                         <outlet property="btnWrite" destination="UuZ-zK-Qti" id="IzM-G1-Daf"/>
                         <outlet property="inputTitle" destination="UsW-rm-eIp" id="28s-lP-5rg"/>

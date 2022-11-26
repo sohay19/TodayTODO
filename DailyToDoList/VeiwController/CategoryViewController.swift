@@ -97,7 +97,7 @@ extension CategoryViewController {
 //MARK: - Func
 extension CategoryViewController {
     private func loadData() {
-        originList = UserDefaults.shared.array(forKey: CategoryList) as? [String] ?? [String]()
+        originList = DataManager.shared.getCategoryOrder()
         categoryList = originList
         for category in categoryList {
             let taskes = DataManager.shared.getTaskCategory(category: category)
@@ -134,21 +134,51 @@ extension CategoryViewController {
         guard let list = taskList[cateogry] else {
             return
         }
-        //임시
-        return
         if list.count > 0 {
             var actionList:[(UIAlertAction)->Void] = []
-            //
-            actionList.append { _ in
-                
+            guard let list = taskList[cateogry] else {
+                return
             }
-            //
-            actionList.append { _ in
-                
+            //모두 삭제
+            actionList.append { [self] _ in
+                for task in list {
+                    DataManager.shared.deleteTask(task)
+                }
+                DataManager.shared.deleteCategory(cateogry)
+                refresh()
             }
-            //
-            actionList.append { _ in
-                
+            //옮기기
+            actionList.append { [self] _ in
+                let board = UIStoryboard(name: PopListBoard, bundle: nil)
+                guard let poplistVC = board.instantiateViewController(withIdentifier: PopListBoard) as? PopListViewController else { return }
+                // 팝업을 위한 세팅
+                poplistVC.modalTransitionStyle = .coverVertical
+                poplistVC.modalPresentationStyle = .overCurrentContext
+                var newList = categoryList
+                guard let index = newList.firstIndex(of: cateogry) else { return }
+                newList.remove(at: index)
+                poplistVC.categoryList = newList
+                // 옮겨질 카테고리 선택
+                poplistVC.complete = { [self] selectedCategory in
+                    for task in list {
+                        let newTask = task.clone()
+                        newTask.setCategory(selectedCategory)
+                        DataManager.shared.updateTask(newTask)
+                    }
+                    DataManager.shared.deleteCategory(cateogry)
+                    refresh()
+                }
+                // 취소
+                poplistVC.cancel = { [self] in
+                    changeEditMode(false)
+                }
+                // 팝업 띄우기
+                guard let navigationController = self.navigationController as? CustomNavigationController else { return }
+                navigationController.present(poplistVC, animated: true)
+            }
+            //취소
+            actionList.append { [self] _ in
+                changeEditMode(false)
             }
             PopupManager.shared.openAlertSheet(
                 self, title: "카테고리 삭제",
@@ -172,7 +202,7 @@ extension CategoryViewController {
     }
     @IBAction func clickSave(_ sender:Any) {
         originList = categoryList
-        UserDefaults.shared.set(originList, forKey: CategoryList)
+        DataManager.shared.setCategoryOrder(originList)
         changeMoveMode(false)
         changeEditMode(false)
     }

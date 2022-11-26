@@ -48,7 +48,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="15"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="clickRefresh:" destination="5Iu-ra-9xS" eventType="touchUpInside" id="lKF-ec-f4S"/>
+                                    <action selector="clickRefresh:" destination="5Iu-ra-9xS" eventType="touchUpInside" id="vsj-ql-6bF"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="백업파일 리스트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iES-Qm-PJF" userLabel="LabelTableTitle">

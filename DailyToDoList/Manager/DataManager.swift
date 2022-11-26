@@ -89,6 +89,16 @@ extension DataManager {
     func loadCategory() -> [CategoryData] {
         return realmManager.loadCategory()
     }
+    func getCategoryOrder() -> [String] {
+        guard let list = UserDefaults.shared.array(forKey: CategoryList) as? [String] else {
+            return []
+        }
+        return list
+    }
+    //set
+    func setCategoryOrder(_ list:[String]) {
+        UserDefaults.shared.set(list, forKey: CategoryList)
+    }
     func getCategoryColor(_ category:String) -> UIColor {
         return realmManager.getCategoryColor(category)
     }

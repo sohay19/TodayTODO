@@ -148,10 +148,6 @@ extension TaskInfoViewController {
         memoCounter.font = UIFont(name: N_Font, size: N_FontSize - 5.0)
         //
         btnPullCategory.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
-        btnPullCategory.layer.shadowColor = UIColor.gray.cgColor
-        btnPullCategory.layer.shadowOffset = CGSize.zero
-        btnPullCategory.layer.shadowOpacity = 0.3
-        btnPullCategory.layer.shadowRadius = 6
         btnPullCategory.layer.cornerRadius = 5
         btnRepeat.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
         btnRepeat.backgroundColor = .clear

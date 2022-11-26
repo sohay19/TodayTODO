@@ -24,6 +24,7 @@ let backupBoard = "Backup"
 let settingBoard = "Setting"
 let taskInfoBoard = "TaskInfo"
 let pushListBoard = "PushList"
+let PopListBoard = "PopList"
 
 //MARK: - Push UserInfo key
 let endDateKey = "endDate"

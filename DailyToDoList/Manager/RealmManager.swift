@@ -449,9 +449,12 @@ extension RealmManager {
             return
         }
         do {
-            var array = UserDefaults.shared.array(forKey: CategoryList) as? [String] ?? [String]()
+            var array = DataManager.shared.getCategoryOrder()
+            if let _ = array.first(where: {$0 == data.title}) {
+                return
+            }
             array.append(data.title)
-            UserDefaults.shared.set(array, forKey: CategoryList)
+            DataManager.shared.setCategoryOrder(array)
             try realm.write {
                 realm.add(data)
             }
@@ -509,6 +512,11 @@ extension RealmManager {
             guard let findCategory = data.first(where: {$0.title == category}) else {
                 return
             }
+            var newList = DataManager.shared.getCategoryOrder()
+            if let index = newList.firstIndex(of: category) {
+                newList.remove(at: index)
+            }
+            DataManager.shared.setCategoryOrder(newList)
             #if os(iOS)
             WatchConnectManager.shared.sendToWatchCategoryDelete(findCategory)
             #endif
