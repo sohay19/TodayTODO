@@ -22,6 +22,8 @@ let addCategoryBoard = "AddCategory"
 let categoryBoard = "Category"
 let backupBoard = "Backup"
 let settingBoard = "Setting"
+let noticeBoard = "Notice"
+let faqBoard = "FAQ"
 let taskInfoBoard = "TaskInfo"
 let pushListBoard = "PushList"
 let PopListBoard = "PopList"
@@ -60,7 +62,7 @@ let Underline_Pink = "underline_Pink.png"
 let Underline_Black = "underline_Black.png"
 let Bricks = "Bricks.png"
 let LastPageImage = "LastPage.png"
-let boldConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .bold, scale: .large)
+let boldConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .semibold, scale: .large)
 let mediumConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .regular, scale: .medium)
 let thinConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .thin, scale: .small)
 

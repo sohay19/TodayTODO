@@ -67,6 +67,11 @@
 		CF79091B293234FA0027D25D /* PopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79091A293234FA0027D25D /* PopListViewController.swift */; };
 		CF79091E293236D50027D25D /* PopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79091C293236D50027D25D /* PopCell.swift */; };
 		CF79091F293236D50027D25D /* PopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF79091D293236D50027D25D /* PopCell.xib */; };
+		CF7909212935D7010027D25D /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7909202935D7010027D25D /* SettingCell.swift */; };
+		CF7909232935ED520027D25D /* Notice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7909222935ED520027D25D /* Notice.storyboard */; };
+		CF7909252935ED5B0027D25D /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7909242935ED5B0027D25D /* NoticeViewController.swift */; };
+		CF7909272935EF7E0027D25D /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7909262935EF7E0027D25D /* FAQViewController.swift */; };
+		CF7909292935EF870027D25D /* FAQ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7909282935EF870027D25D /* FAQ.storyboard */; };
 		CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
 		CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8148F229068E0700FD0974 /* ClassExtension.swift */; };
 		CF8149272906B75100FD0974 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8149252906B75100FD0974 /* Interface.storyboard */; };
@@ -305,6 +310,11 @@
 		CF79091A293234FA0027D25D /* PopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopListViewController.swift; sourceTree = "<group>"; };
 		CF79091C293236D50027D25D /* PopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopCell.swift; sourceTree = "<group>"; };
 		CF79091D293236D50027D25D /* PopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopCell.xib; sourceTree = "<group>"; };
+		CF7909202935D7010027D25D /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		CF7909222935ED520027D25D /* Notice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notice.storyboard; sourceTree = "<group>"; };
+		CF7909242935ED5B0027D25D /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
+		CF7909262935EF7E0027D25D /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
+		CF7909282935EF870027D25D /* FAQ.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQ.storyboard; sourceTree = "<group>"; };
 		CF8148F229068E0700FD0974 /* ClassExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassExtension.swift; sourceTree = "<group>"; };
 		CF8149232906B75100FD0974 /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8149262906B75100FD0974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -639,6 +649,8 @@
 				CFE45D3C292C96FC007024EB /* AddCategoryViewController.swift */,
 				CF7909162930A3E30027D25D /* BackupViewController.swift */,
 				CF79091A293234FA0027D25D /* PopListViewController.swift */,
+				CF7909242935ED5B0027D25D /* NoticeViewController.swift */,
+				CF7909262935EF7E0027D25D /* FAQViewController.swift */,
 			);
 			path = VeiwController;
 			sourceTree = "<group>";
@@ -690,6 +702,7 @@
 				CF790910292F65510027D25D /* CategoryCell.swift */,
 				CF79091D293236D50027D25D /* PopCell.xib */,
 				CF79091C293236D50027D25D /* PopCell.swift */,
+				CF7909202935D7010027D25D /* SettingCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -717,6 +730,8 @@
 				CFE45D3A292B6F17007024EB /* AddCategory.storyboard */,
 				CF7909142930A3D40027D25D /* Backup.storyboard */,
 				CF790918293234F00027D25D /* PopList.storyboard */,
+				CF7909222935ED520027D25D /* Notice.storyboard */,
+				CF7909282935EF870027D25D /* FAQ.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -951,6 +966,7 @@
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
 				CF5350BD291E457400AFDC14 /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CF7909152930A3D40027D25D /* Backup.storyboard in Resources */,
+				CF7909292935EF870027D25D /* FAQ.storyboard in Resources */,
 				CF5350BE291E457400AFDC14 /* NanumBarunpenB.otf in Resources */,
 				CF995F462923C54B00FAE2F1 /* title.png in Resources */,
 				CFE45D30292B1D2B007024EB /* clock.png in Resources */,
@@ -965,6 +981,7 @@
 				CFEB49E428F13288008850DC /* Assets.xcassets in Resources */,
 				CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */,
 				CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */,
+				CF7909232935ED520027D25D /* Notice.storyboard in Resources */,
 				CF5350C0291E457400AFDC14 /* Windsor_Great_Park-Regular.otf in Resources */,
 				CF5350B2291E3D4B00AFDC14 /* Bricks.png in Resources */,
 				CFEB49E228F13287008850DC /* Main.storyboard in Resources */,
@@ -1262,6 +1279,7 @@
 				CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */,
 				CFD0B14828F91CEA0029D936 /* TaskInfoViewController.swift in Sources */,
 				CFEB4A5C28F155E5008850DC /* PushManager.swift in Sources */,
+				CF7909272935EF7E0027D25D /* FAQViewController.swift in Sources */,
 				CF2BAF1229263E0700EB49F4 /* TaskInfoVCExtension.swift in Sources */,
 				CF50BC5C2924CDD900AB538B /* OptionalData.swift in Sources */,
 				CF5350E7292376BB00AFDC14 /* MonthltyDayTask.swift in Sources */,
@@ -1270,6 +1288,7 @@
 				CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */,
 				CF995F482923D02600FAE2F1 /* OpenedTask.swift in Sources */,
 				CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */,
+				CF7909252935ED5B0027D25D /* NoticeViewController.swift in Sources */,
 				CFB6EE0728F1793C00E93585 /* DailyToDoListWidget.intentdefinition in Sources */,
 				CF75963729024F680046FDC1 /* PushCell.swift in Sources */,
 				CF81495C2906CC0000FD0974 /* WatchConnectManager.swift in Sources */,
@@ -1280,6 +1299,7 @@
 				CFEB4A5728F1559D008850DC /* CloudManager.swift in Sources */,
 				CFEB4A4928F14D25008850DC /* TaskCell.swift in Sources */,
 				CF79091E293236D50027D25D /* PopCell.swift in Sources */,
+				CF7909212935D7010027D25D /* SettingCell.swift in Sources */,
 				CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */,
 				CFEB4A3228F14BC7008850DC /* LoginViewController.swift in Sources */,
 				CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */,

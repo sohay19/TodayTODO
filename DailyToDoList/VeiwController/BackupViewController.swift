@@ -9,13 +9,17 @@ import UIKit
 import FirebaseAuth
 
 class BackupViewController: UIViewController {
-    @IBOutlet weak var segmentView: UIView!
+    @IBOutlet weak var line: UIView!
+    @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelTableTitle: UILabel!
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelBackupDate: UILabel!
     //
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var btnBack: UIButton!
+    @IBOutlet weak var btnRefresh: UIButton!
     @IBOutlet weak var btnBackup: UIButton!
+    @IBOutlet weak var btnAllDelete: UIButton!
     
     
     private let cloudManager = CloudManager()
@@ -52,10 +56,9 @@ extension BackupViewController {
         let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
-        //
-        segmentView.backgroundColor = .clear
-        addSegmentcontrol()
+        line.backgroundColor = .label
         //폰트 설정
+        labelTitle.font = UIFont(name: E_Font_B, size: E_FontSize)
         labelDate.font = UIFont(name: K_Font_B, size: K_FontSize + 3.0)
         labelBackupDate.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelTableTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 3.0)
@@ -69,20 +72,20 @@ extension BackupViewController {
         tableView.separatorColor = .gray.withAlphaComponent(0.5)
         tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
+        btnBack.setImage(UIImage(systemName: "chevron.backward", withConfiguration: mediumConfig), for: .normal)
+        btnBack.tintColor = .label
+        btnRefresh.setImage(UIImage(systemName: "arrow.clockwise", withConfiguration: mediumConfig), for: .normal)
+        btnRefresh.contentMode = .center
+        btnBackup.setImage(UIImage(systemName: "icloud.and.arrow.up", withConfiguration: mediumConfig), for: .normal)
         btnBackup.contentMode = .center
-        btnBackup.setImage(UIImage(systemName: "tray.and.arrow.down.fill", withConfiguration: mediumConfig), for: .normal)
-    }
-    //
-    private func addSegmentcontrol() {
-        let segment = CustomSegmentControl(items: ["iCloud Backup"])
-        segment.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: segmentView.frame.size)
-        segment.addTarget(self, action: #selector(changeSegment(_:)), for: .valueChanged)
-        segment.selectedSegmentIndex = 0
-        segmentControl = segment
-        segmentView.addSubview(segment)
-    }
-    @objc private func changeSegment(_ sender:Any) {
-        refresh()
+        btnBackup.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
+        btnBackup.layer.borderWidth = 0.5
+        btnBackup.layer.borderColor = UIColor.label.cgColor
+        btnAllDelete.setTitle("백업리스트 모두 삭제", for: .normal)
+        btnAllDelete.contentMode = .center
+        btnAllDelete.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
+        btnAllDelete.layer.borderWidth = 0.5
+        btnAllDelete.layer.borderColor = UIColor.label.cgColor
     }
     private func refresh() {
         isRefresh = true
@@ -145,12 +148,6 @@ extension BackupViewController {
     func deleteAllFile() {
         //백업 파일 삭제
         deleteiCloudAllBackupFile()
-        //origin Realm 파일 삭제
-        DataManager.shared.deleteRealm()
-        //알람 삭제
-        DataManager.shared.deleteAllAlarmPush()
-        //카테고리 삭제
-        DataManager.shared.deleteAllCategory()
     }
 }
 
@@ -187,9 +184,15 @@ extension BackupViewController {
     }
     //
     @IBAction func removeAllFile(_ sender: Any) {
-        deleteAllFile()
-        dataList.removeAll()
-        tableView.reloadData()
+        PopupManager.shared.openYesOrNo(self, title: "백업 파일 모두 삭제", msg: "정말 삭제하시곘습니까?") { [self] _ in
+            deleteAllFile()
+            dataList.removeAll()
+            tableView.reloadData()
+        }
+    }
+    @IBAction func clickBack(_ sender:Any) {
+        guard let navigationController = self.navigationController as? CustomNavigationController else { return }
+        navigationController.popViewController()
     }
 }
 

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Notice View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="Notice" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="NoticeViewController" customModule="DailyToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXw-hO-BrH">
+                                <rect key="frame" x="313" y="83" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QiQ-wA-HKL" userLabel="BtnBack">
+                                <rect key="frame" x="0.0" y="59" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="HRN-lL-UAh"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
+                                <connections>
+                                    <action selector="clickBack:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fmB-rE-BHj"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zrT-hU-Ufg">
+                                <rect key="frame" x="3" y="119" width="387" height="1"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="cPp-Ot-xkT"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zXw-hO-BrH" secondAttribute="trailing" constant="30" id="HeV-Fd-r5b"/>
+                            <constraint firstItem="QiQ-wA-HKL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ISO-fh-Td2"/>
+                            <constraint firstItem="QiQ-wA-HKL" firstAttribute="width" secondItem="QiQ-wA-HKL" secondAttribute="height" multiplier="1:1" id="U77-c0-Cwf"/>
+                            <constraint firstItem="QiQ-wA-HKL" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="UZe-yt-r4i"/>
+                            <constraint firstItem="zXw-hO-BrH" firstAttribute="bottom" secondItem="QiQ-wA-HKL" secondAttribute="bottom" constant="-15" id="a7G-8V-pn6"/>
+                            <constraint firstItem="zrT-hU-Ufg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="3" id="gJy-gV-28m"/>
+                            <constraint firstItem="zrT-hU-Ufg" firstAttribute="top" secondItem="QiQ-wA-HKL" secondAttribute="bottom" id="gK5-Nn-7bO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zrT-hU-Ufg" secondAttribute="trailing" constant="3" id="q60-Q8-XRA"/>
+                            <constraint firstItem="zXw-hO-BrH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QiQ-wA-HKL" secondAttribute="trailing" constant="18" id="wh5-bJ-gI4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnBack" destination="QiQ-wA-HKL" id="Yga-us-2xA"/>
+                        <outlet property="labelTitle" destination="zXw-hO-BrH" id="ZPE-CC-3EU"/>
+                        <outlet property="line" destination="zrT-hU-Ufg" id="ci1-Jm-rOD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="-34"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

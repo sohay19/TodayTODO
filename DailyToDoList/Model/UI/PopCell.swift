@@ -24,15 +24,14 @@ class PopCell: UITableViewCell {
         // 간격
         self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 9, left: 0, bottom: 9, right: 0))
         // 배경
-        self.backgroundColor = .systemBackground.withAlphaComponent(0.8)
+        self.backgroundColor = .systemBackground
         self.layer.shadowColor = UIColor.gray.cgColor
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowOpacity = 0.5
         self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         // 선택 시 배경
         let backgroundView = UIView(frame: self.bounds)
-        backgroundView.backgroundColor = .systemIndigo.withAlphaComponent(0.3)
-        backgroundView.layer.cornerRadius = 6
+        backgroundView.backgroundColor = .defaultPink!.withAlphaComponent(0.3)
         backgroundView.clipsToBounds = true
         self.selectedBackgroundView = backgroundView
         //

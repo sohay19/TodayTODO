@@ -10,7 +10,7 @@ import UIKit
 
 class CustomTabBarController : UITabBarController {
     
-    let iconList:[String] = ["calendar", "list.bullet", "alarm.fill", "icloud.fill"]
+    let iconList:[String] = ["calendar", "list.bullet", "bell.and.waves.left.and.right", "gearshape"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +32,8 @@ extension CustomTabBarController : UITabBarControllerDelegate {
         let pushBoard = UIStoryboard(name: pushListBoard, bundle: nil)
         guard let pushTab = pushBoard.instantiateViewController(withIdentifier: pushListBoard) as? PushListViewController else { return }
         
-        let setBoard = UIStoryboard(name: backupBoard, bundle: nil)
-        guard let settingTab = setBoard.instantiateViewController(withIdentifier: backupBoard) as? BackupViewController else { return }
-//        let setBoard = UIStoryboard(name: settingBoard, bundle: nil)
-//        guard let settingTab = setBoard.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }
+        let setBoard = UIStoryboard(name: settingBoard, bundle: nil)
+        guard let settingTab = setBoard.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }
         
         self.viewControllers = [mainTab, categoryTab, pushTab, settingTab]
         
@@ -54,6 +52,6 @@ extension CustomTabBarController : UITabBarControllerDelegate {
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-//        print("\(viewController.tabBarItem.title)")
+        
     }
 }

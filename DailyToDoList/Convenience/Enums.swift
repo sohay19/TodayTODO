@@ -62,6 +62,14 @@ enum MainType:Int {
     case Month
 }
 
+enum SettingType:String {
+    case Notice = "공지사항"
+    case FAQ = "FAQ"
+    case Backup = "iCloud 백업설정"
+    case Question = "문의하기"
+    case Reset = "데이터 초기화"
+}
+
 enum DataType:String {
     case EachTask = "EachTask"
     case NSEachTask = "NSEachTask"

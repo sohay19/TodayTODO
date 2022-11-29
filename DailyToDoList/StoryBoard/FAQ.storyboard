@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="FAQ" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="FAQViewController" customModule="DailyToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blW-TM-w20" userLabel="BtnBack">
+                                <rect key="frame" x="0.0" y="59" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="HbM-UQ-bau"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
+                                <connections>
+                                    <action selector="clickBack:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cft-oW-Hft"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB9-kA-VCz">
+                                <rect key="frame" x="331" y="83" width="32" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ol-kz-7MH">
+                                <rect key="frame" x="3" y="119" width="387" height="1"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="UdD-sj-8Uc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8Ol-kz-7MH" firstAttribute="top" secondItem="blW-TM-w20" secondAttribute="bottom" id="EN3-Vq-WGL"/>
+                            <constraint firstItem="bB9-kA-VCz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="blW-TM-w20" secondAttribute="trailing" constant="18" id="Pet-7U-4D3"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bB9-kA-VCz" secondAttribute="trailing" constant="30" id="Rxf-Y8-Bne"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8Ol-kz-7MH" secondAttribute="trailing" constant="3" id="cTX-jV-tII"/>
+                            <constraint firstItem="blW-TM-w20" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="eRX-gJ-dSX"/>
+                            <constraint firstItem="blW-TM-w20" firstAttribute="width" secondItem="blW-TM-w20" secondAttribute="height" multiplier="1:1" id="emi-db-VCi"/>
+                            <constraint firstItem="blW-TM-w20" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="lWm-5q-QvT"/>
+                            <constraint firstItem="8Ol-kz-7MH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="3" id="oCM-4c-dfJ"/>
+                            <constraint firstItem="bB9-kA-VCz" firstAttribute="bottom" secondItem="blW-TM-w20" secondAttribute="bottom" constant="-15" id="rxP-qi-4b0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnBack" destination="blW-TM-w20" id="JGt-pq-0Bj"/>
+                        <outlet property="labelTitle" destination="bB9-kA-VCz" id="7Ex-29-rar"/>
+                        <outlet property="line" destination="8Ol-kz-7MH" id="Ahk-lP-wOG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131" y="-27"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

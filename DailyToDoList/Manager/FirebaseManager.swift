@@ -13,7 +13,7 @@ import CryptoKit
 
 struct Response : Codable {
     let success:Bool
-    let result:String
+    let result:[String:String]
     let message:String
 }
 
@@ -40,12 +40,12 @@ extension FirebaseManager {
         guard let uuid = data["uuid"], let token = data["token"] else {
             return
         }
-        requestPost(url: "https://codesoha.com/token/send", param: [uuid:token], completion: { isSuccess, data in
+        requestPost(url: "https://codesoha.com/token/send", param: ["uuid":uuid, "token":token], completion: { isSuccess, data in
             print("send Token is \(isSuccess)")
         })
     }
     //GET
-    private func requestGet(url: String, completion: @escaping (Bool, String) -> Void) {
+    private func requestGet(url: String, completion: @escaping (Bool, [String:String]) -> Void) {
         guard let url = URL(string: url) else {
             print("URL Error")
             return
@@ -74,7 +74,7 @@ extension FirebaseManager {
         }.resume()
     }
     //POST
-    private func requestPost(url: String, param:[String: String], completion: @escaping (Bool, String) -> Void) {
+    private func requestPost(url: String, param:[String: String], completion: @escaping (Bool, [String:String]) -> Void) {
         let sendMsg = try! JSONSerialization.data(withJSONObject: param, options: [])
         
         guard let url = URL(string: url) else {

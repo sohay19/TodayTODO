@@ -82,11 +82,6 @@ extension PopListViewController {
     }
 }
 
-//MARK: - Func
-extension PopListViewController {
-    
-}
-
 //MARK: - Button Event
 extension PopListViewController {
     @IBAction func clickOK(_ sender:Any) {
