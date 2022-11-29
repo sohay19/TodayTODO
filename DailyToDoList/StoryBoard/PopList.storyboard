@@ -18,17 +18,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ck3-Id-xt6">
-                                <rect key="frame" x="60" y="213.66666666666663" width="273" height="450"/>
+                                <rect key="frame" x="72" y="243.66666666666663" width="249" height="390"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Wkj-h2-Z2m">
-                                        <rect key="frame" x="15" y="15" width="243" height="375"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Wkj-h2-Z2m">
+                                        <rect key="frame" x="9" y="9" width="231" height="321"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4f-h0-CTA">
-                                        <rect key="frame" x="0.0" y="390" width="273" height="60"/>
+                                        <rect key="frame" x="0.0" y="330" width="249" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEx-Rd-xco">
-                                                <rect key="frame" x="0.0" y="0.0" width="136" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="124" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="dem-Bt-dNa"/>
                                                 </constraints>
@@ -39,14 +39,14 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6B-s6-2I6">
-                                                <rect key="frame" x="136" y="0.0" width="0.33333333333334281" height="60"/>
+                                                <rect key="frame" x="124" y="0.0" width="0.3333333333333286" height="60"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="0.5" id="vPe-Vf-QEs"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmW-ey-o0F">
-                                                <rect key="frame" x="136.33333333333337" y="0.0" width="136.66666666666663" height="60"/>
+                                                <rect key="frame" x="124.33333333333334" y="0.0" width="124.66666666666666" height="60"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="CANCEL"/>
                                                 <connections>
@@ -61,15 +61,15 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="Wkj-h2-Z2m" firstAttribute="leading" secondItem="ck3-Id-xt6" secondAttribute="leading" constant="15" id="NoY-Sd-55c"/>
+                                    <constraint firstItem="Wkj-h2-Z2m" firstAttribute="leading" secondItem="ck3-Id-xt6" secondAttribute="leading" constant="9" id="NoY-Sd-55c"/>
                                     <constraint firstAttribute="trailing" secondItem="h4f-h0-CTA" secondAttribute="trailing" id="Swz-wU-iNQ"/>
                                     <constraint firstAttribute="bottom" secondItem="h4f-h0-CTA" secondAttribute="bottom" id="W7C-N2-FxN"/>
                                     <constraint firstItem="h4f-h0-CTA" firstAttribute="leading" secondItem="ck3-Id-xt6" secondAttribute="leading" id="X7R-cu-06d"/>
-                                    <constraint firstAttribute="trailing" secondItem="Wkj-h2-Z2m" secondAttribute="trailing" constant="15" id="em6-1i-YKT"/>
-                                    <constraint firstAttribute="height" constant="450" id="fXB-bw-J6n"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wkj-h2-Z2m" secondAttribute="trailing" constant="9" id="em6-1i-YKT"/>
+                                    <constraint firstAttribute="height" constant="390" id="fXB-bw-J6n"/>
                                     <constraint firstItem="h4f-h0-CTA" firstAttribute="top" secondItem="Wkj-h2-Z2m" secondAttribute="bottom" id="m3j-m4-Ro8"/>
-                                    <constraint firstItem="Wkj-h2-Z2m" firstAttribute="top" secondItem="ck3-Id-xt6" secondAttribute="top" constant="15" id="m96-CS-U2h"/>
-                                    <constraint firstAttribute="width" constant="273" id="pam-4w-ynB"/>
+                                    <constraint firstItem="Wkj-h2-Z2m" firstAttribute="top" secondItem="ck3-Id-xt6" secondAttribute="top" constant="9" id="m96-CS-U2h"/>
+                                    <constraint firstAttribute="width" constant="249" id="pam-4w-ynB"/>
                                 </constraints>
                             </view>
                         </subviews>

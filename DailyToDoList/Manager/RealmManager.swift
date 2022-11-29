@@ -542,6 +542,11 @@ extension RealmManager {
         }
 #endif
         do {
+            var newList = DataManager.shared.getCategoryOrder()
+            if let index = newList.firstIndex(of: category.title) {
+                newList.remove(at: index)
+            }
+            DataManager.shared.setCategoryOrder(newList)
             #if os(iOS)
             WatchConnectManager.shared.sendToWatchCategoryDelete(category)
             #endif
@@ -567,6 +572,7 @@ extension RealmManager {
         }
 #endif
         do {
+            DataManager.shared.setCategoryOrder([String]())
             let data = realm.objects(CategoryData.self)
             try realm.write {
                 realm.delete(data)
@@ -574,6 +580,8 @@ extension RealmManager {
             #if os(iOS)
             WatchConnectManager.shared.sendToWatchCategoryDelete(nil)
             #endif
+            // 기본 카테고리 설정을 위해
+            openRealm()
         } catch {
             print("Realm add Error")
         }
