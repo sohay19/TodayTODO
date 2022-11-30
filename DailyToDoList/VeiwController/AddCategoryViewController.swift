@@ -19,6 +19,7 @@ class AddCategoryViewController: UIViewController {
     //
     @IBOutlet weak var btnOK: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var line1: UIView!
     @IBOutlet weak var line2: UIView!
     
@@ -32,7 +33,6 @@ class AddCategoryViewController: UIViewController {
         inputTitle.delegate = self
         //
         initUI()
-        initGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,10 +50,10 @@ extension AddCategoryViewController {
         backgroundView.layer.cornerRadius = 9
         popView.insertSubview(backgroundView, at: 0)
         popView.layer.cornerRadius = 9
-        popView.layer.shadowColor = UIColor.darkGray.cgColor
-        popView.layer.shadowOffset = CGSize(width: 0, height: 0.5)
-        popView.layer.shadowOpacity = 0.6
-        popView.layer.shadowRadius = 10
+        //그림자
+        popView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
+        popView.layer.shadowRadius = 9
+        popView.layer.shadowOpacity = 1
         //
         backView.backgroundColor = .clear
         line1.backgroundColor = .darkGray
@@ -76,14 +76,10 @@ extension AddCategoryViewController {
         btnOK.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnCancel.tintColor = .systemBackground
         btnCancel.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
+        btnBack.tintColor = .clear
+        btnBack.backgroundColor = .clear
         //
         colorWell.title = "카테고리 색상"
-    }
-    //
-    private func initGesture() {
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(exit))
-        tapGesture.numberOfTapsRequired = 1
-        backView.addGestureRecognizer(tapGesture)
     }
     //
     private func initFunc() {
@@ -124,7 +120,7 @@ extension AddCategoryViewController {
                 return
             }
             reload()
-            exit()
+            dismiss(animated: true)
         }
     }
     private func addCategory(_ colorList:[CGFloat]) {
@@ -136,9 +132,6 @@ extension AddCategoryViewController {
         DataManager.shared.addCategory(newCategory)
     }
     @IBAction func clickCancel(_ sender: Any) {
-        exit()
-    }
-    @objc private func exit() {
         dismiss(animated: true)
     }
 }

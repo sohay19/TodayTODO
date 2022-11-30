@@ -13,8 +13,14 @@ import CryptoKit
 
 struct Response : Codable {
     let success:Bool
-    let result:[String:String]
     let message:String
+    let result:[String:String]
+    
+    init(success:Bool, message:String, result:[String:String]) {
+        self.success = success
+        self.message = message
+        self.result = result
+    }
 }
 
 class FirebaseManager {
@@ -66,11 +72,16 @@ extension FirebaseManager {
                 print("request is failed")
                 return
             }
-            guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
+            guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] else {
                 print("JSON Parsing Error")
                 return
             }
-            completion(true, output.result)
+            let success = jsonData["success"] as? Bool ?? false
+            let message = jsonData["message"] as? String ?? ""
+            let result = jsonData["result"] as? [String:String] ?? [:]
+            let responseData = Response(success: success, message: message, result: result)
+            
+            completion(responseData.success, responseData.result)
         }.resume()
     }
     //POST
@@ -99,11 +110,16 @@ extension FirebaseManager {
                 print("request is failed")
                 return
             }
-            guard let output = try? JSONDecoder().decode(Response.self, from: data) else {
+            guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] else {
                 print("JSON Parsing Error")
                 return
             }
-            completion(true, output.result)
+            let success = jsonData["success"] as? Bool ?? false
+            let message = jsonData["message"] as? String ?? ""
+            let result = jsonData["result"] as? [String:String] ?? [:]
+            let responseData = Response(success: success, message: message, result: result)
+            
+            completion(responseData.success, responseData.result)
         }.resume()
     }
 }

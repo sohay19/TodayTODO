@@ -72,6 +72,7 @@
 		CF7909252935ED5B0027D25D /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7909242935ED5B0027D25D /* NoticeViewController.swift */; };
 		CF7909272935EF7E0027D25D /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7909262935EF7E0027D25D /* FAQViewController.swift */; };
 		CF7909292935EF870027D25D /* FAQ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7909282935EF870027D25D /* FAQ.storyboard */; };
+		CF79092B293736250027D25D /* WeekDayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79092A293736250027D25D /* WeekDayButton.swift */; };
 		CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
 		CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8148F229068E0700FD0974 /* ClassExtension.swift */; };
 		CF8149272906B75100FD0974 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8149252906B75100FD0974 /* Interface.storyboard */; };
@@ -315,6 +316,7 @@
 		CF7909242935ED5B0027D25D /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		CF7909262935EF7E0027D25D /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		CF7909282935EF870027D25D /* FAQ.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQ.storyboard; sourceTree = "<group>"; };
+		CF79092A293736250027D25D /* WeekDayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayButton.swift; sourceTree = "<group>"; };
 		CF8148F229068E0700FD0974 /* ClassExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassExtension.swift; sourceTree = "<group>"; };
 		CF8149232906B75100FD0974 /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8149262906B75100FD0974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 				CF79091D293236D50027D25D /* PopCell.xib */,
 				CF79091C293236D50027D25D /* PopCell.swift */,
 				CF7909202935D7010027D25D /* SettingCell.swift */,
+				CF79092A293736250027D25D /* WeekDayButton.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1249,6 +1252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF79092B293736250027D25D /* WeekDayButton.swift in Sources */,
 				CFEB4A4328F14D1C008850DC /* CategoryData.swift in Sources */,
 				CFD0B13228F1BE500029D936 /* SharedClassExtension.swift in Sources */,
 				CFEB4A3E28F14CCA008850DC /* StaticValues.swift in Sources */,

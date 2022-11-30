@@ -41,52 +41,114 @@ extension PushManager {
         
         return notiContent
     }
-    //기본 알람 시간 세팅
-    private func getDateComponents(_ data:EachTask) -> DateComponents {
-        var dateComponents = DateComponents()
-        dateComponents.calendar = Calendar.current
-        //알람 시간 설정
-        let option = data.optionData ?? OptionData()
-        let time = option.alarmTime.split(separator: ":")
-        let h = Int(time[0])
-        let m = Int(time[1])
-        dateComponents.hour = h
-        dateComponents.minute = m
-        return dateComponents
-    }
     //Noti 생성
     func addNotification(_ data:EachTask) -> [String] {
-        //
         var idList:[String] = []
         var index = 0
-        let option = data.optionData ?? OptionData()
-        let weekDayList = option.weekDayList
-        //반복 여부 체크
-        switch RepeatType.init(rawValue: data.repeatType) {
+        //
+        guard let option = data.optionData else { return [] }
+        //기본 알람 시간 세팅
+        let time = option.alarmTime.components(separatedBy: ":").map{Int($0)!}
+        var dateComponents = DateComponents()
+        dateComponents.calendar = Calendar.current
+        dateComponents.hour = time[0]
+        dateComponents.minute = time[1]
+        //
+        let startDate = Utils.dateStringToDate(data.taskDay)!
+        let endDate = Utils.dateStringToDate(option.taskEndDate)!
+        var nextDate = startDate
+        switch RepeatType(rawValue: data.repeatType) {
         case .EveryDay:
-            idList.append(setRepeatDayNoti(data, index))
-        case .Eachweek:
-            //
-            for i in 0..<weekDayList.count {
-                if weekDayList[i] {
+            if option.isEnd {
+                while endDate >= nextDate {
+                    guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
+                    if nextDate == newDate {
+                        break
+                    }
+                    nextDate = newDate
+                    let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
+                    let id = addNotiForCenter(data, index, date)
+                    idList.append(id)
                     index += 1
-                    idList.append(setRepeatWeekNoti(data, index))
+                }
+            }
+        case .Eachweek:
+            if option.isEnd {
+                for (i, week) in option.getWeekDayList().enumerated() {
+                    if week {
+                        dateComponents.weekday = i+1
+                        while endDate >= nextDate {
+                            guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
+                            if nextDate == newDate {
+                                break
+                            }
+                            nextDate = newDate
+                            let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
+                            let id = addNotiForCenter(data, index, date)
+                            idList.append(id)
+                            index += 1
+                        }
+                    }
                 }
             }
         case .EachOnceOfMonth:
-            idList.append(setRepeatMonthOfOnceNoti(data, index))
-        case .EachWeekOfMonth:
-            //
-            for i in 0..<weekDayList.count {
-                if weekDayList[i] {
+            if option.isEnd {
+                dateComponents.day = Utils.getDay(data.taskDay)
+                while endDate >= nextDate {
+                    guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
+                    if nextDate == newDate {
+                        break
+                    }
+                    nextDate = newDate
+                    let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
+                    let id = addNotiForCenter(data, index, date)
+                    idList.append(id)
                     index += 1
-                    idList.append(setRepeatWeekOfMonthNoti(data, index))
+                }
+            }
+        case .EachWeekOfMonth:
+            if option.isEnd {
+                let weekOfMonth = option.weekOfMonth
+                if weekOfMonth == -1 {
+                    dateComponents.weekdayOrdinal = weekOfMonth
+                } else {
+                    dateComponents.weekOfMonth = weekOfMonth
+                }
+                for (i, week) in option.getWeekDayList().enumerated() {
+                    if week {
+                        dateComponents.weekday = i+1
+                        while endDate >= nextDate {
+                            guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
+                            if nextDate == newDate {
+                                break
+                            }
+                            nextDate = newDate
+                            let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
+                            let id = addNotiForCenter(data, index, date)
+                            idList.append(id)
+                            index += 1
+                        }
+                    }
                 }
             }
         case .EachYear:
-            idList.append(setRepeatYearNoti(data, index))
+            if option.isEnd {
+                dateComponents.month = Utils.getMonth(data.taskDay)
+                dateComponents.day = Utils.getDay(data.taskDay)
+                while endDate >= nextDate {
+                    guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
+                    if nextDate == newDate {
+                        break
+                    }
+                    nextDate = newDate
+                    let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
+                    let id = addNotiForCenter(data, index, date)
+                    idList.append(id)
+                    index += 1
+                }
+            }
         default:
-            idList.append(setNotRepeatNoti(data, index))
+            break
         }
         return idList
     }
@@ -94,123 +156,12 @@ extension PushManager {
 
 //MARK: - Add
 extension PushManager {
-    //반복없음
-    private func setNotRepeatNoti(_ data:EachTask, _ idIndex:Int) -> String {
-        //콘텐츠 설정
+    private func addNotiForCenter(_ data:EachTask, _ idIndex:Int, _ dateComponents:DateComponents) -> String {
+        //id 및 내용 설정
         let id = "\(data.taskId)_\(idIndex)"
         let notiContent = setNotiContent(data, id)
-        //push 날짜 설정
-        var dateComponents = getDateComponents(data)
-        let dateArr = data.taskDay.split(separator: "-")
-        dateComponents.year = Int(dateArr[0])
-        dateComponents.month = Int(dateArr[1])
-        dateComponents.day = Int(dateArr[2])
         //trigger 세팅
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
-        //
-        notiCenter.add(request) { error in
-            if let error = error {
-                print("Noti Add Error = \(error)")
-            }
-        }
-        return id
-    }
-    //매일 반복
-    private func setRepeatDayNoti(_ data:EachTask, _ idIndex:Int) -> String {
-        //콘텐츠 설정
-        let id = "\(data.taskId)_\(idIndex)"
-        let notiContent = setNotiContent(data, id)
-        //push 날짜 설정
-        let dateComponents = getDateComponents(data)
-        //trigger 세팅
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
-        //
-        notiCenter.add(request) { error in
-            if let error = error {
-                print("Noti Add Error = \(error)")
-            }
-        }
-        return id
-    }
-    //주 n회 반복
-    private func setRepeatWeekNoti(_ data:EachTask, _ weekDay:Int) -> String {
-        //콘텐츠 설정
-        let id = "\(data.taskId)_\(weekDay)"
-        let notiContent = setNotiContent(data, id)
-        //push 날짜 설정
-        var dateComponents = getDateComponents(data)
-        dateComponents.weekday = weekDay+1
-        //trigger 세팅
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
-        //
-        notiCenter.add(request) { error in
-            if let error = error {
-                print("Noti Add Error = \(error)")
-            }
-        }
-        return id
-    }
-    //월 1회 반복
-    private func setRepeatMonthOfOnceNoti(_ data:EachTask, _ idIndex:Int) -> String {
-        //콘텐츠 설정
-        let id = "\(data.taskId)_\(idIndex)"
-        let notiContent = setNotiContent(data, id)
-        //push 날짜 설정
-        var dateComponents = getDateComponents(data)
-        let dateArr = data.taskDay.split(separator: "-")
-        dateComponents.day = Int(dateArr[2])
-        //trigger 세팅
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
-        //
-        notiCenter.add(request) { error in
-            if let error = error {
-                print("Noti Add Error = \(error)")
-            }
-        }
-        return id
-    }
-    //월 n회 반복
-    private func setRepeatWeekOfMonthNoti(_ data:EachTask, _ weekDay:Int) -> String {
-        //콘텐츠 설정
-        let id = "\(data.taskId)_\(weekDay)"
-        let notiContent = setNotiContent(data, id)
-        let option = data.optionData ?? OptionData()
-        //push 날짜 설정
-        var dateComponents = getDateComponents(data)
-        dateComponents.weekday = weekDay+1
-        let weekOfMonth = option.weekOfMonth
-        if weekOfMonth == -1 {
-            dateComponents.weekdayOrdinal = weekOfMonth
-        } else {
-            dateComponents.weekOfMonth = weekOfMonth
-        }
-        //trigger 세팅
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
-        //
-        notiCenter.add(request) { error in
-            if let error = error {
-                print("Noti Add Error = \(error)")
-            }
-        }
-        return id
-    }
-    //연 1회 반복
-    private func setRepeatYearNoti(_ data:EachTask, _ idIndex:Int) -> String {
-        //콘텐츠 설정
-        let id = "\(data.taskId)_\(idIndex)"
-        let notiContent = setNotiContent(data, id)
-        //push 날짜 설정
-        var dateComponents = getDateComponents(data)
-        let dateArr = data.taskDay.split(separator: "-")
-        dateComponents.month = Int(dateArr[1])
-        dateComponents.day = Int(dateArr[2])
-        //trigger 세팅
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: id, content: notiContent, trigger: trigger)
         //
         notiCenter.add(request) { error in

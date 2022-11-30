@@ -17,6 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSY-PX-R6U" userLabel="BtnBack">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="clickCancel:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="78A-dH-OIG"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oh3-Mf-mVE" userLabel="PopView">
                                 <rect key="frame" x="46.666666666666657" y="317" width="300" height="180"/>
                                 <subviews>
@@ -39,31 +47,31 @@
                                         </constraints>
                                     </colorWell>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGR-BC-vVC" userLabel="line">
-                                        <rect key="frame" x="0.0" y="119.66666666666669" width="300" height="0.3333333333333286"/>
+                                        <rect key="frame" x="0.0" y="131.66666666666669" width="300" height="0.33333333333334281"/>
                                         <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="obt-fb-NSE"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J72-7k-ldg" userLabel="line">
-                                        <rect key="frame" x="149.66666666666669" y="119.66666666666667" width="0.33333333333334281" height="60.333333333333329"/>
+                                        <rect key="frame" x="149.66666666666669" y="131.66666666666669" width="0.33333333333334281" height="48.333333333333343"/>
                                         <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="0.5" id="K08-4A-fin"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xlt-hD-QD3">
-                                        <rect key="frame" x="0.0" y="120" width="149.66666666666666" height="60"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="확인"/>
+                                        <rect key="frame" x="0.0" y="132" width="149.66666666666666" height="48"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="확인"/>
                                         <connections>
                                             <action selector="clickOk:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="P2b-3J-nVd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGz-97-s0I">
-                                        <rect key="frame" x="150" y="120" width="150" height="60"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="취소"/>
+                                        <rect key="frame" x="150" y="132" width="150" height="48"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="취소"/>
                                         <connections>
                                             <action selector="clickCancel:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IPX-cf-5h9"/>
                                         </connections>
@@ -87,7 +95,7 @@
                                     <constraint firstItem="tEd-g3-REU" firstAttribute="leading" secondItem="1Jd-Lp-LqQ" secondAttribute="leading" constant="9" id="Ey7-0N-dod"/>
                                     <constraint firstAttribute="trailing" secondItem="qGz-97-s0I" secondAttribute="trailing" id="HuN-9o-GvK"/>
                                     <constraint firstItem="Xlt-hD-QD3" firstAttribute="leading" secondItem="Oh3-Mf-mVE" secondAttribute="leading" id="IQn-14-3zO"/>
-                                    <constraint firstAttribute="bottom" secondItem="DGR-BC-vVC" secondAttribute="bottom" constant="60" id="LJQ-kv-tua"/>
+                                    <constraint firstAttribute="bottom" secondItem="DGR-BC-vVC" secondAttribute="bottom" constant="48" id="LJQ-kv-tua"/>
                                     <constraint firstItem="J72-7k-ldg" firstAttribute="top" secondItem="DGR-BC-vVC" secondAttribute="top" id="Nmi-lA-Rmj"/>
                                     <constraint firstAttribute="width" constant="300" id="YMU-Fw-n8y"/>
                                     <constraint firstItem="tEd-g3-REU" firstAttribute="top" secondItem="1Jd-Lp-LqQ" secondAttribute="bottom" constant="18" id="btI-u1-Ksm"/>
@@ -109,12 +117,17 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="hSY-PX-R6U" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="4mS-MO-kAz"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="hSY-PX-R6U" secondAttribute="bottom" id="99h-2x-uHF"/>
+                            <constraint firstItem="hSY-PX-R6U" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Crb-U9-p8y"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hSY-PX-R6U" secondAttribute="trailing" id="Nqz-3b-Rci"/>
                             <constraint firstItem="Oh3-Mf-mVE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="258" id="OZq-cy-gOV"/>
                             <constraint firstItem="Oh3-Mf-mVE" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="ihZ-Xm-xbS"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backView" destination="5EZ-qb-Rvc" id="43m-dL-EGM"/>
+                        <outlet property="btnBack" destination="hSY-PX-R6U" id="xWa-3c-KgN"/>
                         <outlet property="btnCancel" destination="qGz-97-s0I" id="23H-PF-nz2"/>
                         <outlet property="btnOK" destination="Xlt-hD-QD3" id="VxK-JP-DEv"/>
                         <outlet property="colorWell" destination="N85-em-gvp" id="PgK-yD-7F2"/>

@@ -28,7 +28,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="W0e-Eg-rfi">
                                 <rect key="frame" x="219" y="128" width="159" height="45"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaP-fH-oDY" userLabel="BtnSave">
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaP-fH-oDY" userLabel="BtnSave">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="4e3-PH-Ct7"/>
@@ -39,6 +39,9 @@
                                         <state key="normal" image="scissors" catalog="system">
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
+                                        <buttonConfiguration key="configuration" style="plain" image="scissors" catalog="system">
+                                            <color key="baseForegroundColor" systemColor="labelColor"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="clickEdit:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tan-gU-KyI"/>
                                         </connections>

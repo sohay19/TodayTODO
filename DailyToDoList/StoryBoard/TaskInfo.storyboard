@@ -127,7 +127,7 @@
                                                         <rect key="frame" x="0.0" y="45" width="315" height="45"/>
                                                         <subviews>
                                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="bqm-YU-iV9">
-                                                                <rect key="frame" x="207" y="6" width="99" height="33"/>
+                                                                <rect key="frame" x="202.33333333333334" y="6" width="103.66666666666666" height="33"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="bqm-YU-iV9" secondAttribute="height" multiplier="3:1" priority="250" id="5c9-11-WY2"/>
                                                                     <constraint firstAttribute="height" constant="33" id="9D7-Q2-fa4"/>
@@ -187,31 +187,31 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="315" height="90"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5p-CI-Wd1" userLabel="repeatType">
-                                                                <rect key="frame" x="206.33333333333334" y="15" width="26" height="18"/>
+                                                                <rect key="frame" x="197.33333333333334" y="15" width="26" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utq-X9-tXR" userLabel="week">
-                                                                <rect key="frame" x="241.33333333333331" y="15" width="7.6666666666666572" height="18"/>
+                                                                <rect key="frame" x="232.33333333333331" y="15" width="7.6666666666666572" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주, " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2An-4j-CAU" userLabel="weekUnit">
-                                                                <rect key="frame" x="252.00000000000003" y="15" width="21.333333333333343" height="18"/>
+                                                                <rect key="frame" x="243" y="15" width="21.333333333333314" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJw-QL-rvc" userLabel="day">
-                                                                <rect key="frame" x="282.33333333333331" y="15" width="7.6666666666666856" height="18"/>
+                                                                <rect key="frame" x="273.33333333333331" y="15" width="7.6666666666666856" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vz5-FZ-bqE" userLabel="dayUnit">
-                                                                <rect key="frame" x="293" y="9" width="13" height="30"/>
+                                                                <rect key="frame" x="284" y="9" width="13" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -244,7 +244,7 @@
                                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="Ab4-Z7-0mY" firstAttribute="leading" secondItem="CDP-45-toC" secondAttribute="leading" constant="9" id="2RQ-zg-4Z3"/>
-                                                            <constraint firstAttribute="trailing" secondItem="vz5-FZ-bqE" secondAttribute="trailing" constant="9" id="3eo-Zw-gPy"/>
+                                                            <constraint firstAttribute="trailing" secondItem="vz5-FZ-bqE" secondAttribute="trailing" constant="18" id="3eo-Zw-gPy"/>
                                                             <constraint firstAttribute="bottom" secondItem="VIg-iS-f8i" secondAttribute="bottom" constant="9" id="6l6-KD-ccW"/>
                                                             <constraint firstItem="utq-X9-tXR" firstAttribute="centerY" secondItem="vz5-FZ-bqE" secondAttribute="centerY" id="G73-Kd-HrT"/>
                                                             <constraint firstItem="f5p-CI-Wd1" firstAttribute="centerY" secondItem="vz5-FZ-bqE" secondAttribute="centerY" id="H1N-Oh-8Qv"/>
@@ -366,6 +366,9 @@
                                         <state key="normal" image="square.and.pencil" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                         </state>
+                                        <buttonConfiguration key="configuration" style="plain" image="square.and.pencil" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="clickSubmit:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3pz-5H-3uc"/>
                                         </connections>
@@ -377,7 +380,8 @@
                                             <constraint firstAttribute="height" constant="60" id="FBu-iI-sJC"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
-                                        <state key="normal" title="Button"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="chevron.backward" catalog="system"/>
                                         <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
                                         <connections>
                                             <action selector="clickBack:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="OpU-BA-SOM"/>

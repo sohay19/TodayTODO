@@ -51,7 +51,6 @@ class TaskCell: UITableViewCell {
         labelTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelTitle.textColor = .label
         labelTime.font = UIFont(name: N_Font, size: N_FontSize)
-        labelTime.textColor = .gray
         memoView.font = UIFont(name: K_Font_R, size: K_FontSize)
         memoView.isEditable = false
         memoView.isSelectable = false
@@ -95,11 +94,12 @@ class TaskCell: UITableViewCell {
         labelTitle.text = title
         labelTitle.sizeToFit()
         memoView.text = memo
+        labelTime.textColor = time.isEmpty ? .gray : .label
         labelTime.text = time.isEmpty ? "--:--" : time
         // 알람 아이콘 라벨에 넣기
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(systemName: "stopwatch")?.withTintColor(.label).withConfiguration(UIImage.SymbolConfiguration(scale: .small)).withTintColor(.gray, renderingMode: .alwaysOriginal)
+        imageAttachment.image = UIImage(systemName: "alarm")?.withTintColor(.label).withConfiguration(UIImage.SymbolConfiguration(scale: .small)).withTintColor(.gray, renderingMode: .alwaysOriginal)
         attributedString.append(NSAttributedString(attachment: imageAttachment))
         iconClock.attributedText = attributedString
     }

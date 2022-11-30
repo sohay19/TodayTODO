@@ -205,6 +205,30 @@ extension RealmManager {
             print("Realm add Error")
         }
     }
+    //alarmInfo Update
+    func updateAlarm(_ taskId:String, _ removeId:String) {
+        openRealm()
+        guard let realm = realm else {
+            print("realm is nil")
+            return
+        }
+        do {
+            guard let alarmInfo = getAlarmInfo(taskId) else {
+                return
+            }
+            var idList = alarmInfo.getIdList()
+            if let index = idList.firstIndex(of: removeId) {
+                print("remove = \(index)")
+                idList.remove(at: index)
+            }
+            let newInfo = AlarmInfo(alarmInfo.taskId, idList, alarmInfo.alarmTime)
+            try realm.write {
+                realm.add(newInfo, update: .modified)
+            }
+        } catch {
+            print("Realm add Error")
+        }
+    }
     //alarmInfo 선택 삭제
     func deleteAlarm(_ taskId:String) {
         openRealm()

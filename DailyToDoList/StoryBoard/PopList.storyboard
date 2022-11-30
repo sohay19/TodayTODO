@@ -17,45 +17,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yJ-cd-CM1">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="clickCancel:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="371-O9-F2Z"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ck3-Id-xt6">
                                 <rect key="frame" x="72" y="243.66666666666663" width="249" height="390"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Wkj-h2-Z2m">
-                                        <rect key="frame" x="9" y="9" width="231" height="321"/>
+                                        <rect key="frame" x="9" y="9" width="231" height="333"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4f-h0-CTA">
-                                        <rect key="frame" x="0.0" y="330" width="249" height="60"/>
+                                        <rect key="frame" x="0.0" y="342" width="249" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEx-Rd-xco">
-                                                <rect key="frame" x="0.0" y="0.0" width="124" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="124.33333333333333" height="48"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="dem-Bt-dNa"/>
+                                                    <constraint firstAttribute="height" constant="48" id="dem-Bt-dNa"/>
                                                 </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="OK"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="확인"/>
                                                 <connections>
                                                     <action selector="clickOK:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ylM-Mj-Xsj"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6B-s6-2I6">
-                                                <rect key="frame" x="124" y="0.0" width="0.3333333333333286" height="60"/>
+                                                <rect key="frame" x="124.33333333333334" y="0.0" width="0.3333333333333286" height="48"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="0.5" id="vPe-Vf-QEs"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmW-ey-o0F">
-                                                <rect key="frame" x="124.33333333333334" y="0.0" width="124.66666666666666" height="60"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="CANCEL"/>
+                                                <rect key="frame" x="124.66666666666666" y="0.0" width="124.33333333333334" height="48"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소"/>
                                                 <connections>
                                                     <action selector="clickCancel:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="DPg-Fu-rsZ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="QEx-Rd-xco" firstAttribute="width" secondItem="NmW-ey-o0F" secondAttribute="width" multiplier="0.99511" id="rPT-Vk-EHw"/>
+                                            <constraint firstItem="QEx-Rd-xco" firstAttribute="width" secondItem="NmW-ey-o0F" secondAttribute="width" id="rPT-Vk-EHw"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -78,10 +86,15 @@
                         <constraints>
                             <constraint firstItem="ck3-Id-xt6" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="70L-b6-3ji"/>
                             <constraint firstItem="ck3-Id-xt6" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="ODf-Bb-xe1"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="2yJ-cd-CM1" secondAttribute="trailing" id="eff-Tc-Bu1"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="2yJ-cd-CM1" secondAttribute="bottom" id="iU5-NE-0Yx"/>
+                            <constraint firstItem="2yJ-cd-CM1" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="vIo-Tm-nlW"/>
+                            <constraint firstItem="2yJ-cd-CM1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="wzZ-yW-Yzi"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backView" destination="ck3-Id-xt6" id="4ZD-Bt-Wev"/>
+                        <outlet property="btnBack" destination="2yJ-cd-CM1" id="djv-Vb-aHA"/>
                         <outlet property="btnCancel" destination="NmW-ey-o0F" id="6Ed-jK-K9o"/>
                         <outlet property="btnOK" destination="QEx-Rd-xco" id="WRp-vT-ZuG"/>
                         <outlet property="buttonView" destination="h4f-h0-CTA" id="PLZ-aq-qzc"/>

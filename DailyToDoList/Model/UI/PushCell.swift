@@ -12,7 +12,7 @@ class PushCell : UITableViewCell {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var labelTitle:UILabel!
     @IBOutlet weak var labelAlarmTime:UILabel!
-    @IBOutlet weak var labelRepeat:UILabel!
+    @IBOutlet weak var labelDate:UILabel!
     @IBOutlet weak var iconClock: UILabel!
     
     var isToday = true
@@ -29,11 +29,11 @@ class PushCell : UITableViewCell {
         if highlighted {
             labelTitle.textColor = isToday ? .systemIndigo : .defaultPink
             labelAlarmTime.textColor = isToday ? .systemIndigo : .defaultPink
-            labelRepeat.textColor = isToday ? .systemIndigo : .defaultPink
+            labelDate.textColor = isToday ? .systemIndigo : .defaultPink
         } else {
             labelTitle.textColor = .label
             labelAlarmTime.textColor = .label
-            labelRepeat.textColor = .label
+            labelDate.textColor = .label
         }
     }
     
@@ -44,25 +44,25 @@ class PushCell : UITableViewCell {
         //
         separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
-        labelTitle.font = UIFont(name: K_Font_R, size: K_FontSize + 2.0)
+        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 1.0)
         labelAlarmTime.font = UIFont(name: E_Font_B, size: E_FontSize)
-        labelRepeat.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelDate.font = UIFont(name: K_Font_R, size: K_FontSize - 2.0)
         //
         let backgroundView = UIView()
         backgroundView.backgroundColor = .clear
         selectedBackgroundView = backgroundView
     }
     
-    func inputCell(title:String, alarmTime:String, repeatType:String) {
+    func inputCell(title:String, alarmTime:String, repeatDate:String) {
         labelTitle.text = title
         // 알람
         labelAlarmTime.text = alarmTime
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(systemName: "alarm.waves.left.and.right")?.withTintColor(.label).withConfiguration(UIImage.SymbolConfiguration(scale: .medium)).withBaselineOffset(fromBottom: 3)
+        imageAttachment.image = UIImage(systemName: "bell.and.waves.left.and.right")?.withTintColor(.label).withConfiguration(UIImage.SymbolConfiguration(scale: .medium)).withBaselineOffset(fromBottom: 3)
         attributedString.append(NSAttributedString(attachment: imageAttachment))
         iconClock.attributedText = attributedString
         //
-        labelRepeat.text = repeatType
+        labelDate.text = repeatDate
     }
 }

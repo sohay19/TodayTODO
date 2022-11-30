@@ -62,6 +62,7 @@
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="plus.viewfinder" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="plus.viewfinder" catalog="system"/>
                                         <connections>
                                             <action selector="clickToday:" destination="BYZ-38-t0r" eventType="touchUpInside" id="84Y-53-j2e"/>
                                         </connections>
@@ -74,6 +75,7 @@
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="scribble.variable" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="scribble.variable" catalog="system"/>
                                         <connections>
                                             <action selector="clickTaskAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ZH-tc-Gj3"/>
                                         </connections>

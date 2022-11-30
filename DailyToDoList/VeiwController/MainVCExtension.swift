@@ -243,6 +243,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
                     return
                 }
                 let task = taskList[indexPath.row]
+                isTaskOpen = true
                 SystemManager.shared.openTaskInfo(.LOOK, date: nil, task: task, load: loadTask, modify: afterModifyTask)
             }
         }

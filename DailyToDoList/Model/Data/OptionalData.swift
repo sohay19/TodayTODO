@@ -76,10 +76,17 @@ class OptionData : Object
         self.isAlarm = false
         self.alarmTime = ""
     }
-        
-     func getWeekDayList() -> [Bool] {
-         return weekDay
-     }
+    
+    func getWeekDayList() -> [Bool] {
+        return weekDay
+    }
+    
+    func repeatOff() {
+        weekDay = [Bool](repeating: false, count: 7)
+        weekOfMonth = 0
+        isEnd = false
+        taskEndDate = ""
+    }
     
     func clone() -> OptionData {
         return OptionData(taskId: self.id, weekDay: self.weekDay, weekOfMonth: self.weekOfMonth, isEnd: self.isEnd, taskEndDate: self.taskEndDate, isAlarm: self.isAlarm, alarmTime: self.alarmTime)

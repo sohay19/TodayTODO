@@ -241,13 +241,14 @@ extension TaskInfoViewController {
         let isEnd = option.isEnd
         let taskEndDate = option.taskEndDate
         if repeatType != .None {
+            clickBtnRepeat(true)
             repeatResult = RepeatResult(repeatType: repeatType, weekDay: option.getWeekDayList(), weekOfMonth: option.weekOfMonth, isEnd: isEnd, endDate: Utils.dateStringToDate(taskEndDate))
         }
         showRepeatView(repeatType)
         //알람
         if option.isAlarm {
-            setAlarm()
             clickBtnAlarm(true)
+            setAlarm()
         }
         memoView.text = taskData.memo
     }
@@ -331,7 +332,9 @@ extension TaskInfoViewController {
             day = String(Utils.dateToDateString(pickTaskDate.date).split(separator: "-")[2])
             weekOfMonth = Utils.getWeekOfMonthInKOR(repeatResult.weekOfMonth)
             isEnd = repeatResult.isEnd
-            date = Utils.dateToDateString(repeatResult.taskEndDate!)
+            if let endDate = repeatResult.taskEndDate {
+                date = Utils.dateToDateString(endDate)
+            }
         } else {
             guard let taskData = taskData else {
                 return
@@ -424,28 +427,101 @@ extension TaskInfoViewController {
 
 //MARK: - Button Event
 extension TaskInfoViewController {
-    private func makeTask() -> EachTask? {
+    private func checkInfo(_ complete: @escaping (EachTask)->Void) {
+        SystemManager.shared.openLoading()
         //제목검토
         guard let title = inputTitle.text else {
-            return nil
+            SystemManager.shared.closeLoading()
+            return
         }
         if title.isEmpty {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "타이틀을 입력해주세요")
-            return nil
+            SystemManager.shared.closeLoading()
+            return
         }
         //카테고리 검토
-        guard let category = btnPullCategory.currentTitle else {
+        guard let _ = btnPullCategory.currentTitle else {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "카테고리를 선택해주세요")
-            return nil
+            SystemManager.shared.closeLoading()
+            return
         }
-        //종료일 검토
-        let taskDay = Utils.dateToDateString(pickTaskDate.date)
-        if btnEndDate.isSelected && taskDay == Utils.dateToDateString(pickEndDate.date) {
-            PopupManager.shared.openOkAlert(self, title: "알림", msg: "시작일과 종료일이 같을 수 없습니다.")
-            return nil
+        //알람 검토
+        if btnAlarm.isSelected && btnRepeat.isSelected {
+            if !btnEndDate.isSelected {
+                PopupManager.shared.openOkAlert(self, title: "알림", msg: "알람은 최대 60개까지 등록 가능합니다")
+                SystemManager.shared.closeLoading()
+                return
+            }
+            guard let repeatResult = repeatResult else {
+                SystemManager.shared.closeLoading()
+                return
+            }
+            //
+            var repeatCounter = 0
+            let time = Utils.dateToTimeString(pickAlarmTime.date).components(separatedBy: ":").map{Int($0)!}
+            var dateComponents = DateComponents()
+            dateComponents.calendar = Calendar.current
+            dateComponents.hour = time[0]
+            dateComponents.minute = time[1]
+            switch repeatResult.repeatType {
+            case .EveryDay:
+                repeatCounter = Utils.calcConter(dateComponents: dateComponents, startDate: pickTaskDate.date, endDate: pickEndDate.date)
+            case .Eachweek:
+                for (i, week) in repeatResult.weekDay.enumerated() {
+                    if week {
+                        dateComponents.weekday = i+1
+                        repeatCounter += Utils.calcConter(dateComponents: dateComponents, startDate: pickTaskDate.date, endDate: pickEndDate.date)
+                    }
+                }
+            case .EachOnceOfMonth:
+                dateComponents.day = Utils.getDay(pickTaskDate.date)
+                repeatCounter = Utils.calcConter(dateComponents: dateComponents, startDate: pickTaskDate.date, endDate: pickEndDate.date)
+            case .EachWeekOfMonth:
+                let weekOfMonth = repeatResult.weekOfMonth
+                if weekOfMonth == -1 {
+                    dateComponents.weekdayOrdinal = weekOfMonth
+                } else {
+                    dateComponents.weekOfMonth = weekOfMonth
+                }
+                for (i, week) in repeatResult.weekDay.enumerated() {
+                    if week {
+                        dateComponents.weekday = i+1
+                        repeatCounter += Utils.calcConter(dateComponents: dateComponents, startDate: pickTaskDate.date, endDate: pickEndDate.date)
+                    }
+                }
+            case .EachYear:
+                dateComponents.month = Utils.getMonth(pickTaskDate.date)
+                dateComponents.day = Utils.getDay(pickTaskDate.date)
+                repeatCounter = Utils.calcConter(dateComponents: dateComponents, startDate: pickTaskDate.date, endDate: pickEndDate.date)
+            default:
+                SystemManager.shared.closeLoading()
+                break
+            }
+            DataManager.shared.getAllPush { [self] list in
+                DispatchQueue.main.sync {
+                    let remainPush = 60 - list.count
+                    let resultPush = remainPush - repeatCounter
+                    if resultPush < 0 {
+                        PopupManager.shared.openOkAlert(self, title: "알림", msg: "남은 알람 개수가 충분하지 않습니다\n(남은 알람 수 = \(remainPush))")
+                        SystemManager.shared.closeLoading()
+                    } else {
+                        saveTask(complete)
+                    }
+                }
+            }
+        } else {
+            saveTask(complete)
         }
-        //
-        SystemManager.shared.openLoading()
+    }
+    private func saveTask(_ complete: @escaping (EachTask)->Void) {
+        guard let title = inputTitle.text else {
+            SystemManager.shared.closeLoading()
+            return
+        }
+        guard let category = btnPullCategory.currentTitle else {
+            SystemManager.shared.closeLoading()
+            return
+        }
         //반복 내용 가져오기
         var repeatType = RepeatType.None
         var weekDay = [Bool](repeating: false, count: 7)
@@ -453,7 +529,8 @@ extension TaskInfoViewController {
         if btnRepeat.isSelected {
             //RepeatResult 내용 가져오기
             guard let repeatResult = repeatResult else {
-                return nil
+                SystemManager.shared.closeLoading()
+                return
             }
             repeatType = repeatResult.repeatType
             weekDay = repeatResult.weekDay
@@ -469,11 +546,13 @@ extension TaskInfoViewController {
             data.setOptionData(option)
         case .MODIFY:
             guard let taskData = taskData else {
-                return nil
+                SystemManager.shared.closeLoading()
+                return
             }
             let option = OptionData(taskId: taskData.taskId, weekDay: weekDay, weekOfMonth: weekOfMonth)
             data = EachTask(id:taskData.taskId, taskDay: pickTaskDate.date, category: category, time: time, title: title, memo: memoView.text!, repeatType: repeatType.rawValue, optionData: option)
         default:
+            SystemManager.shared.closeLoading()
             break
         }
         //종료일 확인
@@ -484,38 +563,41 @@ extension TaskInfoViewController {
         if btnAlarm.isSelected {
             data.setAlarm(pickAlarmTime.date)
         }
-        return data
+        //
+        complete(data)
     }
     //등록버튼
     @IBAction func clickSubmit(_ sender: Any) {
         switch currentMode {
         case .ADD:
-            guard let data = makeTask() else {
-                print("task is Nil")
+            checkInfo { [self] data in
+                //realm에 추가
+                DataManager.shared.addTask(data)
                 SystemManager.shared.closeLoading()
-                return
+                guard let refreshTask = refreshTask, let navigationController = self.navigationController as? CustomNavigationController else {
+                    return
+                }
+                navigationController.popViewController {
+                    refreshTask()
+                }
             }
-            //realm에 추가
-            DataManager.shared.addTask(data)
         case .MODIFY:
-            guard let data = makeTask() else {
-                print("task is Nil")
+            checkInfo() { [self] data in
+                guard let modifyTask = modifyTask else {
+                    return
+                }
+                modifyTask(data)
                 SystemManager.shared.closeLoading()
-                return
+                guard let refreshTask = refreshTask, let navigationController = self.navigationController as? CustomNavigationController else {
+                    return
+                }
+                navigationController.popViewController {
+                    refreshTask()
+                }
             }
-            guard let modifyTask = modifyTask else {
-                return
-            }
-            modifyTask(data)
         default:
             //Look
             break
-        }
-        guard let refreshTask = refreshTask, let navigationController = self.navigationController as? CustomNavigationController else {
-            return
-        }
-        navigationController.popViewController {
-            refreshTask()
         }
     }
     // 날짜 선택 시 팝업 닫음
@@ -546,11 +628,13 @@ extension TaskInfoViewController {
             }
             repeatVC.pickDate = pickTaskDate.date
             repeatVC.clickOk = loadResult(_:)
-            repeatVC.clickCancel = { self.btnRepeat.isSelected = false }
+            repeatVC.clickCancel = { self.clickBtnRepeat(false) }
             repeatVC.modalPresentationStyle = .overCurrentContext
             repeatVC.modalTransitionStyle = .crossDissolve
-            
-            present(repeatVC, animated: true)
+            guard let navigationController = self.navigationController else {
+                return
+            }
+            navigationController.present(repeatVC, animated: true)
         } else {
             offRepeat()
         }

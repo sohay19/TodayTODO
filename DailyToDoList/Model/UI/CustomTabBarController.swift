@@ -10,7 +10,7 @@ import UIKit
 
 class CustomTabBarController : UITabBarController {
     
-    let iconList:[String] = ["calendar", "list.bullet", "bell.and.waves.left.and.right", "gearshape"]
+    let iconList:[String] = ["calendar", "list.bullet", "bell", "gearshape"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

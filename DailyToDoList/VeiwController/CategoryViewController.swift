@@ -70,6 +70,7 @@ extension CategoryViewController {
         btnCancel.titleLabel?.font = UIFont(name: E_Font_B, size: E_FontSize)
         btnCancel.tintColor = .label
         btnEdit.tintColor = .label
+        btnEdit.contentMode = .center
     }
     //
     private func addSegmentcontrol() {
@@ -110,7 +111,7 @@ extension CategoryViewController {
             isRefresh = false
         }
     }
-    
+    //
     private func changeEditMode(_ isEdit:Bool) {
         tableView.setEditing(isEdit, animated: true)
         btnEdit.setImage(UIImage(systemName: isEdit ? "rectangle.portrait.and.arrow.right" : "scissors")?.withConfiguration(mediumConfig), for: .normal)
@@ -197,8 +198,7 @@ extension CategoryViewController {
 //MARK: - Button Event
 extension CategoryViewController {
     @IBAction func clickEdit(_ sender:Any) {
-        btnEdit.isSelected = !btnEdit.isSelected
-        changeEditMode(btnEdit.isSelected)
+        changeEditMode(!self.tableView.isEditing)
     }
     @IBAction func clickSave(_ sender:Any) {
         originList = categoryList

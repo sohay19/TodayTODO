@@ -17,27 +17,27 @@ class PopupManager {
 extension PopupManager {
     func openOkAlert(_ vc:UIViewController, title:String, msg:String) {
         let alertPopup = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        alertPopup.addAction(UIAlertAction(title: "OK", style: .default))
+        alertPopup.addAction(UIAlertAction(title: "확인", style: .default))
         vc.present(alertPopup, animated: true)
     }
     
     func openOkAlert(_ vc:UIViewController, title:String, msg:String, complete:@escaping (UIAlertAction)->Void) {
         let alertPopup = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        alertPopup.addAction(UIAlertAction(title: "OK", style: .default, handler: complete))
+        alertPopup.addAction(UIAlertAction(title: "확인", style: .default, handler: complete))
         vc.present(alertPopup, animated: true)
     }
     
     func openYesOrNo(_ vc:UIViewController, title:String, msg:String, completeYes:@escaping (UIAlertAction)->Void, completeNo:@escaping (UIAlertAction)->Void) {
         let alertPopup = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        alertPopup.addAction(UIAlertAction(title: "Yes", style: .default, handler: completeYes))
-        alertPopup.addAction(UIAlertAction(title: "No", style: .destructive, handler: completeNo))
+        alertPopup.addAction(UIAlertAction(title: "확인", style: .default, handler: completeYes))
+        alertPopup.addAction(UIAlertAction(title: "취소", style: .destructive, handler: completeNo))
         vc.present(alertPopup, animated: true)
     }
     
     func openYesOrNo(_ vc:UIViewController, title:String, msg:String, completeYes:@escaping (UIAlertAction)->Void) {
         let alertPopup = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        alertPopup.addAction(UIAlertAction(title: "Yes", style: .default, handler: completeYes))
-        alertPopup.addAction(UIAlertAction(title: "No", style: .destructive))
+        alertPopup.addAction(UIAlertAction(title: "확인", style: .default, handler: completeYes))
+        alertPopup.addAction(UIAlertAction(title: "취소", style: .destructive))
         vc.present(alertPopup, animated: true)
     }
     

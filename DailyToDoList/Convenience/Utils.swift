@@ -329,6 +329,34 @@ extension Utils {
     }
 }
 
+//MARK: - 계산
+extension Utils {
+    static func calcConter(dateComponents:DateComponents, startDate:Date, endDate:Date) -> Int {
+        var nextDate = startDate
+        var counter = 0
+        while endDate >= nextDate {
+            guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else {
+                return counter
+            }
+            if nextDate == newDate {
+                break
+            } else {
+                nextDate = newDate
+                counter += 1
+            }
+        }
+        return counter
+    }
+    static func beforeDay(_ date:String) -> Date? {
+        guard let today = dateStringToDate(date) else { return nil }
+        return Calendar.current.date(byAdding: .day, value: -1, to: today)
+    }
+    static func beforeDay(_ date:Date) -> Date? {
+        return Calendar.current.date(byAdding: .day, value: -1, to: date)
+    }
+}
+
+
 //MARK: - Color
 extension Utils {
     static func getColor(_ colorList:List<Float>) -> UIColor {

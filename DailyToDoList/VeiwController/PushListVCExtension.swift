@@ -32,60 +32,37 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let category = categoryList[section]
-        guard let taskList = taskList[category] else {
+        guard let list = pushList[category] else {
             return 0
         }
-        return taskList.count
+        return list.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let pushCell = tableView.dequeueReusableCell(withIdentifier: "PushCell", for: indexPath) as? PushCell else {
             return UITableViewCell()
         }
         let category = categoryList[indexPath.section]
-        guard let taskData = taskList[category]?[indexPath.row] else {
+        guard let request = pushList[category]?[indexPath.row] else {
             return UITableViewCell()
         }
-        let option = taskData.optionData ?? OptionData()
-        //
-        var repeatType = ""
-        pushCell.isToday = segmentControl.selectedSegmentIndex == 0 ? true : false
-        //
-        switch RepeatType(rawValue: taskData.repeatType) {
-        case .EveryDay:
-            repeatType = "매일 반복"
-        case .Eachweek:
-            repeatType = "매 주 "
-            let weekDayList = option.getWeekDayList()
-            for weekday in 0..<weekDayList.count {
-                if weekDayList[weekday] {
-                    repeatType += Utils.getWeekDayInKOR(weekday)
-                }
-            }
-            repeatType.removeLast()
-            repeatType.removeLast()
-            repeatType += "요일 반복"
-        case .EachOnceOfMonth:
-            repeatType = "매 월 "
-            repeatType += String(Utils.getDay(taskData.taskDay))
-            repeatType += "일 반복"
-        case .EachWeekOfMonth:
-            repeatType = "매 월 "
-            repeatType += "\(Utils.getWeekOfMonthInKOR(option.weekOfMonth))주, "
-            var weekDay = taskData.printWeekDay()
-            if !weekDay.isEmpty {
-                weekDay.removeLast()
-            }
-            repeatType += weekDay
-            repeatType += "요일 반복"
-        case .EachYear:
-            repeatType = "매 년 "
-            repeatType += String(Utils.getDay(taskData.taskDay))
-            repeatType += "일 반복"
-        default:
-            //None
-            repeatType = "반복 없음"
+        guard let trigger = request.trigger as? UNCalendarNotificationTrigger else {
+            return UITableViewCell()
         }
-        pushCell.inputCell(title: taskData.title, alarmTime: option.alarmTime, repeatType: repeatType)
+        guard let taskId = request.content.userInfo[idKey] as? String else {
+            return UITableViewCell()
+        }
+        guard let task = DataManager.shared.getTask(taskId) else {
+            return UITableViewCell()
+        }
+        guard let option = task.optionData else {
+            return UITableViewCell()
+        }
+        guard let date = Calendar.current.date(from: trigger.dateComponents) else {
+            return UITableViewCell()
+        }
+        let repeatDate = Utils.dateToDateString(date)
+        pushCell.isToday = segmentControl.selectedSegmentIndex == 0 ? true : false
+        pushCell.inputCell(title: task.title, alarmTime: option.alarmTime, repeatDate: repeatDate)
         return pushCell
     }
     //MARK: - Expandable
@@ -111,9 +88,14 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             return
         }
         let category = categoryList[indexPath.section]
-        guard let task = taskList[category]?[indexPath.row] else {
+        guard let request = pushList[category]?[indexPath.row] else {
             return
         }
+        guard let taskId = request.content.userInfo[idKey] as? String else {
+            return
+        }
+        guard let task = DataManager.shared.getTask(taskId) else { return }
+        isTaskOpen = true
         SystemManager.shared.openTaskInfo(.LOOK, date: nil, task: task, load: nil, modify: nil)
     }
     //MARK: - Edit

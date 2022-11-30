@@ -17,20 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O07-pc-pDX" userLabel="btnBack">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSL-1C-Beb">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="clickBackground:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nNx-om-Eiu"/>
+                                    <action selector="clickBtnCancel:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rUT-ay-vXi"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7J-km-Fae" userLabel="PopView">
                                 <rect key="frame" x="31.666666666666657" y="294.66666666666669" width="330" height="288.00000000000006"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="반복 주기" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gH-DD-dIV" userLabel="RepeaType">
-                                        <rect key="frame" x="30" y="33" width="56" height="30"/>
+                                        <rect key="frame" x="24" y="33" width="56" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="AK5-ey-Q36"/>
                                         </constraints>
@@ -38,19 +37,26 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="clip" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qpT-dY-dw1" userLabel="repeatType">
-                                        <rect key="frame" x="104" y="33" width="196" height="30"/>
+                                        <rect key="frame" x="89" y="31.333333333333314" width="223" height="33"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="gGU-2d-OxR"/>
+                                            <constraint firstAttribute="height" constant="33" id="gGU-2d-OxR"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="주기 선택">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
-                                            <color key="baseForegroundColor" systemColor="labelColor"/>
-                                            <color key="baseBackgroundColor" systemColor="systemFillColor"/>
-                                        </buttonConfiguration>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="주기 선택">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
                                     </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.up.chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kVK-jo-AQA" userLabel="icon">
+                                        <rect key="frame" x="279" y="34.999999999999979" width="33" height="26.000000000000007"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="kVK-jo-AQA" secondAttribute="height" multiplier="1:1" id="41N-ck-L2E"/>
+                                        </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="thin"/>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료일" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIc-Wq-UYx" userLabel="EndDate">
-                                        <rect key="frame" x="30" y="90" width="39" height="30"/>
+                                        <rect key="frame" x="24" y="90" width="39" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="kMw-aV-TNR"/>
                                         </constraints>
@@ -58,7 +64,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRy-5b-lti">
-                                        <rect key="frame" x="104" y="90" width="51" height="30"/>
+                                        <rect key="frame" x="89" y="90" width="51" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="We0-FD-qp5"/>
                                         </constraints>
@@ -78,7 +84,7 @@
                                         </connections>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요일 선택" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBd-JT-4gP" userLabel="RepeatDay">
-                                        <rect key="frame" x="30" y="138" width="56" height="30"/>
+                                        <rect key="frame" x="24" y="138" width="56" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="GRK-y6-jqK"/>
                                         </constraints>
@@ -86,116 +92,123 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u8v-Pc-Yy9" userLabel="WeekView">
-                                        <rect key="frame" x="0.0" y="177" width="330" height="66"/>
+                                        <rect key="frame" x="0.0" y="177" width="330" height="63"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7T-8r-1y6">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7T-8r-1y6" customClass="WeekDayButton" customModule="DailyToDoList" customModuleProvider="target">
                                                 <rect key="frame" x="22.333333333333329" y="0.0" width="33" height="33"/>
+                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="w7T-8r-1y6" secondAttribute="height" multiplier="1:1" id="48H-bk-dol"/>
                                                     <constraint firstAttribute="height" constant="33" id="ooa-hD-aqW"/>
                                                 </constraints>
-                                                <color key="tintColor" systemColor="systemFillColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="일">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
-                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                </buttonConfiguration>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="tintColor" systemColor="systemIndigoColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="일">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="clickWeekDay:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eRI-nD-Ko4"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fj-fR-hdr">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fj-fR-hdr" customClass="WeekDayButton" customModule="DailyToDoList" customModuleProvider="target">
                                                 <rect key="frame" x="64.333333333333329" y="0.0" width="33" height="33"/>
+                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="2fj-fR-hdr" secondAttribute="height" multiplier="1:1" id="SiF-wb-ZPf"/>
                                                     <constraint firstAttribute="width" constant="33" id="zhG-vr-Vb9"/>
                                                 </constraints>
-                                                <color key="tintColor" systemColor="systemFillColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="월">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
-                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                </buttonConfiguration>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="tintColor" systemColor="systemIndigoColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="월">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="clickWeekDay:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1EZ-KP-iMt"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ire-Z6-kt1">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ire-Z6-kt1" customClass="WeekDayButton" customModule="DailyToDoList" customModuleProvider="target">
                                                 <rect key="frame" x="106.33333333333333" y="0.0" width="32.999999999999986" height="33"/>
+                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="loM-ID-8oH"/>
                                                     <constraint firstAttribute="width" secondItem="Ire-Z6-kt1" secondAttribute="height" multiplier="1:1" id="sf9-OZ-XNu"/>
                                                 </constraints>
-                                                <color key="tintColor" systemColor="systemFillColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="화">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
-                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                </buttonConfiguration>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="tintColor" systemColor="systemIndigoColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="화">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="clickWeekDay:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7Jl-Xu-zKO"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GcG-fB-eF5">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GcG-fB-eF5" customClass="WeekDayButton" customModule="DailyToDoList" customModuleProvider="target">
                                                 <rect key="frame" x="148.33333333333334" y="0.0" width="33" height="33"/>
+                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="GcG-fB-eF5" secondAttribute="height" multiplier="1:1" id="6iD-Ni-GmS"/>
                                                     <constraint firstAttribute="height" constant="33" id="jxL-14-ZJn"/>
                                                 </constraints>
-                                                <color key="tintColor" systemColor="systemFillColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="수">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
-                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                </buttonConfiguration>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="tintColor" systemColor="systemIndigoColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="수">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="clickWeekDay:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="a0t-Yo-lTd"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GoQ-E3-838">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GoQ-E3-838" customClass="WeekDayButton" customModule="DailyToDoList" customModuleProvider="target">
                                                 <rect key="frame" x="190.33333333333334" y="0.0" width="33" height="33"/>
+                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="GoQ-E3-838" secondAttribute="height" multiplier="1:1" id="aEu-tk-h2w"/>
                                                     <constraint firstAttribute="height" constant="33" id="y9g-Ok-fJA"/>
                                                 </constraints>
-                                                <color key="tintColor" systemColor="systemFillColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="목">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
-                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                </buttonConfiguration>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="tintColor" systemColor="systemIndigoColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="목">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
                                                 <connections>
-                                                    <action selector="clickWeekDay:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Irw-3D-yzc"/>
+                                                    <action selector="clickWeekDay:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9kh-im-SxQ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eu-L0-rbX">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eu-L0-rbX" customClass="WeekDayButton" customModule="DailyToDoList" customModuleProvider="target">
                                                 <rect key="frame" x="232.33333333333334" y="0.0" width="33.000000000000028" height="33"/>
+                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="2eu-L0-rbX" secondAttribute="height" multiplier="1:1" id="Zyj-t3-XEx"/>
                                                     <constraint firstAttribute="height" constant="33" id="cob-9e-Vsn"/>
                                                 </constraints>
-                                                <color key="tintColor" systemColor="systemFillColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="금">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
-                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                </buttonConfiguration>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="tintColor" systemColor="systemIndigoColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="금">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="clickWeekDay:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="unH-mx-oRu"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgK-9W-HDR">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgK-9W-HDR" customClass="WeekDayButton" customModule="DailyToDoList" customModuleProvider="target">
                                                 <rect key="frame" x="274.33333333333331" y="0.0" width="33" height="33"/>
+                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="PgK-9W-HDR" secondAttribute="height" multiplier="1:1" id="3EW-hm-PgR"/>
                                                     <constraint firstAttribute="height" constant="33" id="SJu-x9-Eaw"/>
                                                 </constraints>
-                                                <color key="tintColor" systemColor="systemFillColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="토">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
-                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                </buttonConfiguration>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="tintColor" systemColor="systemIndigoColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="토">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="clickWeekDay:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UX6-2P-399"/>
                                                 </connections>
@@ -221,42 +234,33 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V33-YS-GQM" userLabel="line">
-                                        <rect key="frame" x="0.0" y="241.99999999999994" width="165.33333333333334" height="1"/>
+                                        <rect key="frame" x="0.0" y="239.33333333333331" width="330" height="0.66666666666665719"/>
                                         <color key="backgroundColor" systemColor="systemFillColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="GSZ-9Q-PF5"/>
+                                            <constraint firstAttribute="height" constant="0.5" id="GSZ-9Q-PF5"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9Q-UI-vUH" userLabel="line">
-                                        <rect key="frame" x="164.33333333333337" y="241.99999999999994" width="165.66666666666663" height="1"/>
-                                        <color key="backgroundColor" systemColor="systemFillColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="Iow-aI-1IH"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeW-D7-fcb" userLabel="Ok">
-                                        <rect key="frame" x="0.0" y="241.99999999999994" width="165.33333333333334" height="46"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Ok">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
-                                        </buttonConfiguration>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeW-D7-fcb" userLabel="BtnOK">
+                                        <rect key="frame" x="0.0" y="239.33333333333329" width="165" height="48.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="확인"/>
                                         <connections>
                                             <action selector="clickBtnOk:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="GgK-to-G5H"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CTx-J7-eOZ" userLabel="line">
-                                        <rect key="frame" x="164.33333333333334" y="241.99999999999994" width="1" height="46"/>
+                                        <rect key="frame" x="164.66666666666669" y="239.33333333333329" width="0.33333333333334281" height="48.666666666666657"/>
                                         <color key="backgroundColor" systemColor="systemFillColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="1" id="LdZ-cZ-0N9"/>
+                                            <constraint firstAttribute="width" constant="0.5" id="LdZ-cZ-0N9"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfS-wI-Ew4">
-                                        <rect key="frame" x="165.33333333333337" y="242.99999999999994" width="163.66666666666663" height="45"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Cancel">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
-                                        </buttonConfiguration>
+                                        <rect key="frame" x="165" y="239.33333333333329" width="165" height="48.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="취소"/>
                                         <connections>
                                             <action selector="clickBtnCancel:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HwL-gp-07l"/>
                                         </connections>
@@ -267,64 +271,69 @@
                                     <constraint firstItem="IxO-Mr-qpb" firstAttribute="centerY" secondItem="QIc-Wq-UYx" secondAttribute="centerY" id="1e0-av-zIl"/>
                                     <constraint firstItem="u8v-Pc-Yy9" firstAttribute="top" secondItem="nBd-JT-4gP" secondAttribute="bottom" constant="9" id="1k1-0y-ENP"/>
                                     <constraint firstItem="nBd-JT-4gP" firstAttribute="top" secondItem="QIc-Wq-UYx" secondAttribute="bottom" constant="18" id="3uc-EN-DO2"/>
-                                    <constraint firstItem="qpT-dY-dw1" firstAttribute="leading" secondItem="0gH-DD-dIV" secondAttribute="trailing" constant="18" id="4Kd-B7-BT8"/>
-                                    <constraint firstItem="CTx-J7-eOZ" firstAttribute="centerX" secondItem="F7J-km-Fae" secondAttribute="centerX" id="4R9-AK-9kM"/>
+                                    <constraint firstItem="qpT-dY-dw1" firstAttribute="leading" secondItem="0gH-DD-dIV" secondAttribute="trailing" constant="9" id="4Kd-B7-BT8"/>
                                     <constraint firstItem="nBd-JT-4gP" firstAttribute="leading" secondItem="0gH-DD-dIV" secondAttribute="leading" id="8nQ-L2-Umh"/>
+                                    <constraint firstAttribute="trailing" secondItem="V33-YS-GQM" secondAttribute="trailing" id="9Hj-XH-vbt"/>
                                     <constraint firstItem="QIc-Wq-UYx" firstAttribute="top" secondItem="0gH-DD-dIV" secondAttribute="bottom" constant="27" id="9rk-S0-fXd"/>
                                     <constraint firstAttribute="trailing" secondItem="u8v-Pc-Yy9" secondAttribute="trailing" id="ARl-dp-nD5"/>
-                                    <constraint firstAttribute="trailing" secondItem="vfS-wI-Ew4" secondAttribute="trailing" constant="1" id="Bb0-OW-ErW"/>
-                                    <constraint firstItem="DeW-D7-fcb" firstAttribute="top" secondItem="V33-YS-GQM" secondAttribute="top" id="BeU-Ph-Dtl"/>
-                                    <constraint firstAttribute="bottom" secondItem="S9Q-UI-vUH" secondAttribute="bottom" constant="45" id="Bhf-hc-KsV"/>
-                                    <constraint firstItem="V33-YS-GQM" firstAttribute="trailing" secondItem="CTx-J7-eOZ" secondAttribute="trailing" id="CHx-KO-g8C"/>
-                                    <constraint firstItem="0gH-DD-dIV" firstAttribute="leading" secondItem="F7J-km-Fae" secondAttribute="leading" constant="30" id="GCz-cR-YT8"/>
-                                    <constraint firstItem="DeW-D7-fcb" firstAttribute="leading" secondItem="F7J-km-Fae" secondAttribute="leading" id="Ip2-ob-Qye"/>
-                                    <constraint firstItem="S9Q-UI-vUH" firstAttribute="trailing" secondItem="u8v-Pc-Yy9" secondAttribute="trailing" id="Jda-L0-96u"/>
+                                    <constraint firstAttribute="trailing" secondItem="vfS-wI-Ew4" secondAttribute="trailing" id="Bb0-OW-ErW"/>
+                                    <constraint firstItem="kVK-jo-AQA" firstAttribute="height" secondItem="qpT-dY-dw1" secondAttribute="height" id="FLa-a1-23H"/>
+                                    <constraint firstItem="0gH-DD-dIV" firstAttribute="leading" secondItem="F7J-km-Fae" secondAttribute="leading" constant="24" id="GCz-cR-YT8"/>
+                                    <constraint firstItem="vfS-wI-Ew4" firstAttribute="top" secondItem="V33-YS-GQM" secondAttribute="top" id="KQT-r0-pxo"/>
+                                    <constraint firstItem="kVK-jo-AQA" firstAttribute="trailing" secondItem="qpT-dY-dw1" secondAttribute="trailing" id="M3w-ux-llG"/>
                                     <constraint firstAttribute="height" constant="288" id="MbX-3z-5MK"/>
                                     <constraint firstItem="qpT-dY-dw1" firstAttribute="centerY" secondItem="0gH-DD-dIV" secondAttribute="centerY" id="Noh-h1-BCn"/>
-                                    <constraint firstAttribute="bottom" secondItem="V33-YS-GQM" secondAttribute="bottom" constant="45" id="SXV-hY-Ygr"/>
+                                    <constraint firstItem="DeW-D7-fcb" firstAttribute="trailing" secondItem="CTx-J7-eOZ" secondAttribute="trailing" id="Pmw-JW-bCX"/>
+                                    <constraint firstAttribute="bottom" secondItem="V33-YS-GQM" secondAttribute="bottom" constant="48" id="SXV-hY-Ygr"/>
                                     <constraint firstItem="0gH-DD-dIV" firstAttribute="top" secondItem="F7J-km-Fae" secondAttribute="top" constant="33" id="VhG-el-MGv"/>
                                     <constraint firstItem="u8v-Pc-Yy9" firstAttribute="leading" secondItem="F7J-km-Fae" secondAttribute="leading" id="Vvl-U5-A8X"/>
                                     <constraint firstItem="QIc-Wq-UYx" firstAttribute="leading" secondItem="0gH-DD-dIV" secondAttribute="leading" id="W01-bU-Q4g"/>
                                     <constraint firstAttribute="trailing" secondItem="IxO-Mr-qpb" secondAttribute="trailing" constant="30" id="Y1r-fH-o8t"/>
+                                    <constraint firstAttribute="bottom" secondItem="DeW-D7-fcb" secondAttribute="bottom" id="ZPf-iJ-JvS"/>
                                     <constraint firstItem="u8v-Pc-Yy9" firstAttribute="bottom" secondItem="V33-YS-GQM" secondAttribute="bottom" id="a1e-Yq-Zps"/>
-                                    <constraint firstItem="DeW-D7-fcb" firstAttribute="centerX" secondItem="V33-YS-GQM" secondAttribute="centerX" id="aGe-gG-uiS"/>
                                     <constraint firstItem="V33-YS-GQM" firstAttribute="leading" secondItem="F7J-km-Fae" secondAttribute="leading" id="aRT-Ah-M2O"/>
-                                    <constraint firstItem="vfS-wI-Ew4" firstAttribute="centerX" secondItem="S9Q-UI-vUH" secondAttribute="centerX" id="eT1-h1-EsE"/>
+                                    <constraint firstItem="CTx-J7-eOZ" firstAttribute="centerX" secondItem="V33-YS-GQM" secondAttribute="centerX" id="eVw-jD-Omu"/>
+                                    <constraint firstItem="CTx-J7-eOZ" firstAttribute="top" secondItem="V33-YS-GQM" secondAttribute="top" id="fHn-m0-jzH"/>
                                     <constraint firstAttribute="width" constant="330" id="fbV-xN-h1C"/>
-                                    <constraint firstAttribute="trailing" secondItem="qpT-dY-dw1" secondAttribute="trailing" constant="30" id="gbg-3a-EnN"/>
-                                    <constraint firstItem="S9Q-UI-vUH" firstAttribute="leading" secondItem="CTx-J7-eOZ" secondAttribute="leading" id="guU-Db-FPh"/>
-                                    <constraint firstItem="DeW-D7-fcb" firstAttribute="trailing" secondItem="CTx-J7-eOZ" secondAttribute="trailing" id="hQf-BE-u2a"/>
+                                    <constraint firstAttribute="trailing" secondItem="qpT-dY-dw1" secondAttribute="trailing" constant="18" id="gbg-3a-EnN"/>
                                     <constraint firstAttribute="bottom" secondItem="CTx-J7-eOZ" secondAttribute="bottom" id="hXW-5s-c78"/>
                                     <constraint firstItem="vfS-wI-Ew4" firstAttribute="leading" secondItem="CTx-J7-eOZ" secondAttribute="trailing" id="ikM-AK-Wof"/>
-                                    <constraint firstItem="CTx-J7-eOZ" firstAttribute="top" secondItem="S9Q-UI-vUH" secondAttribute="top" id="kdT-ws-33S"/>
                                     <constraint firstAttribute="bottom" secondItem="vfS-wI-Ew4" secondAttribute="bottom" id="n8t-ME-Klv"/>
-                                    <constraint firstItem="vfS-wI-Ew4" firstAttribute="top" secondItem="S9Q-UI-vUH" secondAttribute="bottom" id="oYh-m4-f0A"/>
-                                    <constraint firstAttribute="bottom" secondItem="DeW-D7-fcb" secondAttribute="bottom" id="qLe-89-iTH"/>
+                                    <constraint firstItem="kVK-jo-AQA" firstAttribute="centerY" secondItem="qpT-dY-dw1" secondAttribute="centerY" id="ulG-PW-2Ol"/>
                                     <constraint firstItem="rRy-5b-lti" firstAttribute="leading" secondItem="qpT-dY-dw1" secondAttribute="leading" id="vKL-CC-CAu"/>
                                     <constraint firstItem="rRy-5b-lti" firstAttribute="centerY" secondItem="QIc-Wq-UYx" secondAttribute="centerY" id="yig-u4-u9e"/>
+                                    <constraint firstItem="DeW-D7-fcb" firstAttribute="leading" secondItem="F7J-km-Fae" secondAttribute="leading" id="yyn-Gm-ZRC"/>
+                                    <constraint firstItem="DeW-D7-fcb" firstAttribute="top" secondItem="V33-YS-GQM" secondAttribute="top" id="zpS-9A-U5E"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="O07-pc-pDX" firstAttribute="bottom" secondItem="5EZ-qb-Rvc" secondAttribute="bottom" id="C61-y5-T1K"/>
-                            <constraint firstAttribute="trailing" secondItem="O07-pc-pDX" secondAttribute="trailing" id="JsU-7Q-p9e"/>
-                            <constraint firstAttribute="top" secondItem="O07-pc-pDX" secondAttribute="top" id="Okv-7z-IgZ"/>
+                            <constraint firstItem="WSL-1C-Beb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="S8v-2c-aka"/>
+                            <constraint firstItem="WSL-1C-Beb" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Y9D-z8-MWu"/>
                             <constraint firstItem="F7J-km-Fae" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="am2-eT-230"/>
                             <constraint firstItem="F7J-km-Fae" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="kgT-ea-ccu"/>
-                            <constraint firstItem="O07-pc-pDX" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="xJA-5x-fls"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="WSL-1C-Beb" secondAttribute="bottom" id="mbb-jB-mcj"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="WSL-1C-Beb" secondAttribute="trailing" id="sgY-fD-efY"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnBack" destination="WSL-1C-Beb" id="tGV-j8-9Ze"/>
+                        <outlet property="btnCancel" destination="vfS-wI-Ew4" id="BPe-r4-uCg"/>
                         <outlet property="btnFriday" destination="2eu-L0-rbX" id="8Vd-fm-voL"/>
                         <outlet property="btnMonday" destination="2fj-fR-hdr" id="xzo-9c-pMA"/>
+                        <outlet property="btnOK" destination="DeW-D7-fcb" id="odq-eB-tnq"/>
                         <outlet property="btnPullRepeatType" destination="qpT-dY-dw1" id="LRz-5H-Aep"/>
                         <outlet property="btnSaturday" destination="PgK-9W-HDR" id="QzZ-0V-7Ck"/>
                         <outlet property="btnSunday" destination="w7T-8r-1y6" id="1gz-vm-zQr"/>
                         <outlet property="btnThursday" destination="GoQ-E3-838" id="8tv-8z-e2F"/>
                         <outlet property="btnTuseday" destination="Ire-Z6-kt1" id="V8E-9H-pte"/>
                         <outlet property="btnWensday" destination="GcG-fB-eF5" id="YgW-ko-8gy"/>
+                        <outlet property="labelEndDate" destination="QIc-Wq-UYx" id="UK0-cV-Ehs"/>
+                        <outlet property="labelRepeat" destination="0gH-DD-dIV" id="m8S-c6-ntd"/>
+                        <outlet property="labelWeekDay" destination="nBd-JT-4gP" id="66L-9H-MWJ"/>
+                        <outlet property="line1" destination="V33-YS-GQM" id="YT5-AF-eru"/>
+                        <outlet property="line2" destination="CTx-J7-eOZ" id="FCQ-Mx-MEg"/>
                         <outlet property="pickEndDate" destination="IxO-Mr-qpb" id="6nS-Qg-Yot"/>
                         <outlet property="popView" destination="F7J-km-Fae" id="WXP-YO-y8e"/>
                         <outlet property="switchEndDate" destination="rRy-5b-lti" id="4vn-Rp-ALY"/>
@@ -336,6 +345,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.up.chevron.down" catalog="system" width="128" height="128"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -344,6 +354,12 @@
         </systemColor>
         <systemColor name="systemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

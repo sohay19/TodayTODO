@@ -24,11 +24,12 @@ class PushListViewController : UIViewController {
     
     var segmentControl = CustomSegmentControl()
     
-    var taskList:[String:[EachTask]] = [:]
+    var pushList:[String:[UNNotificationRequest]] = [:]
     var categoryList:[String] = []
     var heightConstraint:NSLayoutConstraint?
     var heightOrigin:CGFloat = 60
     var isRefresh = false
+    var isTaskOpen = false
     
     
     override func viewDidLoad() {
@@ -60,7 +61,8 @@ class PushListViewController : UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         //
-        segmentControl.selectedSegmentIndex = 0
+        segmentControl.selectedSegmentIndex = isTaskOpen ? segmentControl.selectedSegmentIndex : 0
+        isTaskOpen = false
         changeEditMode(false)
     }
 }
@@ -89,7 +91,14 @@ extension PushListViewController {
         //
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
         //
+        btnEdit.tintColor = .label
         btnEdit.contentMode = .center
+        btnSelectAll.tintColor = .label
+        btnSelectAll.contentMode = .center
+        btnSelectAll.setImage(UIImage(systemName: "checklist.checked"), for: .normal)
+        btnDelete.tintColor = .label
+        btnDelete.contentMode = .center
+        btnDelete.setImage(UIImage(systemName: "trash"), for: .normal)
     }
     //
     private func addSegmentcontrol() {
@@ -99,6 +108,17 @@ extension PushListViewController {
         segment.selectedSegmentIndex = 0
         segmentControl = segment
         segmentView.addSubview(segment)
+    }
+    //SegmentedControl
+    @objc func changeSegment(_ sender:UISegmentedControl) {
+        if pushTable.isEditing {
+            changeEditMode(false)
+        }
+        refresh()
+    }
+    private func refresh() {
+        isRefresh = true
+        beginAppearanceTransition(true, animated: true)
     }
     private func initConstraints() {
         for const in editView.constraints {
@@ -132,7 +152,7 @@ extension PushListViewController {
 extension PushListViewController {
     // data reset
     func resetTask() {
-        taskList = [:]
+        pushList = [:]
         categoryList = []
     }
     func loadPushData() {
@@ -159,18 +179,17 @@ extension PushListViewController {
                     let category = task.category
                     if !categoryList.contains(where: {$0 == category}) {
                         categoryList.append(category)
-                        taskList[category] = [task]
+                        pushList[category] = [request]
                     } else {
-                        taskList[category]?.append(task)
+                        pushList[category]?.append(request)
                     }
                 } else {
                     DataManager.shared.deleteAlarmPush(taskId, request.identifier)
                 }
             }
-            labelNilMsg.isHidden = taskList.count == 0 ? false : true
-            imgClock.isHidden = taskList.count == 0 ? false : true
+            labelNilMsg.isHidden = pushList.count == 0 ? false : true
+            imgClock.isHidden = pushList.count == 0 ? false : true
             pushTable.reloadData()
-            
             SystemManager.shared.closeLoading()
             if isRefresh {
                 endAppearanceTransition()
@@ -190,48 +209,58 @@ extension PushListViewController {
     //
     func deletePush(_ indexPath:IndexPath) {
         let category = categoryList[indexPath.section]
-        guard let task = taskList[category]?[indexPath.row] else {
+        guard let request = pushList[category]?[indexPath.row] else {
             return
         }
-        guard let option = task.optionData else {
+        guard let taskId = request.content.userInfo[idKey] as? String else {
             return
         }
-        let newOption = OptionData(taskId: task.taskId, weekDay: task.getWeekDayList(), weekOfMonth: option.weekOfMonth, isEnd: option.isEnd, taskEndDate: option.taskEndDate, isAlarm: false, alarmTime: "")
-        let newTask = EachTask(id: task.taskId, taskDay: task.taskDay, category: task.category, time: task.taskTime, title: task.title, memo: task.memo, repeatType: task.repeatType, optionData: newOption, isDone: task.isDone)
-        // task data 업데이트
-        DataManager.shared.updateTask(newTask)
-        // 리스트 삭제
-        taskList[category]?.remove(at: indexPath.row)
-        if let list = taskList[category] {
-            if list.isEmpty {
-                categoryList.remove(at: indexPath.section)
+        guard let task = DataManager.shared.getTask(taskId) else {
+            return
+        }
+        
+        var actionList:[(UIAlertAction)->Void] = []
+        // 모두 삭제
+        actionList.append { [self] _ in
+            guard let option = task.optionData else { return }
+            let newOption = OptionData(taskId: task.taskId, weekDay: task.getWeekDayList(), weekOfMonth: option.weekOfMonth, isEnd: option.isEnd, taskEndDate: option.taskEndDate, isAlarm: false, alarmTime: "")
+            let newTask = EachTask(id: task.taskId, taskDay: task.taskDay, category: task.category, time: task.taskTime, title: task.title, memo: task.memo, repeatType: task.repeatType, optionData: newOption, isDone: task.isDone)
+            // task data 업데이트
+            DataManager.shared.updateTask(newTask)
+            // 리로드
+            refresh()
+        }
+        // 해당 알람만 삭제
+        actionList.append { [self] _ in
+            DataManager.shared.updateAlarmPush(taskId, removeId: request.identifier)
+            // 리스트 삭제
+            pushList[category]?.remove(at: indexPath.row)
+            if let list = pushList[category] {
+                if list.isEmpty {
+                    categoryList.remove(at: indexPath.section)
+                }
             }
+            pushTable.reloadData()
         }
-        pushTable.reloadData()
+        // 취소
+        actionList.append { [self] _ in
+            pushTable.reloadData()
+        }
+        PopupManager.shared.openAlertSheet(self, title: "알람 삭제", msg: "알람을 삭제하시겠습니까?",
+                                           btnMsg: ["모두 삭제", "해당 알람만 삭제", "취소"],
+                                           complete: actionList)
     }
 }
 
 //MARK: - Button Event
 extension PushListViewController {
-    //SegmentedControl
-    @IBAction func changeSegment(_ sender:UISegmentedControl) {
-        if pushTable.isEditing {
-            changeEditMode(false)
-        }
-        refresh()
-    }
-    private func refresh() {
-        isRefresh = true
-        beginAppearanceTransition(true, animated: true)
-    }
     //
     @IBAction func clickEditMode(_ sender:Any) {
-        if taskList.count == 0 {
+        if pushList.count == 0 {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "편집 가능한 알림이 없습니다")
             return
         }
-        btnEdit.isSelected = !btnEdit.isSelected
-        changeEditMode(btnEdit.isSelected)
+        changeEditMode(!pushTable.isEditing)
     }
     private func changeEditMode(_ isOn:Bool) {
         pushTable.setEditing(isOn, animated: true)

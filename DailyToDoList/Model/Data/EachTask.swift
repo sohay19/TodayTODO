@@ -99,6 +99,15 @@ class EachTask : Object
         self.optionData = option
     }
     
+    func stopRepeat() {
+        guard let optionData = optionData else {
+            return
+        }
+        let type:RepeatType = .None
+        repeatType = type.rawValue
+        optionData.repeatOff()
+    }
+    
     func changeIsDone() {
         self.isDone = !self.isDone
     }
@@ -172,7 +181,7 @@ class EachTask : Object
         guard let optionData = optionData else {
             return EachTask()
         }
-        return EachTask(id: self.taskId, taskDay: self.taskDay, category: self.category, time: self.taskTime, title: self.title, memo: self.memo, repeatType: self.repeatType, optionData: optionData, isDone: self.isDone)
+        return EachTask(id: self.taskId, taskDay: self.taskDay, category: self.category, time: self.taskTime, title: self.title, memo: self.memo, repeatType: self.repeatType, optionData: optionData.clone(), isDone: self.isDone)
     }
     
     func printTask() {

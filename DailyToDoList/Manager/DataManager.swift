@@ -159,6 +159,12 @@ extension DataManager {
         realmManager.addAlarm(idList, alarmInfo)
     }
     //alarmInfo, push 모두 UPDATE
+    func updateAlarmPush(_ taskId:String, removeId:String) {
+        //해당 푸쉬만 삭제
+        pushManager.deletePush([removeId])
+        //alarmInfo 업데이트
+        realmManager.updateAlarm(taskId, removeId)
+    }
     func updateAlarmPush(_ task:EachTask) {
         let option = task.optionData ?? OptionData()
         let isAlarm = option.isAlarm

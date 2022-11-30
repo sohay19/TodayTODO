@@ -39,6 +39,7 @@ class MainViewController: UIViewController {
     var currentType:MainType = .Today
     var openedTask:OpenedTask?
     var isRefresh = false
+    var isTaskOpen = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,8 +82,9 @@ class MainViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         //
-        segmentControl.selectedSegmentIndex = 0
-        currentType = .Today
+        segmentControl.selectedSegmentIndex = isTaskOpen ? segmentControl.selectedSegmentIndex : 0
+        currentType = isTaskOpen ? currentType : .Today
+        isTaskOpen = false
     }
 }
 
@@ -113,7 +115,7 @@ extension MainViewController {
         monthView.backgroundColor = .clear
         // 폰트 설정
         labelDate.font = UIFont(name: N_Font, size: N_FontSize + 1.0)
-        labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
+        labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelDate.textColor = .label
         labelTodayNilMsg.textColor = .label
@@ -304,8 +306,6 @@ extension MainViewController {
                         }
                     }
                 }
-                //month가 바뀌었으므로 캘린더 리로드
-                calendarView.reloadData()
             }
             //
             sortCategory()
@@ -362,10 +362,10 @@ extension MainViewController {
     }
     //
     func taskIsDone(_ isDone:Bool, _ indexPath:IndexPath) {
-        let category = categoryList[indexPath.section]
         switch currentType {
         case .Today:
             //Today
+            let category = categoryList[indexPath.section]
             guard let task = resultList[category]?[indexPath.row] else {
                 return
             }
@@ -385,6 +385,9 @@ extension MainViewController {
             dailyTaskTable.reloadData()
         case .Month:
             //Month
+            guard let category = monthlyTaskList[Utils.getDay(monthDate)]?.categoryList[indexPath.section] else {
+                return
+            }
             guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else {
                 return
             }
@@ -407,15 +410,18 @@ extension MainViewController {
     }
     //
     func modifyTask(_ indexPath:IndexPath) {
-        let category = categoryList[indexPath.section]
         var beforeTask:EachTask = EachTask()
         switch currentType {
         case .Today:
+            let category = categoryList[indexPath.section]
             guard let task = resultList[category]?[indexPath.row] else {
                 return
             }
             beforeTask = task
         case .Month:
+            guard let category = monthlyTaskList[Utils.getDay(monthDate)]?.categoryList[indexPath.section] else {
+                return
+            }
             guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else {
                 return
             }
@@ -436,24 +442,127 @@ extension MainViewController {
     }
     //
     func deleteTask(_ indexPath:IndexPath) {
-        let category = categoryList[indexPath.section]
-        guard let task = resultList[category]?[indexPath.row] else {
-            return
-        }
-        DataManager.shared.deleteTask(task)
         switch currentType {
         case .Today:
-            resultList[category]?.remove(at: indexPath.row)
-            if let list = resultList[category] {
-                if list.isEmpty {
-                    categoryList.remove(at: indexPath.section)
+            let category = categoryList[indexPath.section]
+            guard let task = resultList[category]?[indexPath.row] else {
+                return
+            }
+            guard let type = RepeatType(rawValue: task.repeatType) else { return }
+            if type != .None {
+                var actionList:[(UIAlertAction)->Void] = []
+                // 모두 삭제
+                actionList.append { [self] _ in
+                    DataManager.shared.deleteTask(task)
+                    //리스트 제거
+                    resultList[category]?.remove(at: indexPath.row)
+                    if let list = resultList[category] {
+                        if list.isEmpty {
+                            categoryList.remove(at: indexPath.section)
+                        }
+                    }
+                    dailyTaskTable.reloadData()
+                    checkNil()
+                }
+                // 이전 일정 유지
+                actionList.append { [self] _ in
+                    let newTask = task.clone()
+                    let option = task.optionData?.clone()
+                    guard let date = Utils.beforeDay(Date()) else { return }
+                    if Utils.dateToDateString(date) == task.taskDay {
+                        newTask.stopRepeat()
+                    } else {
+                        newTask.optionData?.isEnd = true
+                        newTask.optionData?.taskEndDate = Utils.dateToDateString(date)
+                    }
+                    // 종료일을 이전날까지로 변경하여 업데이트
+                    DataManager.shared.updateTask(newTask)
+                    //리스트 제거
+                    resultList[category]?.remove(at: indexPath.row)
+                    if let list = resultList[category] {
+                        if list.isEmpty {
+                            categoryList.remove(at: indexPath.section)
+                        }
+                    }
+                    dailyTaskTable.reloadData()
+                    checkNil()
+                }
+                // 취소
+                actionList.append { [self] _ in
+                    dailyTaskTable.reloadData()
+                    checkNil()
+                }
+                PopupManager.shared.openAlertSheet(self, title: "TODO 삭제", msg: "TODO를 삭제하시겠습니까?",
+                                                   btnMsg: ["모두 삭제", "이전 TODO 유지", "취소"],
+                                                   complete: actionList)
+            } else {
+                DataManager.shared.deleteTask(task)
+                resultList[category]?.remove(at: indexPath.row)
+                if let list = resultList[category] {
+                    if list.isEmpty {
+                        categoryList.remove(at: indexPath.section)
+                    }
+                }
+                dailyTaskTable.reloadData()
+                checkNil()
+            }
+        case .Month:
+            guard let category = monthlyTaskList[Utils.getDay(monthDate)]?.categoryList[indexPath.section] else {
+                return
+            }
+            guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else {
+                return
+            }
+            guard let type = RepeatType(rawValue: task.repeatType) else { return }
+            if type != .None {
+                var actionList:[(UIAlertAction)->Void] = []
+                // 모두 삭제
+                actionList.append { [self] _ in
+                    DataManager.shared.deleteTask(task)
+                    SystemManager.shared.openLoading()
+                    DispatchQueue.main.async { [self] in
+                        loadTask()
+                        initDate()
+                    }
+                }
+                // 이전 일정 유지
+                actionList.append { [self] _ in
+                    let newTask = task.clone()
+                    let option = task.optionData?.clone()
+                    guard let date = Utils.beforeDay(monthDate) else { return }
+                    if Utils.dateToDateString(date) == task.taskDay {
+                        newTask.stopRepeat()
+                    } else {
+                        newTask.optionData?.isEnd = true
+                        newTask.optionData?.taskEndDate = Utils.dateToDateString(date)
+                    }
+                    // 종료일을 이전날까지로 변경하여 업데이트
+                    DataManager.shared.updateTask(newTask)
+                    SystemManager.shared.openLoading()
+                    DispatchQueue.main.async { [self] in
+                        loadTask()
+                        initDate()
+                    }
+                }
+                // 취소
+                actionList.append { [self] _ in
+                    SystemManager.shared.openLoading()
+                    DispatchQueue.main.async { [self] in
+                        loadTask()
+                        initDate()
+                    }
+                }
+                PopupManager.shared.openAlertSheet(self, title: "TODO 삭제", msg: "TODO를 삭제하시겠습니까?",
+                                                   btnMsg: ["모두 삭제", "이전 TODO 유지", "취소"],
+                                                   complete: actionList)
+            } else {
+                DataManager.shared.deleteTask(task)
+                SystemManager.shared.openLoading()
+                DispatchQueue.main.async { [self] in
+                    loadTask()
+                    initDate()
                 }
             }
-            dailyTaskTable.reloadData()
-            checkNil()
-        case .Month:
-            SystemManager.shared.openLoading()
-            loadTask()
         }
     }
 }
@@ -500,6 +609,8 @@ extension MainViewController {
             dailyTaskTable.reloadData()
         case .Month:
             monthlyTaskTable.reloadData()
+            //캘린더 리로드
+            calendarView.reloadData()
         }
     }
 }
@@ -524,6 +635,7 @@ extension MainViewController {
     }
     @IBAction func clickTaskAdd(_ sender:Any) {
         let date = currentType == .Today ? Date() : monthDate
+        isTaskOpen = true
         SystemManager.shared.openTaskInfo(.ADD, date: date, task: nil, load:loadTask, modify: nil)
     }
     @IBAction func clickToday(_ sender:Any) {

@@ -151,7 +151,7 @@ extension AppDelegate : MessagingDelegate {
             userInfo: dataDict
         )
         print("FCM token = \(fcmToken)")
-        //Firebase에 토큰 저장 (서버전달로 수정 필요)
+        //Firebase에 토큰 저장
         FirebaseManager.shared.sendToken(["uuid": SystemManager.shared.getUUID(), "token": fcmToken])
     }
 }

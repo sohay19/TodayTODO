@@ -32,4 +32,8 @@ class AlarmInfo : Object {
         self.alarmId = alarmIdList
         self.alarmTime = alarmTime
     }
+    
+    func getIdList() -> [String] {
+        return alarmId
+    }
 }

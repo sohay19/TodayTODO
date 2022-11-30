@@ -17,6 +17,7 @@ class PopListViewController : UIViewController {
     @IBOutlet weak var line: UIView!
     @IBOutlet weak var btnOK: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var btnBack: UIButton!
     
     
     var categoryList:[String] = []
@@ -49,10 +50,11 @@ extension PopListViewController {
         backgroundView.layer.cornerRadius = 9
         backView.clipsToBounds = true
         backView.insertSubview(backgroundView, at: 0)
-        backView.layer.shadowColor = UIColor.darkGray.cgColor
-        backView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        backView.layer.shadowOpacity = 0.8
         backView.layer.cornerRadius = 9
+        //그림자
+        backView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
+        backView.layer.shadowRadius = 9
+        backView.layer.shadowOpacity = 1
         //
         popView.sectionHeaderTopPadding = 0
         popView.sectionFooterHeight = 0
@@ -70,10 +72,12 @@ extension PopListViewController {
         buttonView.layer.borderColor = UIColor.darkGray.cgColor
         //
         line.backgroundColor = .darkGray
-        btnOK.titleLabel?.font = UIFont(name: E_Font_B, size: E_FontSize)
         btnOK.tintColor = .systemBackground
-        btnCancel.titleLabel?.font = UIFont(name: E_Font_B, size: E_FontSize)
+        btnOK.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnCancel.tintColor = .systemBackground
+        btnCancel.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
+        btnBack.tintColor = .clear
+        btnBack.backgroundColor = .clear
     }
     //
     func initCell() {
