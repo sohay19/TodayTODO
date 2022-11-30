@@ -14,9 +14,9 @@ import CryptoKit
 struct Response : Codable {
     let success:Bool
     let message:String
-    let result:[String:String]
+    let result:[String:[String:String]]
     
-    init(success:Bool, message:String, result:[String:String]) {
+    init(success:Bool, message:String, result:[String:[String:String]]) {
         self.success = success
         self.message = message
         self.result = result
@@ -50,8 +50,16 @@ extension FirebaseManager {
             print("send Token is \(isSuccess)")
         })
     }
+    //
+    func loadNotice(completion: @escaping (Bool, [String:[String:String]]) -> Void) {
+        requestGet(url: "https://codesoha.com/notice", completion: completion)
+    }
+    //
+    func loadFAQ(completion: @escaping (Bool, [String:[String:String]]) -> Void) {
+        requestGet(url: "https://codesoha.com/faq", completion: completion)
+    }
     //GET
-    private func requestGet(url: String, completion: @escaping (Bool, [String:String]) -> Void) {
+    private func requestGet(url: String, completion: @escaping (Bool, [String:[String:String]]) -> Void) {
         guard let url = URL(string: url) else {
             print("URL Error")
             return
@@ -78,14 +86,14 @@ extension FirebaseManager {
             }
             let success = jsonData["success"] as? Bool ?? false
             let message = jsonData["message"] as? String ?? ""
-            let result = jsonData["result"] as? [String:String] ?? [:]
+            let result = jsonData["result"] as? [String:[String:String]] ?? [:]
             let responseData = Response(success: success, message: message, result: result)
             
             completion(responseData.success, responseData.result)
         }.resume()
     }
     //POST
-    private func requestPost(url: String, param:[String: String], completion: @escaping (Bool, [String:String]) -> Void) {
+    private func requestPost(url: String, param:[String: String], completion: @escaping (Bool, [String:[String:String]]) -> Void) {
         let sendMsg = try! JSONSerialization.data(withJSONObject: param, options: [])
         
         guard let url = URL(string: url) else {
@@ -116,7 +124,7 @@ extension FirebaseManager {
             }
             let success = jsonData["success"] as? Bool ?? false
             let message = jsonData["message"] as? String ?? ""
-            let result = jsonData["result"] as? [String:String] ?? [:]
+            let result = jsonData["result"] as? [String:[String:String]] ?? [:]
             let responseData = Response(success: success, message: message, result: result)
             
             completion(responseData.success, responseData.result)

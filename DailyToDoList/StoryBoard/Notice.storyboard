@@ -43,17 +43,62 @@
                                     <constraint firstAttribute="height" constant="1" id="cPp-Ot-xkT"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Wn7-7M-ioB">
+                                <rect key="frame" x="0.0" y="120" width="393" height="698"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoticeCell" rowHeight="300" id="KGv-P6-Jzd" customClass="NoticeCell" customModule="DailyToDoList" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KGv-P6-Jzd" id="QBd-lC-gOK">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgW-SY-eTP">
+                                                    <rect key="frame" x="18" y="9" width="357" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jlc-mF-T2Y">
+                                                    <rect key="frame" x="18" y="61" width="357" height="230"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" systemColor="labelColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jlc-mF-T2Y" firstAttribute="leading" secondItem="QBd-lC-gOK" secondAttribute="leading" constant="18" id="9Xf-Eg-FMU"/>
+                                                <constraint firstItem="zgW-SY-eTP" firstAttribute="leading" secondItem="QBd-lC-gOK" secondAttribute="leading" constant="18" id="BlA-yh-dxh"/>
+                                                <constraint firstItem="jlc-mF-T2Y" firstAttribute="top" secondItem="zgW-SY-eTP" secondAttribute="bottom" constant="18" id="CVg-IT-vos"/>
+                                                <constraint firstAttribute="bottom" secondItem="jlc-mF-T2Y" secondAttribute="bottom" constant="9" id="DrG-Mz-5nQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="jlc-mF-T2Y" secondAttribute="trailing" constant="18" id="J7k-uu-F7f"/>
+                                                <constraint firstAttribute="trailing" secondItem="zgW-SY-eTP" secondAttribute="trailing" constant="18" id="Xtz-NW-BN4"/>
+                                                <constraint firstItem="zgW-SY-eTP" firstAttribute="top" secondItem="QBd-lC-gOK" secondAttribute="top" constant="9" id="ynR-v7-ahZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="inputTitle" destination="zgW-SY-eTP" id="ZK6-SY-NUR"/>
+                                            <outlet property="textView" destination="jlc-mF-T2Y" id="vok-Em-YaG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Wn7-7M-ioB" secondAttribute="trailing" id="3no-Iu-3yO"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zXw-hO-BrH" secondAttribute="trailing" constant="30" id="HeV-Fd-r5b"/>
                             <constraint firstItem="QiQ-wA-HKL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ISO-fh-Td2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Wn7-7M-ioB" secondAttribute="bottom" id="Pcn-XC-mNv"/>
                             <constraint firstItem="QiQ-wA-HKL" firstAttribute="width" secondItem="QiQ-wA-HKL" secondAttribute="height" multiplier="1:1" id="U77-c0-Cwf"/>
                             <constraint firstItem="QiQ-wA-HKL" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="UZe-yt-r4i"/>
                             <constraint firstItem="zXw-hO-BrH" firstAttribute="bottom" secondItem="QiQ-wA-HKL" secondAttribute="bottom" constant="-15" id="a7G-8V-pn6"/>
+                            <constraint firstItem="Wn7-7M-ioB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="emb-uj-Jq5"/>
                             <constraint firstItem="zrT-hU-Ufg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="3" id="gJy-gV-28m"/>
                             <constraint firstItem="zrT-hU-Ufg" firstAttribute="top" secondItem="QiQ-wA-HKL" secondAttribute="bottom" id="gK5-Nn-7bO"/>
+                            <constraint firstItem="Wn7-7M-ioB" firstAttribute="top" secondItem="zrT-hU-Ufg" secondAttribute="bottom" id="n2Y-je-MmO"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zrT-hU-Ufg" secondAttribute="trailing" constant="3" id="q60-Q8-XRA"/>
                             <constraint firstItem="zXw-hO-BrH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QiQ-wA-HKL" secondAttribute="trailing" constant="18" id="wh5-bJ-gI4"/>
                         </constraints>
@@ -62,6 +107,7 @@
                         <outlet property="btnBack" destination="QiQ-wA-HKL" id="Yga-us-2xA"/>
                         <outlet property="labelTitle" destination="zXw-hO-BrH" id="ZPE-CC-3EU"/>
                         <outlet property="line" destination="zrT-hU-Ufg" id="ci1-Jm-rOD"/>
+                        <outlet property="noticeTable" destination="Wn7-7M-ioB" id="sk2-uB-pa6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
