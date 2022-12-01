@@ -51,8 +51,11 @@ extension FAQViewController {
         line.backgroundColor = .label
         //
         faqTable.backgroundColor = .clear
-        faqTable.separatorColor = .clear
+        faqTable.sectionHeaderTopPadding = 0
+        faqTable.sectionFooterHeight = 0
+        faqTable.sectionHeaderHeight = 0
         faqTable.separatorInsetReference = .fromCellEdges
+        faqTable.separatorColor = .clear
         faqTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left:0, bottom: 0, right: 0)
         //
         labelTitle.font = UIFont(name: E_Font_B, size: E_FontSize)
@@ -91,9 +94,6 @@ extension FAQViewController {
 
 //MARK: - TableView
 extension FAQViewController : UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return faqList.count
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //열린 셀 존재
         if let openedIndex = openedIndex {
@@ -102,6 +102,9 @@ extension FAQViewController : UITableViewDelegate, UITableViewDataSource {
             }
         }
         return 1
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return faqList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FAQCell") as? FAQCell else {
@@ -152,7 +155,7 @@ extension FAQViewController : UITableViewDelegate, UITableViewDataSource {
         return indexPath.row == 0 ? 90 : 300
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 9
+        return 15
     }
 }
 

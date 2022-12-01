@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="145"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="memo" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkI-Xy-DHP">
-                                <rect key="frame" x="18" y="9" width="354" height="118"/>
+                                <rect key="frame" x="0.0" y="9" width="390" height="136"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -32,9 +32,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YkI-Xy-DHP" firstAttribute="top" secondItem="fNg-Da-xgP" secondAttribute="top" constant="9" id="1Uj-EO-T1j"/>
-                            <constraint firstAttribute="trailing" secondItem="YkI-Xy-DHP" secondAttribute="trailing" constant="18" id="8Uj-Ma-cx3"/>
-                            <constraint firstItem="YkI-Xy-DHP" firstAttribute="leading" secondItem="fNg-Da-xgP" secondAttribute="leading" constant="18" id="PZb-qa-j2o"/>
-                            <constraint firstAttribute="bottom" secondItem="YkI-Xy-DHP" secondAttribute="bottom" constant="18" id="dLL-IO-PWx"/>
+                            <constraint firstAttribute="trailing" secondItem="YkI-Xy-DHP" secondAttribute="trailing" id="8Uj-Ma-cx3"/>
+                            <constraint firstItem="YkI-Xy-DHP" firstAttribute="leading" secondItem="fNg-Da-xgP" secondAttribute="leading" id="PZb-qa-j2o"/>
+                            <constraint firstAttribute="bottom" secondItem="YkI-Xy-DHP" secondAttribute="bottom" id="dLL-IO-PWx"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuF-Ly-3NE">

@@ -31,11 +31,15 @@ class FAQCell: UITableViewCell {
         self.backgroundColor = .clear
         self.selectionStyle = .none
         self.separatorInset = UIEdgeInsets(top: 0, left: 9, bottom: 0, right: 9)
-        //
         self.contentView.backgroundColor = .lightGray.withAlphaComponent(0.1)
         self.contentView.layer.cornerRadius = 5
-        self.contentView.layer.borderColor = UIColor.gray.cgColor
-        self.contentView.layer.borderWidth = 0.1
+        //
+        mainView.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        mainView.layer.cornerRadius = 5
+        mainView.layer.borderColor = UIColor.gray.cgColor
+        mainView.layer.borderWidth = 0.1
+        expandableView.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        expandableView.layer.cornerRadius = 5
         //
         mainView.backgroundColor = .clear
         expandableView.backgroundColor = .clear
@@ -44,6 +48,10 @@ class FAQCell: UITableViewCell {
         labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
         labelTitle.textColor = .label
         bodyView.font = UIFont(name: K_Font_R, size: K_FontSize)
+        bodyView.layer.cornerRadius = 5
+        bodyView.layer.borderColor = UIColor.gray.cgColor
+        bodyView.layer.borderWidth = 0.1
+        bodyView.contentInset = UIEdgeInsets(top: 9, left: 18, bottom: 9, right: 18)
         bodyView.isEditable = false
         //
         btnArrow.contentMode = .center
@@ -55,6 +63,7 @@ class FAQCell: UITableViewCell {
     }
     
     func controllMain(_ isOn:Bool) {
+        self.contentView.backgroundColor = isOn ? .lightGray.withAlphaComponent(0.1) : .clear
         mainView.isHidden = !isOn
         labelTitle.isHidden = !isOn
         btnArrow.isHidden = !isOn
