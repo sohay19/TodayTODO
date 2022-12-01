@@ -62,7 +62,7 @@ let Underline_Pink = "underline_Pink.png"
 let Underline_Black = "underline_Black.png"
 let Bricks = "Bricks.png"
 let LastPageImage = "LastPage.png"
-let boldConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .semibold, scale: .large)
+let boldConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .medium, scale: .large)
 let mediumConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .regular, scale: .medium)
 let thinConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .thin, scale: .small)
 

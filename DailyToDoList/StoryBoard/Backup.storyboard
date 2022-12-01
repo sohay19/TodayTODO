@@ -59,10 +59,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="aLT-OG-p0d">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vyD-Xo-JRf">
                                 <rect key="frame" x="30" y="266" width="333" height="378"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="aLT-OG-p0d">
+                                        <rect key="frame" x="9" y="9" width="315" height="360"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="aLT-OG-p0d" secondAttribute="trailing" constant="9" id="KR7-80-BAd"/>
+                                    <constraint firstItem="aLT-OG-p0d" firstAttribute="leading" secondItem="vyD-Xo-JRf" secondAttribute="leading" constant="9" id="ZKO-m2-yya"/>
+                                    <constraint firstItem="aLT-OG-p0d" firstAttribute="top" secondItem="vyD-Xo-JRf" secondAttribute="top" constant="9" id="eAu-iX-fAN"/>
+                                    <constraint firstAttribute="bottom" secondItem="aLT-OG-p0d" secondAttribute="bottom" constant="9" id="xy8-sT-WKw"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQc-EI-bNc" userLabel="BtnBackup">
                                 <rect key="frame" x="90" y="674" width="213" height="39"/>
                                 <color key="tintColor" systemColor="labelColor"/>
@@ -120,28 +132,29 @@
                             <constraint firstItem="hQc-EI-bNc" firstAttribute="trailing" secondItem="UuY-ix-228" secondAttribute="trailing" id="MHj-AA-hHR"/>
                             <constraint firstItem="rSL-jo-xbQ" firstAttribute="leading" secondItem="7Bl-0P-7V0" secondAttribute="leading" id="MY6-29-IWx"/>
                             <constraint firstItem="C01-m9-LOQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c8e-XG-ryA" secondAttribute="trailing" id="NXJ-qh-zjc"/>
+                            <constraint firstItem="hQc-EI-bNc" firstAttribute="top" secondItem="vyD-Xo-JRf" secondAttribute="bottom" constant="30" id="OhK-J5-sPb"/>
                             <constraint firstItem="UuY-ix-228" firstAttribute="top" secondItem="hQc-EI-bNc" secondAttribute="bottom" constant="30" id="P7x-Eo-AZI"/>
                             <constraint firstItem="eMw-bx-3qr" firstAttribute="leading" secondItem="7Bl-0P-7V0" secondAttribute="leading" constant="3" id="PSS-Cn-VJ8"/>
                             <constraint firstItem="hZT-sg-mTd" firstAttribute="bottom" secondItem="rSL-jo-xbQ" secondAttribute="bottom" constant="-15" id="RTu-4u-gK8"/>
                             <constraint firstItem="7Bl-0P-7V0" firstAttribute="bottom" secondItem="UuY-ix-228" secondAttribute="bottom" constant="30" id="UfB-Bh-YHC"/>
+                            <constraint firstItem="SgC-y9-dAu" firstAttribute="leading" secondItem="vyD-Xo-JRf" secondAttribute="leading" constant="-9" id="Wet-kb-dY3"/>
+                            <constraint firstItem="vyD-Xo-JRf" firstAttribute="leading" secondItem="7Bl-0P-7V0" secondAttribute="leading" constant="30" id="WqF-Ml-OZY"/>
                             <constraint firstItem="eMw-bx-3qr" firstAttribute="top" secondItem="rSL-jo-xbQ" secondAttribute="bottom" id="aYO-cZ-kvC"/>
-                            <constraint firstItem="aLT-OG-p0d" firstAttribute="top" secondItem="iES-Qm-PJF" secondAttribute="bottom" constant="15" id="cvY-pW-qoJ"/>
-                            <constraint firstItem="7Bl-0P-7V0" firstAttribute="trailing" secondItem="aLT-OG-p0d" secondAttribute="trailing" constant="30" id="gW7-w1-6JV"/>
+                            <constraint firstItem="7Bl-0P-7V0" firstAttribute="trailing" secondItem="vyD-Xo-JRf" secondAttribute="trailing" constant="30" id="dLm-Kp-UAU"/>
                             <constraint firstItem="7Bl-0P-7V0" firstAttribute="trailing" secondItem="UuY-ix-228" secondAttribute="trailing" constant="90" id="iJe-fC-RoD"/>
                             <constraint firstItem="SgC-y9-dAu" firstAttribute="top" secondItem="rSL-jo-xbQ" secondAttribute="bottom" constant="30" id="lwV-dX-zoE"/>
                             <constraint firstItem="UuY-ix-228" firstAttribute="leading" secondItem="7Bl-0P-7V0" secondAttribute="leading" constant="90" id="oU7-YD-v17"/>
                             <constraint firstItem="C01-m9-LOQ" firstAttribute="centerY" secondItem="c8e-XG-ryA" secondAttribute="centerY" id="pNC-2L-zSG"/>
-                            <constraint firstItem="aLT-OG-p0d" firstAttribute="leading" secondItem="iES-Qm-PJF" secondAttribute="leading" constant="9" id="pXS-MJ-fBL"/>
                             <constraint firstItem="rSL-jo-xbQ" firstAttribute="top" secondItem="7Bl-0P-7V0" secondAttribute="top" id="qiv-Cb-Dt2"/>
                             <constraint firstItem="hQc-EI-bNc" firstAttribute="centerX" secondItem="7Bl-0P-7V0" secondAttribute="centerX" id="reF-GD-GBm"/>
-                            <constraint firstItem="aLT-OG-p0d" firstAttribute="leading" secondItem="7Bl-0P-7V0" secondAttribute="leading" constant="30" id="rsc-0M-AL4"/>
-                            <constraint firstItem="hQc-EI-bNc" firstAttribute="top" secondItem="aLT-OG-p0d" secondAttribute="bottom" constant="30" id="u4G-uv-W14"/>
                             <constraint firstItem="UuY-ix-228" firstAttribute="centerX" secondItem="7Bl-0P-7V0" secondAttribute="centerX" id="wzO-P3-viR"/>
+                            <constraint firstItem="vyD-Xo-JRf" firstAttribute="top" secondItem="iES-Qm-PJF" secondAttribute="bottom" constant="15" id="x5T-Wp-PWi"/>
                             <constraint firstItem="7Bl-0P-7V0" firstAttribute="trailing" secondItem="hZT-sg-mTd" secondAttribute="trailing" constant="30" id="yON-Ii-Gti"/>
                             <constraint firstItem="hZT-sg-mTd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rSL-jo-xbQ" secondAttribute="trailing" constant="18" id="znZ-E1-C2g"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backView" destination="vyD-Xo-JRf" id="a0j-Ps-YwA"/>
                         <outlet property="btnAllDelete" destination="UuY-ix-228" id="rXe-cW-ugg"/>
                         <outlet property="btnBack" destination="rSL-jo-xbQ" id="EkL-uz-ToB"/>
                         <outlet property="btnBackup" destination="hQc-EI-bNc" id="sN7-1F-fud"/>

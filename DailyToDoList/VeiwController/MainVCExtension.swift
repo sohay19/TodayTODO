@@ -203,14 +203,14 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     }
     //오른쪽 스와이프
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let modify = UIContextualAction(style: .destructive, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+        let modify = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.modifyTask(indexPath)
             success(true)
         }
         modify.image = UIImage(systemName: "eraser.fill", withConfiguration: mediumConfig)
         modify.backgroundColor = .systemIndigo.withAlphaComponent(0.5)
         
-        let delete = UIContextualAction(style: .destructive, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+        let delete = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.deleteTask(indexPath)
             success(true)
         }

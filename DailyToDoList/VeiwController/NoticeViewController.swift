@@ -22,13 +22,20 @@ class NoticeViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //
+        noticeTable.delegate = self
+        noticeTable.dataSource = self
+        //
         initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //
-        loadData()
+        SystemManager.shared.openLoading()
+        //
+        DispatchQueue.main.async { [self] in
+            loadData()
+        }
     }
 }
 
@@ -55,11 +62,14 @@ extension NoticeViewController {
     //
     private func loadData() {
         FirebaseManager.shared.loadNotice { [self] isSuccess, data in
-            if isSuccess {
-                noticeList = data
+            DispatchQueue.main.async { [self] in
+                if isSuccess {
+                    noticeList = data
+                } else {
+                    print("loadNotice Error")
+                }
                 noticeTable.reloadData()
-            } else {
-                print("loadNotice Error")
+                SystemManager.shared.closeLoading()
             }
         }
     }
@@ -94,6 +104,6 @@ extension NoticeViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return 450
     }
 }

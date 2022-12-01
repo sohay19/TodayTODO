@@ -29,7 +29,7 @@ class SettingCell: UITableViewCell {
         self.selectionStyle = .none
         self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
-        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 2.0)
+        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
     }
     
     func inputCell(_ title:String) {

@@ -47,20 +47,20 @@
                                 <rect key="frame" x="0.0" y="120" width="393" height="698"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoticeCell" rowHeight="300" id="KGv-P6-Jzd" customClass="NoticeCell" customModule="DailyToDoList" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="300"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoticeCell" rowHeight="450" id="KGv-P6-Jzd" customClass="NoticeCell" customModule="DailyToDoList" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="450"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KGv-P6-Jzd" id="QBd-lC-gOK">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="450"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgW-SY-eTP">
-                                                    <rect key="frame" x="18" y="9" width="357" height="34"/>
+                                                    <rect key="frame" x="30" y="30" width="333" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jlc-mF-T2Y">
-                                                    <rect key="frame" x="18" y="61" width="357" height="230"/>
+                                                    <rect key="frame" x="30" y="82" width="333" height="338"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -68,13 +68,13 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="jlc-mF-T2Y" firstAttribute="leading" secondItem="QBd-lC-gOK" secondAttribute="leading" constant="18" id="9Xf-Eg-FMU"/>
-                                                <constraint firstItem="zgW-SY-eTP" firstAttribute="leading" secondItem="QBd-lC-gOK" secondAttribute="leading" constant="18" id="BlA-yh-dxh"/>
+                                                <constraint firstItem="jlc-mF-T2Y" firstAttribute="leading" secondItem="QBd-lC-gOK" secondAttribute="leading" constant="30" id="9Xf-Eg-FMU"/>
+                                                <constraint firstItem="zgW-SY-eTP" firstAttribute="leading" secondItem="QBd-lC-gOK" secondAttribute="leading" constant="30" id="BlA-yh-dxh"/>
                                                 <constraint firstItem="jlc-mF-T2Y" firstAttribute="top" secondItem="zgW-SY-eTP" secondAttribute="bottom" constant="18" id="CVg-IT-vos"/>
-                                                <constraint firstAttribute="bottom" secondItem="jlc-mF-T2Y" secondAttribute="bottom" constant="9" id="DrG-Mz-5nQ"/>
-                                                <constraint firstAttribute="trailing" secondItem="jlc-mF-T2Y" secondAttribute="trailing" constant="18" id="J7k-uu-F7f"/>
-                                                <constraint firstAttribute="trailing" secondItem="zgW-SY-eTP" secondAttribute="trailing" constant="18" id="Xtz-NW-BN4"/>
-                                                <constraint firstItem="zgW-SY-eTP" firstAttribute="top" secondItem="QBd-lC-gOK" secondAttribute="top" constant="9" id="ynR-v7-ahZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="jlc-mF-T2Y" secondAttribute="bottom" constant="30" id="DrG-Mz-5nQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="jlc-mF-T2Y" secondAttribute="trailing" constant="30" id="J7k-uu-F7f"/>
+                                                <constraint firstAttribute="trailing" secondItem="zgW-SY-eTP" secondAttribute="trailing" constant="30" id="Xtz-NW-BN4"/>
+                                                <constraint firstItem="zgW-SY-eTP" firstAttribute="top" secondItem="QBd-lC-gOK" secondAttribute="top" constant="30" id="ynR-v7-ahZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

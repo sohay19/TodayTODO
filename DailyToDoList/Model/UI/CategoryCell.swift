@@ -10,19 +10,32 @@ import UIKit
 class CategoryCell: UITableViewCell {
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelCounter: UILabel!
-    
+    @IBOutlet weak var backView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         //
-        initCell()
+        initUI()
     }
     
-    func initCell() {
-        self.backgroundColor = .clear
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        if !editing {
+            setBackView(false)
+        }
+    }
+    
+    private func initUI() {
         self.selectionStyle = .none
+        self.shouldIndentWhileEditing = false
+        self.backgroundColor = .clear
         //
-        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        backView.layer.cornerRadius = 5
+        backView.layer.borderWidth = 0.1
+        self.contentView.layer.cornerRadius = 5
+        self.contentView.layer.borderWidth = 0.1
+        //
+        setBackView(false)
         //
         labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 2.0)
         labelCounter.font = UIFont(name: N_Font, size: N_FontSize)
@@ -34,5 +47,16 @@ class CategoryCell: UITableViewCell {
         let color = DataManager.shared.getCategoryColor(title)
         labelTitle.textColor = color
         labelCounter.text = String(counter)
+    }
+    
+    func setBackView(_ isBack:Bool) {
+        UIView.transition(with: backView, duration: 0.2) { [self] in
+            backView.backgroundColor = isBack ? .lightGray.withAlphaComponent(0.1) : .clear
+            backView.layer.borderColor = isBack ? UIColor.gray.cgColor : UIColor.clear.cgColor
+        }
+        UIView.transition(with: self.contentView, duration: 0.2) { [self] in
+            self.contentView.backgroundColor = !isBack ? .lightGray.withAlphaComponent(0.1) : .clear
+            self.contentView.layer.borderColor = !isBack ? UIColor.gray.cgColor : UIColor.clear.cgColor
+        }
     }
 }

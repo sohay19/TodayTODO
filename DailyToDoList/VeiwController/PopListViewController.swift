@@ -47,19 +47,19 @@ extension PopListViewController {
         let backgroundView = UIImageView(frame: backView.bounds)
         backgroundView.image = UIImage(named: BlackBackImage)
         backgroundView.clipsToBounds = true
-        backgroundView.layer.cornerRadius = 9
+        backgroundView.layer.cornerRadius = 10
         backView.clipsToBounds = true
         backView.insertSubview(backgroundView, at: 0)
-        backView.layer.cornerRadius = 9
+        backView.layer.cornerRadius = 10
         //그림자
         backView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
-        backView.layer.shadowRadius = 9
+        backView.layer.shadowRadius = 10
         backView.layer.shadowOpacity = 1
         //
+        popView.backgroundColor = .clear
         popView.sectionHeaderTopPadding = 0
         popView.sectionFooterHeight = 0
         popView.sectionHeaderHeight = 0
-        popView.backgroundColor = .clear
         popView.separatorInsetReference = .fromCellEdges
         popView.separatorColor = .clear
         popView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -117,9 +117,6 @@ extension PopListViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return categoryList.count
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 3.0
-    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PopCell") as? PopCell else {
             return UITableViewCell()
@@ -131,6 +128,9 @@ extension PopListViewController : UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 6
     }
     //MARK: - Edit
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {

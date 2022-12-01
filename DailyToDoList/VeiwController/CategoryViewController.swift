@@ -8,11 +8,10 @@
 import UIKit
 
 class CategoryViewController: UIViewController {
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var segmentView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnEdit: UIButton!
-    @IBOutlet weak var btnSave: UIButton!
-    @IBOutlet weak var btnCancel: UIButton!
     
     
     var segmentControl = CustomSegmentControl()
@@ -21,7 +20,7 @@ class CategoryViewController: UIViewController {
     var categoryList:[String] = []
     var taskList:[String:[EachTask]] = [:]
     var isRefresh = false
-    
+    var isEdit = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,20 +54,23 @@ extension CategoryViewController {
         let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
-        //
+        // 상단 segment
         segmentView.backgroundColor = .clear
         addSegmentcontrol()
+        // 배경 및 테두리
+        backView.backgroundColor = .clear
+        backView.layer.cornerRadius = 5
+        backView.layer.borderColor = UIColor.gray.cgColor
+        backView.layer.borderWidth = 0.2
         //
-        tableView.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        tableView.backgroundColor = .clear
+        tableView.sectionHeaderTopPadding = 0
+        tableView.sectionFooterHeight = 0
+        tableView.sectionHeaderHeight = 0
         tableView.separatorInsetReference = .fromCellEdges
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 6)
-        tableView.separatorColor = .gray.withAlphaComponent(0.5)
+        tableView.separatorColor = .clear
         tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
-        btnSave.titleLabel?.font = UIFont(name: E_Font_B, size: E_FontSize)
-        btnSave.tintColor = .label
-        btnCancel.titleLabel?.font = UIFont(name: E_Font_B, size: E_FontSize)
-        btnCancel.tintColor = .label
         btnEdit.tintColor = .label
         btnEdit.contentMode = .center
     }
@@ -113,23 +115,10 @@ extension CategoryViewController {
     }
     //
     private func changeEditMode(_ isEdit:Bool) {
+        self.isEdit = isEdit
         tableView.setEditing(isEdit, animated: true)
         btnEdit.setImage(UIImage(systemName: isEdit ? "rectangle.portrait.and.arrow.right" : "scissors")?.withConfiguration(mediumConfig), for: .normal)
-        btnSave.isHidden = true
-        btnCancel.isHidden = true
     }
-    
-    func changeMoveMode(_ isMove:Bool) {
-        guard let items = self.tabBarController?.tabBar.items else {
-            return
-        }
-        for item in items {
-            item.isEnabled = !isMove
-        }
-        btnEdit.isHidden = isMove
-        btnSave.isHidden = !isMove
-        btnCancel.isHidden = !isMove
-     }
     //
     func deleteCategory(_ cateogry:String) {
         guard let list = taskList[cateogry] else {
@@ -198,20 +187,25 @@ extension CategoryViewController {
 //MARK: - Button Event
 extension CategoryViewController {
     @IBAction func clickEdit(_ sender:Any) {
-        changeEditMode(!self.tableView.isEditing)
-    }
-    @IBAction func clickSave(_ sender:Any) {
-        originList = categoryList
-        DataManager.shared.setCategoryOrder(originList)
-        changeMoveMode(false)
-        changeEditMode(false)
-    }
-    //
-    @IBAction func clickCancel(_ sender:Any) {
-        categoryList = originList
-        changeMoveMode(false)
-        changeEditMode(false)
-        tableView.reloadData()
+        if tableView.isEditing {
+            if originList != categoryList {
+                PopupManager.shared.openYesOrNo(
+                    self,
+                    title: "카테고리 수정", msg: "현재 상태를 저장하시곘습니까?") { [self] _ in
+                        originList = categoryList
+                        DataManager.shared.setCategoryOrder(originList)
+                        changeEditMode(false)
+                    } completeNo: { [self] _ in
+                        categoryList = originList
+                        changeEditMode(false)
+                        tableView.reloadData()
+                    }
+            } else {
+                changeEditMode(false)
+            }
+        } else {
+            changeEditMode(true)
+        }
     }
 }
 

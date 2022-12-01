@@ -25,24 +25,29 @@
                                     <constraint firstAttribute="height" constant="60" id="AQz-8r-EeV"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyo-yY-97R" userLabel="BtnEdit">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="FMv-ly-M4O">
                                 <rect key="frame" x="339" y="128" width="45" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="CN5-QI-uoC"/>
-                                    <constraint firstAttribute="width" secondItem="Iyo-yY-97R" secondAttribute="height" multiplier="1:1" id="pFI-sM-VFF"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="scissors" catalog="system">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <buttonConfiguration key="configuration" style="plain" image="scissors" catalog="system">
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="clickEditMode:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PC5-1o-1LI"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyo-yY-97R" userLabel="BtnEdit">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="CN5-QI-uoC"/>
+                                            <constraint firstAttribute="width" secondItem="Iyo-yY-97R" secondAttribute="height" multiplier="1:1" id="pFI-sM-VFF"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="scissors" catalog="system">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <buttonConfiguration key="configuration" style="plain" image="scissors" catalog="system">
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="clickEditMode:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PC5-1o-1LI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kGG-Zy-ClK">
                                 <rect key="frame" x="30" y="188" width="333" height="567"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -104,19 +109,20 @@
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kGG-Zy-ClK" secondAttribute="trailing" constant="30" id="0BI-O2-ipt"/>
                             <constraint firstItem="fwR-hO-Gzt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="90" id="325-W9-lbQ"/>
+                            <constraint firstItem="FMv-ly-M4O" firstAttribute="top" secondItem="PbR-Br-2JN" secondAttribute="bottom" constant="9" id="3sA-kZ-qVW"/>
                             <constraint firstItem="jcM-hb-gY3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7T4-D6-fml"/>
-                            <constraint firstItem="Iyo-yY-97R" firstAttribute="top" secondItem="PbR-Br-2JN" secondAttribute="bottom" constant="9" id="8yA-Ee-wqL"/>
                             <constraint firstItem="PbR-Br-2JN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="BBS-Zo-JwJ"/>
-                            <constraint firstItem="kGG-Zy-ClK" firstAttribute="top" secondItem="Iyo-yY-97R" secondAttribute="bottom" constant="15" id="DN6-84-NlF"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="fwR-hO-Gzt" secondAttribute="trailing" constant="90" id="K5k-pW-G7v"/>
                             <constraint firstItem="v8R-IL-C5D" firstAttribute="centerX" secondItem="kGG-Zy-ClK" secondAttribute="centerX" id="Sbc-WS-67q"/>
+                            <constraint firstItem="kGG-Zy-ClK" firstAttribute="top" secondItem="FMv-ly-M4O" secondAttribute="bottom" constant="15" id="YKa-6E-kVk"/>
                             <constraint firstItem="fwR-hO-Gzt" firstAttribute="top" secondItem="kGG-Zy-ClK" secondAttribute="top" constant="90" id="bRE-5F-lR2"/>
+                            <constraint firstItem="FMv-ly-M4O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="18" id="bVj-Uw-6KC"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="FMv-ly-M4O" secondAttribute="trailing" constant="9" id="bq7-8i-BWe"/>
                             <constraint firstItem="kGG-Zy-ClK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="czN-HN-blN"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PbR-Br-2JN" secondAttribute="trailing" id="eoX-lv-RiA"/>
                             <constraint firstItem="v8R-IL-C5D" firstAttribute="top" secondItem="fwR-hO-Gzt" secondAttribute="bottom" constant="18" id="fb7-PS-YKf"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="jcM-hb-gY3" secondAttribute="bottom" id="gkB-5v-NMv"/>
                             <constraint firstItem="jcM-hb-gY3" firstAttribute="top" secondItem="kGG-Zy-ClK" secondAttribute="bottom" constant="18" id="jXh-bj-1Fc"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Iyo-yY-97R" secondAttribute="trailing" constant="9" id="n4C-lT-AzX"/>
                             <constraint firstItem="PbR-Br-2JN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="xg4-FG-Pzu"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jcM-hb-gY3" secondAttribute="trailing" id="zLg-67-WNR"/>
                         </constraints>

@@ -10,6 +10,7 @@ import FirebaseAuth
 
 class BackupViewController: UIViewController {
     @IBOutlet weak var line: UIView!
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelTableTitle: UILabel!
     @IBOutlet weak var labelDate: UILabel!
@@ -66,10 +67,18 @@ extension BackupViewController {
         labelBackupDate.textColor = .label
         labelTableTitle.textColor = .label
         //
+        backView.backgroundColor = .clear
+        backView.layer.cornerRadius = 5
+        backView.layer.borderColor = UIColor.gray.cgColor
+        backView.layer.borderWidth = 0.2
+        //
         tableView.allowsSelection = false
-        tableView.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        tableView.backgroundColor = .clear
+        tableView.sectionHeaderTopPadding = 0
+        tableView.sectionFooterHeight = 0
+        tableView.sectionHeaderHeight = 0
         tableView.separatorInsetReference = .fromCellEdges
-        tableView.separatorColor = .gray.withAlphaComponent(0.5)
+        tableView.separatorColor = .clear
         tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         btnBack.setImage(UIImage(systemName: "chevron.backward", withConfiguration: mediumConfig), for: .normal)
@@ -79,13 +88,17 @@ extension BackupViewController {
         btnBackup.setImage(UIImage(systemName: "icloud.and.arrow.up", withConfiguration: mediumConfig), for: .normal)
         btnBackup.contentMode = .center
         btnBackup.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
-        btnBackup.layer.borderWidth = 0.5
-        btnBackup.layer.borderColor = UIColor.label.cgColor
+        btnBackup.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        btnBackup.layer.cornerRadius = 5
+        btnBackup.layer.borderWidth = 0.3
+        btnBackup.layer.borderColor = UIColor.gray.cgColor
         btnAllDelete.setTitle("백업리스트 모두 삭제", for: .normal)
         btnAllDelete.contentMode = .center
         btnAllDelete.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
-        btnAllDelete.layer.borderWidth = 0.5
-        btnAllDelete.layer.borderColor = UIColor.label.cgColor
+        btnAllDelete.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        btnAllDelete.layer.cornerRadius = 5
+        btnAllDelete.layer.borderWidth = 0.3
+        btnAllDelete.layer.borderColor = UIColor.gray.cgColor
     }
     private func refresh() {
         isRefresh = true
@@ -199,6 +212,9 @@ extension BackupViewController {
 //MARK: - TableView
 extension BackupViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
         return dataList.count
     }
     //
@@ -206,13 +222,16 @@ extension BackupViewController : UITableViewDelegate, UITableViewDataSource {
         guard let backUpCell = tableView.dequeueReusableCell(withIdentifier: "BackUpCell", for: indexPath) as? BackUpCell else {
             return UITableViewCell()
         }
-        let backUpData = dataList[indexPath.row]
+        let backUpData = dataList[indexPath.section]
         backUpCell.labelDate.text = backUpData.name
         
         return backUpCell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 6
     }
     //MARK: - Swipe
     //오른쪽 스와이프

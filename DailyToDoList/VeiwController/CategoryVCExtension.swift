@@ -13,13 +13,16 @@ import UIKit
 extension CategoryViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Default
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
         return categoryList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell") as? CategoryCell else {
             return UITableViewCell()
         }
-        let category = categoryList[indexPath.row]
+        let category = categoryList[indexPath.section]
         guard let list = taskList[category] else {
             return UITableViewCell()
         }
@@ -29,31 +32,47 @@ extension CategoryViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
     }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 6
+    }
     //MARK: - Edit
     //Row별 EditMode-
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        let cateogry = categoryList[indexPath.row]
-        if cateogry == "TODO" {
-            return .none
-        } else {
-            return .delete
+        if let cell = tableView.cellForRow(at: indexPath) as? CategoryCell {
+            cell.setBackView(isEdit)
         }
+        return .none
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            deleteCategory(categoryList[indexPath.row])
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    //MARK: - Swipe
+    //오른쪽 스와이프
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        //
+        if categoryList[indexPath.section] == "TODO" {
+            return nil
         }
+        let delete = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.deleteCategory(self.categoryList[indexPath.section])
+            success(true)
+        }
+        delete.image = UIImage(systemName: "trash.fill", withConfiguration: mediumConfig)
+        delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
+        //index = 0, 오른쪽
+        return UISwipeActionsConfiguration(actions:[delete])
     }
-
     //MARK: - Move
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let category = categoryList[sourceIndexPath.row]
-        categoryList.remove(at: sourceIndexPath.row)
-        categoryList.insert(category, at: destinationIndexPath.row)
-        //
-        changeMoveMode(originList != categoryList ? true : false)
+        let category = categoryList[sourceIndexPath.section]
+        categoryList.remove(at: sourceIndexPath.section)
+        categoryList.insert(category, at: destinationIndexPath.section)
     }
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    //MARK: - ETC
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
 }

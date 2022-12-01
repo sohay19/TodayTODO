@@ -22,13 +22,20 @@ class NoticeCell: UITableViewCell {
     private func initUI() {
         self.backgroundColor = .clear
         self.selectionStyle = .none
+        self.separatorInset = UIEdgeInsets(top: 0, left: 9, bottom: 0, right: 9)
         //
-        inputTitle.backgroundColor = .systemBackground
+        inputTitle.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        inputTitle.layer.cornerRadius = 5
+        inputTitle.layer.borderWidth = 0.1
+        inputTitle.layer.borderColor = UIColor.gray.cgColor
         inputTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
         inputTitle.textColor = .label
-        textView.backgroundColor = .systemBackground
-        textView.layer.cornerRadius = 6
-        textView.isEditable = false
+        inputTitle.isEnabled = false
+        //
+        textView.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        textView.layer.cornerRadius = 5
+        textView.layer.borderWidth = 0.1
+        textView.layer.borderColor = UIColor.gray.cgColor
         textView.font = UIFont(name: K_Font_R, size: K_FontSize)
         textView.textColor = .label
         textView.isEditable = false

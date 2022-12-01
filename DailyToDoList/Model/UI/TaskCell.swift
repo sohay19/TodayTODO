@@ -43,7 +43,7 @@ class TaskCell: UITableViewCell {
         self.backgroundColor = .clear
         self.selectionStyle = .none
         mainView.backgroundColor = .clear
-        expandableView.backgroundColor = .clear
+        expandableView.backgroundColor = .lightGray.withAlphaComponent(0.1)
         memoView.backgroundColor = .clear
         //
         self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -55,8 +55,6 @@ class TaskCell: UITableViewCell {
         memoView.isEditable = false
         memoView.isSelectable = false
         memoView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        //
-        expandableView.backgroundColor = .lightGray.withAlphaComponent(0.1)
         //
         btnArrow.contentMode = .center
         btnArrow.tintColor = .label

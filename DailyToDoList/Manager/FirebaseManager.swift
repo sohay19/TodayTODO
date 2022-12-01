@@ -51,11 +51,11 @@ extension FirebaseManager {
         })
     }
     //
-    func loadNotice(completion: @escaping (Bool, [String:[String:String]]) -> Void) {
+    func loadNotice(_ completion: @escaping (Bool, [String:[String:String]]) -> Void) {
         requestGet(url: "https://codesoha.com/notice", completion: completion)
     }
     //
-    func loadFAQ(completion: @escaping (Bool, [String:[String:String]]) -> Void) {
+    func loadFAQ(_ completion: @escaping (Bool, [String:[String:String]]) -> Void) {
         requestGet(url: "https://codesoha.com/faq", completion: completion)
     }
     //GET

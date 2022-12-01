@@ -43,30 +43,39 @@
                                     <constraint firstAttribute="height" constant="1" id="UdD-sj-8Uc"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MEB-hC-5fP">
+                                <rect key="frame" x="18" y="138" width="357" height="662"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="MEB-hC-5fP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="18" id="3C7-Zl-tpN"/>
+                            <constraint firstItem="MEB-hC-5fP" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="-18" id="8IQ-hq-naB"/>
                             <constraint firstItem="8Ol-kz-7MH" firstAttribute="top" secondItem="blW-TM-w20" secondAttribute="bottom" id="EN3-Vq-WGL"/>
                             <constraint firstItem="bB9-kA-VCz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="blW-TM-w20" secondAttribute="trailing" constant="18" id="Pet-7U-4D3"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bB9-kA-VCz" secondAttribute="trailing" constant="30" id="Rxf-Y8-Bne"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8Ol-kz-7MH" secondAttribute="trailing" constant="3" id="cTX-jV-tII"/>
                             <constraint firstItem="blW-TM-w20" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="eRX-gJ-dSX"/>
                             <constraint firstItem="blW-TM-w20" firstAttribute="width" secondItem="blW-TM-w20" secondAttribute="height" multiplier="1:1" id="emi-db-VCi"/>
+                            <constraint firstItem="MEB-hC-5fP" firstAttribute="top" secondItem="8Ol-kz-7MH" secondAttribute="bottom" constant="18" id="fDv-CS-NrT"/>
                             <constraint firstItem="blW-TM-w20" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="lWm-5q-QvT"/>
                             <constraint firstItem="8Ol-kz-7MH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="3" id="oCM-4c-dfJ"/>
                             <constraint firstItem="bB9-kA-VCz" firstAttribute="bottom" secondItem="blW-TM-w20" secondAttribute="bottom" constant="-15" id="rxP-qi-4b0"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="MEB-hC-5fP" secondAttribute="bottom" constant="18" id="xkh-QM-9GZ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btnBack" destination="blW-TM-w20" id="JGt-pq-0Bj"/>
+                        <outlet property="faqTable" destination="MEB-hC-5fP" id="Gv1-V0-gOh"/>
                         <outlet property="labelTitle" destination="bB9-kA-VCz" id="7Ex-29-rar"/>
                         <outlet property="line" destination="8Ol-kz-7MH" id="Ahk-lP-wOG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131" y="-27"/>
+            <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>
