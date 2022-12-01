@@ -12,6 +12,7 @@ class NoticeViewController : UIViewController {
     @IBOutlet weak var line:UIView!
     //
     @IBOutlet weak var labelTitle:UILabel!
+    @IBOutlet weak var labelNilMsg: UILabel!
     @IBOutlet weak var btnBack: UIButton!
     //
     @IBOutlet weak var noticeTable: UITableView!
@@ -26,6 +27,7 @@ class NoticeViewController : UIViewController {
         noticeTable.dataSource = self
         //
         initUI()
+        initRefreshController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,9 +57,23 @@ extension NoticeViewController {
         noticeTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left:0, bottom: 0, right: 0)
         //
         labelTitle.font = UIFont(name: E_Font_B, size: E_FontSize)
+        labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
         btnBack.setImage(UIImage(systemName: "chevron.backward", withConfiguration: mediumConfig), for: .normal)
         btnBack.tintColor = .label
+    }
+    //refresh controller 초기세팅
+    func initRefreshController() {
+        //
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+        //초기화
+        refreshControl.endRefreshing()
+        noticeTable.refreshControl = refreshControl
+    }
+    @objc func refreshView() {
+        noticeTable.refreshControl?.endRefreshing()
+        noticeTable.reloadData()
     }
     //
     private func loadData() {
@@ -65,6 +81,7 @@ extension NoticeViewController {
             DispatchQueue.main.async { [self] in
                 if isSuccess {
                     noticeList = data
+                    labelNilMsg.isHidden = noticeList.count > 0 ? true : false
                 } else {
                     print("loadNotice Error")
                 }

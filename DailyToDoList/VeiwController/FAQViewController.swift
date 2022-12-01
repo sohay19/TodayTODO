@@ -12,6 +12,7 @@ class FAQViewController : UIViewController {
     @IBOutlet weak var line:UIView!
     //
     @IBOutlet weak var labelTitle:UILabel!
+    @IBOutlet weak var labelNilMsg: UILabel!
     @IBOutlet weak var btnBack: UIButton!
     //
     @IBOutlet weak var faqTable: UITableView!
@@ -28,6 +29,7 @@ class FAQViewController : UIViewController {
         //
         initUI()
         initCell()
+        initRefreshController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +61,7 @@ extension FAQViewController {
         faqTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left:0, bottom: 0, right: 0)
         //
         labelTitle.font = UIFont(name: E_Font_B, size: E_FontSize)
+        labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
         btnBack.setImage(UIImage(systemName: "chevron.backward", withConfiguration: mediumConfig), for: .normal)
         btnBack.tintColor = .label
@@ -68,12 +71,26 @@ extension FAQViewController {
         let nibName = UINib(nibName: "FAQCell", bundle: nil)
         faqTable.register(nibName, forCellReuseIdentifier: "FAQCell")
     }
+    //refresh controller 초기세팅
+    func initRefreshController() {
+        //
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshView), for: .valueChanged)
+        //초기화
+        refreshControl.endRefreshing()
+        faqTable.refreshControl = refreshControl
+    }
+    @objc func refreshView() {
+        faqTable.refreshControl?.endRefreshing()
+        faqTable.reloadData()
+    }
     //
     private func loadData() {
         FirebaseManager.shared.loadFAQ { [self] isSuccess, data in
             DispatchQueue.main.async { [self] in
                 if isSuccess {
                     faqList = data
+                    labelNilMsg.isHidden = faqList.count > 0 ? true : false
                 } else {
                     print("loadFAQ Error")
                 }

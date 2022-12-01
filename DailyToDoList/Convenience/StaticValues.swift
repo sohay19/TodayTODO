@@ -56,12 +56,9 @@ let E_FontSize = 21.0
 //MARK: - Image
 let BackgroundImage = "DefaultBack.jpg"
 let BlackBackImage = "BlackBackground.png"
-let PaperImage = "Background\(Int.random(in: 1...5)).jpg"
 let Underline_Indigo = "underline_Indigo.png"
 let Underline_Pink = "underline_Pink.png"
 let Underline_Black = "underline_Black.png"
-let Bricks = "Bricks.png"
-let LastPageImage = "LastPage.png"
 let boldConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .medium, scale: .large)
 let mediumConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .regular, scale: .medium)
 let thinConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .thin, scale: .small)

@@ -87,7 +87,7 @@ extension PushListViewController {
         pushTable.backgroundColor = .clear
         pushTable.separatorInsetReference = .fromCellEdges
         pushTable.separatorColor = .label
-        pushTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        pushTable.showsVerticalScrollIndicator = false
         //
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
         //

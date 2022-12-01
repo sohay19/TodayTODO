@@ -69,7 +69,7 @@ extension CategoryViewController {
         tableView.sectionHeaderHeight = 0
         tableView.separatorInsetReference = .fromCellEdges
         tableView.separatorColor = .clear
-        tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.showsVerticalScrollIndicator = false
         //
         btnEdit.tintColor = .label
         btnEdit.contentMode = .center

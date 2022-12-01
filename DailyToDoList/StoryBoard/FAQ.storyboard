@@ -47,15 +47,23 @@
                                 <rect key="frame" x="18" y="138" width="357" height="662"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 작성된 글이 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPu-77-CLl">
+                                <rect key="frame" x="116.33333333333333" y="428" width="160.33333333333337" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="MEB-hC-5fP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="18" id="3C7-Zl-tpN"/>
                             <constraint firstItem="MEB-hC-5fP" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="-18" id="8IQ-hq-naB"/>
+                            <constraint firstItem="UPu-77-CLl" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="CNH-JC-BMK"/>
                             <constraint firstItem="8Ol-kz-7MH" firstAttribute="top" secondItem="blW-TM-w20" secondAttribute="bottom" id="EN3-Vq-WGL"/>
                             <constraint firstItem="bB9-kA-VCz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="blW-TM-w20" secondAttribute="trailing" constant="18" id="Pet-7U-4D3"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bB9-kA-VCz" secondAttribute="trailing" constant="30" id="Rxf-Y8-Bne"/>
+                            <constraint firstItem="UPu-77-CLl" firstAttribute="centerX" secondItem="MEB-hC-5fP" secondAttribute="centerX" id="ZTm-Qz-wPg"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8Ol-kz-7MH" secondAttribute="trailing" constant="3" id="cTX-jV-tII"/>
                             <constraint firstItem="blW-TM-w20" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="eRX-gJ-dSX"/>
                             <constraint firstItem="blW-TM-w20" firstAttribute="width" secondItem="blW-TM-w20" secondAttribute="height" multiplier="1:1" id="emi-db-VCi"/>
@@ -69,6 +77,7 @@
                     <connections>
                         <outlet property="btnBack" destination="blW-TM-w20" id="JGt-pq-0Bj"/>
                         <outlet property="faqTable" destination="MEB-hC-5fP" id="Gv1-V0-gOh"/>
+                        <outlet property="labelNilMsg" destination="UPu-77-CLl" id="gjw-qi-tT9"/>
                         <outlet property="labelTitle" destination="bB9-kA-VCz" id="7Ex-29-rar"/>
                         <outlet property="line" destination="8Ol-kz-7MH" id="Ahk-lP-wOG"/>
                     </connections>

@@ -62,7 +62,7 @@ extension PopListViewController {
         popView.sectionHeaderHeight = 0
         popView.separatorInsetReference = .fromCellEdges
         popView.separatorColor = .clear
-        popView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        popView.showsVerticalScrollIndicator = false
         //
         popView.allowsSelectionDuringEditing = true
         popView.allowsMultipleSelectionDuringEditing = false

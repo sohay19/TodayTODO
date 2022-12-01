@@ -79,7 +79,7 @@ extension BackupViewController {
         tableView.sectionHeaderHeight = 0
         tableView.separatorInsetReference = .fromCellEdges
         tableView.separatorColor = .clear
-        tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.showsVerticalScrollIndicator = false
         //
         btnBack.setImage(UIImage(systemName: "chevron.backward", withConfiguration: mediumConfig), for: .normal)
         btnBack.tintColor = .label

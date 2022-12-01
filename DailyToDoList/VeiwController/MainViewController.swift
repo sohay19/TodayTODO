@@ -133,7 +133,7 @@ extension MainViewController {
         dailyTaskTable.backgroundColor = .clear
         dailyTaskTable.separatorInsetReference = .fromCellEdges
         dailyTaskTable.separatorColor = .label
-        dailyTaskTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        dailyTaskTable.showsVerticalScrollIndicator = false
         //
         monthlyTaskTable.sectionHeaderTopPadding = 0
         monthlyTaskTable.sectionHeaderHeight = 30
@@ -141,7 +141,7 @@ extension MainViewController {
         monthlyTaskTable.backgroundColor = .clear
         monthlyTaskTable.separatorInsetReference = .fromCellEdges
         monthlyTaskTable.separatorColor = .label
-        monthlyTaskTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left:0, bottom: 0, right: 0)
+        monthlyTaskTable.showsVerticalScrollIndicator = false
     }
     //
     private func addSegmentcontrol() {
@@ -468,7 +468,6 @@ extension MainViewController {
                 // 이전 일정 유지
                 actionList.append { [self] _ in
                     let newTask = task.clone()
-                    let option = task.optionData?.clone()
                     guard let date = Utils.beforeDay(Date()) else { return }
                     if Utils.dateToDateString(date) == task.taskDay {
                         newTask.stopRepeat()
@@ -529,7 +528,6 @@ extension MainViewController {
                 // 이전 일정 유지
                 actionList.append { [self] _ in
                     let newTask = task.clone()
-                    let option = task.optionData?.clone()
                     guard let date = Utils.beforeDay(monthDate) else { return }
                     if Utils.dateToDateString(date) == task.taskDay {
                         newTask.stopRepeat()

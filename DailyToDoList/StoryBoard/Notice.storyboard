@@ -84,6 +84,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 작성된 글이 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01d-ng-EZJ">
+                                <rect key="frame" x="116.33333333333333" y="428" width="160.33333333333337" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -100,11 +106,14 @@
                             <constraint firstItem="zrT-hU-Ufg" firstAttribute="top" secondItem="QiQ-wA-HKL" secondAttribute="bottom" id="gK5-Nn-7bO"/>
                             <constraint firstItem="Wn7-7M-ioB" firstAttribute="top" secondItem="zrT-hU-Ufg" secondAttribute="bottom" id="n2Y-je-MmO"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zrT-hU-Ufg" secondAttribute="trailing" constant="3" id="q60-Q8-XRA"/>
+                            <constraint firstItem="01d-ng-EZJ" firstAttribute="centerX" secondItem="Wn7-7M-ioB" secondAttribute="centerX" id="sPE-dx-xtU"/>
                             <constraint firstItem="zXw-hO-BrH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QiQ-wA-HKL" secondAttribute="trailing" constant="18" id="wh5-bJ-gI4"/>
+                            <constraint firstItem="01d-ng-EZJ" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="x6y-cE-9MS"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btnBack" destination="QiQ-wA-HKL" id="Yga-us-2xA"/>
+                        <outlet property="labelNilMsg" destination="01d-ng-EZJ" id="dKi-CI-Rsh"/>
                         <outlet property="labelTitle" destination="zXw-hO-BrH" id="ZPE-CC-3EU"/>
                         <outlet property="line" destination="zrT-hU-Ufg" id="ci1-Jm-rOD"/>
                         <outlet property="noticeTable" destination="Wn7-7M-ioB" id="sk2-uB-pa6"/>
