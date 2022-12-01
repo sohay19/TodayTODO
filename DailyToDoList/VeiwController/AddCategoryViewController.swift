@@ -33,10 +33,6 @@ class AddCategoryViewController: UIViewController {
         inputTitle.delegate = self
         initUI()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
 }
 
 //MARK: - Init
