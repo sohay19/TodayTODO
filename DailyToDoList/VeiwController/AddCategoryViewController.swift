@@ -31,7 +31,6 @@ class AddCategoryViewController: UIViewController {
         super.viewDidLoad()
         //
         inputTitle.delegate = self
-        //
         initUI()
     }
     
