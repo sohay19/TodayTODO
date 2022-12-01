@@ -9,6 +9,9 @@
         <array key="EF_Diary.ttf">
             <string>EF_Diary</string>
         </array>
+        <array key="NanumAJumMaJaYu.ttf">
+            <string>NanumAJumMaJaYu</string>
+        </array>
         <array key="NanumBarunpenB.otf">
             <string>NanumBarunpenOTF-Bold</string>
         </array>
@@ -147,13 +150,13 @@
             <objects>
                 <controller id="8WJ-KP-rGP" customClass="NotificationController" customModule="DailyToDoListWatch" customModuleProvider="target">
                     <items>
-                        <label width="136" alignment="left" text="Label" id="Dj1-cY-fuc">
+                        <label alignment="left" text="DailyTODO" id="yyu-x7-OyW">
+                            <fontDescription key="font" name="NanumAJumMaJaYu" family="나눔손글씨 아줌마 자유" pointSize="12"/>
+                        </label>
+                        <label alignment="left" text="Title" id="Dj1-cY-fuc">
                             <fontDescription key="font" name="NanumBarunpenOTF-Bold" family="NanumBarunpenOTF" pointSize="15"/>
                         </label>
-                        <label alignment="left" text="Label" id="yyu-x7-OyW">
-                            <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="12"/>
-                        </label>
-                        <label alignment="left" text="Label" id="X1w-ac-fEM">
+                        <label alignment="left" text="Memo" id="X1w-ac-fEM">
                             <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
                         </label>
                     </items>

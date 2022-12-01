@@ -83,6 +83,7 @@ class MainViewController: UIViewController {
         super.viewWillDisappear(animated)
         //
         segmentControl.selectedSegmentIndex = isTaskOpen ? segmentControl.selectedSegmentIndex : 0
+        openedTask = nil
         currentType = isTaskOpen ? currentType : .Today
         isTaskOpen = false
     }
@@ -626,6 +627,7 @@ extension MainViewController {
             btnToday.isHidden = true
         case 1:
             currentType = .Month
+            openedTask = nil
             calendarView.select(monthDate)
             btnToday.isHidden = false
         default:

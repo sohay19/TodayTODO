@@ -30,14 +30,6 @@ extension PushManager {
         notiContent.sound = UNNotificationSound.default
         //뱃지 표시
         notiContent.badge = (addBadgeCnt()) as NSNumber
-        //썸네일
-        do {
-            //            let imageUrl = Bundle.main.url(forResource: "Tulips", withExtension: "jpg")
-            //            let attach = try UNNotificationAttachment(identifier: "", url: imageUrl!, options: nil)
-            //            notiPush.attachments.append(attach)
-        } catch {
-            print(error)
-        }
         
         return notiContent
     }
