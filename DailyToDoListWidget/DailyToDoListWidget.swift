@@ -25,6 +25,9 @@ struct TaskListWidget: Widget {
         StaticConfiguration(kind: TaskListWidget.kind,
                             provider: TaskListProvider()) { entry in
             TaskListEntryView(entry: entry)
+                .background(Image("WatchBack")
+                    .resizable()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity))
                 .unredacted()
         }
         .configurationDisplayName("Daily TODO")

@@ -29,11 +29,9 @@ struct TaskListEntryView: View {
         VStack(alignment: .leading) {
             let taskList = entry.taskList
             if taskList.count == 0 {
-                TaskListView(task: EachTask())
+                TaskListView(list: [])
             } else {
-                ForEach(0..<maxCount, id: \.self) { index in
-                    TaskListView(task: taskList[index])
-                }
+                TaskListView(list: entry.taskList)
             }
         }
         .padding(.all)
@@ -41,88 +39,100 @@ struct TaskListEntryView: View {
 }
 
 struct TaskListView: View {
-    let task: EachTask
+    let list: [EachTask]
     
     @Environment(\.widgetFamily) var family
     
     var body: some View {
-        let option = task.optionData ?? OptionData()
-        let isAlarm = option.isAlarm
-        let alarmTime = option.alarmTime
-        
-        GeometryReader {
-            geometry in
-            if task.title.isEmpty {
-                Text("TODO를 등록해주세요!")
-                    .font(.system(size: family == .systemSmall ? 14 : 16, weight: .semibold))
-                    .foregroundColor(Color.init(uiColor: UIColor.label))
-                    .frame(width: geometry.size.width, alignment: .topLeading)
+        let K_Size:CGFloat = 14
+        let N_Size:CGFloat = 12
+        //
+        GeometryReader { geometry in
+            if list.count == 0 {
+                VStack(alignment: .center) {
+                    Text("TODO를 등록해주세요!")
+                        .font(.custom(K_Font_B, size: K_Size))
+                        .foregroundColor(.black)
+                }
             } else {
                 switch family {
                 case .systemSmall:
-                    VStack(alignment: .center) {
+                    let task = list.first!
+                    VStack(spacing: 9) {
                         Text(task.title)
-                            .font(.system(size: family == .systemSmall ? 14 : 16, weight: .semibold))
-                            .foregroundColor(Color.init(uiColor: UIColor.label))
-                            .frame(width: geometry.size.width, height: geometry.size.height * 1/3, alignment: .topLeading)
+                            .font(.custom(K_Font_B, size: K_Size))
+                            .foregroundColor(.black)
+                            .truncationMode(.tail)
                         
                         Text(task.memo)
-                            .font(.system(size: family == .systemSmall ? 10 : 15, weight: .regular))
-                            .foregroundColor(Color.init(uiColor: UIColor.label))
-                            .frame(width: geometry.size.width, height: geometry.size.height * 2/3, alignment: .topLeading)
-                        
-                    }.frame(width: geometry.size.width, height: family == .systemLarge ? geometry.size.height/3 : geometry.size.height , alignment: .center)
+                            .font(.custom(K_Font_R, size: K_Size))
+                            .foregroundColor(.black)
+                            .truncationMode(.tail)
+                    }
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
                 case .systemMedium:
-                    VStack(alignment: .center) {
+                    let task = list.first!
+                    let taskTime = task.taskTime.isEmpty ? "--:--" : task.taskTime
+                    VStack(spacing: 9) {
                         HStack {
                             Text(task.title)
-                                .font(.system(size: family == .systemSmall ? 14 : 16, weight: .semibold))
-                                .foregroundColor(Color.init(uiColor: UIColor.label))
-                                .frame(width: geometry.size.width * 3/4, alignment: .topLeading)
+                                .font(.custom(K_Font_B, size: K_Size))
+                                .foregroundColor(Color.init(uiColor: UIColor.black))
+                                .truncationMode(.tail)
                             
-                            Divider()
+                            Spacer()
                             
-                            Text(isAlarm ? alarmTime : "알람 없음")
-                                .font(.system(size: 15, weight: .regular))
-                                .foregroundColor(Color.init(uiColor: UIColor.secondaryLabel))
-                                .frame(width: geometry.size.width * 1/4 ,alignment: .topTrailing)
+                            Image(systemName: "alarm")
+                                .foregroundColor(.gray)
                             
-                        }.frame(width: geometry.size.width, height: geometry.size.height * 1/3, alignment: .top)
+                            Text(taskTime)
+                                .font(.custom(N_Font, size: N_Size))
+                                .foregroundColor(.gray)
+                                .truncationMode(.tail)
+                        }.frame(width: geometry.size.width, alignment: .leading)
                         
-                        Text(task.memo)
-                            .font(.system(size: family == .systemSmall ? 10 : 15, weight: .regular))
-                            .foregroundColor(Color.init(uiColor: UIColor.label))
-                            .frame(width: geometry.size.width, height: geometry.size.height * 2/3, alignment: .topLeading)
-                        
-                    }.frame(width: geometry.size.width, height: geometry.size.height , alignment: .center)
+                        HStack {
+                            Text(task.memo)
+                                .font(.custom(K_Font_R, size: K_Size))
+                                .foregroundColor(.black)
+                                .truncationMode(.tail)
+                        }.frame(width: geometry.size.width, alignment: .leading)
+                    }
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
                 default:
-                    //large
-                    VStack(alignment: .center) {
-                        HStack {
-                            Text(task.title)
-                                .font(.system(size: family == .systemSmall ? 14 : 16, weight: .semibold))
-                                .foregroundColor(Color.init(uiColor: UIColor.label))
-                                .frame(width: geometry.size.width * 3/4, alignment: .topLeading)
+                    VStack(spacing: 9) {
+                        ForEach(list, id: \.self) { task in
+                            let taskTime = task.taskTime.isEmpty ? "--:--" : task.taskTime
+                            HStack {
+                                Text(task.title)
+                                    .font(.custom(K_Font_B, size: K_Size))
+                                    .foregroundColor(.black)
+                                    .truncationMode(.tail)
+                                
+                                Spacer()
+                                
+                                Image(systemName: "alarm")
+                                    .foregroundColor(.gray)
+                                
+                                Text(taskTime)
+                                    .font(.custom(N_Font, size: N_Size))
+                                    .foregroundColor(.gray)
+                                    .truncationMode(.tail)
+                            }.frame(width: geometry.size.width, alignment: .leading)
                             
-                            Divider()
+                            HStack {
+                                Text(task.memo)
+                                    .font(.custom(K_Font_R, size: K_Size))
+                                    .foregroundColor(.black)
+                                    .truncationMode(.tail)
+                            }.frame(width: geometry.size.width, alignment: .leading)
                             
-                            Text(isAlarm ? alarmTime : "알람 없음")
-                                .font(.system(size: 15, weight: .regular))
-                                .foregroundColor(Color.init(uiColor: UIColor.secondaryLabel))
-                                .frame(width: geometry.size.width * 1/4 ,alignment: .topTrailing)
-                            
-                        }.frame(width: geometry.size.width, height: geometry.size.height * 1/3 * 1/2, alignment: .top)
-                            .padding()
-                        
-                        Text(task.memo)
-                            .font(.system(size: family == .systemSmall ? 10 : 15, weight: .regular))
-                            .foregroundColor(Color.init(uiColor: UIColor.label))
-                            .frame(width: geometry.size.width, height: geometry.size.height * 1/3 * 1/2, alignment: .topLeading)
-                        
-                    }.frame(width: geometry.size.width, height: geometry.size.height * 1/3, alignment: .center)
+                            Spacer()
+                        }
+                    }
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
                 }
             }
         }
-        .padding()
     }
 }

@@ -60,7 +60,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //
         WatchConnectManager.shared.sendToWatchTask()
         WidgetCenter.shared.reloadAllTimelines()
-        print("reloadAllTimelines")
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -71,7 +70,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //
         WatchConnectManager.shared.sendToWatchTask()
         WidgetCenter.shared.reloadAllTimelines()
-        print("reloadAllTimelines")
     }
 }
 

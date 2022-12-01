@@ -5,6 +5,17 @@
         <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="21501"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="EF_Diary.ttf">
+            <string>EF_Diary</string>
+        </array>
+        <array key="NanumBarunpenB.otf">
+            <string>NanumBarunpenOTF-Bold</string>
+        </array>
+        <array key="NanumBarunpenR.otf">
+            <string>NanumBarunpenOTF</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
@@ -16,20 +27,20 @@
                                 <tableRow identifier="EachTaskType" id="JNU-rh-YR7" customClass="TaskTableRowController" customModule="DailyToDoListWatch" customModuleProvider="target">
                                     <group key="rootItem" width="1" height="60" alignment="left" radius="10" id="n55-R3-JZi">
                                         <items>
-                                            <group width="0.5" height="1" alignment="left" verticalAlignment="center" layout="vertical" id="boj-gb-s0h">
+                                            <group width="0.80000000000000004" height="1" alignment="left" verticalAlignment="center" layout="vertical" id="boj-gb-s0h">
                                                 <items>
                                                     <label alignment="left" text="Title" id="thw-dZ-pkr">
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="font" type="boldSystem" pointSize="18"/>
+                                                        <fontDescription key="font" name="NanumBarunpenOTF-Bold" family="NanumBarunpenOTF" pointSize="15"/>
                                                     </label>
                                                     <label alignment="left" verticalAlignment="bottom" text="Time" id="Le3-L0-y2B">
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="font" type="system" pointSize="15"/>
+                                                        <fontDescription key="font" name="EF_Diary" family="EF_다이어리" pointSize="10"/>
                                                     </label>
                                                 </items>
                                                 <edgeInsets key="margins" left="0.0" right="0.0" top="5" bottom="5"/>
                                             </group>
-                                            <group width="0.5" height="1" alignment="right" verticalAlignment="center" id="Csy-qi-Gaz">
+                                            <group width="0.20000000000000001" height="1" alignment="right" verticalAlignment="center" id="Csy-qi-Gaz">
                                                 <items>
                                                     <button width="30" height="27" alignment="right" verticalAlignment="center" backgroundImage="checkmark" catalog="system" id="G2v-ja-NOk">
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,6 +53,7 @@
                                             </group>
                                         </items>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
                                     </group>
                                     <connections>
                                         <outlet property="btnDone" destination="G2v-ja-NOk" id="oMX-I2-tTF"/>
@@ -53,7 +65,7 @@
                             </items>
                         </table>
                         <label alignment="center" text="오늘의 TODO를 등록해주세요" id="7w8-IL-sfa">
-                            <fontDescription key="font" type="system" pointSize="15"/>
+                            <fontDescription key="font" name="NanumBarunpenOTF-Bold" family="NanumBarunpenOTF" pointSize="15"/>
                         </label>
                     </items>
                     <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
@@ -70,24 +82,32 @@
             <objects>
                 <controller id="dDH-4m-eHF" customClass="TaskInterfaceController" customModule="DailyToDoListWatch" customModuleProvider="target">
                     <items>
-                        <group width="1" alignment="left" layout="vertical" id="o0b-yL-nCr">
+                        <group width="1" alignment="left" id="o0b-yL-nCr">
                             <items>
-                                <label alignment="left" text="Title" id="cDu-ib-LiB">
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="font" type="boldSystem" pointSize="16"/>
-                                </label>
-                                <label alignment="left" text="Category" id="Xlm-Dc-tuL">
-                                    <color key="textColor" red="1" green="0.42604236642071447" blue="0.36495029858327921" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    <fontDescription key="font" type="system" pointSize="16"/>
-                                </label>
-                                <label alignment="left" text="Time" id="glk-2x-ges">
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="font" type="system" pointSize="16"/>
-                                </label>
-                                <label alignment="left" text="Memo" id="HLY-1u-NN3">
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="font" type="system" pointSize="16"/>
-                                </label>
+                                <group width="0.75" alignment="left" layout="vertical" id="VGS-hv-C0g">
+                                    <items>
+                                        <label alignment="left" text="Title" id="cDu-ib-LiB">
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="font" name="NanumBarunpenOTF-Bold" family="NanumBarunpenOTF" pointSize="15"/>
+                                        </label>
+                                        <label alignment="left" text="Category" id="Xlm-Dc-tuL">
+                                            <color key="textColor" red="1" green="0.42604236642071447" blue="0.36495029858327921" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
+                                        </label>
+                                        <label alignment="left" text="Memo" id="HLY-1u-NN3">
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="0.25" alignment="right" layout="vertical" id="iXq-bd-pYp">
+                                    <items>
+                                        <label alignment="right" text="Time" id="glk-2x-ges">
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="font" name="EF_Diary" family="EF_다이어리" pointSize="10"/>
+                                        </label>
+                                    </items>
+                                </group>
                             </items>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
@@ -109,7 +129,9 @@
             <objects>
                 <notificationController id="YCC-NB-fut">
                     <items>
-                        <label alignment="left" verticalAlignment="center" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                        <label alignment="left" verticalAlignment="center" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW">
+                            <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
+                        </label>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="DailyTODO" id="JfB-70-Muf"/>
                     <connections>
@@ -125,14 +147,14 @@
             <objects>
                 <controller id="8WJ-KP-rGP" customClass="NotificationController" customModule="DailyToDoListWatch" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Label" id="yyu-x7-OyW">
-                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
-                        </label>
                         <label width="136" alignment="left" text="Label" id="Dj1-cY-fuc">
-                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                            <fontDescription key="font" name="NanumBarunpenOTF-Bold" family="NanumBarunpenOTF" pointSize="15"/>
+                        </label>
+                        <label alignment="left" text="Label" id="yyu-x7-OyW">
+                            <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="12"/>
                         </label>
                         <label alignment="left" text="Label" id="X1w-ac-fEM">
-                            <fontDescription key="font" type="system" pointSize="16"/>
+                            <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
                         </label>
                     </items>
                     <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>

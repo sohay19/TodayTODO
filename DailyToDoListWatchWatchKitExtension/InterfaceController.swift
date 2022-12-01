@@ -19,7 +19,6 @@ class InterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         // Configure interface objects here.
-        //
         WatchConnectManager.shared.initWatchTable = setTaskList(_:)
     }
     
@@ -42,7 +41,6 @@ extension InterfaceController {
 extension InterfaceController {
     //
     func setTaskList(_ receiveTaskList:[EachTask]) {
-        //
         taskList = receiveTaskList.sorted(by: { task1, task2 in
             if task1.isDone {
                 return task2.isDone ? true : false
@@ -50,7 +48,6 @@ extension InterfaceController {
                 return true
             }
         })
-        //
         initTable()
     }
     //
@@ -63,14 +60,11 @@ extension InterfaceController {
             guard let row = taskTable.rowController(at: i) as? TaskTableRowController else {
                 return
             }
-            let option = task.optionData ?? OptionData()
-            let alarmTime = option.alarmTime
             //
             row.updateDone = updateTask(_:_:)
             row.task = task
-            //
             row.labelTitle.setText(task.title)
-            row.labelTime.setText(alarmTime)
+            row.labelTime.setText(task.taskTime.isEmpty ? "--:--" : task.taskTime)
             row.btnDone.setBackgroundImage(UIImage(systemName: "checkmark"))
             row.btnDone.setBackgroundColor(task.isDone ? UIColor.red : UIColor.gray)
         }

@@ -45,17 +45,7 @@ extension TaskInterfaceController {
         let color = DataManager.shared.getCategoryColor(task.category)
         labelCategory.setTextColor(color)
         labelCategory.setText(task.category)
-        //
-        let option = task.optionData ?? OptionData()
-        let isAlarm = option.isAlarm
-        let alarmTime = option.alarmTime
-        //
-        if isAlarm {
-            labelTime.setHidden(false)
-            labelTime.setText(alarmTime)
-        } else {
-            labelTime.setHidden(true)
-        }
+        labelTime.setText(task.taskTime.isEmpty ? "--:--" : task.taskTime)
         //
         labelMemo.setText(task.memo)
     }

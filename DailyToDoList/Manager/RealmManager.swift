@@ -97,11 +97,17 @@ extension RealmManager {
     //MARK: - Task
     func addTask(_ task:EachTask) {
         openRealm()
+#if os(iOS)
         guard let realm = realm else {
             print("realm is nil")
             return
         }
-        //
+#else
+        guard let realm = watchRealm else {
+            print("watchRealm is nil")
+            return
+        }
+#endif
         do {
             try realm.write {
                 realm.add(task)
@@ -125,13 +131,20 @@ extension RealmManager {
             print("Realm add Error")
         }
     }
-    //
+    // updateTask
     func updateTask(_ task:EachTask) {
         openRealm()
+#if os(iOS)
         guard let realm = realm else {
             print("realm is nil")
             return
-        }    //
+        }
+#else
+        guard let realm = watchRealm else {
+            print("watchRealm is nil")
+            return
+        }
+#endif
         do {
             try realm.write {
                 realm.add(task, update: .modified)
@@ -155,13 +168,20 @@ extension RealmManager {
             print("Realm update Error")
         }
     }
-    //
+    // deleteTask
     func deleteTask(_ task:EachTask) {
         openRealm()
+#if os(iOS)
         guard let realm = realm else {
             print("realm is nil")
             return
         }
+#else
+        guard let realm = watchRealm else {
+            print("watchRealm is nil")
+            return
+        }
+#endif
         do {
             try realm.write {
                 realm.delete(task)

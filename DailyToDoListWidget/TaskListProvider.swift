@@ -36,7 +36,25 @@ struct TaskListProvider: TimelineProvider {
             return
         }
         //데이터 가져오기
-        let taskList = DataManager.shared.getTodayTask()
+        let orderList = DataManager.shared.getCategoryOrder()
+        var taskList = DataManager.shared.getTodayTask()
+        //isDone 제외
+        taskList = taskList.reduce([EachTask]()) {
+            return !$1.isDone ? $0 + [$1] : $0
+        }
+        //우선순위 정렬
+        taskList.sort {
+            if let first = orderList.firstIndex(of: $0.category), let second = orderList.firstIndex(of: $1.category) {
+                if $0.isDone {
+                    return false
+                }
+                if $1.isDone {
+                    return true
+                }
+                return first < second
+            }
+            return false
+        }
         let entry = Entry(date: refreshTimer, taskList: taskList)
         let entries:[Entry] = [entry]
         let timeline = Timeline(entries: entries, policy: .atEnd)

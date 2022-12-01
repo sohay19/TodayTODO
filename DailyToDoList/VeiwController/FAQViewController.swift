@@ -50,7 +50,6 @@ extension FAQViewController {
         view.insertSubview(backgroundView, at: 0)
         line.backgroundColor = .label
         //
-        faqTable.sectionHeaderTopPadding = 0
         faqTable.backgroundColor = .clear
         faqTable.separatorColor = .clear
         faqTable.separatorInsetReference = .fromCellEdges

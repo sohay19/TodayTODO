@@ -30,6 +30,8 @@ class CategoryCell: UITableViewCell {
         self.shouldIndentWhileEditing = false
         self.backgroundColor = .clear
         //
+        self.contentView.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        backView.backgroundColor = .clear
         backView.layer.cornerRadius = 5
         backView.layer.borderWidth = 0.1
         self.contentView.layer.cornerRadius = 5

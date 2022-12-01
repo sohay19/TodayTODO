@@ -76,6 +76,23 @@
 		CF79092D2937B1D70027D25D /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79092C2937B1D60027D25D /* NoticeCell.swift */; };
 		CF790930293899D90027D25D /* FAQCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79092E293899D90027D25D /* FAQCell.swift */; };
 		CF790931293899D90027D25D /* FAQCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF79092F293899D90027D25D /* FAQCell.xib */; };
+		CF7909322938A3550027D25D /* NanumBarunpenB.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350B9291E457300AFDC14 /* NanumBarunpenB.otf */; };
+		CF7909332938A3550027D25D /* Worcestershire_Sauce-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350BC291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf */; };
+		CF7909342938A3550027D25D /* Worcestershire_Sauce_Press-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350B8291E457300AFDC14 /* Worcestershire_Sauce_Press-Regular.otf */; };
+		CF7909352938A3550027D25D /* Windsor_Great_Park-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350BB291E457400AFDC14 /* Windsor_Great_Park-Regular.otf */; };
+		CF7909362938A3550027D25D /* NanumAJumMaJaYu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350C2291E45F300AFDC14 /* NanumAJumMaJaYu.ttf */; };
+		CF7909372938A3550027D25D /* NanumBarunpenR.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350BA291E457400AFDC14 /* NanumBarunpenR.otf */; };
+		CF7909382938A3570027D25D /* NanumBarunpenB.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350B9291E457300AFDC14 /* NanumBarunpenB.otf */; };
+		CF7909392938A3570027D25D /* Worcestershire_Sauce-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350BC291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf */; };
+		CF79093A2938A3570027D25D /* Worcestershire_Sauce_Press-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350B8291E457300AFDC14 /* Worcestershire_Sauce_Press-Regular.otf */; };
+		CF79093B2938A3570027D25D /* Windsor_Great_Park-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350BB291E457400AFDC14 /* Windsor_Great_Park-Regular.otf */; };
+		CF79093C2938A3570027D25D /* NanumAJumMaJaYu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350C2291E45F300AFDC14 /* NanumAJumMaJaYu.ttf */; };
+		CF79093D2938A3570027D25D /* NanumBarunpenR.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350BA291E457400AFDC14 /* NanumBarunpenR.otf */; };
+		CF7909412938D00D0027D25D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7909402938D00D0027D25D /* Assets.xcassets */; };
+		CF7909422938D3EF0027D25D /* underline_Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */; };
+		CF7909432938D3F00027D25D /* underline_Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */; };
+		CF7909482938D6870027D25D /* WatchBack.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7909472938D6870027D25D /* WatchBack.png */; };
+		CF7909492938D6870027D25D /* WatchBack.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7909472938D6870027D25D /* WatchBack.png */; };
 		CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
 		CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8148F229068E0700FD0974 /* ClassExtension.swift */; };
 		CF8149272906B75100FD0974 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8149252906B75100FD0974 /* Interface.storyboard */; };
@@ -139,7 +156,6 @@
 		CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DC28F13287008850DC /* SceneDelegate.swift */; };
 		CFEB49DF28F13287008850DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DE28F13287008850DC /* MainViewController.swift */; };
 		CFEB49E228F13287008850DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB49E028F13287008850DC /* Main.storyboard */; };
-		CFEB49E428F13288008850DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFEB49E328F13288008850DC /* Assets.xcassets */; };
 		CFEB49E728F13288008850DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB49E528F13288008850DC /* LaunchScreen.storyboard */; };
 		CFEB49F228F13289008850DC /* DailyToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49F128F13289008850DC /* DailyToDoListTests.swift */; };
 		CFEB49FC28F13289008850DC /* DailyToDoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49FB28F13289008850DC /* DailyToDoListUITests.swift */; };
@@ -323,6 +339,8 @@
 		CF79092C2937B1D60027D25D /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
 		CF79092E293899D90027D25D /* FAQCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQCell.swift; sourceTree = "<group>"; };
 		CF79092F293899D90027D25D /* FAQCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQCell.xib; sourceTree = "<group>"; };
+		CF7909402938D00D0027D25D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF7909472938D6870027D25D /* WatchBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WatchBack.png; sourceTree = "<group>"; };
 		CF8148F229068E0700FD0974 /* ClassExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassExtension.swift; sourceTree = "<group>"; };
 		CF8149232906B75100FD0974 /* DailyTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8149262906B75100FD0974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -366,7 +384,6 @@
 		CFEB49DC28F13287008850DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CFEB49DE28F13287008850DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CFEB49E128F13287008850DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CFEB49E328F13288008850DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFEB49E628F13288008850DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFEB49E828F13288008850DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFEB49ED28F13289008850DC /* DailyToDoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyToDoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -520,6 +537,7 @@
 				CF487EA628F1B6F100498451 /* TaskListProvider.swift */,
 				CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */,
 				CFB6EE0228F1793B00E93585 /* DailyToDoListWidget.intentdefinition */,
+				CF7909472938D6870027D25D /* WatchBack.png */,
 				CFB6EE0328F1793C00E93585 /* Assets.xcassets */,
 				CFB6EE0528F1793C00E93585 /* Info.plist */,
 			);
@@ -554,21 +572,21 @@
 			children = (
 				CF5350AF291E3D4B00AFDC14 /* Background1.jpg */,
 				CF5350A8291E3D4A00AFDC14 /* Background2.jpg */,
-				CFE45D36292B5A4E007024EB /* DefaultBack.jpg */,
-				CF2BAF0D2925DAFE00EB49F4 /* spring_black.png */,
-				CF2BAF0E2925DAFE00EB49F4 /* spring_white.png */,
 				CF5350AE291E3D4B00AFDC14 /* Background3.jpg */,
 				CF5350AB291E3D4A00AFDC14 /* Background4.jpg */,
+				CF5350AD291E3D4A00AFDC14 /* Background5.jpg */,
+				CFE45D36292B5A4E007024EB /* DefaultBack.jpg */,
+				CF5350AC291E3D4A00AFDC14 /* LastPage.png */,
 				CF995F452923C54B00FAE2F1 /* title.png */,
 				CFE45D2E292B1D2A007024EB /* clock.png */,
 				CFE45D2F292B1D2B007024EB /* pencil.png */,
-				CF5350AD291E3D4A00AFDC14 /* Background5.jpg */,
 				CF5350A9291E3D4A00AFDC14 /* BlackBackground.png */,
 				CF5350AA291E3D4A00AFDC14 /* Bricks.png */,
-				CF5350AC291E3D4A00AFDC14 /* LastPage.png */,
 				CF5350D42921E92E00AFDC14 /* underline_Black.png */,
 				CF5350D62921F3F300AFDC14 /* underline_Pink.png */,
 				CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */,
+				CF2BAF0D2925DAFE00EB49F4 /* spring_black.png */,
+				CF2BAF0E2925DAFE00EB49F4 /* spring_white.png */,
 				CF535095291CD5E400AFDC14 /* sticker.png */,
 			);
 			path = Image;
@@ -614,11 +632,11 @@
 				CFEB4A5128F1556C008850DC /* Manager */,
 				CFEB49DA28F13287008850DC /* AppDelegate.swift */,
 				CFEB49DC28F13287008850DC /* SceneDelegate.swift */,
-				CFEB49E328F13288008850DC /* Assets.xcassets */,
 				CFE01AC82914FB96005B3316 /* Image */,
 				CFE01ABF2914F7CA005B3316 /* Font */,
 				CFEB49E828F13288008850DC /* Info.plist */,
 				CFCEA0C228F1A78600A49D82 /* GoogleService-Info.plist */,
+				CF7909402938D00D0027D25D /* Assets.xcassets */,
 			);
 			path = DailyToDoList;
 			sourceTree = "<group>";
@@ -952,7 +970,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF79093A2938A3570027D25D /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CFE01AE3291502E1005B3316 /* EF_Diary.ttf in Resources */,
+				CF7909432938D3F00027D25D /* underline_Indigo.png in Resources */,
+				CF7909382938A3570027D25D /* NanumBarunpenB.otf in Resources */,
+				CF79093B2938A3570027D25D /* Windsor_Great_Park-Regular.otf in Resources */,
+				CF7909392938A3570027D25D /* Worcestershire_Sauce-Regular.otf in Resources */,
+				CF79093D2938A3570027D25D /* NanumBarunpenR.otf in Resources */,
+				CF79093C2938A3570027D25D /* NanumAJumMaJaYu.ttf in Resources */,
 				CF81493C2906B75400FD0974 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -961,7 +986,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF7909342938A3550027D25D /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CFE01AE2291502E1005B3316 /* EF_Diary.ttf in Resources */,
+				CF7909492938D6870027D25D /* WatchBack.png in Resources */,
+				CF7909422938D3EF0027D25D /* underline_Indigo.png in Resources */,
+				CF7909322938A3550027D25D /* NanumBarunpenB.otf in Resources */,
+				CF7909352938A3550027D25D /* Windsor_Great_Park-Regular.otf in Resources */,
+				CF7909332938A3550027D25D /* Worcestershire_Sauce-Regular.otf in Resources */,
+				CF7909372938A3550027D25D /* NanumBarunpenR.otf in Resources */,
+				CF7909362938A3550027D25D /* NanumAJumMaJaYu.ttf in Resources */,
 				CFB6EE0428F1793C00E93585 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -979,6 +1012,7 @@
 				CF5350BD291E457400AFDC14 /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CF7909152930A3D40027D25D /* Backup.storyboard in Resources */,
 				CF7909292935EF870027D25D /* FAQ.storyboard in Resources */,
+				CF7909412938D00D0027D25D /* Assets.xcassets in Resources */,
 				CF5350BE291E457400AFDC14 /* NanumBarunpenB.otf in Resources */,
 				CF995F462923C54B00FAE2F1 /* title.png in Resources */,
 				CFE45D30292B1D2B007024EB /* clock.png in Resources */,
@@ -990,7 +1024,6 @@
 				CFEB4A6628F165C2008850DC /* Category.storyboard in Resources */,
 				CF5350B1291E3D4B00AFDC14 /* BlackBackground.png in Resources */,
 				CF5350B4291E3D4B00AFDC14 /* LastPage.png in Resources */,
-				CFEB49E428F13288008850DC /* Assets.xcassets in Resources */,
 				CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */,
 				CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CF7909232935ED520027D25D /* Notice.storyboard in Resources */,
@@ -1009,6 +1042,7 @@
 				CF5350D3291E9CE200AFDC14 /* Loading.xib in Resources */,
 				CFE45D31292B1D2B007024EB /* pencil.png in Resources */,
 				CF790931293899D90027D25D /* FAQCell.xib in Resources */,
+				CF7909482938D6870027D25D /* WatchBack.png in Resources */,
 				CF535097291CD5E400AFDC14 /* sticker.png in Resources */,
 				CFEB4A2E28F14B68008850DC /* Setting.storyboard in Resources */,
 				CF790919293234F00027D25D /* PopList.storyboard in Resources */,
