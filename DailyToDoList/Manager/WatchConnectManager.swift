@@ -139,7 +139,6 @@ extension WatchConnectManager : WCSessionDelegate {
         session.activate()
     }
 #endif
-    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         switch activationState {
         case .notActivated:

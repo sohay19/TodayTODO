@@ -97,36 +97,24 @@ extension RealmManager {
     //MARK: - Task
     func addTask(_ task:EachTask) {
         openRealm()
-#if os(iOS)
         guard let realm = realm else {
             print("realm is nil")
             return
         }
-#else
-        guard let realm = watchRealm else {
-            print("watchRealm is nil")
-            return
-        }
-#endif
         do {
             try realm.write {
                 realm.add(task)
             }
-#if os(iOS)
             if #available(watchOSApplicationExtension 9.0, *) {
                 WidgetCenter.shared.reloadAllTimelines()
             }
-            DispatchQueue.main.async {
-                WatchConnectManager.shared.sendToWatchTask()
-            }
-#else
+            WatchConnectManager.shared.sendToWatchTask()
             guard let reloadMainView = reloadMainView else {
                 return
             }
             DispatchQueue.main.async {
                 reloadMainView()
             }
-#endif
         } catch {
             print("Realm add Error")
         }
@@ -134,36 +122,24 @@ extension RealmManager {
     // updateTask
     func updateTask(_ task:EachTask) {
         openRealm()
-#if os(iOS)
         guard let realm = realm else {
             print("realm is nil")
             return
         }
-#else
-        guard let realm = watchRealm else {
-            print("watchRealm is nil")
-            return
-        }
-#endif
         do {
             try realm.write {
                 realm.add(task, update: .modified)
             }
-#if os(iOS)
             if #available(watchOSApplicationExtension 9.0, *) {
                 WidgetCenter.shared.reloadAllTimelines()
             }
-            DispatchQueue.main.async {
-                WatchConnectManager.shared.sendToWatchTask()
-            }
-#else
+            WatchConnectManager.shared.sendToWatchTask()
             guard let reloadMainView = reloadMainView else {
                 return
             }
             DispatchQueue.main.async {
                 reloadMainView()
             }
-#endif
         } catch {
             print("Realm update Error")
         }
@@ -171,36 +147,24 @@ extension RealmManager {
     // deleteTask
     func deleteTask(_ task:EachTask) {
         openRealm()
-#if os(iOS)
         guard let realm = realm else {
             print("realm is nil")
             return
         }
-#else
-        guard let realm = watchRealm else {
-            print("watchRealm is nil")
-            return
-        }
-#endif
         do {
             try realm.write {
                 realm.delete(task)
             }
-#if os(iOS)
             if #available(watchOSApplicationExtension 9.0, *) {
                 WidgetCenter.shared.reloadAllTimelines()
             }
-            DispatchQueue.main.async {
-                WatchConnectManager.shared.sendToWatchTask()
-            }
-#else
+            WatchConnectManager.shared.sendToWatchTask()
             guard let reloadMainView = reloadMainView else {
                 return
             }
             DispatchQueue.main.async {
                 reloadMainView()
             }
-#endif
         } catch {
             print("Realm delete Error")
         }
@@ -238,7 +202,6 @@ extension RealmManager {
             }
             var idList = alarmInfo.getIdList()
             if let index = idList.firstIndex(of: removeId) {
-                print("remove = \(index)")
                 idList.remove(at: index)
             }
             let newInfo = AlarmInfo(alarmInfo.taskId, idList, alarmInfo.alarmTime)

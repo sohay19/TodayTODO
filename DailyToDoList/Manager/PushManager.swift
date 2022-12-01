@@ -45,110 +45,118 @@ extension PushManager {
     func addNotification(_ data:EachTask) -> [String] {
         var idList:[String] = []
         var index = 0
-        //
-        guard let option = data.optionData else { return [] }
         //기본 알람 시간 세팅
+        guard let option = data.optionData else { return [] }
         let time = option.alarmTime.components(separatedBy: ":").map{Int($0)!}
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         dateComponents.hour = time[0]
         dateComponents.minute = time[1]
-        //
-        let startDate = Utils.dateStringToDate(data.taskDay)!
-        let endDate = Utils.dateStringToDate(option.taskEndDate)!
-        var nextDate = startDate
-        switch RepeatType(rawValue: data.repeatType) {
-        case .EveryDay:
-            if option.isEnd {
-                while endDate >= nextDate {
-                    guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
-                    if nextDate == newDate {
-                        break
+        //반복 아닐 때
+        if option.taskEndDate.isEmpty {
+            let taskDayList = data.taskDay.components(separatedBy: "-").map{Int($0)!}
+            dateComponents.day = taskDayList[2]
+            dateComponents.month = taskDayList[1]
+            dateComponents.year = taskDayList[0]
+            let id = addNotiForCenter(data, index, dateComponents)
+            idList.append(id)
+            index += 1
+        } else { // 반복 일 때
+            guard let startDate = Utils.dateStringToDate(data.taskDay), let endDate = Utils.dateStringToDate(option.taskEndDate) else { return [] }
+            var nextDate = startDate
+            switch RepeatType(rawValue: data.repeatType) {
+            case .EveryDay:
+                if option.isEnd {
+                    while endDate >= nextDate {
+                        guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
+                        if nextDate == newDate {
+                            break
+                        }
+                        nextDate = newDate
+                        let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
+                        let id = addNotiForCenter(data, index, date)
+                        idList.append(id)
+                        index += 1
                     }
-                    nextDate = newDate
-                    let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
-                    let id = addNotiForCenter(data, index, date)
-                    idList.append(id)
-                    index += 1
                 }
-            }
-        case .Eachweek:
-            if option.isEnd {
-                for (i, week) in option.getWeekDayList().enumerated() {
-                    if week {
-                        dateComponents.weekday = i+1
-                        while endDate >= nextDate {
-                            guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
-                            if nextDate == newDate {
-                                break
+            case .Eachweek:
+                if option.isEnd {
+                    for (i, week) in option.getWeekDayList().enumerated() {
+                        if week {
+                            dateComponents.weekday = i+1
+                            while endDate >= nextDate {
+                                guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
+                                if nextDate == newDate {
+                                    break
+                                }
+                                nextDate = newDate
+                                let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
+                                let id = addNotiForCenter(data, index, date)
+                                idList.append(id)
+                                index += 1
                             }
-                            nextDate = newDate
-                            let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
-                            let id = addNotiForCenter(data, index, date)
-                            idList.append(id)
-                            index += 1
                         }
                     }
                 }
-            }
-        case .EachOnceOfMonth:
-            if option.isEnd {
-                dateComponents.day = Utils.getDay(data.taskDay)
-                while endDate >= nextDate {
-                    guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
-                    if nextDate == newDate {
-                        break
+            case .EachOnceOfMonth:
+                if option.isEnd {
+                    dateComponents.day = Utils.getDay(data.taskDay)
+                    while endDate >= nextDate {
+                        guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
+                        if nextDate == newDate {
+                            break
+                        }
+                        nextDate = newDate
+                        let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
+                        let id = addNotiForCenter(data, index, date)
+                        idList.append(id)
+                        index += 1
                     }
-                    nextDate = newDate
-                    let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
-                    let id = addNotiForCenter(data, index, date)
-                    idList.append(id)
-                    index += 1
                 }
-            }
-        case .EachWeekOfMonth:
-            if option.isEnd {
-                let weekOfMonth = option.weekOfMonth
-                if weekOfMonth == -1 {
-                    dateComponents.weekdayOrdinal = weekOfMonth
-                } else {
-                    dateComponents.weekOfMonth = weekOfMonth
-                }
-                for (i, week) in option.getWeekDayList().enumerated() {
-                    if week {
-                        dateComponents.weekday = i+1
-                        while endDate >= nextDate {
-                            guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
-                            if nextDate == newDate {
-                                break
+            case .EachWeekOfMonth:
+                if option.isEnd {
+                    let weekOfMonth = option.weekOfMonth
+                    if weekOfMonth == -1 {
+                        dateComponents.weekdayOrdinal = weekOfMonth
+                    } else {
+                        dateComponents.weekOfMonth = weekOfMonth
+                    }
+                    for (i, week) in option.getWeekDayList().enumerated() {
+                        if week {
+                            dateComponents.weekday = i+1
+                            while endDate >= nextDate {
+                                guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
+                                if nextDate == newDate {
+                                    break
+                                }
+                                nextDate = newDate
+                                let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
+                                let id = addNotiForCenter(data, index, date)
+                                idList.append(id)
+                                index += 1
                             }
-                            nextDate = newDate
-                            let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
-                            let id = addNotiForCenter(data, index, date)
-                            idList.append(id)
-                            index += 1
                         }
                     }
                 }
-            }
-        case .EachYear:
-            if option.isEnd {
-                dateComponents.month = Utils.getMonth(data.taskDay)
-                dateComponents.day = Utils.getDay(data.taskDay)
-                while endDate >= nextDate {
-                    guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
-                    if nextDate == newDate {
-                        break
+            case .EachYear:
+                if option.isEnd {
+                    dateComponents.month = Utils.getMonth(data.taskDay)
+                    dateComponents.day = Utils.getDay(data.taskDay)
+                    while endDate >= nextDate {
+                        guard let newDate = Calendar.current.nextDate(after: nextDate, matching: dateComponents, matchingPolicy: .nextTime) else { break }
+                        if nextDate == newDate {
+                            break
+                        }
+                        nextDate = newDate
+                        let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
+                        let id = addNotiForCenter(data, index, date)
+                        idList.append(id)
+                        index += 1
                     }
-                    nextDate = newDate
-                    let date = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: nextDate)
-                    let id = addNotiForCenter(data, index, date)
-                    idList.append(id)
-                    index += 1
                 }
+            default:
+                break
             }
-        default:
-            break
         }
         return idList
     }
