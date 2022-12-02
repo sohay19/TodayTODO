@@ -6,6 +6,7 @@ def shared_pods
     # Pods for TodayTODO
     pod 'RealmSwift' , '> 10.0.0'
     pod 'FirebaseAuth' , '> 9.0.0'
+    pod 'GoogleUtilities'
 end
 
 target 'TodayTODO' do

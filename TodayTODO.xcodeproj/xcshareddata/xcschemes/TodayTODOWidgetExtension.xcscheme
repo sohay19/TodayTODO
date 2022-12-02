@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CFB6EDFB28F1793B00E93585"
-               BuildableName = "DailyTODO.appex"
+               BuildableName = "TodayTODO.appex"
                BlueprintName = "TodayTODOWidgetExtension"
                ReferencedContainer = "container:TodayTODO.xcodeproj">
             </BuildableReference>
@@ -30,7 +30,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CFEB49D628F13287008850DC"
-               BuildableName = "DailyTODO.app"
+               BuildableName = "TodayTODO.app"
                BlueprintName = "TodayTODO"
                ReferencedContainer = "container:TodayTODO.xcodeproj">
             </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CFEB49D628F13287008850DC"
-            BuildableName = "DailyTODO.app"
+            BuildableName = "TodayTODO.app"
             BlueprintName = "TodayTODO"
             ReferencedContainer = "container:TodayTODO.xcodeproj">
          </BuildableReference>
@@ -97,7 +97,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CFEB49D628F13287008850DC"
-            BuildableName = "DailyTODO.app"
+            BuildableName = "TodayTODO.app"
             BlueprintName = "TodayTODO"
             ReferencedContainer = "container:TodayTODO.xcodeproj">
          </BuildableReference>
