@@ -149,7 +149,7 @@
 		CFEB49DF28F13287008850DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DE28F13287008850DC /* MainViewController.swift */; };
 		CFEB49E228F13287008850DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB49E028F13287008850DC /* Main.storyboard */; };
 		CFEB49E728F13288008850DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB49E528F13288008850DC /* LaunchScreen.storyboard */; };
-		CFEB49F228F13289008850DC /* DailyToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49F128F13289008850DC /* DailyToDoListTests.swift */; };
+		CFEB49F228F13289008850DC /* TodayTODOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49F128F13289008850DC /* TodayTODOTests.swift */; };
 		CFEB49FC28F13289008850DC /* DailyToDoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49FB28F13289008850DC /* DailyToDoListUITests.swift */; };
 		CFEB49FE28F13289008850DC /* DailyToDoListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49FD28F13289008850DC /* DailyToDoListUITestsLaunchTests.swift */; };
 		CFEB4A2E28F14B68008850DC /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB4A2D28F14B68008850DC /* Setting.storyboard */; };
@@ -355,6 +355,7 @@
 		CFD0B13A28F905380029D936 /* AlarmInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmInfo.swift; sourceTree = "<group>"; };
 		CFD0B14528F91CDB0029D936 /* TaskInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskInfo.storyboard; sourceTree = "<group>"; };
 		CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoViewController.swift; sourceTree = "<group>"; };
+		CFDCD3CC293A475C0030CB1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CFE01ADC291502E0005B3316 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
 		CFE45D2E292B1D2A007024EB /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
@@ -370,7 +371,7 @@
 		CFEB49E628F13288008850DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFEB49E828F13288008850DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFEB49ED28F13289008850DC /* TodayTODOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayTODOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFEB49F128F13289008850DC /* DailyToDoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToDoListTests.swift; sourceTree = "<group>"; };
+		CFEB49F128F13289008850DC /* TodayTODOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTODOTests.swift; sourceTree = "<group>"; };
 		CFEB49F728F13289008850DC /* TodayTODOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodayTODOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEB49FB28F13289008850DC /* DailyToDoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToDoListUITests.swift; sourceTree = "<group>"; };
 		CFEB49FD28F13289008850DC /* DailyToDoListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToDoListUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -490,6 +491,7 @@
 		CF8149242906B75100FD0974 /* TodayTODOWatch */ = {
 			isa = PBXGroup;
 			children = (
+				CFDCD3CC293A475C0030CB1C /* Info.plist */,
 				CF8149252906B75100FD0974 /* Interface.storyboard */,
 				CF8149282906B75300FD0974 /* Assets.xcassets */,
 			);
@@ -620,7 +622,7 @@
 		CFEB49F028F13289008850DC /* TodayTODOTests */ = {
 			isa = PBXGroup;
 			children = (
-				CFEB49F128F13289008850DC /* DailyToDoListTests.swift */,
+				CFEB49F128F13289008850DC /* TodayTODOTests.swift */,
 			);
 			path = TodayTODOTests;
 			sourceTree = "<group>";
@@ -1331,7 +1333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFEB49F228F13289008850DC /* DailyToDoListTests.swift in Sources */,
+				CFEB49F228F13289008850DC /* TodayTODOTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1414,11 +1416,11 @@
 				DEVELOPMENT_TEAM = M7QY569K4A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodayTODOWatchWatchKitExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TodayTODO;
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = TodayTODOWatchWatchKitExtension.ComplicationController;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_WKExtensionDelegateClassName = TodayTODOWatchWatchKitExtension.ExtensionDelegate;
+				INFOPLIST_KEY_WKExtensionDelegateClassName = "$(PRODUCT_MODULE_NAME).ExtensionDelegate";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1450,11 +1452,11 @@
 				DEVELOPMENT_TEAM = M7QY569K4A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodayTODOWatchWatchKitExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TodayTODO;
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = TodayTODOWatchWatchKitExtension.ComplicationController;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_WKExtensionDelegateClassName = TodayTODOWatchWatchKitExtension.ExtensionDelegate;
+				INFOPLIST_KEY_WKExtensionDelegateClassName = "$(PRODUCT_MODULE_NAME).ExtensionDelegate";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1483,16 +1485,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "$(PRODUCT_NAME)";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7QY569K4A;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = TodayTODOWatchWatchKitExtension;
+				INFOPLIST_FILE = TodayTODOWatch/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.bailey.TodayTODO;
-				INFOPLIST_KEY_WKExtensionDelegateClassName = TodayTODOWatchWatchKitExtension.ExtensionDelegate;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1502,10 +1504,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO.watchkitapp;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = TodayTODO;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "DailyToDoList/Manager/DailyToDoListWatch-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "TodayTODO/Manager/TodayTODOWatch-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1522,16 +1526,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "$(PRODUCT_NAME)";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7QY569K4A;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = TodayTODOWatchWatchKitExtension;
+				INFOPLIST_FILE = TodayTODOWatch/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.bailey.TodayTODO;
-				INFOPLIST_KEY_WKExtensionDelegateClassName = TodayTODOWatchWatchKitExtension.ExtensionDelegate;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1541,10 +1545,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO.watchkitapp;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = TodayTODO;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "DailyToDoList/Manager/DailyToDoListWatch-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "TodayTODO/Manager/TodayTODOWatch-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 9.0;
@@ -1679,7 +1685,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = DailyTODO;
+				PRODUCT_NAME = TodayTODO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1734,7 +1740,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = DailyTODO;
+				PRODUCT_NAME = TodayTODO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

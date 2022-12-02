@@ -112,7 +112,9 @@ extension RealmManager {
             guard let reloadMainView = reloadMainView else {
                 return
             }
-            reloadMainView()
+            DispatchQueue.main.async {
+                reloadMainView()
+            }
         } catch {
             print("Realm add Error")
         }
@@ -135,7 +137,9 @@ extension RealmManager {
             guard let reloadMainView = reloadMainView else {
                 return
             }
-            reloadMainView()
+            DispatchQueue.main.async {
+                reloadMainView()
+            }
         } catch {
             print("Realm update Error")
         }
@@ -158,7 +162,9 @@ extension RealmManager {
             guard let reloadMainView = reloadMainView else {
                 return
             }
-            reloadMainView()
+            DispatchQueue.main.async {
+                reloadMainView()
+            }
         } catch {
             print("Realm delete Error")
         }

@@ -32,12 +32,12 @@
 	</array>
 	<key>NSUbiquitousContainers</key>
 	<dict>
-		<key>iCloud.DailyToDoListCloudKit</key>
+		<key>iCloud.TodayTODOCloudKit</key>
 		<dict>
 			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
 			<true/>
 			<key>NSUbiquitousContainerName</key>
-			<string>DailyToDoListCloudKit</string>
+			<string>TodayTODOCloudKit</string>
 			<key>NSUbiquitousContainerSupportedFolderLevels</key>
 			<string>ANY</string>
 		</dict>

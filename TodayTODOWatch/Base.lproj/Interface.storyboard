@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="21507" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc" pageOrientation="vertical">
-    <device id="watch40"/>
+    <device id="watch38"/>
     <dependencies>
-        <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="21501"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -23,11 +22,11 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="DailyToDoListWatchWatchKitExtension">
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="TodayTODOWatch" customModuleProvider="target">
                     <items>
                         <table alignment="left" id="EdJ-X5-BMb">
                             <items>
-                                <tableRow identifier="EachTaskType" id="JNU-rh-YR7" customClass="TaskTableRowController" customModule="DailyToDoListWatch" customModuleProvider="target">
+                                <tableRow identifier="EachTaskType" id="JNU-rh-YR7" customClass="TaskTableRowController" customModule="TodayTODOWatch" customModuleProvider="target">
                                     <group key="rootItem" width="1" height="60" alignment="left" radius="10" id="n55-R3-JZi">
                                         <items>
                                             <group width="0.80000000000000004" height="1" alignment="left" verticalAlignment="center" layout="vertical" id="boj-gb-s0h">
@@ -83,31 +82,39 @@
         <!--Task Interface Controller-->
         <scene sceneID="14M-wT-WOa">
             <objects>
-                <controller id="dDH-4m-eHF" customClass="TaskInterfaceController" customModule="DailyToDoListWatch" customModuleProvider="target">
+                <controller id="dDH-4m-eHF" customClass="TaskInterfaceController" customModule="TodayTODOWatch" customModuleProvider="target">
                     <items>
-                        <group width="1" alignment="left" id="o0b-yL-nCr">
+                        <group width="1" alignment="left" layout="vertical" id="o0b-yL-nCr">
                             <items>
-                                <group width="0.75" alignment="left" layout="vertical" id="VGS-hv-C0g">
+                                <group width="1" alignment="left" id="VGS-hv-C0g">
                                     <items>
-                                        <label alignment="left" text="Title" id="cDu-ib-LiB">
-                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <fontDescription key="font" name="NanumBarunpenOTF-Bold" family="NanumBarunpenOTF" pointSize="15"/>
-                                        </label>
-                                        <label alignment="left" text="Category" id="Xlm-Dc-tuL">
-                                            <color key="textColor" red="1" green="0.42604236642071447" blue="0.36495029858327921" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
-                                        </label>
-                                        <label alignment="left" text="Memo" id="HLY-1u-NN3">
-                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
-                                        </label>
+                                        <group width="0.75" alignment="left" layout="vertical" id="Wjk-07-zXZ">
+                                            <items>
+                                                <label alignment="left" text="Title" id="cDu-ib-LiB">
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="font" name="NanumBarunpenOTF-Bold" family="NanumBarunpenOTF" pointSize="15"/>
+                                                </label>
+                                                <label alignment="left" text="Category" id="Xlm-Dc-tuL">
+                                                    <color key="textColor" red="1" green="0.42604236642071447" blue="0.36495029858327921" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                        <group width="0.25" height="30" alignment="right" layout="vertical" id="iXq-bd-pYp">
+                                            <items>
+                                                <label alignment="right" text="Time" id="glk-2x-ges">
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="font" name="EF_Diary" family="EF_다이어리" pointSize="10"/>
+                                                </label>
+                                            </items>
+                                        </group>
                                     </items>
                                 </group>
-                                <group width="0.25" alignment="right" layout="vertical" id="iXq-bd-pYp">
+                                <group width="1" alignment="left" id="XYf-wc-qCj">
                                     <items>
-                                        <label alignment="right" text="Time" id="glk-2x-ges">
+                                        <label alignment="left" text="Memo" numberOfLines="0" id="HLY-1u-NN3">
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <fontDescription key="font" name="EF_Diary" family="EF_다이어리" pointSize="10"/>
+                                            <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
                                         </label>
                                     </items>
                                 </group>
@@ -136,7 +143,7 @@
                             <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
                         </label>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="DailyTODO" id="JfB-70-Muf"/>
+                    <notificationCategory key="notificationCategory" identifier="TodayTODO" id="JfB-70-Muf"/>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="Ha9-5s-0Gf"/>
                         <segue destination="8WJ-KP-rGP" kind="relationship" relationship="dynamicNotificationInterface" id="yd7-Ld-pYa"/>
@@ -148,7 +155,7 @@
         <!--Notification Controller-->
         <scene sceneID="m99-3R-Bfc">
             <objects>
-                <controller id="8WJ-KP-rGP" customClass="NotificationController" customModule="DailyToDoListWatch" customModuleProvider="target">
+                <controller id="8WJ-KP-rGP" customClass="NotificationController" customModule="TodayTODOWatch" customModuleProvider="target">
                     <items>
                         <label alignment="left" text="DailyTODO" id="yyu-x7-OyW">
                             <fontDescription key="font" name="NanumAJumMaJaYu" family="나눔손글씨 아줌마 자유" pointSize="12"/>
