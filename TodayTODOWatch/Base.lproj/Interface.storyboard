@@ -29,8 +29,9 @@
                                 <tableRow identifier="EachTaskType" id="JNU-rh-YR7" customClass="TaskTableRowController" customModule="TodayTODOWatch" customModuleProvider="target">
                                     <group key="rootItem" width="1" height="60" alignment="left" backgroundImage="DefaultBack" contentMode="scaleAspectFill" radius="10" spacing="6" id="n55-R3-JZi">
                                         <items>
-                                            <group width="0.02" alignment="left" id="OFm-cY-8Vx">
+                                            <group width="3" height="1" alignment="left" verticalAlignment="center" id="OFm-cY-8Vx">
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                                             </group>
                                             <group width="0.80000000000000004" height="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="5" id="boj-gb-s0h">
                                                 <items>
@@ -44,9 +45,9 @@
                                                     </label>
                                                 </items>
                                             </group>
-                                            <group width="0.20000000000000001" height="1" alignment="right" verticalAlignment="center" layout="overlap" id="Csy-qi-Gaz">
+                                            <group width="0.20000000000000001" alignment="right" verticalAlignment="center" layout="overlap" id="Csy-qi-Gaz">
                                                 <items>
-                                                    <imageView width="0.69999999999999996" height="0.5" alignment="center" verticalAlignment="center" image="checkmark" catalog="system" contentMode="scaleAspectFill" id="2VQ-a2-fEA"/>
+                                                    <imageView width="25" height="25" alignment="center" verticalAlignment="center" image="checkmark" catalog="system" contentMode="scaleAspectFill" id="2VQ-a2-fEA"/>
                                                     <button width="1" height="1" alignment="right" verticalAlignment="center" id="G2v-ja-NOk">
                                                         <connections>
                                                             <action selector="clickDone" destination="JNU-rh-YR7" id="4oz-eb-kbv"/>
@@ -109,13 +110,19 @@
                                             <fontDescription key="font" name="EF_Diary" family="EF_다이어리" pointSize="10"/>
                                         </label>
                                     </items>
+                                    <edgeInsets key="margins" left="9" right="9" top="0.0" bottom="0.0"/>
                                 </group>
-                                <label width="1" alignment="left" text="Memo" numberOfLines="0" id="HLY-1u-NN3">
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
-                                </label>
+                                <group width="1" alignment="left" id="Cu5-HV-cSY">
+                                    <items>
+                                        <label width="1" alignment="left" text="Memo" numberOfLines="0" id="HLY-1u-NN3">
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
+                                        </label>
+                                    </items>
+                                    <edgeInsets key="margins" left="9" right="9" top="0.0" bottom="0.0"/>
+                                </group>
                             </items>
-                            <edgeInsets key="margins" left="9" right="9" top="9" bottom="9"/>
+                            <edgeInsets key="margins" left="6" right="6" top="9" bottom="9"/>
                         </group>
                     </items>
                     <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
