@@ -68,7 +68,7 @@ class MainViewController: UIViewController {
         guard let today = calendarView.today else {
             return
         }
-        if today != Date() {
+        if Utils.dateToDateString(today) != Utils.dateToDateString(Date()) {
             calendarView.today = Date()
             calendarView.select(Date())
         }
@@ -435,6 +435,7 @@ extension MainViewController {
             }
             beforeTask = task
         }
+        isTaskOpen = true
         SystemManager.shared.openTaskInfo(.MODIFY, date: nil, task: beforeTask, load: loadTask, modify: { newTask in
             DataManager.shared.updateTask(newTask)
         })
