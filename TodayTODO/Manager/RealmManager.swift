@@ -614,7 +614,7 @@ extension RealmManager {
             let color = Utils.getColor(target.colorList)
             return color
         } else {
-            return .clear
+            return .black
         }
     }
     //

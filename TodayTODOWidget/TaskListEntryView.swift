@@ -34,7 +34,7 @@ struct TaskListEntryView: View {
                 TaskListView(list: entry.taskList)
             }
         }
-        .padding(.all)
+        .padding(EdgeInsets(top: 18, leading: 9, bottom: 18, trailing: 15))
     }
 }
 
@@ -58,55 +58,44 @@ struct TaskListView: View {
                 switch family {
                 case .systemSmall:
                     let task = list.first!
-                    VStack(spacing: 9) {
-                        Text(task.title)
-                            .font(.custom(K_Font_B, size: K_Size))
-                            .foregroundColor(.black)
-                            .truncationMode(.tail)
+                    let color = DataManager.shared.getCategoryColor(task.category)
+                    HStack (alignment: .top, spacing: 9) {
+                        VStack {
+                            //카테고리 라인
+                        }
+                        .frame(width: 3.0, height: geometry.size.height, alignment: .topLeading)
+                        .background(Color(uiColor: color))
                         
-                        Text(task.memo)
-                            .font(.custom(K_Font_R, size: K_Size))
-                            .foregroundColor(.black)
-                            .truncationMode(.tail)
+                        VStack(alignment: .leading, spacing: 9) {
+                            Text(task.title)
+                                .font(.custom(K_Font_B, size: K_Size))
+                                .foregroundColor(.black)
+                                .truncationMode(.tail)
+                            
+                            Text(task.memo)
+                                .font(.custom(K_Font_R, size: K_Size))
+                                .foregroundColor(.black)
+                                .truncationMode(.tail)
+                        }
+                        .frame(width: geometry.size.width - 12.0, height: geometry.size.height, alignment: .topLeading)
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
                 case .systemMedium:
                     let task = list.first!
                     let taskTime = task.taskTime.isEmpty ? "--:--" : task.taskTime
-                    VStack(spacing: 9) {
-                        HStack {
-                            Text(task.title)
-                                .font(.custom(K_Font_B, size: K_Size))
-                                .foregroundColor(Color.init(uiColor: UIColor.black))
-                                .truncationMode(.tail)
-                            
-                            Spacer()
-                            
-                            Image(systemName: "alarm")
-                                .foregroundColor(.gray)
-                            
-                            Text(taskTime)
-                                .font(.custom(N_Font, size: N_Size))
-                                .foregroundColor(.gray)
-                                .truncationMode(.tail)
-                        }.frame(width: geometry.size.width, alignment: .leading)
+                    let color = DataManager.shared.getCategoryColor(task.category)
+                    HStack (alignment: .top, spacing: 9) {
+                        VStack {
+                            //카테고리 라인
+                        }
+                        .frame(width: 3.0, height: geometry.size.height, alignment: .topLeading)
+                        .background(Color(uiColor: color))
                         
-                        HStack {
-                            Text(task.memo)
-                                .font(.custom(K_Font_R, size: K_Size))
-                                .foregroundColor(.black)
-                                .truncationMode(.tail)
-                        }.frame(width: geometry.size.width, alignment: .leading)
-                    }
-                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
-                default:
-                    VStack(spacing: 9) {
-                        ForEach(list, id: \.self) { task in
-                            let taskTime = task.taskTime.isEmpty ? "--:--" : task.taskTime
+                        VStack(spacing: 9) {
                             HStack {
                                 Text(task.title)
                                     .font(.custom(K_Font_B, size: K_Size))
-                                    .foregroundColor(.black)
+                                    .foregroundColor(Color.init(uiColor: UIColor.black))
                                     .truncationMode(.tail)
                                 
                                 Spacer()
@@ -118,17 +107,59 @@ struct TaskListView: View {
                                     .font(.custom(N_Font, size: N_Size))
                                     .foregroundColor(.gray)
                                     .truncationMode(.tail)
-                            }.frame(width: geometry.size.width, alignment: .leading)
+                            }.frame(width: geometry.size.width - 12.0, alignment: .leading)
                             
                             HStack {
                                 Text(task.memo)
                                     .font(.custom(K_Font_R, size: K_Size))
                                     .foregroundColor(.black)
                                     .truncationMode(.tail)
-                            }.frame(width: geometry.size.width, alignment: .leading)
-                            
-                            Spacer()
+                            }.frame(width: geometry.size.width - 12.0, alignment: .leading)
                         }
+                    }
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
+                default:
+                    VStack(spacing: 6) {
+                        ForEach(list, id: \.self) { task in
+                            let taskTime = task.taskTime.isEmpty ? "--:--" : task.taskTime
+                            let color = DataManager.shared.getCategoryColor(task.category)
+                            HStack (alignment: .top, spacing: 9) {
+                                VStack {
+                                    //카테고리 라인
+                                }
+                                .frame(width: 3.0, height: geometry.size.height/3 - 12.0, alignment: .topLeading)
+                                .background(Color(uiColor: color))
+                                
+                                VStack(spacing: 9) {
+                                    HStack {
+                                        Text(task.title)
+                                            .font(.custom(K_Font_B, size: K_Size))
+                                            .foregroundColor(.black)
+                                            .truncationMode(.tail)
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "alarm")
+                                            .foregroundColor(.gray)
+                                        
+                                        Text(taskTime)
+                                            .font(.custom(N_Font, size: N_Size))
+                                            .foregroundColor(.gray)
+                                            .truncationMode(.tail)
+                                    }.frame(width: geometry.size.width - 12.0, alignment: .topLeading)
+                                    
+                                    HStack {
+                                        Text(task.memo)
+                                            .font(.custom(K_Font_R, size: K_Size))
+                                            .foregroundColor(.black)
+                                            .truncationMode(.tail)
+                                    }.frame(width: geometry.size.width - 12.0, alignment: .topLeading)
+                                }
+                            }
+                            .frame(width: geometry.size.width, height: geometry.size.height/3, alignment: .topLeading)
+                        }
+                        
+                        Spacer()
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
                 }
