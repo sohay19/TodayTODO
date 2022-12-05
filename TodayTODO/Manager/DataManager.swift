@@ -118,7 +118,13 @@ extension DataManager {
     }
     /* ORDER */
     func reloadCategoryOrder() {
-        let list = realmManager.getCategoryOrder() 
+        let list = realmManager.getCategoryOrder()
+        // 기존에 CategoryOrderData가 없었다면 UserDefults 사용
+        if list.count == 0 {
+            let newOrder = CategoryOrderData(order: getCategoryOrder())
+            realmManager.setCategoryOrder(newOrder)
+            return
+        }
         setCategoryOrderUser(list)
     }
     func getCategoryOrder() -> [String] {
