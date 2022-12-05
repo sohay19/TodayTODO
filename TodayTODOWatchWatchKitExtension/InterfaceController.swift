@@ -18,41 +18,46 @@ class InterfaceController: WKInterfaceController {
     private var taskList:[EachTask] = []
     
     override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         // Configure interface objects here.
-        WatchConnectManager.shared.initWatchTable = setTaskList(_:)
+        WatchConnectManager.shared.initWatchTable = loadTable(_:)
     }
     
     override func willActivate() {
+        super.willActivate()
         // This method is called when watch view controller is about to be visible to user
         initTable()
     }
-    
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-    }
 }
 
+//MARK: - data
 extension InterfaceController {
     override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
         return taskList[rowIndex]
     }
 }
 
+//MARK: - Func
 extension InterfaceController {
     //
-    func setTaskList(_ receiveTaskList:[EachTask]) {
-        taskList = receiveTaskList.sorted(by: { task1, task2 in
-            if task1.isDone {
-                return task2.isDone ? true : false
-            } else {
-                return true
+    func loadTable(_ receiveTaskList:[EachTask]) {
+        let list = DataManager.shared.getCategoryOrder()
+        taskList = receiveTaskList.sorted(by: {
+            if let first = list.firstIndex(of: $0.category), let second = list.firstIndex(of: $1.category) {
+                if $0.isDone && !$1.isDone {
+                    return false
+                } else if !$0.isDone && $1.isDone {
+                    return true
+                } else {
+                    return first < second
+                }
             }
+            return false
         })
         initTable()
     }
     //
     func initTable() {
-        //
         labelEmpty.setHidden(taskList.count == 0 ? false : true)
         taskTable.setNumberOfRows(taskList.count, withRowType: "EachTaskType")
         //
@@ -60,13 +65,9 @@ extension InterfaceController {
             guard let row = taskTable.rowController(at: i) as? TaskTableRowController else {
                 return
             }
-            //
             row.updateDone = updateTask(_:_:)
             row.task = task
-            row.labelTitle.setText(task.title)
-            row.labelTime.setText(task.taskTime.isEmpty ? "--:--" : task.taskTime)
-            row.btnDone.setBackgroundImage(UIImage(systemName: "checkmark"))
-            row.btnDone.setBackgroundColor(task.isDone ? UIColor.red : UIColor.gray)
+            row.inputCell()
         }
     }
     //

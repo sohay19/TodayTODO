@@ -209,7 +209,6 @@ extension MainViewController {
                     return true
                 }
             })
-            //
             for task in sortedList {
                 let category = task.category
                 if !categoryList.contains(where: {$0 == category}) {

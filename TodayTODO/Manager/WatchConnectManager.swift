@@ -50,6 +50,13 @@ extension WatchConnectManager {
                 sendTypeKey:SendType.Update.rawValue,
                 dataTypeKey:DataType.NSCategoryDataList.rawValue,
                 dataKey:categoryDataForWatch])
+            //Category Order 보내기
+            let orderList = DataManager.shared.getCategoryOrder()
+            let orderData = try JSONEncoder().encode(orderList)
+            session.transferUserInfo([
+                sendTypeKey:SendType.Update.rawValue,
+                dataTypeKey:DataType.Array.rawValue,
+                dataKey:orderData])
             //Task 보내기
             let founData = DataManager.shared.getTodayTask()
             var taskList:[NSEachTask] = []
@@ -198,6 +205,9 @@ extension WatchConnectManager : WCSessionDelegate {
                 }
             case .Update:
                 switch DataType(rawValue: dataType) {
+                case .Array:
+                    let receiveMsgData = try JSONDecoder().decode([String].self, from: userInfo[dataKey] as! Data)
+                    DataManager.shared.setCategoryOrder(receiveMsgData)
                 case .NSEachTask:
                     var newTaskList:[EachTask] = []
                     let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[dataKey] as! Data)

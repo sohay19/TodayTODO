@@ -107,4 +107,9 @@ extension UIColor {
     class var newIndigo:UIColor? {
         return UIColor(named: "NewIndigo")
     }
+    #if os(watchOS)
+    class var systemIndigo:UIColor? {
+        return UIColor(named: "SystemIndigo")
+    }
+    #endif
 }

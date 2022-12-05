@@ -133,6 +133,8 @@
 		CFD0B14828F91CEA0029D936 /* TaskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */; };
 		CFDCD3CD293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CFDCD3D0293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition */; };
 		CFDCD3CE293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CFDCD3D0293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition */; };
+		CFDCD3D1293DE0F30030CB1C /* DefaultBack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D36292B5A4E007024EB /* DefaultBack.jpg */; };
+		CFDCD3D2293DE0F30030CB1C /* DefaultBack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D36292B5A4E007024EB /* DefaultBack.jpg */; };
 		CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADC291502E0005B3316 /* EF_Diary.ttf */; };
 		CFE01AE2291502E1005B3316 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADC291502E0005B3316 /* EF_Diary.ttf */; };
 		CFE01AE3291502E1005B3316 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADC291502E0005B3316 /* EF_Diary.ttf */; };
@@ -940,6 +942,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF8149292906B75300FD0974 /* Assets.xcassets in Resources */,
+				CFDCD3D2293DE0F30030CB1C /* DefaultBack.jpg in Resources */,
 				CF8149272906B75100FD0974 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -950,6 +953,7 @@
 			files = (
 				CF79093A2938A3570027D25D /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CFE01AE3291502E1005B3316 /* EF_Diary.ttf in Resources */,
+				CFDCD3D1293DE0F30030CB1C /* DefaultBack.jpg in Resources */,
 				CF7909432938D3F00027D25D /* underline_Indigo.png in Resources */,
 				CF7909382938A3570027D25D /* NanumBarunpenB.otf in Resources */,
 				CF79093B2938A3570027D25D /* Windsor_Great_Park-Regular.otf in Resources */,

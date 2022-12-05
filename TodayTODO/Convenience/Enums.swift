@@ -71,6 +71,7 @@ enum SettingType:String {
 }
 
 enum DataType:String {
+    case Array = "Array"
     case EachTask = "EachTask"
     case NSEachTask = "NSEachTask"
     case NSEachTaskList = "NSEachTaskList"
