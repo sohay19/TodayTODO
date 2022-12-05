@@ -64,6 +64,14 @@ class MainViewController: UIViewController {
         //
         SystemManager.shared.openLoading()
         checkVersion()
+        //날짜가 넘어갔는지 확인
+        guard let today = calendarView.today else {
+            return
+        }
+        if today != Date() {
+            calendarView.today = Date()
+            calendarView.select(Date())
+        }
         //
         loadTask()
         initSegment()
