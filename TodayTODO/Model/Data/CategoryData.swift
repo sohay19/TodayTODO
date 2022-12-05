@@ -9,6 +9,32 @@ import Foundation
 import UIKit
 import RealmSwift
 
+class CategoryOrderData : Object {
+    @Persisted(primaryKey: true)
+    var primaryKey:Int
+    @Persisted
+    var orderList:List<String>
+    private var order:[String] {
+        get {
+            return orderList.map{$0}
+        }
+        set {
+            orderList.removeAll()
+            orderList.append(objectsIn: newValue)
+        }
+    }
+    
+    convenience init(order:[String], _ primaryKey:Int = 0) {
+        self.init()
+        self.primaryKey = primaryKey
+        self.order = order
+    }
+    
+    func getCategoryOrder() -> [String] {
+        return order
+    }
+}
+
 class CategoryData : Object {
     @Persisted
     var title = ""

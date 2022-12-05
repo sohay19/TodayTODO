@@ -604,10 +604,10 @@ extension TaskInfoViewController {
     }
     // 날짜 선택 시 팝업 닫음
     @IBAction func changeDate(_ sender:UIDatePicker) {
-        presentedViewController?.dismiss(animated: false)
         // 반복 지정 초기화
-        btnRepeat.sendActions(for: .touchUpInside)
         offRepeat()
+        presentedViewController?.dismiss(animated: false)
+        btnRepeat.sendActions(for: .touchUpInside)
     }
     //시간 선택 시 알람 시간 변경
     @IBAction func changeTime(_ sender:UIDatePicker) {

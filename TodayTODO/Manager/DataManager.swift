@@ -89,29 +89,58 @@ extension DataManager {
     func loadCategory() -> [CategoryData] {
         return realmManager.loadCategory()
     }
+    //
+    func deleteCategory(_ category:String) {
+        realmManager.deleteCategory(category)
+        //
+        var newList = DataManager.shared.getCategoryOrder()
+        if let index = newList.firstIndex(of: category) {
+            newList.remove(at: index)
+        }
+        setCategoryOrder(newList)
+    }
+    func deleteCategory(_ category:CategoryData) {
+        realmManager.deleteCategory(category)
+        //
+        var newList = DataManager.shared.getCategoryOrder()
+        if let index = newList.firstIndex(of: category.title) {
+            newList.remove(at: index)
+        }
+        setCategoryOrder(newList)
+    }
+    //
+    func deleteAllCategory() {
+        realmManager.deleteAllCategory()
+        //
+        setCategoryOrder([String]())
+        // 기본 카테고리 설정을 위해
+        realmManager.openRealm()
+    }
+    /* ORDER */
+    func reloadCategoryOrder() {
+        let list = realmManager.getCategoryOrder() 
+        setCategoryOrderUser(list)
+    }
     func getCategoryOrder() -> [String] {
         guard let list = UserDefaults.shared.array(forKey: CategoryList) as? [String] else {
             return []
         }
         return list
     }
-    //set
     func setCategoryOrder(_ list:[String]) {
+        setCategoryOrderUser(list)
+        setCategoryOrderRealm(list)
+    }
+    //set
+    func setCategoryOrderUser(_ list:[String]) {
         UserDefaults.shared.set(list, forKey: CategoryList)
+    }
+    func setCategoryOrderRealm(_ list:[String]) {
+        let categoryOrder = CategoryOrderData(order: list)
+        realmManager.setCategoryOrder(categoryOrder)
     }
     func getCategoryColor(_ category:String) -> UIColor {
         return realmManager.getCategoryColor(category)
-    }
-    //
-    func deleteCategory(_ category:String) {
-        realmManager.deleteCategory(category)
-    }
-    func deleteCategory(_ category:CategoryData) {
-        realmManager.deleteCategory(category)
-    }
-    //
-    func deleteAllCategory() {
-        realmManager.deleteAllCategory()
     }
 }
 

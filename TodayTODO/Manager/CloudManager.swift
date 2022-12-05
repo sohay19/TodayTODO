@@ -90,11 +90,18 @@ extension CloudManager {
         guard let originRealm = realmUrl, let backupDir = backupDir else {
             return
         }
-        PopupManager.shared.openYesOrNo(vc, title: "백업파일 로드", msg: "가장 최신 파일로 로드하시겠습니까?\n(기존에 파일이 있던 경우 덮어쓰기 됩니다.)", completeYes: { _ in
+        PopupManager.shared.openYesOrNo(vc, title: "백업파일 로드", msg: "가장 최신 파일로 로드하시겠습니까?\n(데이터가 덮어쓰기 됩니다)", completeYes: { _ in
             //가장 최근 백업 찾기
             var list = self.fileManager.loadFile(backupDir)
             list.sort(by: {$0 > $1})
             self.copyToOriginDir(vc, sUrl: backupDir.appendingPathComponent(list.first!), dUrl: originRealm.deletingLastPathComponent())
+            //
+            PopupManager.shared.openYesOrNo(vc, title: "알림", msg: "적용을 위해 앱을 재시작 해야합니다", completeYes: { _ in
+                UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    exit(0)
+                }
+            })
         })
     }
     //선택파일 로드
@@ -102,8 +109,15 @@ extension CloudManager {
         guard let originRealm = realmUrl else {
             return
         }
-        PopupManager.shared.openYesOrNo(vc, title: "백업파일 로드", msg: "가장 최신 파일로 로드하시겠습니까?\n(기존에 파일이 있던 경우 덮어쓰기 됩니다.)", completeYes: { _ in
+        PopupManager.shared.openYesOrNo(vc, title: "백업파일 로드", msg: "가장 최신 파일로 로드하시겠습니까?\n(데이터가 덮어쓰기 됩니다)", completeYes: { _ in
             self.copyToOriginDir(vc, sUrl: url, dUrl: originRealm.deletingLastPathComponent())
+            //
+            PopupManager.shared.openYesOrNo(vc, title: "알림", msg: "적용을 위해 앱을 재시작 해야합니다", completeYes: { _ in
+                UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    exit(0)
+                }
+            })
         })
     }
     //백업 폴더 선택 삭제
@@ -154,7 +168,7 @@ extension CloudManager {
                 })
                 PopupManager.shared.openOkAlert(vc, title: "로드 실패", msg: "다시 시도해주세요")
             })
-        }
+        }        
         //기존 폴더 없애고 tmp 폴더 이름 바꾸기
         fileManager.deleteDir(sUrl, {error in
             print("Delete Origin Fail = \(error)")

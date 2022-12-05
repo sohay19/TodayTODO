@@ -65,7 +65,7 @@ enum MainType:Int {
 enum SettingType:String {
     case Notice = "공지사항"
     case FAQ = "FAQ"
-    case Backup = "iCloud 백업설정"
+    case Backup = "iCloud 백업"
     case Question = "문의하기"
     case Reset = "데이터 초기화"
 }

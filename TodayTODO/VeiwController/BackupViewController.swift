@@ -169,7 +169,7 @@ extension BackupViewController {
     func updateDate() {
         updateCloud(label: labelBackupDate)
     }
-    
+    // 백업 파일 로드
     func loadBackupFile(_ indexPath:IndexPath) {
         let url = self.dataList[indexPath.row].url
         iCloudLoadFile(self, url)
@@ -241,7 +241,7 @@ extension BackupViewController : UITableViewDelegate, UITableViewDataSource {
             self.loadBackupFile(indexPath)
             success(true)
         }
-        load.image = UIImage(systemName: "tray.and.arrow.up.fill", withConfiguration: mediumConfig)
+        load.image = UIImage(systemName: "icloud.and.arrow.down", withConfiguration: mediumConfig)
         load.backgroundColor = .systemIndigo.withAlphaComponent(0.5)
         //
         let delete = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
