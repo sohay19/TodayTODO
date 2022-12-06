@@ -209,46 +209,47 @@ extension PushListViewController {
     //
     func deletePush(_ indexPath:IndexPath) {
         let category = categoryList[indexPath.section]
-        guard let request = pushList[category]?[indexPath.row] else {
-            return
-        }
-        guard let taskId = request.content.userInfo[idKey] as? String else {
-            return
-        }
-        guard let task = DataManager.shared.getTask(taskId) else {
-            return
-        }
-        
-        var actionList:[(UIAlertAction)->Void] = []
-        // 모두 삭제
-        actionList.append { [self] _ in
-            guard let option = task.optionData else { return }
-            let newOption = OptionData(taskId: task.taskId, weekDay: task.getWeekDayList(), weekOfMonth: option.weekOfMonth, isEnd: option.isEnd, taskEndDate: option.taskEndDate, isAlarm: false, alarmTime: "")
-            let newTask = EachTask(id: task.taskId, taskDay: task.taskDay, category: task.category, time: task.taskTime, title: task.title, memo: task.memo, repeatType: task.repeatType, optionData: newOption, isDone: task.isDone)
-            // task data 업데이트
-            DataManager.shared.updateTask(newTask)
-            // 리로드
-            refresh()
-        }
-        // 해당 알람만 삭제
-        actionList.append { [self] _ in
-            DataManager.shared.updateAlarmPush(taskId, removeId: request.identifier)
-            // 리스트 삭제
-            pushList[category]?.remove(at: indexPath.row)
-            if let list = pushList[category] {
-                if list.isEmpty {
-                    categoryList.remove(at: indexPath.section)
-                }
+        guard let request = pushList[category]?[indexPath.row] else { return }
+        guard let taskId = request.content.userInfo[idKey] as? String else { return }
+        guard let task = DataManager.shared.getTask(taskId) else { return }
+        guard let repeatType = RepeatType(rawValue: task.repeatType) else { return }
+        if repeatType == .None {
+            removePush(task)
+        } else {
+            var actionList:[(UIAlertAction)->Void] = []
+            // 모두 삭제
+            actionList.append { [self] _ in
+                removePush(task)
             }
-            pushTable.reloadData()
+            // 해당 알람만 삭제
+            actionList.append { [self] _ in
+                DataManager.shared.updateAlarmPush(taskId, removeId: request.identifier)
+                // 리스트 삭제
+                pushList[category]?.remove(at: indexPath.row)
+                if let list = pushList[category] {
+                    if list.isEmpty {
+                        categoryList.remove(at: indexPath.section)
+                    }
+                }
+                pushTable.reloadData()
+            }
+            // 취소
+            actionList.append { [self] _ in
+                pushTable.reloadData()
+            }
+            PopupManager.shared.openAlertSheet(self, title: "알람 삭제", msg: "알람을 삭제하시겠습니까?",
+                                               btnMsg: ["모두 삭제", "해당 알람만 삭제", "취소"],
+                                               complete: actionList)
         }
-        // 취소
-        actionList.append { [self] _ in
-            pushTable.reloadData()
-        }
-        PopupManager.shared.openAlertSheet(self, title: "알람 삭제", msg: "알람을 삭제하시겠습니까?",
-                                           btnMsg: ["모두 삭제", "해당 알람만 삭제", "취소"],
-                                           complete: actionList)
+    }
+    private func removePush(_ task:EachTask) {
+        guard let option = task.optionData else { return }
+        let newOption = OptionData(taskId: task.taskId, weekDay: task.getWeekDayList(), weekOfMonth: option.weekOfMonth, isEnd: option.isEnd, taskEndDate: option.taskEndDate, isAlarm: false, alarmTime: "")
+        let newTask = EachTask(id: task.taskId, taskDay: task.taskDay, category: task.category, time: task.taskTime, title: task.title, memo: task.memo, repeatType: task.repeatType, optionData: newOption, isDone: task.isDone)
+        // task data 업데이트
+        DataManager.shared.updateTask(newTask)
+        // 리로드
+        refresh()
     }
 }
 

@@ -607,7 +607,7 @@ extension TaskInfoViewController {
         // 반복 지정 초기화
         offRepeat()
         presentedViewController?.dismiss(animated: false)
-        btnRepeat.sendActions(for: .touchUpInside)
+        clickBtnRepeat(false)
     }
     //시간 선택 시 알람 시간 변경
     @IBAction func changeTime(_ sender:UIDatePicker) {

@@ -445,77 +445,47 @@ extension MainViewController {
         switch currentType {
         case .Today:
             let category = categoryList[indexPath.section]
-            guard let task = resultList[category]?[indexPath.row] else {
-                return
-            }
-            guard let type = RepeatType(rawValue: task.repeatType) else { return }
-            if type != .None {
-                var actionList:[(UIAlertAction)->Void] = []
-                // 모두 삭제
-                actionList.append { _ in
-                    DataManager.shared.deleteTask(task)
-                }
-                // 이전 일정 유지
-                actionList.append { _ in
-                    let newTask = task.clone()
-                    guard let date = Utils.beforeDay(Date()) else { return }
-                    if Utils.dateToDateString(date) == task.taskDay {
-                        newTask.stopRepeat()
-                    } else {
-                        newTask.optionData?.isEnd = true
-                        newTask.optionData?.taskEndDate = Utils.dateToDateString(date)
-                    }
-                    // 종료일을 이전날까지로 변경하여 업데이트
-                    DataManager.shared.updateTask(newTask)
-                }
-                // 취소
-                actionList.append { _ in
-                    ()
-                }
-                PopupManager.shared.openAlertSheet(self, title: "TODO 삭제", msg: "TODO를 삭제하시겠습니까?",
-                                                   btnMsg: ["모두 삭제", "이전 TODO 유지", "취소"],
-                                                   complete: actionList)
-            } else {
-                DataManager.shared.deleteTask(task)
-            }
+            guard let task = resultList[category]?[indexPath.row] else { return }
+            deleteTaskProcess(task)
         case .Month:
-            guard let category = monthlyTaskList[Utils.getDay(monthDate)]?.categoryList[indexPath.section] else {
-                return
-            }
-            guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else {
-                return
-            }
-            guard let type = RepeatType(rawValue: task.repeatType) else { return }
-            if type != .None {
-                var actionList:[(UIAlertAction)->Void] = []
-                // 모두 삭제
-                actionList.append { _ in
-                    DataManager.shared.deleteTask(task)
-                }
-                // 이전 일정 유지
-                actionList.append { [self] _ in
-                    let newTask = task.clone()
-                    guard let date = Utils.beforeDay(monthDate) else { return }
-                    if Utils.dateToDateString(date) == task.taskDay {
-                        newTask.stopRepeat()
-                    } else {
-                        newTask.optionData?.isEnd = true
-                        newTask.optionData?.taskEndDate = Utils.dateToDateString(date)
-                    }
-                    // 종료일을 이전날까지로 변경하여 업데이트
-                    DataManager.shared.updateTask(newTask)
-                }
-                // 취소
-                actionList.append { _ in
-                    ()
-                }
-                PopupManager.shared.openAlertSheet(self, title: "TODO 삭제", msg: "TODO를 삭제하시겠습니까?",
-                                                   btnMsg: ["모두 삭제", "이전 TODO 유지", "취소"],
-                                                   complete: actionList)
-            } else {
+            guard let category = monthlyTaskList[Utils.getDay(monthDate)]?.categoryList[indexPath.section] else { return }
+            guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else { return }
+            deleteTaskProcess(task)
+        }
+    }
+    private func deleteTaskProcess(_ task:EachTask) {
+        guard let type = RepeatType(rawValue: task.repeatType) else { return }
+        if type != .None {
+            var actionList:[(UIAlertAction)->Void] = []
+            // 모두 삭제
+            actionList.append { _ in
                 DataManager.shared.deleteTask(task)
             }
+            // 이전 일정 유지
+            actionList.append { [self] _ in
+                let newTask = task.clone()
+                guard let date = Utils.beforeDay(monthDate) else { return }
+                if Utils.dateToDateString(date) == task.taskDay {
+                    newTask.stopRepeat()
+                } else {
+                    newTask.optionData?.isEnd = true
+                    newTask.optionData?.taskEndDate = Utils.dateToDateString(date)
+                }
+                // 종료일을 이전날까지로 변경하여 업데이트
+                DataManager.shared.updateTask(newTask)
+            }
+            // 취소
+            actionList.append { _ in
+                ()
+            }
+            PopupManager.shared.openAlertSheet(self,
+                                               title: "TODO 삭제", msg: "TODO를 삭제하시겠습니까?",
+                                               btnMsg: ["모두 삭제", "이전 TODO 유지", "취소"],
+                                               complete: actionList)
+        } else {
+            DataManager.shared.deleteTask(task)
         }
+        
     }
 }
 

@@ -18,6 +18,8 @@
 	<false/>
 	<key>FirebaseAutomaticScreenReportingEnabled</key>
 	<false/>
+	<key>Localization native development region</key>
+	<string>Korea</string>
 	<key>NSUbiquitousContainers</key>
 	<dict>
 		<key>iCloud.TodayTODOCloudKit</key>
