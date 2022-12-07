@@ -111,10 +111,7 @@ extension DataManager {
     //
     func deleteAllCategory() {
         realmManager.deleteAllCategory()
-        //
         setCategoryOrder([String]())
-        // 기본 카테고리 설정을 위해
-        realmManager.openRealm()
     }
     /* ORDER */
     func reloadCategoryOrder() {

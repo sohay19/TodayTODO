@@ -113,6 +113,13 @@ extension SettingViewController {
         DataManager.shared.deleteAllAlarmPush()
         //카테고리 삭제
         DataManager.shared.deleteAllCategory()
+        //
+        PopupManager.shared.openYesOrNo(self, title: "알림", msg: "적용을 위해 앱을 재시작 해야합니다", completeYes: { _ in
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                exit(0)
+            }
+        })
     }
 }
 
@@ -123,7 +130,7 @@ extension SettingViewController : MFMailComposeViewControllerDelegate {
         guard MFMailComposeViewController.canSendMail() else { return }
         //메일 내용
         let toRecipents = ["sy40222@gmail.com"]
-        let emailTitle = "Daily TOOD 문의/피드백"
+        let emailTitle = "Today TODO 문의/피드백"
         let messageBody = "- OS Version: \(SystemManager.shared.getOsVersion())\n" +
         "- Device: \(SystemManager.shared.getModelName())\n" +
         "- 문의내용: "
