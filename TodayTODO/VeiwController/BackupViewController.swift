@@ -145,10 +145,6 @@ extension BackupViewController {
         cloudManager.realmUrl = DataManager.shared.getRealmURL()
         cloudManager.loadBackupFile(vc, url)
     }
-    func iCloudLoadRecentlyFile(_ vc:UIViewController) {
-        cloudManager.realmUrl = DataManager.shared.getRealmURL()
-        cloudManager.loadRecentlyBackupFile(vc)
-    }
     //
     func deleteiCloudBackupFile(_ url:URL) {
         cloudManager.realmUrl = DataManager.shared.getRealmURL()
@@ -171,17 +167,24 @@ extension BackupViewController {
     }
     // 백업 파일 로드
     func loadBackupFile(_ indexPath:IndexPath) {
-        let url = self.dataList[indexPath.row].url
-        iCloudLoadFile(self, url)
+        PopupManager.shared.openYesOrNo(self, title: "백업 파일 로드", msg: "해당 파일로 덮어쓰시겠습니까?",
+                                        completeYes: { [self] _ in
+            SystemManager.shared.openLoading()
+            let url = self.dataList[indexPath.row].url
+            iCloudLoadFile(self, url)
+        }, completeNo: { _ in SystemManager.shared.closeLoading() })
     }
     
     func deleteBackupFile(_ indexPath:IndexPath)  {
-        let url = self.dataList[indexPath.row].url
-        deleteiCloudBackupFile(url)
-        //
-        dataList.remove(at: indexPath.row)
-        tableView.reloadData()
-        updateDate()
+        PopupManager.shared.openYesOrNo(self, title: "백업 파일 삭제", msg: "해당 파일을 삭제하시겠습니까?",
+                                        completeYes: { [self] _ in
+            let url = self.dataList[indexPath.row].url
+            deleteiCloudBackupFile(url)
+            //
+            dataList.remove(at: indexPath.row)
+            tableView.reloadData()
+            updateDate()
+        })
     }
 }
 

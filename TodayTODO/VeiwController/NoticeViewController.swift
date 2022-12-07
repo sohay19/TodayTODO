@@ -58,6 +58,7 @@ extension NoticeViewController {
         //
         labelTitle.font = UIFont(name: E_Font_B, size: E_FontSize)
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelNilMsg.isHidden = true
         //
         btnBack.setImage(UIImage(systemName: "chevron.backward", withConfiguration: mediumConfig), for: .normal)
         btnBack.tintColor = .label

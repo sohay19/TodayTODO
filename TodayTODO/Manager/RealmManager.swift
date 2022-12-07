@@ -431,7 +431,6 @@ extension RealmManager {
                 }
             default:
                 //그 외 모든 반복
-                print("taskEndDate = \(taskEndDate)")
                 return isEnd ? taskEndDate >=  Utils.dateToDateString(firstDate): true
             }
         }

@@ -121,64 +121,66 @@ extension CategoryViewController {
     }
     //
     func deleteCategory(_ cateogry:String) {
-        guard let list = taskList[cateogry] else {
-            return
-        }
-        if list.count > 0 {
-            var actionList:[(UIAlertAction)->Void] = []
+        PopupManager.shared.openYesOrNo(self, title: "카테고리 삭제", msg: "카테고리를 삭제하시겠습니까?") { [self] _ in
             guard let list = taskList[cateogry] else {
                 return
             }
-            //모두 삭제
-            actionList.append { [self] _ in
-                for task in list {
-                    DataManager.shared.deleteTask(task)
+            if list.count > 0 {
+                var actionList:[(UIAlertAction)->Void] = []
+                guard let list = taskList[cateogry] else {
+                    return
                 }
-                DataManager.shared.deleteCategory(cateogry)
-                refresh()
-            }
-            //옮기기
-            actionList.append { [self] _ in
-                let board = UIStoryboard(name: PopListBoard, bundle: nil)
-                guard let poplistVC = board.instantiateViewController(withIdentifier: PopListBoard) as? PopListViewController else { return }
-                // 팝업을 위한 세팅
-                poplistVC.modalTransitionStyle = .coverVertical
-                poplistVC.modalPresentationStyle = .overCurrentContext
-                var newList = categoryList
-                guard let index = newList.firstIndex(of: cateogry) else { return }
-                newList.remove(at: index)
-                poplistVC.categoryList = newList
-                // 옮겨질 카테고리 선택
-                poplistVC.complete = { [self] selectedCategory in
+                //모두 삭제
+                actionList.append { [self] _ in
                     for task in list {
-                        let newTask = task.clone()
-                        newTask.setCategory(selectedCategory)
-                        DataManager.shared.updateTask(newTask)
+                        DataManager.shared.deleteTask(task)
                     }
                     DataManager.shared.deleteCategory(cateogry)
                     refresh()
                 }
-                // 취소
-                poplistVC.cancel = { [self] in
+                //옮기기
+                actionList.append { [self] _ in
+                    let board = UIStoryboard(name: PopListBoard, bundle: nil)
+                    guard let poplistVC = board.instantiateViewController(withIdentifier: PopListBoard) as? PopListViewController else { return }
+                    // 팝업을 위한 세팅
+                    poplistVC.modalTransitionStyle = .coverVertical
+                    poplistVC.modalPresentationStyle = .overCurrentContext
+                    var newList = categoryList
+                    guard let index = newList.firstIndex(of: cateogry) else { return }
+                    newList.remove(at: index)
+                    poplistVC.categoryList = newList
+                    // 옮겨질 카테고리 선택
+                    poplistVC.complete = { [self] selectedCategory in
+                        for task in list {
+                            let newTask = task.clone()
+                            newTask.setCategory(selectedCategory)
+                            DataManager.shared.updateTask(newTask)
+                        }
+                        DataManager.shared.deleteCategory(cateogry)
+                        refresh()
+                    }
+                    // 취소
+                    poplistVC.cancel = { [self] in
+                        changeEditMode(false)
+                    }
+                    // 팝업 띄우기
+                    guard let navigationController = self.navigationController as? CustomNavigationController else { return }
+                    navigationController.present(poplistVC, animated: true)
+                }
+                //취소
+                actionList.append { [self] _ in
                     changeEditMode(false)
                 }
-                // 팝업 띄우기
-                guard let navigationController = self.navigationController as? CustomNavigationController else { return }
-                navigationController.present(poplistVC, animated: true)
+                PopupManager.shared.openAlertSheet(
+                    self, title: "카테고리 삭제",
+                    msg: "카테고리에 TODO가 존재합니다.\n정말 삭제하시겠습니까?",
+                    btnMsg: ["포함된 TODO 모두 삭제", "다른 카테고리로 TODO 옮기기", "취소"],
+                    complete: actionList
+                    )
+            } else {
+                DataManager.shared.deleteCategory(cateogry)
+                refresh()
             }
-            //취소
-            actionList.append { [self] _ in
-                changeEditMode(false)
-            }
-            PopupManager.shared.openAlertSheet(
-                self, title: "카테고리 삭제",
-                msg: "카테고리에 TODO가 존재합니다.\n정말 삭제하시겠습니까?",
-                btnMsg: ["포함된 TODO 모두 삭제", "다른 카테고리로 TODO 옮기기", "취소"],
-                complete: actionList
-                )
-        } else {
-            DataManager.shared.deleteCategory(cateogry)
-            refresh()
         }
     }
 }

@@ -214,7 +214,9 @@ extension PushListViewController {
         guard let task = DataManager.shared.getTask(taskId) else { return }
         guard let repeatType = RepeatType(rawValue: task.repeatType) else { return }
         if repeatType == .None {
-            removePush(task)
+            PopupManager.shared.openYesOrNo(self, title: "알람 삭제", msg: "알람을 삭제하시겠습니까?") { [self] _ in
+                removePush(task)
+            }
         } else {
             var actionList:[(UIAlertAction)->Void] = []
             // 모두 삭제

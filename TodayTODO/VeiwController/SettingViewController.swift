@@ -96,10 +96,12 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             SystemManager.shared.openLoading()
             sendEmail()
         case .Reset:
+            SystemManager.shared.openLoading()
             PopupManager.shared.openYesOrNo(self,
                                             title: "데이터 초기화",
                                             msg: "모든 데이를 삭제하시겠습니까?\n(iCloud 백업 데이터 제외)",
-                                            completeYes: { [self] _ in deleteAllFile() })
+                                            completeYes: { [self] _ in deleteAllFile() },
+                                            completeNo: { _ in SystemManager.shared.closeLoading() })
         }
     }
 }
@@ -113,8 +115,9 @@ extension SettingViewController {
         DataManager.shared.deleteAllAlarmPush()
         //카테고리 삭제
         DataManager.shared.deleteAllCategory()
+        SystemManager.shared.closeLoading()
         //
-        PopupManager.shared.openYesOrNo(self, title: "알림", msg: "적용을 위해 앱을 재시작 해야합니다", completeYes: { _ in
+        PopupManager.shared.openOkAlert(self, title: "알림", msg: "적용을 위해 앱을 재시작 해야합니다", complete: { _ in
             UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 exit(0)

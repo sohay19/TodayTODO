@@ -442,15 +442,17 @@ extension MainViewController {
     }
     //
     func deleteTask(_ indexPath:IndexPath) {
-        switch currentType {
-        case .Today:
-            let category = categoryList[indexPath.section]
-            guard let task = resultList[category]?[indexPath.row] else { return }
-            deleteTaskProcess(task)
-        case .Month:
-            guard let category = monthlyTaskList[Utils.getDay(monthDate)]?.categoryList[indexPath.section] else { return }
-            guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else { return }
-            deleteTaskProcess(task)
+        PopupManager.shared.openYesOrNo(self, title: "TODO 삭제", msg: "TODO를 삭제하시겠습니까?") { [self] _ in
+            switch currentType {
+            case .Today:
+                let category = categoryList[indexPath.section]
+                guard let task = resultList[category]?[indexPath.row] else { return }
+                deleteTaskProcess(task)
+            case .Month:
+                guard let category = monthlyTaskList[Utils.getDay(monthDate)]?.categoryList[indexPath.section] else { return }
+                guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else { return }
+                deleteTaskProcess(task)
+            }
         }
     }
     private func deleteTaskProcess(_ task:EachTask) {
