@@ -147,7 +147,7 @@
                             <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
                         </label>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="TodayTODO" id="JfB-70-Muf"/>
+                    <notificationCategory key="notificationCategory" identifier="Today TODO" id="JfB-70-Muf"/>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="Ha9-5s-0Gf"/>
                         <segue destination="8WJ-KP-rGP" kind="relationship" relationship="dynamicNotificationInterface" id="yd7-Ld-pYa"/>
@@ -161,15 +161,25 @@
             <objects>
                 <controller id="8WJ-KP-rGP" customClass="NotificationController" customModule="TodayTODOWatch" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="DailyTODO" id="yyu-x7-OyW">
-                            <fontDescription key="font" name="NanumAJumMaJaYu" family="나눔손글씨 아줌마 자유" pointSize="12"/>
-                        </label>
-                        <label alignment="left" text="Title" numberOfLines="0" id="Dj1-cY-fuc">
-                            <fontDescription key="font" name="NanumBarunpenOTF-Bold" family="NanumBarunpenOTF" pointSize="15"/>
-                        </label>
-                        <label alignment="left" text="Memo" numberOfLines="0" id="X1w-ac-fEM">
-                            <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="15"/>
-                        </label>
+                        <group width="1" alignment="left" layout="vertical" id="udP-BX-ij5">
+                            <items>
+                                <label alignment="left" text="Today TODO" id="yyu-x7-OyW">
+                                    <fontDescription key="font" name="NanumAJumMaJaYu" family="나눔손글씨 아줌마 자유" pointSize="15"/>
+                                </label>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="9"/>
+                        </group>
+                        <group width="1" alignment="left" layout="vertical" spacing="6" id="b3d-UF-UVx">
+                            <items>
+                                <label alignment="left" text="Title" numberOfLines="0" id="Dj1-cY-fuc">
+                                    <fontDescription key="font" name="NanumBarunpenOTF-Bold" family="NanumBarunpenOTF" pointSize="15"/>
+                                </label>
+                                <label alignment="left" text="Memo" numberOfLines="0" id="X1w-ac-fEM">
+                                    <fontDescription key="font" name="NanumBarunpenOTF" family="NanumBarunpenOTF" pointSize="12"/>
+                                </label>
+                            </items>
+                            <edgeInsets key="margins" left="6" right="6" top="0.0" bottom="9"/>
+                        </group>
                     </items>
                     <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
                     <connections>
