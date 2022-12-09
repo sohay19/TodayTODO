@@ -90,7 +90,7 @@ extension CategoryViewController {
         isRefresh = true
         beginAppearanceTransition(true, animated: true)
     }
-    
+    //
     private func initCell() {
         let nibName = UINib(nibName: "CategoryCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "CategoryCell")

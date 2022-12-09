@@ -28,6 +28,19 @@ extension SystemManager {
         guard let topVC = findTopVC() else {
             return
         }
+        // 도움말 추가
+        let isHelp = true
+        if isHelp {
+            let helpView = Bundle.main.loadNibNamed(helpBoard, owner: topVC, options: nil)?.first as? Help
+            guard let helpView = helpView else {
+                return
+            }
+            helpView.frame = CGRect(x: 0, y: 0, width: 300, height: 600)
+            helpView.centerXAnchor.constraint(equalTo: topVC.view.centerXAnchor).isActive = true
+            helpView.centerYAnchor.constraint(equalTo: topVC.view.centerYAnchor).isActive = true
+            topVC.view.addSubview(helpView)
+            helpView.loadGIF("")
+        }
         // 로딩화면 추가
         loadingView = Bundle.main.loadNibNamed(LoadingBoard, owner: topVC, options: nil)?.first as? Loading
         guard let loadingView = loadingView else {

@@ -11,7 +11,7 @@ import MessageUI
 class SettingViewController : UIViewController {
     @IBOutlet weak var settingTable:UITableView!
     
-    let menuList:[SettingType] = [.Notice, .FAQ, .Backup, .Question, .Reset]
+    let menuList:[SettingType] = [.Notice, .FAQ, .Backup, .Question, .Reset, .Version]
     
     
     override func viewDidLoad() {
@@ -102,6 +102,13 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
                                             msg: "모든 데이를 삭제하시겠습니까?\n(iCloud 백업 데이터 제외)",
                                             completeYes: { [self] _ in deleteAllFile() },
                                             completeNo: { _ in SystemManager.shared.closeLoading() })
+        case .Version:
+            let board = UIStoryboard(name: versionBoard, bundle: nil)
+            guard let versionVC = board.instantiateViewController(withIdentifier: versionBoard) as? VersionViewController else { return }
+            versionVC.modalTransitionStyle = .crossDissolve
+            versionVC.modalPresentationStyle = .fullScreen
+            guard let navigationController = self.navigationController as? CustomNavigationController else { return }
+            navigationController.pushViewController(versionVC)
         }
     }
 }

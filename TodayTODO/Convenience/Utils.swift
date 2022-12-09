@@ -377,3 +377,17 @@ extension Utils {
         return [Float((rgbValue & 0xFF0000) >> 16) / 255.0, Float((rgbValue & 0x00FF00) >> 8) / 255.0, Float(rgbValue & 0x0000FF) / 255.0, Float(alpha)]
     }
 }
+
+//MARK: - Image
+extension Utils {
+    static func getAppIcon() -> UIImage {
+       var appIcon: UIImage! {
+         guard let iconsDictionary = Bundle.main.infoDictionary?["CFBundleIcons"] as? [String:Any],
+         let primaryIconsDictionary = iconsDictionary["CFBundlePrimaryIcon"] as? [String:Any],
+         let iconFiles = primaryIconsDictionary["CFBundleIconFiles"] as? [String],
+         let lastIcon = iconFiles.last else { return nil }
+         return UIImage(named: lastIcon)
+       }
+      return appIcon
+    }
+}

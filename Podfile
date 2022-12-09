@@ -17,6 +17,7 @@ target 'TodayTODO' do
   pod 'FirebaseAnalytics' , '> 9.0.0'
   pod 'GoogleSignIn' , '> 6.0.0'
   pod 'FSCalendar' , '> 2.0.0'
+  pod 'Gifu'
 end
 
 target 'TodayTODOWidgetExtension' do

@@ -68,6 +68,7 @@ enum SettingType:String {
     case Backup = "iCloud 백업"
     case Question = "문의하기"
     case Reset = "데이터 초기화"
+    case Version = "버전 정보"
 }
 
 enum DataType:String {

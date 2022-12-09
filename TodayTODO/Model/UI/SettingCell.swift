@@ -27,7 +27,7 @@ class SettingCell: UITableViewCell {
         // 배경
         self.backgroundColor = .clear
         self.selectionStyle = .none
-        self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        self.separatorInset = UIEdgeInsets(top: 0, left: 9, bottom: 0, right: 9)
         //
         labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
     }
