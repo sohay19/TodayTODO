@@ -42,6 +42,9 @@ class PushListViewController : UIViewController {
         pushTable.allowsMultipleSelectionDuringEditing = true
         pushTable.allowsFocusDuringEditing = true
         //
+        labelNilMsg.isHidden = true
+        imgClock.isHidden = true
+        //
         initConstraints()
         //
         initUI()
