@@ -36,8 +36,4 @@ class AlarmInfo : Object {
     func getIdList() -> [String] {
         return alarmId
     }
-    
-    func clone() -> AlarmInfo {
-        return AlarmInfo(self.taskId, self.getIdList(), self.alarmTime)
-    }
 }

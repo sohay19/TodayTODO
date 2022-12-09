@@ -20,12 +20,13 @@ class InterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         // Configure interface objects here.
+        WatchConnectManager.shared.initWatchTable = loadTable(_:)
     }
     
     override func willActivate() {
         super.willActivate()
         // This method is called when watch view controller is about to be visible to user
-        loadTable()
+        initTable()
     }
 }
 
@@ -39,9 +40,7 @@ extension InterfaceController {
 //MARK: - Func
 extension InterfaceController {
     //
-    func loadTable() {
-        let receiveTaskList = DataManager.shared.getTodayTask()
-        print("taskList = \(receiveTaskList.count)")
+    func loadTable(_ receiveTaskList:[EachTask]) {
         let list = DataManager.shared.getCategoryOrder()
         taskList = receiveTaskList.sorted(by: {
             if let first = list.firstIndex(of: $0.category), let second = list.firstIndex(of: $1.category) {
@@ -73,23 +72,7 @@ extension InterfaceController {
     }
     //
     func updateTask(_ newTask:EachTask, _ complete:()->Void) {
-        DataManager.shared.updateTask(newTask)
         WatchConnectManager.shared.sendToAppTask(newTask)
         complete()
-        //
-        let list = DataManager.shared.getCategoryOrder()
-        taskList.sort(by: {
-            if let first = list.firstIndex(of: $0.category), let second = list.firstIndex(of: $1.category) {
-                if $0.isDone && !$1.isDone {
-                    return false
-                } else if !$0.isDone && $1.isDone {
-                    return true
-                } else {
-                    return first < second
-                }
-            }
-            return false
-        })
-        initTable()
     }
 }

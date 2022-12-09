@@ -223,7 +223,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         //Done Or Not
         let isDone = task.isDone
         let done = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.taskIsDone(indexPath)
+            self.taskIsDone(!isDone, indexPath)
             success(true)
         }
         done.image = UIImage(systemName: isDone ? "xmark" : "highlighter", withConfiguration: mediumConfig)
