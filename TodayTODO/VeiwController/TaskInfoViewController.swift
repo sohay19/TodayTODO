@@ -276,7 +276,7 @@ extension TaskInfoViewController {
     private func loadCategory() {
         //
         var actionList:[UIAction] = []
-        let categories = DataManager.shared.getAllCategory()
+        let categories = DataManager.shared.loadCategory()
         for category in categories {
             let image =  category.loadImage()
             let action = UIAction(title: category.title, image: image, handler: { [self] _ in

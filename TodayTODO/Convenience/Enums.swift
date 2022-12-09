@@ -72,10 +72,10 @@ enum SettingType:String {
 
 enum DataType:String {
     case Array = "Array"
-    case Bool = "Bool"
     case EachTask = "EachTask"
+    case NSEachTask = "NSEachTask"
     case NSEachTaskList = "NSEachTaskList"
-    case NSAlarmInfoList = "NSAlarmInfoList"
+    case NSCategoryData = "NSCategoryData"
     case NSCategoryDataList = "NSCategoryDataList"
 }
 
@@ -86,6 +86,8 @@ enum SendType:String {
 }
 
 //MARK: - CodingKey
+
+
 enum TaskCodingKeys:String, CodingKey {
     case id
     case taskDay
@@ -107,10 +109,4 @@ enum TaskCodingKeys:String, CodingKey {
 enum CategoryCodingKeys:String, CodingKey {
     case title
     case colorList
-}
-
-enum AlarmCodingKeys:String, CodingKey {
-    case taskId
-    case alarmId
-    case alarmTime
 }

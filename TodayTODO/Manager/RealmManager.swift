@@ -32,14 +32,14 @@ extension RealmManager {
             print("Path 없음")
             return
         }
-#else
-        let realmDir = watchDir
-#endif
         if !fileManager.fileExists(atPath: realmDir.path) {
             fileManager.createDir(realmDir) { error in
                 print("create error = \(error)")
             }
         }
+#else
+        let realmDir = watchDir
+#endif
         do {
             let path = realmDir.appendingPathComponent(realmFile)
             let config = Realm.Configuration(fileURL: path)
@@ -70,15 +70,11 @@ extension RealmManager {
     //
     func deleteOriginFile() {
         openRealm()
-#if os(iOS)
         guard let realmDir = realmDir else {
-            print("realmDir is nil")
             return
         }
-#else
-        let realmDir = watchDir
-#endif
         fileManager.deleteDir(realmDir, nil)
+        fileManager.deleteDir(watchDir, nil)
     }
     //
     func getRealmURL() -> URL? {
@@ -208,27 +204,6 @@ extension RealmManager {
             let newInfo = AlarmInfo(alarmInfo.taskId, idList, alarmInfo.alarmTime)
             try realm.write {
                 realm.add(newInfo, update: .modified)
-            }
-        } catch {
-            print("Realm add Error")
-        }
-    }
-    func updateAlarm(_ alarmInfo:AlarmInfo) {
-        openRealm()
-#if os(iOS)
-        guard let realm = realm else {
-            print("realm is nil")
-            return
-        }
-#else
-        guard let realm = watchRealm else {
-            print("watchRealm is nil")
-            return
-        }
-#endif
-        do {
-            try realm.write {
-                realm.add(alarmInfo, update: .modified)
             }
         } catch {
             print("Realm add Error")
@@ -365,23 +340,6 @@ extension RealmManager {
 
 //MARK: - Task Search
 extension RealmManager {
-    func getTaskAllData() -> [EachTask] {
-        openRealm()
-#if os(iOS)
-        guard let realm = realm else {
-            print("realm is nil")
-            return []
-        }
-#else
-        guard let realm = watchRealm else {
-            print("watchRealm is nil")
-            return []
-        }
-#endif
-        //전체 DB
-        let taskDataBase = realm.objects(EachTask.self)
-        return taskDataBase.map{$0}
-    }
     func getTaskData(_ taskId:String) -> EachTask? {
         openRealm()
 #if os(iOS)
@@ -591,28 +549,7 @@ extension RealmManager {
         }
 #endif
     }
-    //
-    func updateCategory(_ data:CategoryData) {
-#if os(iOS)
-        guard let realm = realm else {
-            print("realm is nil")
-            return
-        }
-#else
-        guard let realm = watchRealm else {
-            print("watchRealm is nil")
-            return
-        }
-#endif
-        do {
-            try realm.write {
-                realm.add(data, update: .modified)
-            }
-        } catch {
-            print("category updadte Error")
-        }
-    }
-    //
+    
     func loadCategory() -> [CategoryData] {
         openRealm()
 #if os(iOS)
@@ -628,22 +565,6 @@ extension RealmManager {
 #endif
         let categoryList = realm.objects(CategoryData.self)
         return Array(categoryList)
-    }
-    func getCategory(_ title:String) -> CategoryData? {
-        openRealm()
-#if os(iOS)
-        guard let realm = realm else {
-            print("realm is nil")
-            return nil
-        }
-#else
-        guard let realm = watchRealm else {
-            print("watchRealm is nil")
-            return nil
-        }
-#endif
-        let categoryList = realm.objects(CategoryData.self)
-        return categoryList.first(where: {$0.title == title})
     }
     //
     func deleteCategory(_ category:String) {
