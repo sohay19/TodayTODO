@@ -72,7 +72,6 @@ class TaskInfoViewController : UIViewController {
         memoView.delegate = self
         //
         initUI()
-        initInput()
         initGesture()
     }
     
@@ -164,23 +163,6 @@ extension TaskInfoViewController {
         btnWrite.tintColor = .label
         btnBack.setImage(UIImage(systemName: "chevron.backward", withConfiguration: mediumConfig), for: .normal)
         btnBack.tintColor = .label
-    }
-    // 키보드 위의 Done 버튼 세팅
-    private func initInput() {
-        let keyboardToolbar = UIToolbar()
-        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneBarButton = UIBarButtonItem(
-            title: "Done",
-            style: .plain,
-            target: self,
-            action: #selector(keyboardDown))
-        let font = UIFont(name: E_Font_B, size: E_FontSize)
-        doneBarButton.setTitleTextAttributes([.font:font!], for: .normal)
-        keyboardToolbar.items = [flexBarButton, doneBarButton]
-        keyboardToolbar.sizeToFit()
-        keyboardToolbar.tintColor = UIColor.label
-        
-        memoView.inputAccessoryView = keyboardToolbar
     }
     //
     private func initGesture() {
