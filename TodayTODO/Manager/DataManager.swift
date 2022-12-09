@@ -12,7 +12,6 @@ import FirebaseAuth
 import UserNotifications
 import RealmSwift
 import Realm
-import WidgetKit
 
 
 class DataManager {
@@ -27,6 +26,10 @@ class DataManager {
 extension DataManager {
     func initRealm() {
         realmManager.openRealm()
+    }
+    //
+    func setReloadMain(_ reloadMain:@escaping () -> Void) {
+        realmManager.reloadMainView = reloadMain
     }
     //
     func getRealmURL() -> URL? {
@@ -48,22 +51,10 @@ extension DataManager {
         if isAlarm {
             addAlarmPush(task)
         }
-        WatchConnectManager.shared.sendToAppTask(.Add, task)
-#if os(iOS)
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
-#endif
     }
     func updateTask(_ task:EachTask) {
         realmManager.updateTask(task)
         updateAlarmPush(task)
-        WatchConnectManager.shared.sendToAppTask(.Update, task)
-#if os(iOS)
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
-#endif
     }
     func deleteTask(_ task:EachTask) {
         let option = task.optionData ?? OptionData()
@@ -72,12 +63,6 @@ extension DataManager {
             deleteAlarmPush(task.taskId)
         }
         realmManager.deleteTask(task)
-        WatchConnectManager.shared.sendToAppTask(.Delete, task)
-#if os(iOS)
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
-#endif
     }
     //load
     func getTodayTask() -> [EachTask] {
@@ -99,7 +84,6 @@ extension DataManager {
     //
     func addCategory(_ data:CategoryData) {
         realmManager.addCategory(data)
-        WatchConnectManager.shared.sendToWatchCategory(.Add, data)
     }
     //load
     func loadCategory() -> [CategoryData] {
@@ -114,7 +98,6 @@ extension DataManager {
             newList.remove(at: index)
         }
         setCategoryOrder(newList)
-        WatchConnectManager.shared.sendToWatchCategory(.Delete, data)
     }
     func deleteCategory(_ category:CategoryData) {
         realmManager.deleteCategory(category)

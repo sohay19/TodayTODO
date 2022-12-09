@@ -13,9 +13,9 @@ class WatchConnectManager : NSObject {
     private override init() {
         session = WCSession.default
     }
-    var session:WCSession
     //
-    var reloadMainView:(()->Void)?
+    var initWatchTable:(([EachTask])->Void)?
+    var session:WCSession
     
     func initSession() {
 #if os(iOS)
@@ -32,46 +32,24 @@ class WatchConnectManager : NSObject {
 
 //MARK: - send
 extension WatchConnectManager {
-    //App -> Watch, Task
-    func sendToWatchTask(_ type:SendType, _ task:EachTask) {
+    //워치로 Task 보내기
+    func sendToWatchTask() {
         guard session.activationState == .activated || session.activationState == .inactive else {
             print("activationState is notActivated")
             return
         }
         do {
-            let newTask = NSEachTask.init(task: task)
-            let taskDataForWatch = try JSONEncoder().encode(newTask)
+            //Category리스트 보내기
+            let loadCategoryList = DataManager.shared.loadCategory()
+            var categoryList:[NSCategoryData] = []
+            for data in loadCategoryList {
+                categoryList.append(NSCategoryData.init(category:data))
+            }
+            let categoryDataForWatch = try JSONEncoder().encode(NSCategoryDataList(categoryList: categoryList))
             session.transferUserInfo([
-                sendTypeKey:type,
-                dataTypeKey:DataType.NSEachTask.rawValue,
-                dataKey:taskDataForWatch])
-        } catch {
-            print("sendToWatchTask Error")
-        }
-    }
-    //App -> Watch, 카테고리
-    func sendToWatchCategory(_ type:SendType, _ categoryData:CategoryData) {
-        guard session.activationState == .activated || session.activationState == .inactive else {
-            print("activationState is notActivated")
-            return
-        }
-        do {
-            let dataForApp = try JSONEncoder().encode(NSCategoryData(category: categoryData))
-            session.transferUserInfo([
-                sendTypeKey:type,
-                dataTypeKey:DataType.NSEachTask.rawValue,
-                dataKey:dataForApp])
-        } catch {
-            print("Encoding Error")
-        }
-    }
-    //App -> Watch, 카테고리 순서
-    func sendToWatchCategoryOrder() {
-        guard session.activationState == .activated || session.activationState == .inactive else {
-            print("activationState is notActivated")
-            return
-        }
-        do {
+                sendTypeKey:SendType.Update.rawValue,
+                dataTypeKey:DataType.NSCategoryDataList.rawValue,
+                dataKey:categoryDataForWatch])
             //Category Order 보내기
             let orderList = DataManager.shared.getCategoryOrder()
             let orderData = try JSONEncoder().encode(orderList)
@@ -79,12 +57,39 @@ extension WatchConnectManager {
                 sendTypeKey:SendType.Update.rawValue,
                 dataTypeKey:DataType.Array.rawValue,
                 dataKey:orderData])
+            //Task 보내기
+            let founData = DataManager.shared.getTodayTask()
+            var taskList:[NSEachTask] = []
+            for data in founData {
+                taskList.append(NSEachTask.init(task: data))
+            }
+            let taskDataForWatch = try JSONEncoder().encode(NSEachTaskList(taskList: taskList))
+            session.transferUserInfo([
+                sendTypeKey:SendType.Update.rawValue,
+                dataTypeKey:DataType.NSEachTaskList.rawValue,
+                dataKey:taskDataForWatch])
         } catch {
-            print("sendToWatchCategoryOrder Error")
+            print("sendToWatchTask Error")
         }
     }
-    //App -> Watch, 카테고리
-    func sendToWatchCategoryDelete(_ type:SendType, _ categoryData:CategoryData?) {
+    // 워치로 카테고리 추가 명령
+    func sendToWatchAddCategory(_ categoryData:CategoryData) {
+        guard session.activationState == .activated || session.activationState == .inactive else {
+            print("activationState is notActivated")
+            return
+        }
+        do {
+            let dataForApp = try JSONEncoder().encode(NSCategoryData(category: categoryData))
+            session.transferUserInfo([
+                sendTypeKey:SendType.Add.rawValue,
+                dataTypeKey:DataType.NSEachTask.rawValue,
+                dataKey:dataForApp])
+        } catch {
+            print("Encoding Error")
+        }
+    }
+    //워치로 Category 삭제 명령 보내기
+    func sendToWatchCategoryDelete(_ categoryData:CategoryData?) {
         guard session.activationState == .activated || session.activationState == .inactive else {
             print("activationState is notActivated")
             return
@@ -93,7 +98,7 @@ extension WatchConnectManager {
             if let categoryData = categoryData {
                 let dataForApp = try JSONEncoder().encode(NSCategoryData(category: categoryData))
                 session.transferUserInfo([
-                    sendTypeKey:type,
+                    sendTypeKey:SendType.Delete.rawValue,
                     dataTypeKey:DataType.NSCategoryData.rawValue,
                     dataKey:dataForApp])
             } else {
@@ -105,8 +110,8 @@ extension WatchConnectManager {
             print("Encoding Error")
         }
     }
-    //Watch -> App, Task 업데이트
-    func sendToAppTask(_ type:SendType, _ task:EachTask) {
+    //
+    func sendToAppTask(_ task:EachTask) {
         guard session.activationState == .activated || session.activationState == .inactive else {
             print("activationState is notActivated")
             return
@@ -114,7 +119,7 @@ extension WatchConnectManager {
         do {
             let dataForApp = try JSONEncoder().encode(NSEachTask(task: task))
             session.transferUserInfo([
-                sendTypeKey:type,
+                sendTypeKey:SendType.Update.rawValue,
                 dataTypeKey:DataType.NSEachTask.rawValue,
                 dataKey:dataForApp])
         } catch {
@@ -124,7 +129,13 @@ extension WatchConnectManager {
 }
 
 
-//MARK: - WCSessionDelegate
+//MARK: - replyHandler
+extension WatchConnectManager {
+    func errorHandler(_ error:Error) {
+        print("send Error")
+    }
+}
+
 extension WatchConnectManager : WCSessionDelegate {
 #if os(iOS)
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -153,20 +164,12 @@ extension WatchConnectManager : WCSessionDelegate {
 #if os(iOS)
         do {
             switch SendType(rawValue: userInfo[sendTypeKey] as! String) {
-            case .Add:
-                break
             case .Update:
                 switch DataType(rawValue: dataType) {
                 case .NSEachTask:
                     let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[dataKey] as! Data)
                     let task = EachTask(task:receiveMsgData)
                     DataManager.shared.updateTask(task)
-                    guard let reloadMainView = reloadMainView else {
-                        return
-                    }
-                    DispatchQueue.main.async {
-                        reloadMainView()
-                    }
                 case .NSEachTaskList:
                     break
                 case .NSCategoryData:
@@ -176,8 +179,6 @@ extension WatchConnectManager : WCSessionDelegate {
                 default:
                     break
                 }
-            case .Delete:
-                break
             default:
                 break
             }
@@ -186,65 +187,73 @@ extension WatchConnectManager : WCSessionDelegate {
         }
 #else
         do {
-            switch DataType(rawValue: dataType) {
-            case .NSEachTask:
-                var newTaskList:[EachTask] = []
-                let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[dataKey] as! Data)
-                let task = EachTask(task:receiveMsgData)
-                switch SendType(rawValue: userInfo[sendTypeKey] as! String) {
-                case .Add:
-                    DataManager.shared.addTask(task)
-                case .Update:
-                    DataManager.shared.updateTask(task)
-                case .Delete:
-                    DataManager.shared.deleteTask(task)
-                }
-            case .NSEachTaskList:
-                var newTaskList:[EachTask] = []
-                let receiveMsgData = try JSONDecoder().decode(NSEachTaskList.self, from: userInfo[dataKey] as! Data)
-                switch SendType(rawValue: userInfo[sendTypeKey] as! String) {
-                case .Add:
-                    for data in receiveMsgData.taskList {
-                        let task = EachTask(task:data)
-                        DataManager.shared.addTask(task)
-                    }
-                case .Update:
-                    for data in receiveMsgData.taskList {
-                        let task = EachTask(task:data)
-                        DataManager.shared.updateTask(task)
-                    }
-                case .Delete:
-                    for data in receiveMsgData.taskList {
-                        DataManager.shared.deleteTask(task)
-                    }
-                }
-            case .NSCategoryData:
-                let receiveMsgData = try JSONDecoder().decode(NSCategoryData.self, from: userInfo[dataKey] as! Data)
-                let category = CategoryData(receiveMsgData.title, receiveMsgData.colorList)
-                switch SendType(rawValue: userInfo[sendTypeKey] as! String) {
-                case .Add:
-                    DataManager.shared.addCategory(category)
-                case .Update:
+            switch SendType(rawValue: userInfo[sendTypeKey] as! String) {
+            case .Add:
+                switch DataType(rawValue: dataType) {
+                case .NSEachTask:
                     break
-                case .Delete:
-                    DataManager.shared.deleteCategory(category)
+                case .NSEachTaskList:
+                    break
+                case .NSCategoryData:
+                    let receiveMsgData = try JSONDecoder().decode(NSCategoryData.self, from: userInfo[dataKey] as! Data)
+                    let data = CategoryData(receiveMsgData.title, receiveMsgData.colorList)
+                    DataManager.shared.addCategory(data)
+                case .NSCategoryDataList:
+                    break
+                default:
+                    break
                 }
-            case .NSCategoryDataList:
-                let receiveMsgData = try JSONDecoder().decode(NSCategoryDataList.self, from: userInfo[dataKey] as! Data)
-                let loadList = DataManager.shared.loadCategory()
-                switch SendType(rawValue: userInfo[sendTypeKey] as! String) {
-                case .Add:
+            case .Update:
+                switch DataType(rawValue: dataType) {
+                case .Array:
+                    let receiveMsgData = try JSONDecoder().decode([String].self, from: userInfo[dataKey] as! Data)
+                    DataManager.shared.setCategoryOrder(receiveMsgData)
+                case .NSEachTask:
+                    var newTaskList:[EachTask] = []
+                    let receiveMsgData = try JSONDecoder().decode(NSEachTask.self, from: userInfo[dataKey] as! Data)
+                    newTaskList.append(EachTask(task:receiveMsgData))
+                    guard let initWatchTable = initWatchTable else {
+                        return
+                    }
+                    initWatchTable(newTaskList)
+                case .NSEachTaskList:
+                    var newTaskList:[EachTask] = []
+                    let receiveMsgData = try JSONDecoder().decode(NSEachTaskList.self, from: userInfo[dataKey] as! Data)
+                    for data in receiveMsgData.taskList {
+                        newTaskList.append(EachTask(task:data))
+                    }
+                    guard let initWatchTable = initWatchTable else {
+                        return
+                    }
+                    initWatchTable(newTaskList)
+                case .NSCategoryData:
+                    break
+                case .NSCategoryDataList:
+                    let receiveMsgData = try JSONDecoder().decode(NSCategoryDataList.self, from: userInfo[dataKey] as! Data)
+                    let loadList = DataManager.shared.loadCategory()
                     for data in receiveMsgData.categoryList {
                         let found = loadList.first(where: {$0.title == data.title})
                         if found == nil {
-                            let category = CategoryData(data.title, data.colorList)
-                            DataManager.shared.addCategory(category)
+                            DataManager.shared.addCategory(CategoryData(data.title, data.colorList))
                         }
                     }
-                case .Update:
+                default:
                     break
-                case .Delete:
+                }
+            case .Delete:
+                switch DataType(rawValue: dataType) {
+                case .NSEachTask:
+                    break
+                case .NSEachTaskList:
+                    break
+                case .NSCategoryData:
                     DataManager.shared.deleteAllCategory()
+                case .NSCategoryDataList:
+                    let receiveMsgData = try JSONDecoder().decode(NSCategoryData.self, from: userInfo[dataKey] as! Data)
+                    let data = CategoryData(receiveMsgData.title, receiveMsgData.colorList)
+                    DataManager.shared.deleteCategory(data)
+                default:
+                    break
                 }
             default:
                 break

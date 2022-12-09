@@ -54,8 +54,7 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
-      launchAutomaticallySubstyle = "33"
-      notificationPayloadFile = "TodayTODOWatchWatchKitExtension/PushNotificationPayload.apns">
+      launchAutomaticallySubstyle = "33">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference

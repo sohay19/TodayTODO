@@ -11,6 +11,8 @@
 		86E5E9F892656394FBC10E08 /* Pods_TodayTODOWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B12705C80838D0A738F831D /* Pods_TodayTODOWidgetExtension.framework */; };
 		944E414F9433C7D51F0D6786 /* Pods_TodayTODO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9F6F1B082E61AAB6B5FE74 /* Pods_TodayTODO.framework */; };
 		BBC6DE9711C3FEFDAE2C724B /* Pods_TodayTODOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF5EFD01E251621852506A13 /* Pods_TodayTODOUITests.framework */; };
+		CF2BAF0F2925DAFE00EB49F4 /* spring_black.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2BAF0D2925DAFE00EB49F4 /* spring_black.png */; };
+		CF2BAF102925DAFE00EB49F4 /* spring_white.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2BAF0E2925DAFE00EB49F4 /* spring_white.png */; };
 		CF2BAF1229263E0700EB49F4 /* TaskInfoVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2BAF1129263E0700EB49F4 /* TaskInfoVCExtension.swift */; };
 		CF2BAF382927D1B400EB49F4 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2BAF372927D1B400EB49F4 /* CustomTabBarController.swift */; };
 		CF2BAF392928A30700EB49F4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A5828F155E5008850DC /* DataManager.swift */; };
@@ -27,6 +29,7 @@
 		CF50BC602924D78500AB538B /* OptionalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50BC5B2924CDD900AB538B /* OptionalData.swift */; };
 		CF50BC612924D78700AB538B /* NSOptionalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50BC5D2924D13500AB538B /* NSOptionalData.swift */; };
 		CF50BC622924D78700AB538B /* OptionalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50BC5B2924CDD900AB538B /* OptionalData.swift */; };
+		CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */; };
 		CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */; };
 		CF5350B1291E3D4B00AFDC14 /* BlackBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350A9291E3D4A00AFDC14 /* BlackBackground.png */; };
 		CF5350BD291E457400AFDC14 /* Worcestershire_Sauce_Press-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350B8291E457300AFDC14 /* Worcestershire_Sauce_Press-Regular.otf */; };
@@ -37,6 +40,8 @@
 		CF5350C3291E45F300AFDC14 /* NanumAJumMaJaYu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350C2291E45F300AFDC14 /* NanumAJumMaJaYu.ttf */; };
 		CF5350D1291E9CD600AFDC14 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350D0291E9CD600AFDC14 /* Loading.swift */; };
 		CF5350D3291E9CE200AFDC14 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D2291E9CE200AFDC14 /* Loading.xib */; };
+		CF5350D52921E92F00AFDC14 /* underline_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D42921E92E00AFDC14 /* underline_Black.png */; };
+		CF5350D72921F3F300AFDC14 /* underline_Pink.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D62921F3F300AFDC14 /* underline_Pink.png */; };
 		CF5350E7292376BB00AFDC14 /* MonthltyDayTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */; };
 		CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */; };
 		CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */; };
@@ -76,6 +81,8 @@
 		CF79093C2938A3570027D25D /* NanumAJumMaJaYu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350C2291E45F300AFDC14 /* NanumAJumMaJaYu.ttf */; };
 		CF79093D2938A3570027D25D /* NanumBarunpenR.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF5350BA291E457400AFDC14 /* NanumBarunpenR.otf */; };
 		CF7909412938D00D0027D25D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7909402938D00D0027D25D /* Assets.xcassets */; };
+		CF7909422938D3EF0027D25D /* underline_Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */; };
+		CF7909432938D3F00027D25D /* underline_Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */; };
 		CF7909482938D6870027D25D /* WatchBack.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7909472938D6870027D25D /* WatchBack.png */; };
 		CF7909492938D6870027D25D /* WatchBack.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7909472938D6870027D25D /* WatchBack.png */; };
 		CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
@@ -234,7 +241,7 @@
 		};
 		CF8149452906B75400FD0974 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
@@ -269,6 +276,8 @@
 		B46787C87D030C819CA90D32 /* Pods-TodayTODOUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayTODOUITests.debug.xcconfig"; path = "Target Support Files/Pods-TodayTODOUITests/Pods-TodayTODOUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BC5CCD23C8ED19CAD5B101F3 /* Pods_TodayTODOWatchWatchKitExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayTODOWatchWatchKitExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4D27378C6E517C757E4FFC /* Pods_TodayTODOTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayTODOTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF2BAF0D2925DAFE00EB49F4 /* spring_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring_black.png; sourceTree = "<group>"; };
+		CF2BAF0E2925DAFE00EB49F4 /* spring_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spring_white.png; sourceTree = "<group>"; };
 		CF2BAF1129263E0700EB49F4 /* TaskInfoVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoVCExtension.swift; sourceTree = "<group>"; };
 		CF2BAF372927D1B400EB49F4 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		CF42F254292E398200DB0F8E /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
@@ -277,6 +286,7 @@
 		CF487EA628F1B6F100498451 /* TaskListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListProvider.swift; sourceTree = "<group>"; };
 		CF50BC5B2924CDD900AB538B /* OptionalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalData.swift; sourceTree = "<group>"; };
 		CF50BC5D2924D13500AB538B /* NSOptionalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSOptionalData.swift; sourceTree = "<group>"; };
+		CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Indigo.png; sourceTree = "<group>"; };
 		CF5350A0291CEB4300AFDC14 /* BackUpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackUpCell.swift; sourceTree = "<group>"; };
 		CF5350A9291E3D4A00AFDC14 /* BlackBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackBackground.png; sourceTree = "<group>"; };
 		CF5350B8291E457300AFDC14 /* Worcestershire_Sauce_Press-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Worcestershire_Sauce_Press-Regular.otf"; sourceTree = "<group>"; };
@@ -287,6 +297,8 @@
 		CF5350C2291E45F300AFDC14 /* NanumAJumMaJaYu.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumAJumMaJaYu.ttf; sourceTree = "<group>"; };
 		CF5350D0291E9CD600AFDC14 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		CF5350D2291E9CE200AFDC14 /* Loading.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Loading.xib; sourceTree = "<group>"; };
+		CF5350D42921E92E00AFDC14 /* underline_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Black.png; sourceTree = "<group>"; };
+		CF5350D62921F3F300AFDC14 /* underline_Pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Pink.png; sourceTree = "<group>"; };
 		CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthltyDayTask.swift; sourceTree = "<group>"; };
 		CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCExtension.swift; sourceTree = "<group>"; };
@@ -551,6 +563,11 @@
 				CFE45D2E292B1D2A007024EB /* clock.png */,
 				CFE45D2F292B1D2B007024EB /* pencil.png */,
 				CF5350A9291E3D4A00AFDC14 /* BlackBackground.png */,
+				CF5350D42921E92E00AFDC14 /* underline_Black.png */,
+				CF5350D62921F3F300AFDC14 /* underline_Pink.png */,
+				CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */,
+				CF2BAF0D2925DAFE00EB49F4 /* spring_black.png */,
+				CF2BAF0E2925DAFE00EB49F4 /* spring_white.png */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -901,7 +918,6 @@
 			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				ko,
 				en,
 				Base,
 			);
@@ -938,6 +954,7 @@
 				CF79093A2938A3570027D25D /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CFE01AE3291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CFDCD3D1293DE0F30030CB1C /* DefaultBack.jpg in Resources */,
+				CF7909432938D3F00027D25D /* underline_Indigo.png in Resources */,
 				CF7909382938A3570027D25D /* NanumBarunpenB.otf in Resources */,
 				CF79093B2938A3570027D25D /* Windsor_Great_Park-Regular.otf in Resources */,
 				CF7909392938A3570027D25D /* Worcestershire_Sauce-Regular.otf in Resources */,
@@ -954,6 +971,7 @@
 				CF7909342938A3550027D25D /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CFE01AE2291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CF7909492938D6870027D25D /* WatchBack.png in Resources */,
+				CF7909422938D3EF0027D25D /* underline_Indigo.png in Resources */,
 				CF7909322938A3550027D25D /* NanumBarunpenB.otf in Resources */,
 				CF7909352938A3550027D25D /* Windsor_Great_Park-Regular.otf in Resources */,
 				CF7909332938A3550027D25D /* Worcestershire_Sauce-Regular.otf in Resources */,
@@ -969,6 +987,8 @@
 			files = (
 				CF5350C1291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf in Resources */,
 				CF790913292F65510027D25D /* CategoryCell.xib in Resources */,
+				CF5350D72921F3F300AFDC14 /* underline_Pink.png in Resources */,
+				CF2BAF0F2925DAFE00EB49F4 /* spring_black.png in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
 				CF5350BD291E457400AFDC14 /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CF7909152930A3D40027D25D /* Backup.storyboard in Resources */,
@@ -983,10 +1003,12 @@
 				CFD0B14628F91CDB0029D936 /* TaskInfo.storyboard in Resources */,
 				CFEB4A6628F165C2008850DC /* Category.storyboard in Resources */,
 				CF5350B1291E3D4B00AFDC14 /* BlackBackground.png in Resources */,
+				CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */,
 				CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CF7909232935ED520027D25D /* Notice.storyboard in Resources */,
 				CF5350C0291E457400AFDC14 /* Windsor_Great_Park-Regular.otf in Resources */,
 				CFEB49E228F13287008850DC /* Main.storyboard in Resources */,
+				CF2BAF102925DAFE00EB49F4 /* spring_white.png in Resources */,
 				CF5350C3291E45F300AFDC14 /* NanumAJumMaJaYu.ttf in Resources */,
 				CFE45D3B292B6F17007024EB /* AddCategory.storyboard in Resources */,
 				CF995F522924C34400FAE2F1 /* BackUpCell.xib in Resources */,
@@ -1000,6 +1022,7 @@
 				CF7909482938D6870027D25D /* WatchBack.png in Resources */,
 				CFEB4A2E28F14B68008850DC /* Setting.storyboard in Resources */,
 				CF790919293234F00027D25D /* PopList.storyboard in Resources */,
+				CF5350D52921E92F00AFDC14 /* underline_Black.png in Resources */,
 				CF79091F293236D50027D25D /* PopCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1554,10 +1577,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = TodayTODOWidgetExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7QY569K4A;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = M7QY569K4A;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodayTODOWidget/Info.plist;
@@ -1573,7 +1597,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO.TodayTODOWidget;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = TodayTODO;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = TodayTODO_Widget;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = TodayTODO_Widget;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1589,10 +1614,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = TodayTODOWidgetExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7QY569K4A;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = M7QY569K4A;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodayTODOWidget/Info.plist;
@@ -1608,7 +1634,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO.TodayTODOWidget;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = TodayTODO;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = TodayTODO_Widget;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = TodayTODO_Widget;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
