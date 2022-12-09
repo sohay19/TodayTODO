@@ -129,7 +129,7 @@ extension MainViewController {
         labelMonthNilMsg.textColor = .label
         //
         btnAdd.contentMode = .center
-        btnAdd.setImage(UIImage(systemName: "scribble.variable", withConfiguration: mediumConfig), for: .normal)
+        btnAdd.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: mediumConfig), for: .normal)
         btnToday.contentMode = .center
         btnToday.setImage(UIImage(systemName: "plus.viewfinder", withConfiguration: mediumConfig), for: .normal)
         //

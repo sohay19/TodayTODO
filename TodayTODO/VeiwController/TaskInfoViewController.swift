@@ -9,6 +9,7 @@ import UIKit
 
 
 class TaskInfoViewController : UIViewController {
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var popView:UIView!
     @IBOutlet weak var scheduleStackView: UIStackView!
@@ -44,6 +45,7 @@ class TaskInfoViewController : UIViewController {
     @IBOutlet weak var btnAlarm: UIButton!
     @IBOutlet weak var btnEndDate: UIButton!
     @IBOutlet weak var btnBack: UIButton!
+    @IBOutlet weak var btnModify: UIButton!
     @IBOutlet weak var btnWrite: UIButton!
     //
     @IBOutlet weak var menuIcon: UIImageView!
@@ -61,8 +63,11 @@ class TaskInfoViewController : UIViewController {
     //
     //키보드 관련
     var keyboardHeight:CGFloat?
-    var isShow = false
+    var bottomConstraint:NSLayoutConstraint?
     //
+    var isShow = false
+    var isRefresh = false
+
     private var categoryList:[(name:String, action:UIAction)] = []
     
     override func viewDidLoad() {
@@ -72,9 +77,12 @@ class TaskInfoViewController : UIViewController {
         memoView.delegate = self
         //
         initUI()
+//        initInput()
         initGesture()
+        //
+        bottomConstraint = self.view.constraints.first {$0.identifier == "bottomHeight"}
     }
-    
+    //
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //
@@ -97,6 +105,7 @@ extension TaskInfoViewController {
         let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
+        backView.backgroundColor = .clear
         //
         let K_B_FontSize = K_FontSize + 3.0
         let bold = UIFont(name: K_Font_B, size: K_B_FontSize)
@@ -159,19 +168,37 @@ extension TaskInfoViewController {
         btnEndDate.titleLabel?.font = regular
         btnEndDate.tintColor = .darkGray
         //
-        btnWrite.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: mediumConfig), for: .normal)
-        btnWrite.tintColor = .label
+        btnWrite.setTitle("확인", for: .normal)
+        btnWrite.titleLabel?.font = bold
+        btnWrite.backgroundColor = .label
+        btnWrite.tintColor = .systemBackground
+        btnModify.setImage(UIImage(systemName: "eraser", withConfiguration: mediumConfig), for: .normal)
+        btnModify.tintColor = .label
         btnBack.setImage(UIImage(systemName: "chevron.backward", withConfiguration: mediumConfig), for: .normal)
         btnBack.tintColor = .label
+    }
+    // 키보드 위의 Done 버튼 세팅
+    private func initInput() {
+        let keyboardToolbar = UIToolbar()
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(
+            title: "Done",
+            style: .plain,
+            target: self,
+            action: #selector(keyboardDown))
+        let font = UIFont(name: E_Font_B, size: E_FontSize)
+        doneBarButton.setTitleTextAttributes([.font:font!], for: .normal)
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        keyboardToolbar.sizeToFit()
+        keyboardToolbar.tintColor = UIColor.label
+        
+        memoView.inputAccessoryView = keyboardToolbar
     }
     //
     private func initGesture() {
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardDown))
         tapGesture.numberOfTapsRequired = 1
-        scrollView.addGestureRecognizer(tapGesture)
-        let focusGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(focusedMemoView))
-        focusGesture.numberOfTapsRequired = 1
-        memoView.addGestureRecognizer(focusGesture)
+        backView.addGestureRecognizer(tapGesture)
     }
     //
     private func setMode() {
@@ -179,18 +206,27 @@ extension TaskInfoViewController {
         setDefaultUI()
         switch currentMode {
         case .ADD:
+            btnWrite.isHidden = false
+            btnModify.isHidden = true
+            textCounter.isHidden = false
             controllEditMode(true)
         case .LOOK:
             btnWrite.isHidden = true
+            btnModify.isHidden = false
             textCounter.isHidden = true
             controllEditMode(false)
             loadData()
         case .MODIFY:
+            btnWrite.isHidden = false
+            btnModify.isHidden = true
+            textCounter.isHidden = false
             controllEditMode(true)
             loadData()
         }
-        DispatchQueue.main.async {
-            SystemManager.shared.closeLoading()
+        SystemManager.shared.closeLoading()
+        if isRefresh {
+            endAppearanceTransition()
+            isRefresh = false
         }
     }
     //
@@ -601,6 +637,16 @@ extension TaskInfoViewController {
             //Look
             break
         }
+    }
+    //수정버튼
+    @IBAction func clickModify(_ sender: Any) {
+        repeatResult = nil
+        currentMode = .MODIFY
+        refresh()
+    }
+    private func refresh() {
+        isRefresh = true
+        beginAppearanceTransition(true, animated: false)
     }
     // 날짜 선택 시 팝업 닫음
     @IBAction func changeDate(_ sender:UIDatePicker) {

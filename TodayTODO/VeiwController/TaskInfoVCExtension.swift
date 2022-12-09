@@ -17,43 +17,56 @@ extension TaskInfoViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     //키보드 show/hide시 view 조정
-    @objc func showKeyboard(_ sender: Notification) {
+    @objc func showKeyboard(_ notification: NSNotification) {
         if isShow {
             return
         }
         isShow = true
-        let userInfo:NSDictionary = sender.userInfo! as NSDictionary
-        let keyboardFrame:NSValue = userInfo.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue
-        let keyboardRectabgle = keyboardFrame.cgRectValue
-        keyboardHeight = keyboardRectabgle.height
+        moveBottom(true, notification)
         //
-        guard let keyboardHeight = keyboardHeight else {
-            return
-        }
-        scrollView.contentInset.bottom = keyboardHeight
         scrollView.isScrollEnabled = true
         if memoView.isFirstResponder {
             scrollMemo()
         }
+    }
+    private func moveBottom(_ isUp:Bool, _ notification:NSNotification) {
+        animateWithKeyboard(notification: notification) { [self] (keyboardFrame) in
+            bottomConstraint?.constant = isUp ? keyboardFrame.height : 0
+        }
+    }
+    private func animateWithKeyboard(notification: NSNotification, animations: ((_ keyboardFrame: CGRect) -> Void)?) {
+        let durationKey = UIResponder.keyboardAnimationDurationUserInfoKey
+        let duration = notification.userInfo![durationKey] as! Double
+        
+        let frameKey = UIResponder.keyboardFrameEndUserInfoKey
+        let keyboardFrameValue = notification.userInfo![frameKey] as! NSValue
+        
+        let curveKey = UIResponder.keyboardAnimationCurveUserInfoKey
+        let curveValue = notification.userInfo![curveKey] as! Int
+        let curve = UIView.AnimationCurve(rawValue: curveValue)!
+        
+        let animator = UIViewPropertyAnimator(
+            duration: duration,
+            curve: curve
+        ) {
+            animations?(keyboardFrameValue.cgRectValue)
+            self.view?.layoutIfNeeded()
+        }
+        animator.startAnimation()
     }
     private func scrollMemo() {
         let padding = scrollView.contentSize.height - scrollView.bounds.size.height
         let height = padding + scrollView.contentInset.bottom
         scrollView.setContentOffset(CGPoint(x: 0, y: height), animated: true)
     }
-    @objc func hideKeyboard(_ sender: Notification) {
-        scrollView.contentInset.bottom = 0
+    @objc func hideKeyboard(_ notification: NSNotification) {
+        moveBottom(false, notification)
         isShow = false
     }
     //키보드 내리기
     @objc func keyboardDown() {
         self.view.endEditing(true)
         scrollView.isScrollEnabled = false
-    }
-    //메모가 최상단에 오도록 스크롤
-    @objc func focusedMemoView() {
-        memoView.becomeFirstResponder()
-        scrollMemo()
     }
 }
 
