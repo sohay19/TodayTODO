@@ -37,9 +37,10 @@ extension TaskTableRowController {
         guard let updateDone = updateDone, let task = task else {
             return
         }
-        task.changeIsDone()
-        updateDone(task) {
-            imgCheck.setTintColor(task.isDone ? UIColor.systemIndigo! : UIColor.gray)
+        let modifyTask = task.clone()
+        modifyTask.changeIsDone()
+        updateDone(modifyTask) {
+            imgCheck.setTintColor(modifyTask.isDone ? UIColor.systemIndigo! : UIColor.gray)
         }
     }
 }
