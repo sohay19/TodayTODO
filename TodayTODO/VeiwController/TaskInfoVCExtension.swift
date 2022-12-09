@@ -32,6 +32,7 @@ extension TaskInfoViewController {
         }
         scrollView.contentInset.bottom = keyboardHeight
         scrollView.isScrollEnabled = true
+        //메모 터치 시
         if memoView.isFirstResponder {
             scrollMemo()
         }

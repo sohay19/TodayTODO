@@ -33,6 +33,10 @@ class CategoryOrderData : Object {
     func getCategoryOrder() -> [String] {
         return order
     }
+    
+    func clone() -> CategoryOrderData {
+        return CategoryOrderData(order: self.getCategoryOrder())
+    }
 }
 
 class CategoryData : Object {
@@ -69,5 +73,9 @@ class CategoryData : Object {
     
     func getColorList() -> [Float] {
         return color
+    }
+    
+    func clone() -> CategoryData {
+        return CategoryData(self.title, self.getColorList())
     }
 }
