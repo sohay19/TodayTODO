@@ -89,7 +89,6 @@
 		CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8148F229068E0700FD0974 /* ClassExtension.swift */; };
 		CF8149272906B75100FD0974 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8149252906B75100FD0974 /* Interface.storyboard */; };
 		CF8149292906B75300FD0974 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8149282906B75300FD0974 /* Assets.xcassets */; };
-		CF81492F2906B75300FD0974 /* TodayTODO.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CF81492E2906B75300FD0974 /* TodayTODO.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CF8149342906B75300FD0974 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8149332906B75300FD0974 /* InterfaceController.swift */; };
 		CF8149362906B75300FD0974 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8149352906B75300FD0974 /* ExtensionDelegate.swift */; };
 		CF8149382906B75300FD0974 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8149372906B75300FD0974 /* NotificationController.swift */; };
@@ -115,6 +114,10 @@
 		CF995F4E2924BF6600FAE2F1 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF995F4C2924BF6600FAE2F1 /* TaskCell.xib */; };
 		CF995F502924C15D00FAE2F1 /* PushCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF995F4F2924C15D00FAE2F1 /* PushCell.xib */; };
 		CF995F522924C34400FAE2F1 /* BackUpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF995F512924C34400FAE2F1 /* BackUpCell.xib */; };
+		CF9D38D4294327BA00F80EA2 /* TodayTODO.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CF81492E2906B75300FD0974 /* TodayTODO.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CF9D38D9294328E800F80EA2 /* NSAlarmInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D38D8294328E800F80EA2 /* NSAlarmInfo.swift */; };
+		CF9D38DA294328E800F80EA2 /* NSAlarmInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D38D8294328E800F80EA2 /* NSAlarmInfo.swift */; };
+		CF9D38DB294328E800F80EA2 /* NSAlarmInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D38D8294328E800F80EA2 /* NSAlarmInfo.swift */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
 		CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */; };
@@ -190,19 +193,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CF8149302906B75300FD0974 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFEB49CF28F13287008850DC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CF81492D2906B75300FD0974;
-			remoteInfo = "DailyToDoListWatch WatchKit Extension";
-		};
 		CF81493F2906B75400FD0974 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CFEB49CF28F13287008850DC /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CF8149222906B75100FD0974;
 			remoteInfo = DailyToDoListWatch;
+		};
+		CF9D38D5294327BA00F80EA2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFEB49CF28F13287008850DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF81492D2906B75300FD0974;
+			remoteInfo = TodayTODOWatchWatchKitExtension;
 		};
 		CFB6EE0828F1793C00E93585 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -239,15 +242,15 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CF8149452906B75400FD0974 /* Embed App Extensions */ = {
+		CF9D38D7294327BA00F80EA2 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				CF81492F2906B75300FD0974 /* TodayTODO.appex in Embed App Extensions */,
+				CF9D38D4294327BA00F80EA2 /* TodayTODO.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CFEB4A1F28F133B4008850DC /* Embed App Extensions */ = {
@@ -347,6 +350,7 @@
 		CF995F4C2924BF6600FAE2F1 /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		CF995F4F2924C15D00FAE2F1 /* PushCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PushCell.xib; sourceTree = "<group>"; };
 		CF995F512924C34400FAE2F1 /* BackUpCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackUpCell.xib; sourceTree = "<group>"; };
+		CF9D38D8294328E800F80EA2 /* NSAlarmInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAlarmInfo.swift; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* TodayTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToDoListWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0328F1793C00E93585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -680,6 +684,7 @@
 				CFEB4A4028F14D1C008850DC /* RepeatResult.swift */,
 				CFD0B13A28F905380029D936 /* AlarmInfo.swift */,
 				CF81495E2906D28E00FD0974 /* NSEachTask.swift */,
+				CF9D38D8294328E800F80EA2 /* NSAlarmInfo.swift */,
 				CF50BC5D2924D13500AB538B /* NSOptionalData.swift */,
 				CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */,
 				CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */,
@@ -769,12 +774,12 @@
 			buildConfigurationList = CF8149462906B75400FD0974 /* Build configuration list for PBXNativeTarget "TodayTODOWatch" */;
 			buildPhases = (
 				CF8149212906B75100FD0974 /* Resources */,
-				CF8149452906B75400FD0974 /* Embed App Extensions */,
+				CF9D38D7294327BA00F80EA2 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CF8149312906B75300FD0974 /* PBXTargetDependency */,
+				CF9D38D6294327BA00F80EA2 /* PBXTargetDependency */,
 			);
 			name = TodayTODOWatch;
 			productName = DailyToDoListWatch;
@@ -918,6 +923,7 @@
 			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				ko,
 				en,
 				Base,
 			);
@@ -1226,6 +1232,7 @@
 				CF8149342906B75300FD0974 /* InterfaceController.swift in Sources */,
 				CF81494A2906B77100FD0974 /* StaticValues.swift in Sources */,
 				CF81494F2906B77500FD0974 /* EachTask.swift in Sources */,
+				CF9D38DB294328E800F80EA2 /* NSAlarmInfo.swift in Sources */,
 				CF50BC622924D78700AB538B /* OptionalData.swift in Sources */,
 				CF81495D2906CC8C00FD0974 /* WatchConnectManager.swift in Sources */,
 				CF8149512906B77500FD0974 /* AlarmInfo.swift in Sources */,
@@ -1262,6 +1269,7 @@
 				CFD0B14028F90D210029D936 /* UserData.swift in Sources */,
 				CFD0B12D28F1BD150029D936 /* Enums.swift in Sources */,
 				CF487EAA28F1B72900498451 /* Utils.swift in Sources */,
+				CF9D38DA294328E800F80EA2 /* NSAlarmInfo.swift in Sources */,
 				CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1311,6 +1319,7 @@
 				CFEB4A6028F15621008850DC /* CustomNavigationController.swift in Sources */,
 				CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */,
 				CF995F482923D02600FAE2F1 /* OpenedTask.swift in Sources */,
+				CF9D38D9294328E800F80EA2 /* NSAlarmInfo.swift in Sources */,
 				CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */,
 				CF7909252935ED5B0027D25D /* NoticeViewController.swift in Sources */,
 				CFDCD3CD293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition in Sources */,
@@ -1353,15 +1362,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CF8149312906B75300FD0974 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CF81492D2906B75300FD0974 /* TodayTODOWatchWatchKitExtension */;
-			targetProxy = CF8149302906B75300FD0974 /* PBXContainerItemProxy */;
-		};
 		CF8149402906B75400FD0974 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CF8149222906B75100FD0974 /* TodayTODOWatch */;
 			targetProxy = CF81493F2906B75400FD0974 /* PBXContainerItemProxy */;
+		};
+		CF9D38D6294327BA00F80EA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF81492D2906B75300FD0974 /* TodayTODOWatchWatchKitExtension */;
+			targetProxy = CF9D38D5294327BA00F80EA2 /* PBXContainerItemProxy */;
 		};
 		CFB6EE0928F1793C00E93585 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1491,7 +1500,6 @@
 		CF8149472906B75400FD0974 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "$(PRODUCT_NAME)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1504,7 +1512,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = TodayTODOWatchWatchKitExtension;
 				INFOPLIST_FILE = TodayTODOWatch/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_CFBundleDisplayName = TodayTODO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.bailey.TodayTODO;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1532,7 +1541,6 @@
 		CF8149482906B75400FD0974 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = "$(PRODUCT_NAME)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1545,7 +1553,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = TodayTODOWatchWatchKitExtension;
 				INFOPLIST_FILE = TodayTODOWatch/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_CFBundleDisplayName = TodayTODO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.bailey.TodayTODO;
 				LD_RUNPATH_SEARCH_PATHS = (

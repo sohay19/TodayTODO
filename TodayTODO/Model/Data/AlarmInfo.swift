@@ -33,7 +33,18 @@ class AlarmInfo : Object {
         self.alarmTime = alarmTime
     }
     
+    convenience init(_ alarmInfo:NSAlarmInfo) {
+        self.init()
+        self.taskId = alarmInfo.taskId
+        self.alarmId = alarmInfo.alarmId
+        self.alarmTime = alarmInfo.alarmTime
+    }
+    
     func getIdList() -> [String] {
         return alarmId
+    }
+    
+    func clone() -> AlarmInfo {
+        return AlarmInfo(self.taskId, self.getIdList(), self.alarmTime)
     }
 }

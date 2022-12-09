@@ -109,20 +109,23 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
 //MARK: - Func
 extension SettingViewController {
     private func deleteAllFile() {
-        //origin Realm 파일 삭제
-        DataManager.shared.deleteRealm()
+        //앱 실행 시 데이터 재전달을 위해
+        UserDefaults.shared.set(false, forKey: UpdateAKey)
         //알람 삭제
         DataManager.shared.deleteAllAlarmPush()
+        //TODO삭제
+        DataManager.shared.deleteAllTask()
         //카테고리 삭제
         DataManager.shared.deleteAllCategory()
+        //카테고리 순서
+        let orderList = DataManager.shared.getCategoryOrder()
+        WatchConnectManager.shared.sendToWatchCategoryOrder(orderList)
+        //
         SystemManager.shared.closeLoading()
         //
-        PopupManager.shared.openOkAlert(self, title: "알림", msg: "적용을 위해 앱을 재시작 해야합니다", complete: { _ in
-            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                exit(0)
-            }
-        })
+        if let reloadMainView = WatchConnectManager.shared.reloadMainView {
+            reloadMainView()
+        }
     }
 }
 

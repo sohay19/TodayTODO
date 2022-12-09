@@ -57,9 +57,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
         
-        //
-        WatchConnectManager.shared.sendToWatchTask()
+        // 위젯 새로고침
         WidgetCenter.shared.reloadAllTimelines()
+        //업데이트 용
+        DataManager.shared.copyRealm()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {

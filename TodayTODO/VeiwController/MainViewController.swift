@@ -56,7 +56,7 @@ class MainViewController: UIViewController {
         // 리프레시 컨트롤러 초기화
         initRefreshController()
         // 메인 리로드 함수
-        DataManager.shared.setReloadMain(refresh)
+        WatchConnectManager.shared.reloadMainView = refresh
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -369,7 +369,7 @@ extension MainViewController {
         }
     }
     //
-    func taskIsDone(_ isDone:Bool, _ indexPath:IndexPath) {
+    func taskIsDone(_ indexPath:IndexPath) {
         switch currentType {
         case .Today:
             //Today
@@ -378,14 +378,14 @@ extension MainViewController {
                 return
             }
             let modifyTask = task.clone()
-            modifyTask.isDone = isDone
+            modifyTask.changeIsDone()
             DataManager.shared.updateTask(modifyTask)
             //
             resultList[category]?.remove(at: indexPath.row)
             guard let taskList = resultList[category] else {
                 return
             }
-            if isDone {
+            if modifyTask.isDone {
                 resultList[category]?.append(task)
             } else {
                 resultList[category] = [task] + taskList
@@ -400,7 +400,7 @@ extension MainViewController {
                 return
             }
             let modifyTask = task.clone()
-            modifyTask.isDone = isDone
+            modifyTask.changeIsDone()
             DataManager.shared.updateTask(modifyTask)
             //
             let day = Utils.getDay(monthDate)
@@ -408,7 +408,7 @@ extension MainViewController {
             guard let taskList = monthlyTaskList[day]?.taskList[category] else {
                 return
             }
-            if isDone {
+            if modifyTask.isDone {
                 monthlyTaskList[day]?.taskList[category]?.append(task)
             } else {
                 monthlyTaskList[day]?.taskList[category] = [task] + taskList

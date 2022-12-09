@@ -17,7 +17,7 @@ class TaskTableRowController : NSObject {
     @IBOutlet weak var categoryLine: WKInterfaceGroup!
     
     var task:EachTask?
-    var updateDone:((EachTask, ()->Void)->Void)?
+    var updateDone:((EachTask)->Void)?
 }
 
 extension TaskTableRowController {
@@ -37,9 +37,8 @@ extension TaskTableRowController {
         guard let updateDone = updateDone, let task = task else {
             return
         }
-        task.changeIsDone()
-        updateDone(task) {
-            imgCheck.setTintColor(task.isDone ? UIColor.systemIndigo! : UIColor.gray)
-        }
+        let newTask = task.clone()
+        newTask.changeIsDone()
+        updateDone(newTask)
     }
 }
