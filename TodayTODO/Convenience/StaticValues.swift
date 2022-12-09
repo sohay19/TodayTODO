@@ -18,7 +18,6 @@ let realmFile = "TodayTODO.realm"
 let LoginTypeKey = "LoginType"
 let BadgeCountKey = "BadgeCount"
 let CategoryList = "CategoryList"
-let UpdateAKey = "UpdateA"
 
 //MARK: - Board
 let mainBoard = "Main"
@@ -62,6 +61,9 @@ let E_FontSize = 21.0
 //MARK: - Image
 let BackgroundImage = "DefaultBack.jpg"
 let BlackBackImage = "BlackBackground.png"
+let Underline_Indigo = "underline_Indigo.png"
+let Underline_Pink = "underline_Pink.png"
+let Underline_Black = "underline_Black.png"
 let boldConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .medium, scale: .large)
 let mediumConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .regular, scale: .medium)
 let thinConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .thin, scale: .small)

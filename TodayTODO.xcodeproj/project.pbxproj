@@ -38,9 +38,6 @@
 		CF5350D1291E9CD600AFDC14 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350D0291E9CD600AFDC14 /* Loading.swift */; };
 		CF5350D3291E9CE200AFDC14 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D2291E9CE200AFDC14 /* Loading.xib */; };
 		CF5350E7292376BB00AFDC14 /* MonthltyDayTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */; };
-		CF5D89FD2942D610006FF3AF /* NSAlarmInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5D89FC2942D610006FF3AF /* NSAlarmInfo.swift */; };
-		CF5D89FE2942D80A006FF3AF /* NSAlarmInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5D89FC2942D610006FF3AF /* NSAlarmInfo.swift */; };
-		CF5D89FF2942D80B006FF3AF /* NSAlarmInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5D89FC2942D610006FF3AF /* NSAlarmInfo.swift */; };
 		CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */; };
 		CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */; };
 		CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
@@ -291,7 +288,6 @@
 		CF5350D0291E9CD600AFDC14 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		CF5350D2291E9CE200AFDC14 /* Loading.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Loading.xib; sourceTree = "<group>"; };
 		CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthltyDayTask.swift; sourceTree = "<group>"; };
-		CF5D89FC2942D610006FF3AF /* NSAlarmInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAlarmInfo.swift; sourceTree = "<group>"; };
 		CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCExtension.swift; sourceTree = "<group>"; };
 		CF75963229024C340046FDC1 /* PushList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PushList.storyboard; sourceTree = "<group>"; };
@@ -667,7 +663,6 @@
 				CFEB4A4028F14D1C008850DC /* RepeatResult.swift */,
 				CFD0B13A28F905380029D936 /* AlarmInfo.swift */,
 				CF81495E2906D28E00FD0974 /* NSEachTask.swift */,
-				CF5D89FC2942D610006FF3AF /* NSAlarmInfo.swift */,
 				CF50BC5D2924D13500AB538B /* NSOptionalData.swift */,
 				CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */,
 				CF5350E6292376BB00AFDC14 /* MonthltyDayTask.swift */,
@@ -1208,7 +1203,6 @@
 				CF8149342906B75300FD0974 /* InterfaceController.swift in Sources */,
 				CF81494A2906B77100FD0974 /* StaticValues.swift in Sources */,
 				CF81494F2906B77500FD0974 /* EachTask.swift in Sources */,
-				CF5D89FF2942D80B006FF3AF /* NSAlarmInfo.swift in Sources */,
 				CF50BC622924D78700AB538B /* OptionalData.swift in Sources */,
 				CF81495D2906CC8C00FD0974 /* WatchConnectManager.swift in Sources */,
 				CF8149512906B77500FD0974 /* AlarmInfo.swift in Sources */,
@@ -1245,7 +1239,6 @@
 				CFD0B14028F90D210029D936 /* UserData.swift in Sources */,
 				CFD0B12D28F1BD150029D936 /* Enums.swift in Sources */,
 				CF487EAA28F1B72900498451 /* Utils.swift in Sources */,
-				CF5D89FE2942D80A006FF3AF /* NSAlarmInfo.swift in Sources */,
 				CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1295,7 +1288,6 @@
 				CFEB4A6028F15621008850DC /* CustomNavigationController.swift in Sources */,
 				CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */,
 				CF995F482923D02600FAE2F1 /* OpenedTask.swift in Sources */,
-				CF5D89FD2942D610006FF3AF /* NSAlarmInfo.swift in Sources */,
 				CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */,
 				CF7909252935ED5B0027D25D /* NoticeViewController.swift in Sources */,
 				CFDCD3CD293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition in Sources */,

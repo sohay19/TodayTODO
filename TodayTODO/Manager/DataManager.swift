@@ -35,62 +35,31 @@ extension DataManager {
     //
     func deleteRealm() {
         realmManager.deleteOriginFile()
-#if os(iOS)
-        WatchConnectManager.shared.sendToAppTask(.Delete, [])
-#endif
-    }
-    func copyRealm() {
-//        let isUpadteA = UserDefaults.shared.bool(forKey: UpdateAKey)
-//        print("isUpadteA = \(isUpadteA)")
-//        WatchConnectManager.shared.sendToWatchALL()
-//        if !isUpadteA {
-//        }
     }
 }
-
 
 //MARK: - Task
 extension DataManager {
     //ADD, Delete, Update
     func addTask(_ task:EachTask) {
-        if let _ = realmManager.getTaskData(task.taskId) {
-            updateTask(task)
-        } else {
-            realmManager.addTask(task)
-            let option = task.optionData ?? OptionData()
-            let isAlarm = option.isAlarm
-            if isAlarm {
-                addAlarmPush(task)
-            }
-#if os(iOS)
-            WatchConnectManager.shared.sendToAppTask(.Add, [task])
-            if #available(watchOSApplicationExtension 9.0, *) {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
-#endif
+        realmManager.addTask(task)
+        let option = task.optionData ?? OptionData()
+        let isAlarm = option.isAlarm
+        if isAlarm {
+            addAlarmPush(task)
         }
-    }
-    func updateTask(_ task:EachTask) {
-        realmManager.updateTask(task)
-        updateAlarmPush(task)
+        WatchConnectManager.shared.sendToAppTask(.Add, task)
 #if os(iOS)
-        WatchConnectManager.shared.sendToAppTask(.Update, [task])
         if #available(watchOSApplicationExtension 9.0, *) {
             WidgetCenter.shared.reloadAllTimelines()
         }
 #endif
     }
-    func deleteTask(_ taskId:String) {
-        guard let task = realmManager.getTaskData(taskId) else { return }
-        let option = task.optionData ?? OptionData()
-        let isAlarm = option.isAlarm
-        if isAlarm {
-            deleteAlarmPush(task.taskId)
-        }
-        let deletedTask = task.clone()
-        realmManager.deleteTask(task)
+    func updateTask(_ task:EachTask) {
+        realmManager.updateTask(task)
+        updateAlarmPush(task)
+        WatchConnectManager.shared.sendToAppTask(.Update, task)
 #if os(iOS)
-        WatchConnectManager.shared.sendToAppTask(.Delete, [deletedTask])
         if #available(watchOSApplicationExtension 9.0, *) {
             WidgetCenter.shared.reloadAllTimelines()
         }
@@ -102,19 +71,15 @@ extension DataManager {
         if isAlarm {
             deleteAlarmPush(task.taskId)
         }
-        let deletedTask = task.clone()
         realmManager.deleteTask(task)
+        WatchConnectManager.shared.sendToAppTask(.Delete, task)
 #if os(iOS)
-        WatchConnectManager.shared.sendToAppTask(.Delete, [deletedTask])
         if #available(watchOSApplicationExtension 9.0, *) {
             WidgetCenter.shared.reloadAllTimelines()
         }
 #endif
     }
     //load
-    func getAllTask() -> [EachTask] {
-        return realmManager.getTaskAllData()
-    }
     func getTodayTask() -> [EachTask] {
         return realmManager.getTaskDataForDay(date: Date())
     }
@@ -132,31 +97,16 @@ extension DataManager {
 //MARK: - Cetegory
 extension DataManager {
     //
-    func addCategory(_ category:CategoryData) {
-        if let _ = realmManager.getCategory(category.title) {
-            updateCategory(category)
-        } else {
-            realmManager.addCategory(category)
-#if os(iOS)
-            WatchConnectManager.shared.sendToWatchCategory(.Add, [category])
-#endif
-        }
-    }
-    //
-    func updateCategory(_ category:CategoryData) {
-        realmManager.updateCategory(category)
-#if os(iOS)
-        WatchConnectManager.shared.sendToWatchCategory(.Update, [category])
-#endif
+    func addCategory(_ data:CategoryData) {
+        realmManager.addCategory(data)
+        WatchConnectManager.shared.sendToWatchCategory(.Add, data)
     }
     //load
-    func getAllCategory() -> [CategoryData] {
+    func loadCategory() -> [CategoryData] {
         return realmManager.loadCategory()
     }
     //
     func deleteCategory(_ category:String) {
-        guard let categoryData = realmManager.getCategory(category) else { return }
-        let deletedCategory = categoryData.clone()
         realmManager.deleteCategory(category)
         //
         var newList = DataManager.shared.getCategoryOrder()
@@ -164,12 +114,9 @@ extension DataManager {
             newList.remove(at: index)
         }
         setCategoryOrder(newList)
-#if os(iOS)
-        WatchConnectManager.shared.sendToWatchCategory(.Delete, [deletedCategory])
-#endif
+        WatchConnectManager.shared.sendToWatchCategory(.Delete, data)
     }
     func deleteCategory(_ category:CategoryData) {
-        let deletedCategory = category.clone()
         realmManager.deleteCategory(category)
         //
         var newList = DataManager.shared.getCategoryOrder()
@@ -177,17 +124,11 @@ extension DataManager {
             newList.remove(at: index)
         }
         setCategoryOrder(newList)
-#if os(iOS)
-        WatchConnectManager.shared.sendToWatchCategory(.Delete, [deletedCategory])
-#endif
     }
     //
     func deleteAllCategory() {
         realmManager.deleteAllCategory()
         setCategoryOrder([String]())
-#if os(iOS)
-        WatchConnectManager.shared.sendToWatchCategory(.Delete, [])
-#endif
     }
     /* ORDER */
     func reloadCategoryOrder() {
@@ -217,9 +158,6 @@ extension DataManager {
     func setCategoryOrderRealm(_ list:[String]) {
         let categoryOrder = CategoryOrderData(order: list)
         realmManager.setCategoryOrder(categoryOrder)
-#if os(iOS)
-        WatchConnectManager.shared.sendToWatchCategoryOrder(list)
-#endif
     }
     func getCategoryColor(_ category:String) -> UIColor {
         return realmManager.getCategoryColor(category)
@@ -263,21 +201,11 @@ extension DataManager {
 extension DataManager {
     //alarmInfo, push 모두 ADD
     func addAlarmPush(_ task:EachTask) {
-        if let _ = realmManager.getAlarmInfo(task.taskId) {
-            updateAlarmPush(task)
-        } else {
-            let option = task.optionData ?? OptionData()
-            let alarmTime = option.alarmTime
-            let idList = pushManager.addNotification(task)
-            let alarmInfo = AlarmInfo(task.taskId, idList, alarmTime)
-            realmManager.addAlarm(idList, alarmInfo)
-#if os(iOS)
-            WatchConnectManager.shared.sendToWatchAlarm(.Add, [alarmInfo])
-            if #available(watchOSApplicationExtension 9.0, *) {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
-#endif
-        }
+        let option = task.optionData ?? OptionData()
+        let alarmTime = option.alarmTime
+        let idList = pushManager.addNotification(task)
+        let alarmInfo = AlarmInfo(task.taskId, idList, alarmTime)
+        realmManager.addAlarm(idList, alarmInfo)
     }
     //alarmInfo, push 모두 UPDATE
     func updateAlarmPush(_ taskId:String, removeId:String) {
@@ -285,14 +213,6 @@ extension DataManager {
         pushManager.deletePush([removeId])
         //alarmInfo 업데이트
         realmManager.updateAlarm(taskId, removeId)
-#if os(iOS)
-        if let alarmInfo = realmManager.getAlarmInfo(taskId) {
-            WatchConnectManager.shared.sendToWatchAlarm(.Update, [alarmInfo])
-            if #available(watchOSApplicationExtension 9.0, *) {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
-        }
-#endif
     }
     func updateAlarmPush(_ task:EachTask) {
         let option = task.optionData ?? OptionData()
@@ -308,16 +228,9 @@ extension DataManager {
     func deleteAlarmPush(_ taskId:String, _ id:String) {
         //alarminfo 있을 때
         if let alarmInfo = realmManager.getAlarmInfo(taskId) {
-            let deletedAlarmInfo = alarmInfo.clone()
             let idList = realmManager.getAlarmIdList(taskId)
             pushManager.deletePush(idList)
             realmManager.deleteAlarm(alarmInfo)
-#if os(iOS)
-            WatchConnectManager.shared.sendToWatchAlarm(.Delete, [deletedAlarmInfo])
-            if #available(watchOSApplicationExtension 9.0, *) {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
-#endif
         } else {
             //alarminfo가 없을 때
             pushManager.deletePush([id])
@@ -326,16 +239,9 @@ extension DataManager {
     func deleteAlarmPush(_ taskId:String) {
         //alarminfo 있을 때
         if let alarmInfo = realmManager.getAlarmInfo(taskId) {
-            let deletedAlarmInfo = alarmInfo.clone()
             let idList = realmManager.getAlarmIdList(taskId)
             pushManager.deletePush(idList)
             realmManager.deleteAlarm(alarmInfo)
-#if os(iOS)
-            WatchConnectManager.shared.sendToWatchAlarm(.Delete, [deletedAlarmInfo])
-            if #available(watchOSApplicationExtension 9.0, *) {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
-#endif
         }
     }
     //alarmInfo, push 모두 삭제
@@ -343,36 +249,5 @@ extension DataManager {
         pushManager.deleteAllPush()
         // alarmInfo 모두 삭제
         realmManager.deleteAllAlarm()
-#if os(iOS)
-        WatchConnectManager.shared.sendToWatchAlarm(.Delete, [])
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
-#endif
     }
-}
-
-//MARK: - Alarm
-extension DataManager {
-    func getAllAlarm() -> [AlarmInfo] {
-        return realmManager.getAllAlarmInfo()
-    }
-#if os(watchOS)
-    func addAlarm(_ alarmInfo:AlarmInfo) {
-        if let _ = realmManager.getAlarmInfo(alarmInfo.taskId) {
-            updateAlarm(alarmInfo)
-        } else {
-            realmManager.addAlarm(alarmInfo.getIdList(), alarmInfo)
-        }
-    }
-    func updateAlarm(_ alarmInfo:AlarmInfo) {
-        realmManager.updateAlarm(alarmInfo)
-    }
-    func deleteAlarm(_ taskId:String) {
-        realmManager.deleteAlarm(taskId)
-    }
-    func deleteAllAlarm() {
-        realmManager.deleteAllAlarm()
-    }
-#endif
 }
