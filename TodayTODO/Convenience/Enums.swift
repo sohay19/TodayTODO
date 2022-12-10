@@ -69,6 +69,7 @@ enum SettingType:String {
     case Question = "문의하기"
     case Reset = "데이터 초기화"
     case Version = "버전 정보"
+    case Help = "도움말"
 }
 
 enum DataType:String {
@@ -83,6 +84,15 @@ enum SendType:String {
     case Add = "add"
     case Update = "update"
     case Delete = "delete"
+}
+
+enum HelpType:String {
+    case MainLeftSwipe = "Main_Today_LeftSwipe"
+    case MainRightSwipe = "Main_Today_RightSwipe"
+    case MainToday = "Main_Month_Today"
+    case CategorySwipe = "Category_Swipe"
+    case CategoryMove = "Category_Move"
+    case PushSwipe = "Push_Swipe"
 }
 
 //MARK: - CodingKey

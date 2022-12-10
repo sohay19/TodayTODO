@@ -9,28 +9,27 @@ import UIKit
 import MessageUI
 
 class SettingViewController : UIViewController {
-    @IBOutlet weak var settingTable:UITableView!
+    @IBOutlet weak var btn1: UIButton!
+    @IBOutlet weak var btn2: UIButton!
+    @IBOutlet weak var btn3: UIButton!
+    @IBOutlet weak var btn4: UIButton!
+    @IBOutlet weak var btn5: UIButton!
+    @IBOutlet weak var btn6: UIButton!
+    @IBOutlet weak var btn7: UIButton!
+    @IBOutlet weak var btn8: UIButton!
     
-    let menuList:[SettingType] = [.Notice, .FAQ, .Backup, .Question, .Reset, .Version]
+    var btnList:[UIButton] = []
+    let menuList:[SettingType] = [.Notice, .Backup, .Help, .Reset, .Version, .FAQ, .Question]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //
-        settingTable.dataSource = self
-        settingTable.delegate = self
         //
         initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //
-        SystemManager.shared.openLoading()
-        //
-        settingTable.isScrollEnabled = false
-        //
-        SystemManager.shared.closeLoading()
     }
 }
 
@@ -42,34 +41,39 @@ extension SettingViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         //
-        settingTable.backgroundColor = .clear
-        settingTable.separatorColor = .lightGray
-        settingTable.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        btnList.append(btn1)
+        btnList.append(btn2)
+        btnList.append(btn3)
+        btnList.append(btn4)
+        btnList.append(btn5)
+        btnList.append(btn6)
+        btnList.append(btn7)
+        btnList.append(btn8)
+        //
+        for (i, btn) in btnList.enumerated() {
+            if i < menuList.count {
+                btn.setTitle(menuList[i].rawValue, for: .normal)
+            } else {
+                btn.setTitle("", for: .normal)
+            }
+            btn.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
+            btn.setTitleColor(.label, for: .normal)
+            btn.backgroundColor = .systemBackground.withAlphaComponent(0.3)
+            btn.layer.cornerRadius = 10
+            //
+            btn.layer.shadowColor = UIColor.gray.cgColor
+            btn.layer.shadowOpacity = 1
+            btn.layer.shadowRadius = 10
+            btn.layer.shadowOffset = CGSize.zero
+        }
     }
 }
 
-//MARK: - TableView
-extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
-    //MARK: - Default
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell") as? SettingCell else {
-            return UITableViewCell()
-        }
-        let title = menuList[indexPath.row].rawValue
-        cell.inputCell(title)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
-    }
-    //MARK: - Event
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch menuList[indexPath.row] {
+//MARK: - Button Event
+extension SettingViewController {
+    @IBAction func clickNone(_ sender:UIButton) {
+        let type = SettingType(rawValue: sender.title(for: .normal) ?? "")
+        switch type {
         case .Notice:
             let board = UIStoryboard(name: noticeBoard, bundle: nil)
             guard let noticeVC = board.instantiateViewController(withIdentifier: noticeBoard) as? NoticeViewController else { return }
@@ -77,13 +81,6 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             noticeVC.modalPresentationStyle = .fullScreen
             guard let navigationController = self.navigationController as? CustomNavigationController else { return }
             navigationController.pushViewController(noticeVC)
-        case .FAQ:
-            let board = UIStoryboard(name: faqBoard, bundle: nil)
-            guard let faqVC = board.instantiateViewController(withIdentifier: faqBoard) as? FAQViewController else { return }
-            faqVC.modalTransitionStyle = .crossDissolve
-            faqVC.modalPresentationStyle = .fullScreen
-            guard let navigationController = self.navigationController as? CustomNavigationController else { return }
-            navigationController.pushViewController(faqVC)
         case .Backup:
             let board = UIStoryboard(name: backupBoard, bundle: nil)
             guard let backupVC = board.instantiateViewController(withIdentifier: backupBoard) as? BackupViewController else { return }
@@ -91,10 +88,26 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             backupVC.modalPresentationStyle = .fullScreen
             guard let navigationController = self.navigationController as? CustomNavigationController else { return }
             navigationController.pushViewController(backupVC)
-        case .Question:
-            //문의 메일 보내기
-            SystemManager.shared.openLoading()
-            sendEmail()
+        case .Help:
+            var actionList:[(UIAlertAction)->Void] = []
+            actionList.append({ _ in
+                UserDefaults.shared.set(false, forKey: HelpMainKey)
+                UserDefaults.shared.set(false, forKey: HelpCategoryKey)
+                UserDefaults.shared.set(false, forKey: HelpPushKey)
+            })
+            actionList.append({ _ in
+                UserDefaults.shared.set(true, forKey: HelpMainKey)
+                UserDefaults.shared.set(true, forKey: HelpCategoryKey)
+                UserDefaults.shared.set(true, forKey: HelpPushKey)
+            })
+            actionList.append({ _ in
+                ()
+            })
+            PopupManager.shared.openAlertSheet(self,
+                                               title: "도움말 안내",
+                                               msg: "원하는 메뉴를 선택하세요",
+                                               btnMsg: ["도움말 페이지 보기","도움말 페이지 끄기","취소"],
+                                               complete: actionList)
         case .Reset:
             SystemManager.shared.openLoading()
             PopupManager.shared.openYesOrNo(self,
@@ -109,6 +122,18 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             versionVC.modalPresentationStyle = .fullScreen
             guard let navigationController = self.navigationController as? CustomNavigationController else { return }
             navigationController.pushViewController(versionVC)
+        case .FAQ:
+            let board = UIStoryboard(name: faqBoard, bundle: nil)
+            guard let faqVC = board.instantiateViewController(withIdentifier: faqBoard) as? FAQViewController else { return }
+            faqVC.modalTransitionStyle = .crossDissolve
+            faqVC.modalPresentationStyle = .fullScreen
+            guard let navigationController = self.navigationController as? CustomNavigationController else { return }
+            navigationController.pushViewController(faqVC)
+        case .Question:
+            SystemManager.shared.openLoading()
+            sendEmail()
+        default:
+            break
         }
     }
 }

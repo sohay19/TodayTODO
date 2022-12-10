@@ -36,6 +36,7 @@ class CategoryViewController: UIViewController {
         super.viewWillAppear(animated)
         //
         SystemManager.shared.openLoading()
+        SystemManager.shared.openHelp(self, categoryBoard)
         loadData()
         changeEditMode(false)
     }

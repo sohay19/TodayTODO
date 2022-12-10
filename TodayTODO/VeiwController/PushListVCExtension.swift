@@ -126,7 +126,9 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
         }
         guard let task = DataManager.shared.getTask(taskId) else { return }
         isTaskOpen = true
-        SystemManager.shared.openTaskInfo(.LOOK, date: nil, task: task, load: nil, modify: nil)
+        SystemManager.shared.openTaskInfo(.LOOK, date: nil, task: task, load: loadPushData, modify: { newTask in
+            DataManager.shared.updateTask(newTask)
+        })
     }
     //MARK: - Edit
     //Row별 EditMode-

@@ -24,9 +24,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        //root = main
+        //root = tabBoard
         let rootBoard = UIStoryboard(name: mainBoard, bundle: nil)
-        guard let mainVC = rootBoard.instantiateViewController(withIdentifier: mainBoard) as? CustomTabBarController else { return }
+        guard let mainVC = rootBoard.instantiateViewController(withIdentifier: tabBoard) as? CustomTabBarController else { return }
         let navigationController = CustomNavigationController(rootViewController: mainVC)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

@@ -54,3 +54,15 @@ extension UITextView {
         self.attributedText = attributedString
     }
 }
+
+extension UILabel {
+    // 폰트 설정 및 행간 조절 스타일 설정
+    func setLineSpacing(_ text:String, font:UIFont) {
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 5
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(NSAttributedString.Key.font, value: font, range: NSMakeRange(0, attributedString.length))
+        self.attributedText = attributedString
+    }
+}

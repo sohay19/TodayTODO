@@ -196,7 +196,7 @@ extension TaskInfoViewController {
     }
     //
     private func initGesture() {
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardDown))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(keyboardDown))
         tapGesture.numberOfTapsRequired = 1
         backView.addGestureRecognizer(tapGesture)
     }

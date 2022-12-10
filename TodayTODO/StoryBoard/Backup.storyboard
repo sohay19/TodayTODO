@@ -59,6 +59,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="왼쪽으로 스와이프하여 백업 파일을 삭제할 수 있습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbh-u4-Mb8" userLabel="LabelTableTitle">
+                                <rect key="frame" x="131.33333333333337" y="239" width="216.66666666666663" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vyD-Xo-JRf">
                                 <rect key="frame" x="30" y="266" width="333" height="378"/>
                                 <subviews>
@@ -122,6 +128,7 @@
                         <constraints>
                             <constraint firstItem="hQc-EI-bNc" firstAttribute="height" secondItem="UuY-ix-228" secondAttribute="height" multiplier="0.866667" id="8wv-aN-0Hs"/>
                             <constraint firstItem="c8e-XG-ryA" firstAttribute="top" secondItem="SgC-y9-dAu" secondAttribute="bottom" constant="9" id="ATT-c9-MX2"/>
+                            <constraint firstItem="7Bl-0P-7V0" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Qbh-u4-Mb8" secondAttribute="trailing" constant="18" id="AwU-gO-RNm"/>
                             <constraint firstItem="7Bl-0P-7V0" firstAttribute="trailing" secondItem="C01-m9-LOQ" secondAttribute="trailing" constant="9" id="BJU-Jy-KWr"/>
                             <constraint firstItem="hQc-EI-bNc" firstAttribute="leading" secondItem="UuY-ix-228" secondAttribute="leading" id="Dpe-YJ-JKT"/>
                             <constraint firstItem="iES-Qm-PJF" firstAttribute="top" secondItem="c8e-XG-ryA" secondAttribute="bottom" constant="30" id="Dv3-jW-ZjW"/>
@@ -131,6 +138,7 @@
                             <constraint firstItem="c8e-XG-ryA" firstAttribute="leading" secondItem="SgC-y9-dAu" secondAttribute="leading" constant="18" id="LUL-3c-4m3"/>
                             <constraint firstItem="hQc-EI-bNc" firstAttribute="trailing" secondItem="UuY-ix-228" secondAttribute="trailing" id="MHj-AA-hHR"/>
                             <constraint firstItem="rSL-jo-xbQ" firstAttribute="leading" secondItem="7Bl-0P-7V0" secondAttribute="leading" id="MY6-29-IWx"/>
+                            <constraint firstItem="Qbh-u4-Mb8" firstAttribute="bottom" secondItem="iES-Qm-PJF" secondAttribute="bottom" id="N9j-tB-29I"/>
                             <constraint firstItem="C01-m9-LOQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c8e-XG-ryA" secondAttribute="trailing" id="NXJ-qh-zjc"/>
                             <constraint firstItem="hQc-EI-bNc" firstAttribute="top" secondItem="vyD-Xo-JRf" secondAttribute="bottom" constant="30" id="OhK-J5-sPb"/>
                             <constraint firstItem="UuY-ix-228" firstAttribute="top" secondItem="hQc-EI-bNc" secondAttribute="bottom" constant="30" id="P7x-Eo-AZI"/>
@@ -139,6 +147,7 @@
                             <constraint firstItem="7Bl-0P-7V0" firstAttribute="bottom" secondItem="UuY-ix-228" secondAttribute="bottom" constant="30" id="UfB-Bh-YHC"/>
                             <constraint firstItem="SgC-y9-dAu" firstAttribute="leading" secondItem="vyD-Xo-JRf" secondAttribute="leading" constant="-9" id="Wet-kb-dY3"/>
                             <constraint firstItem="vyD-Xo-JRf" firstAttribute="leading" secondItem="7Bl-0P-7V0" secondAttribute="leading" constant="30" id="WqF-Ml-OZY"/>
+                            <constraint firstItem="Qbh-u4-Mb8" firstAttribute="leading" secondItem="iES-Qm-PJF" secondAttribute="trailing" constant="3" id="aE6-Eu-b7w"/>
                             <constraint firstItem="eMw-bx-3qr" firstAttribute="top" secondItem="rSL-jo-xbQ" secondAttribute="bottom" id="aYO-cZ-kvC"/>
                             <constraint firstItem="7Bl-0P-7V0" firstAttribute="trailing" secondItem="vyD-Xo-JRf" secondAttribute="trailing" constant="30" id="dLm-Kp-UAU"/>
                             <constraint firstItem="7Bl-0P-7V0" firstAttribute="trailing" secondItem="UuY-ix-228" secondAttribute="trailing" constant="90" id="iJe-fC-RoD"/>
@@ -161,6 +170,7 @@
                         <outlet property="btnRefresh" destination="C01-m9-LOQ" id="E80-Ob-8cQ"/>
                         <outlet property="labelBackupDate" destination="c8e-XG-ryA" id="Q4i-hx-lJP"/>
                         <outlet property="labelDate" destination="SgC-y9-dAu" id="aIA-ro-gSx"/>
+                        <outlet property="labelInfo" destination="Qbh-u4-Mb8" id="Bbe-I6-nbq"/>
                         <outlet property="labelTableTitle" destination="iES-Qm-PJF" id="icP-Hk-HdD"/>
                         <outlet property="labelTitle" destination="hZT-sg-mTd" id="UDp-XT-y9I"/>
                         <outlet property="line" destination="eMw-bx-3qr" id="8yr-dA-9GJ"/>
@@ -173,9 +183,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
-        <image name="chevron.backward" catalog="system" width="97" height="128"/>
-        <image name="icloud.and.arrow.down" catalog="system" width="128" height="111"/>
+        <image name="arrow.clockwise" catalog="system" width="32" height="32"/>
+        <image name="chevron.backward" catalog="system" width="32" height="32"/>
+        <image name="icloud.and.arrow.down" catalog="system" width="32" height="32"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

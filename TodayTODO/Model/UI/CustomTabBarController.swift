@@ -24,13 +24,13 @@ class CustomTabBarController : UITabBarController {
 
 extension CustomTabBarController : UITabBarControllerDelegate {
     func initTabBar() {
-        guard let mainTab = self.storyboard!.instantiateViewController(withIdentifier: "MainVC") as? MainViewController else { return }
+        guard let mainTab = self.storyboard!.instantiateViewController(withIdentifier: mainBoard) as? MainViewController else { return }
         
-        let cBoard = UIStoryboard(name: categoryBoard, bundle: nil)
-        guard let categoryTab = cBoard.instantiateViewController(withIdentifier: categoryBoard) as? CategoryViewController else { return }
+        let categoryboard = UIStoryboard(name: categoryBoard, bundle: nil)
+        guard let categoryTab = categoryboard.instantiateViewController(withIdentifier: categoryBoard) as? CategoryViewController else { return }
         
-        let pushBoard = UIStoryboard(name: pushListBoard, bundle: nil)
-        guard let pushTab = pushBoard.instantiateViewController(withIdentifier: pushListBoard) as? PushListViewController else { return }
+        let pushboard = UIStoryboard(name: pushBoard, bundle: nil)
+        guard let pushTab = pushboard.instantiateViewController(withIdentifier: pushBoard) as? PushListViewController else { return }
         
         let setBoard = UIStoryboard(name: settingBoard, bundle: nil)
         guard let settingTab = setBoard.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }

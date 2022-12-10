@@ -54,6 +54,7 @@ class PushListViewController : UIViewController {
         super.viewWillAppear(animated)
         //
         SystemManager.shared.openLoading()
+        SystemManager.shared.openHelp(self, pushBoard)
         loadPushData()
         changeEditMode(false)
     }

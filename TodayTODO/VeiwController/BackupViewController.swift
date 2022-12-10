@@ -13,6 +13,7 @@ class BackupViewController: UIViewController {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelTableTitle: UILabel!
+    @IBOutlet weak var labelInfo: UILabel!
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelBackupDate: UILabel!
     //
@@ -63,6 +64,8 @@ extension BackupViewController {
         labelDate.font = UIFont(name: K_Font_B, size: K_FontSize + 3.0)
         labelBackupDate.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelTableTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 3.0)
+        labelInfo.font = UIFont(name: K_Font_R, size: K_FontSize - 4.0)
+        labelInfo.textColor = .gray
         labelDate.textColor = .label
         labelBackupDate.textColor = .label
         labelTableTitle.textColor = .label

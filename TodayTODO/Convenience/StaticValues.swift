@@ -19,8 +19,12 @@ let LoginTypeKey = "LoginType"
 let BadgeCountKey = "BadgeCount"
 let CategoryList = "CategoryList"
 let UpdateAKey = "UpdateA"
+let HelpMainKey = "HelpMain"
+let HelpCategoryKey = "HelpCategory"
+let HelpPushKey = "HelpPush"
 
 //MARK: - Board
+let tabBoard = "Tab"
 let mainBoard = "Main"
 let LoadingBoard = "Loading"
 let repeatBoard = "Repeat"
@@ -33,7 +37,7 @@ let faqBoard = "FAQ"
 let helpBoard = "Help"
 let versionBoard = "Version"
 let taskInfoBoard = "TaskInfo"
-let pushListBoard = "PushList"
+let pushBoard = "PushList"
 let PopListBoard = "PopList"
 
 //MARK: - Push UserInfo key

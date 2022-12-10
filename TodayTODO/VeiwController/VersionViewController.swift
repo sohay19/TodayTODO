@@ -45,9 +45,9 @@ extension VersionViewController {
         labelInfo.textColor = .label
         labelInfo.font = UIFont(name: N_Font, size: N_FontSize + 3.0)
         //
-        imgView.layer.cornerRadius = 10
-        imgView.layer.borderWidth = 1
-        imgView.layer.borderColor = UIColor.label.cgColor
+        imgView.layer.shadowColor = UIColor.gray.cgColor
+        imgView.layer.shadowOpacity = 1
+        imgView.layer.shadowOffset = CGSize(width: 1, height: 3)
         //
         btnBack.setImage(UIImage(systemName: "chevron.backward", withConfiguration: mediumConfig), for: .normal)
         btnBack.tintColor = .label

@@ -63,6 +63,7 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         //
         SystemManager.shared.openLoading()
+        SystemManager.shared.openHelp(self, mainBoard)
         checkVersion()
         //날짜가 넘어갔는지 확인
         guard let today = calendarView.today else {
