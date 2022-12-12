@@ -9,6 +9,30 @@ import UIKit
 import MessageUI
 
 class SettingViewController : UIViewController {
+    @IBOutlet weak var backView1: UIView!
+    @IBOutlet weak var backView2: UIView!
+    @IBOutlet weak var backView3: UIView!
+    @IBOutlet weak var backView4: UIView!
+    @IBOutlet weak var backView5: UIView!
+    @IBOutlet weak var backView6: UIView!
+    @IBOutlet weak var backView7: UIView!
+    @IBOutlet weak var backView8: UIView!
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var label3: UILabel!
+    @IBOutlet weak var label4: UILabel!
+    @IBOutlet weak var label5: UILabel!
+    @IBOutlet weak var label6: UILabel!
+    @IBOutlet weak var label7: UILabel!
+    @IBOutlet weak var label8: UILabel!
+    @IBOutlet weak var imgView1: UIImageView!
+    @IBOutlet weak var imgView2: UIImageView!
+    @IBOutlet weak var imgView3: UIImageView!
+    @IBOutlet weak var imgView4: UIImageView!
+    @IBOutlet weak var imgView5: UIImageView!
+    @IBOutlet weak var imgView6: UIImageView!
+    @IBOutlet weak var imgView7: UIImageView!
+    @IBOutlet weak var imgView8: UIImageView!
     @IBOutlet weak var btn1: UIButton!
     @IBOutlet weak var btn2: UIButton!
     @IBOutlet weak var btn3: UIButton!
@@ -19,6 +43,9 @@ class SettingViewController : UIViewController {
     @IBOutlet weak var btn8: UIButton!
     
     var btnList:[UIButton] = []
+    var labelList:[UILabel] = []
+    var imgList:[UIImageView] = []
+    var viewList:[UIView] = []
     let menuList:[SettingType] = [.Notice, .Backup, .Help, .Reset, .Version, .FAQ, .Question]
     
     
@@ -41,6 +68,15 @@ extension SettingViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         //
+        viewList.append(backView1)
+        viewList.append(backView2)
+        viewList.append(backView3)
+        viewList.append(backView4)
+        viewList.append(backView5)
+        viewList.append(backView6)
+        viewList.append(backView7)
+        viewList.append(backView8)
+        //
         btnList.append(btn1)
         btnList.append(btn2)
         btnList.append(btn3)
@@ -50,21 +86,64 @@ extension SettingViewController {
         btnList.append(btn7)
         btnList.append(btn8)
         //
+        labelList.append(label1)
+        labelList.append(label2)
+        labelList.append(label3)
+        labelList.append(label4)
+        labelList.append(label5)
+        labelList.append(label6)
+        labelList.append(label7)
+        labelList.append(label8)
+        //
+        imgList.append(imgView1)
+        imgList.append(imgView2)
+        imgList.append(imgView3)
+        imgList.append(imgView4)
+        imgList.append(imgView5)
+        imgList.append(imgView6)
+        imgList.append(imgView7)
+        imgList.append(imgView8)
+        //
         for (i, btn) in btnList.enumerated() {
+            var title = ""
+            var imageName = ""
             if i < menuList.count {
-                btn.setTitle(menuList[i].rawValue, for: .normal)
-            } else {
-                btn.setTitle("", for: .normal)
+                switch menuList[i] {
+                case .Notice:
+                    imageName = "list.clipboard"
+                case .Backup:
+                    imageName = "icloud"
+                case .Help:
+                    imageName = "questionmark"
+                case .Reset:
+                    imageName = "trash"
+                case .Version:
+                    imageName = "info.circle"
+                case .FAQ:
+                    imageName = "bubble.left.and.bubble.right"
+                case .Question:
+                    imageName = "envelope"
+                }
+                title = menuList[i].rawValue
             }
-            btn.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
-            btn.setTitleColor(.label, for: .normal)
-            btn.backgroundColor = .systemBackground.withAlphaComponent(0.6)
-            btn.layer.cornerRadius = 10
             //
-            btn.layer.shadowColor = UIColor.gray.cgColor
-            btn.layer.shadowOpacity = 1
-            btn.layer.shadowRadius = 10
-            btn.layer.shadowOffset = CGSize.zero
+            labelList[i].text = title
+            labelList[i].font = UIFont(name: K_Font_B, size: K_FontSize)
+            labelList[i].textAlignment = .center
+            btn.setTitle(title, for: .normal)
+            btn.setTitleColor(.clear, for: .normal)
+            //
+            let image = UIImage(systemName: imageName, withConfiguration: boldConfig)
+            imgList[i].image = image
+            imgList[i].tintColor = .label
+            imgList[i].contentMode = .center
+            //
+            let btnBack = UIImageView(frame: viewList[i].bounds)
+            btnBack.image = UIImage(named: BackgroundImage)
+            viewList[i].insertSubview(btnBack, at: 0)
+            viewList[i].layer.shadowColor = UIColor.gray.cgColor
+            viewList[i].layer.shadowOpacity = 1
+            viewList[i].layer.shadowOffset = CGSize.zero
         }
     }
 }
@@ -73,6 +152,17 @@ extension SettingViewController {
 extension SettingViewController {
     @IBAction func clickNone(_ sender:UIButton) {
         let type = SettingType(rawValue: sender.title(for: .normal) ?? "")
+        // 클릭 효과
+        guard let index = menuList.firstIndex(where: {$0 == type}) else {
+            return
+        }
+        imgList[index].tintColor = .systemIndigo
+        labelList[index].textColor = .systemIndigo
+        UIView.animate(withDuration: 1, delay: 1) { [self] in
+            imgList[index].tintColor = .label
+            labelList[index].textColor = .label
+        }
+        // 버튼 실행
         switch type {
         case .Notice:
             let board = UIStoryboard(name: noticeBoard, bundle: nil)
