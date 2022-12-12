@@ -21,9 +21,11 @@ extension TaskInfoViewController {
         if isShow {
             return
         }
+        if !(memoView.isFirstResponder || inputTitle.isFirstResponder) {
+            return
+        }
         isShow = true
         moveBottom(true, notification)
-        //
         scrollView.isScrollEnabled = true
         if memoView.isFirstResponder {
             scrollMemo()

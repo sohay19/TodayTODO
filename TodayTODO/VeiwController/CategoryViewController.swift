@@ -21,6 +21,7 @@ class CategoryViewController: UIViewController {
     var taskList:[String:[EachTask]] = [:]
     var isRefresh = false
     var isEdit = false
+    var openIndex:IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,7 @@ class CategoryViewController: UIViewController {
         super.viewWillDisappear(animated)
         //
         changeEditMode(false)
+        openIndex = nil
     }
 }
 
@@ -103,8 +105,10 @@ extension CategoryViewController {
     private func loadData() {
         originList = DataManager.shared.getCategoryOrder()
         categoryList = originList
+        //
         for category in categoryList {
-            let taskes = DataManager.shared.getTaskCategory(category: category)
+            var taskes = DataManager.shared.getTaskCategory(category: category)
+            taskes.sort(by: { $0.taskDay > $1.taskDay })
             taskList[category] = taskes
         }
         tableView.reloadData()
@@ -117,6 +121,10 @@ extension CategoryViewController {
     //
     private func changeEditMode(_ isEdit:Bool) {
         self.isEdit = isEdit
+        if isEdit {
+            openIndex = nil
+            tableView.reloadData()
+        }
         tableView.setEditing(isEdit, animated: true)
         btnEdit.setImage(UIImage(systemName: isEdit ? "rectangle.portrait.and.arrow.right" : "scissors")?.withConfiguration(mediumConfig), for: .normal)
     }

@@ -60,7 +60,6 @@
 		CF79091B293234FA0027D25D /* PopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79091A293234FA0027D25D /* PopListViewController.swift */; };
 		CF79091E293236D50027D25D /* PopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79091C293236D50027D25D /* PopCell.swift */; };
 		CF79091F293236D50027D25D /* PopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF79091D293236D50027D25D /* PopCell.xib */; };
-		CF7909212935D7010027D25D /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7909202935D7010027D25D /* SettingCell.swift */; };
 		CF7909232935ED520027D25D /* Notice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7909222935ED520027D25D /* Notice.storyboard */; };
 		CF7909252935ED5B0027D25D /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7909242935ED5B0027D25D /* NoticeViewController.swift */; };
 		CF7909272935EF7E0027D25D /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7909262935EF7E0027D25D /* FAQViewController.swift */; };
@@ -84,8 +83,8 @@
 		CF7909412938D00D0027D25D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7909402938D00D0027D25D /* Assets.xcassets */; };
 		CF7909422938D3EF0027D25D /* underline_Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */; };
 		CF7909432938D3F00027D25D /* underline_Indigo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF53508C291BAD6E00AFDC14 /* underline_Indigo.png */; };
-		CF7909482938D6870027D25D /* WatchBack.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7909472938D6870027D25D /* WatchBack.png */; };
-		CF7909492938D6870027D25D /* WatchBack.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7909472938D6870027D25D /* WatchBack.png */; };
+		CF7909482938D6870027D25D /* WidgetBack.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7909472938D6870027D25D /* WidgetBack.png */; };
+		CF7909492938D6870027D25D /* WidgetBack.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7909472938D6870027D25D /* WidgetBack.png */; };
 		CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A3F28F14D1C008850DC /* CategoryData.swift */; };
 		CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8148F229068E0700FD0974 /* ClassExtension.swift */; };
 		CF8149272906B75100FD0974 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8149252906B75100FD0974 /* Interface.storyboard */; };
@@ -129,9 +128,12 @@
 		CF9D38F229436EC900F80EA2 /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D38F129436EC900F80EA2 /* VersionViewController.swift */; };
 		CF9D38F4294379C500F80EA2 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D38F3294379C500F80EA2 /* Help.swift */; };
 		CF9D38F6294379DB00F80EA2 /* Help.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9D38F5294379DB00F80EA2 /* Help.xib */; };
+		CF9D39012947370300F80EA2 /* CategoryTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D38FF2947370300F80EA2 /* CategoryTaskCell.swift */; };
+		CF9D39022947370300F80EA2 /* CategoryTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9D39002947370300F80EA2 /* CategoryTaskCell.xib */; };
+		CF9D39042947668600F80EA2 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9D39032947668600F80EA2 /* pencil.png */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
-		CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */; };
+		CFB6EE0128F1793B00E93585 /* TodayTODOWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */; };
 		CFB6EE0428F1793C00E93585 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFB6EE0328F1793C00E93585 /* Assets.xcassets */; };
 		CFB6EE0A28F1793C00E93585 /* TodayTODO.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CFB6EDFC28F1793B00E93585 /* TodayTODO.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFCEA0C228F1A78600A49D82 /* GoogleService-Info.plist */; };
@@ -145,8 +147,8 @@
 		CFD0B14028F90D210029D936 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4228F14D1C008850DC /* UserData.swift */; };
 		CFD0B14628F91CDB0029D936 /* TaskInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFD0B14528F91CDB0029D936 /* TaskInfo.storyboard */; };
 		CFD0B14828F91CEA0029D936 /* TaskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */; };
-		CFDCD3CD293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CFDCD3D0293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition */; };
-		CFDCD3CE293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CFDCD3D0293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition */; };
+		CFDCD3CD293A5E7E0030CB1C /* TodayTODOWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CFDCD3D0293A5E7E0030CB1C /* TodayTODOWidget.intentdefinition */; };
+		CFDCD3CE293A5E7E0030CB1C /* TodayTODOWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CFDCD3D0293A5E7E0030CB1C /* TodayTODOWidget.intentdefinition */; };
 		CFDCD3D1293DE0F30030CB1C /* DefaultBack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D36292B5A4E007024EB /* DefaultBack.jpg */; };
 		CFDCD3D2293DE0F30030CB1C /* DefaultBack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D36292B5A4E007024EB /* DefaultBack.jpg */; };
 		CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE01ADC291502E0005B3316 /* EF_Diary.ttf */; };
@@ -156,7 +158,6 @@
 		CFE45D232928A605007024EB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
 		CFE45D242928A606007024EB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A7528F16BF3008850DC /* RealmManager.swift */; };
 		CFE45D30292B1D2B007024EB /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D2E292B1D2A007024EB /* clock.png */; };
-		CFE45D31292B1D2B007024EB /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D2F292B1D2B007024EB /* pencil.png */; };
 		CFE45D37292B5A4E007024EB /* DefaultBack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D36292B5A4E007024EB /* DefaultBack.jpg */; };
 		CFE45D3B292B6F17007024EB /* AddCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFE45D3A292B6F17007024EB /* AddCategory.storyboard */; };
 		CFE45D3D292C96FC007024EB /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE45D3C292C96FC007024EB /* AddCategoryViewController.swift */; };
@@ -330,7 +331,6 @@
 		CF79091A293234FA0027D25D /* PopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopListViewController.swift; sourceTree = "<group>"; };
 		CF79091C293236D50027D25D /* PopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopCell.swift; sourceTree = "<group>"; };
 		CF79091D293236D50027D25D /* PopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopCell.xib; sourceTree = "<group>"; };
-		CF7909202935D7010027D25D /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		CF7909222935ED520027D25D /* Notice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notice.storyboard; sourceTree = "<group>"; };
 		CF7909242935ED5B0027D25D /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		CF7909262935EF7E0027D25D /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
@@ -340,7 +340,7 @@
 		CF79092E293899D90027D25D /* FAQCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQCell.swift; sourceTree = "<group>"; };
 		CF79092F293899D90027D25D /* FAQCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQCell.xib; sourceTree = "<group>"; };
 		CF7909402938D00D0027D25D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CF7909472938D6870027D25D /* WatchBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WatchBack.png; sourceTree = "<group>"; };
+		CF7909472938D6870027D25D /* WidgetBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WidgetBack.png; sourceTree = "<group>"; };
 		CF8148F229068E0700FD0974 /* ClassExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassExtension.swift; sourceTree = "<group>"; };
 		CF8149232906B75100FD0974 /* TodayTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8149262906B75100FD0974 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -373,8 +373,11 @@
 		CF9D38F129436EC900F80EA2 /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
 		CF9D38F3294379C500F80EA2 /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		CF9D38F5294379DB00F80EA2 /* Help.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Help.xib; sourceTree = "<group>"; };
+		CF9D38FF2947370300F80EA2 /* CategoryTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTaskCell.swift; sourceTree = "<group>"; };
+		CF9D39002947370300F80EA2 /* CategoryTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTaskCell.xib; sourceTree = "<group>"; };
+		CF9D39032947668600F80EA2 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pencil.png; path = ../../../../TodayTODO/image/pencil.png; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* TodayTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyToDoListWidget.swift; sourceTree = "<group>"; };
+		CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTODOWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0328F1793C00E93585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFB6EE0528F1793C00E93585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFCEA0C228F1A78600A49D82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -383,11 +386,10 @@
 		CFD0B14528F91CDB0029D936 /* TaskInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskInfo.storyboard; sourceTree = "<group>"; };
 		CFD0B14728F91CEA0029D936 /* TaskInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoViewController.swift; sourceTree = "<group>"; };
 		CFDCD3CC293A475C0030CB1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		CFDCD3CF293A5E7E0030CB1C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = en; path = en.lproj/DailyToDoListWidget.intentdefinition; sourceTree = "<group>"; };
+		CFDCD3CF293A5E7E0030CB1C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = en; path = en.lproj/TodayTODOWidget.intentdefinition; sourceTree = "<group>"; };
 		CFE01ADC291502E0005B3316 /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		CFE01AF72918EDE6005B3316 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
 		CFE45D2E292B1D2A007024EB /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
-		CFE45D2F292B1D2B007024EB /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		CFE45D36292B5A4E007024EB /* DefaultBack.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DefaultBack.jpg; sourceTree = "<group>"; };
 		CFE45D3A292B6F17007024EB /* AddCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCategory.storyboard; sourceTree = "<group>"; };
 		CFE45D3C292C96FC007024EB /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
@@ -560,9 +562,9 @@
 				CF487EA328F1B6C900498451 /* TodayTODOWidget.entitlements */,
 				CF487EA428F1B6D200498451 /* TaskListEntryView.swift */,
 				CF487EA628F1B6F100498451 /* TaskListProvider.swift */,
-				CFB6EE0028F1793B00E93585 /* DailyToDoListWidget.swift */,
-				CFDCD3D0293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition */,
-				CF7909472938D6870027D25D /* WatchBack.png */,
+				CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */,
+				CFDCD3D0293A5E7E0030CB1C /* TodayTODOWidget.intentdefinition */,
+				CF7909472938D6870027D25D /* WidgetBack.png */,
 				CFB6EE0328F1793C00E93585 /* Assets.xcassets */,
 				CFB6EE0528F1793C00E93585 /* Info.plist */,
 			);
@@ -598,8 +600,8 @@
 				CF9D38DC29436D6700F80EA2 /* help */,
 				CFE45D36292B5A4E007024EB /* DefaultBack.jpg */,
 				CF995F452923C54B00FAE2F1 /* title.png */,
+				CF9D39032947668600F80EA2 /* pencil.png */,
 				CFE45D2E292B1D2A007024EB /* clock.png */,
-				CFE45D2F292B1D2B007024EB /* pencil.png */,
 				CF5350A9291E3D4A00AFDC14 /* BlackBackground.png */,
 				CF5350D42921E92E00AFDC14 /* underline_Black.png */,
 				CF5350D62921F3F300AFDC14 /* underline_Pink.png */,
@@ -736,6 +738,8 @@
 				CFEB4A5F28F15621008850DC /* CustomNavigationController.swift */,
 				CF2BAF372927D1B400EB49F4 /* CustomTabBarController.swift */,
 				CF42F254292E398200DB0F8E /* LineView.swift */,
+				CF79092A293736250027D25D /* WeekDayButton.swift */,
+				CF79092C2937B1D60027D25D /* NoticeCell.swift */,
 				CF5350D2291E9CE200AFDC14 /* Loading.xib */,
 				CF5350D0291E9CD600AFDC14 /* Loading.swift */,
 				CF995F4C2924BF6600FAE2F1 /* TaskCell.xib */,
@@ -750,11 +754,10 @@
 				CF79091C293236D50027D25D /* PopCell.swift */,
 				CF79092F293899D90027D25D /* FAQCell.xib */,
 				CF79092E293899D90027D25D /* FAQCell.swift */,
-				CF7909202935D7010027D25D /* SettingCell.swift */,
-				CF79092A293736250027D25D /* WeekDayButton.swift */,
-				CF79092C2937B1D60027D25D /* NoticeCell.swift */,
 				CF9D38F5294379DB00F80EA2 /* Help.xib */,
 				CF9D38F3294379C500F80EA2 /* Help.swift */,
+				CF9D39002947370300F80EA2 /* CategoryTaskCell.xib */,
+				CF9D38FF2947370300F80EA2 /* CategoryTaskCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1014,7 +1017,7 @@
 			files = (
 				CF7909342938A3550027D25D /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CFE01AE2291502E1005B3316 /* EF_Diary.ttf in Resources */,
-				CF7909492938D6870027D25D /* WatchBack.png in Resources */,
+				CF7909492938D6870027D25D /* WidgetBack.png in Resources */,
 				CF7909422938D3EF0027D25D /* underline_Indigo.png in Resources */,
 				CF7909322938A3550027D25D /* NanumBarunpenB.otf in Resources */,
 				CF7909352938A3550027D25D /* Windsor_Great_Park-Regular.otf in Resources */,
@@ -1051,7 +1054,9 @@
 				CFD0B14628F91CDB0029D936 /* TaskInfo.storyboard in Resources */,
 				CFEB4A6628F165C2008850DC /* Category.storyboard in Resources */,
 				CF5350B1291E3D4B00AFDC14 /* BlackBackground.png in Resources */,
+				CF9D39022947370300F80EA2 /* CategoryTaskCell.xib in Resources */,
 				CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */,
+				CF9D39042947668600F80EA2 /* pencil.png in Resources */,
 				CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CF7909232935ED520027D25D /* Notice.storyboard in Resources */,
 				CF5350C0291E457400AFDC14 /* Windsor_Great_Park-Regular.otf in Resources */,
@@ -1066,9 +1071,8 @@
 				CF995F502924C15D00FAE2F1 /* PushCell.xib in Resources */,
 				CFEB4A6228F16234008850DC /* Repeat.storyboard in Resources */,
 				CF5350D3291E9CE200AFDC14 /* Loading.xib in Resources */,
-				CFE45D31292B1D2B007024EB /* pencil.png in Resources */,
 				CF790931293899D90027D25D /* FAQCell.xib in Resources */,
-				CF7909482938D6870027D25D /* WatchBack.png in Resources */,
+				CF7909482938D6870027D25D /* WidgetBack.png in Resources */,
 				CF9D38E729436D8000F80EA2 /* Push_Swipe.gif in Resources */,
 				CFEB4A2E28F14B68008850DC /* Setting.storyboard in Resources */,
 				CF790919293234F00027D25D /* PopList.storyboard in Resources */,
@@ -1297,7 +1301,7 @@
 			files = (
 				CFEC1D3A290E60BB009A9588 /* NSEachTask.swift in Sources */,
 				CF8148CB29067B4000FD0974 /* CategoryData.swift in Sources */,
-				CFDCD3CE293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition in Sources */,
+				CFDCD3CE293A5E7E0030CB1C /* TodayTODOWidget.intentdefinition in Sources */,
 				CFEC1D36290D2AC4009A9588 /* PushManager.swift in Sources */,
 				CF50BC602924D78500AB538B /* OptionalData.swift in Sources */,
 				CFE45D232928A605007024EB /* RealmManager.swift in Sources */,
@@ -1307,7 +1311,7 @@
 				CFD0B12A28F1BC2D0029D936 /* EachTask.swift in Sources */,
 				CF2BAF392928A30700EB49F4 /* DataManager.swift in Sources */,
 				CFEC1D3C290E60D5009A9588 /* NSCategoryData.swift in Sources */,
-				CFB6EE0128F1793B00E93585 /* DailyToDoListWidget.swift in Sources */,
+				CFB6EE0128F1793B00E93585 /* TodayTODOWidget.swift in Sources */,
 				CF487EA528F1B6D200498451 /* TaskListEntryView.swift in Sources */,
 				CFD0B13C28F90C2B0029D936 /* AlarmInfo.swift in Sources */,
 				CFEC1D3B290E60C9009A9588 /* WatchConnectManager.swift in Sources */,
@@ -1354,6 +1358,7 @@
 				CF79092D2937B1D70027D25D /* NoticeCell.swift in Sources */,
 				CFEB4A5628F1559D008850DC /* SystemManager.swift in Sources */,
 				CFEB4A5B28F155E5008850DC /* DataManager.swift in Sources */,
+				CF9D39012947370300F80EA2 /* CategoryTaskCell.swift in Sources */,
 				CF487EA828F1B6FF00498451 /* TaskListProvider.swift in Sources */,
 				CFD0B14828F91CEA0029D936 /* TaskInfoViewController.swift in Sources */,
 				CFEB4A5C28F155E5008850DC /* PushManager.swift in Sources */,
@@ -1369,7 +1374,7 @@
 				CF9D38F229436EC900F80EA2 /* VersionViewController.swift in Sources */,
 				CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */,
 				CF7909252935ED5B0027D25D /* NoticeViewController.swift in Sources */,
-				CFDCD3CD293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition in Sources */,
+				CFDCD3CD293A5E7E0030CB1C /* TodayTODOWidget.intentdefinition in Sources */,
 				CF9D38F4294379C500F80EA2 /* Help.swift in Sources */,
 				CF75963729024F680046FDC1 /* PushCell.swift in Sources */,
 				CF81495C2906CC0000FD0974 /* WatchConnectManager.swift in Sources */,
@@ -1380,7 +1385,6 @@
 				CFEB4A5728F1559D008850DC /* CloudManager.swift in Sources */,
 				CFEB4A4928F14D25008850DC /* TaskCell.swift in Sources */,
 				CF79091E293236D50027D25D /* PopCell.swift in Sources */,
-				CF7909212935D7010027D25D /* SettingCell.swift in Sources */,
 				CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */,
 				CFEB4A3228F14BC7008850DC /* LoginViewController.swift in Sources */,
 				CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */,
@@ -1446,12 +1450,12 @@
 			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
-		CFDCD3D0293A5E7E0030CB1C /* DailyToDoListWidget.intentdefinition */ = {
+		CFDCD3D0293A5E7E0030CB1C /* TodayTODOWidget.intentdefinition */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CFDCD3CF293A5E7E0030CB1C /* en */,
 			);
-			name = DailyToDoListWidget.intentdefinition;
+			name = TodayTODOWidget.intentdefinition;
 			sourceTree = "<group>";
 		};
 		CFEB49E028F13287008850DC /* Main.storyboard */ = {
@@ -1634,11 +1638,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = TodayTODOWidgetExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7QY569K4A;
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = M7QY569K4A;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodayTODOWidget/Info.plist;
@@ -1654,8 +1657,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO.TodayTODOWidget;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = TodayTODO;
-				PROVISIONING_PROFILE_SPECIFIER = TodayTODO_Widget;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = TodayTODO_Widget;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1671,11 +1673,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = TodayTODOWidgetExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7QY569K4A;
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = M7QY569K4A;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodayTODOWidget/Info.plist;
@@ -1691,8 +1692,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO.TodayTODOWidget;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = TodayTODO;
-				PROVISIONING_PROFILE_SPECIFIER = TodayTODO_Widget;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = TodayTODO_Widget;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -157,7 +157,7 @@ extension SettingViewController {
             return
         }
         imgList[index].tintColor = .systemIndigo
-        labelList[index].textColor = .systemIndigo
+        labelList[index].tintColor = .systemIndigo
         UIView.animate(withDuration: 1, delay: 1) { [self] in
             imgList[index].tintColor = .label
             labelList[index].textColor = .label
@@ -244,7 +244,6 @@ extension SettingViewController {
         WatchConnectManager.shared.sendToWatchCategoryOrder(orderList)
         //
         SystemManager.shared.closeLoading()
-        //
         if let reloadMainView = WatchConnectManager.shared.reloadMainView {
             reloadMainView()
         }

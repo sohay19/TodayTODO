@@ -31,10 +31,10 @@ struct TaskListProvider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<TaskListEntry>) -> Void) {
         let currentDate = Date()
         //1분마다 refresh
-        let refreshTimer = Calendar.current.date(byAdding: .minute, value: 1, to: currentDate)
-        guard let refreshTimer = refreshTimer else {
+        guard let refreshTimer = Calendar.current.date(byAdding: .minute, value: 1, to: currentDate) else {
             return
         }
+        DataManager.shared.setRealm()
         //데이터 가져오기
         let orderList = DataManager.shared.getCategoryOrder()
         var taskList = DataManager.shared.getTodayTask()
@@ -57,7 +57,7 @@ struct TaskListProvider: TimelineProvider {
         }
         let entry = Entry(date: refreshTimer, taskList: taskList)
         let entries:[Entry] = [entry]
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        let timeline = Timeline(entries: entries, policy: .after(refreshTimer))
         completion(timeline)
     }
 }

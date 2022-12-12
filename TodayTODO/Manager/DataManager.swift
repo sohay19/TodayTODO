@@ -31,6 +31,9 @@ extension DataManager {
     func initRealm() {
         realmManager.openRealm()
     }
+    func deleteRealmFile() {
+        realmManager.deleteOriginFile()
+    }
     //
     func getRealmURL() -> URL? {
         return realmManager.getRealmURL()
@@ -67,9 +70,6 @@ extension DataManager {
             }
 #if os(iOS)
             WatchConnectManager.shared.sendToAppTask(.Add, [task])
-            if #available(watchOSApplicationExtension 9.0, *) {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
 #endif
         }
     }
@@ -78,9 +78,6 @@ extension DataManager {
         updateAlarmPush(task)
 #if os(iOS)
         WatchConnectManager.shared.sendToAppTask(.Update, [task])
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
 #endif
     }
     func deleteTask(_ taskId:String) {
@@ -94,9 +91,6 @@ extension DataManager {
         realmManager.deleteTask(task)
 #if os(iOS)
         WatchConnectManager.shared.sendToAppTask(.Delete, [deletedTask])
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
 #endif
     }
     func deleteTask(_ task:EachTask) {
@@ -109,18 +103,12 @@ extension DataManager {
         realmManager.deleteTask(task)
 #if os(iOS)
         WatchConnectManager.shared.sendToAppTask(.Delete, [deletedTask])
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
 #endif
     }
     func deleteAllTask() {
         realmManager.deleteAllTask()
 #if os(iOS)
         WatchConnectManager.shared.sendToWatchTask(.Delete, [])
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
 #endif
     }
     //load
@@ -168,9 +156,6 @@ extension DataManager {
         realmManager.updateCategory(category)
 #if os(iOS)
         WatchConnectManager.shared.sendToWatchCategory(.Update, [category])
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
 #endif
     }
     //load
@@ -187,15 +172,12 @@ extension DataManager {
         realmManager.deleteCategory(category)
         //
         var newList = DataManager.shared.getCategoryOrder()
-        if let index = newList.firstIndex(of: category.title) {
+        if let index = newList.firstIndex(of: deletedCategory.title) {
             newList.remove(at: index)
         }
         setCategoryOrder(newList)
 #if os(iOS)
         WatchConnectManager.shared.sendToWatchCategory(.Delete, [deletedCategory])
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
 #endif
     }
     func deleteCategory(_ category:CategoryData) {
@@ -203,15 +185,12 @@ extension DataManager {
         realmManager.deleteCategory(category)
         //
         var newList = DataManager.shared.getCategoryOrder()
-        if let index = newList.firstIndex(of: category.title) {
+        if let index = newList.firstIndex(of: deletedCategory.title) {
             newList.remove(at: index)
         }
         setCategoryOrder(newList)
 #if os(iOS)
         WatchConnectManager.shared.sendToWatchCategory(.Delete, [deletedCategory])
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
 #endif
     }
     //
@@ -220,9 +199,6 @@ extension DataManager {
         setCategoryOrder([String]())
 #if os(iOS)
         WatchConnectManager.shared.sendToWatchCategory(.Delete, [])
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
 #endif
     }
     /* ORDER */
@@ -255,9 +231,6 @@ extension DataManager {
         realmManager.setCategoryOrder(categoryOrder)
 #if os(iOS)
         WatchConnectManager.shared.sendToWatchCategoryOrder(list)
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
 #endif
     }
     func getCategoryColor(_ category:String) -> UIColor {
@@ -312,9 +285,6 @@ extension DataManager {
             realmManager.addAlarm(idList, alarmInfo)
 #if os(iOS)
             WatchConnectManager.shared.sendToWatchAlarm(.Add, [alarmInfo])
-            if #available(watchOSApplicationExtension 9.0, *) {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
 #endif
         }
     }
@@ -327,9 +297,6 @@ extension DataManager {
 #if os(iOS)
         if let alarmInfo = realmManager.getAlarmInfo(taskId) {
             WatchConnectManager.shared.sendToWatchAlarm(.Update, [alarmInfo])
-            if #available(watchOSApplicationExtension 9.0, *) {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
         }
 #endif
     }
@@ -353,9 +320,6 @@ extension DataManager {
             realmManager.deleteAlarm(alarmInfo)
 #if os(iOS)
             WatchConnectManager.shared.sendToWatchAlarm(.Delete, [deletedAlarmInfo])
-            if #available(watchOSApplicationExtension 9.0, *) {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
 #endif
         } else {
             //alarminfo가 없을 때
@@ -371,9 +335,6 @@ extension DataManager {
             realmManager.deleteAlarm(alarmInfo)
 #if os(iOS)
             WatchConnectManager.shared.sendToWatchAlarm(.Delete, [deletedAlarmInfo])
-            if #available(watchOSApplicationExtension 9.0, *) {
-                WidgetCenter.shared.reloadAllTimelines()
-            }
 #endif
         }
     }
@@ -384,9 +345,6 @@ extension DataManager {
         realmManager.deleteAllAlarm()
 #if os(iOS)
         WatchConnectManager.shared.sendToWatchAlarm(.Delete, [])
-        if #available(watchOSApplicationExtension 9.0, *) {
-            WidgetCenter.shared.reloadAllTimelines()
-        }
 #endif
     }
 }

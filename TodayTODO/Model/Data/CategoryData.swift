@@ -54,7 +54,7 @@ class CategoryData : Object {
     
     convenience init(_ title:String, _ color:[Float]) {
         self.init()
-        self.primaryKey = DataManager.shared.getAllCategory().count
+        self.primaryKey = DataManager.shared.getCategoryOrder().count
         self.title = title
         self.color = color
     }

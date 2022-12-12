@@ -27,19 +27,14 @@ struct TaskListEntryView: View {
     @ViewBuilder
     var body: some View {
         VStack(alignment: .leading) {
-            let taskList = entry.taskList
-            if taskList.count == 0 {
-                TaskListView(list: [])
-            } else {
-                TaskListView(list: entry.taskList)
-            }
+            TaskListView(taskList: entry.taskList)
         }
         .padding(EdgeInsets(top: 18, leading: 9, bottom: 18, trailing: 15))
     }
 }
 
 struct TaskListView: View {
-    let list: [EachTask]
+    let taskList: [EachTask]
     
     @Environment(\.widgetFamily) var family
     
@@ -48,7 +43,7 @@ struct TaskListView: View {
         let N_Size:CGFloat = 12
         //
         GeometryReader { geometry in
-            if list.count == 0 {
+            if taskList.count == 0 {
                 VStack(alignment: .center) {
                     Text("TODO를 등록해주세요!")
                         .font(.custom(K_Font_B, size: K_Size))
@@ -57,7 +52,7 @@ struct TaskListView: View {
             } else {
                 switch family {
                 case .systemSmall:
-                    let task = list.first!
+                    let task = taskList.first!
                     let color = DataManager.shared.getCategoryColor(task.category)
                     HStack (alignment: .top, spacing: 9) {
                         VStack {
@@ -81,7 +76,7 @@ struct TaskListView: View {
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
                 case .systemMedium:
-                    let task = list.first!
+                    let task = taskList.first!
                     let taskTime = task.taskTime.isEmpty ? "--:--" : task.taskTime
                     let color = DataManager.shared.getCategoryColor(task.category)
                     HStack (alignment: .top, spacing: 9) {
@@ -120,7 +115,7 @@ struct TaskListView: View {
                     .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
                 default:
                     VStack(spacing: 6) {
-                        ForEach(list, id: \.self) { task in
+                        ForEach(taskList, id: \.self) { task in
                             let taskTime = task.taskTime.isEmpty ? "--:--" : task.taskTime
                             let color = DataManager.shared.getCategoryColor(task.category)
                             HStack (alignment: .top, spacing: 9) {

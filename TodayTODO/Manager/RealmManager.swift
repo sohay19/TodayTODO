@@ -40,10 +40,10 @@ extension RealmManager {
                 print("create error = \(error)")
             }
         }
-        let path = realmDir.appendingPathComponent(realmFile)
+        let realmFilepath = realmDir.appendingPathComponent(realmFile)
         //마이그레이션 진행 (카테고리 primaryKey 추가)
         let config = Realm.Configuration(
-            fileURL: path,
+            fileURL: realmFilepath,
             schemaVersion: 2,
             migrationBlock: { migration, oldVersion in
                 if oldVersion < 2 {
@@ -53,9 +53,7 @@ extension RealmManager {
                         index += 1
                     })
                 }
-            }
-        )
-        //
+            })
         Realm.Configuration.defaultConfiguration = config
     }
     func openRealm() {
@@ -517,7 +515,6 @@ extension RealmManager {
             default:
                 return task.taskDay == Utils.dateToDateString(date)
             }
-            //
         }
         return foundData.map{$0}
     }

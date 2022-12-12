@@ -10,19 +10,18 @@ import UIKit
 class CategoryCell: UITableViewCell {
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelCounter: UILabel!
-    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var categoryView: UIView!
+    @IBOutlet weak var listView: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var taskList:[EachTask] = []
+    var isList = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
         //
         initUI()
-    }
-    
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        if !editing {
-            setBackView(false)
-        }
+        registerCell()
     }
     
     private func initUI() {
@@ -30,14 +29,9 @@ class CategoryCell: UITableViewCell {
         self.shouldIndentWhileEditing = false
         self.backgroundColor = .clear
         //
-        self.contentView.backgroundColor = .lightGray.withAlphaComponent(0.1)
-        backView.backgroundColor = .clear
-        backView.layer.cornerRadius = 5
-        backView.layer.borderWidth = 0.1
-        self.contentView.layer.cornerRadius = 5
-        self.contentView.layer.borderWidth = 0.1
-        //
-        setBackView(false)
+        categoryView.backgroundColor = .clear
+        listView.backgroundColor = .clear
+        collectionView.backgroundColor = .clear
         //
         labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 2.0)
         labelCounter.font = UIFont(name: N_Font, size: N_FontSize)
@@ -51,14 +45,77 @@ class CategoryCell: UITableViewCell {
         labelCounter.text = String(counter)
     }
     
-    func setBackView(_ isBack:Bool) {
-        UIView.transition(with: backView, duration: 0.2) { [self] in
-            backView.backgroundColor = isBack ? .lightGray.withAlphaComponent(0.1) : .clear
-            backView.layer.borderColor = isBack ? UIColor.gray.cgColor : UIColor.clear.cgColor
+    func registerCell() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        //
+        collectionView.register(UINib(nibName: "CategoryTaskCell", bundle: nil), forCellWithReuseIdentifier: "CategoryTaskCell")
+    }
+    
+    func controllMainView(_ isCategory:Bool) {
+        controllTableView(!isCategory)
+        categoryView.isHidden = !isCategory
+        labelTitle.isHidden = !isCategory
+        labelCounter.isHidden = !isCategory
+        //
+        self.contentView.backgroundColor = isCategory ? .lightGray.withAlphaComponent(0.1) : .clear
+        self.contentView.layer.cornerRadius = isCategory ? 5 : 0
+        self.contentView.layer.borderWidth = isCategory ? 0.1 : 0
+    }
+    
+    private func controllTableView(_ isTable:Bool) {
+        listView.isHidden = !isTable
+        collectionView.isHidden = !isTable
+        //
+        collectionView.reloadData()
+    }
+}
+
+extension CategoryCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return taskList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryTaskCell", for: indexPath) as? CategoryTaskCell else {
+            return UICollectionViewCell()
         }
-        UIView.transition(with: self.contentView, duration: 0.2) { [self] in
-            self.contentView.backgroundColor = !isBack ? .lightGray.withAlphaComponent(0.1) : .clear
-            self.contentView.layer.borderColor = !isBack ? UIColor.gray.cgColor : UIColor.clear.cgColor
+        let task = taskList[indexPath.row]
+        let title = task.title
+        let color = DataManager.shared.getCategoryColor(task.category)
+        cell.initCell(title, color)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let task = taskList[indexPath.row]
+        SystemManager.shared.openTaskInfo(.LOOK, date: nil, task: task) {
+            collectionView.reloadData()
+        } modify: { [self] newTask in
+            DataManager.shared.updateTask(newTask)
+            //카테고리가 바뀌면 삭제
+            if newTask.category != task.category {
+                taskList.remove(at: indexPath.row)
+                return
+            }
+            //이외엔 업데이트 된 task 저장
+            taskList[indexPath.row] = newTask
         }
+    }
+}
+
+extension CategoryCell: UICollectionViewDelegateFlowLayout {
+    // 위 아래 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    // 옆 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    // cell 사이즈
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = CGSize(width: listView.frame.width, height: 45)
+        return size
     }
 }

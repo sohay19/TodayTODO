@@ -1,6 +1,6 @@
 //
-//  DailyToDoListWidget.swift
-//  DailyToDoListWidget
+//  TodayTODOWidget.swift
+//  TodayTODOWidget
 //
 //  Created by 소하 on 2022/10/08.
 //
@@ -25,12 +25,12 @@ struct TaskListWidget: Widget {
         StaticConfiguration(kind: TaskListWidget.kind,
                             provider: TaskListProvider()) { entry in
             TaskListEntryView(entry: entry)
-                .background(Image("WatchBack")
+                .background(Image("WidgetBack")
                     .resizable()
                     .frame(maxWidth: .infinity, maxHeight: .infinity))
                 .unredacted()
         }
-        .configurationDisplayName("Daily TODO")
+        .configurationDisplayName("Today TODO")
         .description("오늘의 TODO를 볼 수 있습니다.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }

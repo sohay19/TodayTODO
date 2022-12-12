@@ -201,7 +201,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencil.png" width="1691" height="750"/>
+        <image name="pencil.png" width="1200" height="703"/>
         <image name="plus.viewfinder" catalog="system" width="32" height="32"/>
         <image name="scribble.variable" catalog="system" width="32" height="32"/>
         <systemColor name="labelColor">
