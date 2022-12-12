@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="21507" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc" pageOrientation="vertical">
-    <device id="watch38"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="21501"/>
     </dependencies>
@@ -161,7 +160,7 @@
             <objects>
                 <controller id="8WJ-KP-rGP" customClass="NotificationController" customModule="TodayTODOWatch" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="DailyTODO" id="yyu-x7-OyW">
+                        <label alignment="left" text="Today TODO" id="yyu-x7-OyW">
                             <fontDescription key="font" name="NanumAJumMaJaYu" family="나눔손글씨 아줌마 자유" pointSize="12"/>
                         </label>
                         <label alignment="left" text="Title" numberOfLines="0" id="Dj1-cY-fuc">

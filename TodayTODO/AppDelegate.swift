@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Firabase 설정
         FirebaseApp.configure()
         //메인 로딩을 위해 Realm 열기
-        DataManager.shared.initRealm()
+        DataManager.shared.setRealm()
         //로컬 푸시 설정
         UNUserNotificationCenter.current().delegate = self
         //노티 권한 및 옵션 설정
@@ -31,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return
             }
             //
-            let action = UNNotificationAction(identifier: "modal", title: "오늘의 TODO")
-            let category = UNNotificationCategory(identifier: "DailyTODO", actions: [action], intentIdentifiers: [])
+            let action = UNNotificationAction(identifier: "modal", title: "Today TODO")
+            let category = UNNotificationCategory(identifier: appName, actions: [action], intentIdentifiers: [])
             UNUserNotificationCenter.current().setNotificationCategories([category])
             //
             DispatchQueue.main.async {

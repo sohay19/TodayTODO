@@ -49,18 +49,25 @@ extension CategoryViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Swipe
     //오른쪽 스와이프
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        //
-        if categoryList[indexPath.section] == "TODO" {
-            return nil
+        let modify = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.modifyCategory(indexPath)
+            success(true)
         }
+        modify.image = UIImage(systemName: "eraser.fill", withConfiguration: mediumConfig)
+        modify.backgroundColor = .systemIndigo
+        //
         let delete = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.deleteCategory(self.categoryList[indexPath.section])
+            self.deleteCategory(indexPath)
             success(true)
         }
         delete.image = UIImage(systemName: "trash.fill", withConfiguration: mediumConfig)
-        delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
+        delete.backgroundColor = .defaultPink!
         //index = 0, 오른쪽
-        return UISwipeActionsConfiguration(actions:[delete])
+        if categoryList[indexPath.section] == "TODO" {
+            return nil
+        } else {
+            return UISwipeActionsConfiguration(actions:[delete, modify])
+        }
     }
     //MARK: - Move
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {

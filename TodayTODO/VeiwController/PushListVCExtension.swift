@@ -108,7 +108,7 @@ extension PushListViewController : UITableViewDelegate, UITableViewDataSource {
             success(true)
         }
         delete.image = UIImage(systemName: "trash.fill", withConfiguration: mediumConfig)
-        delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
+        delete.backgroundColor = .defaultPink!
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete])
     }

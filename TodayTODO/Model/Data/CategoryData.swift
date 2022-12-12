@@ -36,6 +36,8 @@ class CategoryOrderData : Object {
 }
 
 class CategoryData : Object {
+    @Persisted(primaryKey: true)
+    var primaryKey:Int
     @Persisted
     var title = ""
     @Persisted
@@ -52,6 +54,14 @@ class CategoryData : Object {
     
     convenience init(_ title:String, _ color:[Float]) {
         self.init()
+        self.primaryKey = DataManager.shared.getAllCategory().count
+        self.title = title
+        self.color = color
+    }
+    
+    convenience init(_ primaryKey:Int, _ title:String, _ color:[Float]) {
+        self.init()
+        self.primaryKey = primaryKey
         self.title = title
         self.color = color
     }
@@ -72,6 +82,7 @@ class CategoryData : Object {
     }
     
     func clone() -> CategoryData {
-        return CategoryData(self.title, self.getColorList())
+//        return CategoryData(self.title, self.getColorList())
+        return CategoryData(self.primaryKey, self.title, self.getColorList())
     }
 }

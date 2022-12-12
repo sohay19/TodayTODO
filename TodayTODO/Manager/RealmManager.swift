@@ -26,7 +26,7 @@ class RealmManager {
 
 //MARK: - Main
 extension RealmManager {
-    func openRealm() {
+    func setRealm() {
 #if os(iOS)
         guard let realmDir = realmDir else {
             print("Path 없음")
@@ -40,17 +40,34 @@ extension RealmManager {
                 print("create error = \(error)")
             }
         }
+        let path = realmDir.appendingPathComponent(realmFile)
+        //마이그레이션 진행 (카테고리 primaryKey 추가)
+        let config = Realm.Configuration(
+            fileURL: path,
+            schemaVersion: 2,
+            migrationBlock: { migration, oldVersion in
+                if oldVersion < 2 {
+                    var index = 0
+                    migration.enumerateObjects(ofType: CategoryData.className(), { oldObject, newObject in
+                        newObject!["primaryKey"] = index
+                        index += 1
+                    })
+                }
+            }
+        )
+        //
+        Realm.Configuration.defaultConfiguration = config
+    }
+    func openRealm() {
         do {
-            let path = realmDir.appendingPathComponent(realmFile)
-            let config = Realm.Configuration(fileURL: path)
 #if os(iOS)
-            realm = try Realm(configuration: config)
+            realm = try Realm()
             guard let realm = realm else {
                 return
             }
             realmUrl = realm.configuration.fileURL
 #else
-            watchRealm = try Realm(configuration: config)
+            watchRealm = try Realm()
             guard let realm = watchRealm else {
                 return
             }
@@ -666,6 +683,22 @@ extension RealmManager {
 #endif
         let categoryList = realm.objects(CategoryData.self)
         return categoryList.first(where: {$0.title == title})
+    }
+    func getCategory(_ index:Int) -> CategoryData? {
+        openRealm()
+#if os(iOS)
+        guard let realm = realm else {
+            print("realm is nil")
+            return nil
+        }
+#else
+        guard let realm = watchRealm else {
+            print("watchRealm is nil")
+            return nil
+        }
+#endif
+        let categoryList = realm.objects(CategoryData.self)
+        return categoryList.first(where: {$0.primaryKey == index})
     }
     //
     func deleteCategory(_ category:String) {

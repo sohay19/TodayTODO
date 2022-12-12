@@ -115,6 +115,7 @@ enum TaskCodingKeys:String, CodingKey {
 }
 
 enum CategoryCodingKeys:String, CodingKey {
+    case primaryKey
     case title
     case colorList
 }

@@ -61,15 +61,15 @@ extension WatchConnectManager {
         }
     }
     //App -> Watch, 카테고리
-    func sendToWatchCategory(_ type:SendType, _ categoryData:[CategoryData]) {
+    func sendToWatchCategory(_ type:SendType, _ categoryList:[CategoryData]) {
         guard session.activationState == .activated || session.activationState == .inactive else {
             print("activationState is notActivated")
             return
         }
         do {
-            if categoryData.count > 0 {
+            if categoryList.count > 0 {
                 var list = [NSCategoryData]()
-                for category in categoryData {
+                for category in categoryList {
                     list.append(NSCategoryData(category: category))
                 }
                 let dataForApp = try JSONEncoder().encode(NSCategoryDataList(categoryList: list))

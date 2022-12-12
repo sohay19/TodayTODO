@@ -17,11 +17,11 @@ let realmFile = "TodayTODO.realm"
 //MARK: - UserDefaultkey
 let LoginTypeKey = "LoginType"
 let BadgeCountKey = "BadgeCount"
-let CategoryList = "CategoryList"
-let UpdateAKey = "UpdateA"
+let CategoryOrderKey = "CategoryList"
 let HelpMainKey = "HelpMain"
 let HelpCategoryKey = "HelpCategory"
 let HelpPushKey = "HelpPush"
+let UpdateAKey = "UpdateA"
 
 //MARK: - Board
 let tabBoard = "Tab"

@@ -25,6 +25,9 @@ class DataManager {
 
 //MARK: - Func
 extension DataManager {
+    func setRealm() {
+        realmManager.setRealm()
+    }
     func initRealm() {
         realmManager.openRealm()
     }
@@ -34,6 +37,7 @@ extension DataManager {
     }
     func copyRealm() {
         let isUpadteA = UserDefaults.shared.bool(forKey: UpdateAKey)
+        //워치 연동
         if !isUpadteA {
             //워치 기존데이터 모두 삭제
             WatchConnectManager.shared.sendToWatchAlarm(.Delete, [])
@@ -145,13 +149,22 @@ extension DataManager {
             updateCategory(category)
         } else {
             realmManager.addCategory(category)
+        }
 #if os(iOS)
             WatchConnectManager.shared.sendToWatchCategory(.Add, [category])
 #endif
-        }
     }
     //
     func updateCategory(_ category:CategoryData) {
+        guard let orderList = UserDefaults.shared.array(forKey: CategoryOrderKey) as? [String],
+              let originCategory = realmManager.getCategory(category.primaryKey) else {
+            return
+        }
+        var newOrder = orderList
+        if let index = orderList.firstIndex(where: { $0 == originCategory.title }) {
+            newOrder[index] = category.title
+        }
+        setCategoryOrder(newOrder)
         realmManager.updateCategory(category)
 #if os(iOS)
         WatchConnectManager.shared.sendToWatchCategory(.Update, [category])
@@ -161,17 +174,20 @@ extension DataManager {
 #endif
     }
     //load
+    func getCategory(_ category:String) -> CategoryData? {
+        return realmManager.getCategory(category)
+    }
     func getAllCategory() -> [CategoryData] {
         return realmManager.loadCategory()
     }
     //
     func deleteCategory(_ category:String) {
-        guard let categoryData = realmManager.getCategory(category) else { return }
-        let deletedCategory = categoryData.clone()
+        guard let category = realmManager.getCategory(category) else { return }
+        let deletedCategory = category.clone()
         realmManager.deleteCategory(category)
         //
         var newList = DataManager.shared.getCategoryOrder()
-        if let index = newList.firstIndex(of: category) {
+        if let index = newList.firstIndex(of: category.title) {
             newList.remove(at: index)
         }
         setCategoryOrder(newList)
@@ -221,7 +237,7 @@ extension DataManager {
         setCategoryOrderUser(list)
     }
     func getCategoryOrder() -> [String] {
-        guard let list = UserDefaults.shared.array(forKey: CategoryList) as? [String] else {
+        guard let list = UserDefaults.shared.array(forKey: CategoryOrderKey) as? [String] else {
             return []
         }
         return list
@@ -232,7 +248,7 @@ extension DataManager {
     }
     //set
     func setCategoryOrderUser(_ list:[String]) {
-        UserDefaults.shared.set(list, forKey: CategoryList)
+        UserDefaults.shared.set(list, forKey: CategoryOrderKey)
     }
     func setCategoryOrderRealm(_ list:[String]) {
         let categoryOrder = CategoryOrderData(order: list)

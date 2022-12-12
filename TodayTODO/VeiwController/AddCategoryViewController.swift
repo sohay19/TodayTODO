@@ -23,7 +23,7 @@ class AddCategoryViewController: UIViewController {
     @IBOutlet weak var line1: UIView!
     @IBOutlet weak var line2: UIView!
     
-    
+    var categoryInfo:String = ""
     var reloadCategory:(() -> Void)?
     
     
@@ -32,6 +32,12 @@ class AddCategoryViewController: UIViewController {
         //
         inputTitle.delegate = self
         initUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //
+        loadData()
     }
 }
 
@@ -85,6 +91,14 @@ extension AddCategoryViewController {
             return
         }
     }
+    private func loadData() {
+        if categoryInfo.isEmpty {
+            return
+        }
+        labelTitle.text = "카테고리 수정"
+        inputTitle.text = categoryInfo
+        colorWell.selectedColor = DataManager.shared.getCategoryColor(categoryInfo)
+    }
 }
 
 
@@ -98,25 +112,35 @@ extension AddCategoryViewController {
         guard let title = inputTitle.text else {
             return
         }
-        let array = DataManager.shared.getCategoryOrder()
-        for name in array {
-            if name == title {
-                PopupManager.shared.openOkAlert(self, title: "알림", msg: "이미 존재하는 카테고리입니다")
-            }
-        }
         if title.isEmpty {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "카테고리 명을 입력해주세요")
-        } else {
-            guard let colorList = color.cgColor.components else {
-                return
+            return
+        }
+        guard let colorList = color.cgColor.components else {
+            return
+        }
+        if categoryInfo.isEmpty {
+            //등록
+            let array = DataManager.shared.getCategoryOrder()
+            for name in array {
+                if name == title {
+                    PopupManager.shared.openOkAlert(self, title: "알림", msg: "이미 존재하는 카테고리입니다")
+                    return
+                }
             }
             addCategory(colorList)
-            guard let reload = self.reloadCategory else {
-                return
+        } else {
+            //수정
+            if title == categoryInfo && DataManager.shared.getCategoryColor(categoryInfo) == color {
+                PopupManager.shared.openOkAlert(self, title: "알림", msg: "변경 된 내용이 없습니다")
             }
-            reload()
-            dismiss(animated: true)
+            updateCategory(colorList)
         }
+        guard let reload = self.reloadCategory else {
+            return
+        }
+        reload()
+        dismiss(animated: true)
     }
     private func addCategory(_ colorList:[CGFloat]) {
         guard let title = inputTitle.text else {
@@ -125,6 +149,14 @@ extension AddCategoryViewController {
         let newList = colorList.map{Float($0)}
         let newCategory = CategoryData(title, newList)
         DataManager.shared.addCategory(newCategory)
+    }
+    private func updateCategory(_ colorList:[CGFloat]) {
+        guard let title = inputTitle.text , let origin = DataManager.shared.getCategory(categoryInfo) else {
+            return
+        }
+        let newList = colorList.map{Float($0)}
+        let newCategory = CategoryData(origin.primaryKey, title, newList)
+        DataManager.shared.updateCategory(newCategory)
     }
     @IBAction func clickCancel(_ sender: Any) {
         dismiss(animated: true)

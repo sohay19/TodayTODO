@@ -121,14 +121,15 @@ extension CategoryViewController {
         btnEdit.setImage(UIImage(systemName: isEdit ? "rectangle.portrait.and.arrow.right" : "scissors")?.withConfiguration(mediumConfig), for: .normal)
     }
     //
-    func deleteCategory(_ cateogry:String) {
+    func deleteCategory(_ indexPath:IndexPath) {
+        let category = categoryList[indexPath.section]
         PopupManager.shared.openYesOrNo(self, title: "카테고리 삭제", msg: "카테고리를 삭제하시겠습니까?") { [self] _ in
-            guard let list = taskList[cateogry] else {
+            guard let list = taskList[category] else {
                 return
             }
             if list.count > 0 {
                 var actionList:[(UIAlertAction)->Void] = []
-                guard let list = taskList[cateogry] else {
+                guard let list = taskList[category] else {
                     return
                 }
                 //모두 삭제
@@ -136,7 +137,7 @@ extension CategoryViewController {
                     for task in list {
                         DataManager.shared.deleteTask(task)
                     }
-                    DataManager.shared.deleteCategory(cateogry)
+                    DataManager.shared.deleteCategory(category)
                     refresh()
                 }
                 //옮기기
@@ -147,7 +148,7 @@ extension CategoryViewController {
                     poplistVC.modalTransitionStyle = .coverVertical
                     poplistVC.modalPresentationStyle = .overCurrentContext
                     var newList = categoryList
-                    guard let index = newList.firstIndex(of: cateogry) else { return }
+                    guard let index = newList.firstIndex(of: category) else { return }
                     newList.remove(at: index)
                     poplistVC.categoryList = newList
                     // 옮겨질 카테고리 선택
@@ -157,7 +158,7 @@ extension CategoryViewController {
                             newTask.setCategory(selectedCategory)
                             DataManager.shared.updateTask(newTask)
                         }
-                        DataManager.shared.deleteCategory(cateogry)
+                        DataManager.shared.deleteCategory(category)
                         refresh()
                     }
                     // 취소
@@ -179,10 +180,25 @@ extension CategoryViewController {
                     complete: actionList
                     )
             } else {
-                DataManager.shared.deleteCategory(cateogry)
+                DataManager.shared.deleteCategory(category)
                 refresh()
             }
         }
+    }
+    //
+    func modifyCategory(_ indexPath:IndexPath) {
+        let category = categoryList[indexPath.section]
+        //
+        let board = UIStoryboard(name: addCategoryBoard, bundle: nil)
+        guard let addCategoryVC = board.instantiateViewController(withIdentifier: addCategoryBoard) as? AddCategoryViewController else { return }
+        addCategoryVC.categoryInfo = category
+        addCategoryVC.reloadCategory = refresh
+        addCategoryVC.modalTransitionStyle = .coverVertical
+        addCategoryVC.modalPresentationStyle = .overFullScreen
+        guard let navigation = self.navigationController as? CustomNavigationController else {
+            return
+        }
+        navigation.present(addCategoryVC, animated: true)
     }
 }
 
@@ -194,7 +210,7 @@ extension CategoryViewController {
             if originList != categoryList {
                 PopupManager.shared.openYesOrNo(
                     self,
-                    title: "카테고리 수정", msg: "현재 상태를 저장하시곘습니까?") { [self] _ in
+                    title: "카테고리 순서 변경", msg: "현재 상태를 저장하시곘습니까?") { [self] _ in
                         originList = categoryList
                         DataManager.shared.setCategoryOrder(originList)
                         changeEditMode(false)

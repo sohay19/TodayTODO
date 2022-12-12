@@ -58,7 +58,7 @@ extension SettingViewController {
             }
             btn.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
             btn.setTitleColor(.label, for: .normal)
-            btn.backgroundColor = .systemBackground.withAlphaComponent(0.3)
+            btn.backgroundColor = .systemBackground.withAlphaComponent(0.6)
             btn.layer.cornerRadius = 10
             //
             btn.layer.shadowColor = UIColor.gray.cgColor

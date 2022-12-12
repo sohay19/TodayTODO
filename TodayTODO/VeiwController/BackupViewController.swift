@@ -248,14 +248,14 @@ extension BackupViewController : UITableViewDelegate, UITableViewDataSource {
             success(true)
         }
         load.image = UIImage(systemName: "icloud.and.arrow.down", withConfiguration: mediumConfig)
-        load.backgroundColor = .systemIndigo.withAlphaComponent(0.5)
+        load.backgroundColor = .systemIndigo
         //
         let delete = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.deleteBackupFile(indexPath)
             success(true)
         }
         delete.image = UIImage(systemName: "trash.fill", withConfiguration: mediumConfig)
-        delete.backgroundColor = .defaultPink!.withAlphaComponent(0.5)
+        delete.backgroundColor = .defaultPink!
         //index = 0, 오른쪽
         return UISwipeActionsConfiguration(actions:[delete, load])
     }
