@@ -69,7 +69,7 @@ extension SettingViewController {
         view.insertSubview(backgroundView, at: 0)
         //
         versionView.backgroundColor = .clear
-        btnView.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        btnView.backgroundColor = .systemBackground.withAlphaComponent(0.3)
         //
         labelInfo.textColor = .label
         labelInfo.font = UIFont(name: N_Font, size: N_FontSize)
@@ -151,7 +151,7 @@ extension SettingViewController {
               let build = dictionary["CFBundleVersion"] as? String
         else { return }
         
-        labelInfo.text = "앱 버전  Ver. \(version) (\(build))"
+        labelInfo.text = "앱 정보  Ver. \(version) (\(build))"
         
         SystemManager.shared.closeLoading()
         if isRefresh {
