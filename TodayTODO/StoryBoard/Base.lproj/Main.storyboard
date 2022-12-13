@@ -94,14 +94,14 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.png" translatesAutoresizingMaskIntoConstraints="NO" id="c0h-vX-NoB" userLabel="image">
-                                        <rect key="frame" x="1.6666666666666572" y="120" width="390" height="195"/>
+                                        <rect key="frame" x="76.666666666666686" y="150" width="240" height="160"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="390" id="E95-nE-Ngi"/>
-                                            <constraint firstAttribute="width" secondItem="c0h-vX-NoB" secondAttribute="height" multiplier="2:1" id="whX-oA-pf2"/>
+                                            <constraint firstAttribute="width" constant="240" id="E95-nE-Ngi"/>
+                                            <constraint firstAttribute="width" secondItem="c0h-vX-NoB" secondAttribute="height" multiplier="1.5:1" id="whX-oA-pf2"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해야할 일을 등록해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gt6-zW-da3" userLabel="Message">
-                                        <rect key="frame" x="121" y="315" width="151" height="18"/>
+                                        <rect key="frame" x="121" y="328" width="151" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -109,14 +109,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Gt6-zW-da3" firstAttribute="top" secondItem="c0h-vX-NoB" secondAttribute="bottom" id="INk-89-25x"/>
+                                    <constraint firstItem="Gt6-zW-da3" firstAttribute="top" secondItem="c0h-vX-NoB" secondAttribute="bottom" constant="18" id="INk-89-25x"/>
                                     <constraint firstItem="T45-og-L7Z" firstAttribute="top" secondItem="fcp-ST-NiN" secondAttribute="top" id="Jce-Kw-ZbB"/>
                                     <constraint firstItem="Gt6-zW-da3" firstAttribute="centerX" secondItem="T45-og-L7Z" secondAttribute="centerX" id="MrJ-CR-P8E"/>
                                     <constraint firstAttribute="bottom" secondItem="T45-og-L7Z" secondAttribute="bottom" constant="30" id="Pe2-Mp-IBM"/>
                                     <constraint firstItem="c0h-vX-NoB" firstAttribute="centerX" secondItem="fcp-ST-NiN" secondAttribute="centerX" id="VUp-jh-FiC"/>
                                     <constraint firstAttribute="trailing" secondItem="T45-og-L7Z" secondAttribute="trailing" constant="30" id="p4n-uv-S1i"/>
                                     <constraint firstItem="T45-og-L7Z" firstAttribute="leading" secondItem="fcp-ST-NiN" secondAttribute="leading" constant="30" id="rkp-TE-SD6"/>
-                                    <constraint firstItem="c0h-vX-NoB" firstAttribute="top" secondItem="fcp-ST-NiN" secondAttribute="top" constant="120" id="yn8-EA-oW3"/>
+                                    <constraint firstItem="c0h-vX-NoB" firstAttribute="top" secondItem="fcp-ST-NiN" secondAttribute="top" constant="150" id="yn8-EA-oW3"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KER-2I-O4L" userLabel="MonthView">
@@ -201,7 +201,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencil.png" width="1200" height="703"/>
+        <image name="pencil.png" width="512" height="512"/>
         <image name="plus.viewfinder" catalog="system" width="32" height="32"/>
         <image name="scribble.variable" catalog="system" width="32" height="32"/>
         <systemColor name="labelColor">

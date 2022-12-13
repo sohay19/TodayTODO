@@ -124,13 +124,11 @@
 		CF9D38E729436D8000F80EA2 /* Push_Swipe.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF9D38E029436D8000F80EA2 /* Push_Swipe.gif */; };
 		CF9D38E829436D8000F80EA2 /* Main_Today_Modify.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF9D38E129436D8000F80EA2 /* Main_Today_Modify.gif */; };
 		CF9D38E929436D8000F80EA2 /* Category_Move.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF9D38E229436D8000F80EA2 /* Category_Move.gif */; };
-		CF9D38F029436EB900F80EA2 /* Version.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF9D38EF29436EB900F80EA2 /* Version.storyboard */; };
-		CF9D38F229436EC900F80EA2 /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D38F129436EC900F80EA2 /* VersionViewController.swift */; };
 		CF9D38F4294379C500F80EA2 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D38F3294379C500F80EA2 /* Help.swift */; };
 		CF9D38F6294379DB00F80EA2 /* Help.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9D38F5294379DB00F80EA2 /* Help.xib */; };
 		CF9D39012947370300F80EA2 /* CategoryTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D38FF2947370300F80EA2 /* CategoryTaskCell.swift */; };
 		CF9D39022947370300F80EA2 /* CategoryTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9D39002947370300F80EA2 /* CategoryTaskCell.xib */; };
-		CF9D39042947668600F80EA2 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9D39032947668600F80EA2 /* pencil.png */; };
+		CF9D390A2948539800F80EA2 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9D39092948539800F80EA2 /* pencil.png */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
 		CFB6EE0128F1793B00E93585 /* TodayTODOWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */; };
@@ -369,13 +367,11 @@
 		CF9D38E029436D8000F80EA2 /* Push_Swipe.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Push_Swipe.gif; path = "../../../../../TodayTODO/도움말/Push_Swipe.gif"; sourceTree = "<group>"; };
 		CF9D38E129436D8000F80EA2 /* Main_Today_Modify.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Main_Today_Modify.gif; path = "../../../../../TodayTODO/도움말/Main_Today_Modify.gif"; sourceTree = "<group>"; };
 		CF9D38E229436D8000F80EA2 /* Category_Move.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Category_Move.gif; path = "../../../../../TodayTODO/도움말/Category_Move.gif"; sourceTree = "<group>"; };
-		CF9D38EF29436EB900F80EA2 /* Version.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Version.storyboard; sourceTree = "<group>"; };
-		CF9D38F129436EC900F80EA2 /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
 		CF9D38F3294379C500F80EA2 /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		CF9D38F5294379DB00F80EA2 /* Help.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Help.xib; sourceTree = "<group>"; };
 		CF9D38FF2947370300F80EA2 /* CategoryTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTaskCell.swift; sourceTree = "<group>"; };
 		CF9D39002947370300F80EA2 /* CategoryTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTaskCell.xib; sourceTree = "<group>"; };
-		CF9D39032947668600F80EA2 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pencil.png; path = ../../../../TodayTODO/image/pencil.png; sourceTree = "<group>"; };
+		CF9D39092948539800F80EA2 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pencil.png; path = ../../../../TodayTODO/image/pencil.png; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* TodayTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTODOWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0328F1793C00E93585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -600,7 +596,7 @@
 				CF9D38DC29436D6700F80EA2 /* help */,
 				CFE45D36292B5A4E007024EB /* DefaultBack.jpg */,
 				CF995F452923C54B00FAE2F1 /* title.png */,
-				CF9D39032947668600F80EA2 /* pencil.png */,
+				CF9D39092948539800F80EA2 /* pencil.png */,
 				CFE45D2E292B1D2A007024EB /* clock.png */,
 				CF5350A9291E3D4A00AFDC14 /* BlackBackground.png */,
 				CF5350D42921E92E00AFDC14 /* underline_Black.png */,
@@ -697,7 +693,6 @@
 				CF79091A293234FA0027D25D /* PopListViewController.swift */,
 				CF7909242935ED5B0027D25D /* NoticeViewController.swift */,
 				CF7909262935EF7E0027D25D /* FAQViewController.swift */,
-				CF9D38F129436EC900F80EA2 /* VersionViewController.swift */,
 			);
 			path = VeiwController;
 			sourceTree = "<group>";
@@ -787,7 +782,6 @@
 				CF790918293234F00027D25D /* PopList.storyboard */,
 				CF7909222935ED520027D25D /* Notice.storyboard */,
 				CF7909282935EF870027D25D /* FAQ.storyboard */,
-				CF9D38EF29436EB900F80EA2 /* Version.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -1056,9 +1050,9 @@
 				CF5350B1291E3D4B00AFDC14 /* BlackBackground.png in Resources */,
 				CF9D39022947370300F80EA2 /* CategoryTaskCell.xib in Resources */,
 				CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */,
-				CF9D39042947668600F80EA2 /* pencil.png in Resources */,
 				CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CF7909232935ED520027D25D /* Notice.storyboard in Resources */,
+				CF9D390A2948539800F80EA2 /* pencil.png in Resources */,
 				CF5350C0291E457400AFDC14 /* Windsor_Great_Park-Regular.otf in Resources */,
 				CFEB49E228F13287008850DC /* Main.storyboard in Resources */,
 				CF2BAF102925DAFE00EB49F4 /* spring_white.png in Resources */,
@@ -1078,7 +1072,6 @@
 				CF790919293234F00027D25D /* PopList.storyboard in Resources */,
 				CF5350D52921E92F00AFDC14 /* underline_Black.png in Resources */,
 				CF79091F293236D50027D25D /* PopCell.xib in Resources */,
-				CF9D38F029436EB900F80EA2 /* Version.storyboard in Resources */,
 				CF9D38F6294379DB00F80EA2 /* Help.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1371,7 +1364,6 @@
 				CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */,
 				CF995F482923D02600FAE2F1 /* OpenedTask.swift in Sources */,
 				CF9D38D9294328E800F80EA2 /* NSAlarmInfo.swift in Sources */,
-				CF9D38F229436EC900F80EA2 /* VersionViewController.swift in Sources */,
 				CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */,
 				CF7909252935ED5B0027D25D /* NoticeViewController.swift in Sources */,
 				CFDCD3CD293A5E7E0030CB1C /* TodayTODOWidget.intentdefinition in Sources */,

@@ -22,20 +22,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="612" height="160"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DqP-54-IoX">
-                                <rect key="frame" x="18" y="9" width="3" height="142"/>
+                                <rect key="frame" x="9" y="9" width="3" height="142"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="3" id="aBD-Qz-PnN"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7KD-I0-znT">
-                                <rect key="frame" x="30" y="69.333333333333329" width="42" height="21.333333333333329"/>
+                                <rect key="frame" x="21" y="69.333333333333329" width="42" height="21.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCN-UB-0XN">
-                                <rect key="frame" x="9" y="159.66666666666666" width="594" height="0.33333333333334281"/>
+                                <rect key="frame" x="3" y="159.66666666666666" width="606" height="0.33333333333334281"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="og8-lz-4qw"/>
@@ -46,11 +46,11 @@
                         <constraints>
                             <constraint firstItem="7KD-I0-znT" firstAttribute="leading" secondItem="DqP-54-IoX" secondAttribute="trailing" constant="9" id="0Ox-nD-t2p"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7KD-I0-znT" secondAttribute="trailing" constant="30" id="6cB-TK-CER"/>
-                            <constraint firstItem="zCN-UB-0XN" firstAttribute="leading" secondItem="Iki-fr-EXk" secondAttribute="leading" constant="9" id="7CD-sZ-8Y0"/>
-                            <constraint firstAttribute="trailing" secondItem="zCN-UB-0XN" secondAttribute="trailing" constant="9" id="ALc-gN-70l"/>
+                            <constraint firstItem="zCN-UB-0XN" firstAttribute="leading" secondItem="Iki-fr-EXk" secondAttribute="leading" constant="3" id="7CD-sZ-8Y0"/>
+                            <constraint firstAttribute="trailing" secondItem="zCN-UB-0XN" secondAttribute="trailing" constant="3" id="ALc-gN-70l"/>
                             <constraint firstItem="DqP-54-IoX" firstAttribute="top" secondItem="Iki-fr-EXk" secondAttribute="top" constant="9" id="Hn8-vn-GUD"/>
                             <constraint firstItem="7KD-I0-znT" firstAttribute="centerY" secondItem="Iki-fr-EXk" secondAttribute="centerY" id="KS9-Nd-vOX"/>
-                            <constraint firstItem="DqP-54-IoX" firstAttribute="leading" secondItem="Iki-fr-EXk" secondAttribute="leading" constant="18" id="Sev-mV-Eq9"/>
+                            <constraint firstItem="DqP-54-IoX" firstAttribute="leading" secondItem="Iki-fr-EXk" secondAttribute="leading" constant="9" id="Sev-mV-Eq9"/>
                             <constraint firstAttribute="bottom" secondItem="zCN-UB-0XN" secondAttribute="bottom" id="Ydy-lB-M7h"/>
                             <constraint firstAttribute="bottom" secondItem="DqP-54-IoX" secondAttribute="bottom" constant="9" id="kWD-li-ZpV"/>
                         </constraints>

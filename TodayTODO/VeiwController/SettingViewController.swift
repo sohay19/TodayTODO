@@ -9,44 +9,40 @@ import UIKit
 import MessageUI
 
 class SettingViewController : UIViewController {
+    @IBOutlet weak var labelInfo: UILabel!
+    @IBOutlet weak var versionView: UIView!
+    @IBOutlet weak var btnView: UIView!
     @IBOutlet weak var backView1: UIView!
     @IBOutlet weak var backView2: UIView!
     @IBOutlet weak var backView3: UIView!
     @IBOutlet weak var backView4: UIView!
     @IBOutlet weak var backView5: UIView!
     @IBOutlet weak var backView6: UIView!
-    @IBOutlet weak var backView7: UIView!
-    @IBOutlet weak var backView8: UIView!
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var label3: UILabel!
     @IBOutlet weak var label4: UILabel!
     @IBOutlet weak var label5: UILabel!
     @IBOutlet weak var label6: UILabel!
-    @IBOutlet weak var label7: UILabel!
-    @IBOutlet weak var label8: UILabel!
     @IBOutlet weak var imgView1: UIImageView!
     @IBOutlet weak var imgView2: UIImageView!
     @IBOutlet weak var imgView3: UIImageView!
     @IBOutlet weak var imgView4: UIImageView!
     @IBOutlet weak var imgView5: UIImageView!
     @IBOutlet weak var imgView6: UIImageView!
-    @IBOutlet weak var imgView7: UIImageView!
-    @IBOutlet weak var imgView8: UIImageView!
     @IBOutlet weak var btn1: UIButton!
     @IBOutlet weak var btn2: UIButton!
     @IBOutlet weak var btn3: UIButton!
     @IBOutlet weak var btn4: UIButton!
     @IBOutlet weak var btn5: UIButton!
     @IBOutlet weak var btn6: UIButton!
-    @IBOutlet weak var btn7: UIButton!
-    @IBOutlet weak var btn8: UIButton!
     
     var btnList:[UIButton] = []
     var labelList:[UILabel] = []
     var imgList:[UIImageView] = []
     var viewList:[UIView] = []
-    let menuList:[SettingType] = [.Notice, .Backup, .Help, .Reset, .Version, .FAQ, .Question]
+    let menuList:[SettingType] = [.Notice, .Backup, .Reset, .Help, .FAQ, .Question]
+    var isRefresh = false
     
     
     override func viewDidLoad() {
@@ -57,6 +53,10 @@ class SettingViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //
+        //
+        SystemManager.shared.openLoading()
+        loadVersion()
     }
 }
 
@@ -68,14 +68,19 @@ extension SettingViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         //
+        versionView.backgroundColor = .clear
+        btnView.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        //
+        labelInfo.textColor = .label
+        labelInfo.font = UIFont(name: N_Font, size: N_FontSize)
+        //
+        //
         viewList.append(backView1)
         viewList.append(backView2)
         viewList.append(backView3)
         viewList.append(backView4)
         viewList.append(backView5)
         viewList.append(backView6)
-        viewList.append(backView7)
-        viewList.append(backView8)
         //
         btnList.append(btn1)
         btnList.append(btn2)
@@ -83,8 +88,6 @@ extension SettingViewController {
         btnList.append(btn4)
         btnList.append(btn5)
         btnList.append(btn6)
-        btnList.append(btn7)
-        btnList.append(btn8)
         //
         labelList.append(label1)
         labelList.append(label2)
@@ -92,8 +95,6 @@ extension SettingViewController {
         labelList.append(label4)
         labelList.append(label5)
         labelList.append(label6)
-        labelList.append(label7)
-        labelList.append(label8)
         //
         imgList.append(imgView1)
         imgList.append(imgView2)
@@ -101,10 +102,8 @@ extension SettingViewController {
         imgList.append(imgView4)
         imgList.append(imgView5)
         imgList.append(imgView6)
-        imgList.append(imgView7)
-        imgList.append(imgView8)
         //
-        for (i, btn) in btnList.enumerated() {
+        for i in 0..<menuList.count {
             var title = ""
             var imageName = ""
             if i < menuList.count {
@@ -117,8 +116,6 @@ extension SettingViewController {
                     imageName = "questionmark"
                 case .Reset:
                     imageName = "trash"
-                case .Version:
-                    imageName = "info.circle"
                 case .FAQ:
                     imageName = "bubble.left.and.bubble.right"
                 case .Question:
@@ -128,12 +125,13 @@ extension SettingViewController {
             }
             //
             labelList[i].text = title
-            labelList[i].font = UIFont(name: K_Font_B, size: K_FontSize)
+            labelList[i].font = UIFont(name: K_Font_R, size: K_FontSize - 2.0)
             labelList[i].textAlignment = .center
-            btn.setTitle(title, for: .normal)
-            btn.setTitleColor(.clear, for: .normal)
+            labelList[i].highlightedTextColor = .systemIndigo
+            btnList[i].setTitle(title, for: .normal)
+            btnList[i].setTitleColor(.clear, for: .normal)
             //
-            let image = UIImage(systemName: imageName, withConfiguration: boldConfig)
+            let image = UIImage(systemName: imageName, withConfiguration: mediumConfig)
             imgList[i].image = image
             imgList[i].tintColor = .label
             imgList[i].contentMode = .center
@@ -142,8 +140,23 @@ extension SettingViewController {
             btnBack.image = UIImage(named: BackgroundImage)
             viewList[i].insertSubview(btnBack, at: 0)
             viewList[i].layer.shadowColor = UIColor.gray.cgColor
-            viewList[i].layer.shadowOpacity = 1
-            viewList[i].layer.shadowOffset = CGSize.zero
+            viewList[i].layer.shadowOpacity = 0.5
+            viewList[i].layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        }
+    }
+    
+    private func loadVersion() {
+        guard let dictionary = Bundle.main.infoDictionary,
+              let version = dictionary["CFBundleShortVersionString"] as? String,
+              let build = dictionary["CFBundleVersion"] as? String
+        else { return }
+        
+        labelInfo.text = "앱 버전  Ver. \(version) (\(build))"
+        
+        SystemManager.shared.closeLoading()
+        if isRefresh {
+            endAppearanceTransition()
+            isRefresh = false
         }
     }
 }
@@ -157,10 +170,10 @@ extension SettingViewController {
             return
         }
         imgList[index].tintColor = .systemIndigo
-        labelList[index].tintColor = .systemIndigo
+        labelList[index].isHighlighted = true
         UIView.animate(withDuration: 1, delay: 1) { [self] in
             imgList[index].tintColor = .label
-            labelList[index].textColor = .label
+            labelList[index].isHighlighted = false
         }
         // 버튼 실행
         switch type {
@@ -205,13 +218,6 @@ extension SettingViewController {
                                             msg: "모든 데이를 삭제하시겠습니까?\n(iCloud 백업 데이터 제외)",
                                             completeYes: { [self] _ in deleteAllFile() },
                                             completeNo: { _ in SystemManager.shared.closeLoading() })
-        case .Version:
-            let board = UIStoryboard(name: versionBoard, bundle: nil)
-            guard let versionVC = board.instantiateViewController(withIdentifier: versionBoard) as? VersionViewController else { return }
-            versionVC.modalTransitionStyle = .crossDissolve
-            versionVC.modalPresentationStyle = .fullScreen
-            guard let navigationController = self.navigationController as? CustomNavigationController else { return }
-            navigationController.pushViewController(versionVC)
         case .FAQ:
             let board = UIStoryboard(name: faqBoard, bundle: nil)
             guard let faqVC = board.instantiateViewController(withIdentifier: faqBoard) as? FAQViewController else { return }
