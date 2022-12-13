@@ -201,8 +201,6 @@ extension WatchConnectManager : WCSessionDelegate {
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any]) {
         let dataType = userInfo[dataTypeKey] as! String
         let sendType = userInfo[sendTypeKey] as! String
-        print("dataType = \(dataType)")
-        print("sendType = \(sendType)")
         let isKey = userInfo.keys.contains(where: {$0 == dataKey})
 #if os(iOS)
         do {

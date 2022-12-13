@@ -237,8 +237,8 @@ extension PushListViewController {
                 pushTable.reloadData()
             }
             // 취소
-            actionList.append { [self] _ in
-                pushTable.reloadData()
+            actionList.append { _ in
+                ()
             }
             PopupManager.shared.openAlertSheet(self, title: "알람 삭제", msg: "알람을 삭제하시겠습니까?",
                                                btnMsg: ["모두 삭제", "해당 알람만 삭제", "취소"],

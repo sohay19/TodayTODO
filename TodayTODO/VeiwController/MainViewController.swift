@@ -461,8 +461,9 @@ extension MainViewController {
         if type != .None {
             var actionList:[(UIAlertAction)->Void] = []
             // 모두 삭제
-            actionList.append { _ in
+            actionList.append { [self] _ in
                 DataManager.shared.deleteTask(task)
+                refresh()
             }
             // 이전 일정 유지
             actionList.append { [self] _ in
@@ -476,6 +477,7 @@ extension MainViewController {
                 }
                 // 종료일을 이전날까지로 변경하여 업데이트
                 DataManager.shared.updateTask(newTask)
+                refresh()
             }
             // 취소
             actionList.append { _ in
@@ -487,8 +489,8 @@ extension MainViewController {
                                                complete: actionList)
         } else {
             DataManager.shared.deleteTask(task)
+            refresh()
         }
-        
     }
 }
 
