@@ -36,7 +36,6 @@ class NoticeCell: UITableViewCell {
         textView.layer.cornerRadius = 5
         textView.layer.borderWidth = 0.1
         textView.layer.borderColor = UIColor.gray.cgColor
-        textView.textColor = .label
         textView.isEditable = false
     }
     
@@ -44,7 +43,7 @@ class NoticeCell: UITableViewCell {
         inputTitle.text = title
         // 글자 변환
         if let font = UIFont(name: K_Font_R, size: K_FontSize) {
-            textView.setLineSpacing(body, font: font)
+            textView.setLineSpacing(body, font: font, color: .label, align: .left)
         }
     }
 }

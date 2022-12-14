@@ -45,13 +45,13 @@ struct TaskListProvider: TimelineProvider {
         //우선순위 정렬
         taskList.sort {
             if let first = orderList.firstIndex(of: $0.category), let second = orderList.firstIndex(of: $1.category) {
-                if $0.isDone {
+                if $0.taskTime.isEmpty {
                     return false
-                }
-                if $1.isDone {
+                } else if $1.taskTime.isEmpty {
                     return true
+                } else {
+                    return first < second
                 }
-                return first < second
             }
             return false
         }

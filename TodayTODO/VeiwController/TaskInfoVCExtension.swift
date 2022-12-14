@@ -90,7 +90,7 @@ extension TaskInfoViewController : UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         // 글자 변환
         if let font = UIFont(name: K_Font_R, size: K_FontSize) {
-            memoView.setLineSpacing(textView.text, font: font)
+            memoView.setLineSpacing(textView.text, font: font, color: .label, align: .left)
         }
         // 글자 수 세기
         let currentText = textView.text ?? ""

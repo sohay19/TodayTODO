@@ -10,6 +10,7 @@ import UIKit
 
 class PushCell : UITableViewCell {
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var categoryLine: UIView!
     @IBOutlet weak var labelTitle:UILabel!
     @IBOutlet weak var labelAlarmTime:UILabel!
     @IBOutlet weak var labelDate:UILabel!
@@ -45,16 +46,20 @@ class PushCell : UITableViewCell {
         separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 1.0)
+        labelTitle.textColor = .label
         labelAlarmTime.font = UIFont(name: E_Font_B, size: E_FontSize)
+        labelAlarmTime.textColor = .label
         labelDate.font = UIFont(name: K_Font_R, size: K_FontSize - 2.0)
+        labelDate.textColor = .label
         //
         let backgroundView = UIView()
         backgroundView.backgroundColor = .clear
         selectedBackgroundView = backgroundView
     }
     
-    func inputCell(title:String, alarmTime:String, repeatDate:String) {
+    func inputCell(title:String, alarmTime:String, repeatDate:String, color:UIColor) {
         labelTitle.text = title
+        categoryLine.backgroundColor = color
         // 알람
         labelAlarmTime.text = alarmTime
         let attributedString = NSMutableAttributedString(string: "")

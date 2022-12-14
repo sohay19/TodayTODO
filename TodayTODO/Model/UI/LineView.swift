@@ -37,7 +37,7 @@ class LineView:UIView {
             return
         }
         shapeLayer.path = bezierPath.cgPath
-        shapeLayer.lineWidth = 0.8
+        shapeLayer.lineWidth = 0.3
         shapeLayer.strokeColor = UIColor.lightGray.cgColor
         self.layer.addSublayer(shapeLayer)
         //

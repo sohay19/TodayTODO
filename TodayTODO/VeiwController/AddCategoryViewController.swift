@@ -98,6 +98,7 @@ extension AddCategoryViewController {
         labelTitle.text = "카테고리 수정"
         inputTitle.text = categoryInfo
         colorWell.selectedColor = DataManager.shared.getCategoryColor(categoryInfo)
+        textCounter.text = "\(categoryInfo.count)/10"
     }
 }
 

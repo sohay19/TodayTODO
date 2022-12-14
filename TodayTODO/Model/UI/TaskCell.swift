@@ -12,16 +12,13 @@ class TaskCell: UITableViewCell {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelTime: UILabel!
-    @IBOutlet weak var expandableView: UIView!
     @IBOutlet weak var timeView: UIView!
-    @IBOutlet weak var memoView: UITextView!
-    @IBOutlet weak var btnArrow: UIImageView!
     @IBOutlet weak var iconClock: UILabel!
+    @IBOutlet weak var categoryLine: UIView!
     
     var isToday = true
     var titleColor:UIColor = .label
-    private var btnArrowSize:CGFloat = 45
-    private var btnArrowConstraint:NSLayoutConstraint?
+    var categoryColor:UIColor = .label
     private var lineView:LineView?
     
     override func awakeFromNib() {
@@ -35,10 +32,8 @@ class TaskCell: UITableViewCell {
         //
         if highlighted {
             labelTitle.textColor = isToday ? .systemIndigo : .defaultPink
-            btnArrow.tintColor = isToday ? .systemIndigo : .defaultPink
         } else {
             labelTitle.textColor = titleColor
-            btnArrow.tintColor = titleColor
         }
     }
     
@@ -46,87 +41,46 @@ class TaskCell: UITableViewCell {
         self.backgroundColor = .clear
         self.selectionStyle = .none
         mainView.backgroundColor = .clear
-        expandableView.backgroundColor = .lightGray.withAlphaComponent(0.1)
-        memoView.backgroundColor = .clear
         //
         self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
         labelTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelTitle.textColor = titleColor
         labelTime.font = UIFont(name: N_Font, size: N_FontSize)
-        memoView.isEditable = false
-        memoView.isSelectable = false
-        memoView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        //
-        btnArrow.contentMode = .center
-        btnArrow.translatesAutoresizingMaskIntoConstraints = false
-        btnArrowConstraint = btnArrow.constraints.first { item in
-            return item.identifier == "btnArrowWidth"
-        }
-    }
-    
-    func controllMain(_ isOn:Bool) {
-        mainView.isHidden = !isOn
-        labelTitle.isHidden = !isOn
-        btnArrow.isHidden = !isOn
-        controllExpandable(!isOn)
-        btnArrow.translatesAutoresizingMaskIntoConstraints = false
-        btnArrowConstraint?.constant = btnArrowSize
-    }
-    
-    func setMonthCell() {
-        controllMain(true)
-        btnArrow.isHidden = true
-        btnArrow.translatesAutoresizingMaskIntoConstraints = false
-        btnArrowConstraint?.constant = 0
-    }
-    
-    private func controllExpandable(_ isOn:Bool) {
-        expandableView.isHidden = !isOn
-        timeView.isHidden = !isOn
-        iconClock.isHidden = !isOn
-        memoView.isHidden = !isOn
-    }
-    
-    func inputCell(title:String, memo:String, time:String) {
-        labelTitle.text = title
-        if let font = UIFont(name: K_Font_R, size: K_FontSize) {
-            memoView.setLineSpacing(memo, font: font)
-        }
-        labelTime.textColor = time.isEmpty ? .gray : .label
-        labelTime.text = time.isEmpty ? "--:--" : time
+        labelTime.textColor = .lightGray
         // 알람 아이콘 라벨에 넣기
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(systemName: "alarm")?.withTintColor(.label).withConfiguration(UIImage.SymbolConfiguration(scale: .small)).withTintColor(.gray, renderingMode: .alwaysOriginal)
+        imageAttachment.image = UIImage(systemName: "clock")?.withTintColor(.label).withConfiguration(UIImage.SymbolConfiguration(scale: .small)).withTintColor(.lightGray, renderingMode: .alwaysOriginal)
         attributedString.append(NSAttributedString(attachment: imageAttachment))
         iconClock.attributedText = attributedString
     }
     
-    func changeArrow(_ isUp:Bool) {
-        btnArrow.image = UIImage(systemName: isUp ? "chevron.up" : "chevron.down", withConfiguration: thinConfig)
+    func inputCell(title:String, time:String, color:UIColor) {
+        labelTitle.text = title
+        timeView.isHidden = time.isEmpty
+        labelTime.text = time
+        categoryLine.backgroundColor = color
+        categoryColor = color
     }
     
     func taskIsDone(_ isDone:Bool) {
-        if isDone {
-            removeLine()
-            //
-            lineView = LineView()
-            guard let lineView = lineView else {
-                return
-            }
-            DispatchQueue.main.async { [self] in
-                let width = labelTitle.frame.maxX - labelTitle.frame.origin.x
-                lineView.frame = CGRect(
-                    origin: CGPoint(x: labelTitle.frame.origin.x, y: 0),
-                    size: CGSize(width: width, height: frame.height))
-                self.addSubview(lineView)
-            }
-            titleColor = .lightGray
-        } else {
-            removeLine()
-            titleColor = .label
-        }
+//        removeLine()
+//        if isDone {
+//            lineView = LineView()
+//            guard let lineView = lineView else {
+//                return
+//            }
+//            DispatchQueue.main.async { [self] in
+//                let width = timeView.frame.maxX - categoryLine.frame.origin.x
+//                lineView.frame = CGRect(
+//                    origin: CGPoint(x: categoryLine.frame.origin.x, y: 0),
+//                    size: CGSize(width: width, height: frame.height))
+//                self.addSubview(lineView)
+//            }
+//        }
+        titleColor = isDone ? .lightGray : .label
+        categoryLine.backgroundColor = isDone ? .lightGray : categoryColor
     }
     
     func removeLine() {

@@ -10,10 +10,10 @@ import UIKit
 class MainViewController: UIViewController {
     @IBOutlet weak var imgNil: UIImageView!
     @IBOutlet weak var segmentView: UIView!
-    @IBOutlet weak var underline: UIView!
     //
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var btnToday: UIButton!
+    @IBOutlet weak var btnSort: UIButton!
     //
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelTodayNilMsg: UILabel!
@@ -29,17 +29,16 @@ class MainViewController: UIViewController {
     var segmentControl = CustomSegmentControl()
     //
     var monthDate:Date = Date()
-    //
-    var categoryList:[String] = []
-    var resultList:[String:[EachTask]] = [:]
+    var taskList:[EachTask] = []
     //key = 일자
-    var monthlyTaskList:[Int:MonthltyDayTask] = [:]
+    var monthlyTaskList:[Int:[EachTask]] = [:]
     var taskDateKeyList:[Int] = []
     //
     var currentType:MainType = .Today
-    var openedTask:OpenedTask?
+    var sortType:SortType = .Category
     var isRefresh = false
     var isTaskOpen = false
+    var isMoveToday = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +52,6 @@ class MainViewController: UIViewController {
         //
         initUI()
         initCell()
-        // 리프레시 컨트롤러 초기화
         initRefreshController()
         // 메인 리로드 함수
         WatchConnectManager.shared.reloadMainView = refresh
@@ -64,6 +62,7 @@ class MainViewController: UIViewController {
         //
         SystemManager.shared.openLoading()
         SystemManager.shared.openHelp(self, mainBoard)
+        //
         checkVersion()
         //날짜가 넘어갔는지 확인
         guard let today = calendarView.today else {
@@ -74,7 +73,13 @@ class MainViewController: UIViewController {
             calendarView.select(Date())
         }
         //
+        if let type = UserDefaults.shared.string(forKey: SortTypeKey) {
+            if let newType = SortType(rawValue: type) {
+                sortType = newType
+            }
+        }
         loadTask()
+        loadSort()
         initSegment()
         initDate()
     }
@@ -90,7 +95,6 @@ class MainViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         //
-        openedTask = nil
         currentType = isTaskOpen ? currentType : .Today
         isTaskOpen = false
     }
@@ -101,12 +105,14 @@ extension MainViewController {
     func initDate() {
         var dateList:[Substring] = []
         dateList = Utils.dateToDateString(currentType == .Today ? Date() : monthDate).split(separator: "-")
+        var date = ""
         switch currentType {
         case .Today:
-            labelDate.text = "\(dateList[1])월\(dateList[2])일"
+            date = "\(dateList[1])월 \(dateList[2])일"
         case .Month:
-            labelDate.text = "\(dateList[0])년 \(dateList[1])월"
+            date = "\(dateList[0])년 \(dateList[1])월"
         }
+        labelDate.text = date
     }
     //
     func initUI() {
@@ -117,34 +123,36 @@ extension MainViewController {
         //
         segmentView.backgroundColor = .clear
         addSegmentcontrol()
-        underline.backgroundColor = .label
         //
         todayView.backgroundColor = .clear
         monthView.backgroundColor = .clear
         // 폰트 설정
-        labelDate.font = UIFont(name: N_Font, size: N_FontSize + 1.0)
-        labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelDate.font = UIFont(name: LogoFont, size: K_FontSize + 3.0)
         labelDate.textColor = .label
+        labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelTodayNilMsg.textColor = .label
+        labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelMonthNilMsg.textColor = .label
         //
+        btnSort.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize - 2.0)
+        btnSort.setTitleColor(.label, for: .normal)
+        btnSort.setImage(UIImage(systemName: "chevron.down", withConfiguration: thinConfig), for: .normal)
+        btnSort.contentMode = .center
+        btnSort.tintColor = .label
         btnAdd.contentMode = .center
         btnAdd.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: mediumConfig), for: .normal)
         btnToday.contentMode = .center
         btnToday.setImage(UIImage(systemName: "plus.viewfinder", withConfiguration: mediumConfig), for: .normal)
         //
-        dailyTaskTable.sectionHeaderTopPadding = 0
-        dailyTaskTable.sectionHeaderHeight = 42
-        dailyTaskTable.sectionFooterHeight = 45
+        dailyTaskTable.sectionHeaderHeight = 0
+        dailyTaskTable.sectionFooterHeight = 0
         dailyTaskTable.backgroundColor = .clear
         dailyTaskTable.separatorInsetReference = .fromCellEdges
         dailyTaskTable.separatorColor = .lightGray.withAlphaComponent(0.5)
         dailyTaskTable.showsVerticalScrollIndicator = false
         //
-        monthlyTaskTable.sectionHeaderTopPadding = 0
-        monthlyTaskTable.sectionHeaderHeight = 42
-        monthlyTaskTable.sectionFooterHeight = 45
+        monthlyTaskTable.sectionHeaderHeight = 0
+        monthlyTaskTable.sectionFooterHeight = 0
         monthlyTaskTable.backgroundColor = .clear
         monthlyTaskTable.separatorInsetReference = .fromCellEdges
         monthlyTaskTable.separatorColor = .lightGray.withAlphaComponent(0.5)
@@ -181,6 +189,26 @@ extension MainViewController {
             calendarView.select(monthDate)
         }
     }
+    //
+    func loadSort() {
+        var actionList:[UIAction] = []
+        let sortList:[SortType] = [.Category, .Time]
+        for type in sortList {
+            let action = UIAction(title: type.rawValue, handler: { [self] _ in
+                sortType = type
+                btnSort.setTitle("\(sortType.rawValue) ", for: .normal)
+                UserDefaults.shared.set(sortType.rawValue, forKey: SortTypeKey)
+                sortTask()
+            })
+            actionList.append(action)
+        }
+        btnSort.menu = UIMenu(title: "정렬 기준", children: actionList)
+        // 정렬
+        if let index = sortList.firstIndex(where: {$0 == sortType}) {
+            btnSort.sendAction(actionList[index])
+        }
+    }
+    //
     func refresh() {
         isRefresh = true
         beginAppearanceTransition(true, animated: false)
@@ -192,8 +220,7 @@ extension MainViewController {
     // data reset
     func resetTask() {
         taskDateKeyList = []
-        categoryList = []
-        resultList = [:]
+        taskList = []
         monthlyTaskList = [:]
     }
     //Task 세팅
@@ -202,44 +229,20 @@ extension MainViewController {
         //
         switch currentType {
         case .Today:
-            let dataList = DataManager.shared.getTodayTask()
-            let sortedList = dataList.sorted(by: { task1, task2 in
-                if task1.isDone {
-                    return task2.isDone ? true : false
-                } else {
-                    return true
-                }
-            })
-            for task in sortedList {
-                let category = task.category
-                if !categoryList.contains(where: {$0 == category}) {
-                    categoryList.append(category)
-                    resultList[category] = []
-                }
-                if resultList[category] != nil {
-                    resultList[category]?.append(task)
-                }
-            }
+            taskList = DataManager.shared.getTodayTask()
         case .Month:
             let dataList = DataManager.shared.getMonthTask(date: monthDate)
-            let sortedList = dataList.sorted(by: { task1, task2 in
-                if task1.isDone {
-                    return task2.isDone ? true : false
-                } else {
-                    return true
-                }
-            })
             //한달
             taskDateKeyList = [Int](1...Utils.getLastDay(monthDate))
             //딕셔너리 초기화
             for i in taskDateKeyList {
-                monthlyTaskList[i] = MonthltyDayTask()
+                monthlyTaskList[i] = [EachTask]()
             }
             //
             let weekDayList = Utils.getWeekDayList(monthDate)
             var compareDay = Utils.dateToDateString(monthDate).split(separator: "-").map{String($0)}
             //반복 타입 별 체크
-            for task in sortedList {
+            for task in dataList {
                 let option = task.optionData ?? OptionData()
                 let isEnd = option.isEnd
                 let taskEndDate = option.taskEndDate
@@ -247,18 +250,18 @@ extension MainViewController {
                 switch RepeatType(rawValue: task.repeatType) {
                 case .None:
                     let day = Utils.getDay(task.taskDay)
-                    monthlyTaskList[day]?.append(task.category, task)
+                    monthlyTaskList[day]?.append(task)
                 case .EveryDay:
                     for day in taskDateKeyList {
                         compareDay[2] = String(format: "%02d", day)
                         let currentDay = compareDay.joined(separator: "-")
                         if isEnd {
                             if taskEndDate >= currentDay && task.taskDay <= currentDay {
-                                monthlyTaskList[day]?.append(task.category, task)
+                                monthlyTaskList[day]?.append(task)
                             }
                         } else {
                             if task.taskDay <= currentDay {
-                                monthlyTaskList[day]?.append(task.category, task)
+                                monthlyTaskList[day]?.append(task)
                             }
                         }
                     }
@@ -272,11 +275,11 @@ extension MainViewController {
                             let currentDay = compareDay.joined(separator: "-")
                             if isEnd {
                                 if taskEndDate >= currentDay && task.taskDay <= currentDay {
-                                    monthlyTaskList[day]?.append(task.category, task)
+                                    monthlyTaskList[day]?.append(task)
                                 }
                             } else {
                                 if task.taskDay <= currentDay {
-                                    monthlyTaskList[day]?.append(task.category, task)
+                                    monthlyTaskList[day]?.append(task)
                                 }
                             }
                         }
@@ -288,11 +291,11 @@ extension MainViewController {
                         let currentDay = compareDay.joined(separator: "-")
                         if isEnd {
                             if taskEndDate >= currentDay && task.taskDay <= currentDay {
-                                monthlyTaskList[day]?.append(task.category, task)
+                                monthlyTaskList[day]?.append(task)
                             }
                         } else {
                             if task.taskDay <= currentDay {
-                                monthlyTaskList[day]?.append(task.category, task)
+                                monthlyTaskList[day]?.append(task)
                             }
                         }
                     }
@@ -305,11 +308,11 @@ extension MainViewController {
                         
                         if isEnd {
                             if taskEndDate >= currentDay && task.taskDay <= currentDay && day == Utils.getDay(task.taskDay) {
-                                monthlyTaskList[day]?.append(task.category, task)
+                                monthlyTaskList[day]?.append(task)
                             }
                         } else {
                             if task.taskDay <= currentDay && day == Utils.getDay(task.taskDay) {
-                                monthlyTaskList[day]?.append(task.category, task)
+                                monthlyTaskList[day]?.append(task)
                             }
                         }
                         
@@ -317,10 +320,6 @@ extension MainViewController {
                 }
             }
         }
-        sortCategory()
-        calendarView.reloadData()
-        reloadTable()
-        //
         SystemManager.shared.closeLoading()
         if isRefresh {
             endAppearanceTransition()
@@ -328,29 +327,112 @@ extension MainViewController {
         }
     }
     //
-    private func sortCategory() {
-        let list = DataManager.shared.getCategoryOrder()
+    func sortTask() {
+        let categoryList = DataManager.shared.getCategoryOrder()
         switch currentType {
         case .Today:
-            categoryList.sort {
-                if let first = list.firstIndex(of: $0), let second = list.firstIndex(of: $1) {
-                    return first < second
-                }
-                return false
+            if sortType == .Category {
+                taskList.sort(by: {
+                    if let first = categoryList.firstIndex(of: $0.category),
+                       let second = categoryList.firstIndex(of: $1.category) {
+                        if first == second {
+                            if $0.isDone && !$1.isDone {
+                                return false
+                            } else if !$0.isDone && $1.isDone {
+                                return true
+                            } else {
+                                if $0.taskTime.isEmpty && !$1.taskTime.isEmpty {
+                                    return false
+                                } else if !$0.taskTime.isEmpty && $1.taskTime.isEmpty {
+                                    return true
+                                } else if $0.taskTime.isEmpty && $1.taskTime.isEmpty {
+                                    return $0.title < $1.title
+                                } else {
+                                    return $0.taskTime < $1.taskTime
+                                }
+                            }
+                        } else {
+                            return first < second
+                        }
+                    }
+                    return false
+                })
+            } else {
+                taskList.sort(by: {
+                    if $0.isDone && !$1.isDone {
+                        return false
+                    } else if !$0.isDone && $1.isDone {
+                        return true
+                    } else {
+                        if $0.taskTime.isEmpty && !$1.taskTime.isEmpty {
+                            return false
+                        } else if !$0.taskTime.isEmpty && $1.taskTime.isEmpty {
+                            return true
+                        } else if $0.taskTime.isEmpty && $1.taskTime.isEmpty {
+                            return $0.title < $1.title
+                        } else {
+                            return $0.taskTime < $1.taskTime
+                        }
+                    }
+                })
             }
         case .Month:
-            for day in taskDateKeyList {
-                if let _ = monthlyTaskList[day] {
-                    monthlyTaskList[day]?.sortCateogry(list)
+            for i in taskDateKeyList {
+                if let taskList = monthlyTaskList[i] {
+                    monthlyTaskList[i] = taskList.sorted(by: {
+                        if sortType == .Category {
+                            if let first = categoryList.firstIndex(of: $0.category),
+                               let second = categoryList.firstIndex(of: $1.category) {
+                                if first == second {
+                                    if $0.isDone && !$1.isDone {
+                                        return false
+                                    } else if !$0.isDone && $1.isDone {
+                                        return true
+                                    } else {
+                                        if $0.taskTime.isEmpty && !$1.taskTime.isEmpty {
+                                            return false
+                                        } else if !$0.taskTime.isEmpty && $1.taskTime.isEmpty {
+                                            return true
+                                        } else if $0.taskTime.isEmpty && $1.taskTime.isEmpty {
+                                            return $0.title < $1.title
+                                        } else {
+                                            return $0.taskTime < $1.taskTime
+                                        }
+                                    }
+                                } else {
+                                    return first < second
+                                }
+                            }
+                            return false
+                        } else {
+                            if $0.isDone && !$1.isDone {
+                                return false
+                            } else if !$0.isDone && $1.isDone {
+                                return true
+                            } else {
+                                if $0.taskTime.isEmpty && !$1.taskTime.isEmpty {
+                                    return false
+                                } else if !$0.taskTime.isEmpty && $1.taskTime.isEmpty {
+                                    return true
+                                } else if $0.taskTime.isEmpty && $1.taskTime.isEmpty {
+                                    return $0.title < $1.title
+                                } else {
+                                    return $0.taskTime < $1.taskTime
+                                }
+                            }
+                        }
+                    })
                 }
             }
         }
+        calendarView.reloadData()
+        reloadTable()
     }
     //
     func checkNil() {
         switch currentType {
         case .Today:
-            if resultList.keys.count == 0 {
+            if taskList.count == 0 {
                 labelTodayNilMsg.isHidden = false
                 imgNil.isHidden = false
             } else {
@@ -374,84 +456,39 @@ extension MainViewController {
         switch currentType {
         case .Today:
             //Today
-            let category = categoryList[indexPath.section]
-            guard let task = resultList[category]?[indexPath.row] else {
-                return
-            }
+            let task = taskList[indexPath.section]
             let modifyTask = task.clone()
             modifyTask.changeIsDone()
             DataManager.shared.updateTask(modifyTask)
             //
-            resultList[category]?.remove(at: indexPath.row)
-            guard let taskList = resultList[category] else {
-                return
-            }
-            if modifyTask.isDone {
-                resultList[category]?.append(task)
-            } else {
-                resultList[category] = [task] + taskList
-            }
+            sortTask()
             dailyTaskTable.reloadData()
         case .Month:
             //Month
-            guard let category = monthlyTaskList[Utils.getDay(monthDate)]?.categoryList[indexPath.section] else {
+            guard let taskList = monthlyTaskList[Utils.getDay(monthDate)] else {
                 return
             }
-            guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else {
-                return
-            }
+            let task = taskList[indexPath.section]
             let modifyTask = task.clone()
             modifyTask.changeIsDone()
             DataManager.shared.updateTask(modifyTask)
             //
-            let day = Utils.getDay(monthDate)
-            monthlyTaskList[day]?.taskList[category]?.remove(at: indexPath.row)
-            guard let taskList = monthlyTaskList[day]?.taskList[category] else {
-                return
-            }
-            if modifyTask.isDone {
-                monthlyTaskList[day]?.taskList[category]?.append(task)
-            } else {
-                monthlyTaskList[day]?.taskList[category] = [task] + taskList
-            }
+            sortTask()
             monthlyTaskTable.reloadData()
         }
-    }
-    //
-    func modifyTask(_ indexPath:IndexPath) {
-        var beforeTask:EachTask = EachTask()
-        switch currentType {
-        case .Today:
-            let category = categoryList[indexPath.section]
-            guard let task = resultList[category]?[indexPath.row] else {
-                return
-            }
-            beforeTask = task
-        case .Month:
-            guard let category = monthlyTaskList[Utils.getDay(monthDate)]?.categoryList[indexPath.section] else {
-                return
-            }
-            guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else {
-                return
-            }
-            beforeTask = task
-        }
-        isTaskOpen = true
-        SystemManager.shared.openTaskInfo(.MODIFY, date: nil, task: beforeTask, load: loadTask, modify: { newTask in
-            DataManager.shared.updateTask(newTask)
-        })
     }
     //
     func deleteTask(_ indexPath:IndexPath) {
         PopupManager.shared.openYesOrNo(self, title: "TODO 삭제", msg: "TODO를 삭제하시겠습니까?") { [self] _ in
             switch currentType {
             case .Today:
-                let category = categoryList[indexPath.section]
-                guard let task = resultList[category]?[indexPath.row] else { return }
+                let task = taskList[indexPath.section]
                 deleteTaskProcess(task)
             case .Month:
-                guard let category = monthlyTaskList[Utils.getDay(monthDate)]?.categoryList[indexPath.section] else { return }
-                guard let task = monthlyTaskList[Utils.getDay(monthDate)]?.taskList[category]?[indexPath.row] else { return }
+                guard let taskList = monthlyTaskList[Utils.getDay(monthDate)] else {
+                    return
+                }
+                let task = taskList[indexPath.section]
                 deleteTaskProcess(task)
             }
         }
@@ -552,7 +589,6 @@ extension MainViewController {
             btnToday.isHidden = true
         case 1:
             currentType = .Month
-            openedTask = nil
             btnToday.isHidden = false
         default:
             return
@@ -562,12 +598,17 @@ extension MainViewController {
     @IBAction func clickTaskAdd(_ sender:Any) {
         let date = currentType == .Today ? Date() : monthDate
         isTaskOpen = true
-        SystemManager.shared.openTaskInfo(.ADD, date: date, task: nil, load:loadTask, modify: nil)
+        SystemManager.shared.openTaskInfo(.ADD, date: date, task: nil, load:{ [self] in
+            loadTask()
+            sortTask()
+        }, modify: nil)
     }
     @IBAction func clickToday(_ sender:Any) {
+        isMoveToday = true
         monthDate = Date()
         calendarView.select(monthDate)
-        reloadTable()
+        refresh()
+        isMoveToday = false
     }
 }
 

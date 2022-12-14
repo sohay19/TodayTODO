@@ -51,6 +51,13 @@ extension CustomTabBarController : UITabBarControllerDelegate {
         }
     }
     
+    func controllTabItem(_ isOn:Bool) {
+        guard let list = viewControllers else { return }
+        for vc in list {
+            vc.tabBarItem.isEnabled = isOn
+        }
+    }
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         
     }

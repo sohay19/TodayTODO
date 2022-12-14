@@ -8,6 +8,7 @@
 import UIKit
 
 class CategoryCell: UITableViewCell {
+    @IBOutlet weak var categoryLine: UIView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelCounter: UILabel!
     @IBOutlet weak var categoryView: UIView!
@@ -27,13 +28,14 @@ class CategoryCell: UITableViewCell {
     private func initUI() {
         self.selectionStyle = .none
         self.shouldIndentWhileEditing = false
-        self.backgroundColor = .clear
+        self.backgroundColor = .lightGray.withAlphaComponent(0.1)
         //
         categoryView.backgroundColor = .clear
         listView.backgroundColor = .clear
         collectionView.backgroundColor = .clear
         //
-        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 2.0)
+        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
+        labelTitle.textColor = .label
         labelCounter.font = UIFont(name: N_Font, size: N_FontSize)
         labelCounter.tintColor = .label
     }
@@ -41,7 +43,7 @@ class CategoryCell: UITableViewCell {
     func inputCell(title:String, counter:Int) {
         labelTitle.text = title
         let color = DataManager.shared.getCategoryColor(title)
-        labelTitle.textColor = color
+        categoryLine.backgroundColor = color
         labelCounter.text = String(counter)
     }
     
@@ -57,10 +59,6 @@ class CategoryCell: UITableViewCell {
         categoryView.isHidden = !isCategory
         labelTitle.isHidden = !isCategory
         labelCounter.isHidden = !isCategory
-        //
-        self.contentView.backgroundColor = isCategory ? .lightGray.withAlphaComponent(0.1) : .clear
-        self.contentView.layer.cornerRadius = isCategory ? 5 : 0
-        self.contentView.layer.borderWidth = isCategory ? 0.1 : 0
     }
     
     private func controllTableView(_ isTable:Bool) {
@@ -81,9 +79,7 @@ extension CategoryCell: UICollectionViewDelegate, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         let task = taskList[indexPath.row]
-        let title = task.title
-        let color = DataManager.shared.getCategoryColor(task.category)
-        cell.initCell(title, color)
+        cell.initCell(title: task.title, date: task.taskDay)
         return cell
     }
     

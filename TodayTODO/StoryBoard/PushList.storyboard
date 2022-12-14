@@ -12,7 +12,7 @@
         <!--Push List View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="PushList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PushListViewController" customModule="DailyToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PushList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PushListViewController" customModule="TodayTODO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,18 +48,18 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kGG-Zy-ClK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kpF-71-8hV">
                                 <rect key="frame" x="30" y="188" width="333" height="567"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock.png" translatesAutoresizingMaskIntoConstraints="NO" id="fwR-hO-Gzt" userLabel="image">
-                                <rect key="frame" x="90" y="278" width="213" height="213"/>
+                                <rect key="frame" x="90" y="308" width="213" height="213"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fwR-hO-Gzt" secondAttribute="height" multiplier="1:1" id="phu-dj-dhH"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="예정된 알람이 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8R-IL-C5D" userLabel="Message">
-                                <rect key="frame" x="134" y="509" width="125" height="18"/>
+                                <rect key="frame" x="134" y="539" width="125" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -107,22 +107,22 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kGG-Zy-ClK" secondAttribute="trailing" constant="30" id="0BI-O2-ipt"/>
                             <constraint firstItem="fwR-hO-Gzt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="90" id="325-W9-lbQ"/>
                             <constraint firstItem="FMv-ly-M4O" firstAttribute="top" secondItem="PbR-Br-2JN" secondAttribute="bottom" constant="9" id="3sA-kZ-qVW"/>
                             <constraint firstItem="jcM-hb-gY3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7T4-D6-fml"/>
+                            <constraint firstItem="jcM-hb-gY3" firstAttribute="top" secondItem="kpF-71-8hV" secondAttribute="bottom" constant="18" id="8fx-vp-kvK"/>
                             <constraint firstItem="PbR-Br-2JN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="BBS-Zo-JwJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="fwR-hO-Gzt" secondAttribute="trailing" constant="90" id="K5k-pW-G7v"/>
-                            <constraint firstItem="v8R-IL-C5D" firstAttribute="centerX" secondItem="kGG-Zy-ClK" secondAttribute="centerX" id="Sbc-WS-67q"/>
-                            <constraint firstItem="kGG-Zy-ClK" firstAttribute="top" secondItem="FMv-ly-M4O" secondAttribute="bottom" constant="15" id="YKa-6E-kVk"/>
-                            <constraint firstItem="fwR-hO-Gzt" firstAttribute="top" secondItem="kGG-Zy-ClK" secondAttribute="top" constant="90" id="bRE-5F-lR2"/>
+                            <constraint firstItem="kpF-71-8hV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="SNb-Ne-4LO"/>
                             <constraint firstItem="FMv-ly-M4O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="18" id="bVj-Uw-6KC"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="FMv-ly-M4O" secondAttribute="trailing" constant="9" id="bq7-8i-BWe"/>
-                            <constraint firstItem="kGG-Zy-ClK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="czN-HN-blN"/>
+                            <constraint firstItem="kpF-71-8hV" firstAttribute="top" secondItem="FMv-ly-M4O" secondAttribute="bottom" constant="15" id="edc-5w-aAa"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PbR-Br-2JN" secondAttribute="trailing" id="eoX-lv-RiA"/>
                             <constraint firstItem="v8R-IL-C5D" firstAttribute="top" secondItem="fwR-hO-Gzt" secondAttribute="bottom" constant="18" id="fb7-PS-YKf"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="jcM-hb-gY3" secondAttribute="bottom" id="gkB-5v-NMv"/>
-                            <constraint firstItem="jcM-hb-gY3" firstAttribute="top" secondItem="kGG-Zy-ClK" secondAttribute="bottom" constant="18" id="jXh-bj-1Fc"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kpF-71-8hV" secondAttribute="trailing" constant="30" id="oZD-HA-hjh"/>
+                            <constraint firstItem="v8R-IL-C5D" firstAttribute="centerX" secondItem="kpF-71-8hV" secondAttribute="centerX" id="rEi-7K-EdV"/>
+                            <constraint firstItem="fwR-hO-Gzt" firstAttribute="top" secondItem="kpF-71-8hV" secondAttribute="top" constant="120" id="vp1-Lr-f4Q"/>
                             <constraint firstItem="PbR-Br-2JN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="xg4-FG-Pzu"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jcM-hb-gY3" secondAttribute="trailing" id="zLg-67-WNR"/>
                         </constraints>
@@ -134,7 +134,7 @@
                         <outlet property="editView" destination="jcM-hb-gY3" id="7Vq-zG-KF1"/>
                         <outlet property="imgClock" destination="fwR-hO-Gzt" id="gaJ-VP-fbE"/>
                         <outlet property="labelNilMsg" destination="v8R-IL-C5D" id="XY6-u7-7WM"/>
-                        <outlet property="pushTable" destination="kGG-Zy-ClK" id="uef-47-r2U"/>
+                        <outlet property="pushTable" destination="kpF-71-8hV" id="UNB-h8-g6B"/>
                         <outlet property="segmentView" destination="PbR-Br-2JN" id="jE0-a7-nEz"/>
                     </connections>
                 </viewController>
@@ -144,10 +144,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checklist.checked" catalog="system" width="128" height="107"/>
-        <image name="clock.png" width="1036" height="1400"/>
-        <image name="scissors" catalog="system" width="128" height="92"/>
-        <image name="trash" catalog="system" width="117" height="128"/>
+        <image name="checklist.checked" catalog="system" width="32" height="32"/>
+        <image name="clock.png" width="470" height="470"/>
+        <image name="scissors" catalog="system" width="32" height="32"/>
+        <image name="trash" catalog="system" width="32" height="32"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

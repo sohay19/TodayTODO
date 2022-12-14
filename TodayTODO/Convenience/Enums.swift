@@ -71,6 +71,11 @@ enum SettingType:String {
     case Help = "도움말"
 }
 
+enum SortType:String {
+    case Category = "카테고리 순"
+    case Time = "시간 순"
+}
+
 enum DataType:String {
     case Array = "Array"
     case EachTask = "EachTask"
@@ -88,10 +93,12 @@ enum SendType:String {
 enum HelpType:String {
     case MainLeftSwipe = "Main_Today_LeftSwipe"
     case MainRightSwipe = "Main_Today_RightSwipe"
+    case MainSort = "Main_Sort"
     case MainToday = "Main_Month_Today"
     case CategorySwipe = "Category_Swipe"
     case CategoryMove = "Category_Move"
     case PushSwipe = "Push_Swipe"
+    case PushEdit = "Push_Edit"
 }
 
 //MARK: - CodingKey

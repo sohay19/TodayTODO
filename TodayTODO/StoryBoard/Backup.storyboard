@@ -59,8 +59,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="왼쪽으로 스와이프하여 백업 파일을 삭제할 수 있습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbh-u4-Mb8" userLabel="LabelTableTitle">
-                                <rect key="frame" x="131.33333333333337" y="239" width="216.66666666666663" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="왼쪽으로 스와이프하여 삭제할 수 있습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbh-u4-Mb8" userLabel="LabelTableTitle">
+                                <rect key="frame" x="134.33333333333337" y="239" width="167.66666666666663" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -147,7 +147,7 @@
                             <constraint firstItem="7Bl-0P-7V0" firstAttribute="bottom" secondItem="UuY-ix-228" secondAttribute="bottom" constant="30" id="UfB-Bh-YHC"/>
                             <constraint firstItem="SgC-y9-dAu" firstAttribute="leading" secondItem="vyD-Xo-JRf" secondAttribute="leading" constant="-9" id="Wet-kb-dY3"/>
                             <constraint firstItem="vyD-Xo-JRf" firstAttribute="leading" secondItem="7Bl-0P-7V0" secondAttribute="leading" constant="30" id="WqF-Ml-OZY"/>
-                            <constraint firstItem="Qbh-u4-Mb8" firstAttribute="leading" secondItem="iES-Qm-PJF" secondAttribute="trailing" constant="3" id="aE6-Eu-b7w"/>
+                            <constraint firstItem="Qbh-u4-Mb8" firstAttribute="leading" secondItem="iES-Qm-PJF" secondAttribute="trailing" constant="6" id="aE6-Eu-b7w"/>
                             <constraint firstItem="eMw-bx-3qr" firstAttribute="top" secondItem="rSL-jo-xbQ" secondAttribute="bottom" id="aYO-cZ-kvC"/>
                             <constraint firstItem="7Bl-0P-7V0" firstAttribute="trailing" secondItem="vyD-Xo-JRf" secondAttribute="trailing" constant="30" id="dLm-Kp-UAU"/>
                             <constraint firstItem="7Bl-0P-7V0" firstAttribute="trailing" secondItem="UuY-ix-228" secondAttribute="trailing" constant="90" id="iJe-fC-RoD"/>

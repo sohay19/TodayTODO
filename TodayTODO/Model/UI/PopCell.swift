@@ -9,6 +9,7 @@ import UIKit
 
 class PopCell: UITableViewCell {
     @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var categoryLine: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,25 +22,19 @@ class PopCell: UITableViewCell {
     }
     
     private func initUI() {
-        self.backgroundColor = .clear
         // 배경
-        self.contentView.backgroundColor = .systemBackground.withAlphaComponent(0.3)
-        self.contentView.layer.cornerRadius = 5
-        self.contentView.layer.borderWidth = 0.1
-        self.contentView.layer.borderColor = UIColor.systemBackground.cgColor
-        self.contentView.clipsToBounds = true
+        self.backgroundColor = .gray.withAlphaComponent(0.3)
         // 선택 시 배경
         let backgroundView = UIView(frame: self.bounds)
         backgroundView.backgroundColor = .systemIndigo.withAlphaComponent(0.3)
-        backgroundView.layer.cornerRadius = 5
-        backgroundView.clipsToBounds = true
         self.selectedBackgroundView = backgroundView
         //
         labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
+        labelTitle.textColor = .white
     }
     
     func inputCell(_ title:String) {
         labelTitle.text = title
-        labelTitle.textColor = DataManager.shared.getCategoryColor(title)
+        categoryLine.backgroundColor = DataManager.shared.getCategoryColor(title)
     }
 }

@@ -50,7 +50,13 @@ extension InterfaceController {
                 } else if !$0.isDone && $1.isDone {
                     return true
                 } else {
-                    return first < second
+                    if $0.taskTime.isEmpty {
+                        return false
+                    } else if $1.taskTime.isEmpty {
+                        return true
+                    } else {
+                        return first < second
+                    }
                 }
             }
             return false

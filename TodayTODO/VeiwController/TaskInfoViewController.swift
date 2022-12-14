@@ -123,7 +123,6 @@ extension TaskInfoViewController {
         repeatView.backgroundColor = .clear
         alarmView.backgroundColor = .clear
         memoView.backgroundColor = .clear
-        memoView.textColor = .label
         memoView.contentInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
         //
         labelTitle.font = bold
@@ -209,17 +208,20 @@ extension TaskInfoViewController {
             btnWrite.isHidden = false
             btnModify.isHidden = true
             textCounter.isHidden = false
+            memoCounter.isHidden = false
             controllEditMode(true)
         case .LOOK:
             btnWrite.isHidden = true
             btnModify.isHidden = false
             textCounter.isHidden = true
+            memoCounter.isHidden = true
             controllEditMode(false)
             loadData()
         case .MODIFY:
             btnWrite.isHidden = false
             btnModify.isHidden = true
             textCounter.isHidden = false
+            memoCounter.isHidden = false
             controllEditMode(true)
             loadData()
         }
@@ -256,6 +258,7 @@ extension TaskInfoViewController {
         }
         //title, category
         inputTitle.text = taskData.title
+        textCounter.text = "\(taskData.title.count)/20"
         for item in categoryList {
             if item.name == taskData.category {
                 btnPullCategory.sendAction(item.action)
@@ -287,12 +290,12 @@ extension TaskInfoViewController {
         }
         //
         if let font = UIFont(name: K_Font_R, size: K_FontSize) {
-            memoView.setLineSpacing(taskData.memo, font: font)
+            memoView.setLineSpacing(taskData.memo, font: font, color: .label, align: .left)
+            memoCounter.text = "\(taskData.memo.count)/300"
         }
     }
     //카테고리 로드
     private func loadCategory() {
-        //
         var actionList:[UIAction] = []
         let categories = DataManager.shared.getAllCategory()
         for category in categories {

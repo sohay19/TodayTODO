@@ -75,7 +75,6 @@ extension BackupViewController {
         backView.layer.borderColor = UIColor.gray.cgColor
         backView.layer.borderWidth = 0.2
         //
-        tableView.allowsSelection = false
         tableView.backgroundColor = .clear
         tableView.sectionHeaderTopPadding = 0
         tableView.sectionFooterHeight = 0
@@ -239,17 +238,13 @@ extension BackupViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 6
     }
+    //MARK: - Event
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        loadBackupFile(indexPath)
+    }
     //MARK: - Swipe
     //오른쪽 스와이프
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        //
-        let load = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.loadBackupFile(indexPath)
-            success(true)
-        }
-        load.image = UIImage(systemName: "icloud.and.arrow.down", withConfiguration: mediumConfig)
-        load.backgroundColor = .systemIndigo
-        //
         let delete = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.deleteBackupFile(indexPath)
             success(true)
@@ -257,6 +252,6 @@ extension BackupViewController : UITableViewDelegate, UITableViewDataSource {
         delete.image = UIImage(systemName: "trash.fill", withConfiguration: mediumConfig)
         delete.backgroundColor = .defaultPink!
         //index = 0, 오른쪽
-        return UISwipeActionsConfiguration(actions:[delete, load])
+        return UISwipeActionsConfiguration(actions:[delete])
     }
 }

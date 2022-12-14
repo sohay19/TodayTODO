@@ -24,8 +24,7 @@ class PushListViewController : UIViewController {
     
     var segmentControl = CustomSegmentControl()
     
-    var pushList:[String:[UNNotificationRequest]] = [:]
-    var categoryList:[String] = []
+    var pushList:[UNNotificationRequest] = []
     var heightConstraint:NSLayoutConstraint?
     var heightOrigin:CGFloat = 60
     var isRefresh = false
@@ -83,14 +82,14 @@ extension PushListViewController {
         editView.backgroundColor = .clear
         //
         pushTable.sectionHeaderTopPadding = 0
-        pushTable.sectionHeaderHeight = 42
-        pushTable.sectionFooterHeight = 45
+        pushTable.sectionHeaderHeight = 0
+        pushTable.sectionFooterHeight = 0
         pushTable.backgroundColor = .clear
         pushTable.separatorInsetReference = .fromCellEdges
-        pushTable.separatorColor = .lightGray.withAlphaComponent(0.5)
+        pushTable.separatorColor = .lightGray.withAlphaComponent(0.3)
         pushTable.showsVerticalScrollIndicator = false
         //
-        labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize + 3.0)
+        labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
         btnEdit.tintColor = .label
         btnEdit.contentMode = .center
@@ -153,8 +152,7 @@ extension PushListViewController {
 extension PushListViewController {
     // data reset
     func resetTask() {
-        pushList = [:]
-        categoryList = []
+        pushList = []
     }
     func loadPushData() {
         DispatchQueue.main.async { [self] in
@@ -172,22 +170,21 @@ extension PushListViewController {
     }
     private func loadPushList(_ requestList:[UNNotificationRequest]) {
         DispatchQueue.main.sync { [self] in
-            for request in requestList {
-                guard let taskId = request.content.userInfo[idKey] as? String else {
-                    return
-                }
-                if let task = DataManager.shared.getTask(taskId) {
-                    let category = task.category
-                    if !categoryList.contains(where: {$0 == category}) {
-                        categoryList.append(category)
-                        pushList[category] = [request]
-                    } else {
-                        pushList[category]?.append(request)
+            pushList = requestList
+            pushList.sort(by: {
+                if let first = DataManager.shared.getTask($0.identifier),
+                   let second = DataManager.shared.getTask($1.identifier) {
+                    guard let option1 = first.optionData, let option2 = second.optionData else {
+                        return false
                     }
-                } else {
-                    DataManager.shared.deleteAlarmPush(taskId, request.identifier)
+                    if option1.alarmTime == option2.alarmTime {
+                        return first.title < second.title
+                    } else {
+                        return option1.alarmTime < option2.alarmTime
+                    }
                 }
-            }
+                return false
+            })
             labelNilMsg.isHidden = pushList.count == 0 ? false : true
             imgClock.isHidden = pushList.count == 0 ? false : true
             pushTable.reloadData()
@@ -209,8 +206,7 @@ extension PushListViewController {
     }
     //
     func deletePush(_ indexPath:IndexPath) {
-        let category = categoryList[indexPath.section]
-        guard let request = pushList[category]?[indexPath.row] else { return }
+        let request = pushList[indexPath.section]
         guard let taskId = request.content.userInfo[idKey] as? String else { return }
         guard let task = DataManager.shared.getTask(taskId) else { return }
         guard let repeatType = RepeatType(rawValue: task.repeatType) else { return }
@@ -228,12 +224,7 @@ extension PushListViewController {
             actionList.append { [self] _ in
                 DataManager.shared.updateAlarmPush(taskId, removeId: request.identifier)
                 // 리스트 삭제
-                pushList[category]?.remove(at: indexPath.row)
-                if let list = pushList[category] {
-                    if list.isEmpty {
-                        categoryList.remove(at: indexPath.section)
-                    }
-                }
+                pushList.remove(at: indexPath.section)
                 pushTable.reloadData()
             }
             // 취소
@@ -295,24 +286,14 @@ extension PushListViewController {
             return
         }
         for index in list {
-            let category = categoryList[index.section]
-            guard let request = pushList[category]?[index.row] else {
-                return
-            }
+            let request = pushList[index.section]
             guard let taskId = request.content.userInfo[idKey] as? String else {
                 return
             }
             //해당 알람만 삭제
             DataManager.shared.updateAlarmPush(taskId, removeId: request.identifier)
-            // 리스트 삭제
-            pushList[category]?.remove(at: index.row)
-            if let list = pushList[category] {
-                if list.isEmpty {
-                    categoryList.remove(at: index.section)
-                }
-            }
         }
-        pushTable.reloadData()
         changeEditMode(false)
+        refresh()
     }
 }

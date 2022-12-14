@@ -8,9 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PushCell" customModule="DailyToDoList" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PushCell" rowHeight="119" id="ecR-Y0-sr1" customClass="PushCell" customModule="DailyToDoList" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PushCell" rowHeight="119" id="ecR-Y0-sr1" customClass="PushCell" customModule="TodayTODO" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="360" height="119"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ecR-Y0-sr1" id="AuQ-cV-FPy">
@@ -20,8 +20,15 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6B-jU-ooY" userLabel="MainView">
                         <rect key="frame" x="0.0" y="0.0" width="360" height="119"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TN3-Tb-60Y">
+                                <rect key="frame" x="3" y="9" width="3" height="101"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="3" id="xy7-a8-Tcv"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHj-2j-xd5">
-                                <rect key="frame" x="9" y="18" width="47" height="21"/>
+                                <rect key="frame" x="18" y="18" width="47" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="highlightedColor" systemColor="secondarySystemBackgroundColor"/>
                             </label>
@@ -38,7 +45,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkV-mD-JPV">
-                                <rect key="frame" x="9" y="92" width="37.333333333333336" height="18"/>
+                                <rect key="frame" x="18.000000000000004" y="92" width="37.333333333333343" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,12 +56,15 @@
                             <constraint firstItem="dKl-VR-a8f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QHj-2j-xd5" secondAttribute="trailing" constant="9" id="5DZ-tF-KjO"/>
                             <constraint firstItem="QHj-2j-xd5" firstAttribute="top" secondItem="p6B-jU-ooY" secondAttribute="top" constant="18" id="DTd-9K-qwv"/>
                             <constraint firstAttribute="trailing" secondItem="dKl-VR-a8f" secondAttribute="trailing" constant="9" id="EEL-2P-Axe"/>
-                            <constraint firstItem="QHj-2j-xd5" firstAttribute="leading" secondItem="p6B-jU-ooY" secondAttribute="leading" constant="9" id="JfV-p9-Uo3"/>
+                            <constraint firstItem="TN3-Tb-60Y" firstAttribute="leading" secondItem="p6B-jU-ooY" secondAttribute="leading" constant="3" id="Jxi-6q-vI4"/>
+                            <constraint firstItem="QHj-2j-xd5" firstAttribute="leading" secondItem="TN3-Tb-60Y" secondAttribute="trailing" constant="12" id="PND-0y-Xsk"/>
                             <constraint firstAttribute="bottom" secondItem="MkV-mD-JPV" secondAttribute="bottom" constant="9" id="Ppz-L6-1Nb"/>
                             <constraint firstItem="MkV-mD-JPV" firstAttribute="leading" secondItem="QHj-2j-xd5" secondAttribute="leading" id="VBl-h1-jJT"/>
                             <constraint firstItem="HJo-Ga-FpX" firstAttribute="centerY" secondItem="dKl-VR-a8f" secondAttribute="centerY" id="d6j-pi-bLl"/>
+                            <constraint firstItem="TN3-Tb-60Y" firstAttribute="top" secondItem="p6B-jU-ooY" secondAttribute="top" constant="9" id="fra-WH-U0Z"/>
                             <constraint firstItem="dKl-VR-a8f" firstAttribute="centerY" secondItem="p6B-jU-ooY" secondAttribute="centerY" id="lfX-1Q-X3B"/>
                             <constraint firstItem="dKl-VR-a8f" firstAttribute="leading" secondItem="HJo-Ga-FpX" secondAttribute="trailing" constant="6" id="pYH-Mj-sJ5"/>
+                            <constraint firstAttribute="bottom" secondItem="TN3-Tb-60Y" secondAttribute="bottom" constant="9" id="t8O-Qw-s9A"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -66,6 +76,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="categoryLine" destination="TN3-Tb-60Y" id="abZ-jX-L8a"/>
                 <outlet property="iconClock" destination="HJo-Ga-FpX" id="LVm-hS-yFt"/>
                 <outlet property="labelAlarmTime" destination="dKl-VR-a8f" id="FX4-DB-YU2"/>
                 <outlet property="labelDate" destination="MkV-mD-JPV" id="fIX-24-ZBk"/>
@@ -76,6 +87,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

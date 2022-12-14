@@ -67,7 +67,6 @@ extension CategoryViewController {
         backView.layer.borderWidth = 0.2
         //
         tableView.backgroundColor = .clear
-        tableView.sectionHeaderTopPadding = 0
         tableView.sectionFooterHeight = 0
         tableView.sectionHeaderHeight = 0
         tableView.separatorInsetReference = .fromCellEdges

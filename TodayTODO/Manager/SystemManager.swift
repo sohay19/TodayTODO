@@ -91,13 +91,19 @@ extension SystemManager {
             break
         }
         if !isHelp {
+            guard let tabVC = vc.tabBarController as? CustomTabBarController else { return }
             let helpView = Bundle.main.loadNibNamed(helpBoard, owner: vc, options: nil)?.first as? Help
             guard let helpView = helpView else {
                 return
             }
+            helpView.controllTabBar = {
+                tabVC.controllTabItem(true)
+            }
             helpView.frame = vc.view.frame
             vc.view.addSubview(helpView)
             helpView.setView(board)
+            //
+            tabVC.controllTabItem(false)
         }
     }
 }

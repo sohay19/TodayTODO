@@ -78,7 +78,7 @@ class FAQCell: UITableViewCell {
         labelTitle.text = title
         // 글자 변환
         if let font = UIFont(name: K_Font_R, size: K_FontSize) {
-            bodyView.setLineSpacing(body, font: font)
+            bodyView.setLineSpacing(body, font: font, color: .label, align: .left)
         }
     }
 }
