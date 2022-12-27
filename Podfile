@@ -18,6 +18,7 @@ target 'TodayTODO' do
   pod 'GoogleSignIn' , '> 6.0.0'
   pod 'FSCalendar' , '> 2.0.0'
   pod 'Gifu'
+  pod 'Google-Mobile-Ads-SDK'
 end
 
 target 'TodayTODOWidgetExtension' do

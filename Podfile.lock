@@ -53,6 +53,9 @@ PODS:
     - nanopb (< 2.30910.0, >= 2.30908.0)
   - FSCalendar (2.8.4)
   - Gifu (3.3.1)
+  - Google-Mobile-Ads-SDK (9.14.0):
+    - GoogleAppMeasurement (< 11.0, >= 7.0)
+    - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleAppMeasurement (10.0.0):
     - GoogleAppMeasurement/AdIdSupport (= 10.0.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
@@ -81,6 +84,7 @@ PODS:
     - AppAuth (~> 1.5)
     - GTMAppAuth (~> 1.3)
     - GTMSessionFetcher/Core (< 3.0, >= 1.1)
+  - GoogleUserMessagingPlatform (2.0.1)
   - GoogleUtilities (7.8.0):
     - GoogleUtilities/AppDelegateSwizzler (= 7.8.0)
     - GoogleUtilities/Environment (= 7.8.0)
@@ -138,6 +142,7 @@ DEPENDENCIES:
   - FirebaseMessaging (> 9.0.0)
   - FSCalendar (> 2.0.0)
   - Gifu
+  - Google-Mobile-Ads-SDK
   - GoogleSignIn (> 6.0.0)
   - GoogleUtilities
   - RealmSwift (> 10.0.0)
@@ -154,9 +159,11 @@ SPEC REPOS:
     - FirebaseMessaging
     - FSCalendar
     - Gifu
+    - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleSignIn
+    - GoogleUserMessagingPlatform
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
@@ -177,9 +184,11 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 8916bf5edb1dbfac74665a181e4d1ab3a78a08a2
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   Gifu: 416d4e38c4c2fed012f019e0a1d3ffcb58e5b842
+  Google-Mobile-Ads-SDK: 4fe6304b771f8467d29978cb790ec1e56e646946
   GoogleAppMeasurement: 7e48a3249792ac35d6f18f107f63f199a7e9d0ce
   GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
   GoogleSignIn: 5651ce3a61e56ca864160e79b484cd9ed3f49b7a
+  GoogleUserMessagingPlatform: 5f8b30daf181805317b6b985bb51c1ff3beca054
   GoogleUtilities: 1d20a6ad97ef46f67bbdec158ce00563a671ebb7
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: ffbb25ec00ebcb5201adab0a56d808f6f1902d9f
@@ -189,6 +198,6 @@ SPEC CHECKSUMS:
   Realm: a00e93347b8d26d372c7a82f6c0b08d6536a21c8
   RealmSwift: fe09c29ca409f8f905fe4086f2a52936193f2e3d
 
-PODFILE CHECKSUM: 541617ac63cc32c6cd33b17928c8793619e5602a
+PODFILE CHECKSUM: 74b9b744584429505dcf488123f88f6f38313c23
 
 COCOAPODS: 1.11.3

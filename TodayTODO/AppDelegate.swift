@@ -10,7 +10,7 @@ import GoogleSignIn
 import RealmSwift
 import FirebaseCore
 import FirebaseMessaging
-
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -44,6 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         //워치 커넥팅을 위한 세선 열기
         WatchConnectManager.shared.initSession()
+        //애드몹 초기화
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         return true
     }
