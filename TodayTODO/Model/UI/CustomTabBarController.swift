@@ -21,7 +21,10 @@ class CustomTabBarController : UITabBarController {
         //
         initTabBar()
         bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        bannerView.alpha = 0
         bannerView?.delegate = self
+        // 광고 세팅
+        initAdMob()
     }
 }
 
@@ -65,28 +68,23 @@ extension CustomTabBarController {
     //애드몹 초기화
     func initAdMob() {
         guard let bannerView = bannerView else { return }
-        //
         bannerView.adUnitID = "ca-app-pub-6152243173470406/9345345318"
         bannerView.rootViewController = self
         //
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bannerView)
-        view.addConstraints(
-            [NSLayoutConstraint(item: bannerView,
-                                attribute: .bottom,
-                                relatedBy: .equal,
-                                toItem: view.safeAreaLayoutGuide.bottomAnchor,
-                                attribute: .top,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .centerX,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .centerX,
-                                multiplier: 1,
-                                constant: 0)
-            ])
+        // 배너 사이즈 조정
+        bannerView.topAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        bannerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        bannerView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        bannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        bannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        // 전체 뷰 사이즈 조정
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        view.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height - 60).isActive = true
+        // 로드
+        loadAd()
     }
     //광고 로드
     func loadAd() {
@@ -96,34 +94,27 @@ extension CustomTabBarController {
 }
 
 extension CustomTabBarController : GADBannerViewDelegate {
+    //로드 완료
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-        // 배너뷰 안보이게
-        bannerView.alpha = 0
-        // 광고 세팅
-        initAdMob()
-        UIView.animate(withDuration: 1, animations: {
-            // 로드 완료 시 보이도록
-            bannerView.alpha = 1
-        })
+        bannerView.alpha = 1
     }
-    
+    // 로드 실패
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
         print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
     }
-    
+    // 노출 직전
     func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
         
     }
-    
+    // 닫히기 직전
     func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
-        // 광고 로드
-        loadAd()
+        
     }
-    
+    // 닫힌 순간
     func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
         
     }
-    
+    //앱 백그라운드
     func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
         
     }
