@@ -73,8 +73,8 @@ extension CategoryViewController {
         tableView.separatorColor = .clear
         tableView.showsVerticalScrollIndicator = false
         //
-        btnEdit.tintColor = .label
-        btnEdit.contentMode = .center
+        btnEdit.setTitleColor(.label, for: .normal)
+        btnEdit.titleLabel?.font = UIFont(name: E_Font_B, size: E_FontSize - 3.0)
     }
     //
     private func addSegmentcontrol() {
@@ -125,7 +125,8 @@ extension CategoryViewController {
             tableView.reloadData()
         }
         tableView.setEditing(isEdit, animated: true)
-        btnEdit.setImage(UIImage(systemName: isEdit ? "rectangle.portrait.and.arrow.right" : "scissors")?.withConfiguration(mediumConfig), for: .normal)
+        btnEdit.setTitle(isEdit ? "Done" : "Edit", for: .normal)
+//        btnEdit.setImage(UIImage(systemName: isEdit ? "rectangle.portrait.and.arrow.right" : "scissors")?.withConfiguration(mediumConfig), for: .normal)
     }
     //
     func deleteCategory(_ indexPath:IndexPath) {

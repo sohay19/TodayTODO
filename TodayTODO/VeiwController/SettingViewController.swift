@@ -11,49 +11,24 @@ import MessageUI
 class SettingViewController : UIViewController {
     @IBOutlet weak var labelInfo: UILabel!
     @IBOutlet weak var versionView: UIView!
-    @IBOutlet weak var btnView: UIView!
-    @IBOutlet weak var backView1: UIView!
-    @IBOutlet weak var backView2: UIView!
-    @IBOutlet weak var backView3: UIView!
-    @IBOutlet weak var backView4: UIView!
-    @IBOutlet weak var backView5: UIView!
-    @IBOutlet weak var backView6: UIView!
-    @IBOutlet weak var label1: UILabel!
-    @IBOutlet weak var label2: UILabel!
-    @IBOutlet weak var label3: UILabel!
-    @IBOutlet weak var label4: UILabel!
-    @IBOutlet weak var label5: UILabel!
-    @IBOutlet weak var label6: UILabel!
-    @IBOutlet weak var imgView1: UIImageView!
-    @IBOutlet weak var imgView2: UIImageView!
-    @IBOutlet weak var imgView3: UIImageView!
-    @IBOutlet weak var imgView4: UIImageView!
-    @IBOutlet weak var imgView5: UIImageView!
-    @IBOutlet weak var imgView6: UIImageView!
-    @IBOutlet weak var btn1: UIButton!
-    @IBOutlet weak var btn2: UIButton!
-    @IBOutlet weak var btn3: UIButton!
-    @IBOutlet weak var btn4: UIButton!
-    @IBOutlet weak var btn5: UIButton!
-    @IBOutlet weak var btn6: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
-    var btnList:[UIButton] = []
-    var labelList:[UILabel] = []
-    var imgList:[UIImageView] = []
-    var viewList:[UIView] = []
-    let menuList:[SettingType] = [.Notice, .Backup, .Reset, .Help, .FAQ, .Question]
+    
+    let menuList:[SettingType] = [.Notice, .Custom, .Backup, .Reset, .Help, .FAQ, .Question]
     var isRefresh = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //
+        tableView.delegate = self
+        tableView.dataSource = self
+        //
         initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //
         //
         SystemManager.shared.openLoading()
         loadVersion()
@@ -68,81 +43,13 @@ extension SettingViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         view.insertSubview(backgroundView, at: 0)
         //
+        tableView.separatorInsetReference = .fromCellEdges
+        tableView.backgroundColor = .clear
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
         versionView.backgroundColor = .clear
-        btnView.backgroundColor = .systemBackground.withAlphaComponent(0.3)
         //
         labelInfo.textColor = .label
         labelInfo.font = UIFont(name: N_Font, size: N_FontSize)
-        //
-        //
-        viewList.append(backView1)
-        viewList.append(backView2)
-        viewList.append(backView3)
-        viewList.append(backView4)
-        viewList.append(backView5)
-        viewList.append(backView6)
-        //
-        btnList.append(btn1)
-        btnList.append(btn2)
-        btnList.append(btn3)
-        btnList.append(btn4)
-        btnList.append(btn5)
-        btnList.append(btn6)
-        //
-        labelList.append(label1)
-        labelList.append(label2)
-        labelList.append(label3)
-        labelList.append(label4)
-        labelList.append(label5)
-        labelList.append(label6)
-        //
-        imgList.append(imgView1)
-        imgList.append(imgView2)
-        imgList.append(imgView3)
-        imgList.append(imgView4)
-        imgList.append(imgView5)
-        imgList.append(imgView6)
-        //
-        for i in 0..<menuList.count {
-            var title = ""
-            var imageName = ""
-            if i < menuList.count {
-                switch menuList[i] {
-                case .Notice:
-                    imageName = "list.clipboard"
-                case .Backup:
-                    imageName = "icloud"
-                case .Help:
-                    imageName = "questionmark"
-                case .Reset:
-                    imageName = "trash"
-                case .FAQ:
-                    imageName = "bubble.left.and.bubble.right"
-                case .Question:
-                    imageName = "envelope"
-                }
-                title = menuList[i].rawValue
-            }
-            //
-            labelList[i].text = title
-            labelList[i].font = UIFont(name: K_Font_R, size: K_FontSize - 2.0)
-            labelList[i].textAlignment = .center
-            labelList[i].highlightedTextColor = .systemIndigo
-            btnList[i].setTitle(title, for: .normal)
-            btnList[i].setTitleColor(.clear, for: .normal)
-            //
-            let image = UIImage(systemName: imageName, withConfiguration: mediumConfig)
-            imgList[i].image = image
-            imgList[i].tintColor = .label
-            imgList[i].contentMode = .center
-            //
-            let btnBack = UIImageView(frame: viewList[i].bounds)
-            btnBack.image = UIImage(named: BackgroundImage)
-            viewList[i].insertSubview(btnBack, at: 0)
-            viewList[i].layer.shadowColor = UIColor.gray.cgColor
-            viewList[i].layer.shadowOpacity = 0.5
-            viewList[i].layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-        }
     }
     
     private func loadVersion() {
@@ -161,25 +68,38 @@ extension SettingViewController {
     }
 }
 
-//MARK: - Button Event
-extension SettingViewController {
-    @IBAction func clickNone(_ sender:UIButton) {
-        let type = SettingType(rawValue: sender.title(for: .normal) ?? "")
-        // 클릭 효과
-        guard let index = menuList.firstIndex(where: {$0 == type}) else {
-            return
+//MARK: - TableView
+extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuList.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath) as? SettingCell else {
+            return UITableViewCell()
         }
-        imgList[index].tintColor = .systemIndigo
-        labelList[index].isHighlighted = true
-        UIView.animate(withDuration: 1, delay: 1) { [self] in
-            imgList[index].tintColor = .label
-            labelList[index].isHighlighted = false
-        }
+        cell.inputCell(menuList[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let type = menuList[indexPath.row]
         // 버튼 실행
         switch type {
         case .Notice:
             let board = UIStoryboard(name: noticeBoard, bundle: nil)
             guard let noticeVC = board.instantiateViewController(withIdentifier: noticeBoard) as? NoticeViewController else { return }
+            noticeVC.modalTransitionStyle = .crossDissolve
+            noticeVC.modalPresentationStyle = .fullScreen
+            guard let navigationController = self.navigationController as? CustomNavigationController else { return }
+            navigationController.pushViewController(noticeVC)
+        case .Custom:
+            let board = UIStoryboard(name: CustomUIBoard, bundle: nil)
+            guard let noticeVC = board.instantiateViewController(withIdentifier: CustomUIBoard) as? CustomUIViewController else { return }
             noticeVC.modalTransitionStyle = .crossDissolve
             noticeVC.modalPresentationStyle = .fullScreen
             guard let navigationController = self.navigationController as? CustomNavigationController else { return }
@@ -228,8 +148,6 @@ extension SettingViewController {
         case .Question:
             SystemManager.shared.openLoading()
             sendEmail()
-        default:
-            break
         }
     }
 }

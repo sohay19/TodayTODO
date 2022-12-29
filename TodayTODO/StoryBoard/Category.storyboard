@@ -12,7 +12,7 @@
         <!--Category View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="Category" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="CategoryViewController" customModule="DailyToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Category" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="CategoryViewController" customModule="TodayTODO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="81X-LZ-wVG">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,22 +26,19 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="W0e-Eg-rfi">
-                                <rect key="frame" x="339" y="128" width="45" height="45"/>
+                                <rect key="frame" x="324" y="128" width="60" height="45"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaP-fH-oDY" userLabel="BtnSave">
-                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaP-fH-oDY" userLabel="BtnEdit">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="4e3-PH-Ct7"/>
-                                            <constraint firstAttribute="width" secondItem="yaP-fH-oDY" secondAttribute="height" multiplier="1:1" id="oLA-I6-LVz"/>
+                                            <constraint firstAttribute="width" constant="60" id="RJx-qT-8aT"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="scissors" catalog="system">
-                                            <color key="titleColor" systemColor="labelColor"/>
+                                        <state key="normal" title="Edit">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <buttonConfiguration key="configuration" style="plain" image="scissors" catalog="system">
-                                            <color key="baseForegroundColor" systemColor="labelColor"/>
-                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="clickEdit:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tan-gU-KyI"/>
                                         </connections>
@@ -93,7 +90,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="scissors" catalog="system" width="128" height="92"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -54,6 +54,24 @@ extension DataManager {
     }
 }
 
+//MARK: - UserDefault
+extension DataManager {
+    func setFont(_ type:FontType) {
+        UserDefaults.shared.set(type.rawValue, forKey: FontKey)
+    }
+    
+    func getFont() -> FontType {
+        guard let type = UserDefaults.shared.string(forKey: FontKey) else {
+            setFont(.Barunpen)
+            return .Barunpen
+        }
+        guard let fontType = FontType(rawValue: type) else {
+            return .Barunpen
+        }
+        return fontType
+    }
+}
+
 
 //MARK: - Task
 extension DataManager {

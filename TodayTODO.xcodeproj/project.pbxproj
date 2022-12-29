@@ -43,6 +43,22 @@
 		CF5350D3291E9CE200AFDC14 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D2291E9CE200AFDC14 /* Loading.xib */; };
 		CF5350D52921E92F00AFDC14 /* underline_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D42921E92E00AFDC14 /* underline_Black.png */; };
 		CF5350D72921F3F300AFDC14 /* underline_Pink.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5350D62921F3F300AFDC14 /* underline_Pink.png */; };
+		CF579550295D5A8D00687863 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF57954F295D5A8D00687863 /* SettingCell.swift */; };
+		CF579552295D6BBB00687863 /* CustomUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF579551295D6BBB00687863 /* CustomUI.storyboard */; };
+		CF579554295D6BD700687863 /* CustomUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF579553295D6BD700687863 /* CustomUIViewController.swift */; };
+		CF579571295D72A100687863 /* NanumSquareNeo-bRg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF57956D295D72A100687863 /* NanumSquareNeo-bRg.ttf */; };
+		CF579572295D72A100687863 /* NanumSquareNeo-bRg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF57956D295D72A100687863 /* NanumSquareNeo-bRg.ttf */; };
+		CF579573295D72A100687863 /* NanumSquareNeo-bRg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF57956D295D72A100687863 /* NanumSquareNeo-bRg.ttf */; };
+		CF579574295D72A100687863 /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF57956E295D72A100687863 /* NanumSquareRoundR.ttf */; };
+		CF579575295D72A100687863 /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF57956E295D72A100687863 /* NanumSquareRoundR.ttf */; };
+		CF579576295D72A100687863 /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF57956E295D72A100687863 /* NanumSquareRoundR.ttf */; };
+		CF579577295D72A100687863 /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF57956F295D72A100687863 /* NanumSquareRoundB.ttf */; };
+		CF579578295D72A100687863 /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF57956F295D72A100687863 /* NanumSquareRoundB.ttf */; };
+		CF579579295D72A100687863 /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF57956F295D72A100687863 /* NanumSquareRoundB.ttf */; };
+		CF57957A295D72A100687863 /* NanumSquareNeo-cBd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF579570295D72A100687863 /* NanumSquareNeo-cBd.ttf */; };
+		CF57957B295D72A100687863 /* NanumSquareNeo-cBd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF579570295D72A100687863 /* NanumSquareNeo-cBd.ttf */; };
+		CF57957C295D72A100687863 /* NanumSquareNeo-cBd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF579570295D72A100687863 /* NanumSquareNeo-cBd.ttf */; };
+		CF57957E295D82AE00687863 /* FontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF57957D295D82AE00687863 /* FontCell.swift */; };
 		CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */; };
 		CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */; };
 		CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
@@ -313,6 +329,14 @@
 		CF5350D2291E9CE200AFDC14 /* Loading.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Loading.xib; sourceTree = "<group>"; };
 		CF5350D42921E92E00AFDC14 /* underline_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Black.png; sourceTree = "<group>"; };
 		CF5350D62921F3F300AFDC14 /* underline_Pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = underline_Pink.png; sourceTree = "<group>"; };
+		CF57954F295D5A8D00687863 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		CF579551295D6BBB00687863 /* CustomUI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomUI.storyboard; sourceTree = "<group>"; };
+		CF579553295D6BD700687863 /* CustomUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIViewController.swift; sourceTree = "<group>"; };
+		CF57956D295D72A100687863 /* NanumSquareNeo-bRg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NanumSquareNeo-bRg.ttf"; path = "../../../../TodayTODO/Font/NanumSquareNeo-bRg.ttf"; sourceTree = "<group>"; };
+		CF57956E295D72A100687863 /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundR.ttf; path = ../../../../TodayTODO/Font/NanumSquareRoundR.ttf; sourceTree = "<group>"; };
+		CF57956F295D72A100687863 /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundB.ttf; path = ../../../../TodayTODO/Font/NanumSquareRoundB.ttf; sourceTree = "<group>"; };
+		CF579570295D72A100687863 /* NanumSquareNeo-cBd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NanumSquareNeo-cBd.ttf"; path = "../../../../TodayTODO/Font/NanumSquareNeo-cBd.ttf"; sourceTree = "<group>"; };
+		CF57957D295D82AE00687863 /* FontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCell.swift; sourceTree = "<group>"; };
 		CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCExtension.swift; sourceTree = "<group>"; };
 		CF75963229024C340046FDC1 /* PushList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PushList.storyboard; sourceTree = "<group>"; };
@@ -585,6 +609,10 @@
 				CF5350B9291E457300AFDC14 /* NanumBarunpenB.otf */,
 				CF5350BA291E457400AFDC14 /* NanumBarunpenR.otf */,
 				CF5350C2291E45F300AFDC14 /* NanumAJumMaJaYu.ttf */,
+				CF57956D295D72A100687863 /* NanumSquareNeo-bRg.ttf */,
+				CF579570295D72A100687863 /* NanumSquareNeo-cBd.ttf */,
+				CF57956F295D72A100687863 /* NanumSquareRoundB.ttf */,
+				CF57956E295D72A100687863 /* NanumSquareRoundR.ttf */,
 				CF5350BB291E457400AFDC14 /* Windsor_Great_Park-Regular.otf */,
 				CF5350B8291E457300AFDC14 /* Worcestershire_Sauce_Press-Regular.otf */,
 				CF5350BC291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf */,
@@ -695,6 +723,7 @@
 				CF79091A293234FA0027D25D /* PopListViewController.swift */,
 				CF7909242935ED5B0027D25D /* NoticeViewController.swift */,
 				CF7909262935EF7E0027D25D /* FAQViewController.swift */,
+				CF579553295D6BD700687863 /* CustomUIViewController.swift */,
 			);
 			path = VeiwController;
 			sourceTree = "<group>";
@@ -753,6 +782,8 @@
 				CF9D38F3294379C500F80EA2 /* Help.swift */,
 				CF9D39002947370300F80EA2 /* CategoryTaskCell.xib */,
 				CF9D38FF2947370300F80EA2 /* CategoryTaskCell.swift */,
+				CF57954F295D5A8D00687863 /* SettingCell.swift */,
+				CF57957D295D82AE00687863 /* FontCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -782,6 +813,7 @@
 				CF790918293234F00027D25D /* PopList.storyboard */,
 				CF7909222935ED520027D25D /* Notice.storyboard */,
 				CF7909282935EF870027D25D /* FAQ.storyboard */,
+				CF579551295D6BBB00687863 /* CustomUI.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -992,6 +1024,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF579573295D72A100687863 /* NanumSquareNeo-bRg.ttf in Resources */,
 				CF79093A2938A3570027D25D /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CFE01AE3291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CFDCD3D1293DE0F30030CB1C /* DefaultBack.jpg in Resources */,
@@ -1000,8 +1033,11 @@
 				CF79093B2938A3570027D25D /* Windsor_Great_Park-Regular.otf in Resources */,
 				CF7909392938A3570027D25D /* Worcestershire_Sauce-Regular.otf in Resources */,
 				CF79093D2938A3570027D25D /* NanumBarunpenR.otf in Resources */,
+				CF579579295D72A100687863 /* NanumSquareRoundB.ttf in Resources */,
 				CF79093C2938A3570027D25D /* NanumAJumMaJaYu.ttf in Resources */,
 				CF81493C2906B75400FD0974 /* Assets.xcassets in Resources */,
+				CF57957C295D72A100687863 /* NanumSquareNeo-cBd.ttf in Resources */,
+				CF579576295D72A100687863 /* NanumSquareRoundR.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,6 +1045,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF579572295D72A100687863 /* NanumSquareNeo-bRg.ttf in Resources */,
 				CF7909342938A3550027D25D /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CFE01AE2291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CF7909492938D6870027D25D /* WidgetBack.png in Resources */,
@@ -1017,8 +1054,11 @@
 				CF7909352938A3550027D25D /* Windsor_Great_Park-Regular.otf in Resources */,
 				CF7909332938A3550027D25D /* Worcestershire_Sauce-Regular.otf in Resources */,
 				CF7909372938A3550027D25D /* NanumBarunpenR.otf in Resources */,
+				CF579578295D72A100687863 /* NanumSquareRoundB.ttf in Resources */,
 				CF7909362938A3550027D25D /* NanumAJumMaJaYu.ttf in Resources */,
 				CFB6EE0428F1793C00E93585 /* Assets.xcassets in Resources */,
+				CF57957B295D72A100687863 /* NanumSquareNeo-cBd.ttf in Resources */,
+				CF579575295D72A100687863 /* NanumSquareRoundR.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1032,10 +1072,12 @@
 				CF2BAF0F2925DAFE00EB49F4 /* spring_black.png in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
 				CF5350BD291E457400AFDC14 /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
+				CF579552295D6BBB00687863 /* CustomUI.storyboard in Resources */,
 				CF7909152930A3D40027D25D /* Backup.storyboard in Resources */,
 				CF7909292935EF870027D25D /* FAQ.storyboard in Resources */,
 				CF7909412938D00D0027D25D /* Assets.xcassets in Resources */,
 				CF5350BE291E457400AFDC14 /* NanumBarunpenB.otf in Resources */,
+				CF579574295D72A100687863 /* NanumSquareRoundR.ttf in Resources */,
 				CF995F462923C54B00FAE2F1 /* title.png in Resources */,
 				CF5350BF291E457400AFDC14 /* NanumBarunpenR.otf in Resources */,
 				CFE45D37292B5A4E007024EB /* DefaultBack.jpg in Resources */,
@@ -1046,6 +1088,7 @@
 				CF9D39022947370300F80EA2 /* CategoryTaskCell.xib in Resources */,
 				CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */,
 				CFF902D52949CFCA0052A6A1 /* Main_Today_LeftSwipe.gif in Resources */,
+				CF579577295D72A100687863 /* NanumSquareRoundB.ttf in Resources */,
 				CFF9029B2949BE710052A6A1 /* clock.png in Resources */,
 				CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CFF902D12949CFCA0052A6A1 /* Main_Sort.gif in Resources */,
@@ -1057,6 +1100,8 @@
 				CF2BAF102925DAFE00EB49F4 /* spring_white.png in Resources */,
 				CF5350C3291E45F300AFDC14 /* NanumAJumMaJaYu.ttf in Resources */,
 				CFE45D3B292B6F17007024EB /* AddCategory.storyboard in Resources */,
+				CF57957A295D72A100687863 /* NanumSquareNeo-cBd.ttf in Resources */,
+				CF579571295D72A100687863 /* NanumSquareNeo-bRg.ttf in Resources */,
 				CFF902D22949CFCA0052A6A1 /* Push_Edit.gif in Resources */,
 				CF995F522924C34400FAE2F1 /* BackUpCell.xib in Resources */,
 				CFF902D92949E2290052A6A1 /* Push_Swipe.gif in Resources */,
@@ -1330,10 +1375,12 @@
 				CF790930293899D90027D25D /* FAQCell.swift in Sources */,
 				CFD0B13B28F905380029D936 /* AlarmInfo.swift in Sources */,
 				CF42F255292E398200DB0F8E /* LineView.swift in Sources */,
+				CF579550295D5A8D00687863 /* SettingCell.swift in Sources */,
 				CF8148F329068E0700FD0974 /* ClassExtension.swift in Sources */,
 				CFEC1D38290E53F7009A9588 /* NSCategoryData.swift in Sources */,
 				CF75963529024C6A0046FDC1 /* PushListViewController.swift in Sources */,
 				CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */,
+				CF57957E295D82AE00687863 /* FontCell.swift in Sources */,
 				CF79090F292F5DB00027D25D /* CategoryVCExtension.swift in Sources */,
 				CFEB4A4628F14D1C008850DC /* UserData.swift in Sources */,
 				CFE01AF82918EDE6005B3316 /* CustomSegmentControl.swift in Sources */,
@@ -1377,6 +1424,7 @@
 				CFEB4A5728F1559D008850DC /* CloudManager.swift in Sources */,
 				CFEB4A4928F14D25008850DC /* TaskCell.swift in Sources */,
 				CF79091E293236D50027D25D /* PopCell.swift in Sources */,
+				CF579554295D6BD700687863 /* CustomUIViewController.swift in Sources */,
 				CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */,
 				CFEB4A3228F14BC7008850DC /* LoginViewController.swift in Sources */,
 				CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */,

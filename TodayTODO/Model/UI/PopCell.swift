@@ -29,11 +29,11 @@ class PopCell: UITableViewCell {
         backgroundView.backgroundColor = .systemIndigo.withAlphaComponent(0.3)
         self.selectedBackgroundView = backgroundView
         //
-        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
-        labelTitle.textColor = .white
+        labelTitle.textColor = .systemBackground
     }
     
     func inputCell(_ title:String) {
+        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
         labelTitle.text = title
         categoryLine.backgroundColor = DataManager.shared.getCategoryColor(title)
     }

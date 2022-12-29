@@ -15,6 +15,7 @@ let realmPath = "Realm_TodayTODO"
 let realmFile = "TodayTODO.realm"
 
 //MARK: - UserDefaultkey
+let FontKey = "Font"
 let LoginTypeKey = "LoginType"
 let BadgeCountKey = "BadgeCount"
 let CategoryOrderKey = "CategoryList"
@@ -39,6 +40,7 @@ let helpBoard = "Help"
 let taskInfoBoard = "TaskInfo"
 let pushBoard = "PushList"
 let PopListBoard = "PopList"
+let CustomUIBoard = "CustomUI"
 
 //MARK: - Push UserInfo key
 let endDateKey = "endDate"
@@ -56,9 +58,15 @@ let LogoFont = "NanumAJumMaJaYu"
 let N_Font = "EF_Diary"
 let N_FontSize = 12.0
 //
-let K_Font_B = "NanumBarunpenOTF-Bold"
-let K_Font_R = "NanumBarunpenOTF"
+var K_Font_B = "NanumBarunpenOTF-Bold"
+var K_Font_R = "NanumBarunpenOTF"
 let K_FontSize = 15.0
+let NanumBarunpen_B = "NanumBarunpenOTF-Bold"
+let NanumBarunpen_R = "NanumBarunpenOTF"
+let NanumSquareNeo_B = "NanumSquareNeo-cBd"
+let NanumSquareNeo_R = "NanumSquareNeo-bRg"
+let NanumSquareRound_B = "NanumSquareRoundB"
+let NanumSquareRound_R = "NanumSquareRoundR"
 let E_Font_E = "Worcestershire_Sauce_Press-Regular"
 let MenuFontSize = 30.0
 let E_Font_B = "Worcestershire_Sauce-Regular"

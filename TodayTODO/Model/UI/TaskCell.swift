@@ -44,7 +44,6 @@ class TaskCell: UITableViewCell {
         //
         self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
-        labelTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelTitle.textColor = titleColor
         labelTime.font = UIFont(name: N_Font, size: N_FontSize)
         labelTime.textColor = .lightGray
@@ -57,6 +56,7 @@ class TaskCell: UITableViewCell {
     }
     
     func inputCell(title:String, time:String, color:UIColor) {
+        labelTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelTitle.text = title
         timeView.isHidden = time.isEmpty
         labelTime.text = time

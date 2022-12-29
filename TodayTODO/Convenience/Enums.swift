@@ -69,6 +69,7 @@ enum SettingType:String {
     case Question = "문의하기"
     case Reset = "데이터 초기화"
     case Help = "도움말"
+    case Custom = "테마 및 폰트"
 }
 
 enum SortType:String {
@@ -99,6 +100,12 @@ enum HelpType:String {
     case CategoryMove = "Category_Move"
     case PushSwipe = "Push_Swipe"
     case PushEdit = "Push_Edit"
+}
+
+enum FontType:String {
+    case Barunpen = "NanumBarunpen"
+    case SquareNeo = "NanumSquareNeo"
+    case SquareRound = "NanumSquareRound"
 }
 
 //MARK: - CodingKey

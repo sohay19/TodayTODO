@@ -34,13 +34,13 @@ class CategoryCell: UITableViewCell {
         listView.backgroundColor = .clear
         collectionView.backgroundColor = .clear
         //
-        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
         labelTitle.textColor = .label
-        labelCounter.font = UIFont(name: N_Font, size: N_FontSize)
         labelCounter.tintColor = .label
     }
     
     func inputCell(title:String, counter:Int) {
+        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
+        labelCounter.font = UIFont(name: N_Font, size: N_FontSize)
         labelTitle.text = title
         let color = DataManager.shared.getCategoryColor(title)
         categoryLine.backgroundColor = color

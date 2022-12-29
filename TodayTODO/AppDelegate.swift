@@ -47,6 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //애드몹 초기화
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
+        // 폰트 세팅
+        SystemManager.shared.setFont()
+        
         return true
     }
 

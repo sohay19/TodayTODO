@@ -250,6 +250,10 @@
 		<string>Worcestershire_Sauce_Press-Regular.otf</string>
 		<string>Worcestershire_Sauce-Regular.otf</string>
 		<string>Windsor_Great_Park-Regular.otf</string>
+		<string>NanumSquareNeo-bRg.ttf</string>
+		<string>NanumSquareNeo-cBd.ttf</string>
+		<string>NanumSquareRoundR.ttf</string>
+		<string>NanumSquareRoundB.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

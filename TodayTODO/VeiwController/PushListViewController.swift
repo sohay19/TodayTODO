@@ -54,6 +54,7 @@ class PushListViewController : UIViewController {
         //
         SystemManager.shared.openLoading()
         SystemManager.shared.openHelp(self, pushBoard)
+        setUI()
         loadPushData()
         changeEditMode(false)
     }
@@ -89,16 +90,18 @@ extension PushListViewController {
         pushTable.separatorColor = .lightGray.withAlphaComponent(0.3)
         pushTable.showsVerticalScrollIndicator = false
         //
-        labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
-        //
-        btnEdit.tintColor = .label
-        btnEdit.contentMode = .center
+        btnEdit.setTitleColor(.label, for: .normal)
+        btnEdit.titleLabel?.font = UIFont(name: E_Font_B, size: E_FontSize - 3.0)
         btnSelectAll.tintColor = .label
         btnSelectAll.contentMode = .center
         btnSelectAll.setImage(UIImage(systemName: "checklist.checked"), for: .normal)
         btnDelete.tintColor = .label
         btnDelete.contentMode = .center
         btnDelete.setImage(UIImage(systemName: "trash"), for: .normal)
+    }
+    private func setUI() {
+        // 폰트 설정
+        labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
     }
     //
     private func addSegmentcontrol() {
@@ -259,7 +262,8 @@ extension PushListViewController {
     }
     private func changeEditMode(_ isOn:Bool) {
         pushTable.setEditing(isOn, animated: true)
-        btnEdit.setImage(UIImage(systemName: isOn ? "rectangle.portrait.and.arrow.right" : "scissors", withConfiguration: mediumConfig), for: .normal)
+        btnEdit.setTitle(isOn ? "Done" : "Edit", for: .normal)
+//        btnEdit.setImage(UIImage(systemName: isOn ? "rectangle.portrait.and.arrow.right" : "scissors", withConfiguration: mediumConfig), for: .normal)
         for cell in pushTable.visibleCells {
             cell.selectionStyle = isOn ? .default : .none
         }

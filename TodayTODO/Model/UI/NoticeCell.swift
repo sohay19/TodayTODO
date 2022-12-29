@@ -28,7 +28,6 @@ class NoticeCell: UITableViewCell {
         inputTitle.layer.cornerRadius = 5
         inputTitle.layer.borderWidth = 0.1
         inputTitle.layer.borderColor = UIColor.gray.cgColor
-        inputTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
         inputTitle.textColor = .label
         inputTitle.isEnabled = false
         //
@@ -40,6 +39,7 @@ class NoticeCell: UITableViewCell {
     }
     
     func inputCell(_ title:String, _ body:String) {
+        inputTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
         inputTitle.text = title
         // 글자 변환
         if let font = UIFont(name: K_Font_R, size: K_FontSize) {

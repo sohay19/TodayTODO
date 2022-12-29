@@ -78,6 +78,7 @@ class MainViewController: UIViewController {
                 sortType = newType
             }
         }
+        setUI()
         loadTask()
         loadSort()
         initSegment()
@@ -126,16 +127,6 @@ extension MainViewController {
         //
         todayView.backgroundColor = .clear
         monthView.backgroundColor = .clear
-        // 폰트 설정
-        labelDate.font = UIFont(name: LogoFont, size: K_FontSize + 3.0)
-        labelDate.textColor = .label
-        labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelTodayNilMsg.textColor = .label
-        labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelMonthNilMsg.textColor = .label
-        //
-        btnSort.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize - 2.0)
-        btnSort.setTitleColor(.label, for: .normal)
         btnSort.setImage(UIImage(systemName: "chevron.down", withConfiguration: thinConfig), for: .normal)
         btnSort.contentMode = .center
         btnSort.tintColor = .label
@@ -157,6 +148,18 @@ extension MainViewController {
         monthlyTaskTable.separatorInsetReference = .fromCellEdges
         monthlyTaskTable.separatorColor = .lightGray.withAlphaComponent(0.5)
         monthlyTaskTable.showsVerticalScrollIndicator = false
+    }
+    private func setUI() {
+        // 폰트 설정
+        labelDate.font = UIFont(name: LogoFont, size: K_FontSize + 3.0)
+        labelDate.textColor = .label
+        labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelTodayNilMsg.textColor = .label
+        labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelMonthNilMsg.textColor = .label
+        //
+        btnSort.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize - 2.0)
+        btnSort.setTitleColor(.label, for: .normal)
     }
     //
     private func addSegmentcontrol() {

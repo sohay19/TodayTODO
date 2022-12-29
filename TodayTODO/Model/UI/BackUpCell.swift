@@ -29,7 +29,11 @@ class BackUpCell : UITableViewCell {
         //
         separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //
-        labelDate.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelDate.tintColor = .label
+    }
+    
+    func inputCell(_ title:String) {
+        labelDate.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelDate.text = title
     }
 }

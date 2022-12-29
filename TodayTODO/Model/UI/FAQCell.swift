@@ -45,7 +45,6 @@ class FAQCell: UITableViewCell {
         expandableView.backgroundColor = .clear
         bodyView.backgroundColor = .clear
         //
-        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
         labelTitle.textColor = .label
         bodyView.layer.cornerRadius = 5
         bodyView.layer.borderColor = UIColor.gray.cgColor
@@ -76,6 +75,7 @@ class FAQCell: UITableViewCell {
     
     func inputCell(_ title:String, _ body:String) {
         labelTitle.text = title
+        labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize)
         // 글자 변환
         if let font = UIFont(name: K_Font_R, size: K_FontSize) {
             bodyView.setLineSpacing(body, font: font, color: .label, align: .left)

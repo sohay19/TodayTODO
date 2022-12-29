@@ -26,22 +26,19 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="FMv-ly-M4O">
-                                <rect key="frame" x="339" y="128" width="45" height="45"/>
+                                <rect key="frame" x="324" y="128" width="60" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyo-yY-97R" userLabel="BtnEdit">
-                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="CN5-QI-uoC"/>
-                                            <constraint firstAttribute="width" secondItem="Iyo-yY-97R" secondAttribute="height" multiplier="1:1" id="pFI-sM-VFF"/>
+                                            <constraint firstAttribute="width" constant="60" id="X4m-ER-Mmo"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="scissors" catalog="system">
+                                        <state key="normal" title="Edit">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <buttonConfiguration key="configuration" style="plain" image="scissors" catalog="system">
-                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="clickEditMode:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PC5-1o-1LI"/>
                                         </connections>
@@ -144,10 +141,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checklist.checked" catalog="system" width="32" height="32"/>
+        <image name="checklist.checked" catalog="system" width="128" height="107"/>
         <image name="clock.png" width="470" height="470"/>
-        <image name="scissors" catalog="system" width="32" height="32"/>
-        <image name="trash" catalog="system" width="32" height="32"/>
+        <image name="trash" catalog="system" width="117" height="128"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

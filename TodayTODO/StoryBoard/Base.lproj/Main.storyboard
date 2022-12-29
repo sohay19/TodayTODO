@@ -39,13 +39,21 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHa-0P-RVd">
-                                <rect key="frame" x="18.000000000000004" y="137.33333333333334" width="41.333333333333343" height="20.333333333333343"/>
+                                <rect key="frame" x="176" y="137.33333333333334" width="41.333333333333343" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmM-rA-zRO">
+                                <rect key="frame" x="17.999999999999996" y="136.66666666666666" width="54.666666666666657" height="22"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="정렬 " image="chevron.down" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGn-43-cga">
-                                <rect key="frame" x="213" y="125" width="162" height="45"/>
+                                <rect key="frame" x="285" y="125" width="90" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxX-PF-hmk" userLabel="BtnToday">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
@@ -73,18 +81,9 @@
                                             <action selector="clickTaskAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ZH-tc-Gj3"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmM-rA-zRO">
-                                        <rect key="frame" x="90" y="0.0" width="72" height="45"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="정렬 " image="chevron.down" catalog="system">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="5Zg-Sk-ndt"/>
-                                    <constraint firstItem="hmM-rA-zRO" firstAttribute="width" secondItem="hxX-PF-hmk" secondAttribute="width" multiplier="1.6" id="oxc-iB-Ka7"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-ST-NiN" userLabel="TodayView">
@@ -161,18 +160,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fcp-ST-NiN" firstAttribute="top" secondItem="DGn-43-cga" secondAttribute="bottom" constant="18" id="27r-uD-l6g"/>
-                            <constraint firstItem="DHa-0P-RVd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="4YW-Lk-fI8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KER-2I-O4L" secondAttribute="trailing" id="784-KU-DMM"/>
                             <constraint firstItem="36g-yj-Noj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7w1-by-MPc"/>
+                            <constraint firstItem="DHa-0P-RVd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="AFf-3b-6MR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fcp-ST-NiN" secondAttribute="bottom" id="Dce-LH-ai6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DGn-43-cga" secondAttribute="trailing" constant="18" id="FfS-JD-7BZ"/>
                             <constraint firstItem="fcp-ST-NiN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V75-55-LqF"/>
                             <constraint firstItem="DHa-0P-RVd" firstAttribute="centerY" secondItem="DGn-43-cga" secondAttribute="centerY" id="WWE-wD-6uW"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DHa-0P-RVd" secondAttribute="trailing" symbolic="YES" id="XYd-gE-y8Q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="36g-yj-Noj" secondAttribute="trailing" id="Zba-aO-KiD"/>
                             <constraint firstItem="DGn-43-cga" firstAttribute="top" secondItem="36g-yj-Noj" secondAttribute="bottom" constant="6" id="cDg-5v-mtQ"/>
+                            <constraint firstItem="hmM-rA-zRO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="dxd-Hp-lId"/>
+                            <constraint firstItem="hmM-rA-zRO" firstAttribute="centerY" secondItem="DHa-0P-RVd" secondAttribute="centerY" id="gEu-Um-sE8"/>
                             <constraint firstItem="KER-2I-O4L" firstAttribute="top" secondItem="DGn-43-cga" secondAttribute="bottom" constant="18" id="j3T-DP-swB"/>
                             <constraint firstItem="KER-2I-O4L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rqd-yK-18o"/>
+                            <constraint firstItem="DGn-43-cga" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hmM-rA-zRO" secondAttribute="trailing" constant="18" id="tve-CD-hXf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fcp-ST-NiN" secondAttribute="trailing" id="xJ3-h2-HD0"/>
                             <constraint firstItem="36g-yj-Noj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zWj-su-jpo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KER-2I-O4L" secondAttribute="bottom" id="zyQ-Kh-eQW"/>

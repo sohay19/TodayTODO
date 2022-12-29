@@ -228,7 +228,7 @@ extension BackupViewController : UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let backUpData = dataList[indexPath.section]
-        backUpCell.labelDate.text = backUpData.name
+        backUpCell.inputCell(backUpData.name)
         
         return backUpCell
     }
