@@ -16,6 +16,7 @@ let realmFile = "TodayTODO.realm"
 
 //MARK: - UserDefaultkey
 let FontKey = "Font"
+let ThemeKey = "Theme"
 let LoginTypeKey = "LoginType"
 let BadgeCountKey = "BadgeCount"
 let CategoryOrderKey = "CategoryList"

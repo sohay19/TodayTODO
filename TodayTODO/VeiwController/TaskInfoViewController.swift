@@ -75,8 +75,6 @@ class TaskInfoViewController : UIViewController {
         //
         inputTitle.delegate = self
         memoView.delegate = self
-        //
-        initUI()
 //        initInput()
         initGesture()
         //
@@ -88,7 +86,8 @@ class TaskInfoViewController : UIViewController {
         //
         SystemManager.shared.openLoading()
         scrollView.isScrollEnabled = false
-        //기본세팅
+        //
+        initUI()
         pickTaskDate.setDate(currntDate, animated: false)
         loadCategory()
         observeKeyboard()

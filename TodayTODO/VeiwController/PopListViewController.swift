@@ -29,13 +29,13 @@ class PopListViewController : UIViewController {
         //
         popView.dataSource = self
         popView.delegate = self
-        //
-        initUI()
         initCell()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //
+        initUI()
     }
 }
 

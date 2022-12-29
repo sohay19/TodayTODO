@@ -31,12 +31,12 @@ class AddCategoryViewController: UIViewController {
         super.viewDidLoad()
         //
         inputTitle.delegate = self
-        initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //
+        initUI()
         loadData()
     }
 }

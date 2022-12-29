@@ -70,6 +70,18 @@ extension DataManager {
         }
         return fontType
     }
+    
+    func setTheme(_ img:String) {
+        UserDefaults.shared.set(img, forKey: ThemeKey)
+    }
+    
+    func getTheme() -> String {
+        guard let imgType = UserDefaults.shared.string(forKey: ThemeKey) else {
+            setTheme(BackgroundImage)
+            return BackgroundImage
+        }
+        return imgType
+    }
 }
 
 

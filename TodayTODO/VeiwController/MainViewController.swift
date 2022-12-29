@@ -50,7 +50,6 @@ class MainViewController: UIViewController {
         calendarView.dataSource = self
         calendarView.delegate = self
         //
-        initUI()
         initCell()
         initRefreshController()
         // 메인 리로드 함수
@@ -78,7 +77,8 @@ class MainViewController: UIViewController {
                 sortType = newType
             }
         }
-        setUI()
+        //
+        initUI()
         loadTask()
         loadSort()
         initSegment()
@@ -124,6 +124,16 @@ extension MainViewController {
         //
         segmentView.backgroundColor = .clear
         addSegmentcontrol()
+        // 폰트 설정
+        labelDate.font = UIFont(name: LogoFont, size: K_FontSize + 3.0)
+        labelDate.textColor = .label
+        labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelTodayNilMsg.textColor = .label
+        labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
+        labelMonthNilMsg.textColor = .label
+        //
+        btnSort.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize - 2.0)
+        btnSort.setTitleColor(.label, for: .normal)
         //
         todayView.backgroundColor = .clear
         monthView.backgroundColor = .clear
@@ -148,18 +158,6 @@ extension MainViewController {
         monthlyTaskTable.separatorInsetReference = .fromCellEdges
         monthlyTaskTable.separatorColor = .lightGray.withAlphaComponent(0.5)
         monthlyTaskTable.showsVerticalScrollIndicator = false
-    }
-    private func setUI() {
-        // 폰트 설정
-        labelDate.font = UIFont(name: LogoFont, size: K_FontSize + 3.0)
-        labelDate.textColor = .label
-        labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelTodayNilMsg.textColor = .label
-        labelMonthNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
-        labelMonthNilMsg.textColor = .label
-        //
-        btnSort.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize - 2.0)
-        btnSort.setTitleColor(.label, for: .normal)
     }
     //
     private func addSegmentcontrol() {

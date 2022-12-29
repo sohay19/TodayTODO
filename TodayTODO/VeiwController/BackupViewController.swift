@@ -37,7 +37,6 @@ class BackupViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         //
-        initUI()
         initCell()
     }
     
@@ -45,6 +44,8 @@ class BackupViewController: UIViewController {
         super.viewWillAppear(animated)
         //
         SystemManager.shared.openLoading()
+        //
+        initUI()
         //백업파일 날짜로드
         updateCloud(label: labelBackupDate)
         loadData()

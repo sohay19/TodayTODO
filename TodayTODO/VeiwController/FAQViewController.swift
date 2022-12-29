@@ -27,7 +27,6 @@ class FAQViewController : UIViewController {
         faqTable.delegate = self
         faqTable.dataSource = self
         //
-        initUI()
         initCell()
         initRefreshController()
     }
@@ -37,9 +36,8 @@ class FAQViewController : UIViewController {
         //
         SystemManager.shared.openLoading()
         //
-        DispatchQueue.main.async { [self] in
-            loadData()
-        }
+        initUI()
+        loadData()
     }
 }
 

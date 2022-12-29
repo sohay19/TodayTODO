@@ -28,8 +28,6 @@ class CategoryViewController: UIViewController {
         //
         tableView.dataSource = self
         tableView.delegate = self
-        //
-        initUI()
         initCell()
     }
     
@@ -38,6 +36,8 @@ class CategoryViewController: UIViewController {
         //
         SystemManager.shared.openLoading()
         SystemManager.shared.openHelp(self, categoryBoard)
+        //
+        initUI()
         loadData()
         changeEditMode(false)
     }

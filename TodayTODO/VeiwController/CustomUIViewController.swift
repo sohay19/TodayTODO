@@ -18,9 +18,25 @@ class CustomUIViewController : UIViewController {
     @IBOutlet weak var btnBackFont:UIButton!
     @IBOutlet weak var imgArrow:UIImageView!
     @IBOutlet weak var tableView:UITableView!
+    @IBOutlet weak var itemView1:UIView!
+    @IBOutlet weak var itemView2:UIView!
+    @IBOutlet weak var itemView3:UIView!
+    @IBOutlet weak var stackView:UIStackView!
+    @IBOutlet weak var imgTheme1:UIImageView!
+    @IBOutlet weak var imgTheme2:UIImageView!
+    @IBOutlet weak var imgTheme3:UIImageView!
+    @IBOutlet weak var labelTheme1:UILabel!
+    @IBOutlet weak var labelTheme2:UILabel!
+    @IBOutlet weak var labelTheme3:UILabel!
+    
     
     var isRefresh = false
     let fontList:[FontType] = [ .Barunpen, .SquareNeo, .SquareRound]
+    var imgList:[UIImageView] = []
+    var labelList:[UILabel] = []
+    var viewList:[UIView] = []
+    var backImgList:[String] = [BackgroundImage, BlackBackImage, ""]
+    let backgroundView = UIImageView(frame: UIScreen.main.bounds)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,45 +44,82 @@ class CustomUIViewController : UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         //
-        initUI()
+        viewList.append(itemView1)
+        viewList.append(itemView2)
+        viewList.append(itemView3)
+        imgList.append(imgTheme1)
+        imgList.append(imgTheme2)
+        imgList.append(imgTheme3)
+        labelList.append(labelTheme1)
+        labelList.append(labelTheme2)
+        labelList.append(labelTheme3)
+        //
+        view.insertSubview(backgroundView, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        SystemManager.shared.openLoading()
         //
-        setUI()
-        if isRefresh {
-            endAppearanceTransition()
-            isRefresh = false
-        }
+        initUI()
     }
 }
 
 extension CustomUIViewController {
     private func initUI() {
         // 배경 설정
-        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
-        backgroundView.image = UIImage(named: BackgroundImage)
-        view.insertSubview(backgroundView, at: 0)
+        backgroundView.image = UIImage(named: DataManager.shared.getTheme())
         line.backgroundColor = .label
         //
         labelTitle.font = UIFont(name: E_Font_B, size: E_FontSize)
         imgArrow.tintColor = .label
         btnFont.backgroundColor = .lightGray.withAlphaComponent(0.1)
         btnFont.layer.cornerRadius = 10
+        btnFont.layer.borderWidth = 0.5
+        btnFont.layer.borderColor = UIColor.lightGray.cgColor
         tableView.layer.borderWidth = 0.5
         tableView.layer.borderColor = UIColor.lightGray.cgColor
         tableView.separatorColor = .gray
         tableView.separatorInsetReference = .fromCellEdges
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
         tableView.backgroundColor = .clear
-    }
-    
-    private func setUI() {
+        //
+        for item in viewList {
+            item.backgroundColor = .clear
+        }
         controllTableView(false)
+        //
+        for (i, img) in imgList.enumerated() {
+            img.layer.borderWidth = 0.5
+            img.layer.borderColor = UIColor.lightGray.cgColor
+            img.contentMode = .scaleToFill
+            let backImg = backImgList[i]
+            img.image = UIImage(named: backImg)
+            //
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickTheme))
+            tapGesture.name = backImg
+            img.addGestureRecognizer(tapGesture)
+            img.isUserInteractionEnabled = true
+        }
+        for (i, label) in labelList.enumerated() {
+            label.text = ""
+            let theme = DataManager.shared.getTheme()
+            if backImgList[i] == theme {
+                let image = UIImage(systemName: "checkmark")?.withTintColor(.label, renderingMode: .alwaysTemplate)
+                let imageAttachment = NSTextAttachment()
+                imageAttachment.image = image
+                let imageString = NSAttributedString(attachment: imageAttachment)
+                let attributedString = NSMutableAttributedString(attributedString: imageString)
+                label.attributedText = attributedString
+            } else {
+                label.attributedText = nil
+            }
+        }
         //
         labelFont.font = UIFont(name: K_Font_B, size: K_FontSize + 2.0)
         labelFont.textColor = .label
+        labelTheme.font = UIFont(name: K_Font_B, size: K_FontSize + 2.0)
+        labelTheme.textColor = .label
         var title = ""
         switch DataManager.shared.getFont() {
         case .Barunpen:
@@ -79,6 +132,26 @@ extension CustomUIViewController {
         btnFont.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnFont.setTitle(title, for: .normal)
         btnFont.setTitleColor(.label, for: .normal)
+        //
+        if isRefresh {
+            endAppearanceTransition()
+            isRefresh = false
+        }
+        SystemManager.shared.closeLoading()
+    }
+    
+    @objc private func clickTheme(_ gesture:UITapGestureRecognizer) {
+        guard let backImg = gesture.name else { return }
+        DataManager.shared.setTheme(backImg)
+        switch backImg {
+        case BackgroundImage:
+            overrideUserInterfaceStyle = .light
+        case BlackBackImage:
+            overrideUserInterfaceStyle = .dark
+        default:
+            break
+        }
+        refresh()
     }
     
     private func changeFont(_ type:FontType) {

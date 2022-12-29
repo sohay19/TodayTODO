@@ -23,14 +23,16 @@ class SettingViewController : UIViewController {
         //
         tableView.delegate = self
         tableView.dataSource = self
-        //
-        initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //
+        tableView.reloadData()
+        //
         SystemManager.shared.openLoading()
+        //
+        initUI()
         loadVersion()
     }
 }

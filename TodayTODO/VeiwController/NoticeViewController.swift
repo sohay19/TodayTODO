@@ -26,7 +26,6 @@ class NoticeViewController : UIViewController {
         noticeTable.delegate = self
         noticeTable.dataSource = self
         //
-        initUI()
         initRefreshController()
     }
     
@@ -35,9 +34,8 @@ class NoticeViewController : UIViewController {
         //
         SystemManager.shared.openLoading()
         //
-        DispatchQueue.main.async { [self] in
-            loadData()
-        }
+        initUI()
+        loadData()
     }
 }
 

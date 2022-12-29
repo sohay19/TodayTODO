@@ -28,6 +28,8 @@ extension SystemManager {
         guard let topVC = findTopVC() else {
             return
         }
+        //
+        setTheme(topVC)
         // 로딩화면 추가
         loadingView = Bundle.main.loadNibNamed(LoadingBoard, owner: topVC, options: nil)?.first as? Loading
         guard let loadingView = loadingView else {
@@ -36,6 +38,15 @@ extension SystemManager {
         loadingView.frame = topVC.view.frame
         topVC.view.addSubview(loadingView)
         loadingView.initUI()
+    }
+    private func findWindow() -> UIWindow? {
+        guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return nil
+        }
+        guard let firstWindow = firstScene.windows.first else {
+            return nil
+        }
+        return firstWindow
     }
     private func findTopVC() -> UIViewController? {
         guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
@@ -149,6 +160,18 @@ extension SystemManager {
         case .SquareRound:
             K_Font_B = NanumSquareRound_B
             K_Font_R = NanumSquareRound_R
+        }
+    }
+    //
+    func setTheme(_ vc:UIViewController) {
+        let theme = DataManager.shared.getTheme()
+        switch theme {
+        case BackgroundImage:
+            vc.overrideUserInterfaceStyle = .light
+        case BlackBackImage:
+            vc.overrideUserInterfaceStyle = .dark
+        default:
+            break
         }
     }
     // UUID 조회

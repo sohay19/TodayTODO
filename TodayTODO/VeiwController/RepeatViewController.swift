@@ -44,14 +44,14 @@ class RepeatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //
-        initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //
         SystemManager.shared.openLoading()
+        //
+        initUI()
         loadRepeatType()
     }
 }
