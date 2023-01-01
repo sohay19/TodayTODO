@@ -49,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 폰트 세팅
         SystemManager.shared.setFont()
+        // 테마 세팅
+        SystemManager.shared.setTheme()
         
         return true
     }

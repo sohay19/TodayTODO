@@ -13,16 +13,19 @@ class SettingViewController : UIViewController {
     @IBOutlet weak var versionView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    
     let menuList:[SettingType] = [.Notice, .Custom, .Backup, .Reset, .Help, .FAQ, .Question]
     var isRefresh = false
-    
+    //
+    let backgroundView = UIImageView(frame: UIScreen.main.bounds)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //
         tableView.delegate = self
         tableView.dataSource = self
+        //
+        view.insertSubview(backgroundView, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,9 +44,7 @@ class SettingViewController : UIViewController {
 extension SettingViewController {
     private func initUI() {
         // 배경 설정
-        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
-        view.insertSubview(backgroundView, at: 0)
         //
         tableView.separatorInsetReference = .fromCellEdges
         tableView.backgroundColor = .clear

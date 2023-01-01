@@ -29,6 +29,8 @@ class PushListViewController : UIViewController {
     var heightOrigin:CGFloat = 60
     var isRefresh = false
     var isTaskOpen = false
+    //
+    let backgroundView = UIImageView(frame: UIScreen.main.bounds)
     
     
     override func viewDidLoad() {
@@ -41,6 +43,7 @@ class PushListViewController : UIViewController {
         pushTable.allowsMultipleSelectionDuringEditing = true
         pushTable.allowsFocusDuringEditing = true
         //
+        view.insertSubview(backgroundView, at: 0)
         initConstraints()
         initCell()
         //
@@ -72,9 +75,7 @@ extension PushListViewController {
     //
     func initUI() {
         // 배경 설정
-        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
-        view.insertSubview(backgroundView, at: 0)
         //
         segmentView.backgroundColor = .clear
         addSegmentcontrol()

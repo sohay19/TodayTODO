@@ -163,10 +163,15 @@ extension SystemManager {
         }
     }
     //
+    func setTheme() {
+        let theme = DataManager.shared.getTheme()
+        BackgroundImage = theme
+    }
+    //
     func setTheme(_ vc:UIViewController) {
         let theme = DataManager.shared.getTheme()
         switch theme {
-        case BackgroundImage:
+        case WhiteBackImage:
             vc.overrideUserInterfaceStyle = .light
         case BlackBackImage:
             vc.overrideUserInterfaceStyle = .dark

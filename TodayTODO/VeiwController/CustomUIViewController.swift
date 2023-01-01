@@ -35,7 +35,7 @@ class CustomUIViewController : UIViewController {
     var imgList:[UIImageView] = []
     var labelList:[UILabel] = []
     var viewList:[UIView] = []
-    var backImgList:[String] = [BackgroundImage, BlackBackImage, ""]
+    var backImgList:[String] = [WhiteBackImage, BlackBackImage, ""]
     let backgroundView = UIImageView(frame: UIScreen.main.bounds)
     
     override func viewDidLoad() {
@@ -68,7 +68,7 @@ class CustomUIViewController : UIViewController {
 extension CustomUIViewController {
     private func initUI() {
         // 배경 설정
-        backgroundView.image = UIImage(named: DataManager.shared.getTheme())
+        backgroundView.image = UIImage(named: BackgroundImage)
         line.backgroundColor = .label
         //
         labelTitle.font = UIFont(name: E_Font_B, size: E_FontSize)
@@ -143,14 +143,8 @@ extension CustomUIViewController {
     @objc private func clickTheme(_ gesture:UITapGestureRecognizer) {
         guard let backImg = gesture.name else { return }
         DataManager.shared.setTheme(backImg)
-        switch backImg {
-        case BackgroundImage:
-            overrideUserInterfaceStyle = .light
-        case BlackBackImage:
-            overrideUserInterfaceStyle = .dark
-        default:
-            break
-        }
+        //
+        BackgroundImage = backImg
         refresh()
     }
     

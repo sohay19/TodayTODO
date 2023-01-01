@@ -22,12 +22,17 @@ class CategoryViewController: UIViewController {
     var isRefresh = false
     var isEdit = false
     var openIndex:IndexPath?
+    //
+    let backgroundView = UIImageView(frame: UIScreen.main.bounds)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //
         tableView.dataSource = self
         tableView.delegate = self
+        //
+        view.insertSubview(backgroundView, at: 0)
         initCell()
     }
     
@@ -54,9 +59,7 @@ class CategoryViewController: UIViewController {
 extension CategoryViewController {
     private func initUI() {
         // 배경 설정
-        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
-        view.insertSubview(backgroundView, at: 0)
         // 상단 segment
         segmentView.backgroundColor = .clear
         addSegmentcontrol()

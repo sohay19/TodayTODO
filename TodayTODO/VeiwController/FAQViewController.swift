@@ -20,6 +20,9 @@ class FAQViewController : UIViewController {
     
     var faqList:[String:[String:String]] = [:]
     var openedIndex:IndexPath?
+    //
+    let backgroundView = UIImageView(frame: UIScreen.main.bounds)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,7 @@ class FAQViewController : UIViewController {
         faqTable.delegate = self
         faqTable.dataSource = self
         //
+        view.insertSubview(backgroundView, at: 0)
         initCell()
         initRefreshController()
     }
@@ -45,9 +49,7 @@ class FAQViewController : UIViewController {
 extension FAQViewController {
     private func initUI() {
         // 배경 설정
-        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
-        view.insertSubview(backgroundView, at: 0)
         line.backgroundColor = .label
         //
         faqTable.backgroundColor = .clear

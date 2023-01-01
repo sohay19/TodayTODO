@@ -67,15 +67,19 @@ class TaskInfoViewController : UIViewController {
     //
     var isShow = false
     var isRefresh = false
-
+    //
     private var categoryList:[(name:String, action:UIAction)] = []
+    //
+    let backgroundView = UIImageView(frame: UIScreen.main.bounds)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //
         inputTitle.delegate = self
         memoView.delegate = self
-//        initInput()
+        //
+        view.insertSubview(backgroundView, at: 0)
         initGesture()
         //
         bottomConstraint = self.view.constraints.first {$0.identifier == "bottomHeight"}
@@ -101,9 +105,7 @@ extension TaskInfoViewController {
     //
     private func initUI() {
         // 배경 설정
-        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
-        view.insertSubview(backgroundView, at: 0)
         backView.backgroundColor = .clear
         //
         let K_B_FontSize = K_FontSize + 3.0

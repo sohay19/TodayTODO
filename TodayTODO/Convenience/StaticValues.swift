@@ -75,7 +75,8 @@ let E_Font_R = "Windsor_Great_Park-Regular"
 let E_FontSize = 21.0
 
 //MARK: - Image
-let BackgroundImage = "DefaultBack.jpg"
+var BackgroundImage = "DefaultBack.jpg"
+let WhiteBackImage = "DefaultBack.jpg"
 let BlackBackImage = "BlackBackground.png"
 let boldConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .medium, scale: .large)
 let mediumConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .regular, scale: .medium)

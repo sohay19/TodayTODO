@@ -29,6 +29,8 @@ class BackupViewController: UIViewController {
     var segmentControl = CustomSegmentControl()
     var dataList:[(name:String, url:URL)] = []
     var isRefresh = false
+    //
+    let backgroundView = UIImageView(frame: UIScreen.main.bounds)
     
     
     override func viewDidLoad() {
@@ -37,6 +39,7 @@ class BackupViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         //
+        view.insertSubview(backgroundView, at: 0)
         initCell()
     }
     
@@ -56,9 +59,7 @@ class BackupViewController: UIViewController {
 extension BackupViewController {
     func initUI() {
         // 배경 설정
-        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
-        view.insertSubview(backgroundView, at: 0)
         line.backgroundColor = .label
         //폰트 설정
         labelTitle.font = UIFont(name: E_Font_B, size: E_FontSize)

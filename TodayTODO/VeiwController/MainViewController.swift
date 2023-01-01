@@ -39,6 +39,9 @@ class MainViewController: UIViewController {
     var isRefresh = false
     var isTaskOpen = false
     var isMoveToday = false
+    //
+    let backgroundView = UIImageView(frame: UIScreen.main.bounds)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +53,7 @@ class MainViewController: UIViewController {
         calendarView.dataSource = self
         calendarView.delegate = self
         //
+        view.insertSubview(backgroundView, at: 0)
         initCell()
         initRefreshController()
         // 메인 리로드 함수
@@ -118,9 +122,7 @@ extension MainViewController {
     //
     func initUI() {
         // 배경 설정
-        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
-        view.insertSubview(backgroundView, at: 0)
         //
         segmentView.backgroundColor = .clear
         addSegmentcontrol()

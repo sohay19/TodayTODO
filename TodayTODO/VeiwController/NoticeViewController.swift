@@ -18,6 +18,8 @@ class NoticeViewController : UIViewController {
     @IBOutlet weak var noticeTable: UITableView!
     
     var noticeList:[String:[String:String]] = [:]
+    //
+    let backgroundView = UIImageView(frame: UIScreen.main.bounds)
     
     
     override func viewDidLoad() {
@@ -26,6 +28,7 @@ class NoticeViewController : UIViewController {
         noticeTable.delegate = self
         noticeTable.dataSource = self
         //
+        view.insertSubview(backgroundView, at: 0)
         initRefreshController()
     }
     
@@ -43,9 +46,7 @@ class NoticeViewController : UIViewController {
 extension NoticeViewController {
     private func initUI() {
         // 배경 설정
-        let backgroundView = UIImageView(frame: UIScreen.main.bounds)
         backgroundView.image = UIImage(named: BackgroundImage)
-        view.insertSubview(backgroundView, at: 0)
         line.backgroundColor = .label
         //
         noticeTable.sectionHeaderTopPadding = 0
