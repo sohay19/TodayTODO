@@ -7,11 +7,25 @@
 
 import UIKit
 import Foundation
+import StoreKit
 
 class SystemManager {
     static let shared = SystemManager()
-    private init() { }
+    private init() {
+        iAPManager = IAPHelper(productIds: Set<String>([iAPIdentifier]))
+        iAPManager.loadsRequest({ success, products in
+            if success {
+                guard let products = products else { return }
+                self.productList = products
+            } else {
+                print("iAPManager.loadsRequest Error")
+            }
+        })
+    }
     //
+    private let iAPIdentifier = ""
+    private var iAPManager:IAPHelper
+    private var productList:[SKProduct] = []
     private var loadingView:Loading?
     //
     private var isLoading = false
@@ -84,6 +98,23 @@ extension SystemManager {
         }
         loadingView.removeFromSuperview()
         isLoading = false
+    }
+}
+
+//MARK: - IAP
+extension SystemManager {
+    // 구매 확인
+    func isProductPurchased(_ productID: String) -> Bool {
+        return iAPManager.isProductPurchased(productID)
+    }
+    // 구매
+    func buyProduct(_ productID: String) {
+        for product in productList {
+            if product.productIdentifier == productID {
+                iAPManager.buyProduct(product)
+                break
+            }
+        }
     }
 }
 

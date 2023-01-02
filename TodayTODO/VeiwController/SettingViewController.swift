@@ -101,12 +101,21 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             guard let navigationController = self.navigationController as? CustomNavigationController else { return }
             navigationController.pushViewController(noticeVC)
         case .Custom:
-            let board = UIStoryboard(name: CustomUIBoard, bundle: nil)
-            guard let noticeVC = board.instantiateViewController(withIdentifier: CustomUIBoard) as? CustomUIViewController else { return }
-            noticeVC.modalTransitionStyle = .crossDissolve
-            noticeVC.modalPresentationStyle = .fullScreen
-            guard let navigationController = self.navigationController as? CustomNavigationController else { return }
-            navigationController.pushViewController(noticeVC)
+            PopupManager.shared.openYesOrNo(self, title: "알림",
+                                            msg: "해당 기능은 구매가 필요합니다\n결제창으로 넘어가시겠습니까?\n(바로 결제되지 않습니다)") { action in
+                let isPurchase = SystemManager.shared.isProductPurchased("")
+                if isPurchase {
+                    let board = UIStoryboard(name: CustomUIBoard, bundle: nil)
+                    guard let noticeVC = board.instantiateViewController(withIdentifier: CustomUIBoard) as? CustomUIViewController else { return }
+                    noticeVC.modalTransitionStyle = .crossDissolve
+                    noticeVC.modalPresentationStyle = .fullScreen
+                    guard let navigationController = self.navigationController as? CustomNavigationController else { return }
+                    navigationController.pushViewController(noticeVC)
+                } else {
+                    SystemManager.shared.buyProduct("")
+                }
+            }
+            
         case .Backup:
             let board = UIStoryboard(name: backupBoard, bundle: nil)
             guard let backupVC = board.instantiateViewController(withIdentifier: backupBoard) as? BackupViewController else { return }

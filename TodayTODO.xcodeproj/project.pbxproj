@@ -95,6 +95,8 @@
 		CF5795D22963053C00687863 /* PaperWidgetBack.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5795D12963053C00687863 /* PaperWidgetBack.png */; };
 		CF5795D32963053C00687863 /* PaperWidgetBack.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5795D12963053C00687863 /* PaperWidgetBack.png */; };
 		CF5795D42963053C00687863 /* PaperWidgetBack.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5795D12963053C00687863 /* PaperWidgetBack.png */; };
+		CF5795D62963075500687863 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF5795D52963075500687863 /* StoreKit.framework */; };
+		CF5795DA29630AE400687863 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5795D929630AE400687863 /* IAPHelper.swift */; };
 		CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */; };
 		CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */; };
 		CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
@@ -378,6 +380,8 @@
 		CF5795C92963047100687863 /* BlackWidgetBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackWidgetBack.png; sourceTree = "<group>"; };
 		CF5795CA2963047100687863 /* WhiteWidgetBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhiteWidgetBack.png; sourceTree = "<group>"; };
 		CF5795D12963053C00687863 /* PaperWidgetBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PaperWidgetBack.png; sourceTree = "<group>"; };
+		CF5795D52963075500687863 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CF5795D929630AE400687863 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
 		CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCExtension.swift; sourceTree = "<group>"; };
 		CF75963229024C340046FDC1 /* PushList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PushList.storyboard; sourceTree = "<group>"; };
@@ -517,6 +521,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF5795D62963075500687863 /* StoreKit.framework in Frameworks */,
 				CFEB4A4D28F150BD008850DC /* CloudKit.framework in Frameworks */,
 				074B9F680D9D14B5D5A6CC9D /* Pods_TodayTODO.framework in Frameworks */,
 			);
@@ -561,6 +566,7 @@
 		A948DE0F7AAA31F92523314C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF5795D52963075500687863 /* StoreKit.framework */,
 				CFEB4A4C28F150BD008850DC /* CloudKit.framework */,
 				CFEB4A0F28F133B3008850DC /* WidgetKit.framework */,
 				CFEB4A1128F133B3008850DC /* SwiftUI.framework */,
@@ -874,6 +880,7 @@
 				CFEB4A5A28F155E5008850DC /* PopupManager.swift */,
 				CFEB4A5928F155E5008850DC /* PushManager.swift */,
 				CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */,
+				CF5795D929630AE400687863 /* IAPHelper.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1480,6 +1487,7 @@
 				CFEB4A5C28F155E5008850DC /* PushManager.swift in Sources */,
 				CF7909272935EF7E0027D25D /* FAQViewController.swift in Sources */,
 				CF2BAF1229263E0700EB49F4 /* TaskInfoVCExtension.swift in Sources */,
+				CF5795DA29630AE400687863 /* IAPHelper.swift in Sources */,
 				CF50BC5C2924CDD900AB538B /* OptionalData.swift in Sources */,
 				CF487EA928F1B71900498451 /* TaskListEntryView.swift in Sources */,
 				CFEB4A6028F15621008850DC /* CustomNavigationController.swift in Sources */,
