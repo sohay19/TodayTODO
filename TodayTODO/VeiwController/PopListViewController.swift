@@ -45,7 +45,7 @@ extension PopListViewController {
         self.view.backgroundColor = .clear
         // 배경 설정
         let backgroundView = UIImageView(frame: backView.bounds)
-        backgroundView.image = UIImage(named: PaperBackImage)
+        backgroundView.image = UIImage(named: WoodBackImage)
         backView.insertSubview(backgroundView, at: 0)
         //그림자
         backView.layer.shadowColor = UIColor.lightGray.withAlphaComponent(0.4).cgColor

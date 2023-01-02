@@ -101,7 +101,7 @@ extension PushListViewController {
         btnDelete.contentMode = .center
         btnDelete.setImage(UIImage(systemName: "trash"), for: .normal)
         //
-        imgClock.image = UIImage(named: DataManager.shared.getTheme() == WhiteBackImage ? "clock_black" : "clock_white")
+        imgClock.image = UIImage(named: DataManager.shared.getTheme() == BlackBackImage ? "clock_white" : "clock_black")
     }
     //
     private func addSegmentcontrol() {

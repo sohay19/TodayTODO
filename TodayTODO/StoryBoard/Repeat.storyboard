@@ -329,6 +329,7 @@
                         <outlet property="btnThursday" destination="GoQ-E3-838" id="8tv-8z-e2F"/>
                         <outlet property="btnTuseday" destination="Ire-Z6-kt1" id="V8E-9H-pte"/>
                         <outlet property="btnWensday" destination="GcG-fB-eF5" id="YgW-ko-8gy"/>
+                        <outlet property="iconMenu" destination="kVK-jo-AQA" id="k9l-sM-wOM"/>
                         <outlet property="labelEndDate" destination="QIc-Wq-UYx" id="UK0-cV-Ehs"/>
                         <outlet property="labelRepeat" destination="0gH-DD-dIV" id="m8S-c6-ntd"/>
                         <outlet property="labelWeekDay" destination="nBd-JT-4gP" id="66L-9H-MWJ"/>

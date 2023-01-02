@@ -154,6 +154,8 @@ extension SystemManager {
             vc.overrideUserInterfaceStyle = .light
         case BlackBackImage:
             vc.overrideUserInterfaceStyle = .dark
+        case PaperBackImage:
+            vc.overrideUserInterfaceStyle = .light
         default:
             break
         }

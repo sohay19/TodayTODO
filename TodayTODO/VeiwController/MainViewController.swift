@@ -161,7 +161,7 @@ extension MainViewController {
         monthlyTaskTable.separatorColor = .lightGray.withAlphaComponent(0.5)
         monthlyTaskTable.showsVerticalScrollIndicator = false
         //
-        imgNil.image = UIImage(named: DataManager.shared.getTheme() == WhiteBackImage ? "pencil_black" : "pencil_white")
+        imgNil.image = UIImage(named: DataManager.shared.getTheme() == BlackBackImage ? "pencil_white" : "pencil_black")
     }
     //
     private func addSegmentcontrol() {

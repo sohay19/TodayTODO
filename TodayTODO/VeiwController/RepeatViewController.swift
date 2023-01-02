@@ -8,6 +8,7 @@
 import UIKit
 
 class RepeatViewController: UIViewController {
+    @IBOutlet weak var iconMenu: UIImageView!
     @IBOutlet weak var popView: UIView!
     @IBOutlet weak var line1: UIView!
     @IBOutlet weak var line2: UIView!
@@ -62,7 +63,7 @@ extension RepeatViewController {
         self.view.backgroundColor = .clear
         // 배경 설정
         let backgroundView = UIImageView(frame: popView.bounds)
-        backgroundView.image = UIImage(named: PaperBackImage)
+        backgroundView.image = UIImage(named: WoodBackImage)
         popView.insertSubview(backgroundView, at: 0)
         //그림자
         popView.layer.shadowColor = UIColor.gray.withAlphaComponent(0.4).cgColor
@@ -78,7 +79,8 @@ extension RepeatViewController {
         labelWeekDay.textColor = .black
         labelWeekDay.font = UIFont(name: K_Font_B, size: K_FontSize)
         //
-        btnPullRepeatType.tintColor = .white
+        iconMenu.image = UIImage(systemName: "chevron.up.chevron.down")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        btnPullRepeatType.setTitleColor(.white, for: .normal)
         btnPullRepeatType.backgroundColor = .black
         btnPullRepeatType.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnPullRepeatType.layer.cornerRadius = 5

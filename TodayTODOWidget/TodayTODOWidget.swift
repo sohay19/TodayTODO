@@ -25,7 +25,7 @@ struct TaskListWidget: Widget {
         StaticConfiguration(kind: TaskListWidget.kind,
                             provider: TaskListProvider()) { entry in
             TaskListEntryView(entry: entry)
-                .background(Image(DataManager.shared.getTheme() == WhiteBackImage ? "WhiteWatchBackImage" : "BlackWatchBackImage")
+                .background(Image(DataManager.shared.getWidgetTheme())
                     .resizable()
                     .frame(maxWidth: .infinity, maxHeight: .infinity))
                 .unredacted()

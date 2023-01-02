@@ -101,6 +101,22 @@ extension DataManager {
         }
         return imgType
     }
+    
+    func getWidgetTheme() -> String {
+        guard let imgType = UserDefaults.shared.string(forKey: ThemeKey) else {
+            return "WhiteWidgetBackImage"
+        }
+        switch imgType {
+        case WhiteBackImage:
+            return "WhiteWidgetBackImage"
+        case BlackBackImage:
+            return "BlackWidgetBackImage"
+        case PaperBackImage:
+            return "PaperWidgetBackImage"
+        default:
+            return "WhiteWidgetBackImage"
+        }
+    }
 }
 
 

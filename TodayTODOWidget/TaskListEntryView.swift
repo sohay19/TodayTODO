@@ -64,12 +64,12 @@ struct TaskListView: View {
                         VStack(alignment: .leading, spacing: 9) {
                             Text(task.title)
                                 .font(.custom(K_Font_B, size: K_Size))
-                                .foregroundColor(DataManager.shared.getTheme() == WhiteBackImage ? .black : .white)
+                                .foregroundColor(DataManager.shared.getTheme() == BlackBackImage ? .white : .black)
                                 .truncationMode(.tail)
                             
                             Text(task.memo)
                                 .font(.custom(K_Font_R, size: K_Size))
-                                .foregroundColor(DataManager.shared.getTheme() == WhiteBackImage ? .black : .white)
+                                .foregroundColor(DataManager.shared.getTheme() == BlackBackImage ? .white : .black)
                                 .truncationMode(.tail)
                         }
                         .frame(width: geometry.size.width - 12.0, height: geometry.size.height, alignment: .topLeading)
@@ -90,7 +90,7 @@ struct TaskListView: View {
                             HStack {
                                 Text(task.title)
                                     .font(.custom(K_Font_B, size: K_Size))
-                                    .foregroundColor(DataManager.shared.getTheme() == WhiteBackImage ? .black : .white)
+                                    .foregroundColor(DataManager.shared.getTheme() == BlackBackImage ? .white : .black)
                                     .truncationMode(.tail)
                                 
                                 Spacer()
@@ -107,7 +107,7 @@ struct TaskListView: View {
                             HStack {
                                 Text(task.memo)
                                     .font(.custom(K_Font_R, size: K_Size))
-                                    .foregroundColor(DataManager.shared.getTheme() == WhiteBackImage ? .black : .white)
+                                    .foregroundColor(DataManager.shared.getTheme() == BlackBackImage ? .white : .black)
                                     .truncationMode(.tail)
                             }.frame(width: geometry.size.width - 12.0, alignment: .leading)
                         }
@@ -129,7 +129,7 @@ struct TaskListView: View {
                                     HStack {
                                         Text(task.title)
                                             .font(.custom(K_Font_B, size: K_Size))
-                                            .foregroundColor(DataManager.shared.getTheme() == WhiteBackImage ? .black : .white)
+                                            .foregroundColor(DataManager.shared.getTheme() == BlackBackImage ? .white : .black)
                                             .truncationMode(.tail)
                                         
                                         Spacer()
@@ -146,7 +146,7 @@ struct TaskListView: View {
                                     HStack {
                                         Text(task.memo)
                                             .font(.custom(K_Font_R, size: K_Size))
-                                            .foregroundColor(DataManager.shared.getTheme() == WhiteBackImage ? .black : .white)
+                                            .foregroundColor(DataManager.shared.getTheme() == BlackBackImage ? .white : .black)
                                             .truncationMode(.tail)
                                     }.frame(width: geometry.size.width - 12.0, alignment: .topLeading)
                                 }

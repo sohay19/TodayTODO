@@ -35,7 +35,7 @@ class CustomUIViewController : UIViewController {
     var imgList:[UIImageView] = []
     var labelList:[UILabel] = []
     var viewList:[UIView] = []
-    var backImgList:[String] = [WhiteBackImage, BlackBackImage, ""]
+    var backImgList:[String] = [WhiteBackImage, BlackBackImage, PaperBackImage]
     let backgroundView = UIImageView(frame: UIScreen.main.bounds)
     
     override func viewDidLoad() {
