@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NanumAJumMaJaYu.ttf</string>
+		<string>EF_Diary.ttf</string>
+		<string>NanumBarunpenB.otf</string>
+		<string>NanumBarunpenR.otf</string>
+		<string>Worcestershire_Sauce_Press-Regular.otf</string>
+		<string>Worcestershire_Sauce-Regular.otf</string>
+		<string>Windsor_Great_Park-Regular.otf</string>
+		<string>NanumSquareRoundB.ttf</string>
+		<string>NanumSquareRoundR.ttf</string>
+		<string>GmarketSansMedium.otf</string>
+		<string>GmarketSansLight.otf</string>
+		<string>강원교육모두 Bold.ttf</string>
+		<string>강원교육모두 Light.ttf</string>
+	</array>
 	<key>Localization native development region</key>
 	<string>Korea</string>
 	<key>NSExtension</key>
@@ -14,15 +30,5 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
 	</dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>NanumAJumMaJaYu.ttf</string>
-		<string>EF_Diary.ttf</string>
-		<string>NanumBarunpenB.otf</string>
-		<string>NanumBarunpenR.otf</string>
-		<string>Worcestershire_Sauce_Press-Regular.otf</string>
-		<string>Worcestershire_Sauce-Regular.otf</string>
-		<string>Windsor_Great_Park-Regular.otf</string>
-	</array>
 </dict>
 </plist>

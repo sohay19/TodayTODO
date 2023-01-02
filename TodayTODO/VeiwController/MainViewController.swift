@@ -54,6 +54,7 @@ class MainViewController: UIViewController {
         calendarView.delegate = self
         //
         view.insertSubview(backgroundView, at: 0)
+        addSegmentcontrol()
         initCell()
         initRefreshController()
         // 메인 리로드 함수
@@ -125,9 +126,8 @@ extension MainViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         //
         segmentView.backgroundColor = .clear
-        addSegmentcontrol()
         // 폰트 설정
-        labelDate.font = UIFont(name: LogoFont, size: K_FontSize + 3.0)
+        labelDate.font = UIFont(name: LogoFont, size: 18.0)
         labelDate.textColor = .label
         labelTodayNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         labelTodayNilMsg.textColor = .label
@@ -160,6 +160,8 @@ extension MainViewController {
         monthlyTaskTable.separatorInsetReference = .fromCellEdges
         monthlyTaskTable.separatorColor = .lightGray.withAlphaComponent(0.5)
         monthlyTaskTable.showsVerticalScrollIndicator = false
+        //
+        imgNil.image = UIImage(named: DataManager.shared.getTheme() == WhiteBackImage ? "pencil_black" : "pencil_white")
     }
     //
     private func addSegmentcontrol() {

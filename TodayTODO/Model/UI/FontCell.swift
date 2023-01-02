@@ -32,20 +32,23 @@ class FontCell: UITableViewCell {
     }
     
     func inputCell(_ type:FontType) {
-        var title = ""
         var font = ""
+        var fontSize = 0.0
         switch type {
         case .Barunpen:
-            title = "나눔바른펜"
             font = NanumBarunpen_R
-        case .SquareNeo:
-            title = "나눔스퀘어네오"
-            font = NanumSquareNeo_R
+            fontSize = Barunpen_FontSize
         case .SquareRound:
-            title = "나눔스퀘어라운드"
             font = NanumSquareRound_R
+            fontSize = SquareRound_FontSize
+        case .GmarketSans:
+            font = GmarketSans_R
+            fontSize = GmarketSans_FontSize
+        case .GangwonEduAll:
+            font = GangwonEduAll_R
+            fontSize = GangwonEduAll_FontSize
         }
-        labelTitle.text = title
-        labelTitle.font = UIFont(name: font, size: K_FontSize)
+        labelTitle.text = type.rawValue
+        labelTitle.font = UIFont(name: font, size: fontSize)
     }
 }

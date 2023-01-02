@@ -147,27 +147,6 @@ extension SystemManager {
 
 //MARK: - ETC
 extension SystemManager {
-    //
-    func setFont() {
-        let font = DataManager.shared.getFont()
-        switch font {
-        case .Barunpen:
-            K_Font_B = NanumBarunpen_B
-            K_Font_R = NanumBarunpen_R
-        case .SquareNeo:
-            K_Font_B = NanumSquareNeo_B
-            K_Font_R = NanumSquareNeo_B
-        case .SquareRound:
-            K_Font_B = NanumSquareRound_B
-            K_Font_R = NanumSquareRound_R
-        }
-    }
-    //
-    func setTheme() {
-        let theme = DataManager.shared.getTheme()
-        BackgroundImage = theme
-    }
-    //
     func setTheme(_ vc:UIViewController) {
         let theme = DataManager.shared.getTheme()
         switch theme {

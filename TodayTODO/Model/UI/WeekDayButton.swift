@@ -16,14 +16,13 @@ class WeekDayButton: UIButton {
     }
     override var isSelected: Bool {
         didSet {
-            self.backgroundColor = isSelected ? .newIndigo : .systemBackground
+            self.backgroundColor = isSelected ? .systemIndigo : .black
         }
     }
     //
     private func initUI() {
-        self.backgroundColor = .systemBackground
         self.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize - 3.0)
-        self.titleLabel?.textColor = .darkGray
+        self.setTitleColor(.white, for: .normal)
         self.tintColor = .clear
         self.layer.cornerRadius = 5
     }

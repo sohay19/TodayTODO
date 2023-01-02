@@ -51,7 +51,7 @@ extension SettingViewController {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
         versionView.backgroundColor = .clear
         //
-        labelInfo.textColor = .label
+        labelInfo.textColor = .gray
         labelInfo.font = UIFont(name: N_Font, size: N_FontSize)
     }
     

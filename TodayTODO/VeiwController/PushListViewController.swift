@@ -44,6 +44,7 @@ class PushListViewController : UIViewController {
         pushTable.allowsFocusDuringEditing = true
         //
         view.insertSubview(backgroundView, at: 0)
+        addSegmentcontrol()
         initConstraints()
         initCell()
         //
@@ -78,7 +79,6 @@ extension PushListViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         //
         segmentView.backgroundColor = .clear
-        addSegmentcontrol()
         // 폰트 설정
         labelNilMsg.font = UIFont(name: K_Font_R, size: K_FontSize)
         //
@@ -100,6 +100,8 @@ extension PushListViewController {
         btnDelete.tintColor = .label
         btnDelete.contentMode = .center
         btnDelete.setImage(UIImage(systemName: "trash"), for: .normal)
+        //
+        imgClock.image = UIImage(named: DataManager.shared.getTheme() == WhiteBackImage ? "clock_black" : "clock_white")
     }
     //
     private func addSegmentcontrol() {

@@ -48,9 +48,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         // 폰트 세팅
-        SystemManager.shared.setFont()
+        let font = DataManager.shared.getFont()
+        DataManager.shared.setFont(font)
         // 테마 세팅
-        SystemManager.shared.setTheme()
+        let theme = DataManager.shared.getTheme()
+        DataManager.shared.setTheme(theme)
+        
+        for family in UIFont.familyNames {
+                    print(family)
+                    
+                    for names in UIFont.fontNames(forFamilyName: family) {
+                        print("== \(names)")
+                    }
+        }
         
         return true
     }

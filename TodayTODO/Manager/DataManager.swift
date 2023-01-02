@@ -58,6 +58,24 @@ extension DataManager {
 extension DataManager {
     func setFont(_ type:FontType) {
         UserDefaults.shared.set(type.rawValue, forKey: FontKey)
+        switch type {
+        case .Barunpen:
+            K_Font_B = NanumBarunpen_B
+            K_Font_R = NanumBarunpen_R
+            K_FontSize = Barunpen_FontSize
+        case .SquareRound:
+            K_Font_B = NanumSquareRound_B
+            K_Font_R = NanumSquareRound_R
+            K_FontSize = SquareRound_FontSize
+        case .GmarketSans:
+            K_Font_B = GmarketSans_B
+            K_Font_R = GmarketSans_R
+            K_FontSize = GmarketSans_FontSize
+        case .GangwonEduAll:
+            K_Font_B = GangwonEduAll_B
+            K_Font_R = GangwonEduAll_R
+            K_FontSize = GangwonEduAll_FontSize
+        }
     }
     
     func getFont() -> FontType {
@@ -71,13 +89,14 @@ extension DataManager {
         return fontType
     }
     
-    func setTheme(_ img:String) {
-        UserDefaults.shared.set(img, forKey: ThemeKey)
+    func setTheme(_ theme:String) {
+        UserDefaults.shared.set(theme, forKey: ThemeKey)
+        BackgroundImage = theme
     }
     
     func getTheme() -> String {
         guard let imgType = UserDefaults.shared.string(forKey: ThemeKey) else {
-            setTheme(BackgroundImage)
+            setTheme(WhiteBackImage)
             return BackgroundImage
         }
         return imgType

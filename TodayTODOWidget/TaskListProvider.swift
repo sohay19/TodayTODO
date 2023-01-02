@@ -35,6 +35,9 @@ struct TaskListProvider: TimelineProvider {
             return
         }
         DataManager.shared.setRealm()
+        //폰트
+        let font = DataManager.shared.getFont()
+        DataManager.shared.setFont(font)
         //데이터 가져오기
         let orderList = DataManager.shared.getCategoryOrder()
         var taskList = DataManager.shared.getTodayTask()

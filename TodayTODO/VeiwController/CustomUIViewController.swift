@@ -31,7 +31,7 @@ class CustomUIViewController : UIViewController {
     
     
     var isRefresh = false
-    let fontList:[FontType] = [ .Barunpen, .SquareNeo, .SquareRound]
+    let fontList:[FontType] = [ .Barunpen, .SquareRound, .GmarketSans, .GangwonEduAll]
     var imgList:[UIImageView] = []
     var labelList:[UILabel] = []
     var viewList:[UIView] = []
@@ -121,14 +121,8 @@ extension CustomUIViewController {
         labelTheme.font = UIFont(name: K_Font_B, size: K_FontSize + 2.0)
         labelTheme.textColor = .label
         var title = ""
-        switch DataManager.shared.getFont() {
-        case .Barunpen:
-            title = "나눔바른펜"
-        case .SquareNeo:
-            title = "나눔스퀘어네오"
-        case .SquareRound:
-            title = "나눔스퀘어라운드"
-        }
+        let font = DataManager.shared.getFont()
+        title = font.rawValue
         btnFont.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnFont.setTitle(title, for: .normal)
         btnFont.setTitleColor(.label, for: .normal)
@@ -154,12 +148,19 @@ extension CustomUIViewController {
         case .Barunpen:
             K_Font_B = NanumBarunpen_B
             K_Font_R = NanumBarunpen_R
-        case .SquareNeo:
-            K_Font_B = NanumSquareNeo_B
-            K_Font_R = NanumSquareNeo_B
+            K_FontSize = Barunpen_FontSize
         case .SquareRound:
             K_Font_B = NanumSquareRound_B
             K_Font_R = NanumSquareRound_R
+            K_FontSize = SquareRound_FontSize
+        case .GmarketSans:
+            K_Font_B = GmarketSans_B
+            K_Font_R = GmarketSans_R
+            K_FontSize = GmarketSans_FontSize
+        case .GangwonEduAll:
+            K_Font_B = GangwonEduAll_B
+            K_Font_R = GangwonEduAll_R
+            K_FontSize = GangwonEduAll_FontSize
         }
     }
     
@@ -211,8 +212,6 @@ extension CustomUIViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         DataManager.shared.setFont(fontList[indexPath.row])
-        //
-        SystemManager.shared.setFont()
         refresh()
     }
 }

@@ -303,7 +303,18 @@ extension TaskInfoViewController {
             let image =  category.loadImage()
             let action = UIAction(title: category.title, image: image, handler: { [self] _ in
                 btnPullCategory.setTitle(category.title, for: .normal)
-                btnPullCategory.backgroundColor = category.loadColor()
+                let categoryColor = category.loadColor()
+                btnPullCategory.backgroundColor = categoryColor
+                guard let colorList = categoryColor.cgColor.components else { return }
+                var count = 0
+                for color in colorList {
+                    if color > 0.5 {
+                        count += 1
+                    }
+                }
+                var reverseColor:UIColor = count > 2 ? .black : .white
+                btnPullCategory.setTitleColor(reverseColor, for: .normal)
+                menuIcon.tintColor = reverseColor
             })
             let element = (category.title, action)
             categoryList.append(element)

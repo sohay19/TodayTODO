@@ -103,10 +103,6 @@ extension UIColor {
     class var defaultPink:UIColor? {
         return UIColor(named: "DefaultPink")
     }
-    
-    class var newIndigo:UIColor? {
-        return UIColor(named: "NewIndigo")
-    }
     #if os(watchOS)
     class var systemIndigo:UIColor? {
         return UIColor(named: "SystemIndigo")

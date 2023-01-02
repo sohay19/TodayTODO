@@ -51,7 +51,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n40-Jd-cyO">
-                                <rect key="frame" x="21.000000000000004" y="118.66666666666669" width="41.333333333333343" height="21"/>
+                                <rect key="frame" x="30.000000000000004" y="118.66666666666669" width="41.333333333333343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                             <constraint firstItem="AvX-BD-akf" firstAttribute="centerY" secondItem="n40-Jd-cyO" secondAttribute="centerY" id="MHW-XU-wVy"/>
                             <constraint firstItem="hju-kQ-qy0" firstAttribute="top" secondItem="Jjv-nu-Kpb" secondAttribute="top" constant="9" id="WgF-cM-M60"/>
                             <constraint firstItem="hju-kQ-qy0" firstAttribute="leading" secondItem="Jjv-nu-Kpb" secondAttribute="leading" constant="9" id="bCf-WK-luW"/>
-                            <constraint firstItem="n40-Jd-cyO" firstAttribute="leading" secondItem="hju-kQ-qy0" secondAttribute="trailing" constant="9" id="rcx-TX-OtF"/>
+                            <constraint firstItem="n40-Jd-cyO" firstAttribute="leading" secondItem="hju-kQ-qy0" secondAttribute="trailing" constant="18" id="rcx-TX-OtF"/>
                             <constraint firstItem="n40-Jd-cyO" firstAttribute="centerY" secondItem="Jjv-nu-Kpb" secondAttribute="centerY" id="uQR-gA-R9i"/>
                         </constraints>
                     </view>

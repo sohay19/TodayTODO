@@ -49,7 +49,7 @@
                                 <rect key="frame" x="30" y="188" width="333" height="567"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock.png" translatesAutoresizingMaskIntoConstraints="NO" id="fwR-hO-Gzt" userLabel="image">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fwR-hO-Gzt" userLabel="image">
                                 <rect key="frame" x="90" y="308" width="213" height="213"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fwR-hO-Gzt" secondAttribute="height" multiplier="1:1" id="phu-dj-dhH"/>
@@ -142,7 +142,6 @@
     </scenes>
     <resources>
         <image name="checklist.checked" catalog="system" width="128" height="107"/>
-        <image name="clock.png" width="470" height="470"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

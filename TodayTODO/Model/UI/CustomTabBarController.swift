@@ -19,12 +19,18 @@ class CustomTabBarController : UITabBarController {
         self.delegate = self
         self.tabBar.backgroundColor = .clear
         //
-        initTabBar()
         bannerView = GADBannerView(adSize: GADAdSizeBanner)
         bannerView.alpha = 0
         bannerView?.delegate = self
         // 광고 세팅
         initAdMob()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //
+        SystemManager.shared.setTheme(self)
+        initTabBar()
     }
 }
 
@@ -52,7 +58,7 @@ extension CustomTabBarController {
             let tabBarItem = UITabBarItem(
                 title: nil,
                 image: UIImage(systemName: icon)?.withConfiguration(boldConfig).withTintColor(.label, renderingMode: .alwaysOriginal),
-                selectedImage: UIImage(systemName: icon)?.withConfiguration(boldConfig).withTintColor(.lightGray, renderingMode: .alwaysOriginal)
+                selectedImage: UIImage(systemName: icon)?.withConfiguration(boldConfig).withTintColor(.systemIndigo, renderingMode: .alwaysOriginal)
             )
             currentTab.tabBarItem = tabBarItem
         }
@@ -123,5 +129,6 @@ extension CustomTabBarController : GADBannerViewDelegate {
 extension CustomTabBarController : UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         // 탭 전환 시
+        SystemManager.shared.setTheme(viewController)
     }
 }

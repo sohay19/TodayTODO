@@ -25,12 +25,12 @@ struct TaskListWidget: Widget {
         StaticConfiguration(kind: TaskListWidget.kind,
                             provider: TaskListProvider()) { entry in
             TaskListEntryView(entry: entry)
-                .background(Image("WidgetBack")
+                .background(Image(DataManager.shared.getTheme() == WhiteBackImage ? "WhiteWatchBackImage" : "BlackWatchBackImage")
                     .resizable()
                     .frame(maxWidth: .infinity, maxHeight: .infinity))
                 .unredacted()
         }
-        .configurationDisplayName("Today TODO")
+        .configurationDisplayName("오늘의 투두")
         .description("오늘의 TODO를 볼 수 있습니다.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }

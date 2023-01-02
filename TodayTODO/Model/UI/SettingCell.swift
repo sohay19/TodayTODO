@@ -57,7 +57,7 @@ class SettingCell: UITableViewCell {
         }
         title = type.rawValue
         //
-        let image = UIImage(systemName: imageName, withConfiguration: mediumConfig)
+        let image = UIImage(systemName: imageName, withConfiguration: mediumConfig)?.withTintColor(.label, renderingMode: .alwaysOriginal)
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = image
         let imageString = NSAttributedString(attachment: imageAttachment)

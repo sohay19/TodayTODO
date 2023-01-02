@@ -103,9 +103,10 @@ enum HelpType:String {
 }
 
 enum FontType:String {
-    case Barunpen = "NanumBarunpen"
-    case SquareNeo = "NanumSquareNeo"
-    case SquareRound = "NanumSquareRound"
+    case Barunpen = "나눔바른펜"
+    case SquareRound = "나눔스퀘어라운드"
+    case GmarketSans = "지마켓산스"
+    case GangwonEduAll = "강원모두"
 }
 
 //MARK: - CodingKey

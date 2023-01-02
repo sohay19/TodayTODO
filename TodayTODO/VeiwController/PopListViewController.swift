@@ -45,15 +45,10 @@ extension PopListViewController {
         self.view.backgroundColor = .clear
         // 배경 설정
         let backgroundView = UIImageView(frame: backView.bounds)
-        backgroundView.image = UIImage(named: BlackBackImage)
-        backgroundView.clipsToBounds = true
-        backgroundView.layer.cornerRadius = 10
-        backView.clipsToBounds = true
+        backgroundView.image = UIImage(named: PaperBackImage)
         backView.insertSubview(backgroundView, at: 0)
-        backView.layer.cornerRadius = 10
         //그림자
-        backView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
-        backView.layer.shadowRadius = 10
+        backView.layer.shadowColor = UIColor.lightGray.withAlphaComponent(0.4).cgColor
         backView.layer.shadowOpacity = 1
         //
         popView.backgroundColor = .clear
@@ -68,13 +63,13 @@ extension PopListViewController {
         popView.allowsMultipleSelectionDuringEditing = false
         //
         buttonView.backgroundColor = .clear
-        buttonView.layer.borderWidth = 0.5
-        buttonView.layer.borderColor = UIColor.darkGray.cgColor
+        buttonView.layer.borderWidth = 0.3
+        buttonView.layer.borderColor = UIColor.lightGray.cgColor
         //
-        line.backgroundColor = .darkGray
-        btnOK.tintColor = .systemBackground
+        line.backgroundColor = .lightGray
+        btnOK.tintColor = .black
         btnOK.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
-        btnCancel.tintColor = .systemBackground
+        btnCancel.tintColor = .black
         btnCancel.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnBack.tintColor = .clear
         btnBack.backgroundColor = .clear

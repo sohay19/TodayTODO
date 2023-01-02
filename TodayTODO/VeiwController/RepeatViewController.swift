@@ -62,37 +62,32 @@ extension RepeatViewController {
         self.view.backgroundColor = .clear
         // 배경 설정
         let backgroundView = UIImageView(frame: popView.bounds)
-        backgroundView.image = UIImage(named: BlackBackImage)
-        backgroundView.clipsToBounds = true
-        backgroundView.layer.cornerRadius = 9
+        backgroundView.image = UIImage(named: PaperBackImage)
         popView.insertSubview(backgroundView, at: 0)
-        //모서리 둥글게
-        popView.layer.cornerRadius = 9
         //그림자
-        popView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
-        popView.layer.shadowRadius = 9
+        popView.layer.shadowColor = UIColor.gray.withAlphaComponent(0.4).cgColor
         popView.layer.shadowOpacity = 1
         //
-        line1.backgroundColor = .darkGray
-        line2.backgroundColor = .darkGray
+        line1.backgroundColor = .lightGray
+        line2.backgroundColor = .lightGray
         //
-        labelRepeat.textColor = .systemBackground
+        labelRepeat.textColor = .black
         labelRepeat.font = UIFont(name: K_Font_B, size: K_FontSize)
-        labelEndDate.textColor = .systemBackground
+        labelEndDate.textColor = .black
         labelEndDate.font = UIFont(name: K_Font_B, size: K_FontSize)
-        labelWeekDay.textColor = .systemBackground
+        labelWeekDay.textColor = .black
         labelWeekDay.font = UIFont(name: K_Font_B, size: K_FontSize)
         //
-        btnPullRepeatType.tintColor = .label
-        btnPullRepeatType.backgroundColor = .systemBackground
+        btnPullRepeatType.tintColor = .white
+        btnPullRepeatType.backgroundColor = .black
         btnPullRepeatType.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnPullRepeatType.layer.cornerRadius = 5
-        pickEndDate.overrideUserInterfaceStyle = .dark
+        pickEndDate.overrideUserInterfaceStyle = .light
         switchEndDate.onTintColor = .systemIndigo
         //
-        btnOK.tintColor = .systemBackground
+        btnOK.tintColor = .black
         btnOK.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
-        btnCancel.tintColor = .systemBackground
+        btnCancel.tintColor = .black
         btnCancel.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnBack.tintColor = .clear
         btnBack.backgroundColor = .clear
@@ -188,19 +183,26 @@ extension RepeatViewController {
     }
     private func contorllWeekDay(_ isOn:Bool) {
         btnSunday.isEnabled = isOn
-        btnSunday.backgroundColor = isOn ? .systemBackground : .gray
+        btnSunday.backgroundColor = isOn ? .black : .lightGray
+        btnSunday.setTitleColor(.white, for: .normal)
         btnMonday.isEnabled = isOn
-        btnMonday.backgroundColor = isOn ? .systemBackground : .gray
+        btnMonday.backgroundColor = isOn ? .black : .lightGray
+        btnMonday.setTitleColor(.white, for: .normal)
         btnTuseday.isEnabled = isOn
-        btnTuseday.backgroundColor = isOn ? .systemBackground : .gray
+        btnTuseday.backgroundColor = isOn ? .black : .lightGray
+        btnTuseday.setTitleColor(.white, for: .normal)
         btnWensday.isEnabled = isOn
-        btnWensday.backgroundColor = isOn ? .systemBackground : .gray
+        btnWensday.backgroundColor = isOn ? .black : .lightGray
+        btnWensday.setTitleColor(.white, for: .normal)
         btnThursday.isEnabled = isOn
-        btnThursday.backgroundColor = isOn ? .systemBackground : .gray
+        btnThursday.backgroundColor = isOn ? .black : .lightGray
+        btnThursday.setTitleColor(.white, for: .normal)
         btnFriday.isEnabled = isOn
-        btnFriday.backgroundColor = isOn ? .systemBackground : .gray
+        btnFriday.backgroundColor = isOn ? .black : .lightGray
+        btnFriday.setTitleColor(.white, for: .normal)
         btnSaturday.isEnabled = isOn
-        btnSaturday.backgroundColor = isOn ? .systemBackground : .gray
+        btnSaturday.backgroundColor = isOn ? .black : .lightGray
+        btnSaturday.setTitleColor(.white, for: .normal)
     }
 }
 

@@ -33,6 +33,7 @@ class CategoryViewController: UIViewController {
         tableView.delegate = self
         //
         view.insertSubview(backgroundView, at: 0)
+        addSegmentcontrol()
         initCell()
     }
     
@@ -62,7 +63,6 @@ extension CategoryViewController {
         backgroundView.image = UIImage(named: BackgroundImage)
         // 상단 segment
         segmentView.backgroundColor = .clear
-        addSegmentcontrol()
         // 배경 및 테두리
         backView.backgroundColor = .clear
         backView.layer.cornerRadius = 5
