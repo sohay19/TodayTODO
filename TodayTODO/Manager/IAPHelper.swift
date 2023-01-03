@@ -125,7 +125,9 @@ extension IAPHelper: SKPaymentTransactionObserver {
     // 복원 성공
     private func restore(transaction: SKPaymentTransaction) {
         guard let productIdentifier = transaction.original?.payment.productIdentifier else { return }
-        deliverPurchaseNotificationFor(identifier: productIdentifier)
+        // 구매한 인앱 상품 키에 대한 UserDefaults Bool 값 변경
+        purchasedProductIDList.insert(productIdentifier)
+        UserDefaults.shared.setValue(true, forKey: productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     // 구매 실패

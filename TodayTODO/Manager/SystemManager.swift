@@ -12,7 +12,7 @@ import StoreKit
 class SystemManager {
     static let shared = SystemManager()
     private init() {
-        iAPManager = IAPHelper(productIds: Set<String>([IAPCustomTab]))
+        iAPManager = IAPHelper(productIds: Set<String>([IAPCustomTab, IAPAdMob]))
         iAPManager.loadsRequest({ success, products in
             if success {
                 guard let products = products else { return }
@@ -114,6 +114,10 @@ extension SystemManager {
                 break
             }
         }
+    }
+    // 구매이력 복원
+    func restorePurchases(){
+        return iAPManager.restorePurchases()
     }
 }
 

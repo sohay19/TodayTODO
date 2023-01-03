@@ -312,7 +312,7 @@ extension TaskInfoViewController {
                         count += 1
                     }
                 }
-                var reverseColor:UIColor = count > 2 ? .black : .white
+                let reverseColor:UIColor = count > 2 ? .black : .white
                 btnPullCategory.setTitleColor(reverseColor, for: .normal)
                 menuIcon.tintColor = reverseColor
             })

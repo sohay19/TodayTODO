@@ -73,24 +73,27 @@ extension CustomTabBarController {
     //MARK: - AdMob
     //애드몹 초기화
     func initAdMob() {
-        guard let bannerView = bannerView else { return }
-        bannerView.adUnitID = "ca-app-pub-6152243173470406/9345345318"
-        bannerView.rootViewController = self
-        //
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        // 배너 사이즈 조정
-        bannerView.topAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        bannerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        bannerView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        bannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        bannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        // 전체 뷰 사이즈 조정
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
-        view.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height - 60).isActive = true
-        // 로드
-        loadAd()
+        let isPurchase = SystemManager.shared.isProductPurchased(IAPAdMob)
+        if !isPurchase {
+            guard let bannerView = bannerView else { return }
+            bannerView.adUnitID = "ca-app-pub-6152243173470406/9345345318"
+            bannerView.rootViewController = self
+            //
+            bannerView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(bannerView)
+            // 배너 사이즈 조정
+            bannerView.topAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            bannerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            bannerView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+            bannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            bannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            // 전체 뷰 사이즈 조정
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+            view.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height - 60).isActive = true
+            // 로드
+            loadAd()
+        }
     }
     //광고 로드
     func loadAd() {

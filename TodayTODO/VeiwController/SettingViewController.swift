@@ -12,6 +12,7 @@ class SettingViewController : UIViewController {
     @IBOutlet weak var labelInfo: UILabel!
     @IBOutlet weak var versionView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var btnPremium: UIButton!
     
     let menuList:[SettingType] = [.Notice, .Custom, .Backup, .Reset, .Help, .FAQ, .Question]
     var isRefresh = false
@@ -54,6 +55,16 @@ extension SettingViewController {
         //
         labelInfo.textColor = .gray
         labelInfo.font = UIFont(name: N_Font, size: N_FontSize)
+        //
+        let isPurchaseAdMob = SystemManager.shared.isProductPurchased(IAPAdMob)
+        btnPremium.isHidden = isPurchaseAdMob
+        btnPremium.titleLabel?.font = UIFont(name: LogoFont, size: 20)
+        btnPremium.setTitle("광고제거", for: .normal)
+        btnPremium.setTitleColor(.label, for: .normal)
+        btnPremium.layer.borderWidth = 0.5
+        btnPremium.layer.borderColor = UIColor.gray.cgColor
+        btnPremium.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        btnPremium.layer.cornerRadius = 5
     }
     // IAP 노티 구독
     private func addNoti() {
@@ -68,7 +79,19 @@ extension SettingViewController {
         guard let result = notification.object as? (Bool, String) else { return }
         let isSuccess = result.0
         if isSuccess {
-            moveCustomUITab()
+            switch result.1 {
+            case IAPCustomTab:
+                moveCustomUITab()
+            case IAPAdMob:
+                PopupManager.shared.openOkAlert(self, title: "알림", msg: "구매가 완료되었습니다\n앱을 종료하고 다시 실행해주세요") { action in
+                    UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        exit(0)
+                    }
+                }
+            default:
+                break
+            }
         } else {
             PopupManager.shared.openOkAlert(self, title: "알림", msg: "구매 중 오류가 발생하였습니다\n다시 시도해주시기 바랍니다")
         }
@@ -205,6 +228,10 @@ extension SettingViewController {
         noticeVC.modalPresentationStyle = .fullScreen
         guard let navigationController = self.navigationController as? CustomNavigationController else { return }
         navigationController.pushViewController(noticeVC)
+    }
+    @IBAction func clickPremium(_ sender: Any) {
+        SystemManager.shared.openLoading()
+        SystemManager.shared.buyProduct(IAPAdMob)
     }
 }
 
