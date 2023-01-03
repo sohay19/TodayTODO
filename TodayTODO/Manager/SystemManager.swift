@@ -12,7 +12,7 @@ import StoreKit
 class SystemManager {
     static let shared = SystemManager()
     private init() {
-        iAPManager = IAPHelper(productIds: Set<String>([iAPIdentifier]))
+        iAPManager = IAPHelper(productIds: Set<String>([IAPCustomTab]))
         iAPManager.loadsRequest({ success, products in
             if success {
                 guard let products = products else { return }
@@ -23,7 +23,6 @@ class SystemManager {
         })
     }
     //
-    private let iAPIdentifier = ""
     private var iAPManager:IAPHelper
     private var productList:[SKProduct] = []
     private var loadingView:Loading?

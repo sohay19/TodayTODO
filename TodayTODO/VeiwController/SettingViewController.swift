@@ -26,6 +26,7 @@ class SettingViewController : UIViewController {
         tableView.dataSource = self
         //
         view.insertSubview(backgroundView, at: 0)
+        addNoti()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +55,25 @@ extension SettingViewController {
         labelInfo.textColor = .gray
         labelInfo.font = UIFont(name: N_Font, size: N_FontSize)
     }
-    
+    // IAP 노티 구독
+    private func addNoti() {
+        NotificationCenter.default.addObserver(
+          self,
+          selector: #selector(handlePurchaseNoti(_:)),
+          name: .IAPServicePurchaseNotification,
+          object: nil
+        )
+    }
+    @objc private func handlePurchaseNoti(_ notification: Notification) {
+        guard let result = notification.object as? (Bool, String) else { return }
+        let isSuccess = result.0
+        if isSuccess {
+            moveCustomUITab()
+        } else {
+            PopupManager.shared.openOkAlert(self, title: "알림", msg: "구매 중 오류가 발생하였습니다\n다시 시도해주시기 바랍니다")
+        }
+    }
+    //
     private func loadVersion() {
         guard let dictionary = Bundle.main.infoDictionary,
               let version = dictionary["CFBundleShortVersionString"] as? String,
@@ -101,21 +120,16 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             guard let navigationController = self.navigationController as? CustomNavigationController else { return }
             navigationController.pushViewController(noticeVC)
         case .Custom:
-            PopupManager.shared.openYesOrNo(self, title: "알림",
-                                            msg: "해당 기능은 구매가 필요합니다\n결제창으로 넘어가시겠습니까?\n(바로 결제되지 않습니다)") { action in
-                let isPurchase = SystemManager.shared.isProductPurchased("")
-                if isPurchase {
-                    let board = UIStoryboard(name: CustomUIBoard, bundle: nil)
-                    guard let noticeVC = board.instantiateViewController(withIdentifier: CustomUIBoard) as? CustomUIViewController else { return }
-                    noticeVC.modalTransitionStyle = .crossDissolve
-                    noticeVC.modalPresentationStyle = .fullScreen
-                    guard let navigationController = self.navigationController as? CustomNavigationController else { return }
-                    navigationController.pushViewController(noticeVC)
-                } else {
-                    SystemManager.shared.buyProduct("")
+            let isPurchase = SystemManager.shared.isProductPurchased(IAPCustomTab)
+            if isPurchase {
+                self.moveCustomUITab()
+            } else {
+                PopupManager.shared.openYesOrNo(self, title: "알림",
+                                                msg: "구매가 필요한 기능입니다\n결제창으로 넘어가시겠습니까?\n(바로 결제되지 않습니다)") { action in
+                    SystemManager.shared.openLoading()
+                    SystemManager.shared.buyProduct(IAPCustomTab)
                 }
             }
-            
         case .Backup:
             let board = UIStoryboard(name: backupBoard, bundle: nil)
             guard let backupVC = board.instantiateViewController(withIdentifier: backupBoard) as? BackupViewController else { return }
@@ -183,6 +197,14 @@ extension SettingViewController {
         if let reloadMainView = WatchConnectManager.shared.reloadMainView {
             reloadMainView()
         }
+    }
+    private func moveCustomUITab() {
+        let board = UIStoryboard(name: CustomUIBoard, bundle: nil)
+        guard let noticeVC = board.instantiateViewController(withIdentifier: CustomUIBoard) as? CustomUIViewController else { return }
+        noticeVC.modalTransitionStyle = .crossDissolve
+        noticeVC.modalPresentationStyle = .fullScreen
+        guard let navigationController = self.navigationController as? CustomNavigationController else { return }
+        navigationController.pushViewController(noticeVC)
     }
 }
 

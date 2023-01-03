@@ -94,5 +94,8 @@ let boldConfig = UIImage.SymbolConfiguration(pointSize: 21, weight: .medium, sca
 let mediumConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .regular, scale: .medium)
 let thinConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .thin, scale: .small)
 
+//MARK: - InAppPurchase
+let IAPCustomTab = "com.bailey.TodayTODO.InAppPurchase.customui"
+
 //MARK: - ETC
 let DefaultCategory = "TODO"

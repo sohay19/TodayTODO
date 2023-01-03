@@ -56,3 +56,9 @@ extension UITextView {
         self.attributedText = attributedString
     }
 }
+
+//MARK: - Notification
+extension Notification.Name {
+    static let FCMToken = Notification.Name("FCMToken")
+    static let IAPServicePurchaseNotification = Notification.Name("IAPServicePurchaseNotification")
+}

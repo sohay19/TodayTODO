@@ -53,15 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 테마 세팅
         let theme = DataManager.shared.getTheme()
         DataManager.shared.setTheme(theme)
-        
-        for family in UIFont.familyNames {
-                    print(family)
-                    
-                    for names in UIFont.fontNames(forFamilyName: family) {
-                        print("== \(names)")
-                    }
-        }
-        
+                
         return true
     }
 
@@ -163,11 +155,10 @@ extension AppDelegate : MessagingDelegate {
         // FCM 토큰
         let dataDict: [String: String] = ["token": fcmToken]
         NotificationCenter.default.post(
-            name: Notification.Name("FCMToken"),
+            name: .FCMToken,
             object: nil,
             userInfo: dataDict
         )
-        print("FCM token = \(fcmToken)")
         //Firebase에 토큰 저장
         FirebaseManager.shared.sendToken(["uuid": SystemManager.shared.getUUID(), "token": fcmToken])
     }
