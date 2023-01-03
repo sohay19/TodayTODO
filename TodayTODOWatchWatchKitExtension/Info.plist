@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Localization native development region</key>
+	<string>Korea</string>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>WKAppBundleIdentifier</key>
+			<string>com.bailey.TodayTODO.watchkitapp</string>
+		</dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.watchkit</string>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NanumAJumMaJaYu.ttf</string>
@@ -18,17 +30,5 @@
 		<string>강원교육모두 Bold.ttf</string>
 		<string>강원교육모두 Light.ttf</string>
 	</array>
-	<key>Localization native development region</key>
-	<string>Korea</string>
-	<key>NSExtension</key>
-	<dict>
-		<key>NSExtensionAttributes</key>
-		<dict>
-			<key>WKAppBundleIdentifier</key>
-			<string>com.bailey.TodayTODO.watchkitapp</string>
-		</dict>
-		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.watchkit</string>
-	</dict>
 </dict>
 </plist>
