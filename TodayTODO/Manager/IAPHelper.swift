@@ -124,7 +124,6 @@ extension IAPHelper: SKPaymentTransactionObserver {
     private func complete(transaction: SKPaymentTransaction) {
         deliverPurchaseNotificationFor(identifier: transaction.payment.productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
-        SystemManager.shared.closeLoading()
     }
     // 복원 성공
     private func restore(transaction: SKPaymentTransaction) {
@@ -133,7 +132,6 @@ extension IAPHelper: SKPaymentTransactionObserver {
         purchasedProductIDList.insert(productIdentifier)
         UserDefaults.shared.setValue(true, forKey: productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
-        SystemManager.shared.closeLoading()
     }
     // 구매 실패
     private func fail(transaction: SKPaymentTransaction) {
@@ -144,26 +142,25 @@ extension IAPHelper: SKPaymentTransactionObserver {
         }
         deliverPurchaseNotificationFor(identifier: nil)
         SKPaymentQueue.default().finishTransaction(transaction)
-        SystemManager.shared.closeLoading()
     }
     // 구매 완료 후 조치
     private func deliverPurchaseNotificationFor(identifier: String?) {
-        guard let identifier = identifier else {
+        if let identifier = identifier {
+            // 구매한 인앱 상품 키에 대한 UserDefaults Bool 값 변경
+            purchasedProductIDList.insert(identifier)
+            UserDefaults.shared.setValue(true, forKey: identifier)
+            // 성공 노티 전송
+            NotificationCenter.default.post(
+                name: .IAPServicePurchaseNotification,
+                object: (true, identifier)
+            )
+        } else {
             // 실패 노티 전송
             NotificationCenter.default.post(
                 name: .IAPServicePurchaseNotification,
                 object: (false, "")
             )
-            return
         }
-        // 구매한 인앱 상품 키에 대한 UserDefaults Bool 값 변경
-        purchasedProductIDList.insert(identifier)
-        UserDefaults.shared.setValue(true, forKey: identifier)
-        // 성공 노티 전송
-        NotificationCenter.default.post(
-            name: .IAPServicePurchaseNotification,
-            object: (true, identifier)
-        )
         SystemManager.shared.closeLoading()
     }
 }
