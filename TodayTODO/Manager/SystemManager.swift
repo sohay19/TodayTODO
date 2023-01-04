@@ -12,7 +12,7 @@ import StoreKit
 class SystemManager {
     static let shared = SystemManager()
     private init() {
-        iAPManager = IAPHelper(productIds: Set<String>([IAPCustomTab, IAPAdMob]))
+        iAPManager = IAPHelper(productIds: Set<String>([IAPCustomTab, IAPAdMob, IAPPremium]))
     }
     //
     private var iAPManager:IAPHelper

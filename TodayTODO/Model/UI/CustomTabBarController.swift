@@ -19,8 +19,6 @@ class CustomTabBarController : UITabBarController {
         self.delegate = self
         self.tabBar.backgroundColor = .clear
         //
-        SystemManager.shared.initIAP()
-        //
         bannerView = GADBannerView(adSize: GADAdSizeBanner)
         bannerView.alpha = 0
         bannerView?.delegate = self
@@ -76,7 +74,8 @@ extension CustomTabBarController {
     //애드몹 초기화
     func initAdMob() {
         let isPurchase = SystemManager.shared.isProductPurchased(IAPAdMob)
-        if !isPurchase {
+        let isPremium = SystemManager.shared.isProductPurchased(IAPPremium)
+        if !(isPurchase || isPremium) {
             guard let bannerView = bannerView else { return }
             bannerView.adUnitID = "ca-app-pub-6152243173470406/9345345318"
             bannerView.rootViewController = self

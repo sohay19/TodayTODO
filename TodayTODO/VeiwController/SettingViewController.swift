@@ -10,15 +10,22 @@ import MessageUI
 
 class SettingViewController : UIViewController {
     @IBOutlet weak var labelInfo: UILabel!
-    @IBOutlet weak var versionView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var bannerView: UIStackView!
+    @IBOutlet weak var adView: UIView!
+    @IBOutlet weak var premiumView: UIView!
     @IBOutlet weak var btnPremium: UIButton!
+    @IBOutlet weak var labelPremium: UILabel!
+    @IBOutlet weak var btnAd: UIButton!
+    @IBOutlet weak var labelAd: UILabel!
+    @IBOutlet weak var line: UIView!
     
     let menuList:[SettingType] = [.Notice, .Custom, .Backup, .Reset, .Help, .FAQ, .Question]
     var isRefresh = false
     //
     let backgroundView = UIImageView(frame: UIScreen.main.bounds)
-
+    let constraintId = "bannerHeight"
+    var bannerConstraint:NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +35,15 @@ class SettingViewController : UIViewController {
         //
         view.insertSubview(backgroundView, at: 0)
         addNoti()
+        //
+        bannerConstraint = bannerView.constraints.first(where: { $0.identifier == constraintId })
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //
-        tableView.reloadData()
-        //
         SystemManager.shared.openLoading()
+        tableView.reloadData()
         //
         initUI()
         loadVersion()
@@ -51,20 +59,43 @@ extension SettingViewController {
         tableView.separatorInsetReference = .fromCellEdges
         tableView.backgroundColor = .clear
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
-        versionView.backgroundColor = .clear
+        bannerView.layer.borderWidth = 1
+        bannerView.layer.borderColor = UIColor.lightGray.cgColor
+        bannerView.backgroundColor = .label
+        adView.backgroundColor = .clear
+        premiumView.backgroundColor = .clear
+        line.backgroundColor = .lightGray
         //
         labelInfo.textColor = .gray
-        labelInfo.font = UIFont(name: N_Font, size: N_FontSize)
+        labelInfo.font = UIFont(name: N_Font, size: N_FontSize - 2.0)
+        labelPremium.text = "₩3,000"
+        labelPremium.textColor = .gray
+        labelPremium.font = UIFont(name: N_Font, size: N_FontSize - 2.0)
+        labelAd.text = "₩2,200"
+        labelAd.textColor = .gray
+        labelAd.font = UIFont(name: N_Font, size: N_FontSize - 2.0)
         //
-        let isPurchaseAdMob = SystemManager.shared.isProductPurchased(IAPAdMob)
-        btnPremium.isHidden = isPurchaseAdMob
-        btnPremium.titleLabel?.font = UIFont(name: LogoFont, size: 20)
-        btnPremium.setTitle("광고제거", for: .normal)
-        btnPremium.setTitleColor(.label, for: .normal)
-        btnPremium.layer.borderWidth = 0.5
-        btnPremium.layer.borderColor = UIColor.gray.cgColor
-        btnPremium.backgroundColor = .lightGray.withAlphaComponent(0.1)
-        btnPremium.layer.cornerRadius = 5
+        btnAd.titleLabel?.font = UIFont(name: LogoFont, size: K_FontSize + 6.0)
+        btnAd.setTitle("광고제거", for: .normal)
+        btnAd.setTitleColor(.systemBackground, for: .normal)
+        btnAd.tintColor = .systemIndigo
+        btnAd.backgroundColor = .clear
+        btnPremium.titleLabel?.font = UIFont(name: LogoFont, size: K_FontSize + 6.0)
+        btnPremium.setTitle("테마 + 광고제거", for: .normal)
+        btnPremium.setTitleColor(.systemBackground, for: .normal)
+        btnPremium.tintColor = .systemIndigo
+        btnPremium.backgroundColor = .clear
+        //
+        let isPurchaseAd = SystemManager.shared.isProductPurchased(IAPAdMob)
+        let isPurchaseCustom = SystemManager.shared.isProductPurchased(IAPCustomTab)
+        let isPremium = SystemManager.shared.isProductPurchased(IAPPremium)
+        if isPremium || isPurchaseCustom && isPurchaseAd {
+            bannerView.isHidden = true
+            bannerConstraint?.constant = 0
+        } else if isPurchaseAd {
+            adView.isHidden = true
+            line.isHidden = true
+        }
     }
     // IAP 노티 구독
     private func addNoti() {
@@ -82,7 +113,7 @@ extension SettingViewController {
             switch result.1 {
             case IAPCustomTab:
                 moveCustomUITab()
-            case IAPAdMob:
+            case IAPAdMob, IAPPremium:
                 PopupManager.shared.openOkAlert(self, title: "알림", msg: "구매가 완료되었습니다\n앱을 종료하고 다시 실행해주세요") { action in
                     UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -102,9 +133,8 @@ extension SettingViewController {
               let version = dictionary["CFBundleShortVersionString"] as? String,
               let build = dictionary["CFBundleVersion"] as? String
         else { return }
-        
         labelInfo.text = "앱 정보  Ver. \(version) (\(build))"
-        
+        //
         SystemManager.shared.closeLoading()
         if isRefresh {
             endAppearanceTransition()
@@ -229,6 +259,9 @@ extension SettingViewController {
         navigationController.pushViewController(noticeVC)
     }
     @IBAction func clickPremium(_ sender: Any) {
+        SystemManager.shared.buyProduct(IAPPremium)
+    }
+    @IBAction func clickAd(_ sender: Any) {
         SystemManager.shared.buyProduct(IAPAdMob)
     }
 }

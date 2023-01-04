@@ -97,6 +97,7 @@ let thinConfig = UIImage.SymbolConfiguration(pointSize: 19, weight: .thin, scale
 //MARK: - InAppPurchase
 let IAPCustomTab = "com.bailey.TodayTODO.InAppPurchase.customui"
 let IAPAdMob = "com.bailey.TodayTODO.InAppPurchase.admob"
+let IAPPremium = "com.bailey.TodayTODO.InAppPurchase.premium"
 
 //MARK: - ETC
 let DefaultCategory = "TODO"

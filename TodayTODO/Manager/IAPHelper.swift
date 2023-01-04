@@ -129,6 +129,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
         guard let productIdentifier = transaction.original?.payment.productIdentifier else { return }
         // 구매한 인앱 상품 키에 대한 UserDefaults Bool 값 변경
         purchasedProductIDList.insert(productIdentifier)
+        print("restore = \(productIdentifier)")
         UserDefaults.shared.setValue(true, forKey: productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
     }
