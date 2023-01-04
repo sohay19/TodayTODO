@@ -48,8 +48,9 @@ extension PopListViewController {
         backgroundView.image = UIImage(named: WoodBackImage)
         backView.insertSubview(backgroundView, at: 0)
         //그림자
-        backView.layer.shadowColor = UIColor.lightGray.withAlphaComponent(0.4).cgColor
+        backView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
         backView.layer.shadowOpacity = 1
+        backView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
         //
         popView.backgroundColor = .clear
         popView.sectionHeaderTopPadding = 0

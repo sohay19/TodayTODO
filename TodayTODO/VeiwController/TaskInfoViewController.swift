@@ -323,15 +323,7 @@ extension TaskInfoViewController {
         //카테고리 추가 버튼
         let addCategory = UIAction(title: "카테고리 추가", attributes: .destructive, handler: { [self] _ in
             btnPullCategory.sendAction(actionList[0])
-            let board = UIStoryboard(name: addCategoryBoard, bundle: nil)
-            guard let addCategoryVC = board.instantiateViewController(withIdentifier: addCategoryBoard) as? AddCategoryViewController else { return }
-            addCategoryVC.reloadCategory = self.loadCategory
-            addCategoryVC.modalTransitionStyle = .coverVertical
-            addCategoryVC.modalPresentationStyle = .overFullScreen
-            guard let navigation = self.navigationController as? CustomNavigationController else {
-                return
-            }
-            navigation.present(addCategoryVC, animated: true)
+            SystemManager.shared.openAddCategory(loadCategory: loadCategory)
         })
         actionList.append(addCategory)
         btnPullCategory.menu = UIMenu(title: "카테고리", children: actionList)

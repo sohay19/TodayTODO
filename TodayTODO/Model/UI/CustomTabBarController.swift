@@ -19,6 +19,8 @@ class CustomTabBarController : UITabBarController {
         self.delegate = self
         self.tabBar.backgroundColor = .clear
         //
+        SystemManager.shared.initIAP()
+        //
         bannerView = GADBannerView(adSize: GADAdSizeBanner)
         bannerView.alpha = 0
         bannerView?.delegate = self

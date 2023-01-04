@@ -27,12 +27,12 @@ class Help: UIView {
                                        pushBoard:[.PushEdit, .PushSwipe]]
     var helpList:[HelpType] = []
     var infoList:[HelpType:String] = [.MainLeftSwipe:"TODO를 오른쪽으로 스와이프 하면\n완료 표기를 할 수 있습니다",
-                                      .MainRightSwipe:"TODO를 왼쪽으로 스와이프 하면\n수정 및 삭제 할 수 있습니다",
+                                      .MainRightSwipe:"TODO를 왼쪽으로 스와이프 하면\n삭제 할 수 있습니다",
                                       .MainSort:"정렬 기준을 선택하여\n정렬 할 수 있습니다",
                                       .MainToday:"표적 모양 아이콘을 통해\n오늘의 날짜로 바로 이동할 수 있습니다",
-                                      .CategoryMove:"가위 모양 아이콘을 누른 후\n카테고리를 움직여 우선순위를 수정할 수 있습니다",
+                                      .CategoryMove:"Edit를 누른 후 카테고리를 움직여\n우선순위를 수정할 수 있습니다",
                                       .CategorySwipe:"카테고리를 왼쪽으로 스와이프하면\n수정 및 삭제 할 수 있습니다",
-                                      .PushEdit:"가위 모양 아이콘을 누르면\n편집 모드가 되어 하단의 버튼을 사용할 수 있습니다",
+                                      .PushEdit:"Edit를 누르면 편집 모드가 되어\n하단의 버튼을 사용할 수 있습니다",
                                       .PushSwipe:"알람을 왼쪽으로 스와이프하면\n[알림만] 삭제 할 수 있습니다"]
     var btnList:[UIButton] = []
     var gifImgView:GIFImageView?
@@ -72,12 +72,12 @@ class Help: UIView {
     private func initUI() {
         // 배경 설정
         let backgroundView = UIImageView(frame: popView.bounds)
-        backgroundView.image = UIImage(named: BlackBackImage)
-        backgroundView.layer.cornerRadius = 10
-        backgroundView.clipsToBounds = true
+        backgroundView.image = UIImage(named: WoodBackImage)
         popView.insertSubview(backgroundView, at: 0)
-        popView.layer.cornerRadius = 10
-        popView.clipsToBounds = true
+        //그림자
+        popView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
+        popView.layer.shadowOpacity = 1
+        popView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
         //
         textInfo.isEditable = false
         textInfo.isSelectable = false
@@ -85,9 +85,8 @@ class Help: UIView {
         textInfo.textAlignment = .center
         //
         btnClose.setImage(UIImage(systemName: "xmark")?.withConfiguration(mediumConfig), for: .normal)
-        btnClose.tintColor = .lightGray
-        btnRepeat.tintColor = .lightGray
-        btnRepeat.setTitleColor(.lightGray, for: .normal)
+        btnClose.setTitleColor(.black, for: .normal)
+        btnRepeat.setTitleColor(.black, for: .normal)
         btnRepeat.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
         //
         btnList.append(page1)
@@ -119,7 +118,7 @@ class Help: UIView {
         gifImgView.animate(withGIFNamed: title)
         let text = infoList[helpList[pageIndex]] ?? ""
         let font = UIFont(name: K_Font_R, size: K_FontSize) ?? UIFont()
-        textInfo.setLineSpacing(text, font: font, color: .systemBackground, align: .center)
+        textInfo.setLineSpacing(text, font: font, color: .black, align: .center)
     }
     
     private func initGesture() {

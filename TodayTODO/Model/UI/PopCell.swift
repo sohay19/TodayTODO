@@ -23,10 +23,12 @@ class PopCell: UITableViewCell {
     
     private func initUI() {
         // 배경
-        self.backgroundColor = .white.withAlphaComponent(0.5)
+        self.backgroundColor = .white.withAlphaComponent(0.1)
+        contentView.layer.borderWidth = 0.5
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
         // 선택 시 배경
         let backgroundView = UIView(frame: self.bounds)
-        backgroundView.backgroundColor = .gray
+        backgroundView.backgroundColor = .gray.withAlphaComponent(0.1)
         self.selectedBackgroundView = backgroundView
         //
         labelTitle.textColor = .black

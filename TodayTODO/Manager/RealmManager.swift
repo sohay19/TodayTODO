@@ -73,7 +73,7 @@ extension RealmManager {
 #endif
             if !haveDefault() {
                 let newList:[Float] = Utils.FloatFromRGB(rgbValue: 0x000000, alpha: 1)
-                let newCategory = CategoryData(DefaultCategory, newList)
+                let newCategory = CategoryData(0, DefaultCategory, newList)
                 addCategory(newCategory)
             } else {
                 DataManager.shared.reloadCategoryOrder()

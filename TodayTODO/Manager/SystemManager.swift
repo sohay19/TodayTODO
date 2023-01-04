@@ -13,15 +13,6 @@ class SystemManager {
     static let shared = SystemManager()
     private init() {
         iAPManager = IAPHelper(productIds: Set<String>([IAPCustomTab, IAPAdMob]))
-        iAPManager.loadsRequest({ success, products in
-            if success {
-                guard let products = products else { return }
-                self.productList = products
-                self.iAPManager.restorePurchases()
-            } else {
-                print("iAPManager.loadsRequest Error")
-            }
-        })
     }
     //
     private var iAPManager:IAPHelper
@@ -103,6 +94,18 @@ extension SystemManager {
 
 //MARK: - IAP
 extension SystemManager {
+    // set IAP
+    func initIAP() {
+        iAPManager.loadsRequest({ [self] success, products in
+            if success {
+                guard let products = products else { return }
+                productList = products
+                iAPManager.restorePurchases()
+            } else {
+                print("iAPManager.loadsRequest Error")
+            }
+        })
+    }
     // 구매 확인
     func isProductPurchased(_ productID: String) -> Bool {
         return iAPManager.isProductPurchased(productID)
@@ -119,7 +122,7 @@ extension SystemManager {
     }
 }
 
-//MARK: - Help
+//MARK: - Help & TabBar
 extension SystemManager {
     func openHelp(_ vc:UIViewController, _ board:String) {
         var isHelp = false
@@ -149,6 +152,10 @@ extension SystemManager {
             tabVC.controllTabItem(false)
         }
     }
+    func controllTabBar(_ vc:UIViewController, isOn:Bool) {
+        guard let tabVC = vc.tabBarController as? CustomTabBarController else { return }
+        tabVC.controllTabItem(isOn)
+    }
 }
 
 //MARK: - Menu
@@ -174,6 +181,20 @@ extension SystemManager {
             return
         }
         navigation.pushViewController(taskInfoVC)
+    }
+    //
+    func openAddCategory(loadCategory:(()->Void)?) {
+        let board = UIStoryboard(name: addCategoryBoard, bundle: nil)
+        guard let addCategoryVC = board.instantiateViewController(withIdentifier: addCategoryBoard) as? AddCategoryViewController else { return }
+        if loadCategory != nil {
+            addCategoryVC.reloadCategory = loadCategory
+        }
+        addCategoryVC.modalTransitionStyle = .coverVertical
+        addCategoryVC.modalPresentationStyle = .overFullScreen
+        guard let navigation = findTopVC()?.navigationController as? CustomNavigationController else {
+            return
+        }
+        navigation.present(addCategoryVC, animated: true)
     }
 }
 

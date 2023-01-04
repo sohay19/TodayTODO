@@ -46,36 +46,33 @@ extension AddCategoryViewController {
     private func initUI() {
         // 배경 설정
         let backgroundView = UIImageView(frame: popView.bounds)
-        backgroundView.image = UIImage(named: BlackBackImage)
-        backgroundView.clipsToBounds = true
-        backgroundView.layer.cornerRadius = 9
+        backgroundView.image = UIImage(named: WoodBackImage)
         popView.insertSubview(backgroundView, at: 0)
-        popView.layer.cornerRadius = 9
         //그림자
         popView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
-        popView.layer.shadowRadius = 9
         popView.layer.shadowOpacity = 1
+        popView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
         //
         backView.backgroundColor = .clear
-        line1.backgroundColor = .darkGray
-        line2.backgroundColor = .darkGray
+        line1.backgroundColor = .lightGray
+        line2.backgroundColor = .lightGray
         //
-        labelTitle.textColor = .systemBackground
+        labelTitle.textColor = .black
         labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 2.0)
-        inputTitle.textColor = .systemBackground
+        inputTitle.textColor = .black
         inputTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
-        inputTitle.backgroundColor = .systemBackground.withAlphaComponent(0.1)
+        inputTitle.backgroundColor = .white.withAlphaComponent(0.1)
         inputTitle.attributedPlaceholder = NSAttributedString(string: "카테고리 명을 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
         inputTitle.textContentType = .nickname
         inputTitle.keyboardType = .default
         inputTitle.clearButtonMode = .whileEditing
         //
-        textCounter.textColor = .systemBackground
+        textCounter.textColor = .gray
         textCounter.font = UIFont(name: N_Font, size: N_FontSize - 5.0)
         //
-        btnOK.tintColor = .systemBackground
+        btnOK.setTitleColor(.black, for: .normal)
         btnOK.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
-        btnCancel.tintColor = .systemBackground
+        btnCancel.setTitleColor(.black, for: .normal)
         btnCancel.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnBack.tintColor = .clear
         btnBack.backgroundColor = .clear
@@ -137,10 +134,7 @@ extension AddCategoryViewController {
             }
             updateCategory(colorList)
         }
-        guard let reload = self.reloadCategory else {
-            return
-        }
-        reload()
+        reloadCategory?()
         dismiss(animated: true)
     }
     private func addCategory(_ colorList:[CGFloat]) {

@@ -11,6 +11,7 @@ class CategoryViewController: UIViewController {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var segmentView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var btnEdit: UIButton!
     
     
@@ -76,6 +77,8 @@ extension CategoryViewController {
         tableView.separatorColor = .clear
         tableView.showsVerticalScrollIndicator = false
         //
+        btnAdd.setTitleColor(.label, for: .normal)
+        btnAdd.titleLabel?.font = UIFont(name: E_Font_B, size: E_FontSize - 3.0)
         btnEdit.setTitleColor(.label, for: .normal)
         btnEdit.titleLabel?.font = UIFont(name: E_Font_B, size: E_FontSize - 3.0)
     }
@@ -129,7 +132,7 @@ extension CategoryViewController {
         }
         tableView.setEditing(isEdit, animated: true)
         btnEdit.setTitle(isEdit ? "Done" : "Edit", for: .normal)
-//        btnEdit.setImage(UIImage(systemName: isEdit ? "rectangle.portrait.and.arrow.right" : "scissors")?.withConfiguration(mediumConfig), for: .normal)
+        SystemManager.shared.controllTabBar(self, isOn: !isEdit)
     }
     //
     func deleteCategory(_ indexPath:IndexPath) {
@@ -216,6 +219,26 @@ extension CategoryViewController {
 
 //MARK: - Button Event
 extension CategoryViewController {
+    @IBAction func clickAdd(_ sender:Any) {
+        if tableView.isEditing {
+            if originList != categoryList {
+                PopupManager.shared.openYesOrNo(
+                    self,
+                    title: "카테고리 순서 변경", msg: "현재 상태를 저장하시곘습니까?") { [self] _ in
+                        originList = categoryList
+                        DataManager.shared.setCategoryOrder(originList)
+                        changeEditMode(false)
+                    } completeNo: { [self] _ in
+                        categoryList = originList
+                        changeEditMode(false)
+                        tableView.reloadData()
+                    }
+                return
+            }
+        }
+        SystemManager.shared.openAddCategory(loadCategory: nil)
+    }
+    //
     @IBAction func clickEdit(_ sender:Any) {
         if tableView.isEditing {
             if originList != categoryList {

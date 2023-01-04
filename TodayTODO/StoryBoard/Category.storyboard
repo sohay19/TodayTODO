@@ -25,6 +25,21 @@
                                     <constraint firstAttribute="height" constant="60" id="dZU-1H-afs"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azu-L2-bjH" userLabel="BtnAdd">
+                                <rect key="frame" x="9" y="128" width="60" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Kou-89-FJL"/>
+                                    <constraint firstAttribute="height" constant="45" id="fFU-bY-bhO"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickAdd:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0Qa-gb-pAb"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="W0e-Eg-rfi">
                                 <rect key="frame" x="324" y="128" width="60" height="45"/>
                                 <subviews>
@@ -71,7 +86,9 @@
                             <constraint firstItem="CfZ-nf-Va9" firstAttribute="top" secondItem="W0e-Eg-rfi" secondAttribute="bottom" constant="15" id="P1w-wK-qGh"/>
                             <constraint firstItem="09Z-1z-nrA" firstAttribute="top" secondItem="VmR-ka-L5l" secondAttribute="top" id="Rfz-wQ-Pop"/>
                             <constraint firstItem="VmR-ka-L5l" firstAttribute="trailing" secondItem="W0e-Eg-rfi" secondAttribute="trailing" constant="9" id="Zdx-eG-umd"/>
+                            <constraint firstItem="Azu-L2-bjH" firstAttribute="leading" secondItem="VmR-ka-L5l" secondAttribute="leading" constant="9" id="cLg-Vo-Bh4"/>
                             <constraint firstItem="CfZ-nf-Va9" firstAttribute="leading" secondItem="VmR-ka-L5l" secondAttribute="leading" constant="30" id="g25-DS-tR5"/>
+                            <constraint firstItem="Azu-L2-bjH" firstAttribute="top" secondItem="09Z-1z-nrA" secondAttribute="bottom" constant="9" id="hzz-hG-UFg"/>
                             <constraint firstItem="W0e-Eg-rfi" firstAttribute="top" secondItem="09Z-1z-nrA" secondAttribute="bottom" constant="9" id="lOr-8E-g2Q"/>
                             <constraint firstItem="09Z-1z-nrA" firstAttribute="leading" secondItem="VmR-ka-L5l" secondAttribute="leading" id="mf3-8d-yIW"/>
                             <constraint firstItem="VmR-ka-L5l" firstAttribute="trailing" secondItem="CfZ-nf-Va9" secondAttribute="trailing" constant="30" id="v4N-4C-ezn"/>
@@ -79,6 +96,7 @@
                     </view>
                     <connections>
                         <outlet property="backView" destination="CfZ-nf-Va9" id="F4y-g6-DEx"/>
+                        <outlet property="btnAdd" destination="Azu-L2-bjH" id="DDG-cZ-5v5"/>
                         <outlet property="btnEdit" destination="yaP-fH-oDY" id="mq9-Bt-XLl"/>
                         <outlet property="segmentView" destination="09Z-1z-nrA" id="O8O-4M-xRK"/>
                         <outlet property="tableView" destination="Q8S-7o-Chk" id="IBG-0t-FXa"/>

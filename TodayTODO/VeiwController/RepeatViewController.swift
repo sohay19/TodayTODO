@@ -66,8 +66,9 @@ extension RepeatViewController {
         backgroundView.image = UIImage(named: WoodBackImage)
         popView.insertSubview(backgroundView, at: 0)
         //그림자
-        popView.layer.shadowColor = UIColor.gray.withAlphaComponent(0.4).cgColor
+        popView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
         popView.layer.shadowOpacity = 1
+        popView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
         //
         line1.backgroundColor = .lightGray
         line2.backgroundColor = .lightGray
@@ -79,10 +80,12 @@ extension RepeatViewController {
         labelWeekDay.textColor = .black
         labelWeekDay.font = UIFont(name: K_Font_B, size: K_FontSize)
         //
-        iconMenu.image = UIImage(systemName: "chevron.up.chevron.down")?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        btnPullRepeatType.setTitleColor(.white, for: .normal)
-        btnPullRepeatType.backgroundColor = .black
+        iconMenu.image = UIImage(systemName: "chevron.up.chevron.down")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        btnPullRepeatType.setTitleColor(.black, for: .normal)
+        btnPullRepeatType.backgroundColor = .white.withAlphaComponent(0.1)
         btnPullRepeatType.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
+        btnPullRepeatType.layer.borderWidth = 0.5
+        btnPullRepeatType.layer.borderColor = UIColor.lightGray.cgColor
         btnPullRepeatType.layer.cornerRadius = 5
         pickEndDate.overrideUserInterfaceStyle = .light
         switchEndDate.onTintColor = .systemIndigo
@@ -93,6 +96,21 @@ extension RepeatViewController {
         btnCancel.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnBack.tintColor = .clear
         btnBack.backgroundColor = .clear
+        //
+        btnSunday.layer.borderWidth = 0.5
+        btnSunday.layer.borderColor = UIColor.lightGray.cgColor
+        btnMonday.layer.borderWidth = 0.5
+        btnMonday.layer.borderColor = UIColor.lightGray.cgColor
+        btnTuseday.layer.borderWidth = 0.5
+        btnTuseday.layer.borderColor = UIColor.lightGray.cgColor
+        btnWensday.layer.borderWidth = 0.5
+        btnWensday.layer.borderColor = UIColor.lightGray.cgColor
+        btnThursday.layer.borderWidth = 0.5
+        btnThursday.layer.borderColor = UIColor.lightGray.cgColor
+        btnFriday.layer.borderWidth = 0.5
+        btnFriday.layer.borderColor = UIColor.lightGray.cgColor
+        btnSaturday.layer.borderWidth = 0.5
+        btnSaturday.layer.borderColor = UIColor.lightGray.cgColor
     }
     //지정된 날짜의 weekOfMonth 및 weekDay확인
     private func calcDate() {
@@ -185,26 +203,19 @@ extension RepeatViewController {
     }
     private func contorllWeekDay(_ isOn:Bool) {
         btnSunday.isEnabled = isOn
-        btnSunday.backgroundColor = isOn ? .black : .lightGray
-        btnSunday.setTitleColor(.white, for: .normal)
+        btnSunday.backgroundColor = isOn ? .white.withAlphaComponent(0.1) : .gray.withAlphaComponent(0.1)
         btnMonday.isEnabled = isOn
-        btnMonday.backgroundColor = isOn ? .black : .lightGray
-        btnMonday.setTitleColor(.white, for: .normal)
+        btnMonday.backgroundColor = isOn ? .white.withAlphaComponent(0.1) : .gray.withAlphaComponent(0.1)
         btnTuseday.isEnabled = isOn
-        btnTuseday.backgroundColor = isOn ? .black : .lightGray
-        btnTuseday.setTitleColor(.white, for: .normal)
+        btnTuseday.backgroundColor = isOn ? .white.withAlphaComponent(0.1) : .gray.withAlphaComponent(0.1)
         btnWensday.isEnabled = isOn
-        btnWensday.backgroundColor = isOn ? .black : .lightGray
-        btnWensday.setTitleColor(.white, for: .normal)
+        btnWensday.backgroundColor = isOn ? .white.withAlphaComponent(0.1) : .gray.withAlphaComponent(0.1)
         btnThursday.isEnabled = isOn
-        btnThursday.backgroundColor = isOn ? .black : .lightGray
-        btnThursday.setTitleColor(.white, for: .normal)
+        btnThursday.backgroundColor = isOn ? .white.withAlphaComponent(0.1) : .gray.withAlphaComponent(0.1)
         btnFriday.isEnabled = isOn
-        btnFriday.backgroundColor = isOn ? .black : .lightGray
-        btnFriday.setTitleColor(.white, for: .normal)
+        btnFriday.backgroundColor = isOn ? .white.withAlphaComponent(0.1) : .gray.withAlphaComponent(0.1)
         btnSaturday.isEnabled = isOn
-        btnSaturday.backgroundColor = isOn ? .black : .lightGray
-        btnSaturday.setTitleColor(.white, for: .normal)
+        btnSaturday.backgroundColor = isOn ? .white.withAlphaComponent(0.1) : .gray.withAlphaComponent(0.1)
     }
 }
 

@@ -56,11 +56,25 @@ extension CategoryViewController : UITableViewDelegate, UITableViewDataSource {
     //MARK: - Edit
     //Row별 EditMode-
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
+        return .delete
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if let openIndex = openIndex {
+            if openIndex.section == indexPath.section && indexPath.row == 1 {
+                return false
+            }
+        }
         return true
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            deleteCategory(indexPath)
+        default:
+            break
+        }
+    }
+
     //MARK: - Swipe
     //오른쪽 스와이프
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
