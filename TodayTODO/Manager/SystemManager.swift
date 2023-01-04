@@ -17,6 +17,7 @@ class SystemManager {
             if success {
                 guard let products = products else { return }
                 self.productList = products
+                self.iAPManager.restorePurchases()
             } else {
                 print("iAPManager.loadsRequest Error")
             }
@@ -114,10 +115,6 @@ extension SystemManager {
                 break
             }
         }
-    }
-    // 구매이력 복원
-    func restorePurchases(){
-        return iAPManager.restorePurchases()
     }
 }
 

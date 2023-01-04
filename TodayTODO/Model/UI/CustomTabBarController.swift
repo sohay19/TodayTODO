@@ -74,6 +74,7 @@ extension CustomTabBarController {
     //애드몹 초기화
     func initAdMob() {
         let isPurchase = SystemManager.shared.isProductPurchased(IAPAdMob)
+        print(isPurchase)
         if !isPurchase {
             guard let bannerView = bannerView else { return }
             bannerView.adUnitID = "ca-app-pub-6152243173470406/9345345318"

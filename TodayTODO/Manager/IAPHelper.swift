@@ -79,6 +79,11 @@ extension IAPHelper {
     }
     // 구입 이력 복원
     func restorePurchases() {
+        print("==== restorePurchases ====")
+        for productID in productIdentifiers {
+            print("productID = \(productID)")
+            UserDefaults.shared.set(false, forKey: productID)
+        }
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
 }
@@ -100,20 +105,18 @@ extension IAPHelper {
 extension IAPHelper: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
-            switch (transaction.transactionState) {
+            let state = transaction.transactionState
+            switch state {
             case .purchased:
                 complete(transaction: transaction)
-                break
             case .failed:
                 fail(transaction: transaction)
-                break
             case .restored:
                 restore(transaction: transaction)
-                break
             case .deferred, .purchasing:
-                break
-            @unknown default:
-                fatalError()
+                SystemManager.shared.closeLoading()
+            default:
+                SystemManager.shared.closeLoading()
             }
         }
     }
@@ -121,6 +124,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
     private func complete(transaction: SKPaymentTransaction) {
         deliverPurchaseNotificationFor(identifier: transaction.payment.productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
+        SystemManager.shared.closeLoading()
     }
     // 복원 성공
     private func restore(transaction: SKPaymentTransaction) {
@@ -129,6 +133,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
         purchasedProductIDList.insert(productIdentifier)
         UserDefaults.shared.setValue(true, forKey: productIdentifier)
         SKPaymentQueue.default().finishTransaction(transaction)
+        SystemManager.shared.closeLoading()
     }
     // 구매 실패
     private func fail(transaction: SKPaymentTransaction) {
@@ -139,6 +144,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
         }
         deliverPurchaseNotificationFor(identifier: nil)
         SKPaymentQueue.default().finishTransaction(transaction)
+        SystemManager.shared.closeLoading()
     }
     // 구매 완료 후 조치
     private func deliverPurchaseNotificationFor(identifier: String?) {

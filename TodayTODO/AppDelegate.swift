@@ -46,8 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         WatchConnectManager.shared.initSession()
         //애드몹 초기화
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-        // 구매이력 복원
-        SystemManager.shared.restorePurchases()
         // 폰트 세팅
         let font = DataManager.shared.getFont()
         DataManager.shared.setFont(font)
