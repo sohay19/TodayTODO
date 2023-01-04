@@ -149,7 +149,6 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             } else {
                 PopupManager.shared.openYesOrNo(self, title: "알림",
                                                 msg: "구매가 필요한 기능입니다\n결제창으로 넘어가시겠습니까?\n(바로 결제되지 않습니다)") { action in
-                    SystemManager.shared.openLoading()
                     SystemManager.shared.buyProduct(IAPCustomTab)
                 }
             }
@@ -230,7 +229,6 @@ extension SettingViewController {
         navigationController.pushViewController(noticeVC)
     }
     @IBAction func clickPremium(_ sender: Any) {
-        SystemManager.shared.openLoading()
         SystemManager.shared.buyProduct(IAPAdMob)
     }
 }

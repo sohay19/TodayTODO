@@ -79,9 +79,7 @@ extension IAPHelper {
     }
     // 구입 이력 복원
     func restorePurchases() {
-        print("==== restorePurchases ====")
         for productID in productIdentifiers {
-            print("productID = \(productID)")
             UserDefaults.shared.set(false, forKey: productID)
         }
         SKPaymentQueue.default().restoreCompletedTransactions()

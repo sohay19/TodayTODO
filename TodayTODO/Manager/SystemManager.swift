@@ -109,6 +109,7 @@ extension SystemManager {
     }
     // 구매
     func buyProduct(_ productID: String) {
+        openLoading()
         for product in productList {
             if product.productIdentifier == productID {
                 iAPManager.buyProduct(product)
