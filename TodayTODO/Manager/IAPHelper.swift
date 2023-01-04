@@ -90,6 +90,7 @@ extension IAPHelper {
 extension IAPHelper {
     // 상품 구입
     func buyProduct(_ product: SKProduct) {
+        SystemManager.shared.openLoading()
         let payment = SKPayment(product: product)
         SKPaymentQueue.default().add(payment)
     }
@@ -112,7 +113,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
             case .restored:
                 restore(transaction: transaction)
             case .deferred, .purchasing:
-                SystemManager.shared.closeLoading()
+                break
             default:
                 SystemManager.shared.closeLoading()
             }

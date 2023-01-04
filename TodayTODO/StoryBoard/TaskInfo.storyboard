@@ -450,7 +450,7 @@
                         <outlet property="btnBack" destination="KJ0-2e-3S3" id="9RV-8k-wma"/>
                         <outlet property="btnEndDate" destination="Ab4-Z7-0mY" id="f3W-ak-oyW"/>
                         <outlet property="btnModify" destination="UuZ-zK-Qti" id="ZfY-L7-Y0h"/>
-                        <outlet property="btnPullCategory" destination="glH-XQ-WBy" id="dQ4-0C-1Nh"/>
+                        <outlet property="btnPullCategory" destination="glH-XQ-WBy" id="3n4-LC-sFO"/>
                         <outlet property="btnRepeat" destination="efd-sV-XJM" id="sbW-BX-N0C"/>
                         <outlet property="btnWrite" destination="XWO-Op-rXh" id="QYb-14-Kts"/>
                         <outlet property="inputTitle" destination="UsW-rm-eIp" id="28s-lP-5rg"/>
@@ -486,11 +486,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.backward" catalog="system" width="32" height="32"/>
-        <image name="chevron.up.chevron.down" catalog="system" width="32" height="32"/>
-        <image name="eraser" catalog="system" width="32" height="32"/>
-        <image name="square.and.pencil" catalog="system" width="32" height="32"/>
-        <image name="square.fill" catalog="system" width="32" height="32"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="chevron.up.chevron.down" catalog="system" width="128" height="128"/>
+        <image name="eraser" catalog="system" width="128" height="119"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="113"/>
+        <image name="square.fill" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -601,15 +601,15 @@ extension RealmManager {
             return
         }
         do {
+            try realm.write {
+                realm.add(data)
+            }
             var array = DataManager.shared.getCategoryOrder()
             if let _ = array.first(where: {$0 == data.title}) {
                 return
             }
             array.append(data.title)
             DataManager.shared.setCategoryOrder(array)
-            try realm.write {
-                realm.add(data)
-            }
         } catch {
             print("Realm add Error")
         }
