@@ -55,7 +55,7 @@ class PushListViewController : UIViewController {
         super.viewWillAppear(animated)
         //
         SystemManager.shared.openLoading()
-        SystemManager.shared.openHelp(self, pushBoard)
+        SystemManager.shared.openHelp(self, PushBoard)
         //
         initUI()
         loadPushData()

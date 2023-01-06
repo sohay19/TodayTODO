@@ -42,7 +42,7 @@ class CategoryViewController: UIViewController {
         super.viewWillAppear(animated)
         //
         SystemManager.shared.openLoading()
-        SystemManager.shared.openHelp(self, categoryBoard)
+        SystemManager.shared.openHelp(self, CategoryBoard)
         //
         initUI()
         loadData()
@@ -203,8 +203,8 @@ extension CategoryViewController {
     func modifyCategory(_ indexPath:IndexPath) {
         let category = categoryList[indexPath.section]
         //
-        let board = UIStoryboard(name: addCategoryBoard, bundle: nil)
-        guard let addCategoryVC = board.instantiateViewController(withIdentifier: addCategoryBoard) as? AddCategoryViewController else { return }
+        let board = UIStoryboard(name: AddCategoryBoard, bundle: nil)
+        guard let addCategoryVC = board.instantiateViewController(withIdentifier: AddCategoryBoard) as? AddCategoryViewController else { return }
         addCategoryVC.categoryInfo = category
         addCategoryVC.reloadCategory = refresh
         addCategoryVC.modalTransitionStyle = .coverVertical

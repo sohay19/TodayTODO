@@ -172,6 +172,8 @@
 		CF9D38F6294379DB00F80EA2 /* Help.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9D38F5294379DB00F80EA2 /* Help.xib */; };
 		CF9D39012947370300F80EA2 /* CategoryTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D38FF2947370300F80EA2 /* CategoryTaskCell.swift */; };
 		CF9D39022947370300F80EA2 /* CategoryTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9D39002947370300F80EA2 /* CategoryTaskCell.xib */; };
+		CF9FF1242967E9A7001325EA /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF1232967E9A7001325EA /* MyPage.storyboard */; };
+		CF9FF1262967EB1F001325EA /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9FF1252967EB1F001325EA /* MyPageViewController.swift */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
 		CFB6EE0128F1793B00E93585 /* TodayTODOWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */; };
@@ -431,6 +433,8 @@
 		CF9D38F5294379DB00F80EA2 /* Help.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Help.xib; sourceTree = "<group>"; };
 		CF9D38FF2947370300F80EA2 /* CategoryTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTaskCell.swift; sourceTree = "<group>"; };
 		CF9D39002947370300F80EA2 /* CategoryTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTaskCell.xib; sourceTree = "<group>"; };
+		CF9FF1232967E9A7001325EA /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
+		CF9FF1252967EB1F001325EA /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* TodayTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTODOWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0328F1793C00E93585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -775,6 +779,7 @@
 				CF7909242935ED5B0027D25D /* NoticeViewController.swift */,
 				CF7909262935EF7E0027D25D /* FAQViewController.swift */,
 				CF579553295D6BD700687863 /* CustomUIViewController.swift */,
+				CF9FF1252967EB1F001325EA /* MyPageViewController.swift */,
 			);
 			path = VeiwController;
 			sourceTree = "<group>";
@@ -865,6 +870,7 @@
 				CF7909222935ED520027D25D /* Notice.storyboard */,
 				CF7909282935EF870027D25D /* FAQ.storyboard */,
 				CF579551295D6BBB00687863 /* CustomUI.storyboard */,
+				CF9FF1232967E9A7001325EA /* MyPage.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -1143,6 +1149,7 @@
 				CF5350C1291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf in Resources */,
 				CF790913292F65510027D25D /* CategoryCell.xib in Resources */,
 				CF57959A2962BFC000687863 /* PaperBackground.jpg in Resources */,
+				CF9FF1242967E9A7001325EA /* MyPage.storyboard in Resources */,
 				CF5350D72921F3F300AFDC14 /* underline_Pink.png in Resources */,
 				CF2BAF0F2925DAFE00EB49F4 /* spring_black.png in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
@@ -1469,6 +1476,7 @@
 				CF5350D1291E9CD600AFDC14 /* Loading.swift in Sources */,
 				CFEB4A4528F14D1C008850DC /* EachTask.swift in Sources */,
 				CFEB4A4428F14D1C008850DC /* RepeatResult.swift in Sources */,
+				CF9FF1262967EB1F001325EA /* MyPageViewController.swift in Sources */,
 				CFEB4A6428F16243008850DC /* RepeatViewController.swift in Sources */,
 				CFEB4A3C28F14CB4008850DC /* Enums.swift in Sources */,
 				CFEB4A3A28F14CA0008850DC /* Utils.swift in Sources */,

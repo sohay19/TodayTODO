@@ -120,6 +120,10 @@ extension SystemManager {
             }
         }
     }
+    // 구매 이력 복원
+    func restorePurchases() {
+        iAPManager.restorePurchases()
+    }
 }
 
 //MARK: - Help & TabBar
@@ -127,18 +131,18 @@ extension SystemManager {
     func openHelp(_ vc:UIViewController, _ board:String) {
         var isHelp = false
         switch board {
-        case mainBoard:
+        case MainBoard:
             isHelp = UserDefaults.shared.bool(forKey: HelpMainKey)
-        case categoryBoard:
+        case CategoryBoard:
             isHelp = UserDefaults.shared.bool(forKey: HelpCategoryKey)
-        case pushBoard:
+        case PushBoard:
             isHelp = UserDefaults.shared.bool(forKey: HelpPushKey)
         default:
             break
         }
         if !isHelp {
             guard let tabVC = vc.tabBarController as? CustomTabBarController else { return }
-            let helpView = Bundle.main.loadNibNamed(helpBoard, owner: vc, options: nil)?.first as? Help
+            let helpView = Bundle.main.loadNibNamed(HelpBoard, owner: vc, options: nil)?.first as? Help
             guard let helpView = helpView else {
                 return
             }
@@ -166,8 +170,8 @@ extension SystemManager {
     }
     //
     func openTaskInfo(_ mode:TaskMode, date:Date?, task:EachTask?, load:(() -> Void)?, modify:((EachTask)->Void)?) {
-        let board = UIStoryboard(name: taskInfoBoard, bundle: nil)
-        guard let taskInfoVC = board.instantiateViewController(withIdentifier: taskInfoBoard) as? TaskInfoViewController else { return }
+        let board = UIStoryboard(name: TaskInfoBoard, bundle: nil)
+        guard let taskInfoVC = board.instantiateViewController(withIdentifier: TaskInfoBoard) as? TaskInfoViewController else { return }
         //
         taskInfoVC.currentMode = mode
         taskInfoVC.currntDate = date == nil ? Date() : date!
@@ -184,8 +188,8 @@ extension SystemManager {
     }
     //
     func openAddCategory(loadCategory:(()->Void)?) {
-        let board = UIStoryboard(name: addCategoryBoard, bundle: nil)
-        guard let addCategoryVC = board.instantiateViewController(withIdentifier: addCategoryBoard) as? AddCategoryViewController else { return }
+        let board = UIStoryboard(name: AddCategoryBoard, bundle: nil)
+        guard let addCategoryVC = board.instantiateViewController(withIdentifier: AddCategoryBoard) as? AddCategoryViewController else { return }
         if loadCategory != nil {
             addCategoryVC.reloadCategory = loadCategory
         }

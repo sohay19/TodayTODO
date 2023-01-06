@@ -22,12 +22,12 @@ class CustomTabBarController : UITabBarController {
         bannerView = GADBannerView(adSize: GADAdSizeBanner)
         bannerView.alpha = 0
         bannerView?.delegate = self
-        // 광고 세팅
-        initAdMob()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // 광고 세팅
+        initAdMob()
         //
         SystemManager.shared.setTheme(self)
         initTabBar()
@@ -37,16 +37,16 @@ class CustomTabBarController : UITabBarController {
 extension CustomTabBarController {
     //초기화
     func initTabBar() {
-        guard let mainTab = self.storyboard!.instantiateViewController(withIdentifier: mainBoard) as? MainViewController else { return }
+        guard let mainTab = self.storyboard!.instantiateViewController(withIdentifier: MainBoard) as? MainViewController else { return }
         
-        let categoryboard = UIStoryboard(name: categoryBoard, bundle: nil)
-        guard let categoryTab = categoryboard.instantiateViewController(withIdentifier: categoryBoard) as? CategoryViewController else { return }
+        let categoryboard = UIStoryboard(name: CategoryBoard, bundle: nil)
+        guard let categoryTab = categoryboard.instantiateViewController(withIdentifier: CategoryBoard) as? CategoryViewController else { return }
         
-        let pushboard = UIStoryboard(name: pushBoard, bundle: nil)
-        guard let pushTab = pushboard.instantiateViewController(withIdentifier: pushBoard) as? PushListViewController else { return }
+        let pushboard = UIStoryboard(name: PushBoard, bundle: nil)
+        guard let pushTab = pushboard.instantiateViewController(withIdentifier: PushBoard) as? PushListViewController else { return }
         
-        let setBoard = UIStoryboard(name: settingBoard, bundle: nil)
-        guard let settingTab = setBoard.instantiateViewController(withIdentifier: settingBoard) as? SettingViewController else { return }
+        let setBoard = UIStoryboard(name: SettingBoard, bundle: nil)
+        guard let settingTab = setBoard.instantiateViewController(withIdentifier: SettingBoard) as? SettingViewController else { return }
         
         self.viewControllers = [mainTab, categoryTab, pushTab, settingTab]
         

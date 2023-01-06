@@ -65,7 +65,7 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         //
         SystemManager.shared.openLoading()
-        SystemManager.shared.openHelp(self, mainBoard)
+        SystemManager.shared.openHelp(self, MainBoard)
         //
         checkVersion()
         //날짜가 넘어갔는지 확인

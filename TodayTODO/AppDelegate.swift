@@ -17,8 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // IAP 세팅
-        SystemManager.shared.initIAP()
         //Firabase 설정
         FirebaseApp.configure()
         //메인 로딩을 위해 Realm 세팅

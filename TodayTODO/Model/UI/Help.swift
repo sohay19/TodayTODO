@@ -22,9 +22,9 @@ class Help: UIView {
     @IBOutlet weak var popView: UIView!
     
     var controllTabBar:(()->Void)?
-    let helpDic:[String:[HelpType]] = [mainBoard:[.MainLeftSwipe, .MainRightSwipe, .MainToday],
-                                   categoryBoard:[.CategoryMove, .CategorySwipe],
-                                       pushBoard:[.PushEdit, .PushSwipe]]
+    let helpDic:[String:[HelpType]] = [MainBoard:[.MainLeftSwipe, .MainRightSwipe, .MainToday],
+                                   CategoryBoard:[.CategoryMove, .CategorySwipe],
+                                       PushBoard:[.PushEdit, .PushSwipe]]
     var helpList:[HelpType] = []
     var infoList:[HelpType:String] = [.MainLeftSwipe:"TODO를 오른쪽으로 스와이프 하면\n완료 표기를 할 수 있습니다",
                                       .MainRightSwipe:"TODO를 왼쪽으로 스와이프 하면\n삭제 할 수 있습니다",
@@ -174,11 +174,11 @@ class Help: UIView {
         btnRepeat.isSelected = !btnRepeat.isSelected
         var boardKey = ""
         switch boardName {
-        case mainBoard:
+        case MainBoard:
             boardKey = HelpMainKey
-        case categoryBoard:
+        case CategoryBoard:
             boardKey = HelpCategoryKey
-        case pushBoard:
+        case PushBoard:
             boardKey = HelpPushKey
         default:
             break

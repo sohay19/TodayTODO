@@ -25,8 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         //root = tabBoard
-        let rootBoard = UIStoryboard(name: mainBoard, bundle: nil)
-        guard let mainVC = rootBoard.instantiateViewController(withIdentifier: tabBoard) as? CustomTabBarController else { return }
+        let rootBoard = UIStoryboard(name: MainBoard, bundle: nil)
+        guard let mainVC = rootBoard.instantiateViewController(withIdentifier: TabBoard) as? CustomTabBarController else { return }
         let navigationController = CustomNavigationController(rootViewController: mainVC)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
@@ -57,6 +57,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
         
+        // IAP 세팅
+        SystemManager.shared.initIAP()
         // 위젯 새로고침
         WidgetCenter.shared.reloadAllTimelines()
         //업데이트 용

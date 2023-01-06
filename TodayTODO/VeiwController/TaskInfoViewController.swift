@@ -677,8 +677,8 @@ extension TaskInfoViewController {
         btnRepeat.isSelected = !btnRepeat.isSelected
         clickBtnRepeat(btnRepeat.isSelected)
         if btnRepeat.isSelected {
-            let board = UIStoryboard(name: repeatBoard, bundle: nil)
-            guard let repeatVC = board.instantiateViewController(withIdentifier: repeatBoard) as? RepeatViewController else {
+            let board = UIStoryboard(name: RepeatBoard, bundle: nil)
+            guard let repeatVC = board.instantiateViewController(withIdentifier: RepeatBoard) as? RepeatViewController else {
                 return
             }
             repeatVC.pickDate = pickTaskDate.date

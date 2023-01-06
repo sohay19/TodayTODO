@@ -116,22 +116,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0No-Kg-ZiI">
-                                                    <rect key="frame" x="198" y="5.3333333333333321" width="165" height="33"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="0No-Kg-ZiI" secondAttribute="height" multiplier="5:1" id="1bN-VS-Yqz"/>
-                                                        <constraint firstAttribute="height" constant="33" id="e3g-ON-nHo"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="rb7-FH-WV8" firstAttribute="centerY" secondItem="hDW-yG-ADl" secondAttribute="centerY" id="EKa-X5-jJ9"/>
-                                                <constraint firstAttribute="trailing" secondItem="0No-Kg-ZiI" secondAttribute="trailing" constant="30" id="k6P-OV-Qbm"/>
                                                 <constraint firstItem="rb7-FH-WV8" firstAttribute="leading" secondItem="hDW-yG-ADl" secondAttribute="trailing" constant="9" id="ldd-TC-AjA"/>
-                                                <constraint firstItem="0No-Kg-ZiI" firstAttribute="centerY" secondItem="Yee-k4-ctn" secondAttribute="centerY" id="mEQ-7y-9NK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
@@ -140,14 +128,13 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="labelImage" destination="hDW-yG-ADl" id="i63-PJ-fbJ"/>
-                                            <outlet property="labelPurchase" destination="0No-Kg-ZiI" id="oqe-2m-71J"/>
                                             <outlet property="labelTitle" destination="rb7-FH-WV8" id="Gbz-Mv-Laj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ver. 1.0.1 (4)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xm3-pt-874">
-                                <rect key="frame" x="282.33333333333331" y="779.66666666666663" width="92.666666666666686" height="20.333333333333371"/>
+                                <rect key="frame" x="282.33333333333331" y="767.66666666666663" width="92.666666666666686" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -161,7 +148,7 @@
                             <constraint firstItem="CLW-kY-QkW" firstAttribute="top" secondItem="iU2-lG-BLE" secondAttribute="bottom" constant="9" id="JZX-PV-7nU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="iU2-lG-BLE" secondAttribute="trailing" id="Qdi-b2-1rL"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CLW-kY-QkW" secondAttribute="trailing" id="RJN-ZM-qz4"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Xm3-pt-874" secondAttribute="bottom" constant="18" id="VmH-mm-KE2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Xm3-pt-874" secondAttribute="bottom" constant="30" id="VmH-mm-KE2"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Xm3-pt-874" secondAttribute="trailing" constant="18" id="aMn-1a-uXi"/>
                             <constraint firstItem="iU2-lG-BLE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="vfN-FL-5gj"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="leading" secondItem="iU2-lG-BLE" secondAttribute="leading" id="yCe-kQ-1E1"/>
