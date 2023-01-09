@@ -13,11 +13,13 @@ class SystemManager {
     static let shared = SystemManager()
     private init() {
         iAPManager = IAPHelper(productIds: Set<String>([IAPCustomTab, IAPAdMob, IAPPremium]))
+        addNoti()
     }
     //
     private var iAPManager:IAPHelper
     private var productList:[SKProduct] = []
     private var loadingView:Loading?
+    private var topViewController:UIViewController?
     //
     private var isLoading = false
 }
@@ -126,9 +128,12 @@ extension SystemManager {
     }
 }
 
-//MARK: - Help & TabBar
+//MARK: - Help & Promotion
 extension SystemManager {
     func openHelp(_ vc:UIViewController, _ board:String) {
+        
+            DataManager.shared.setPromotion(false)
+        
         var isHelp = false
         switch board {
         case TODOBoard:
@@ -140,20 +145,54 @@ extension SystemManager {
         default:
             break
         }
+        topViewController = vc
         guard let tabVC = vc.tabBarController as? CustomTabBarController else { return }
         if !isHelp {
             let helpView = Bundle.main.loadNibNamed(HelpBoard, owner: vc, options: nil)?.first as? Help
-            guard let helpView = helpView else {
-                return
-            }
+            guard let helpView = helpView else { return }
             helpView.controllTabBar = tabVC.controllTabItem
+            if board == TODOBoard {
+                helpView.openPromotion = openPromotion
+            }
             helpView.frame = vc.view.frame
             vc.view.addSubview(helpView)
             helpView.setView(board)
+        } else {
+            if board == TODOBoard {
+                openPromotion()
+            }
         }
         DispatchQueue.main.async {
             tabVC.controllTabItem(isHelp)
         }
+    }
+    func openPromotion() {
+        guard let topViewController = topViewController else { return }
+        guard let tabVC = topViewController.tabBarController as? CustomTabBarController else { return }
+        let isPromotion = DataManager.shared.getPromotion()
+        if !isPromotion {
+            let promotionView = Bundle.main.loadNibNamed(PromotionBoard, owner: topViewController, options: nil)?.first as? Promotion
+            guard let promotionView = promotionView else { return }
+            promotionView.initUI()
+            promotionView.controllTabBar = tabVC.controllTabItem
+            promotionView.frame = topViewController.view.frame
+            topViewController.view.addSubview(promotionView)
+        }
+        DispatchQueue.main.async {
+            tabVC.controllTabItem(isPromotion)
+        }
+    }
+    //노티 구독
+    private func addNoti() {
+        NotificationCenter.default.addObserver(
+          self,
+          selector: #selector(handleNextDayNoti(_:)),
+          name: .NSCalendarDayChanged,
+          object: Date()
+        )
+    }
+    @objc private func handleNextDayNoti(_ notification: Notification) {
+        DataManager.shared.setPromotion(false)
     }
 }
 

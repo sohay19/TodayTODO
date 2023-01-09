@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmB-du-dnw">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="780"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="755"/>
                                 <connections>
                                     <segue destination="GQr-BL-BV0" kind="embed" id="jvp-he-6wZ"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baV-LW-g5n">
-                                <rect key="frame" x="0.0" y="783" width="393" height="60"/>
+                                <rect key="frame" x="0.0" y="758" width="393" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="dZE-Pt-oFf"/>
@@ -37,7 +37,7 @@
                             <constraint firstItem="YmB-du-dnw" firstAttribute="leading" secondItem="5L0-5Y-bGs" secondAttribute="leading" id="7g0-UK-X1q"/>
                             <constraint firstItem="YmB-du-dnw" firstAttribute="top" secondItem="2Pm-7k-NiM" secondAttribute="top" id="BVn-hD-ybJ"/>
                             <constraint firstItem="5L0-5Y-bGs" firstAttribute="trailing" secondItem="baV-LW-g5n" secondAttribute="trailing" id="Vsn-0y-yWB"/>
-                            <constraint firstAttribute="bottom" secondItem="baV-LW-g5n" secondAttribute="bottom" constant="9" id="bKJ-Vl-PKp"/>
+                            <constraint firstItem="5L0-5Y-bGs" firstAttribute="bottom" secondItem="baV-LW-g5n" secondAttribute="bottom" id="bKJ-Vl-PKp"/>
                             <constraint firstItem="baV-LW-g5n" firstAttribute="leading" secondItem="5L0-5Y-bGs" secondAttribute="leading" id="hK8-KJ-E1Y"/>
                             <constraint firstItem="baV-LW-g5n" firstAttribute="top" secondItem="YmB-du-dnw" secondAttribute="bottom" constant="3" id="leP-Jj-yzd"/>
                             <constraint firstItem="5L0-5Y-bGs" firstAttribute="trailing" secondItem="YmB-du-dnw" secondAttribute="trailing" id="oZx-aN-b31"/>

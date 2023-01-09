@@ -37,6 +37,7 @@ class MyPageViewController : UIViewController {
         switchTheme.tag = 0
         switchAd.tag = 1
         view.insertSubview(backgroundView, at: 0)
+        addNoti()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,6 +111,47 @@ extension MyPageViewController {
         SystemManager.shared.closeLoading()
         if let reloadMainView = WatchConnectManager.shared.reloadMainView {
             reloadMainView()
+        }
+    }
+    // IAP 노티 구독
+    private func addNoti() {
+        NotificationCenter.default.addObserver(
+          self,
+          selector: #selector(handlePurchaseNoti(_:)),
+          name: .IAPServicePurchaseNotification,
+          object: nil
+        )
+    }
+    @objc private func handlePurchaseNoti(_ notification: Notification) {
+        guard let result = notification.object as? (Bool, String) else { return }
+        let isSuccess = result.0
+        let isPurchaseTheme = SystemManager.shared.isProductPurchased(IAPCustomTab)
+        let isPurchaseAd = SystemManager.shared.isProductPurchased(IAPAdMob)
+        if isSuccess {
+            switch result.1 {
+            case IAPCustomTab:
+                switchTheme.isOn = true
+            case IAPAdMob:
+                switchAd.isOn = true
+            case IAPPremium:
+                switchTheme.isOn = isPurchaseTheme
+                switchAd.isOn = isPurchaseAd
+            default:
+                break
+            }
+        } else {
+            switch result.1 {
+            case IAPCustomTab:
+                switchTheme.isOn = false
+            case IAPAdMob:
+                switchAd.isOn = false
+            case IAPPremium:
+                switchTheme.isOn = isPurchaseTheme
+                switchAd.isOn = isPurchaseAd
+            default:
+                break
+            }
+            PopupManager.shared.openOkAlert(self, title: "알림", msg: "구매 중 오류가 발생하였습니다\n다시 시도해주시기 바랍니다")
         }
     }
 }

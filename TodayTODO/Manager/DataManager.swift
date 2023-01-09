@@ -117,6 +117,14 @@ extension DataManager {
             return "WhiteWidgetBackImage"
         }
     }
+    
+    func setPromotion(_ isOn:Bool) {
+        UserDefaults.shared.set(isOn, forKey: PromotionKey)
+    }
+    
+    func getPromotion() -> Bool {
+        return UserDefaults.shared.bool(forKey: PromotionKey)
+    }
 }
 
 

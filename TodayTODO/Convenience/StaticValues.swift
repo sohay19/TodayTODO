@@ -25,6 +25,7 @@ let HelpMainKey = "HelpMain"
 let HelpCategoryKey = "HelpCategory"
 let HelpPushKey = "HelpPush"
 let UpdateAKey = "UpdateA"
+let PromotionKey = "Promotion"
 
 //MARK: - Board
 let TabBoard = "Tab"
@@ -44,6 +45,7 @@ let PushBoard = "PushList"
 let PopListBoard = "PopList"
 let CustomUIBoard = "CustomUI"
 let MyPageBoard = "MyPage"
+let PromotionBoard = "Promotion"
 
 //MARK: - Push UserInfo key
 let endDateKey = "endDate"

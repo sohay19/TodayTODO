@@ -55,6 +55,7 @@ class TODOViewController: UIViewController {
         //
         view.insertSubview(backgroundView, at: 0)
         addSegmentcontrol()
+        addNoti()
         initCell()
         initRefreshController()
         // 메인 리로드 함수
@@ -68,14 +69,6 @@ class TODOViewController: UIViewController {
         SystemManager.shared.openHelp(self, TODOBoard)
         //
         checkVersion()
-        //날짜가 넘어갔는지 확인
-        guard let today = calendarView.today else {
-            return
-        }
-        if Utils.dateToDateString(today) != Utils.dateToDateString(Date()) {
-            calendarView.today = Date()
-            calendarView.select(Date())
-        }
         //
         if let type = UserDefaults.shared.string(forKey: SortTypeKey) {
             if let newType = SortType(rawValue: type) {
@@ -88,6 +81,20 @@ class TODOViewController: UIViewController {
         loadSort()
         initSegment()
         initDate()
+    }
+    //노티 구독
+    private func addNoti() {
+        NotificationCenter.default.addObserver(
+          self,
+          selector: #selector(handleNextDayNoti(_:)),
+          name: .NSCalendarDayChanged,
+          object: Date()
+        )
+    }
+    @objc private func handleNextDayNoti(_ notification: Notification) {
+        //날짜가 넘어갔을 경우
+        calendarView.today = Date()
+        calendarView.select(Date())
     }
     //버전체크
     private func checkVersion() {

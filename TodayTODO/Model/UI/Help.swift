@@ -22,6 +22,7 @@ class Help: UIView {
     @IBOutlet weak var popView: UIView!
     
     var controllTabBar:((Bool)->Void)?
+    var openPromotion:(()->Void)?
     let helpDic:[String:[HelpType]] = [TODOBoard:[.MainLeftSwipe, .MainRightSwipe, .MainToday],
                                    CategoryBoard:[.CategoryMove, .CategorySwipe],
                                        PushBoard:[.PushEdit, .PushSwipe]]
@@ -82,7 +83,6 @@ class Help: UIView {
         textInfo.isEditable = false
         textInfo.isSelectable = false
         textInfo.backgroundColor = .clear
-        textInfo.textAlignment = .center
         //
         btnRepeat.setTitleColor(.white, for: .normal)
         btnRepeat.tintColor = .white
@@ -192,5 +192,7 @@ class Help: UIView {
         guard let controllTabBar = controllTabBar else { return }
         self.removeFromSuperview()
         controllTabBar(true)
+        guard let openPromotion = openPromotion else { return }
+        openPromotion()
     }
 }

@@ -176,6 +176,8 @@
 		CF9FF1262967EB1F001325EA /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9FF1252967EB1F001325EA /* MyPageViewController.swift */; };
 		CF9FF128296BDBA1001325EA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9FF127296BDBA1001325EA /* MainViewController.swift */; };
 		CF9FF12A296BEE88001325EA /* GrayBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF129296BEE87001325EA /* GrayBackground.png */; };
+		CF9FF12C296BFE7A001325EA /* Promotion.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF12B296BFE7A001325EA /* Promotion.xib */; };
+		CF9FF130296C3AE8001325EA /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9FF12F296C3AE8001325EA /* Promotion.swift */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
 		CFB6EE0128F1793B00E93585 /* TodayTODOWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */; };
@@ -439,6 +441,8 @@
 		CF9FF1252967EB1F001325EA /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		CF9FF127296BDBA1001325EA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CF9FF129296BEE87001325EA /* GrayBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GrayBackground.png; sourceTree = "<group>"; };
+		CF9FF12B296BFE7A001325EA /* Promotion.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Promotion.xib; sourceTree = "<group>"; };
+		CF9FF12F296C3AE8001325EA /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* TodayTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTODOWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0328F1793C00E93585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -767,8 +771,8 @@
 		CFEB4A2328F14AE3008850DC /* VeiwController */ = {
 			isa = PBXGroup;
 			children = (
-				CFEB49DE28F13287008850DC /* TODOViewController.swift */,
 				CF9FF127296BDBA1001325EA /* MainViewController.swift */,
+				CFEB49DE28F13287008850DC /* TODOViewController.swift */,
 				CF75960128FD1F1B0046FDC1 /* TODOVCExtension.swift */,
 				CFEB4A3128F14BC7008850DC /* LoginViewController.swift */,
 				CFEB4A6328F16243008850DC /* RepeatViewController.swift */,
@@ -846,6 +850,8 @@
 				CF9D38FF2947370300F80EA2 /* CategoryTaskCell.swift */,
 				CF57954F295D5A8D00687863 /* SettingCell.swift */,
 				CF57957D295D82AE00687863 /* FontCell.swift */,
+				CF9FF12B296BFE7A001325EA /* Promotion.xib */,
+				CF9FF12F296C3AE8001325EA /* Promotion.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1179,6 +1185,7 @@
 				CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */,
 				CF57958E2962B58900687863 /* pencil_white.png in Resources */,
 				CFF902D52949CFCA0052A6A1 /* Main_Today_LeftSwipe.gif in Resources */,
+				CF9FF12C296BFE7A001325EA /* Promotion.xib in Resources */,
 				CF579577295D72A100687863 /* NanumSquareRoundB.ttf in Resources */,
 				CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CFF902D12949CFCA0052A6A1 /* Main_Sort.gif in Resources */,
@@ -1489,6 +1496,7 @@
 				CFEB4A3A28F14CA0008850DC /* Utils.swift in Sources */,
 				CF5350A1291CEB4300AFDC14 /* BackUpCell.swift in Sources */,
 				CF7909172930A3E30027D25D /* BackupViewController.swift in Sources */,
+				CF9FF130296C3AE8001325EA /* Promotion.swift in Sources */,
 				CFEB4A6828F165D1008850DC /* CategoryViewController.swift in Sources */,
 				CF79091B293234FA0027D25D /* PopListViewController.swift in Sources */,
 				CF50BC5E2924D13500AB538B /* NSOptionalData.swift in Sources */,
