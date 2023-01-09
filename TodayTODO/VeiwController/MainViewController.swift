@@ -16,7 +16,6 @@ class MainViewController: UIViewController {
     var tabbarViewController:CustomTabBarController!
     let constraintKey = "adHeight"
     var constraint:NSLayoutConstraint?
-    //
     let backgroundView = UIImageView(frame: UIScreen.main.bounds)
     
     override func viewDidLoad() {
