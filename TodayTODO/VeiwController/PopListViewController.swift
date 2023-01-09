@@ -45,7 +45,7 @@ extension PopListViewController {
         self.view.backgroundColor = .clear
         // 배경 설정
         let backgroundView = UIImageView(frame: backView.bounds)
-        backgroundView.image = UIImage(named: WoodBackImage)
+        backgroundView.image = UIImage(named: PopBackImage)
         backView.insertSubview(backgroundView, at: 0)
         //그림자
         backView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
@@ -68,9 +68,9 @@ extension PopListViewController {
         buttonView.layer.borderColor = UIColor.lightGray.cgColor
         //
         line.backgroundColor = .lightGray
-        btnOK.tintColor = .black
+        btnOK.tintColor = .white
+        btnCancel.tintColor = .white
         btnOK.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
-        btnCancel.tintColor = .black
         btnCancel.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnBack.tintColor = .clear
         btnBack.backgroundColor = .clear

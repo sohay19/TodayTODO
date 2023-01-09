@@ -63,7 +63,7 @@ extension RepeatViewController {
         self.view.backgroundColor = .clear
         // 배경 설정
         let backgroundView = UIImageView(frame: popView.bounds)
-        backgroundView.image = UIImage(named: WoodBackImage)
+        backgroundView.image = UIImage(named: PopBackImage)
         popView.insertSubview(backgroundView, at: 0)
         //그림자
         popView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
@@ -73,43 +73,46 @@ extension RepeatViewController {
         line1.backgroundColor = .lightGray
         line2.backgroundColor = .lightGray
         //
-        labelRepeat.textColor = .black
+        labelRepeat.textColor = .white
+        labelEndDate.textColor = .white
+        labelWeekDay.textColor = .white
         labelRepeat.font = UIFont(name: K_Font_B, size: K_FontSize)
-        labelEndDate.textColor = .black
         labelEndDate.font = UIFont(name: K_Font_B, size: K_FontSize)
-        labelWeekDay.textColor = .black
         labelWeekDay.font = UIFont(name: K_Font_B, size: K_FontSize)
         //
-        iconMenu.image = UIImage(systemName: "chevron.up.chevron.down")?.withTintColor(.black, renderingMode: .alwaysOriginal)
-        btnPullRepeatType.setTitleColor(.black, for: .normal)
+        iconMenu.image = UIImage(systemName: "chevron.up.chevron.down")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        btnPullRepeatType.setTitleColor(.white, for: .normal)
         btnPullRepeatType.backgroundColor = .white.withAlphaComponent(0.1)
         btnPullRepeatType.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnPullRepeatType.layer.borderWidth = 0.5
         btnPullRepeatType.layer.borderColor = UIColor.lightGray.cgColor
         btnPullRepeatType.layer.cornerRadius = 5
-        pickEndDate.overrideUserInterfaceStyle = .light
+        pickEndDate.overrideUserInterfaceStyle = .dark
         switchEndDate.onTintColor = .systemIndigo
+        switchEndDate.tintColor = .lightGray
+        switchEndDate.backgroundColor = .lightGray
+        switchEndDate.clipsToBounds = true
         //
-        btnOK.tintColor = .black
+        btnOK.tintColor = .white
+        btnCancel.tintColor = .white
         btnOK.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
-        btnCancel.tintColor = .black
         btnCancel.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnBack.tintColor = .clear
         btnBack.backgroundColor = .clear
         //
-        btnSunday.layer.borderWidth = 0.5
+        btnSunday.layer.borderWidth = 0.3
         btnSunday.layer.borderColor = UIColor.lightGray.cgColor
-        btnMonday.layer.borderWidth = 0.5
+        btnMonday.layer.borderWidth = 0.3
         btnMonday.layer.borderColor = UIColor.lightGray.cgColor
-        btnTuseday.layer.borderWidth = 0.5
+        btnTuseday.layer.borderWidth = 0.3
         btnTuseday.layer.borderColor = UIColor.lightGray.cgColor
-        btnWensday.layer.borderWidth = 0.5
+        btnWensday.layer.borderWidth = 0.3
         btnWensday.layer.borderColor = UIColor.lightGray.cgColor
-        btnThursday.layer.borderWidth = 0.5
+        btnThursday.layer.borderWidth = 0.3
         btnThursday.layer.borderColor = UIColor.lightGray.cgColor
-        btnFriday.layer.borderWidth = 0.5
+        btnFriday.layer.borderWidth = 0.3
         btnFriday.layer.borderColor = UIColor.lightGray.cgColor
-        btnSaturday.layer.borderWidth = 0.5
+        btnSaturday.layer.borderWidth = 0.3
         btnSaturday.layer.borderColor = UIColor.lightGray.cgColor
     }
     //지정된 날짜의 weekOfMonth 및 weekDay확인

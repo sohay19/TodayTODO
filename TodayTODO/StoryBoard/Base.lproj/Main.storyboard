@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bCY-qm-sw6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,24 +9,67 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Custom Tab Bar Controller-->
-        <scene sceneID="Dat-lI-Wzo">
+        <!--Main View Controller-->
+        <scene sceneID="w42-w6-cZL">
             <objects>
-                <tabBarController storyboardIdentifier="Tab" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bCY-qm-sw6" customClass="CustomTabBarController" customModule="TodayTODO" customModuleProvider="target" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YV4-A0-0Ge">
+                <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h71-pb-Xtx" customClass="MainViewController" customModule="TodayTODO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Pm-7k-NiM">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmB-du-dnw">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="780"/>
+                                <connections>
+                                    <segue destination="GQr-BL-BV0" kind="embed" id="jvp-he-6wZ"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baV-LW-g5n">
+                                <rect key="frame" x="0.0" y="783" width="393" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="dZE-Pt-oFf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5L0-5Y-bGs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YmB-du-dnw" firstAttribute="leading" secondItem="5L0-5Y-bGs" secondAttribute="leading" id="7g0-UK-X1q"/>
+                            <constraint firstItem="YmB-du-dnw" firstAttribute="top" secondItem="2Pm-7k-NiM" secondAttribute="top" id="BVn-hD-ybJ"/>
+                            <constraint firstItem="5L0-5Y-bGs" firstAttribute="trailing" secondItem="baV-LW-g5n" secondAttribute="trailing" id="Vsn-0y-yWB"/>
+                            <constraint firstAttribute="bottom" secondItem="baV-LW-g5n" secondAttribute="bottom" constant="9" id="bKJ-Vl-PKp"/>
+                            <constraint firstItem="baV-LW-g5n" firstAttribute="leading" secondItem="5L0-5Y-bGs" secondAttribute="leading" id="hK8-KJ-E1Y"/>
+                            <constraint firstItem="baV-LW-g5n" firstAttribute="top" secondItem="YmB-du-dnw" secondAttribute="bottom" constant="3" id="leP-Jj-yzd"/>
+                            <constraint firstItem="5L0-5Y-bGs" firstAttribute="trailing" secondItem="YmB-du-dnw" secondAttribute="trailing" id="oZx-aN-b31"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="adView" destination="baV-LW-g5n" id="R1A-1s-LhT"/>
+                        <outlet property="containerView" destination="YmB-du-dnw" id="MSI-0M-iuF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZbM-jj-DAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1605" y="116"/>
+        </scene>
+        <!--Custom Tab Bar Controller-->
+        <scene sceneID="GKG-lh-U9W">
+            <objects>
+                <tabBarController storyboardIdentifier="Tab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GQr-BL-BV0" customClass="CustomTabBarController" customModule="TodayTODO" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MwA-WF-Q6E">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fyA-fv-lZV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Bx-HW-PCA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-770" y="116"/>
+            <point key="canvasLocation" x="-744" y="115"/>
         </scene>
-        <!--Main View Controller-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainViewController" customModule="TodayTODO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TODO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="TODOViewController" customModule="TodayTODO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

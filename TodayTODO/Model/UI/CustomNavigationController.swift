@@ -15,8 +15,11 @@ class CustomNavigationController : UINavigationController {
     override func viewDidLoad() {
         navigationBar.isHidden = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
 }
-
 
 //MARK: - pop, push
 extension CustomNavigationController {

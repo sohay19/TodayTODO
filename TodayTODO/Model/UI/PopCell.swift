@@ -19,19 +19,21 @@ class PopCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        //
+        labelTitle.textColor = self.isSelected ? .black : .white
     }
     
     private func initUI() {
         // 배경
-        self.backgroundColor = .white.withAlphaComponent(0.1)
+        self.backgroundColor = .white.withAlphaComponent(0.2)
         contentView.layer.borderWidth = 0.5
         contentView.layer.borderColor = UIColor.lightGray.cgColor
         // 선택 시 배경
         let backgroundView = UIView(frame: self.bounds)
-        backgroundView.backgroundColor = .gray.withAlphaComponent(0.1)
+        backgroundView.backgroundColor = .white
         self.selectedBackgroundView = backgroundView
         //
-        labelTitle.textColor = .black
+        labelTitle.textColor = .white
     }
     
     func inputCell(_ title:String) {

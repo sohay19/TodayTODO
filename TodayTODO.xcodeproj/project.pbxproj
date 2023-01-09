@@ -98,7 +98,7 @@
 		CF5795D62963075500687863 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF5795D52963075500687863 /* StoreKit.framework */; };
 		CF5795DA29630AE400687863 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5795D929630AE400687863 /* IAPHelper.swift */; };
 		CF75960028FD1D7F0046FDC1 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */; };
-		CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */; };
+		CF75960228FD1F1B0046FDC1 /* TODOVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75960128FD1F1B0046FDC1 /* TODOVCExtension.swift */; };
 		CF75962F290119D50046FDC1 /* RepeatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB4A4028F14D1C008850DC /* RepeatResult.swift */; };
 		CF75963329024C340046FDC1 /* PushList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF75963229024C340046FDC1 /* PushList.storyboard */; };
 		CF75963529024C6A0046FDC1 /* PushListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75963429024C6A0046FDC1 /* PushListViewController.swift */; };
@@ -174,6 +174,8 @@
 		CF9D39022947370300F80EA2 /* CategoryTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9D39002947370300F80EA2 /* CategoryTaskCell.xib */; };
 		CF9FF1242967E9A7001325EA /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF1232967E9A7001325EA /* MyPage.storyboard */; };
 		CF9FF1262967EB1F001325EA /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9FF1252967EB1F001325EA /* MyPageViewController.swift */; };
+		CF9FF128296BDBA1001325EA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9FF127296BDBA1001325EA /* MainViewController.swift */; };
+		CF9FF12A296BEE88001325EA /* GrayBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF129296BEE87001325EA /* GrayBackground.png */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
 		CFB6EE0128F1793B00E93585 /* TodayTODOWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */; };
@@ -202,7 +204,7 @@
 		CFE45D3D292C96FC007024EB /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE45D3C292C96FC007024EB /* AddCategoryViewController.swift */; };
 		CFEB49DB28F13287008850DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DA28F13287008850DC /* AppDelegate.swift */; };
 		CFEB49DD28F13287008850DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DC28F13287008850DC /* SceneDelegate.swift */; };
-		CFEB49DF28F13287008850DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DE28F13287008850DC /* MainViewController.swift */; };
+		CFEB49DF28F13287008850DC /* TODOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49DE28F13287008850DC /* TODOViewController.swift */; };
 		CFEB49E228F13287008850DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB49E028F13287008850DC /* Main.storyboard */; };
 		CFEB49E728F13288008850DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFEB49E528F13288008850DC /* LaunchScreen.storyboard */; };
 		CFEB49F228F13289008850DC /* TodayTODOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB49F128F13289008850DC /* TodayTODOTests.swift */; };
@@ -385,7 +387,7 @@
 		CF5795D52963075500687863 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CF5795D929630AE400687863 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		CF7595FF28FD1D7F0046FDC1 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
-		CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCExtension.swift; sourceTree = "<group>"; };
+		CF75960128FD1F1B0046FDC1 /* TODOVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOVCExtension.swift; sourceTree = "<group>"; };
 		CF75963229024C340046FDC1 /* PushList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PushList.storyboard; sourceTree = "<group>"; };
 		CF75963429024C6A0046FDC1 /* PushListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushListViewController.swift; sourceTree = "<group>"; };
 		CF75963629024F680046FDC1 /* PushCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushCell.swift; sourceTree = "<group>"; };
@@ -435,6 +437,8 @@
 		CF9D39002947370300F80EA2 /* CategoryTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTaskCell.xib; sourceTree = "<group>"; };
 		CF9FF1232967E9A7001325EA /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		CF9FF1252967EB1F001325EA /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		CF9FF127296BDBA1001325EA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CF9FF129296BEE87001325EA /* GrayBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GrayBackground.png; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* TodayTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTODOWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0328F1793C00E93585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -453,7 +457,7 @@
 		CFEB49D728F13287008850DC /* TodayTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEB49DA28F13287008850DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFEB49DC28F13287008850DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CFEB49DE28F13287008850DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CFEB49DE28F13287008850DC /* TODOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOViewController.swift; sourceTree = "<group>"; };
 		CFEB49E128F13287008850DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFEB49E628F13288008850DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFEB49E828F13288008850DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -680,6 +684,7 @@
 				CF5795992962BFC000687863 /* PaperBackground.jpg */,
 				CF5795912962BE5000687863 /* WhiteBackground.jpg */,
 				CF5350A9291E3D4A00AFDC14 /* BlackBackground.png */,
+				CF9FF129296BEE87001325EA /* GrayBackground.png */,
 				CF5795C72962E6D700687863 /* WoodBackground.png */,
 				CF5795C92963047100687863 /* BlackWidgetBack.png */,
 				CF5795CA2963047100687863 /* WhiteWidgetBack.png */,
@@ -762,8 +767,9 @@
 		CFEB4A2328F14AE3008850DC /* VeiwController */ = {
 			isa = PBXGroup;
 			children = (
-				CFEB49DE28F13287008850DC /* MainViewController.swift */,
-				CF75960128FD1F1B0046FDC1 /* MainVCExtension.swift */,
+				CFEB49DE28F13287008850DC /* TODOViewController.swift */,
+				CF9FF127296BDBA1001325EA /* MainViewController.swift */,
+				CF75960128FD1F1B0046FDC1 /* TODOVCExtension.swift */,
 				CFEB4A3128F14BC7008850DC /* LoginViewController.swift */,
 				CFEB4A6328F16243008850DC /* RepeatViewController.swift */,
 				CFEB4A6728F165D1008850DC /* CategoryViewController.swift */,
@@ -1169,6 +1175,7 @@
 				CFEB4A6628F165C2008850DC /* Category.storyboard in Resources */,
 				CF5350B1291E3D4B00AFDC14 /* BlackBackground.png in Resources */,
 				CF9D39022947370300F80EA2 /* CategoryTaskCell.xib in Resources */,
+				CF9FF12A296BEE88001325EA /* GrayBackground.png in Resources */,
 				CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */,
 				CF57958E2962B58900687863 /* pencil_white.png in Resources */,
 				CFF902D52949CFCA0052A6A1 /* Main_Today_LeftSwipe.gif in Resources */,
@@ -1501,7 +1508,8 @@
 				CFEB4A6028F15621008850DC /* CustomNavigationController.swift in Sources */,
 				CFEB4A7628F16BF3008850DC /* RealmManager.swift in Sources */,
 				CF9D38D9294328E800F80EA2 /* NSAlarmInfo.swift in Sources */,
-				CF75960228FD1F1B0046FDC1 /* MainVCExtension.swift in Sources */,
+				CF9FF128296BDBA1001325EA /* MainViewController.swift in Sources */,
+				CF75960228FD1F1B0046FDC1 /* TODOVCExtension.swift in Sources */,
 				CF7909252935ED5B0027D25D /* NoticeViewController.swift in Sources */,
 				CFDCD3CD293A5E7E0030CB1C /* TodayTODOWidget.intentdefinition in Sources */,
 				CF9D38F4294379C500F80EA2 /* Help.swift in Sources */,
@@ -1510,7 +1518,7 @@
 				CFEB4A3828F14BEF008850DC /* SettingViewController.swift in Sources */,
 				CFEB4A5528F1559D008850DC /* FirebaseManager.swift in Sources */,
 				CF75963E290662900046FDC1 /* PushListVCExtension.swift in Sources */,
-				CFEB49DF28F13287008850DC /* MainViewController.swift in Sources */,
+				CFEB49DF28F13287008850DC /* TODOViewController.swift in Sources */,
 				CFEB4A5728F1559D008850DC /* CloudManager.swift in Sources */,
 				CFEB4A4928F14D25008850DC /* TaskCell.swift in Sources */,
 				CF79091E293236D50027D25D /* PopCell.swift in Sources */,

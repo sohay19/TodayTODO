@@ -21,8 +21,8 @@ class Help: UIView {
     @IBOutlet weak var page5: UIButton!
     @IBOutlet weak var popView: UIView!
     
-    var controllTabBar:(()->Void)?
-    let helpDic:[String:[HelpType]] = [MainBoard:[.MainLeftSwipe, .MainRightSwipe, .MainToday],
+    var controllTabBar:((Bool)->Void)?
+    let helpDic:[String:[HelpType]] = [TODOBoard:[.MainLeftSwipe, .MainRightSwipe, .MainToday],
                                    CategoryBoard:[.CategoryMove, .CategorySwipe],
                                        PushBoard:[.PushEdit, .PushSwipe]]
     var helpList:[HelpType] = []
@@ -60,7 +60,7 @@ class Help: UIView {
         self.boardName = boardName
         guard let list = helpDic[boardName] else { return }
         helpList = list
-        //
+        
         for i in 0..<btnList.count {
             btnList[i].isHidden = i < helpList.count ? false : true
         }
@@ -72,7 +72,7 @@ class Help: UIView {
     private func initUI() {
         // 배경 설정
         let backgroundView = UIImageView(frame: popView.bounds)
-        backgroundView.image = UIImage(named: WoodBackImage)
+        backgroundView.image = UIImage(named: PopBackImage)
         popView.insertSubview(backgroundView, at: 0)
         //그림자
         popView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
@@ -84,9 +84,10 @@ class Help: UIView {
         textInfo.backgroundColor = .clear
         textInfo.textAlignment = .center
         //
+        btnRepeat.setTitleColor(.white, for: .normal)
+        btnRepeat.tintColor = .white
+        btnClose.tintColor = .white
         btnClose.setImage(UIImage(systemName: "xmark")?.withConfiguration(mediumConfig), for: .normal)
-        btnClose.setTitleColor(.black, for: .normal)
-        btnRepeat.setTitleColor(.black, for: .normal)
         btnRepeat.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
         //
         btnList.append(page1)
@@ -118,7 +119,7 @@ class Help: UIView {
         gifImgView.animate(withGIFNamed: title)
         let text = infoList[helpList[pageIndex]] ?? ""
         let font = UIFont(name: K_Font_R, size: K_FontSize) ?? UIFont()
-        textInfo.setLineSpacing(text, font: font, color: .black, align: .center)
+        textInfo.setLineSpacing(text, font: font, color: .white, align: .center)
     }
     
     private func initGesture() {
@@ -137,7 +138,7 @@ class Help: UIView {
         //anim
         guard let gifImgView = gifImgView else { return }
         let slideInFromLeftTransition = CATransition()
-        slideInFromLeftTransition.type = CATransitionType.reveal
+        slideInFromLeftTransition.type = CATransitionType.moveIn
         slideInFromLeftTransition.subtype = CATransitionSubtype.fromLeft
         slideInFromLeftTransition.duration = 0.5
         slideInFromLeftTransition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
@@ -154,7 +155,7 @@ class Help: UIView {
         //anim
         guard let gifImgView = gifImgView else { return }
         let slideInFromLeftTransition = CATransition()
-        slideInFromLeftTransition.type = CATransitionType.reveal
+        slideInFromLeftTransition.type = CATransitionType.moveIn
         slideInFromLeftTransition.subtype = CATransitionSubtype.fromRight
         slideInFromLeftTransition.duration = 0.5
         slideInFromLeftTransition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
@@ -190,6 +191,6 @@ class Help: UIView {
     @IBAction func clickClose(_ sender:Any) {
         guard let controllTabBar = controllTabBar else { return }
         self.removeFromSuperview()
-        controllTabBar()
+        controllTabBar(true)
     }
 }

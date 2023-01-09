@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         //root = tabBoard
         let rootBoard = UIStoryboard(name: MainBoard, bundle: nil)
-        guard let mainVC = rootBoard.instantiateViewController(withIdentifier: TabBoard) as? CustomTabBarController else { return }
+        guard let mainVC = rootBoard.instantiateViewController(withIdentifier: MainBoard) as? MainViewController else { return }
         let navigationController = CustomNavigationController(rootViewController: mainVC)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

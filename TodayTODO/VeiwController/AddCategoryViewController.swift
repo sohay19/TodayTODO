@@ -46,7 +46,7 @@ extension AddCategoryViewController {
     private func initUI() {
         // 배경 설정
         let backgroundView = UIImageView(frame: popView.bounds)
-        backgroundView.image = UIImage(named: WoodBackImage)
+        backgroundView.image = UIImage(named: PopBackImage)
         popView.insertSubview(backgroundView, at: 0)
         //그림자
         popView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
@@ -57,11 +57,11 @@ extension AddCategoryViewController {
         line1.backgroundColor = .lightGray
         line2.backgroundColor = .lightGray
         //
-        labelTitle.textColor = .black
+        labelTitle.textColor = .white
         labelTitle.font = UIFont(name: K_Font_B, size: K_FontSize + 2.0)
-        inputTitle.textColor = .black
+        inputTitle.textColor = .white
         inputTitle.font = UIFont(name: K_Font_R, size: K_FontSize)
-        inputTitle.backgroundColor = .white.withAlphaComponent(0.1)
+        inputTitle.backgroundColor = .white.withAlphaComponent(0.2)
         inputTitle.attributedPlaceholder = NSAttributedString(string: "카테고리 명을 입력해주세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
         inputTitle.textContentType = .nickname
         inputTitle.keyboardType = .default
@@ -70,9 +70,9 @@ extension AddCategoryViewController {
         textCounter.textColor = .gray
         textCounter.font = UIFont(name: N_Font, size: N_FontSize - 5.0)
         //
-        btnOK.setTitleColor(.black, for: .normal)
+        btnOK.setTitleColor(.white, for: .normal)
+        btnCancel.setTitleColor(.white, for: .normal)
         btnOK.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
-        btnCancel.setTitleColor(.black, for: .normal)
         btnCancel.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize)
         btnBack.tintColor = .clear
         btnBack.backgroundColor = .clear

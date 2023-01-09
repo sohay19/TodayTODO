@@ -46,7 +46,6 @@ class CategoryViewController: UIViewController {
         //
         initUI()
         loadData()
-        changeEditMode(false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -132,7 +131,6 @@ extension CategoryViewController {
         }
         tableView.setEditing(isEdit, animated: true)
         btnEdit.setTitle(isEdit ? "Done" : "Edit", for: .normal)
-        SystemManager.shared.controllTabBar(self, isOn: !isEdit)
     }
     //
     func deleteCategory(_ indexPath:IndexPath) {

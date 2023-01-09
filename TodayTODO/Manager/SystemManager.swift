@@ -131,7 +131,7 @@ extension SystemManager {
     func openHelp(_ vc:UIViewController, _ board:String) {
         var isHelp = false
         switch board {
-        case MainBoard:
+        case TODOBoard:
             isHelp = UserDefaults.shared.bool(forKey: HelpMainKey)
         case CategoryBoard:
             isHelp = UserDefaults.shared.bool(forKey: HelpCategoryKey)
@@ -140,25 +140,20 @@ extension SystemManager {
         default:
             break
         }
+        guard let tabVC = vc.tabBarController as? CustomTabBarController else { return }
         if !isHelp {
-            guard let tabVC = vc.tabBarController as? CustomTabBarController else { return }
             let helpView = Bundle.main.loadNibNamed(HelpBoard, owner: vc, options: nil)?.first as? Help
             guard let helpView = helpView else {
                 return
             }
-            helpView.controllTabBar = {
-                tabVC.controllTabItem(true)
-            }
+            helpView.controllTabBar = tabVC.controllTabItem
             helpView.frame = vc.view.frame
             vc.view.addSubview(helpView)
             helpView.setView(board)
-            //
-            tabVC.controllTabItem(false)
         }
-    }
-    func controllTabBar(_ vc:UIViewController, isOn:Bool) {
-        guard let tabVC = vc.tabBarController as? CustomTabBarController else { return }
-        tabVC.controllTabItem(isOn)
+        DispatchQueue.main.async {
+            tabVC.controllTabItem(isHelp)
+        }
     }
 }
 
