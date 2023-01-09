@@ -14,6 +14,8 @@ class MainViewController: UIViewController {
     
     var bannerView: GADBannerView!
     var tabbarViewController:CustomTabBarController!
+    let constraintKey = "adHeight"
+    var constraint:NSLayoutConstraint?
     //
     let backgroundView = UIImageView(frame: UIScreen.main.bounds)
     
@@ -25,6 +27,8 @@ class MainViewController: UIViewController {
         bannerView?.delegate = self
         //
         view.insertSubview(backgroundView, at: 0)
+        //
+        constraint = adView.constraints.first(where: { $0.identifier == constraintKey })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +46,6 @@ extension MainViewController {
     func initAdMob() {
         let isPurchase = SystemManager.shared.isProductPurchased(IAPAdMob)
         let isPremium = SystemManager.shared.isProductPurchased(IAPPremium)
-        
         if !(isPurchase || isPremium) {
             guard let bannerView = bannerView else { return }
             bannerView.adUnitID = "ca-app-pub-6152243173470406/9345345318"
@@ -57,6 +60,9 @@ extension MainViewController {
             bannerView.trailingAnchor.constraint(equalTo: adView.trailingAnchor).isActive = true
             // 로드
             loadAd()
+        } else {
+            guard let constraint = constraint else { return }
+            constraint.constant = 0
         }
     }
     //광고 로드

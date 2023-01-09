@@ -11,21 +11,12 @@ import MessageUI
 class SettingViewController : UIViewController {
     @IBOutlet weak var labelInfo: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var bannerView: UIStackView!
-    @IBOutlet weak var adView: UIView!
-    @IBOutlet weak var premiumView: UIView!
-    @IBOutlet weak var btnPremium: UIButton!
-    @IBOutlet weak var labelPremium: UILabel!
-    @IBOutlet weak var btnAd: UIButton!
-    @IBOutlet weak var labelAd: UILabel!
-    @IBOutlet weak var line: UIView!
     
     let menuList:[SettingType] = [.Notice, .MyPage, .Custom, .Help, .FAQ, .Question]
     var isRefresh = false
     //
     let backgroundView = UIImageView(frame: UIScreen.main.bounds)
-    let constraintId = "bannerHeight"
-    var bannerConstraint:NSLayoutConstraint?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +26,6 @@ class SettingViewController : UIViewController {
         //
         view.insertSubview(backgroundView, at: 0)
         addNoti()
-        //
-        bannerConstraint = bannerView.constraints.first(where: { $0.identifier == constraintId })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,43 +48,9 @@ extension SettingViewController {
         tableView.separatorInsetReference = .fromCellEdges
         tableView.backgroundColor = .clear
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
-        bannerView.layer.borderWidth = 1
-        bannerView.layer.borderColor = UIColor.lightGray.cgColor
-        bannerView.backgroundColor = .label
-        adView.backgroundColor = .clear
-        premiumView.backgroundColor = .clear
-        line.backgroundColor = .lightGray
         //
         labelInfo.textColor = .gray
         labelInfo.font = UIFont(name: N_Font, size: N_FontSize - 2.0)
-        labelPremium.text = "₩3,000"
-        labelPremium.textColor = .gray
-        labelPremium.font = UIFont(name: N_Font, size: N_FontSize - 2.0)
-        labelAd.text = "₩2,200"
-        labelAd.textColor = .gray
-        labelAd.font = UIFont(name: N_Font, size: N_FontSize - 2.0)
-        //
-        btnAd.titleLabel?.font = UIFont(name: LogoFont, size: K_FontSize + 6.0)
-        btnAd.setTitle("광고제거", for: .normal)
-        btnAd.setTitleColor(.systemBackground, for: .normal)
-        btnAd.tintColor = .systemIndigo
-        btnAd.backgroundColor = .clear
-        btnPremium.titleLabel?.font = UIFont(name: LogoFont, size: K_FontSize + 6.0)
-        btnPremium.setTitle("테마 + 광고제거", for: .normal)
-        btnPremium.setTitleColor(.systemBackground, for: .normal)
-        btnPremium.tintColor = .systemIndigo
-        btnPremium.backgroundColor = .clear
-        //
-        let isPurchaseAd = SystemManager.shared.isProductPurchased(IAPAdMob)
-        let isPurchaseCustom = SystemManager.shared.isProductPurchased(IAPCustomTab)
-        let isPremium = SystemManager.shared.isProductPurchased(IAPPremium)
-        if isPremium || isPurchaseCustom && isPurchaseAd {
-            bannerView.isHidden = true
-            bannerConstraint?.constant = 0
-        } else if isPurchaseAd {
-            adView.isHidden = true
-            line.isHidden = true
-        }
     }
     // IAP 노티 구독
     private func addNoti() {

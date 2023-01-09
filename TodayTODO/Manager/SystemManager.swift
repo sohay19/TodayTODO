@@ -19,7 +19,7 @@ class SystemManager {
     private var iAPManager:IAPHelper
     private var productList:[SKProduct] = []
     private var loadingView:Loading?
-    private var topViewController:UIViewController?
+    var topViewController:UIViewController?
     //
     private var isLoading = false
 }
@@ -55,7 +55,7 @@ extension SystemManager {
         }
         return firstWindow
     }
-    private func findTopVC() -> UIViewController? {
+    func findTopVC() -> UIViewController? {
         guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
             return nil
         }
@@ -131,9 +131,6 @@ extension SystemManager {
 //MARK: - Help & Promotion
 extension SystemManager {
     func openHelp(_ vc:UIViewController, _ board:String) {
-        
-            DataManager.shared.setPromotion(false)
-        
         var isHelp = false
         switch board {
         case TODOBoard:
@@ -167,6 +164,12 @@ extension SystemManager {
         }
     }
     func openPromotion() {
+        let isPurchaseAd = SystemManager.shared.isProductPurchased(IAPAdMob)
+        let isPurchaseCustom = SystemManager.shared.isProductPurchased(IAPCustomTab)
+        let isPremium = SystemManager.shared.isProductPurchased(IAPPremium)
+        if isPremium || (isPurchaseAd && isPurchaseCustom) {
+            return
+        }
         guard let topViewController = topViewController else { return }
         guard let tabVC = topViewController.tabBarController as? CustomTabBarController else { return }
         let isPromotion = DataManager.shared.getPromotion()

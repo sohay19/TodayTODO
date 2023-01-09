@@ -178,6 +178,9 @@
 		CF9FF12A296BEE88001325EA /* GrayBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF129296BEE87001325EA /* GrayBackground.png */; };
 		CF9FF12C296BFE7A001325EA /* Promotion.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF12B296BFE7A001325EA /* Promotion.xib */; };
 		CF9FF130296C3AE8001325EA /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9FF12F296C3AE8001325EA /* Promotion.swift */; };
+		CF9FF13B296C5358001325EA /* Promotion1.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF138296C5357001325EA /* Promotion1.png */; };
+		CF9FF13C296C5358001325EA /* Promotion2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF139296C5358001325EA /* Promotion2.png */; };
+		CF9FF13D296C5358001325EA /* Promotion3.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF13A296C5358001325EA /* Promotion3.png */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
 		CFB6EE0128F1793B00E93585 /* TodayTODOWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */; };
@@ -443,6 +446,9 @@
 		CF9FF129296BEE87001325EA /* GrayBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GrayBackground.png; sourceTree = "<group>"; };
 		CF9FF12B296BFE7A001325EA /* Promotion.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Promotion.xib; sourceTree = "<group>"; };
 		CF9FF12F296C3AE8001325EA /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
+		CF9FF138296C5357001325EA /* Promotion1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Promotion1.png; sourceTree = "<group>"; };
+		CF9FF139296C5358001325EA /* Promotion2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Promotion2.png; sourceTree = "<group>"; };
+		CF9FF13A296C5358001325EA /* Promotion3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Promotion3.png; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* TodayTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTODOWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0328F1793C00E93585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -633,6 +639,16 @@
 			path = help;
 			sourceTree = "<group>";
 		};
+		CF9FF131296C51EC001325EA /* Promotion */ = {
+			isa = PBXGroup;
+			children = (
+				CF9FF138296C5357001325EA /* Promotion1.png */,
+				CF9FF139296C5358001325EA /* Promotion2.png */,
+				CF9FF13A296C5358001325EA /* Promotion3.png */,
+			);
+			path = Promotion;
+			sourceTree = "<group>";
+		};
 		CFB6EDFF28F1793B00E93585 /* TodayTODOWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -679,6 +695,7 @@
 		CFE01AC82914FB96005B3316 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				CF9FF131296C51EC001325EA /* Promotion */,
 				CF9D38DC29436D6700F80EA2 /* help */,
 				CF995F452923C54B00FAE2F1 /* title.png */,
 				CF5795812962B58900687863 /* clock_black.png */,
@@ -1157,6 +1174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF9FF13C296C5358001325EA /* Promotion2.png in Resources */,
 				CF5795CB2963047100687863 /* BlackWidgetBack.png in Resources */,
 				CF5350C1291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf in Resources */,
 				CF790913292F65510027D25D /* CategoryCell.xib in Resources */,
@@ -1186,6 +1204,7 @@
 				CF57958E2962B58900687863 /* pencil_white.png in Resources */,
 				CFF902D52949CFCA0052A6A1 /* Main_Today_LeftSwipe.gif in Resources */,
 				CF9FF12C296BFE7A001325EA /* Promotion.xib in Resources */,
+				CF9FF13B296C5358001325EA /* Promotion1.png in Resources */,
 				CF579577295D72A100687863 /* NanumSquareRoundB.ttf in Resources */,
 				CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */,
 				CFF902D12949CFCA0052A6A1 /* Main_Sort.gif in Resources */,
@@ -1202,6 +1221,7 @@
 				CF5795922962BE5000687863 /* WhiteBackground.jpg in Resources */,
 				CF5795A62962CF9000687863 /* GmarketSansLight.otf in Resources */,
 				CFF902D22949CFCA0052A6A1 /* Push_Edit.gif in Resources */,
+				CF9FF13D296C5358001325EA /* Promotion3.png in Resources */,
 				CF995F522924C34400FAE2F1 /* BackUpCell.xib in Resources */,
 				CFF902D92949E2290052A6A1 /* Push_Swipe.gif in Resources */,
 				CFF902CF2949CFCA0052A6A1 /* Category_Swipe.gif in Resources */,

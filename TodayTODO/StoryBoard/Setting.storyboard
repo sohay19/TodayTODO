@@ -17,80 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iU2-lG-BLE">
-                                <rect key="frame" x="0.0" y="59" width="393" height="66"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vb5-88-ARP">
-                                        <rect key="frame" x="0.0" y="0.0" width="196" height="66"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHg-Bz-vDR">
-                                                <rect key="frame" x="77.333333333333329" y="36.666666666666671" width="41.333333333333329" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o11-pd-zek">
-                                                <rect key="frame" x="0.0" y="0.0" width="196" height="48"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="광고 제거"/>
-                                                <connections>
-                                                    <action selector="clickAd:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="dKQ-fp-ddi"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="o11-pd-zek" firstAttribute="top" secondItem="Vb5-88-ARP" secondAttribute="top" id="DvC-nN-tNw"/>
-                                            <constraint firstItem="wHg-Bz-vDR" firstAttribute="centerX" secondItem="o11-pd-zek" secondAttribute="centerX" id="a2Q-9J-GwG"/>
-                                            <constraint firstAttribute="trailing" secondItem="o11-pd-zek" secondAttribute="trailing" id="bBC-AP-KXd"/>
-                                            <constraint firstAttribute="bottom" secondItem="wHg-Bz-vDR" secondAttribute="bottom" constant="9" id="bKt-fG-iDl"/>
-                                            <constraint firstAttribute="bottom" secondItem="o11-pd-zek" secondAttribute="bottom" constant="18" id="mlb-Kh-3qm"/>
-                                            <constraint firstItem="o11-pd-zek" firstAttribute="leading" secondItem="Vb5-88-ARP" secondAttribute="leading" id="odp-4u-IgY"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7SM-NB-q4S">
-                                        <rect key="frame" x="196" y="0.0" width="1" height="66"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="1" id="cHs-9C-4rl"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJC-oq-DbZ">
-                                        <rect key="frame" x="197" y="0.0" width="196" height="66"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDu-QB-g2p">
-                                                <rect key="frame" x="77.333333333333314" y="36.666666666666671" width="41.333333333333343" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYR-Lf-ZkQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="196" height="48"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="테마 + 광고제거"/>
-                                                <connections>
-                                                    <action selector="clickPremium:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Afn-tS-zA5"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="mYR-Lf-ZkQ" secondAttribute="bottom" constant="18" id="AbR-0w-kdU"/>
-                                            <constraint firstAttribute="bottom" secondItem="oDu-QB-g2p" secondAttribute="bottom" constant="9" id="Nnk-9m-pMv"/>
-                                            <constraint firstAttribute="trailing" secondItem="mYR-Lf-ZkQ" secondAttribute="trailing" id="YIT-YC-iRB"/>
-                                            <constraint firstItem="mYR-Lf-ZkQ" firstAttribute="leading" secondItem="XJC-oq-DbZ" secondAttribute="leading" id="YgM-yw-gIJ"/>
-                                            <constraint firstItem="mYR-Lf-ZkQ" firstAttribute="top" secondItem="XJC-oq-DbZ" secondAttribute="top" id="cpR-Hk-hAq"/>
-                                            <constraint firstItem="oDu-QB-g2p" firstAttribute="centerX" secondItem="mYR-Lf-ZkQ" secondAttribute="centerX" id="k9n-wh-5ne"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Vb5-88-ARP" firstAttribute="width" secondItem="XJC-oq-DbZ" secondAttribute="width" id="oBt-wW-Xu8"/>
-                                    <constraint firstAttribute="height" constant="66" identifier="bannerHeight" id="sSh-eT-2uT"/>
-                                </constraints>
-                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="CLW-kY-QkW">
-                                <rect key="frame" x="0.0" y="134" width="393" height="654"/>
+                                <rect key="frame" x="0.0" y="77" width="393" height="711"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" id="36Q-YS-Eeb" customClass="SettingCell" customModule="TodayTODO" customModuleProvider="target">
@@ -145,25 +73,14 @@
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="CLW-kY-QkW" secondAttribute="bottom" constant="30" id="GqA-qZ-a3v"/>
                             <constraint firstItem="CLW-kY-QkW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="J93-cg-auT"/>
-                            <constraint firstItem="CLW-kY-QkW" firstAttribute="top" secondItem="iU2-lG-BLE" secondAttribute="bottom" constant="9" id="JZX-PV-7nU"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="iU2-lG-BLE" secondAttribute="trailing" id="Qdi-b2-1rL"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CLW-kY-QkW" secondAttribute="trailing" id="RJN-ZM-qz4"/>
+                            <constraint firstItem="CLW-kY-QkW" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="18" id="UnK-7X-nd2"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Xm3-pt-874" secondAttribute="bottom" constant="30" id="VmH-mm-KE2"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Xm3-pt-874" secondAttribute="trailing" constant="18" id="aMn-1a-uXi"/>
-                            <constraint firstItem="iU2-lG-BLE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="vfN-FL-5gj"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="leading" secondItem="iU2-lG-BLE" secondAttribute="leading" id="yCe-kQ-1E1"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="adView" destination="Vb5-88-ARP" id="sLd-k7-usB"/>
-                        <outlet property="bannerView" destination="iU2-lG-BLE" id="NEj-vb-b3L"/>
-                        <outlet property="btnAd" destination="o11-pd-zek" id="UfT-PF-o4J"/>
-                        <outlet property="btnPremium" destination="mYR-Lf-ZkQ" id="HkJ-Bo-5Bv"/>
-                        <outlet property="labelAd" destination="wHg-Bz-vDR" id="9my-xU-6i1"/>
                         <outlet property="labelInfo" destination="Xm3-pt-874" id="iNb-jI-82m"/>
-                        <outlet property="labelPremium" destination="oDu-QB-g2p" id="ia2-B2-q83"/>
-                        <outlet property="line" destination="7SM-NB-q4S" id="xQr-JQ-rWG"/>
-                        <outlet property="premiumView" destination="XJC-oq-DbZ" id="1Dl-PD-1I6"/>
                         <outlet property="tableView" destination="CLW-kY-QkW" id="gpL-fB-vxL"/>
                     </connections>
                 </viewController>
