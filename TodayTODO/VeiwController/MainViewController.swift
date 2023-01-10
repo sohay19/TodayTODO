@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
         bannerView.alpha = 0
         bannerView?.delegate = self
         //
+        adView.backgroundColor = .clear
         view.insertSubview(backgroundView, at: 0)
         //
         constraint = adView.constraints.first(where: { $0.identifier == constraintKey })
@@ -54,7 +55,7 @@ extension MainViewController {
             adView.addSubview(bannerView)
             // 배너 사이즈 조정
             bannerView.topAnchor.constraint(equalTo: adView.topAnchor).isActive = true
-            bannerView.bottomAnchor.constraint(equalTo: adView.bottomAnchor).isActive = true
+            bannerView.heightAnchor.constraint(equalToConstant: 60).isActive = true
             bannerView.leadingAnchor.constraint(equalTo: adView.leadingAnchor).isActive = true
             bannerView.trailingAnchor.constraint(equalTo: adView.trailingAnchor).isActive = true
             // 로드

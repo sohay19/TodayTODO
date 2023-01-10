@@ -45,6 +45,7 @@ class Promotion:UIView {
         let backgroundView = UIImageView(frame: popView.bounds)
         backgroundView.image = UIImage(named: PopBackImage)
         popView.insertSubview(backgroundView, at: 0)
+        popView.clipsToBounds = true
         //그림자
         popView.layer.shadowColor = UIColor.label.withAlphaComponent(0.4).cgColor
         popView.layer.shadowOpacity = 1

@@ -52,9 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 테마 세팅
         let theme = DataManager.shared.getTheme()
         DataManager.shared.setTheme(theme)
-        //
-        SystemManager.shared.restorePurchases()
-                
+
         return true
     }
 
