@@ -89,7 +89,7 @@ extension RepeatViewController {
         btnPullRepeatType.layer.cornerRadius = 5
         pickEndDate.overrideUserInterfaceStyle = .dark
         switchEndDate.onTintColor = .systemIndigo
-        switchEndDate.tintColor = .lightGray
+        switchEndDate.layer.cornerRadius = switchEndDate.frame.height/2
         switchEndDate.backgroundColor = .lightGray
         switchEndDate.clipsToBounds = true
         //

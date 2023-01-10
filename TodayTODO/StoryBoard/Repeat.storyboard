@@ -63,11 +63,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRy-5b-lti">
-                                        <rect key="frame" x="97.999999999999986" y="90" width="51.000000000000014" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="We0-FD-qp5"/>
-                                        </constraints>
+                                    <switch opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rRy-5b-lti">
+                                        <rect key="frame" x="97.999999999999986" y="89.333333333333314" width="51.000000000000014" height="31"/>
                                         <connections>
                                             <action selector="toggleEndDate:" destination="Y6W-OH-hqX" eventType="valueChanged" id="YR7-hX-whg"/>
                                         </connections>
