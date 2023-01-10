@@ -14,6 +14,8 @@ class SystemManager {
     private init() {
         iAPManager = IAPHelper(productIds: Set<String>([IAPCustomTab, IAPAdMob, IAPPremium]))
         addNoti()
+        // IAP 세팅
+        initIAP()
     }
     //
     private var iAPManager:IAPHelper
@@ -102,7 +104,6 @@ extension SystemManager {
             if success {
                 guard let products = products else { return }
                 productList = products
-                iAPManager.restorePurchases()
             } else {
                 print("iAPManager.loadsRequest Error")
             }

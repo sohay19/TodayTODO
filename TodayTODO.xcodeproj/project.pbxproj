@@ -181,6 +181,14 @@
 		CF9FF13B296C5358001325EA /* Promotion1.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF138296C5357001325EA /* Promotion1.png */; };
 		CF9FF13C296C5358001325EA /* Promotion2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF139296C5358001325EA /* Promotion2.png */; };
 		CF9FF13D296C5358001325EA /* Promotion3.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF13A296C5358001325EA /* Promotion3.png */; };
+		CF9FF15A296D5966001325EA /* Push_Swipe.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF152296D5964001325EA /* Push_Swipe.gif */; };
+		CF9FF15B296D5966001325EA /* Main_Today_LeftSwipe.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF153296D5964001325EA /* Main_Today_LeftSwipe.gif */; };
+		CF9FF15D296D5966001325EA /* Main_Today_RightSwipe.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF155296D5965001325EA /* Main_Today_RightSwipe.gif */; };
+		CF9FF15E296D5966001325EA /* Push_Edit.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF156296D5965001325EA /* Push_Edit.gif */; };
+		CF9FF15F296D5966001325EA /* Main_Sort.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF157296D5965001325EA /* Main_Sort.gif */; };
+		CF9FF161296D5966001325EA /* Category_Move.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF159296D5965001325EA /* Category_Move.gif */; };
+		CF9FF164296D5C03001325EA /* Main_Month_Today.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF162296D5C03001325EA /* Main_Month_Today.gif */; };
+		CF9FF165296D5C03001325EA /* Category_Swipe.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF9FF163296D5C03001325EA /* Category_Swipe.gif */; };
 		CFB6EDFD28F1793B00E93585 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A0F28F133B3008850DC /* WidgetKit.framework */; };
 		CFB6EDFE28F1793B00E93585 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFEB4A1128F133B3008850DC /* SwiftUI.framework */; };
 		CFB6EE0128F1793B00E93585 /* TodayTODOWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */; };
@@ -247,14 +255,6 @@
 		CFEC1D3A290E60BB009A9588 /* NSEachTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495E2906D28E00FD0974 /* NSEachTask.swift */; };
 		CFEC1D3B290E60C9009A9588 /* WatchConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81495B2906CC0000FD0974 /* WatchConnectManager.swift */; };
 		CFEC1D3C290E60D5009A9588 /* NSCategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */; };
-		CFF902CF2949CFCA0052A6A1 /* Category_Swipe.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFF902C82949CFC90052A6A1 /* Category_Swipe.gif */; };
-		CFF902D12949CFCA0052A6A1 /* Main_Sort.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFF902CA2949CFC90052A6A1 /* Main_Sort.gif */; };
-		CFF902D22949CFCA0052A6A1 /* Push_Edit.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFF902CB2949CFC90052A6A1 /* Push_Edit.gif */; };
-		CFF902D32949CFCA0052A6A1 /* Main_Month_Today.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFF902CC2949CFCA0052A6A1 /* Main_Month_Today.gif */; };
-		CFF902D42949CFCA0052A6A1 /* Main_Today_RightSwipe.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFF902CD2949CFCA0052A6A1 /* Main_Today_RightSwipe.gif */; };
-		CFF902D52949CFCA0052A6A1 /* Main_Today_LeftSwipe.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFF902CE2949CFCA0052A6A1 /* Main_Today_LeftSwipe.gif */; };
-		CFF902D72949DFA60052A6A1 /* Category_Move.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFF902D62949DFA60052A6A1 /* Category_Move.gif */; };
-		CFF902D92949E2290052A6A1 /* Push_Swipe.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFF902D82949E2290052A6A1 /* Push_Swipe.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -449,6 +449,14 @@
 		CF9FF138296C5357001325EA /* Promotion1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Promotion1.png; sourceTree = "<group>"; };
 		CF9FF139296C5358001325EA /* Promotion2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Promotion2.png; sourceTree = "<group>"; };
 		CF9FF13A296C5358001325EA /* Promotion3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Promotion3.png; sourceTree = "<group>"; };
+		CF9FF152296D5964001325EA /* Push_Swipe.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Push_Swipe.gif; sourceTree = "<group>"; };
+		CF9FF153296D5964001325EA /* Main_Today_LeftSwipe.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Main_Today_LeftSwipe.gif; sourceTree = "<group>"; };
+		CF9FF155296D5965001325EA /* Main_Today_RightSwipe.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Main_Today_RightSwipe.gif; sourceTree = "<group>"; };
+		CF9FF156296D5965001325EA /* Push_Edit.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Push_Edit.gif; sourceTree = "<group>"; };
+		CF9FF157296D5965001325EA /* Main_Sort.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Main_Sort.gif; sourceTree = "<group>"; };
+		CF9FF159296D5965001325EA /* Category_Move.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Category_Move.gif; sourceTree = "<group>"; };
+		CF9FF162296D5C03001325EA /* Main_Month_Today.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Main_Month_Today.gif; sourceTree = "<group>"; };
+		CF9FF163296D5C03001325EA /* Category_Swipe.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Category_Swipe.gif; sourceTree = "<group>"; };
 		CFB6EDFC28F1793B00E93585 /* TodayTODO.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayTODO.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB6EE0028F1793B00E93585 /* TodayTODOWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTODOWidget.swift; sourceTree = "<group>"; };
 		CFB6EE0328F1793C00E93585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -505,14 +513,6 @@
 		CFEB4A7528F16BF3008850DC /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		CFEC1D33290D2144009A9588 /* TaskInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInterfaceController.swift; sourceTree = "<group>"; };
 		CFEC1D37290E53F7009A9588 /* NSCategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCategoryData.swift; sourceTree = "<group>"; };
-		CFF902C82949CFC90052A6A1 /* Category_Swipe.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Category_Swipe.gif; sourceTree = "<group>"; };
-		CFF902CA2949CFC90052A6A1 /* Main_Sort.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Main_Sort.gif; sourceTree = "<group>"; };
-		CFF902CB2949CFC90052A6A1 /* Push_Edit.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Push_Edit.gif; sourceTree = "<group>"; };
-		CFF902CC2949CFCA0052A6A1 /* Main_Month_Today.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Main_Month_Today.gif; sourceTree = "<group>"; };
-		CFF902CD2949CFCA0052A6A1 /* Main_Today_RightSwipe.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Main_Today_RightSwipe.gif; sourceTree = "<group>"; };
-		CFF902CE2949CFCA0052A6A1 /* Main_Today_LeftSwipe.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Main_Today_LeftSwipe.gif; sourceTree = "<group>"; };
-		CFF902D62949DFA60052A6A1 /* Category_Move.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Category_Move.gif; sourceTree = "<group>"; };
-		CFF902D82949E2290052A6A1 /* Push_Swipe.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Push_Swipe.gif; sourceTree = "<group>"; };
 		D2DF1791B24743C860F2CF7D /* Pods-TodayTODOUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayTODOUITests.release.xcconfig"; path = "Target Support Files/Pods-TodayTODOUITests/Pods-TodayTODOUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -627,14 +627,14 @@
 		CF9D38DC29436D6700F80EA2 /* help */ = {
 			isa = PBXGroup;
 			children = (
-				CFF902C82949CFC90052A6A1 /* Category_Swipe.gif */,
-				CFF902D62949DFA60052A6A1 /* Category_Move.gif */,
-				CFF902CC2949CFCA0052A6A1 /* Main_Month_Today.gif */,
-				CFF902CA2949CFC90052A6A1 /* Main_Sort.gif */,
-				CFF902CE2949CFCA0052A6A1 /* Main_Today_LeftSwipe.gif */,
-				CFF902CD2949CFCA0052A6A1 /* Main_Today_RightSwipe.gif */,
-				CFF902CB2949CFC90052A6A1 /* Push_Edit.gif */,
-				CFF902D82949E2290052A6A1 /* Push_Swipe.gif */,
+				CF9FF159296D5965001325EA /* Category_Move.gif */,
+				CF9FF163296D5C03001325EA /* Category_Swipe.gif */,
+				CF9FF157296D5965001325EA /* Main_Sort.gif */,
+				CF9FF162296D5C03001325EA /* Main_Month_Today.gif */,
+				CF9FF153296D5964001325EA /* Main_Today_LeftSwipe.gif */,
+				CF9FF155296D5965001325EA /* Main_Today_RightSwipe.gif */,
+				CF9FF156296D5965001325EA /* Push_Edit.gif */,
+				CF9FF152296D5964001325EA /* Push_Swipe.gif */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -1178,11 +1178,14 @@
 				CF5795CB2963047100687863 /* BlackWidgetBack.png in Resources */,
 				CF5350C1291E457400AFDC14 /* Worcestershire_Sauce-Regular.otf in Resources */,
 				CF790913292F65510027D25D /* CategoryCell.xib in Resources */,
+				CF9FF161296D5966001325EA /* Category_Move.gif in Resources */,
 				CF57959A2962BFC000687863 /* PaperBackground.jpg in Resources */,
 				CF9FF1242967E9A7001325EA /* MyPage.storyboard in Resources */,
 				CF5350D72921F3F300AFDC14 /* underline_Pink.png in Resources */,
+				CF9FF15D296D5966001325EA /* Main_Today_RightSwipe.gif in Resources */,
 				CF2BAF0F2925DAFE00EB49F4 /* spring_black.png in Resources */,
 				CFCEA0C328F1A78600A49D82 /* GoogleService-Info.plist in Resources */,
+				CF9FF15A296D5966001325EA /* Push_Swipe.gif in Resources */,
 				CF5350BD291E457400AFDC14 /* Worcestershire_Sauce_Press-Regular.otf in Resources */,
 				CF579552295D6BBB00687863 /* CustomUI.storyboard in Resources */,
 				CF7909152930A3D40027D25D /* Backup.storyboard in Resources */,
@@ -1202,33 +1205,30 @@
 				CF9FF12A296BEE88001325EA /* GrayBackground.png in Resources */,
 				CF53508D291BAD6E00AFDC14 /* underline_Indigo.png in Resources */,
 				CF57958E2962B58900687863 /* pencil_white.png in Resources */,
-				CFF902D52949CFCA0052A6A1 /* Main_Today_LeftSwipe.gif in Resources */,
+				CF9FF165296D5C03001325EA /* Category_Swipe.gif in Resources */,
+				CF9FF15B296D5966001325EA /* Main_Today_LeftSwipe.gif in Resources */,
 				CF9FF12C296BFE7A001325EA /* Promotion.xib in Resources */,
 				CF9FF13B296C5358001325EA /* Promotion1.png in Resources */,
 				CF579577295D72A100687863 /* NanumSquareRoundB.ttf in Resources */,
 				CFE01AE1291502E1005B3316 /* EF_Diary.ttf in Resources */,
-				CFF902D12949CFCA0052A6A1 /* Main_Sort.gif in Resources */,
 				CF7909232935ED520027D25D /* Notice.storyboard in Resources */,
-				CFF902D72949DFA60052A6A1 /* Category_Move.gif in Resources */,
 				CF5795D22963053C00687863 /* PaperWidgetBack.png in Resources */,
 				CF5350C0291E457400AFDC14 /* Windsor_Great_Park-Regular.otf in Resources */,
 				CFEB49E228F13287008850DC /* Main.storyboard in Resources */,
 				CF2BAF102925DAFE00EB49F4 /* spring_white.png in Resources */,
 				CF5795A82962D19500687863 /* GmarketSansMedium.otf in Resources */,
 				CF5795A12962CF1400687863 /* 강원교육모두 Light.ttf in Resources */,
+				CF9FF15F296D5966001325EA /* Main_Sort.gif in Resources */,
+				CF9FF164296D5C03001325EA /* Main_Month_Today.gif in Resources */,
 				CF5350C3291E45F300AFDC14 /* NanumAJumMaJaYu.ttf in Resources */,
 				CFE45D3B292B6F17007024EB /* AddCategory.storyboard in Resources */,
 				CF5795922962BE5000687863 /* WhiteBackground.jpg in Resources */,
 				CF5795A62962CF9000687863 /* GmarketSansLight.otf in Resources */,
-				CFF902D22949CFCA0052A6A1 /* Push_Edit.gif in Resources */,
 				CF9FF13D296C5358001325EA /* Promotion3.png in Resources */,
 				CF995F522924C34400FAE2F1 /* BackUpCell.xib in Resources */,
-				CFF902D92949E2290052A6A1 /* Push_Swipe.gif in Resources */,
-				CFF902CF2949CFCA0052A6A1 /* Category_Swipe.gif in Resources */,
 				CF75963329024C340046FDC1 /* PushList.storyboard in Resources */,
 				CF995F4E2924BF6600FAE2F1 /* TaskCell.xib in Resources */,
 				CF995F502924C15D00FAE2F1 /* PushCell.xib in Resources */,
-				CFF902D32949CFCA0052A6A1 /* Main_Month_Today.gif in Resources */,
 				CFEB4A6228F16234008850DC /* Repeat.storyboard in Resources */,
 				CF5795852962B58900687863 /* clock_black.png in Resources */,
 				CF5350D3291E9CE200AFDC14 /* Loading.xib in Resources */,
@@ -1239,9 +1239,9 @@
 				CF5795C82962E6D700687863 /* WoodBackground.png in Resources */,
 				CF790919293234F00027D25D /* PopList.storyboard in Resources */,
 				CF5350D52921E92F00AFDC14 /* underline_Black.png in Resources */,
-				CFF902D42949CFCA0052A6A1 /* Main_Today_RightSwipe.gif in Resources */,
 				CF79091F293236D50027D25D /* PopCell.xib in Resources */,
 				CF9D38F6294379DB00F80EA2 /* Help.xib in Resources */,
+				CF9FF15E296D5966001325EA /* Push_Edit.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1665,7 +1665,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO.watchkitapp.watchkitextension;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = TodayTODO;
@@ -1701,7 +1701,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO.watchkitapp.watchkitextension;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = TodayTODO;
@@ -1739,7 +1739,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO.watchkitapp;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = TodayTODO;
@@ -1780,7 +1780,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO.watchkitapp;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = TodayTODO;
@@ -1819,7 +1819,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO.TodayTODOWidget;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = TodayTODO;
@@ -1854,7 +1854,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO.TodayTODOWidget;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = TodayTODO;
@@ -2014,7 +2014,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = TodayTODO;
@@ -2059,7 +2059,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bailey.TodayTODO;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";

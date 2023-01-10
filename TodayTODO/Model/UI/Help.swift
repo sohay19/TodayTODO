@@ -27,13 +27,13 @@ class Help: UIView {
                                    CategoryBoard:[.CategoryMove, .CategorySwipe],
                                        PushBoard:[.PushEdit, .PushSwipe]]
     var helpList:[HelpType] = []
-    var infoList:[HelpType:String] = [.MainLeftSwipe:"TODO를 오른쪽으로 스와이프 하면\n완료 표기를 할 수 있습니다",
-                                      .MainRightSwipe:"TODO를 왼쪽으로 스와이프 하면\n삭제 할 수 있습니다",
+    var infoList:[HelpType:String] = [.MainRightSwipe:"TODO를 오른쪽으로 스와이프 하면\n완료 표기를 할 수 있습니다",
+                                      .MainLeftSwipe:"TODO를 왼쪽으로 스와이프 하면\n삭제 할 수 있습니다",
                                       .MainSort:"정렬 기준을 선택하여\n정렬 할 수 있습니다",
                                       .MainToday:"표적 모양 아이콘을 통해\n오늘의 날짜로 바로 이동할 수 있습니다",
-                                      .CategoryMove:"Edit를 누른 후 카테고리를 움직여\n우선순위를 수정할 수 있습니다",
+                                      .CategoryMove:"EDIT를 누른 후 카테고리를 움직여\n우선순위를 수정할 수 있습니다",
                                       .CategorySwipe:"카테고리를 왼쪽으로 스와이프하면\n수정 및 삭제 할 수 있습니다",
-                                      .PushEdit:"Edit를 누르면 편집 모드가 되어\n하단의 버튼을 사용할 수 있습니다",
+                                      .PushEdit:"EDIT를 누르면 편집 모드가 되어\n하단의 버튼을 사용할 수 있습니다",
                                       .PushSwipe:"알람을 왼쪽으로 스와이프하면\n[알림만] 삭제 할 수 있습니다"]
     var btnList:[UIButton] = []
     var gifImgView:GIFImageView?
@@ -88,7 +88,7 @@ class Help: UIView {
         btnRepeat.tintColor = .white
         btnClose.tintColor = .white
         btnClose.setImage(UIImage(systemName: "xmark")?.withConfiguration(mediumConfig), for: .normal)
-        btnRepeat.titleLabel?.font = UIFont(name: K_Font_B, size: K_FontSize)
+        btnRepeat.titleLabel?.font = UIFont(name: K_Font_R, size: K_FontSize - 2.0)
         //
         btnList.append(page1)
         btnList.append(page2)
@@ -98,15 +98,15 @@ class Help: UIView {
     }
     
     private func addGIF() {
-        gifImgView = GIFImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 420))
+        gifImgView = GIFImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
         guard let gifImgView = gifImgView else { return }
         gifImgView.layer.cornerRadius = 5
         gifImgView.clipsToBounds = true
         popView.addSubview(gifImgView)
         //
         gifImgView.translatesAutoresizingMaskIntoConstraints = false
-        gifImgView.leadingAnchor.constraint(equalTo: popView.leadingAnchor, constant: 18).isActive = true
-        gifImgView.trailingAnchor.constraint(equalTo: popView.trailingAnchor, constant: -18).isActive = true
+        gifImgView.leadingAnchor.constraint(equalTo: popView.leadingAnchor, constant: 24).isActive = true
+        gifImgView.trailingAnchor.constraint(equalTo: popView.trailingAnchor, constant: -24).isActive = true
         gifImgView.topAnchor.constraint(equalTo: popView.topAnchor, constant: 18).isActive = true
         gifImgView.bottomAnchor.constraint(equalTo: textInfo.topAnchor, constant: -12).isActive = true
     }
@@ -118,7 +118,7 @@ class Help: UIView {
         let title = helpList[pageIndex].rawValue
         gifImgView.animate(withGIFNamed: title)
         let text = infoList[helpList[pageIndex]] ?? ""
-        let font = UIFont(name: K_Font_R, size: K_FontSize) ?? UIFont()
+        let font = UIFont(name: K_Font_B, size: K_FontSize) ?? UIFont()
         textInfo.setLineSpacing(text, font: font, color: .white, align: .center)
     }
     

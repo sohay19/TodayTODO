@@ -65,8 +65,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
         
-        // IAP 세팅
-        SystemManager.shared.initIAP()
         // 위젯 새로고침
         WidgetCenter.shared.reloadAllTimelines()
         //업데이트 용
