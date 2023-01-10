@@ -196,6 +196,8 @@ extension SystemManager {
     }
     @objc private func handleNextDayNoti(_ notification: Notification) {
         DataManager.shared.setPromotion(false)
+        let currentToday = Utils.dateToDateString(Date())
+        DataManager.shared.setToday(currentToday)
     }
 }
 

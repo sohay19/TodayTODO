@@ -29,7 +29,7 @@ class PushListViewController : UIViewController {
     var heightOrigin:CGFloat = 60
     var isRefresh = false
     var isTaskOpen = false
-    //
+    var tapGesture:UITapGestureRecognizer?
     let backgroundView = UIImageView(frame: UIScreen.main.bounds)
     
     
@@ -45,6 +45,7 @@ class PushListViewController : UIViewController {
         //
         view.insertSubview(backgroundView, at: 0)
         addSegmentcontrol()
+        addGestures()
         initConstraints()
         initCell()
         //
@@ -102,6 +103,7 @@ extension PushListViewController {
         btnDelete.setImage(UIImage(systemName: "trash"), for: .normal)
         //
         imgClock.image = UIImage(named: DataManager.shared.getTheme() == BlackBackImage ? "clock_white" : "clock_black")
+        changeEditMode(false)
     }
     //
     private func addSegmentcontrol() {
@@ -111,6 +113,23 @@ extension PushListViewController {
         segment.selectedSegmentIndex = 0
         segmentControl = segment
         segmentView.addSubview(segment)
+    }
+    //
+    private func addGestures() {
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickTabBar))
+        guard let tapGesture = tapGesture else { return }
+        tapGesture.numberOfTapsRequired = 1
+        guard let tabBarController = self.tabBarController else { return }
+        tabBarController.tabBar.addGestureRecognizer(tapGesture)
+    }
+    @objc private func clickTabBar(_ gesture: UITapGestureRecognizer) {
+        if pushTable.isEditing {
+            PopupManager.shared.openOkAlert(self,
+                                            title: "알림",
+                                            msg: "편집을 종료하시겠습니까?") { [self] _ in
+                changeEditMode(false)
+            }
+        }
     }
     //SegmentedControl
     @objc func changeSegment(_ sender:UISegmentedControl) {
@@ -260,14 +279,14 @@ extension PushListViewController {
         }
         changeEditMode(!pushTable.isEditing)
     }
-    private func changeEditMode(_ isOn:Bool) {
-        pushTable.setEditing(isOn, animated: true)
-        btnEdit.setTitle(isOn ? "Done" : "Edit", for: .normal)
-//        btnEdit.setImage(UIImage(systemName: isOn ? "rectangle.portrait.and.arrow.right" : "scissors", withConfiguration: mediumConfig), for: .normal)
+    private func changeEditMode(_ isEdit:Bool) {
+        pushTable.setEditing(isEdit, animated: true)
+        btnEdit.setTitle(isEdit ? "Done" : "Edit", for: .normal)
         for cell in pushTable.visibleCells {
-            cell.selectionStyle = isOn ? .default : .none
+            cell.selectionStyle = isEdit ? .default : .none
         }
-        controllEditView(isOn)
+        tapGesture?.isEnabled = isEdit
+        controllEditView(isEdit)
     }
     @IBAction func clickSelectAll(_ sender:UIButton) {
         guard let list = pushTable.indexPathsForVisibleRows else {

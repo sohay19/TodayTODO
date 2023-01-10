@@ -67,9 +67,14 @@ class TODOViewController: UIViewController {
         //
         SystemManager.shared.openLoading()
         SystemManager.shared.openHelp(self, TODOBoard)
-        //
+        // 버전체크
         checkVersion()
-        //
+        // 날짜 체크
+        guard let today = calendarView.today else { return }
+        if Utils.dateToDateString(today) != Utils.dateToDateString(Date()) {
+            handleNextDay()
+        }
+        // 정렬 체크
         if let type = UserDefaults.shared.string(forKey: SortTypeKey) {
             if let newType = SortType(rawValue: type) {
                 sortType = newType
@@ -92,7 +97,10 @@ class TODOViewController: UIViewController {
         )
     }
     @objc private func handleNextDayNoti(_ notification: Notification) {
-        //날짜가 넘어갔을 경우
+        handleNextDay()
+    }
+    //날짜가 넘어갔을 경우
+    private func handleNextDay() {
         calendarView.today = Date()
         calendarView.select(Date())
     }

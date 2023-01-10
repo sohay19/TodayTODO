@@ -125,6 +125,14 @@ extension DataManager {
     func getPromotion() -> Bool {
         return UserDefaults.shared.bool(forKey: PromotionKey)
     }
+    
+    func setToday(_ today:String) {
+        UserDefaults.shared.set(today, forKey: TodayKey)
+    }
+    
+    func getToday() -> String {
+        return UserDefaults.shared.string(forKey: TodayKey) ?? ""
+    }
 }
 
 

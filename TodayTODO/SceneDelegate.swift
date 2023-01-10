@@ -46,6 +46,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //앱 접속 시 푸시 알림 뱃지 카운트 초기화
         UIApplication.shared.applicationIconBadgeNumber = 0
         DataManager.shared.removeBadgeCnt()
+        
+        //오늘 날짜 확인
+        let today = DataManager.shared.getToday()
+        let currentToday = Utils.dateToDateString(Date())
+        if today.isEmpty || currentToday != today {
+            DataManager.shared.setPromotion(false)
+            DataManager.shared.setToday(currentToday)
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

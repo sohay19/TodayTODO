@@ -26,6 +26,7 @@ let HelpCategoryKey = "HelpCategory"
 let HelpPushKey = "HelpPush"
 let UpdateAKey = "UpdateA"
 let PromotionKey = "Promotion"
+let TodayKey = "Today"
 
 //MARK: - Board
 let TabBoard = "Tab"

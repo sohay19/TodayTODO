@@ -23,6 +23,7 @@ class CategoryViewController: UIViewController {
     var isRefresh = false
     var isEdit = false
     var openIndex:IndexPath?
+    var tapGesture:UITapGestureRecognizer?
     //
     let backgroundView = UIImageView(frame: UIScreen.main.bounds)
     
@@ -35,6 +36,7 @@ class CategoryViewController: UIViewController {
         //
         view.insertSubview(backgroundView, at: 0)
         addSegmentcontrol()
+        addGestures()
         initCell()
     }
     
@@ -80,6 +82,35 @@ extension CategoryViewController {
         btnAdd.titleLabel?.font = UIFont(name: E_Font_B, size: E_FontSize - 3.0)
         btnEdit.setTitleColor(.label, for: .normal)
         btnEdit.titleLabel?.font = UIFont(name: E_Font_B, size: E_FontSize - 3.0)
+        //
+        changeEditMode(false)
+    }
+    //
+    private func addGestures() {
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickTabBar))
+        guard let tapGesture = tapGesture else { return }
+        tapGesture.numberOfTapsRequired = 1
+        guard let tabBarController = self.tabBarController else { return }
+        tabBarController.tabBar.addGestureRecognizer(tapGesture)
+    }
+    @objc private func clickTabBar(_ gesture: UITapGestureRecognizer) {
+        if tableView.isEditing {
+            if originList != categoryList {
+                PopupManager.shared.openYesOrNo(self,
+                                                title: "알림",
+                                                msg: "수정된 내용을 저장하시겠습니까?") { [self] _ in
+                    saveCategory()
+                } completeNo: { [self] _ in
+                    reloadCategory()
+                }
+            } else {
+                PopupManager.shared.openOkAlert(self,
+                                                title: "알림",
+                                                msg: "편집을 종료하시겠습니까?") { [self] _ in
+                    changeEditMode(false)
+                }
+            }
+        }
     }
     //
     private func addSegmentcontrol() {
@@ -129,6 +160,7 @@ extension CategoryViewController {
             openIndex = nil
             tableView.reloadData()
         }
+        tapGesture?.isEnabled = isEdit
         tableView.setEditing(isEdit, animated: true)
         btnEdit.setTitle(isEdit ? "Done" : "Edit", for: .normal)
     }
@@ -243,13 +275,9 @@ extension CategoryViewController {
                 PopupManager.shared.openYesOrNo(
                     self,
                     title: "카테고리 순서 변경", msg: "현재 상태를 저장하시곘습니까?") { [self] _ in
-                        originList = categoryList
-                        DataManager.shared.setCategoryOrder(originList)
-                        changeEditMode(false)
+                        saveCategory()
                     } completeNo: { [self] _ in
-                        categoryList = originList
-                        changeEditMode(false)
-                        tableView.reloadData()
+                        reloadCategory()
                     }
             } else {
                 changeEditMode(false)
@@ -257,6 +285,16 @@ extension CategoryViewController {
         } else {
             changeEditMode(true)
         }
+    }
+    private func saveCategory() {
+        originList = categoryList
+        DataManager.shared.setCategoryOrder(originList)
+        changeEditMode(false)
+    }
+    private func reloadCategory() {
+        categoryList = originList
+        changeEditMode(false)
+        tableView.reloadData()
     }
 }
 

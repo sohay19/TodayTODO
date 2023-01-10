@@ -175,7 +175,7 @@ class Help: UIView {
         btnRepeat.isSelected = !btnRepeat.isSelected
         var boardKey = ""
         switch boardName {
-        case MainBoard:
+        case TODOBoard:
             boardKey = HelpMainKey
         case CategoryBoard:
             boardKey = HelpCategoryKey

@@ -45,18 +45,24 @@ extension InterfaceController {
         let list = DataManager.shared.getCategoryOrder()
         taskList = receiveTaskList.sorted(by: {
             if let first = list.firstIndex(of: $0.category), let second = list.firstIndex(of: $1.category) {
-                if $0.isDone && !$1.isDone {
-                    return false
-                } else if !$0.isDone && $1.isDone {
-                    return true
-                } else {
-                    if $0.taskTime.isEmpty {
+                if first == second {
+                    if $0.isDone && !$1.isDone {
                         return false
-                    } else if $1.taskTime.isEmpty {
+                    } else if !$0.isDone && $1.isDone {
                         return true
                     } else {
-                        return first < second
+                        if $0.taskTime.isEmpty && !$1.taskTime.isEmpty {
+                            return false
+                        } else if !$0.taskTime.isEmpty && $1.taskTime.isEmpty {
+                            return true
+                        } else if $0.taskTime.isEmpty && $1.taskTime.isEmpty {
+                            return $0.title < $1.title
+                        } else {
+                            return $0.taskTime < $1.taskTime
+                        }
                     }
+                } else {
+                    return first < second
                 }
             }
             return false
