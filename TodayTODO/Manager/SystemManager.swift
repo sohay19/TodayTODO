@@ -155,13 +155,14 @@ extension SystemManager {
             helpView.frame = vc.view.frame
             vc.view.addSubview(helpView)
             helpView.setView(board)
+            //
+            DispatchQueue.main.async {
+                tabVC.controllTabItem(false)
+            }
         } else {
             if board == TODOBoard {
                 openPromotion()
             }
-        }
-        DispatchQueue.main.async {
-            tabVC.controllTabItem(isHelp)
         }
     }
     func openPromotion() {
@@ -181,9 +182,10 @@ extension SystemManager {
             promotionView.controllTabBar = tabVC.controllTabItem
             promotionView.frame = topViewController.view.frame
             topViewController.view.addSubview(promotionView)
-        }
-        DispatchQueue.main.async {
-            tabVC.controllTabItem(isPromotion)
+            //
+            DispatchQueue.main.async {
+                tabVC.controllTabItem(false)
+            }
         }
     }
     //노티 구독
