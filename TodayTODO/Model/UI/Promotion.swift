@@ -118,12 +118,31 @@ class Promotion:UIView {
     
     @IBAction func clickBuy(_ sender:UIButton) {
         var item = ""
+        guard let topViewController = SystemManager.shared.topViewController else { return }
         switch sender.tag {
         case 0:
+            let isPurchase = UserDefaults.shared.bool(forKey: IAPCustomTab)
+            if isPurchase {
+                PopupManager.shared.openOkAlert(topViewController,
+                                                title: "알림", msg: "이미 구매한 상품입니다")
+                break
+            }
             item = IAPCustomTab
         case 1:
+            let isPurchase = UserDefaults.shared.bool(forKey: IAPAdMob)
+            if isPurchase {
+                PopupManager.shared.openOkAlert(topViewController,
+                                                title: "알림", msg: "이미 구매한 상품입니다")
+                break
+            }
             item = IAPAdMob
         case 2:
+            let isPurchase = UserDefaults.shared.bool(forKey: IAPPremium)
+            if isPurchase {
+                PopupManager.shared.openOkAlert(topViewController,
+                                                title: "알림", msg: "이미 구매한 상품입니다")
+                break
+            }
             item = IAPPremium
         default:
             break
